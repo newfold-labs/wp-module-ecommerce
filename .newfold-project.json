@@ -1,0 +1,29 @@
+{
+    "name": "wp-plugin-ecommerce",
+    "description": "Plugin for brand agnostic e-commerce",
+    "url": "",
+    "package": {
+        "vendor": "newfold-labs",
+        "name": "wp-plugin-ecommerce"
+    },
+    "license": {
+        "slug": "GPL-2.0-or-later",
+        "name": "GPL 2.0 or later",
+        "url": "https://www.gnu.org/licenses/gpl-2.0.html"
+    },
+    "author": {
+        "name": "Beyond",
+        "email": "team-spartans@newfold.com",
+        "url": ""
+    },
+    "text_domain": "wp-plugin-ecommerce",
+    "namespace": "WpPluginEcommerce",
+    "prefixes": {
+        "long": "WpPluginEcommerce",
+        "short": "wpe",
+        "function": "wpe_",
+        "constant": "WPE_",
+        "meta": "wpe_",
+        "slug": "wpe-"
+    }
+}

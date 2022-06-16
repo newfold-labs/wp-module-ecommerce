@@ -1,0 +1,33 @@
+{
+  "name": "newfold-labs/wp-plugin-ecommerce",
+  "description": "Plugin for brand agnostic e-commerce",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Beyond",
+      "email": "team-spartans@newfold.com"
+    }
+  ],
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true,
+    "platform-check": false,
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "repositories": {
+    "bluehost-satis": {
+      "type": "composer",
+      "url": "https://bluehost.github.io/satis/",
+      "only": [
+        "bluehost/*",
+        "endurance/*",
+        "mojoness/*",
+        "newfold/*"
+      ]
+    }
+  },
+  "require": {}
+}
