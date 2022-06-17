@@ -1,0 +1,21 @@
+{
+  "name": "wp-plugin-ecommerce",
+  "description": "Brand Agnostic eCommerce Experience",
+  "license": "GPL-2.0-or-later",
+  "private": true,
+  "author": {
+    "name": "Beyond",
+    "email": "team-spartans@newfold.com"
+  },
+  "devDependencies": {
+    "@testing-library/cypress": "^8.0.3",
+    "@wordpress/env": "^4.9.0",
+    "axe-core": "^4.4.2",
+    "cypress": "^10.1.0",
+    "cypress-axe": "^1.0.0"
+  },
+  "scripts": {
+    "test:e2e": "npx cypress run",
+    "test:unit": "npx wp-env run phpunit 'phpunit -c /var/www/html/wp-content/plugins/wp-plugin-ecommerce/phpunit.xml --verbose'"
+  }
+}

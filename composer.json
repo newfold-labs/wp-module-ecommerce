@@ -1,8 +1,10 @@
 {
   "name": "newfold-labs/wp-plugin-ecommerce",
-  "description": "Plugin for brand agnostic e-commerce",
+  "description": "Brand Agnostic eCommerce Experience",
   "type": "wordpress-plugin",
-  "license": "GPL-2.0-or-later",
+  "license": [
+    "GPL-2.0-or-later"
+  ],
   "authors": [
     {
       "name": "Beyond",
@@ -20,14 +22,26 @@
   "repositories": {
     "bluehost-satis": {
       "type": "composer",
-      "url": "https://bluehost.github.io/satis/",
-      "only": [
-        "bluehost/*",
-        "endurance/*",
-        "mojoness/*",
-        "newfold/*"
-      ]
+      "url": "https://bluehost.github.io/satis/"
     }
   },
-  "require": {}
+  "require-dev": {
+    "bluehost/wp-php-standards": "^1.1",
+    "wp-cli/i18n-command": "^2.3",
+    "wp-phpunit/wp-phpunit": "^6.0",
+    "yoast/phpunit-polyfills": "^1.0"
+  },
+  "scripts": {
+    "fix": "vendor/bin/phpcbf --standard=phpcs.xml .",
+    "lint": "vendor/bin/phpcs --standard=phpcs.xml -s .",
+    "i18n": [
+      "vendor/bin/wp i18n make-pot . ./languages/wp-plugin-ecommerce.pot --headers=Report-Msgid-Bugs-To:https://github.com/newfold-labs/wp-plugin-ecommerce/issues --exclude=assets,storybook,tests",
+      "vendor/bin/wp i18n make-pot . ./languages/wp-plugin-ecommerce.pot --headers=POT-Creation-Date:null --exclude=assets,storybook,tests"
+    ]
+  },
+  "scripts-descriptions": {
+    "fix": "Automatically fix coding standards issues where possible.",
+    "lint": "Check files against coding standards.",
+    "i18n": "Generate a .pot file for translation."
+  }
 }

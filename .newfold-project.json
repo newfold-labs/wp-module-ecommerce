@@ -1,6 +1,6 @@
 {
     "name": "wp-plugin-ecommerce",
-    "description": "Plugin for brand agnostic e-commerce",
+    "description": "Brand Agnostic eCommerce Experience",
     "url": "",
     "package": {
         "vendor": "newfold-labs",

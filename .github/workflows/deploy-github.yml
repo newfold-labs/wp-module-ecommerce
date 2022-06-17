@@ -1,0 +1,102 @@
+name: Release
+on:
+  release:
+    types:
+      - created
+      - updated
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
+  cancel-in-progress: true
+jobs:
+  release:
+    name: Create GitHub release asset
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup workflow context
+        id: workflow
+        working-directory: ${{ runner.temp }}
+        env:
+          REPO: ${{ github.repository }}
+        run: |
+          mkdir dist
+          echo ::set-output name=DIST::${PWD}/dist
+          echo ::set-output name=PACKAGE::${REPO##*/}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          coverage: none
+          tools: composer
+
+      - name: Get Composer cache directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache Composer vendor directory
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Log debug information
+        run: |
+          php --version
+          composer --version
+          node --version
+          npm --version
+
+      - name: Validate composer.json and composer.lock files
+        run: composer validate
+
+      - name: Install PHP Dependencies
+        run: composer install --no-progress --no-dev --optimize-autoloader
+
+      - name: Run NPM Install
+        run: npm install
+
+      - name: Build JavaScript
+        run: npm run build
+
+      - name: Create Distribution Copy
+        run: rsync -r --exclude-from=.distignore --include-from=.distinclude . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
+
+      - name: List Distribution Files
+        working-directory: ${{ steps.workflow.outputs.DIST }}
+        run: find .
+
+      - name: Create Zip
+        working-directory: ${{ steps.workflow.outputs.DIST }}
+        run: zip -r ${{ steps.workflow.outputs.PACKAGE }}.zip .
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: https://uploads.github.com/repos/${{ github.repository }}/releases/${{ github.event.release.id }}/assets{?name,label}
+          asset_path: ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}.zip
+          asset_name: ${{ steps.workflow.outputs.PACKAGE }}.zip
+          asset_content_type: application/zip

@@ -10,7 +10,7 @@
  * @wordpress-plugin
  * Plugin Name:       wp-plugin-ecommerce
  * Plugin URI:        
- * Description:       Plugin for brand agnostic e-commerce
+ * Description:       Brand Agnostic eCommerce Experience
  * Version:           1.0
  * Requires PHP:      7.0
  * Requires at least: 5.0
