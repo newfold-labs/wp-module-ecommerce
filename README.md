@@ -3,6 +3,22 @@
 height="42" />
 </a>
 
-# wp-plugin-ecommerce
+# wp-module-ecommerce
 
 Next-generation WordPress eCommerce Experience for WordPress sites at Newfold Digital.
+
+## Installation
+
+### 1. Add the Newfold Satis to your `composer.json`.
+
+ ```bash
+ composer config repositories.newfold composer https://newfold.github.io/satis
+ ```
+
+### 2. Require the `newfold-labs/wp-module-ecommerce` package.
+
+ ```bash
+ composer require newfold-labs/wp-module-ecommerce
+ ```
+
+[More on NewFold WordPress Modules](https://github.com/newfold-labs/wp-module-loader)
