@@ -30,7 +30,7 @@ export function Banner({ state }) {
     : BannerConfigurationByStatus.complete;
   return (
     <div className="nfd-ecommerce-banner" style={BannerConfiguration.vars}>
-      <div style={{ margin: "43px 0 28px" }}>
+      <div style={{ margin: "32px 0 22px" }}>
         <BannerConfiguration.Icon />
       </div>
       <h1 className="heading accent">{BannerConfiguration.message}</h1>
@@ -54,7 +54,7 @@ export function Banner({ state }) {
           <span>Enable the "Coming Soon" mode.</span>
         </span>
       )}
-      <div style={{ height: "34px" }} />
+      <div style={{ height: "32px" }} />
     </div>
   );
 }
