@@ -122,61 +122,44 @@
       }
     }
   }
-
   .nfd-ecommerce-card {
-    position: absolute;
-    width: 170px;
-    height: 155px;
-    left: calc(50% - 170px / 2 - 279px);
-    top: calc(50% - 155px / 2);
+    max-width: 170px;
     border: 1px solid var(--nfd-ecommerce-border-secondary);
     border-radius: 2px;
     display: flex;
     flex-direction: column;
     place-items: center;
-
+    padding: 30px 0 18px;
     .nfd-ecommerce-card-image {
-      position: absolute;
-      top: 16.67%;
-      bottom: 17.71%;
+      padding-bottom: 21px;
     }
 
     .nfd-ecommerce-card-title {
-      position: absolute;
-      top: 80px;
-      width: 77px;
-      height: 19px;
-      font-family: "SF Pro";
-      font-style: normal;
-      font-weight: 590;
-      font-size: 16px;
-      line-height: 19px;
+      font: 590 16px SF Pro;
       color: var(--nfd-ecommerce-text-primary);
+      padding-bottom: 20px;
     }
 
     .nfd-ecommerce-card-link {
-      position: absolute;
-      display: none;
-      top: 120px;
-      width: 80px;
-      height: 17px;
-      font-family: "SF Pro";
-      font-style: normal;
-      font-weight: 510;
-      font-size: 14px;
-      line-height: 17px;
+      text-decoration: none;
+      visibility: hidden;
+      font: 510 14px SF Pro;
       text-align: center;
       color: var(--nfd-ecommerce-accent-primary);
     }
-  }
-  .nfd-ecommerce-card:hover {
-    .nfd-ecommerce-card-link {
-      display: block;
-      cursor: pointer;
-    }
 
-    .nfd-ecommerce-card:hover {
+    &:hover {
       background: var(--nfd-ecommerce-bg-secondary);
+      border-color: var(--nfd-ecommerce-accent-secondary);
+      .nfd-ecommerce-card-link {
+        visibility: visible;
+      }
     }
+  }
+  .nfd-ecommerce-link-actions-container {
+    display: grid;
+    grid-template-columns: repeat(4, 175px);
+    gap: 16px;
+    padding-top: 32px;
   }
 }
