@@ -76,5 +76,50 @@
     background-color: var(--nfd-ecommerce-bg-tertiary);
     border: 1px solid var(--nfd-ecommerce-border-primary);
     border-radius: 2px;
+    display: grid;
+    grid-template-columns: 350px auto;
+
+    nav.nfd-ecommerce-dashboard-menu {
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-rows: repeat(5, min-content);
+      li {
+        display: inline-flex;
+        cursor: pointer;
+        align-items: center;
+        margin: 0;
+        padding: 0 0 0 32px;
+        font-size: 18px;
+        font-weight: 400;
+        height: 60px;
+        color: var(--nfd-ecommerce-text-primary);
+        text-transform: capitalize;
+        &:hover {
+          color: var(--nfd-ecommerce-accent-primary);
+        }
+        &[data-active="true"] {
+          color: var(--nfd-ecommerce-accent-primary);
+          font-weight: 600;
+          background: #ffffff;
+        }
+      }
+    }
+    
+    .nfd-ecommerce-dashboard-content {
+      background-color: #ffffff;
+      padding: 24px 40px;
+      
+      .nfd-ecommerce-dashboard-title {
+        color: var(--nfd-ecommerce-text-primary);
+        font-size: 24px;
+        font-weight: 400;
+      }
+      .nfd-ecommerce-dashboard-subtitle {
+        color: var(--nfd-ecommerce-text-secondary);
+        font-size: 16px;
+        font-weight: 400;
+      }
+    }
   }
 }
