@@ -1,4 +1,3 @@
-import { useState } from "@wordpress/element";
 import { AdvancedFeatures } from "./AdvancedFeatures";
 import { CustomizeStore } from "./CustomizeStore";
 import { GeneralSettings } from "./GeneralSettings";
@@ -39,7 +38,8 @@ const guideSteps = [
 ];
 
 export function Dashboard(props) {
-  let step = useState("general");
+  let { wpModules, state } = props;
+  let step = wpModules.useState("general");
   let activeStep = step[0];
   let setStep = step[1];
   let { StepContent } = guideSteps.find((step) => step.key === activeStep);
@@ -47,7 +47,7 @@ export function Dashboard(props) {
     <div className="nfd-ecommerce-dashboard">
       <nav aria-label="Setup Guide" className="nfd-ecommerce-dashboard-menu">
         {guideSteps
-          .filter((step) => step.shouldRender(props.state))
+          .filter((step) => step.shouldRender(state))
           .map((step) => (
             <li
               key={step.key}
