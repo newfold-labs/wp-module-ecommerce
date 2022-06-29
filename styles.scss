@@ -9,66 +9,40 @@
   --nfd-ecommerce-bg-tertiary: #f5f5f5;
   --nfd-ecommerce-text-primary: #333333;
   --nfd-ecommerce-text-secondary: #425466;
-  line-height: 1.2;
+  --nfd-ecommerce-text-tertiary: #5b5b5b;
+  --nfd-ecommerce-font-primary: var(--bh-font);
+  --nfd-ecommerce-font-secondary: SF Compact;
+  font: 400 16px/1.2 var(--nfd-ecommerce-font-primary);
+  color: var(--nfd-ecommerce-text-primary);
+  margin: 0;
+  padding: 0;
   .accent {
     color: var(--nfd-ecommerce-accent-primary);
   }
-  h1.heading {
-    font-weight: 350;
-    font-size: 32px;
+  h1 {
+    font: 300 32px var(--nfd-ecommerce-font-secondary);
+  }
+  h2 {
+    font: 300 24px var(--nfd-ecommerce-font-secondary);
+  }
+  h3 {
+    font: 500 18px var(--nfd-ecommerce-font-secondary);
   }
   span.text {
     font-size: 14px;
-    font-weight: 400;
   }
   .nfd-ecommerce-banner {
     background-color: var(--nfd-ecommerce-bg-primary);
     border-radius: 2px;
     border: 1px solid var(--nfd-ecommerce-border-primary);
 
-    display: flex;
-    flex-direction: column;
+    display: grid;
     place-items: center;
     padding: 0px 22px;
 
-    .status-bar {
-      display: inline-flex;
-      align-items: center;
-      background: rgb(255, 255, 255);
-      border-radius: 2px;
-      border: 1px solid var(--nfd-ecommerce-status-border);
-      height: 58px;
-      width: calc(100% - 22px);
-      margin: 30px 0 10px;
-      color: var(--nfd-ecommerce-text-primary);
-      font-size: 18px;
-      font-weight: 500;
-
-      .status-icon {
-        width: 26px;
-        height: 26px;
-        display: inline-block;
-        border-radius: 50%;
-        background: var(--nfd-ecommerce-status-outer);
-        margin: 0 17px 0 23px;
-      }
-
-      .status-icon::before {
-        content: "";
-        position: relative;
-        width: 13px;
-        height: 13px;
-        display: inline-block;
-        border-radius: 50%;
-        background: var(--nfd-ecommerce-status);
-        left: 7px;
-        top: 2px;
-      }
-    }
     .status-notice {
       color: var(--nfd-ecommerce-text-secondary);
-      align-self: baseline;
-      padding-left: 10px;
+      margin-top: 24px;
     }
   }
   .nfd-ecommerce-dashboard {
@@ -88,20 +62,18 @@
         display: inline-flex;
         cursor: pointer;
         align-items: center;
-        margin: 0;
         padding: 0 0 0 32px;
-        font-size: 18px;
-        font-weight: 400;
         height: 60px;
-        color: var(--nfd-ecommerce-text-primary);
         text-transform: capitalize;
-        &:hover {
+        &:hover > h3,
+        &[data-active="true"] > h3 {
           color: var(--nfd-ecommerce-accent-primary);
         }
         &[data-active="true"] {
-          color: var(--nfd-ecommerce-accent-primary);
-          font-weight: 600;
           background: #ffffff;
+          > h3 {
+            font-weight: 600;
+          }
         }
       }
     }
@@ -110,56 +82,80 @@
       background-color: #ffffff;
       padding: 24px 40px;
 
-      .nfd-ecommerce-dashboard-title {
-        color: var(--nfd-ecommerce-text-primary);
-        font-size: 24px;
-        font-weight: 400;
-      }
       .nfd-ecommerce-dashboard-subtitle {
         color: var(--nfd-ecommerce-text-secondary);
-        font-size: 16px;
-        font-weight: 400;
       }
     }
   }
   .nfd-ecommerce-card {
-    max-width: 170px;
+    display: grid;
     border: 1px solid var(--nfd-ecommerce-border-secondary);
     border-radius: 2px;
-    display: flex;
-    flex-direction: column;
-    place-items: center;
-    padding: 30px 0 18px;
     .nfd-ecommerce-card-image {
-      padding-bottom: 21px;
+      height: 35px;
     }
-
     .nfd-ecommerce-card-title {
-      font: 590 16px SF Pro;
-      color: var(--nfd-ecommerce-text-primary);
-      padding-bottom: 20px;
+      font-weight: 590;
     }
-
     .nfd-ecommerce-card-link {
       text-decoration: none;
-      visibility: hidden;
-      font: 510 14px SF Pro;
-      text-align: center;
+      font: 510 14px var(--nfd-ecommerce-font-primary);
       color: var(--nfd-ecommerce-accent-primary);
     }
-
     &:hover {
       background: var(--nfd-ecommerce-bg-secondary);
       border-color: var(--nfd-ecommerce-accent-secondary);
-      .nfd-ecommerce-card-link {
-        visibility: visible;
-      }
     }
   }
-  .nfd-ecommerce-link-actions-container {
+  .nfd-ecommerce-card[data-variant="minimal"] {
+    grid-template-columns: min-content;
+    padding: 17px 0 18px 17px;
+    column-gap: 8px;
+    .nfd-ecommerce-card-image {
+      grid-area: 1 / 1;
+    }
+    .nfd-ecommerce-card-title {
+      color: var(--nfd-ecommerce-text-tertiary);
+      grid-column: 2;
+    }
+    .nfd-ecommerce-card-link {
+      display: block;
+      padding-top: 5px;
+    }
+  }
+  .nfd-ecommerce-card[data-variant="standard"] {
+    place-items: center;
+    padding: 25px 0 18px;
+    .nfd-ecommerce-card-image {
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 19px;
+    }
+    .nfd-ecommerce-card-title {
+      display: grid;
+      place-items: center;
+      gap: 20px;
+    }
+    .nfd-ecommerce-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      visibility: hidden;
+    }
+    &:hover .nfd-ecommerce-card-link {
+      visibility: visible;
+    }
+  }
+  .nfd-ecommerce-standard-actions-container {
     display: grid;
-    grid-template-columns: repeat(4, 175px);
+    grid-template-columns: repeat(4, 170px);
     gap: 16px;
     padding-top: 32px;
+  }
+  .nfd-ecommerce-minimal-tasks-container {
+    display: grid;
+    grid-template-columns: repeat(3, 220px);
+    gap: 16px;
+    padding-top: 16px;
   }
 }
