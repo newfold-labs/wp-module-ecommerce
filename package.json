@@ -7,5 +7,8 @@
   "author": {
     "name": "Beyond",
     "email": "team-spartans@newfold.com"
+  },
+  "dependencies": {
+    "swr": "^1.3.0"
   }
 }
