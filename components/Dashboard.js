@@ -54,7 +54,7 @@ export function Dashboard(props) {
               data-active={activeStep === step.key}
               onClick={() => setStep(step.key)}
             >
-              {step.name}
+              <h3>{step.name}</h3>
             </li>
           ))}
       </nav>
