@@ -147,6 +147,31 @@
       visibility: visible;
     }
   }
+  .nfd-ecommerce-card[data-variant="extended"] {
+    grid-template-columns: min-content;
+    width: 761px;
+    height: 114px;
+    column-gap: 16px;
+    align-items: center;
+    .nfd-ecommerce-card-image {
+      grid-area: 1 / 1;
+      padding-left: 16px;
+    }
+    .nfd-ecommerce-card-title {
+      grid-column: 2;
+      color: var(nfd-ecommerce-text-primary);
+      gap: 16px;
+    }
+    .nfd-ecommerce-card-subtitle {
+      padding-bottom: 11.5px;
+      padding-top: 7px;
+      font-weight: 400;
+      display: block;
+    }
+    .nfd-ecommerce-card-link {
+      gap: 5px;
+    }
+  }
   .nfd-ecommerce-standard-actions-container {
     display: grid;
     grid: 155px / auto-flow 170px;
@@ -157,6 +182,12 @@
     display: grid;
     grid: 78px / auto-flow 220px;
     gap: 16px;
+    padding-top: 16px;
+  }
+  .nfd-ecommerce-extended-actions-container {
+    display: grid;
+    flex-direction: column;
+    row-gap: 12px;
     padding-top: 16px;
   }
 }

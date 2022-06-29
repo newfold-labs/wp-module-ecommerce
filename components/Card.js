@@ -6,13 +6,19 @@ export function Card(props) {
       <div className="nfd-ecommerce-card-image">{props.children}</div>
       <span className="nfd-ecommerce-card-title">
         {props.title}
+        {props.variant === "extended" ? (
+          <span className="nfd-ecommerce-card-subtitle">
+            {props.description}
+          </span>
+        ) : null}
         {props.href ? (
           <a
             target="_blank"
             href={props.href}
             className="nfd-ecommerce-card-link"
           >
-            {props.action} {props.variant === "standard" ? <Arrow /> : null}
+            {props.action}{" "}
+            {props.variant === "standard" || "extended" ? <Arrow /> : null}
           </a>
         ) : null}
       </span>
