@@ -17,7 +17,7 @@ cypress.env.json
 /.docs
 /assets/*
 /build/*
-/bluehost-wordpress-plugin
+/dist/*
 
 # File Types
 *.log

@@ -1,0 +1,16 @@
+{
+	"include": ["src"],
+	"compilerOptions": {
+		"allowJs": true,
+		"lib": ["dom", "esnext"],
+		"target": "esnext",
+		"module": "esnext",
+		"declaration": true,
+		"moduleResolution": "node",
+		"rootDir": "./src",
+		"allowSyntheticDefaultImports": true,
+		"jsx": "react",
+		"esModuleInterop": true,
+		"skipLibCheck": true
+	}
+}
