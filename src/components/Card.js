@@ -7,9 +7,7 @@ export function Card(props) {
       <span className="nfd-ecommerce-card-title">
         {props.title}
         {props.variant === "extended" ? (
-          <div className="nfd-ecommerce-card-subtitle">
-            {props.description}
-          </div>
+          <div className="nfd-ecommerce-card-subtitle">{props.description}</div>
         ) : null}
         {props.href ? (
           <a
@@ -17,8 +15,7 @@ export function Card(props) {
             href={props.href}
             className="nfd-ecommerce-card-link"
           >
-            {props.action}{" "}
-            {props.variant === "standard" || "extended" ? <Arrow /> : null}
+            {props.action} {props.variant !== "minimal" ? <Arrow /> : null}
           </a>
         ) : null}
       </span>

@@ -10,8 +10,8 @@
   --nfd-ecommerce-text-primary: #333333;
   --nfd-ecommerce-text-secondary: #425466;
   --nfd-ecommerce-text-tertiary: #5b5b5b;
-  --nfd-ecommerce-font-primary: SF Pro;
-  --nfd-ecommerce-font-secondary: SF Compact;
+  --nfd-ecommerce-font-primary: var(--bh-font);
+  --nfd-ecommerce-font-secondary: var(--bh-font);
   font: 400 16px/1.2 var(--nfd-ecommerce-font-primary);
   color: var(--nfd-ecommerce-text-primary);
   margin: 0;
@@ -23,7 +23,7 @@
     font: 300 24px var(--nfd-ecommerce-font-secondary);
   }
   h3 {
-    font: 500 18px var(--nfd-ecommerce-font-secondary);
+    font: 400 18px var(--nfd-ecommerce-font-secondary);
   }
   span.text {
     font-size: 14px;
