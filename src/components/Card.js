@@ -3,10 +3,17 @@ import { ReactComponent as Arrow } from "../icons/ArrowIcon.svg";
 export function Card(props) {
   return (
     <div className="nfd-ecommerce-card" data-variant={props.variant}>
-      <div className="nfd-ecommerce-card-image">{props.children}</div>
+      {props.variant === "extended" || "extended-selected" ? (
+        <div className="nfd-ecommerce-card-image">
+          <div className="nfd-ecommerce-card-circle">{props.children}</div>
+        </div>
+      ) : (
+        <div className="nfd-ecommerce-card-image">{props.children}</div>
+      )}
+
       <span className="nfd-ecommerce-card-title">
         {props.title}
-        {props.variant === "extended" ? (
+        {props.variant === "extended" || "extended-selected" ? (
           <div className="nfd-ecommerce-card-subtitle">{props.description}</div>
         ) : null}
         {props.href ? (

@@ -169,7 +169,63 @@
     .nfd-ecommerce-card-link {
       gap: 5px;
     }
+    .nfd-ecommerce-card-circle {
+      border: 1px solid #cccccc;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &:hover {
+      .nfd-ecommerce-card-circle {
+        background: var(--nfd-ecommerce-accent-primary);
+      }
+      path {
+        fill: white;
+      }
+    }
   }
+
+  .nfd-ecommerce-card[data-variant="extended-selected"] {
+    grid-template-columns: min-content;
+    column-gap: 16px;
+    align-items: center;
+    border-color: var(--nfd-ecommerce-accent-secondary);
+    .nfd-ecommerce-card-image {
+      grid-area: 1 / 1;
+      padding-left: 16px;
+    }
+    .nfd-ecommerce-card-title {
+      grid-column: 2;
+      color: var(--nfd-ecommerce-text-primary);
+      gap: 16px;
+    }
+    .nfd-ecommerce-card-subtitle {
+      padding-bottom: 11.5px;
+      padding-top: 7px;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .nfd-ecommerce-card-link {
+      gap: 5px;
+    }
+    .nfd-ecommerce-card-circle {
+      border: 1px solid var(--nfd-ecommerce-accent-secondary);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--nfd-ecommerce-bg-secondary);
+    }
+    path {
+      fill: var(--nfd-ecommerce-accent-primary);
+    }
+  }
+
   .nfd-ecommerce-standard-actions-container {
     display: grid;
     grid: 155px / auto-flow 170px;
