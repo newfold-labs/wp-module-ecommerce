@@ -1,4 +1,4 @@
-import { ReactComponent as WIP } from "./WIP.svg";
+import { ReactComponent as WIP } from "../icons/WIP.svg";
 
 export function Banner({ state }) {
   if (state.wp.comingSoon === false) {

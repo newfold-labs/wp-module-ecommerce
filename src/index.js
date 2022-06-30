@@ -1,5 +1,5 @@
-import { Banner } from "../components/Banner";
-import { Dashboard } from "../components/Dashboard";
+import { Banner } from "./components/Banner";
+import { Dashboard } from "./components/Dashboard";
 
 export default function NewfoldECommerce(props) {
   return (

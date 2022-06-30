@@ -9,7 +9,7 @@ const guideSteps = [
     key: "general",
     name: "General Settings",
     StepContent: GeneralSettings,
-    shouldRender: (state) => true,
+    shouldRender: (state) => state.wp.isWooActive === true,
   },
   {
     key: "products",
@@ -39,24 +39,28 @@ const guideSteps = [
 
 export function Dashboard(props) {
   let { wpModules, state } = props;
-  let step = wpModules.useState("general");
+  let visibleSteps = guideSteps.filter((step) => step.shouldRender(state));
+  let firstStep = visibleSteps[0];
+  let step = wpModules.useState(firstStep.key);
   let activeStep = step[0];
   let setStep = step[1];
-  let { StepContent } = guideSteps.find((step) => step.key === activeStep);
+  let StepContent = "div";
+  let stepConfig = visibleSteps.find((step) => step.key === activeStep);
+  if (stepConfig) {
+    StepContent = stepConfig.StepContent;
+  }
   return (
     <div className="nfd-ecommerce-dashboard">
       <nav aria-label="Setup Guide" className="nfd-ecommerce-dashboard-menu">
-        {guideSteps
-          .filter((step) => step.shouldRender(state))
-          .map((step) => (
-            <li
-              key={step.key}
-              data-active={activeStep === step.key}
-              onClick={() => setStep(step.key)}
-            >
-              <h3>{step.name}</h3>
-            </li>
-          ))}
+        {visibleSteps.map((step) => (
+          <li
+            key={step.key}
+            data-active={activeStep === step.key}
+            onClick={() => setStep(step.key)}
+          >
+            <h3>{step.name}</h3>
+          </li>
+        ))}
       </nav>
       <div className="nfd-ecommerce-dashboard-content">
         <StepContent {...props} />

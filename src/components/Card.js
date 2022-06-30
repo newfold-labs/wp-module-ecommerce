@@ -1,4 +1,4 @@
-import { ReactComponent as Arrow } from "./ArrowIcon.svg";
+import { ReactComponent as Arrow } from "../icons/ArrowIcon.svg";
 
 export function Card(props) {
   return (
@@ -7,9 +7,9 @@ export function Card(props) {
       <span className="nfd-ecommerce-card-title">
         {props.title}
         {props.variant === "extended" ? (
-          <span className="nfd-ecommerce-card-subtitle">
+          <div className="nfd-ecommerce-card-subtitle">
             {props.description}
-          </span>
+          </div>
         ) : null}
         {props.href ? (
           <a

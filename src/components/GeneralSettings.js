@@ -4,7 +4,7 @@ import { ReactComponent as Shipping } from "../icons/shipping.svg";
 import { ReactComponent as StoreIcon } from "../icons/store.svg";
 import { ReactComponent as TaxInfo } from "../icons/taxinfo.svg";
 import { Card } from "./Card";
-import { ReactComponent as CompletedTask } from "./CompletedTask.svg";
+import { ReactComponent as CompletedTask } from "../icons/CompletedTask.svg";
 import { DashboardContent } from "./DashboardContent";
 
 const OnboardingSteps = {
@@ -56,14 +56,11 @@ export function GeneralSettings(props) {
   if (!onboardingResponse) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
-        <div className="bwa-loader" />
-      </div>
-    );
-  }
-  if (error) {
-    return (
-      <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
-        <h2>There was an error while loading this information</h2>
+        {error ? (
+          <h2>There was an error while loading this information</h2>
+        ) : (
+          <div className="bwa-loader" />
+        )}
       </div>
     );
   }
