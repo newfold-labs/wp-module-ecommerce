@@ -16,9 +16,12 @@
   "scripts": {
     "build": "tsdx build",
     "lint": "tsdx lint",
-    "start": "tsdx watch"
+    "start": "tsdx watch",
+    "test:unit": "echo \"No tests implemented\"",
+    "test:e2e": "echo \"No tests implemented\""
   },
   "dependencies": {
+    "@wordpress/i18n": "^4.12.0",
     "swr": "^1.3.0"
   },
   "devDependencies": {
