@@ -1,17 +1,4 @@
 .nfd-ecommerce-setup {
-  --nfd-ecommerce-accent-primary: #196bde;
-  --nfd-ecommerce-accent-secondary: #84c0fc;
-  --nfd-ecommerce-accent-tertiary: #006dc7;
-  --nfd-ecommerce-border-primary: #dbdbdb;
-  --nfd-ecommerce-border-secondary: #dce2ea;
-  --nfd-ecommerce-bg-primary: #e5f6ff;
-  --nfd-ecommerce-bg-secondary: #eff6fc;
-  --nfd-ecommerce-bg-tertiary: #f5f5f5;
-  --nfd-ecommerce-text-primary: #333333;
-  --nfd-ecommerce-text-secondary: #425466;
-  --nfd-ecommerce-text-tertiary: #5b5b5b;
-  --nfd-ecommerce-font-primary: var(--bh-font);
-  --nfd-ecommerce-font-secondary: var(--bh-font);
   font: 400 16px/1.2 var(--nfd-ecommerce-font-primary);
   color: var(--nfd-ecommerce-text-primary);
   margin: 0;
@@ -244,5 +231,71 @@
     grid-auto-rows: 114px;
     row-gap: 12px;
     padding-top: 32px;
+  }
+  .nfd-ecommerce-button {
+    cursor: pointer;
+    font: 590 20px/1.2 var(--nfd-ecommerce-font-primary);
+    appearance: none;
+    border: 1px solid var(--nfd-ecommerce-accent-primary);
+    padding: 16px 0;
+    border-radius: 2px;
+    width: 240px;
+    color: #ffffff;
+    background-color: var(--nfd-ecommerce-accent-primary);
+  }
+}
+
+.nfd-ecommerce-modal {
+  width: 900px;
+  height: 500px;
+  .components-modal__header {
+    display: none;
+  }
+  .components-modal__content {
+    margin: 0;
+    padding: 0;
+    overflow: none;
+    background: #ffffff;
+    border: 1px solid #dbdbdb;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 2px;
+    &::before {
+      content: none;
+    }
+    .bluehost-modal__content {
+      max-width: unset;
+      display: grid;
+      grid-auto-flow: row;
+      grid-auto-rows: min-content;
+      place-items: center;
+      .nfd-ecommerce-hero {
+        margin: 32px 0;
+      }
+      h1 {
+        color: var(--nfd-ecommerce-accent-primary);
+        font: 300 32px/1.2 var(--nfd-ecommerce-font-secondary);
+      }
+      span {
+        margin-top: 8px;
+        font: 400 16px/1.2 var(--nfd-ecommerce-font-primary);
+        color: var(--nfd-ecommerce-text-secondary);
+      }
+    }
+    .bluehost-modal__actions {
+      display: flex;
+      place-content: center;
+      margin: 48px 0 40px;
+      button {
+        cursor: pointer;
+        font: 590 20px/1.2 var(--nfd-ecommerce-font-primary);
+        appearance: none;
+        border: 1px solid var(--nfd-ecommerce-accent-primary);
+        padding: 16px 0;
+        border-radius: 2px;
+        width: 180px;
+        color: #ffffff;
+        background-color: var(--nfd-ecommerce-accent-primary);
+      }
+    }
   }
 }
