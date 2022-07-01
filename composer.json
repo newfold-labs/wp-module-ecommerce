@@ -29,6 +29,18 @@
     }
   ],
   "require": {},
+  "require-dev": {
+    "wp-cli/wp-cli-bundle": "^2.4",
+    "wp-cli/i18n-command": "^2.2"
+  },
+  "scripts": {
+    "i18n": [
+      "vendor/bin/wp i18n make-pot . ./languages/wp-module-ecommerce.pot --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/aulisius/bluehost-wordpress-plugin/issues\",\"POT-Creation-Date\":null}' --exclude=node_modules,src,tests"
+    ]
+  },
+  "scripts-descriptions": {
+    "i18n": "Generate a .pot file for translation."
+  },
   "config": {
     "allow-plugins": {
       "dealerdirect/phpcodesniffer-composer-installer": false
