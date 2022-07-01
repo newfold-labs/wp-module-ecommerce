@@ -1,5 +1,5 @@
-import { ReactComponent as WIP } from "../icons/WIP.svg";
-
+import { __ } from "@wordpress/i18n";
+import { ReactComponent as WIPIllustration } from "../icons/wip.svg";
 export function Banner({ state }) {
   if (state.wp.comingSoon === false) {
     return null;
@@ -8,12 +8,19 @@ export function Banner({ state }) {
     <>
       <div className="nfd-ecommerce-banner">
         <div style={{ margin: "32px 0 22px" }}>
-          <WIP />
+          <WIPIllustration />
         </div>
-        <h1>Congrats on your new store! Let's get it ready to launch!</h1>
+        <h1>
+          {__(
+            "Congrats on your new store! Let's get it ready to launch!",
+            "wp-module-ecommerce"
+          )}
+        </h1>
         <span className="text status-notice">
-          Your site is currently displaying a "Coming Soon" page. Once you are
-          ready, launch your site.
+          {__(
+            `Your site is currently displaying a "Coming Soon" page. Once you are ready, launch your site.`,
+            "wp-module-ecommerce"
+          )}
         </span>
         <div style={{ height: "32px" }} />
       </div>

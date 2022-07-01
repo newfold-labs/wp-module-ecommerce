@@ -1,3 +1,4 @@
+import { __ } from "@wordpress/i18n";
 import { AdvancedFeatures } from "./AdvancedFeatures";
 import { CustomizeStore } from "./CustomizeStore";
 import { GeneralSettings } from "./GeneralSettings";
@@ -7,31 +8,31 @@ import { ManageProducts } from "./ManageProducts";
 const guideSteps = [
   {
     key: "general",
-    name: "General Settings",
+    name: __("General Settings", "wp-module-ecommerce"),
     StepContent: GeneralSettings,
-    shouldRender: (state) => state.wp.isWooActive === true,
+    shouldRender: (state) => true,
   },
   {
     key: "products",
-    name: "Add products",
+    name: __("Add products", "wp-module-ecommerce"),
     StepContent: ManageProducts,
     shouldRender: (state) => true,
   },
   {
     key: "customize",
-    name: "Customize your store",
+    name: __("Customize your store", "wp-module-ecommerce"),
     StepContent: CustomizeStore,
     shouldRender: (state) => true,
   },
   {
     key: "plugins",
-    name: "Advanced features",
+    name: __("Advanced features", "wp-module-ecommerce"),
     StepContent: AdvancedFeatures,
     shouldRender: (state) => true,
   },
   {
     key: "launch",
-    name: "Launch your store",
+    name: __("Store Status", "wp-module-ecommerce"),
     StepContent: LaunchStore,
     shouldRender: (state) => state.wp.comingSoon === true,
   },
@@ -51,7 +52,10 @@ export function Dashboard(props) {
   }
   return (
     <div className="nfd-ecommerce-dashboard">
-      <nav aria-label="Setup Guide" className="nfd-ecommerce-dashboard-menu">
+      <nav
+        aria-label={__("Setup Guide", "wp-module-ecommerce")}
+        className="nfd-ecommerce-dashboard-menu"
+      >
         {visibleSteps.map((step) => (
           <li
             key={step.key}

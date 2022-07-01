@@ -1,4 +1,4 @@
-import { ReactComponent as Arrow } from "../icons/ArrowIcon.svg";
+import { ReactComponent as Arrow } from "../icons/goto-arrow.svg";
 
 export function Card(props) {
   return (
@@ -17,11 +17,7 @@ export function Card(props) {
           <div className="nfd-ecommerce-card-subtitle">{props.description}</div>
         ) : null}
         {props.href ? (
-          <a
-            target="_blank"
-            href={props.href}
-            className="nfd-ecommerce-card-link"
-          >
+          <a href={props.href} className="nfd-ecommerce-card-link">
             {props.action} {props.variant !== "minimal" ? <Arrow /> : null}
           </a>
         ) : null}

@@ -15,7 +15,7 @@ export function ManageProducts(props) {
           <Card
             variant="standard"
             title="Add Products"
-            action="Add Info"
+            action="Add"
             href="/wp-admin/post-new.php?post_type=product"
           >
             <AddProducts />
@@ -23,7 +23,7 @@ export function ManageProducts(props) {
           <Card
             variant="standard"
             title="Import Products"
-            action="Add Info"
+            action="Import"
             href="/wp-admin/edit.php?post_type=product&page=product_importer"
           >
             <ImportProducts />
