@@ -2,9 +2,9 @@ name: WP Internationalization
 on:
   push:
     branches:
-      - '**'
+      - "**"
     pull_request:
-      types: [ opened, edited, synchronize, reopened, ready_for_review ]
+      types: [opened, edited, synchronize, reopened, ready_for_review]
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
   cancel-in-progress: true
@@ -12,6 +12,10 @@ jobs:
   wp-i18n:
     runs-on: ubuntu-latest
     steps:
+      - name: Mark workspace as safe
+        run: |
+          git config --global --add safe.directory /github/workspace
+
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
@@ -30,7 +34,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'
+          php-version: "7.4"
           coverage: none
           tools: composer
 
