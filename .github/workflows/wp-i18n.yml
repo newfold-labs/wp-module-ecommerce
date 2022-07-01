@@ -51,6 +51,18 @@ jobs:
         with:
           node-version: 14
 
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
       - name: Log debug information
         run: |
           php --version
@@ -67,8 +79,14 @@ jobs:
       - name: Add text domains
         run: npx node-wp-i18n addtextdomain
 
+      - name: Run NPM Install
+        run: npm install
+
+      - name: Build JavaScript
+        run: npm run build
+
       - name: Generate POT file
-        run: vendor/bin/wp i18n make-pot . ./languages/${{ github.event.repository.name }}.pot --headers='{"Report-Msgid-Bugs-To":"https://github.com/${{ github.repository }}/issues","POT-Creation-Date":null}' --exclude=assets,storybook,tests
+        run: vendor/bin/wp i18n make-pot . ./languages/${{ github.event.repository.name }}.pot --headers='{"Report-Msgid-Bugs-To":"https://github.com/${{ github.repository }}/issues","POT-Creation-Date":null}' --exclude=node_modules,src,tests
 
       - name: Check if there are file changes
         id: changes
