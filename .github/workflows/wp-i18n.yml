@@ -12,10 +12,6 @@ jobs:
   wp-i18n:
     runs-on: ubuntu-latest
     steps:
-      - name: Mark workspace as safe
-        run: |
-          git config --global --add safe.directory /github/workspace
-
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
@@ -91,10 +87,10 @@ jobs:
 
       - name: Check if there are file changes
         id: changes
-        uses: UnicornGlobal/has-changes-action@v1.0.12
+        run: echo "::set-output name=changed::$(git status --porcelain | wc -l)"
 
       - name: Commit web files
-        if: steps.changes.outputs.changed == 1
+        if: steps.changes.outputs.changed != 0
         run: |
           git config --local user.name "${{ github.event.head_commit.author.name }}"
           git config --local user.email "${{ github.event.head_commit.author.email }}"
@@ -104,7 +100,7 @@ jobs:
           git status
 
       - name: Push changes
-        if: steps.changes.outputs.changed == 1
+        if: steps.changes.outputs.changed != 0
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
