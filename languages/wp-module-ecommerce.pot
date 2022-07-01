@@ -1,0 +1,69 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/newfold-labs/wp-module-ecommerce/issues\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.6.0\n"
+"X-Domain: wp-module-ecommerce\n"
+
+#: src/components/Banner.js:14
+msgid "Congrats on your new store! Let's get it ready to launch!"
+msgstr ""
+
+#: src/components/Banner.js:20
+msgid "Your site is currently displaying a \"Coming Soon\" page. Once you are ready, launch your site."
+msgstr ""
+
+#: src/components/Dashboard.js:11
+msgid "General Settings"
+msgstr ""
+
+#: src/components/Dashboard.js:17
+msgid "Add products"
+msgstr ""
+
+#: src/components/Dashboard.js:23
+msgid "Customize your store"
+msgstr ""
+
+#: src/components/Dashboard.js:29
+msgid "Advanced features"
+msgstr ""
+
+#: src/components/Dashboard.js:35
+msgid "Store Status"
+msgstr ""
+
+#: src/components/Dashboard.js:56
+msgid "Setup Guide"
+msgstr ""
+
+#: src/components/LaunchStore.js:11
+msgid "Launch Your Store!"
+msgstr ""
+
+#: src/components/LaunchStore.js:12
+msgid "Once you're ready, click the button below to set your store live to the world!"
+msgstr ""
+
+#: src/components/LaunchStore.js:29
+msgid "Launch your store"
+msgstr ""
+
+#: src/components/LaunchStore.js:37
+msgid "Continue"
+msgstr ""
+
+#: src/components/LaunchStore.js:44
+msgid "Your store is online and ready for business!"
+msgstr ""
+
+#: src/components/LaunchStore.js:50
+msgid "Not ready? You can re-enable the 'Coming Soon' mode if you need."
+msgstr ""
