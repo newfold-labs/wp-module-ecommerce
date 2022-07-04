@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { ReactComponent as WIPIllustration } from "../icons/wip.svg";
+import { ReactComponent as WIPIllustration } from "../icons/wip-illustration.svg";
 export function Banner({ state }) {
   if (state.wp.comingSoon === false) {
     return null;

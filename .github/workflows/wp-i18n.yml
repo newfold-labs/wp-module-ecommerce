@@ -82,6 +82,9 @@ jobs:
       - name: Run NPM Install
         run: npm install
 
+      - name: Build dist
+        run: npm build
+
       - name: Generate POT file
         run: vendor/bin/wp i18n make-pot . ./languages/${{ github.event.repository.name }}.pot --headers='{"Report-Msgid-Bugs-To":"https://github.com/${{ github.repository }}/issues","POT-Creation-Date":null}' --exclude=node_modules,tests
 
