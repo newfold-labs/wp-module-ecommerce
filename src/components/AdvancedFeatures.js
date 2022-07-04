@@ -12,6 +12,7 @@ export function AdvancedFeatures(props) {
         <div className="nfd-ecommerce-extended-actions-container">
           <Card
             variant="extended"
+            data-completed={false}
             title="Manage bookable/rental products"
             action="Enable"
             href="Enable"
@@ -21,6 +22,7 @@ export function AdvancedFeatures(props) {
           </Card>
           <Card
             variant="extended"
+            data-completed={false}
             title="Add a powerful search to your store"
             action="Enable"
             href="Enable"
@@ -38,7 +40,8 @@ export function AdvancedFeatures(props) {
       >
         <div className="nfd-ecommerce-extended-actions-container">
           <Card
-            variant="extended-selected"
+            variant="extended"
+            data-completed
             title="Manage bookable/rental products"
             action="Enable"
             href="Enable"
@@ -47,7 +50,8 @@ export function AdvancedFeatures(props) {
             <Booking />
           </Card>
           <Card
-            variant="extended-selected"
+            variant="extended"
+            data-completed
             title="Add a powerful search to your store"
             action="Enable"
             href="Enable"

@@ -5,7 +5,7 @@ import { DashboardContent } from "./DashboardContent";
 export function LaunchStore(props) {
   let { toggleComingSoon } = props.actions;
   let { Modal, useState } = props.wpModules;
-  let [showModal, setModal] = useState(false);
+  let [showModal, setModal] = useState(true);
   return (
     <DashboardContent
       title={__("Launch Your Store!", "wp-module-ecommerce")}
@@ -31,7 +31,7 @@ export function LaunchStore(props) {
       </div>
       {showModal ? (
         <Modal
-          className="nfd-ecommerce-modal"
+          className="nfd-ecommerce-atoms nfd-ecommerce-modal"
           actionsComponent={
             <button onClick={() => setModal(false)}>
               {__("Continue", "wp-module-ecommerce")}

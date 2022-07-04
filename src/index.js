@@ -3,7 +3,7 @@ import { Dashboard } from "./components/Dashboard";
 
 export default function NewfoldECommerce(props) {
   return (
-    <div className="nfd-ecommerce-setup">
+    <div className="nfd-ecommerce-atoms nfd-ecommerce-setup">
       <Banner {...props} />
       <Dashboard {...props} />
     </div>

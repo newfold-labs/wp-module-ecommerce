@@ -16,7 +16,7 @@ export function Banner({ state }) {
             "wp-module-ecommerce"
           )}
         </h1>
-        <span className="text status-notice">
+        <span className="status-notice">
           {__(
             `Your site is currently displaying a "Coming Soon" page. Once you are ready, launch your site.`,
             "wp-module-ecommerce"
