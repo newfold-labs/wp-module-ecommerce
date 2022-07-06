@@ -2,8 +2,8 @@ import { __ } from "@wordpress/i18n";
 import { AdvancedFeatures } from "./AdvancedFeatures";
 import { CustomizeStore } from "./CustomizeStore";
 import { GeneralSettings } from "./GeneralSettings";
-import { LaunchStore } from "./LaunchStore";
 import { ManageProducts } from "./ManageProducts";
+import { SiteStatus } from "./SiteStatus";
 
 const guideSteps = [
   {
@@ -32,9 +32,9 @@ const guideSteps = [
   },
   {
     key: "launch",
-    name: __("Store Status", "wp-module-ecommerce"),
-    StepContent: LaunchStore,
-    shouldRender: (state) => state.wp.comingSoon === true,
+    name: __("Site Status", "wp-module-ecommerce"),
+    StepContent: SiteStatus,
+    shouldRender: (state) => true,
   },
 ];
 
