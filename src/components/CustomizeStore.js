@@ -3,6 +3,7 @@ import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
 import { ReactComponent as Home } from "../icons/homepage.svg";
 import { ReactComponent as About } from "../icons/aboutpage.svg";
+import { ReactComponent as Contact } from "../icons/contactpage.svg";
 import { ReactComponent as StoreLayout } from "../icons/storelayout.svg";
 import { ReactComponent as Account } from "../icons/account.svg";
 
@@ -18,6 +19,11 @@ const CustomizeList = [
     customizeIcon: About,
   },
   {
+    title: "Contact Page",
+    customizeUrl: "post-new.php?dcpage=contact&dcsrc=plugin",
+    customizeIcon: Contact,
+  },
+  {
     title: "Store Layout",
     customizeUrl:
       "/wp-admin/customize.php?return=%2Fwp-admin%2Fadmin.php%3Fpage%3Dbluehost",
@@ -25,7 +31,7 @@ const CustomizeList = [
   },
   {
     title: "Customize the 'My Account' Page",
-    customizeUrl: "",
+    customizeUrl: "/wp-admin",
     customizeIcon: Account,
   },
 ];
