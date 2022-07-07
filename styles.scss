@@ -77,6 +77,8 @@
     display: grid;
     border: 1px solid var(--nfd-ecommerce-border-secondary);
     border-radius: 2px;
+    background: none;
+    cursor: pointer;
     .nfd-ecommerce-card-image {
       height: 35px;
     }
@@ -138,6 +140,7 @@
     grid-template-columns: min-content;
     column-gap: 16px;
     align-items: center;
+    text-align: left;
     .nfd-ecommerce-card-image {
       height: auto;
       padding-left: 16px;

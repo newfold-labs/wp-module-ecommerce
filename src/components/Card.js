@@ -10,7 +10,7 @@ export function Card({
   ...props
 }) {
   return (
-    <div className="nfd-ecommerce-card" data-variant={variant} {...props}>
+    <button className="nfd-ecommerce-card" data-variant={variant} onClick={() => location.href = href} {...props}>
       {variant === "extended" ? (
         <div className="nfd-ecommerce-card-image">
           <div className="nfd-ecommerce-card-circle">{children}</div>
@@ -24,11 +24,11 @@ export function Card({
           <div className="nfd-ecommerce-card-subtitle">{description}</div>
         ) : null}
         {href ? (
-          <a href={href} className="nfd-ecommerce-card-link">
+          <span className="nfd-ecommerce-card-link">
             {action} {variant !== "minimal" ? <Arrow /> : null}
-          </a>
+          </span>
         ) : null}
       </span>
-    </div>
+    </button>
   );
 }
