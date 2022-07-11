@@ -12,6 +12,10 @@ msgstr ""
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: wp-module-ecommerce\n"
 
+#: bootstrap.php:17
+msgid "eCommerce"
+msgstr ""
+
 #: dist/wp-module-ecommerce.cjs.development.js:48
 #: dist/wp-module-ecommerce.esm.js:44
 #: src/components/Banner.js:14
