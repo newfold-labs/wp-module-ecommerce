@@ -13,7 +13,7 @@ if ( function_exists( 'add_action' ) ) {
 	 		register(
 	 			[
 	 				'name'     => 'ecommerce',
-	 				'label'    => __( 'eCommerce', 'newfold-module-ecommerce' ),
+	 				'label'    => __( 'eCommerce', 'wp-module-ecommerce' ),
 	 				'callback' => function (Container $container) {
 	 					new ECommerce($container);
 	 				},
