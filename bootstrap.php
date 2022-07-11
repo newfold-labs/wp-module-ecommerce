@@ -6,7 +6,6 @@ use NewfoldLabs\WP\Module\ECommerce\ECommerce;
 use function NewfoldLabs\WP\ModuleLoader\register;
 
 if ( function_exists( 'add_action' ) ) {
-	 //Current bluehost plugin doesn't support module loader
 	 add_action(
 	 	'plugins_loaded',
 	 	function () {
