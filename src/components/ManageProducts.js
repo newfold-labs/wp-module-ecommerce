@@ -29,9 +29,7 @@ const ManageProductsList = [
 ];
 
 export function ManageProducts(props) {
-  let { wpModules } = props;
-  const fetcher = (path) => wpModules.apiFetch({ path });
-  let { data: productsResponse, error } = useSWR("/wc/v3/products", fetcher);
+  let { data: productsResponse, error } = useSWR("/wc/v3/products");
 
   if (!productsResponse) {
     return (

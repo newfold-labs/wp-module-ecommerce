@@ -47,11 +47,8 @@ const OnboardingSteps = {
 };
 
 export function GeneralSettings(props) {
-  let { wpModules } = props;
-  const fetcher = (path) => wpModules.apiFetch({ path });
   let { data: onboardingResponse, error } = useSWR(
-    "/wc-admin/onboarding/tasks?ids=setup",
-    fetcher
+    "/wc-admin/onboarding/tasks?ids=setup"
   );
   if (!onboardingResponse) {
     return (

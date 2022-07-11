@@ -2,10 +2,12 @@
   font: 400 16px/1.2 var(--nfd-ecommerce-font-primary);
   color: var(--nfd-ecommerce-text-primary);
   h1 {
-    font: 300 32px var(--nfd-ecommerce-font-secondary);
+    color: var(--nfd-ecommerce-text-primary);
+    font: 350 32px var(--nfd-ecommerce-font-secondary);
   }
   h2 {
-    font: 300 24px var(--nfd-ecommerce-font-primary);
+    color: var(--nfd-ecommerce-text-primary);
+    font: 400 24px var(--nfd-ecommerce-font-primary);
   }
   h3 {
     color: currentColor;
@@ -87,6 +89,8 @@
       font-weight: 590;
     }
     .nfd-ecommerce-card-link {
+      align-items: center;
+      display: inline-flex;
       text-decoration: none;
       font: 510 14px var(--nfd-ecommerce-font-primary);
       color: var(--nfd-ecommerce-accent-primary);
@@ -129,8 +133,6 @@
       gap: 20px;
     }
     .nfd-ecommerce-card-link {
-      display: inline-flex;
-      align-items: center;
       gap: 5px;
       visibility: hidden;
     }
