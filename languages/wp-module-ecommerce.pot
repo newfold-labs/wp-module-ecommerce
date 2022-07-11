@@ -16,6 +16,22 @@ msgstr ""
 msgid "eCommerce"
 msgstr ""
 
+#: includes/ECommerce.php:34
+msgid "Coming Soon"
+msgstr ""
+
+#: includes/ECommerce.php:35
+msgid "Live"
+msgstr ""
+
+#: includes/ECommerce.php:40
+msgid "Site Status: "
+msgstr ""
+
+#: includes/ECommerce.php:42
+msgid "Launch Your Site"
+msgstr ""
+
 #: dist/wp-module-ecommerce.cjs.development.js:48
 #: dist/wp-module-ecommerce.esm.js:44
 #: src/components/Banner.js:14
