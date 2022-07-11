@@ -28,9 +28,10 @@ class ECommerceApi {
             '/plugins/approved', //complete endpoint is namespace + ..
             array(
                 'methods'  => \WP_REST_Server::READABLE, //making endpoint as get request
-               'callback' => function ( \WP_REST_Request $request ){
+                'permission_callback' => '__return_true',
+                'callback' => function ( \WP_REST_Request $request ){
                     return true;
-               }
+                }
             )
         );
         register_rest_route(
@@ -38,6 +39,7 @@ class ECommerceApi {
             '/plugins/install', //complete endpoint is namespace + ..
             array(
                 'methods'  => \WP_REST_Server::READABLE, //making endpoint as get request
+                'permission_callback' => '__return_true',
                 'callback' => function ( \WP_REST_Request $request ){
                     return true;
                 }
