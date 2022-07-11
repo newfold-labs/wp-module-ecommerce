@@ -9,7 +9,6 @@ if ( function_exists( 'add_action' ) ) {
 	 add_action(
 	 	'plugins_loaded',
 	 	function () {
-
 	 		register(
 	 			[
 	 				'name'     => 'ecommerce',
