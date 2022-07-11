@@ -31,12 +31,16 @@ const ManageProductsList = [
 export function ManageProducts(props) {
   let { wpModules } = props;
   const fetcher = (path) => wpModules.apiFetch({ path });
-  let { data: productsResponse } = useSWR("/wc/v3/products", fetcher);
+  let { data: productsResponse, error } = useSWR("/wc/v3/products", fetcher);
 
   if (!productsResponse) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
-        <div className="bwa-loader" />
+        {error ? (
+          <h2>There was an error while loading this information</h2>
+        ) : (
+          <div className="bwa-loader" />
+        )}
       </div>
     );
   }
