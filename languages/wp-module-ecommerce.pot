@@ -12,7 +12,7 @@ msgstr ""
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: wp-module-ecommerce\n"
 
-#: bootstrap.php:17
+#: bootstrap.php:15
 msgid "eCommerce"
 msgstr ""
 
