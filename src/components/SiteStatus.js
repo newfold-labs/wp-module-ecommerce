@@ -13,6 +13,10 @@ const SiteStatusContent = {
     ),
     Illustration: LaunchStoreIllustration,
     cta: __("Launch your store", "wp-module-ecommerce"),
+    status: {
+      text: __("Live", "wp-module-ecommerce"),
+      color: "#048200"
+    }
   },
   live: {
     title: __("Change your site status", "wp-module-ecommerce"),
@@ -22,6 +26,10 @@ const SiteStatusContent = {
     ),
     Illustration: ComingSoonIllustration,
     cta: __(`Switch back to "Coming Soon" mode`, "wp-module-ecommerce"),
+    status: {
+      text: __("Coming Soon", "wp-module-ecommerce"),
+      color: "#E01C1C"
+    }
   },
 };
 
@@ -30,7 +38,7 @@ export function SiteStatus(props) {
   let { toggleComingSoon } = props.actions;
   let { Modal, useState } = props.wpModules;
   let [showModal, setModal] = useState(false);
-  let { title, subtitle, Illustration, cta } = wp.comingSoon
+  let { title, subtitle, Illustration, cta, status } = wp.comingSoon
     ? SiteStatusContent.comingSoon
     : SiteStatusContent.live;
   return (
@@ -45,6 +53,11 @@ export function SiteStatus(props) {
           className="nfd-ecommerce-button"
           onClick={() => {
             toggleComingSoon().then(() => {
+              let $statusText = document.getElementById("nfd-site-status-text");
+              if ($statusText) {
+                $statusText.textContent = status.text;
+                $statusText.style.setProperty("color", status.color);
+              }
               setModal(wp.comingSoon);
             });
           }}

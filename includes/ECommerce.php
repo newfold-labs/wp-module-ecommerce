@@ -31,8 +31,8 @@ class ECommerce {
 		if ( current_user_can( 'manage_options' ) ) {
 			$is_coming_soon = 'true' === get_option( 'mm_coming_soon', 'false' );
 			$status = $is_coming_soon
-			? '<span style="color:#E01C1C;">' . esc_html__( 'Coming Soon', 'wp-module-ecommerce' ) . '<span>'
-			: '<span style="color:#048200;">' . esc_html__( 'Live', 'wp-module-ecommerce' ) . '<span>';
+			? '<span id="nfd-site-status-text" style="color:#E01C1C;">' . esc_html__( 'Coming Soon', 'wp-module-ecommerce' ) . '<span>'
+			: '<span id="nfd-site-status-text" style="color:#048200;">' . esc_html__( 'Live', 'wp-module-ecommerce' ) . '<span>';
 			$site_status_menu = array(
 				'id'    => 'site-status',
 				'parent' => 'top-secondary',
