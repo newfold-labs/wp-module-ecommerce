@@ -12,23 +12,23 @@ msgstr ""
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: wp-module-ecommerce\n"
 
-#: bootstrap.php:15
+#: bootstrap.php:16
 msgid "eCommerce"
 msgstr ""
 
-#: includes/ECommerce.php:34
+#: includes/ECommerce.php:52
 msgid "Coming Soon"
 msgstr ""
 
-#: includes/ECommerce.php:35
+#: includes/ECommerce.php:53
 msgid "Live"
 msgstr ""
 
-#: includes/ECommerce.php:40
+#: includes/ECommerce.php:58
 msgid "Site Status: "
 msgstr ""
 
-#: includes/ECommerce.php:42
+#: includes/ECommerce.php:60
 msgid "Launch Your Site"
 msgstr ""
 
