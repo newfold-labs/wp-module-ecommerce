@@ -25,7 +25,7 @@ class ECommerceApi {
         // Add route for fetching marketplace products per brand
         register_rest_route(
             'newfold-ecommerce/v1',
-            '/plugins/approved', //complete endpoint is namespace + ..
+            '/plugins/approved/test', //complete endpoint is namespace + ..
             array(
                 'methods'  => \WP_REST_Server::READABLE, //making endpoint as get request
                 'permission_callback' => '__return_true',
@@ -36,7 +36,7 @@ class ECommerceApi {
         );
         register_rest_route(
             'newfold-ecommerce/v1',
-            '/plugins/install', //complete endpoint is namespace + ..
+            '/plugins/install/test', //complete endpoint is namespace + ..
             array(
                 'methods'  => \WP_REST_Server::READABLE, //making endpoint as get request
                 'permission_callback' => '__return_true',
