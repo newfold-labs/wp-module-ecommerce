@@ -3,6 +3,7 @@
 namespace NewfoldLabs\WP\Module\ECommerce;
 
 use NewfoldLabs\WP\ModuleLoader\Container;
+use NewfoldLabs\WP\Module\ECommerce\RestApi\PluginsController;
 
 class ECommerce {
 
@@ -10,6 +11,10 @@ class ECommerce {
 	 * @var Container
 	 */
 	protected $container;
+
+    protected $controllers = array(
+        'NewfoldLabs\\WP\\Module\\ECommerce\\RestApi\\PluginsController',
+    );
 
 	/**
 	 * ECommerce constructor.
@@ -20,7 +25,20 @@ class ECommerce {
 		// Module functionality goes here
 		add_action( 'admin_bar_menu', array( $this, 'newfold_site_status' ), 200 );
 		add_action( 'rest_api_init', array( ECommerceApi::class, 'registerRoutes' ) );
+        add_action( 'rest_api_init', array( $this, 'register_routes' ));
 	}
+
+    public function register_routes() {
+        foreach ( $this->controllers as $controller ) {
+            /**
+             * Get an instance of the WP_REST_Controller.
+             *
+             * @var $instance WP_REST_Controller
+             */
+            $instance = new $controller();
+            $instance->register_routes();
+        }
+    }
 	
 	/**
 	 * Customize the admin bar with site status.
