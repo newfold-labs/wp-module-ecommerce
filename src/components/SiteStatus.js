@@ -8,7 +8,7 @@ const SiteStatusContent = {
   comingSoon: {
     title: __("Launch Your Store!", "wp-module-ecommerce"),
     subtitle: __(
-      "Once you're ready, click the button below to set your store live to the world!",
+      "Once you're ready, click the button below to make your store live to the world!",
       "wp-module-ecommerce"
     ),
     Illustration: LaunchStoreIllustration,
@@ -17,7 +17,7 @@ const SiteStatusContent = {
   live: {
     title: __("Change your site status", "wp-module-ecommerce"),
     subtitle: __(
-      `Your site is currently "Live", but you can disable your site and put back the "Coming Soon" page if you needed.`,
+      `Your site is currently "Live", but you can disable your site and put back the "Coming Soon" page if needed.`,
       "wp-module-ecommerce"
     ),
     Illustration: ComingSoonIllustration,
