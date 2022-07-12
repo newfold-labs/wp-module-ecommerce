@@ -5,6 +5,7 @@ import { ReactComponent as CustomizeAccount } from "../icons/customize-account.s
 import { ReactComponent as Filter } from "../icons/filter.svg";
 import { ReactComponent as Search } from "../icons/search.svg";
 import { ReactComponent as WishList } from "../icons/wishlist.svg";
+import { ReactComponent as Gift } from "../icons/gift.svg";
 import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
 
@@ -58,7 +59,7 @@ const SuggestedPlugins = [
       "wp-module-ecommerce"
     ),
     pluginName: "yith-woocommerce-gift-cards-extended",
-    Icon: Booking,
+    Icon: Gift,
   },
   {
     title: __("Customize your customers' account page", "wp-module-ecommerce"),
@@ -144,7 +145,7 @@ export function AdvancedFeatures(props) {
                   href={plugin.href ?? "Test"}
                   description={plugin.description}
                 >
-                  <Icon />
+                  <Gift />
                 </Card>
               );
             })}

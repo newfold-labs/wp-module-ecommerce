@@ -177,6 +177,7 @@
         background: var(--nfd-ecommerce-accent-primary);
         path {
           fill: #ffffff;
+          stroke: #ffffff;
         }
       }
     }
@@ -184,6 +185,12 @@
       border-color: var(--nfd-ecommerce-accent-secondary);
       path {
         fill: var(--nfd-ecommerce-accent-primary);
+      }
+      .gift_svg__nfd-ecommerce-icon-color {
+        path {
+          fill: #ffffff;
+          stroke: var(--nfd-ecommerce-accent-primary);
+        }
       }
       .nfd-ecommerce-card-circle {
         border: 1px solid var(--nfd-ecommerce-accent-secondary);
