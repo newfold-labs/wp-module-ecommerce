@@ -29,7 +29,7 @@ const CustomizeList = [
     customizeIcon: StoreLayout,
   },
   {
-    title: "Customize the 'My Account' Page",
+    title: "Customize 'My Account'",
     customizeUrl: "/wp-admin/admin.php?page=yith_wcmap_panel",
     customizeIcon: Account,
   },

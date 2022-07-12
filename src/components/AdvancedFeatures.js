@@ -49,7 +49,7 @@ const SuggestedPlugins = [
       "If your store has lots of products, help your customers find what they're looking for fast.",
       "wp-module-ecommerce"
     ),
-    pluginName: "yith-woocommerce-ajax-product-filter-extended",
+    pluginName: "yith-woocommerce-ajax-product-filter-extended/init",
     Icon: Filter,
   },
   {
@@ -58,7 +58,7 @@ const SuggestedPlugins = [
       "Use gift cards to increase your earnings and attract new customers.",
       "wp-module-ecommerce"
     ),
-    pluginName: "yith-woocommerce-gift-cards-extended",
+    pluginName: "yith-woocommerce-gift-cards-extended/init",
     Icon: Gift,
   },
   {
@@ -96,7 +96,6 @@ export function AdvancedFeatures(props) {
   let unavailablePlugins = SuggestedPlugins.filter(
     (pluginDef) => pluginsOnSite[pluginDef.pluginName] !== "active"
   );
-  console.log(pluginsOnSite);
   return (
     <>
       {unavailablePlugins.length > 0 ? (
