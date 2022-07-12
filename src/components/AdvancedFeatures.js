@@ -145,7 +145,7 @@ export function AdvancedFeatures(props) {
                   href={plugin.href ?? "Test"}
                   description={plugin.description}
                 >
-                  <Gift />
+                  <Icon />
                 </Card>
               );
             })}
