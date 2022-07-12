@@ -1,4 +1,3 @@
-import useSWR from "swr";
 import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
 import { ReactComponent as Home } from "../icons/homepage.svg";
@@ -31,21 +30,12 @@ const CustomizeList = [
   },
   {
     title: "Customize the 'My Account' Page",
-    customizeUrl: "/wp-admin",
+    customizeUrl: "/wp-admin/admin.php?page=yith_wcmap_panel",
     customizeIcon: Account,
   },
 ];
 
 export function CustomizeStore(props) {
-  let { wpModules } = props;
-  const fetcher = (path) => wpModules.apiFetch({ path });
-  let { data: Response } = useSWR(
-    "/wc-admin/options?options=woocommerce_myaccount_page_id",
-    fetcher
-  );
-
-  CustomizeList[3].customizeUrl = `/wp-admin/post.php?post=${Response?.woocommerce_myaccount_page_id}&action=edit`;
-
   return (
     <DashboardContent
       title="Customize Your Store"
