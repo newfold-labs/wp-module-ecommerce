@@ -99,7 +99,7 @@
       align-items: center;
       display: inline-flex;
       text-decoration: none;
-      font: 510 14px var(--nfd-ecommerce-font-primary);
+      font: 400 14px var(--nfd-ecommerce-font-primary);
       color: var(--nfd-ecommerce-accent-primary);
     }
     &:hover {
@@ -137,7 +137,7 @@
       text-align: center;
       display: grid;
       place-items: center;
-      gap: 20px;
+      gap: 16px;
     }
     .nfd-ecommerce-card-link {
       gap: 5px;
