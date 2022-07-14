@@ -10,28 +10,29 @@ const CustomizeList = [
   {
     title: "Home Page",
     customizeUrl: "post-new.php?dcpage=home&dcsrc=plugin",
-    customizeIcon: Home,
+    Icon: Home,
   },
   {
     title: "About Page",
     customizeUrl: "post-new.php?dcpage=about&dcsrc=plugin",
-    customizeIcon: About,
+    Icon: About,
   },
   {
     title: "Contact Page",
     customizeUrl: "post-new.php?dcpage=contact&dcsrc=plugin",
-    customizeIcon: Contact,
+    Icon: Contact,
   },
   {
     title: "Store Layout",
     customizeUrl:
       "/wp-admin/customize.php?return=%2Fwp-admin%2Fadmin.php%3Fpage%3Dbluehost",
-    customizeIcon: StoreLayout,
+    action: "Configure",
+    Icon: StoreLayout,
   },
   {
-    title: "Customize the 'My Account' Page",
+    title: "Customize 'My Account'",
     customizeUrl: "/wp-admin/admin.php?page=yith_wcmap_panel",
-    customizeIcon: Account,
+    Icon: Account,
   },
 ];
 
@@ -42,20 +43,17 @@ export function CustomizeStore(props) {
       subtitle="Setup your core store pages and add general website content to provide a complete shopping experience for your customers."
     >
       <div className="nfd-ecommerce-standard-actions-container">
-        {CustomizeList.map((task) => {
-          let CustomizeIcon = task.customizeIcon;
-          return (
-            <Card
-              key={task.title}
-              variant="standard"
-              title={task.title}
-              action="Customize"
-              href={task.customizeUrl}
-            >
-              <CustomizeIcon />
-            </Card>
-          );
-        })}
+        {CustomizeList.map(({ title, action, Icon, customizeUrl }) => (
+          <Card
+            key={title}
+            variant="standard"
+            title={title}
+            action={action ?? "Setup"}
+            href={customizeUrl}
+          >
+            <Icon />
+          </Card>
+        ))}
       </div>
     </DashboardContent>
   );

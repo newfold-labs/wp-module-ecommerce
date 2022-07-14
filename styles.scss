@@ -99,7 +99,7 @@
       align-items: center;
       display: inline-flex;
       text-decoration: none;
-      font: 510 14px var(--nfd-ecommerce-font-primary);
+      font: 400 14px var(--nfd-ecommerce-font-primary);
       color: var(--nfd-ecommerce-accent-primary);
     }
     &:hover {
@@ -137,7 +137,7 @@
       text-align: center;
       display: grid;
       place-items: center;
-      gap: 20px;
+      gap: 16px;
     }
     .nfd-ecommerce-card-link {
       gap: 5px;
@@ -218,12 +218,22 @@
   .nfd-ecommerce-button {
     cursor: pointer;
     appearance: none;
+  }
+  .nfd-ecommerce-button[data-variant="flat"] {
     border: 1px solid var(--nfd-ecommerce-accent-primary);
     padding: 16px 25px;
     border-radius: 2px;
     min-width: 240px;
     color: #ffffff;
     background-color: var(--nfd-ecommerce-accent-primary);
+  }
+  .nfd-ecommerce-button[data-variant="link"] {
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: none;
+    font: 400 16px/1.2 var(--nfd-ecommerce-font-primary);
+    color: var(--nfd-ecommerce-accent-primary);
   }
 }
 

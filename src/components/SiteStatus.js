@@ -13,6 +13,10 @@ const SiteStatusContent = {
     ),
     Illustration: LaunchStoreIllustration,
     cta: __("Launch your store", "wp-module-ecommerce"),
+    status: {
+      text: __("Live", "wp-module-ecommerce"),
+      color: "#048200",
+    },
   },
   live: {
     title: __("Change your site status", "wp-module-ecommerce"),
@@ -22,6 +26,10 @@ const SiteStatusContent = {
     ),
     Illustration: ComingSoonIllustration,
     cta: __(`Switch back to "Coming Soon" mode`, "wp-module-ecommerce"),
+    status: {
+      text: __("Coming Soon", "wp-module-ecommerce"),
+      color: "#E01C1C",
+    },
   },
 };
 
@@ -30,7 +38,7 @@ export function SiteStatus(props) {
   let { toggleComingSoon } = props.actions;
   let { Modal, useState } = props.wpModules;
   let [showModal, setModal] = useState(false);
-  let { title, subtitle, Illustration, cta } = wp.comingSoon
+  let { title, subtitle, Illustration, cta, status } = wp.comingSoon
     ? SiteStatusContent.comingSoon
     : SiteStatusContent.live;
   return (
@@ -40,11 +48,29 @@ export function SiteStatus(props) {
       >
         {!wp.comingSoon ? <div style={{ height: "24px" }} /> : null}
         <Illustration />
-        {!wp.comingSoon ? <div style={{ height: "24px" }} /> : null}
+        {!wp.comingSoon ? (
+          <>
+            <div style={{ height: "3px" }} />
+            <button
+              className="nfd-ecommerce-button"
+              data-variant="flat"
+              onClick={() => window.open(window.location.origin, "_blank")}
+            >
+              <h3>{__("Go to your site!", "wp-module-ecommerce")}</h3>
+            </button>
+            <div style={{ height: "16px" }} />
+          </>
+        ) : null}
         <button
           className="nfd-ecommerce-button"
+          data-variant={wp.comingSoon ? "flat" : "link"}
           onClick={() => {
             toggleComingSoon().then(() => {
+              let $statusText = document.getElementById("nfd-site-status-text");
+              if ($statusText) {
+                $statusText.textContent = status.text;
+                $statusText.style.setProperty("color", status.color);
+              }
               setModal(wp.comingSoon);
             });
           }}

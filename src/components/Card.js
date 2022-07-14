@@ -10,7 +10,13 @@ export function Card({
   ...props
 }) {
   return (
-    <button className="nfd-ecommerce-card" data-variant={variant} onClick={() => location.href = href} {...props}>
+    <button
+      className="nfd-ecommerce-card"
+      data-variant={variant}
+      type="button"
+      onClick={() => (location.href = href)}
+      {...props}
+    >
       {variant === "extended" ? (
         <div className="nfd-ecommerce-card-image">
           <div className="nfd-ecommerce-card-circle">{children}</div>
