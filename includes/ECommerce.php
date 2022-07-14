@@ -4,6 +4,7 @@ namespace NewfoldLabs\WP\Module\ECommerce;
 
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\Module\ECommerce\RestApi\PluginsController;
+use NewfoldLabs\WP\Module\ECommerce\Partials\CaptiveFlow;
 
 class ECommerce {
 
@@ -12,9 +13,9 @@ class ECommerce {
 	 */
 	protected $container;
 
-    protected $controllers = array(
-        'NewfoldLabs\\WP\\Module\\ECommerce\\RestApi\\PluginsController',
-    );
+	protected $controllers = array(
+		'NewfoldLabs\\WP\\Module\\ECommerce\\RestApi\\PluginsController',
+	);
 
 	/**
 	 * ECommerce constructor.
@@ -25,43 +26,21 @@ class ECommerce {
 		// Module functionality goes here
 		add_action( 'admin_bar_menu', array( $this, 'newfold_site_status' ), 200 );
 		add_action( 'rest_api_init', array( ECommerceApi::class, 'registerRoutes' ) );
-        add_action( 'rest_api_init', array( $this, 'register_routes' ));
-        add_action( 'admin_menu', array( __CLASS__, 'register_page' ) );
+		add_action( 'rest_api_init', array( $this, 'register_routes' ));
+		CaptiveFlow::init();
 	}
 
-    public static function register_page() {
-        \add_submenu_page(
-            null,
-            null,
-            null,
-            Permissions::ADMIN,
-            'nfd-ecommerce',
-            array( __CLASS__, 'render' ),
-            100
-        );
-    }
-
-    public static function render() {
-        echo PHP_EOL;
-        echo '<!-- NFD:ECOMMERCE -->';
-        echo PHP_EOL;
-        echo '<div id="nfd-ecommerce" class="nfd-ecommerce-container" style="background-color:Red"><p>Text</p></div>';
-        echo PHP_EOL;
-        echo '<!-- /NFD:ECOMMERCE -->';
-        echo PHP_EOL;
-    }
-
-    public function register_routes() {
-        foreach ( $this->controllers as $controller ) {
-            /**
-             * Get an instance of the WP_REST_Controller.
-             *
-             * @var $instance WP_REST_Controller
-             */
-            $instance = new $controller();
-            $instance->register_routes();
-        }
-    }
+	public function register_routes() {
+		foreach ( $this->controllers as $Controller ) {
+			/**
+			 * Get an instance of the WP_REST_Controller.
+			 *
+			 * @var $instance WP_REST_Controller
+			 */
+			$instance = new $Controller();
+			$instance->register_routes();
+		}
+	}
 	
 	/**
 	 * Customize the admin bar with site status.
