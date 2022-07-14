@@ -26,7 +26,30 @@ class ECommerce {
 		add_action( 'admin_bar_menu', array( $this, 'newfold_site_status' ), 200 );
 		add_action( 'rest_api_init', array( ECommerceApi::class, 'registerRoutes' ) );
         add_action( 'rest_api_init', array( $this, 'register_routes' ));
+        add_action( 'admin_menu', array( __CLASS__, 'register_page' ) );
 	}
+
+    public static function register_page() {
+        \add_submenu_page(
+            null,
+            null,
+            null,
+            Permissions::ADMIN,
+            'nfd-ecommerce',
+            array( __CLASS__, 'render' ),
+            100
+        );
+    }
+
+    public static function render() {
+        echo PHP_EOL;
+        echo '<!-- NFD:ECOMMERCE -->';
+        echo PHP_EOL;
+        echo '<div id="nfd-ecommerce" class="nfd-ecommerce-container" style="background-color:Red"><p>Text</p></div>';
+        echo PHP_EOL;
+        echo '<!-- /NFD:ECOMMERCE -->';
+        echo PHP_EOL;
+    }
 
     public function register_routes() {
         foreach ( $this->controllers as $controller ) {
