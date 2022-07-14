@@ -14,9 +14,9 @@
     "styles.scss"
   ],
   "scripts": {
-    "build": "tsdx build",
-    "lint": "tsdx lint",
-    "start": "tsdx watch",
+    "build": "dts build",
+    "lint": "dts lint",
+    "start": "dts watch",
     "test:unit": "echo \"No tests implemented\"",
     "test:e2e": "echo \"No tests implemented\""
   },
@@ -28,6 +28,6 @@
     "@babel/preset-react": "^7.18.6",
     "@rollup/plugin-url": "^7.0.0",
     "@svgr/rollup": "^6.2.1",
-    "tsdx": "^0.14.1"
+    "dts-cli" : "1.5.2"
   }
 }
