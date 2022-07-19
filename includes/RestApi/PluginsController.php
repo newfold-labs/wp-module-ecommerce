@@ -100,7 +100,7 @@ class PluginsController {
     public function install( \WP_REST_Request $request ) {
         $plugin       = $request->get_param( 'plugin' );
         $plugins_list = Plugins::get();
-
+        $plugin = Plugins::get_slug_url_map($plugin); // to get the url based on certain predefined slugs
         // Check if the plugin param contains a zip url.
         if ( \wp_http_validate_url( $plugin ) ) {
             $domain = \wp_parse_url( $plugin, PHP_URL_HOST );

@@ -17,10 +17,15 @@ final class Plugins {
         'woocommerce'   => true,
         'wordpress-seo' => true,
         'wpforms-lite'  => true,
+        'yith-woocommerce-ajax-search' => true,
     );
 
     protected static $urls = array(
         'https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.8.5.3.zip' => true,
+        'https://downloads.yithemes.com/?apiRequest=download_extended&package=yith-woocommerce-customize-myaccount-page' => true,
+        'https://downloads.yithemes.com/?apiRequest=download_extended&package=yith-woocommerce-gift-cards' => true,
+        'https://downloads.yithemes.com/?apiRequest=download_extended&package=yith-woocommerce-wishlist' => true,
+        'https://downloads.yithemes.com/?apiRequest=download_extended&package=yith-woocommerce-ajax-product-filter' => true,
     );
 
     protected static $domains = array(
@@ -60,6 +65,19 @@ final class Plugins {
             'urls'     => self::$urls,
             'domains'  => self::$domains,
         );
+    }
+
+    public static function get_slug_url_map($plugin) {
+       $map = array(
+           'yith-woocommerce-customize-myaccount-page' => 'https://downloads.yithemes.com/?apiRequest=download_extended&package=yith-woocommerce-customize-myaccount-page',
+           'yith-woocommerce-gift-cards' => 'https://downloads.yithemes.com/?apiRequest=download_extended&package=yith-woocommerce-gift-cards',
+           'yith-woocommerce-wishlist' => 'https://downloads.yithemes.com/?apiRequest=download_extended&package=yith-woocommerce-wishlist',
+           'yith-woocommerce-ajax-product-filter' => 'https://downloads.yithemes.com/?apiRequest=download_extended&package=yith-woocommerce-ajax-product-filter'
+       );
+       if (in_array($plugin, array_keys($map))) {
+            $plugin = $map[$plugin];
+        }
+       return $plugin;
     }
 
     /**
