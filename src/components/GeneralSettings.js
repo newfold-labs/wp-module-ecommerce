@@ -12,34 +12,30 @@ const OnboardingSteps = {
     title: "Store Info",
     setupAction: "Add Info",
     editAction: "Edit Info",
-    setupUrl: "/wp-admin/admin.php?page=wc-settings&tab=general",
     editUrl: "/wp-admin/admin.php?page=wc-settings&tab=general",
     isSetupDone: (state) => state.onboarding.isComplete,
     SetupIcon: StoreIcon,
   },
-  payments: {
+  paypal: {
     title: "Payments",
     setupAction: "Setup",
     editAction: "Edit Settings",
-    setupUrl: "/wp-admin/admin.php?page=wc-admin&task=payments",
     editUrl: "/wp-admin/admin.php?page=wc-admin&task=payments",
-    isSetupDone: (state) => state.onboarding.isComplete,
+    isSetupDone: (state) => false,
     SetupIcon: Payments,
   },
-  shipping: {
+  shippo: {
     title: "Shipping",
     setupAction: "Setup",
     editAction: "Edit Settings",
-    setupUrl: "/wp-admin/admin.php?page=wc-settings&tab=shipping",
     editUrl: "/wp-admin/admin.php?page=wc-settings&tab=shipping",
-    isSetupDone: (state) => state.onboarding.isComplete,
+    isSetupDone: (state) => false,
     SetupIcon: Shipping,
   },
   tax: {
     title: "Tax Info",
     setupAction: "Add Info",
     editAction: "Edit Info",
-    setupUrl: "/wp-admin/admin.php?page=wc-admin&task=tax",
     editUrl: "/wp-admin/admin.php?page=wc-admin&task=tax",
     isSetupDone: (state) => state.onboarding.isComplete,
     SetupIcon: TaxInfo,
@@ -47,6 +43,8 @@ const OnboardingSteps = {
 };
 
 export function GeneralSettings(props) {
+  let { Modal, useState } = props.wpModules;
+  let [onboardingModalKey, setOnboardingModal] = useState(null);
   let { data: onboardingResponse, error } = useSWR(
     "/wc-admin/onboarding/tasks?ids=setup"
   );
@@ -68,10 +66,9 @@ export function GeneralSettings(props) {
       task,
     ])
   );
-  let completedSteps = Object.entries(
-    OnboardingSteps
-  ).filter(([stepKey, stepProgress]) =>
-    stepProgress.isSetupDone({ onboarding: onboarding[stepKey] ?? {} })
+  let completedSteps = Object.entries(OnboardingSteps).filter(
+    ([stepKey, stepProgress]) =>
+      stepProgress.isSetupDone({ onboarding: onboarding[stepKey] ?? {} })
   );
   let incompleteSteps = Object.entries(OnboardingSteps).filter(
     ([stepKey, stepProgress]) =>
@@ -96,7 +93,7 @@ export function GeneralSettings(props) {
                     variant="standard"
                     title={stepProgress.title}
                     action={stepProgress.setupAction}
-                    href={stepProgress.setupUrl}
+                    onClick={() => setOnboardingModal(stepKey)}
                   >
                     <SetupIcon />
                   </Card>
@@ -128,6 +125,32 @@ export function GeneralSettings(props) {
             })}
           </div>
         </DashboardContent>
+      ) : null}
+      {onboardingModalKey === "store_details" ||
+      onboardingModalKey === "tax" ? (
+        <Modal
+          overlayClassName="nfd-ecommerce-modal-overlay"
+          className="nfd-ecommerce-atoms nfd-ecommerce-modal"
+          shouldCloseOnClickOutside
+          onRequestClose={() => setOnboardingModal(null)}
+        >
+          <div className="nfd-ecommerce-modal-content">Hello</div>
+        </Modal>
+      ) : null}
+      {onboardingModalKey === "paypal" ||
+      onboardingModalKey === "shippo" ? (
+        <Modal
+          overlayClassName="nfd-ecommerce-modal-overlay"
+          className="nfd-ecommerce-atoms nfd-ecommerce-modal"
+          shouldCloseOnClickOutside
+          isFullScreen
+          onRequestClose={() => setOnboardingModal(null)}
+        >
+          <iframe
+            style={{ width: "100%", height: "100%" }}
+            src={`/wp-admin/admin.php?page=nfd-ecommerce-captive-flow-${onboardingModalKey}`}
+          />
+        </Modal>
       ) : null}
     </>
   );

@@ -14,7 +14,9 @@ export function Card({
       className="nfd-ecommerce-card"
       data-variant={variant}
       type="button"
-      onClick={() => (location.href = href)}
+      onClick={() => {
+        location.href = href;
+      }}
       {...props}
     >
       {variant === "extended" ? (
@@ -29,7 +31,7 @@ export function Card({
         {description && variant === "extended" ? (
           <div className="nfd-ecommerce-card-subtitle">{description}</div>
         ) : null}
-        {href ? (
+        {action ? (
           <span className="nfd-ecommerce-card-link">
             {action} {variant !== "minimal" ? <Arrow /> : null}
           </span>
