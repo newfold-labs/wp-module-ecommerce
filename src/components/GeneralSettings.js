@@ -129,6 +129,7 @@ export function GeneralSettings(props) {
       {onboardingModalKey === "store_details" ||
       onboardingModalKey === "tax" ? (
         <Modal
+          __experimentalHideHeader
           overlayClassName="nfd-ecommerce-modal-overlay"
           className="nfd-ecommerce-atoms nfd-ecommerce-modal"
           shouldCloseOnClickOutside
@@ -137,13 +138,12 @@ export function GeneralSettings(props) {
           <div className="nfd-ecommerce-modal-content">Hello</div>
         </Modal>
       ) : null}
-      {onboardingModalKey === "paypal" ||
-      onboardingModalKey === "shippo" ? (
+      {onboardingModalKey === "paypal" || onboardingModalKey === "shippo" ? (
         <Modal
           overlayClassName="nfd-ecommerce-modal-overlay"
           className="nfd-ecommerce-atoms nfd-ecommerce-modal"
-          shouldCloseOnClickOutside
           isFullScreen
+          shouldCloseOnClickOutside={false}
           onRequestClose={() => setOnboardingModal(null)}
         >
           <iframe

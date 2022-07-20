@@ -244,7 +244,9 @@
 .nfd-ecommerce-modal {
   width: 940px;
   .components-modal__header {
-    display: none;
+    height: auto;
+    border: none;
+    padding: 0 10px;
   }
   .components-modal__content {
     display: grid;
