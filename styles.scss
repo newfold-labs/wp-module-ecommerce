@@ -237,8 +237,12 @@
   }
 }
 
+.nfd-ecommerce-modal-overlay {
+  background: rgba(255, 255, 255, 0.8);
+}
+
 .nfd-ecommerce-modal {
-  width: 900px;
+  width: 940px;
   .components-modal__header {
     display: none;
   }

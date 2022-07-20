@@ -80,6 +80,7 @@ export function SiteStatus(props) {
       </div>
       {showModal ? (
         <Modal
+          overlayClassName="nfd-ecommerce-modal-overlay"
           className="nfd-ecommerce-atoms nfd-ecommerce-modal"
           shouldCloseOnClickOutside
           onRequestClose={() => setModal(false)}
