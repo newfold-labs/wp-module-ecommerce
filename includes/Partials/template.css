@@ -18,7 +18,7 @@ body.js.is-fullscreen-mode #wpfooter {
 }
 
 .nfd-ecommerce-captive-flow {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: white;
   position: absolute;
   width: 100vw;
   height: 100vh;
