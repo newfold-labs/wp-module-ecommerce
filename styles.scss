@@ -235,6 +235,11 @@
     font: 400 16px/1.2 var(--nfd-ecommerce-font-primary);
     color: var(--nfd-ecommerce-accent-primary);
   }
+  .nfd-ecommerce-loader-mini {
+    width: 1em;
+    height: 1em;
+    margin: 0;
+  }
 }
 
 .nfd-ecommerce-modal-overlay {

@@ -7,13 +7,19 @@ export function Card({
   action,
   href,
   variant,
+  status = "ready",
   ...props
 }) {
+  let Action =
+    status === "ready"
+      ? Arrow
+      : () => <div className="bwa-loader nfd-ecommerce-loader-mini" />;
   return (
     <button
       className="nfd-ecommerce-card"
       data-variant={variant}
       type="button"
+      disabled={status !== "ready"}
       onClick={() => {
         location.href = href;
       }}
@@ -33,7 +39,7 @@ export function Card({
         ) : null}
         {action ? (
           <span className="nfd-ecommerce-card-link">
-            {action} {variant !== "minimal" ? <Arrow /> : null}
+            {action} {variant !== "minimal" ? <Action /> : null}
           </span>
         ) : null}
       </span>
