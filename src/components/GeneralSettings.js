@@ -1,11 +1,12 @@
 import useSWR from "swr";
-import { ReactComponent as CompletedTask } from "../icons/task-complete.svg";
 import { ReactComponent as Payments } from "../icons/payments.svg";
 import { ReactComponent as Shipping } from "../icons/shipping.svg";
 import { ReactComponent as StoreIcon } from "../icons/store.svg";
+import { ReactComponent as CompletedTask } from "../icons/task-complete.svg";
 import { ReactComponent as TaxInfo } from "../icons/taxinfo.svg";
 import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
+import { StoreAddress } from "./StoreAddress";
 
 const OnboardingSteps = {
   store_details: {
@@ -129,13 +130,14 @@ export function GeneralSettings(props) {
       {onboardingModalKey === "store_details" ||
       onboardingModalKey === "tax" ? (
         <Modal
-          __experimentalHideHeader
           overlayClassName="nfd-ecommerce-modal-overlay"
           className="nfd-ecommerce-atoms nfd-ecommerce-modal"
-          shouldCloseOnClickOutside
+          shouldCloseOnClickOutside={false}
           onRequestClose={() => setOnboardingModal(null)}
         >
-          <div className="nfd-ecommerce-modal-content">Hello</div>
+          <div className="nfd-ecommerce-modal-content">
+            {onboardingModalKey === "store_details" ? <StoreAddress /> : null}
+          </div>
         </Modal>
       ) : null}
       {onboardingModalKey === "paypal" || onboardingModalKey === "shippo" ? (

@@ -295,3 +295,40 @@
     }
   }
 }
+
+button.nfd-ecommerce-atoms {
+  cursor: pointer;
+  font: 590 20px/1.2 var(--nfd-ecommerce-font-primary);
+  appearance: none;
+  border: 1px solid var(--nfd-ecommerce-accent-primary);
+  padding: 16px 0;
+  border-radius: 2px;
+  width: 180px;
+  color: #ffffff;
+  background-color: var(--nfd-ecommerce-accent-primary);
+}
+
+h1.nfd-ecommerce-store-address-title {
+  color: var(--nfd-ecommerce-text-primary);
+  font: 274 40px/1.2 var(--nfd-ecommerce-font-primary);
+}
+div.nfd-ecommerce-store-address-form {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 24px;
+  padding: 64px 0 76px 0;
+  label {
+    display: block;
+    font-size: 18px;
+    line-height: 1;
+    padding-bottom: 13px;
+  }
+  input,
+  select {
+    padding-left: 17px;
+    width: 400px;
+    height: 48px;
+    border: 1px solid #d6d6d6;
+    border-radius: 2px;
+  }
+}
