@@ -27,11 +27,11 @@ class PluginsController {
     public function register_routes() {
         \register_rest_route(
             $this->namespace,
-            $this->rest_base . '/approved',
+            $this->rest_base . '/status',
             array(
                 array(
                     'methods'             => \WP_REST_Server::READABLE,
-                    'callback'            => array( $this, 'get_approved_plugins' ),
+                    'callback'            => array( $this, 'get_plugins_status' ),
                     'permission_callback' => array( Permissions::class, 'rest_is_authorized_admin' ),
                 ),
             )
@@ -55,12 +55,36 @@ class PluginsController {
      *
      * @return \WP_REST_Response
      */
-    public function get_approved_plugins() {
-
+    public function get_plugins_status() {
+        $plugins = [
+            'yith_wcmap_panel' ,
+            'yith_woocommerce_gift_cards_panel',
+            'yith_wcwl_panel' ,
+            'yith_wcan_panel' ,
+            'yith_wcbk_panel' ,
+            'yith_wcas_panel' ,
+        ];
+        foreach ($plugins as $plugin){
+            $map =  Plugins::get_slug_map($plugin);
+            if(file_exists(WP_PLUGIN_DIR.'/'.$map[1])){
+                $active = is_plugin_active($map[1]);
+                if($active){
+                    $result[$plugin] = 'Active';
+                }
+                else
+                {
+                    $result[$plugin] = 'Inactive';
+                }
+            }
+            else {
+                $result[$plugin] = 'Not Installed';
+            }
+        }
         return new \WP_REST_Response(
-            Plugins::get_approved(),
+            $result,
             200
         );
+
     }
 
     /**
@@ -100,7 +124,30 @@ class PluginsController {
     public function install( \WP_REST_Request $request ) {
         $plugin       = $request->get_param( 'plugin' );
         $plugins_list = Plugins::get();
-        $plugin = Plugins::get_slug_url_map($plugin); // to get the url based on certain predefined slugs
+        $plugin = Plugins::get_slug_map($plugin);// to get plugin details based on certain predefined slugs
+        if(is_array($plugin))
+        {
+            if(file_exists(WP_PLUGIN_DIR.'/'.$plugin[1]))
+            {
+                $status = \activate_plugin(WP_PLUGIN_DIR.'/'.$plugin[1]);
+                {
+                    if ( \is_wp_error( $status ) ) {
+                        $status->add_data( array( 'status' => 500 ) );
+
+                        return $status;
+                    }
+
+                    return new \WP_REST_Response(
+                        null,
+                        200
+                    );
+                }
+            }
+            else
+            {
+                $plugin = reset($plugin);
+            }
+        }
         // Check if the plugin param contains a zip url.
         if ( \wp_http_validate_url( $plugin ) ) {
             $domain = \wp_parse_url( $plugin, PHP_URL_HOST );
@@ -195,9 +242,7 @@ class PluginsController {
             return $result;
         }
         if ( \is_wp_error( $skin->result ) ) {
-            $skin->result->add_data( array( 'status' => 500 ) );
-
-            return $skin->result;
+            return $skin->result->get_error_messages();
         }
         if ( $skin->get_errors()->has_errors() ) {
             $error = $skin->get_errors();
