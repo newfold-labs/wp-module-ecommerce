@@ -3,9 +3,9 @@ import useSWR from "swr";
 import { ReactComponent as Booking } from "../icons/booking.svg";
 import { ReactComponent as CustomizeAccount } from "../icons/customize-account.svg";
 import { ReactComponent as Filter } from "../icons/filter.svg";
+import { ReactComponent as Gift } from "../icons/gift.svg";
 import { ReactComponent as Search } from "../icons/search.svg";
 import { ReactComponent as WishList } from "../icons/wishlist.svg";
-import { ReactComponent as Gift } from "../icons/gift.svg";
 import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
 
@@ -16,7 +16,7 @@ const SuggestedPlugins = [
       "Enable a booking/appointment system to manage renting or booking of services, rooms, houses.",
       "wp-module-ecommerce"
     ),
-    pluginName: "yith-woocommerce-booking-extended",
+    slug: "yith_wcbk_panel",
     Icon: Booking,
   },
   {
@@ -25,7 +25,7 @@ const SuggestedPlugins = [
       "Allow your users to search products in real time by title, description, tags, and more.",
       "wp-module-ecommerce"
     ),
-    pluginName: "yith-woocommerce-ajax-search",
+    slug: "yith_wcas_panel",
     Icon: Search,
   },
   {
@@ -37,7 +37,7 @@ const SuggestedPlugins = [
       "Make it easy for your customers to create lists and add their favorite items to them.",
       "wp-module-ecommerce"
     ),
-    pluginName: "yith-woocommerce-wishlist-extended",
+    slug: "yith_wcwl_panel",
     Icon: WishList,
   },
   {
@@ -49,7 +49,7 @@ const SuggestedPlugins = [
       "If your store has lots of products, help your customers find what they're looking for fast.",
       "wp-module-ecommerce"
     ),
-    pluginName: "yith-woocommerce-ajax-product-filter-extended/init",
+    slug: "yith_wcan_panel",
     Icon: Filter,
   },
   {
@@ -58,7 +58,7 @@ const SuggestedPlugins = [
       "Use gift cards to increase your earnings and attract new customers.",
       "wp-module-ecommerce"
     ),
-    pluginName: "yith-woocommerce-gift-cards-extended/init",
+    slug: "yith_woocommerce_gift_cards_panel",
     Icon: Gift,
   },
   {
@@ -67,13 +67,13 @@ const SuggestedPlugins = [
       "Show any kind of custom content in your customers' account page.",
       "wp-module-ecommerce"
     ),
-    pluginName: "yith-woocommerce-customize-myaccount-page-extended/init",
-    href: "/wp-admin/admin.php?page=yith_wcmap_panel",
+    slug: "yith_wcmap_panel",
     Icon: CustomizeAccount,
   },
 ];
 
 export function AdvancedFeatures(props) {
+  let { wpModules } = props;
   let { data, error } = useSWR("/wp/v2/plugins");
   if (!data) {
     return (
@@ -114,8 +114,15 @@ export function AdvancedFeatures(props) {
                     data-completed={false}
                     title={plugin.title}
                     action="Enable"
-                    href={plugin.href ?? "Test"}
+                    status="ready"
                     description={plugin.description}
+                    onClick={async () => {
+                      await wpModules.apiFetch({
+                        path: "newfold-ecommerce/v1/plugins/install",
+                        data: { plugin: plugin.slug },
+                      });
+                      window.href = `/wp-admin/admin.php?page=${plugin.slug}`;
+                    }}
                   >
                     <Icon />
                   </Card>
@@ -141,7 +148,7 @@ export function AdvancedFeatures(props) {
                   data-completed
                   title={plugin.title}
                   action="Manage"
-                  href={plugin.href ?? "Test"}
+                  href={`/wp-admin/admin.php?page=${plugin.slug}`}
                   description={plugin.description}
                 >
                   <Icon />
