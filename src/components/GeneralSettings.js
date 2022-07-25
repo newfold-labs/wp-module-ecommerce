@@ -7,6 +7,7 @@ import { ReactComponent as TaxInfo } from "../icons/taxinfo.svg";
 import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
 import { StoreAddress } from "./StoreAddress";
+import Tax from "./Tax";
 
 const OnboardingSteps = {
   store_details: {
@@ -46,9 +47,20 @@ const OnboardingSteps = {
 export function GeneralSettings(props) {
   let { Modal, useState } = props.wpModules;
   let [onboardingModalKey, setOnboardingModal] = useState(null);
-  let { data: onboardingResponse, error } = useSWR(
-    "/wc-admin/onboarding/tasks?ids=setup"
-  );
+  let {
+    data: onboardingResponse,
+    error,
+    mutate: refreshTasks,
+  } = useSWR("/wc-admin/onboarding/tasks?ids=setup");
+  let {
+    data: taxEnabledInfo,
+    err,
+    mutate: refreshTaxUrl,
+  } = useSWR("wc-admin/options?options=woocommerce_calc_taxes");
+  OnboardingSteps.tax.editUrl =
+    taxEnabledInfo?.woocommerce_calc_taxes == "yes"
+      ? "/wp-admin/admin.php?page=wc-settings&tab=tax"
+      : "/wp-admin/admin.php?page=wc-admin&task=tax";
   if (!onboardingResponse) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
@@ -136,7 +148,16 @@ export function GeneralSettings(props) {
           onRequestClose={() => setOnboardingModal(null)}
         >
           <div className="nfd-ecommerce-modal-content">
-            {onboardingModalKey === "store_details" ? <StoreAddress /> : null}
+            {onboardingModalKey === "store_details" ? (
+              <StoreAddress />
+            ) : (
+              <Tax
+                {...props}
+                refreshTasks={refreshTasks}
+                refreshTaxUrl={refreshTaxUrl}
+                setOnboardingModal={(val) => setOnboardingModal(val)}
+              />
+            )}
           </div>
         </Modal>
       ) : null}
