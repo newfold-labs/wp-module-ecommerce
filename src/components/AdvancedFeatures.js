@@ -74,7 +74,7 @@ const SuggestedPlugins = [
 ];
 
 export function AdvancedFeatures(props) {
-  let { data, error } = useSWR("/wp/v2/plugins?status=active");
+  let { data, error } = useSWR("/wp/v2/plugins");
   if (!data) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>

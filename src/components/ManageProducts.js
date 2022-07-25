@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import { ReactComponent as AddProducts } from "../icons/add-products.svg";
-import { ReactComponent as ImportProducts } from "../icons/import-products.svg";
 import { ReactComponent as Help } from "../icons/help.svg";
+import { ReactComponent as ImportProducts } from "../icons/import-products.svg";
 import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
 
@@ -9,7 +9,7 @@ const ManageProductsList = [
   {
     title: "Add a product",
     action: "Add new",
-    actionUrl: "/wp-admin/post-new.php?post_type=product",
+    actionUrl: "/wp-admin/admin.php?page=wc-admin&task=products",
   },
   {
     title: "Manage products",
@@ -77,11 +77,12 @@ export function ManageProducts(props) {
           <div className="nfd-ecommerce-minimal-tasks-container">
             {ManageProductsList.map((card) => (
               <Card
+                key={card.actionUrl}
                 variant="minimal"
                 title={card.title}
                 action={card.action}
                 href={card.actionUrl}
-              ></Card>
+              />
             ))}
           </div>
         </DashboardContent>

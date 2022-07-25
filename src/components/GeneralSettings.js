@@ -1,11 +1,13 @@
 import useSWR from "swr";
-import { ReactComponent as CompletedTask } from "../icons/task-complete.svg";
 import { ReactComponent as Payments } from "../icons/payments.svg";
 import { ReactComponent as Shipping } from "../icons/shipping.svg";
 import { ReactComponent as StoreIcon } from "../icons/store.svg";
+import { ReactComponent as CompletedTask } from "../icons/task-complete.svg";
 import { ReactComponent as TaxInfo } from "../icons/taxinfo.svg";
 import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
+import { StoreAddress } from "./StoreAddress";
+import Tax from "./Tax";
 
 const OnboardingSteps = {
   store_details: {
@@ -45,9 +47,20 @@ const OnboardingSteps = {
 export function GeneralSettings(props) {
   let { Modal, useState } = props.wpModules;
   let [onboardingModalKey, setOnboardingModal] = useState(null);
-  let { data: onboardingResponse, error } = useSWR(
-    "/wc-admin/onboarding/tasks?ids=setup"
-  );
+  let {
+    data: onboardingResponse,
+    error,
+    mutate: refreshTasks,
+  } = useSWR("/wc-admin/onboarding/tasks?ids=setup");
+  let {
+    data: taxEnabledInfo,
+    err,
+    mutate: refreshTaxUrl,
+  } = useSWR("wc-admin/options?options=woocommerce_calc_taxes");
+  OnboardingSteps.tax.editUrl =
+    taxEnabledInfo?.woocommerce_calc_taxes == "yes"
+      ? "/wp-admin/admin.php?page=wc-settings&tab=tax"
+      : "/wp-admin/admin.php?page=wc-admin&task=tax";
   if (!onboardingResponse) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
@@ -131,19 +144,29 @@ export function GeneralSettings(props) {
         <Modal
           overlayClassName="nfd-ecommerce-modal-overlay"
           className="nfd-ecommerce-atoms nfd-ecommerce-modal"
-          shouldCloseOnClickOutside
+          shouldCloseOnClickOutside={false}
           onRequestClose={() => setOnboardingModal(null)}
         >
-          <div className="nfd-ecommerce-modal-content">Hello</div>
+          <div className="nfd-ecommerce-modal-content">
+            {onboardingModalKey === "store_details" ? (
+              <StoreAddress />
+            ) : (
+              <Tax
+                {...props}
+                refreshTasks={refreshTasks}
+                refreshTaxUrl={refreshTaxUrl}
+                setOnboardingModal={(val) => setOnboardingModal(val)}
+              />
+            )}
+          </div>
         </Modal>
       ) : null}
-      {onboardingModalKey === "paypal" ||
-      onboardingModalKey === "shippo" ? (
+      {onboardingModalKey === "paypal" || onboardingModalKey === "shippo" ? (
         <Modal
           overlayClassName="nfd-ecommerce-modal-overlay"
           className="nfd-ecommerce-atoms nfd-ecommerce-modal"
-          shouldCloseOnClickOutside
           isFullScreen
+          shouldCloseOnClickOutside={false}
           onRequestClose={() => setOnboardingModal(null)}
         >
           <iframe
