@@ -242,7 +242,9 @@ class PluginsController {
             return $result;
         }
         if ( \is_wp_error( $skin->result ) ) {
-            return $skin->result->get_error_messages();
+            $skin->result->add_data( array( 'status' => 500 ) );
+
+            return $skin->result;
         }
         if ( $skin->get_errors()->has_errors() ) {
             $error = $skin->get_errors();
