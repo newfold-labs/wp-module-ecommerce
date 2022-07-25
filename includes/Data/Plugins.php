@@ -26,6 +26,8 @@ final class Plugins {
         'https://downloads.yithemes.com/?apiRequest=download_extended&package=yith-woocommerce-gift-cards' => true,
         'https://downloads.yithemes.com/?apiRequest=download_extended&package=yith-woocommerce-wishlist' => true,
         'https://downloads.yithemes.com/?apiRequest=download_extended&package=yith-woocommerce-ajax-product-filter' => true,
+        'https://downloads.yithemes.com/?apiRequest=download_extended&package=yith-woocommerce-booking' => true,
+        'https://downloads.wordpress.org/plugin/yith-woocommerce-ajax-search.1.21.0.zip' => true,
     );
 
     protected static $domains = array(
@@ -67,12 +69,14 @@ final class Plugins {
         );
     }
 
-    public static function get_slug_url_map($plugin) {
+    public static function get_slug_map($plugin) {
        $map = array(
-           'yith-woocommerce-customize-myaccount-page' => 'https://downloads.yithemes.com/?apiRequest=download_extended&package=yith-woocommerce-customize-myaccount-page',
-           'yith-woocommerce-gift-cards' => 'https://downloads.yithemes.com/?apiRequest=download_extended&package=yith-woocommerce-gift-cards',
-           'yith-woocommerce-wishlist' => 'https://downloads.yithemes.com/?apiRequest=download_extended&package=yith-woocommerce-wishlist',
-           'yith-woocommerce-ajax-product-filter' => 'https://downloads.yithemes.com/?apiRequest=download_extended&package=yith-woocommerce-ajax-product-filter'
+           'yith_wcmap_panel' => ['https://downloads.yithemes.com/?apiRequest=download_extended&package=yith-woocommerce-customize-myaccount-page','yith-woocommerce-customize-myaccount-page-extended/init.php'],
+           'yith_woocommerce_gift_cards_panel' => ['https://downloads.yithemes.com/?apiRequest=download_extended&package=yith-woocommerce-gift-cards','yith-woocommerce-gift-cards-extended/init.php'],
+           'yith_wcwl_panel' => ['https://downloads.yithemes.com/?apiRequest=download_extended&package=yith-woocommerce-wishlist','yith-woocommerce-wishlist-extended/init.php'],
+           'yith_wcan_panel' => ['https://downloads.yithemes.com/?apiRequest=download_extended&package=yith-woocommerce-ajax-product-filter','yith-woocommerce-ajax-product-filter-extended/init.php'],
+           'yith_wcbk_panel' => ['https://downloads.yithemes.com/?apiRequest=download_extended&package=yith-woocommerce-booking','yith-woocommerce-booking-extended/init.php'],
+           'yith_wcas_panel' => ['https://downloads.wordpress.org/plugin/yith-woocommerce-ajax-search.1.21.0.zip','yith-woocommerce-ajax-search/init.php']
        );
        if (in_array($plugin, array_keys($map))) {
             $plugin = $map[$plugin];

@@ -337,3 +337,41 @@ div.nfd-ecommerce-store-address-form {
     border-radius: 2px;
   }
 }
+.nfd-ecommerce-tax-modal {
+  width: 940px;
+  height: 639px;
+  display: grid;
+  place-items: center;
+  .nfd-ecommerce-modal-header {
+    font: 274 40px var(--nfd-ecommerce-font-secondary);
+    margin-top: 64px;
+  }
+  .nfd-ecommerce-modal-header-description {
+    font: 400 24px var(--nfd-ecommerce-font-secondary);
+    line-height: 29px;
+    text-align: center;
+    margin-top: 24px;
+  }
+  .nfd-ecommerce-modal-options {
+    display: grid;
+    grid-auto-flow: row;
+    padding-top: 32px;
+    row-gap: 8px;
+  }
+  .nfd-ecommerce-modal-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 280px;
+    height: 45px;
+    background: #f0f0f0;
+    border-radius: 2px;
+    padding-left: 16px;
+  }
+  .nfd-ecommerce-modal-option-selected {
+    background-color: #e5f6ff;
+  }
+  .nfd-ecommerce-modal-option-unselected {
+    background-color: #f0f0f0;
+  }
+}
