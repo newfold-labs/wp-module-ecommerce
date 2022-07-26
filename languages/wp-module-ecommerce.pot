@@ -16,7 +16,7 @@ msgstr ""
 msgid "eCommerce"
 msgstr ""
 
-#: includes/ECommerce.php:55
+#: includes/ECommerce.php:53
 #: dist/wp-module-ecommerce.cjs.development.js:1737
 #: dist/wp-module-ecommerce.esm.js:1712
 #: src/components/SiteStatus.js:30
@@ -26,7 +26,7 @@ msgstr ""
 msgid "Coming Soon"
 msgstr ""
 
-#: includes/ECommerce.php:56
+#: includes/ECommerce.php:54
 #: dist/wp-module-ecommerce.cjs.development.js:1727
 #: dist/wp-module-ecommerce.esm.js:1702
 #: src/components/SiteStatus.js:17
@@ -36,11 +36,11 @@ msgstr ""
 msgid "Live"
 msgstr ""
 
-#: includes/ECommerce.php:61
+#: includes/ECommerce.php:59
 msgid "Site Status: "
 msgstr ""
 
-#: includes/ECommerce.php:63
+#: includes/ECommerce.php:61
 msgid "Launch Your Site"
 msgstr ""
 
