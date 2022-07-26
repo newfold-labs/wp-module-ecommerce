@@ -45,7 +45,7 @@ export function ManageProducts(props) {
 
   return (
     <>
-      {productsResponse.length == 0 ? (
+      {productsResponse.length === 0 ? (
         <DashboardContent
           title="Add Products"
           subtitle="Come here to manage your products or add new ones to your store."

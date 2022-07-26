@@ -22,7 +22,7 @@ const OnboardingSteps = {
     title: "Payments",
     setupAction: "Setup",
     editAction: "Edit Settings",
-    editUrl: "/wp-admin/admin.php?page=wc-admin&task=payments",
+    editUrl: "/wp-admin/admin.php?page=yith_paypal_payments",
     isSetupDone: (state) => false,
     SetupIcon: Payments,
   },
@@ -30,7 +30,7 @@ const OnboardingSteps = {
     title: "Shipping",
     setupAction: "Setup",
     editAction: "Edit Settings",
-    editUrl: "/wp-admin/admin.php?page=wc-settings&tab=shipping",
+    editUrl: "/wp-admin/admin.php?page=yith_shippo_shipping_for_woocommerce",
     isSetupDone: (state) => false,
     SetupIcon: Shipping,
   },
@@ -38,29 +38,33 @@ const OnboardingSteps = {
     title: "Tax Info",
     setupAction: "Add Info",
     editAction: "Edit Info",
-    editUrl: "/wp-admin/admin.php?page=wc-admin&task=tax",
+    editUrl: "/wp-admin/admin.php?page=wc-settings&task=tax",
     isSetupDone: (state) => state.onboarding.isComplete,
     SetupIcon: TaxInfo,
   },
 };
 
 export function GeneralSettings(props) {
-  let { Modal, useState } = props.wpModules;
+  let { Modal, useEffect, useState } = props.wpModules;
   let [onboardingModalKey, setOnboardingModal] = useState(null);
   let {
     data: onboardingResponse,
     error,
     mutate: refreshTasks,
   } = useSWR("/wc-admin/onboarding/tasks?ids=setup");
-  let {
-    data: taxEnabledInfo,
-    err,
-    mutate: refreshTaxUrl,
-  } = useSWR("wc-admin/options?options=woocommerce_calc_taxes");
-  OnboardingSteps.tax.editUrl =
-    taxEnabledInfo?.woocommerce_calc_taxes == "yes"
-      ? "/wp-admin/admin.php?page=wc-settings&tab=tax"
-      : "/wp-admin/admin.php?page=wc-admin&task=tax";
+  useEffect(() => {
+    async function onExternalOnboardingComplete(messageEvent) {
+      if (
+        messageEvent.origin === window.location.origin &&
+        messageEvent?.data?.type === "onboarding-complete"
+      ) {
+        setOnboardingModal(null);
+      }
+    }
+    window.addEventListener("message", onExternalOnboardingComplete);
+    return () =>
+      window.removeEventListener("message", onExternalOnboardingComplete);
+  }, [setOnboardingModal]);
   if (!onboardingResponse) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
@@ -89,6 +93,8 @@ export function GeneralSettings(props) {
         onboarding: onboarding[stepKey] ?? {},
       })
   );
+  let NativeOnboarding =
+    onboardingModalKey === "store_details" ? StoreAddress : Tax;
   return (
     <>
       {incompleteSteps.length > 0 ? (
@@ -148,16 +154,11 @@ export function GeneralSettings(props) {
           onRequestClose={() => setOnboardingModal(null)}
         >
           <div className="nfd-ecommerce-modal-content">
-            {onboardingModalKey === "store_details" ? (
-              <StoreAddress />
-            ) : (
-              <Tax
-                {...props}
-                refreshTasks={refreshTasks}
-                refreshTaxUrl={refreshTaxUrl}
-                setOnboardingModal={(val) => setOnboardingModal(val)}
-              />
-            )}
+            <NativeOnboarding
+              {...props}
+              refreshTasks={refreshTasks}
+              onComplete={() => setOnboardingModal(null)}
+            />
           </div>
         </Modal>
       ) : null}

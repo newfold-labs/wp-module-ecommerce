@@ -4,6 +4,7 @@ namespace NewfoldLabs\WP\Module\ECommerce;
 
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\Module\ECommerce\RestApi\PluginsController;
+use NewfoldLabs\WP\Module\ECommerce\RestApi\UserController;
 use NewfoldLabs\WP\Module\ECommerce\Partials\CaptiveFlow;
 
 class ECommerce {
@@ -15,6 +16,7 @@ class ECommerce {
 
 	protected $controllers = array(
 		'NewfoldLabs\\WP\\Module\\ECommerce\\RestApi\\PluginsController',
+		'NewfoldLabs\\WP\\Module\\ECommerce\\RestApi\\UserController',
 	);
 
 	/**
@@ -25,7 +27,6 @@ class ECommerce {
 		$this->container = $container;
 		// Module functionality goes here
 		add_action( 'admin_bar_menu', array( $this, 'newfold_site_status' ), 200 );
-		add_action( 'rest_api_init', array( ECommerceApi::class, 'registerRoutes' ) );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ));
 		CaptiveFlow::init();
 	}
@@ -51,8 +52,8 @@ class ECommerce {
 		if ( current_user_can( 'manage_options' ) ) {
 			$is_coming_soon = 'true' === get_option( 'mm_coming_soon', 'false' );
 			$status = $is_coming_soon
-			? '<span id="nfd-site-status-text" style="color:#E01C1C;">' . esc_html__( 'Coming Soon', 'wp-module-ecommerce' ) . '<span>'
-			: '<span id="nfd-site-status-text" style="color:#048200;">' . esc_html__( 'Live', 'wp-module-ecommerce' ) . '<span>';
+			? '<span id="nfd-site-status-text" style="color:#E01C1C;">' . esc_html__( 'Coming Soon', 'wp-module-ecommerce' ) . '</span>'
+			: '<span id="nfd-site-status-text" style="color:#048200;">' . esc_html__( 'Live', 'wp-module-ecommerce' ) . '</span>';
 			$site_status_menu = array(
 				'id'    => 'site-status',
 				'parent' => 'top-secondary',

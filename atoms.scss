@@ -1,0 +1,33 @@
+.nfd-ecommerce-atoms {
+  font: 400 16px/1.2 var(--nfd-ecommerce-font-primary);
+  color: var(--nfd-ecommerce-text-primary);
+  h1 {
+    color: var(--nfd-ecommerce-text-primary);
+    font: 350 32px var(--nfd-ecommerce-font-secondary);
+  }
+  h2 {
+    color: var(--nfd-ecommerce-text-primary);
+    font: 400 24px var(--nfd-ecommerce-font-primary);
+  }
+  h3 {
+    color: currentColor;
+    font: 400 18px var(--nfd-ecommerce-font-primary);
+  }
+  .nfd-ecommerce-loader-mini {
+    width: 1em;
+    height: 1em;
+    margin: 0;
+  }
+}
+
+button.nfd-ecommerce-atoms {
+  cursor: pointer;
+  font: 590 20px/1.2 var(--nfd-ecommerce-font-primary);
+  appearance: none;
+  border: 1px solid var(--nfd-ecommerce-accent-primary);
+  padding: 16px 0;
+  border-radius: 2px;
+  width: 180px;
+  color: #ffffff;
+  background-color: var(--nfd-ecommerce-accent-primary);
+}
