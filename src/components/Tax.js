@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-
 const taxManagementOptions = [
   "Auto-calculate my taxes for me",
   "I will configure my own tax info later",
-  "I don’t charge sales tax",
+  "I don't charge sales tax",
 ];
 
 const Tax = (props) => {
-  let { wpModules, setOnboardingModal, refreshTasks, refreshTaxUrl } = props;
-  const [selectedOption, setSelectedOption] = useState(taxManagementOptions[0]);
+  let { wpModules, onComplete, refreshTasks } = props;
+  const [selectedOption, setSelectedOption] = wpModules.useState(
+    taxManagementOptions[0]
+  );
 
   const onClickContinue = async () => {
     let data;
-    let path = "/wc-admin/options?_locale=user";
+    let path = "/wc-admin/options";
     if (selectedOption == taxManagementOptions[0]) {
       data = {
         wc_connect_taxes_enabled: "yes",
@@ -29,19 +29,17 @@ const Tax = (props) => {
         woocommerce_calc_taxes: "no",
       };
     }
-
     await wpModules.apiFetch({
       path,
       method: "POST",
       data,
     });
-    refreshTasks();
-    refreshTaxUrl();
-    setOnboardingModal(null);
+    await refreshTasks();
+    onComplete();
   };
 
   return (
-    <div className="nfd-ecommerce-tax-modal">
+    <>
       <div className="nfd-ecommerce-modal-header">
         Confirm your tax information
       </div>
@@ -52,6 +50,8 @@ const Tax = (props) => {
       <div className="nfd-ecommerce-modal-options">
         {taxManagementOptions.map((option) => (
           <div
+            key={option}
+            role="button"
             className={`nfd-ecommerce-modal-option ${
               option == selectedOption
                 ? "nfd-ecommerce-modal-option-selected"
@@ -72,10 +72,13 @@ const Tax = (props) => {
       </button>
       <p>
         <em>
-          Need help? <a>Hire our experts</a>
+          Need help?{" "}
+          <a href="/wp-admin/admin.php?page=bluehost#/marketplace/services/blue-sky">
+            Hire our experts
+          </a>
         </em>
       </p>
-    </div>
+    </>
   );
 };
 
