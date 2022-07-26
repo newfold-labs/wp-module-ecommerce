@@ -74,8 +74,13 @@ const SuggestedPlugins = [
 
 export function AdvancedFeatures(props) {
   let { wpModules } = props;
-  let { data, error } = useSWR("/wp/v2/plugins");
-  if (!data) {
+  let [inprogressInstalls, setInstalls] = wpModules.useState([]);
+  let {
+    data: pluginsOnSite,
+    error,
+    mutate: refreshPlugins,
+  } = useSWR("/newfold-ecommerce/v1/plugins/status");
+  if (!pluginsOnSite) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
         {error ? (
@@ -86,15 +91,11 @@ export function AdvancedFeatures(props) {
       </div>
     );
   }
-  let pluginsOnSite = data.reduce(
-    (map, _) => ({ ...map, [_.plugin]: _.status }),
-    {}
-  );
   let installedPlugins = SuggestedPlugins.filter(
-    (pluginDef) => pluginsOnSite[pluginDef.pluginName] === "active"
+    (pluginDef) => pluginsOnSite[pluginDef.slug] === "Active"
   );
   let unavailablePlugins = SuggestedPlugins.filter(
-    (pluginDef) => pluginsOnSite[pluginDef.pluginName] !== "active"
+    (pluginDef) => pluginsOnSite[pluginDef.slug] !== "Active"
   );
   return (
     <>
@@ -109,18 +110,30 @@ export function AdvancedFeatures(props) {
                 let { Icon } = plugin;
                 return (
                   <Card
-                    key={plugin.pluginName}
+                    key={plugin.slug}
                     variant="extended"
                     data-completed={false}
                     title={plugin.title}
                     action="Enable"
-                    status="ready"
+                    status={
+                      inprogressInstalls.includes(plugin.slug)
+                        ? "inprogress"
+                        : "ready"
+                    }
                     description={plugin.description}
                     onClick={async () => {
-                      await wpModules.apiFetch({
-                        path: "newfold-ecommerce/v1/plugins/install",
-                        data: { plugin: plugin.slug },
-                      });
+                      setInstalls([...inprogressInstalls, plugin.slug]);
+                      await wpModules
+                        .apiFetch({
+                          path: "/newfold-ecommerce/v1/plugins/install",
+                          method: "POST",
+                          data: { plugin: plugin.slug },
+                        })
+                        .catch((error) => {});
+                      await refreshPlugins();
+                      setInstalls(
+                        inprogressInstalls.filter((_) => _ !== plugin.slug)
+                      );
                       window.href = `/wp-admin/admin.php?page=${plugin.slug}`;
                     }}
                   >
@@ -143,7 +156,7 @@ export function AdvancedFeatures(props) {
               let { Icon } = plugin;
               return (
                 <Card
-                  key={plugin.pluginName}
+                  key={plugin.slug}
                   variant="extended"
                   data-completed
                   title={plugin.title}
