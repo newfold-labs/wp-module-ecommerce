@@ -3,8 +3,6 @@
 namespace NewfoldLabs\WP\Module\ECommerce;
 
 use NewfoldLabs\WP\ModuleLoader\Container;
-use NewfoldLabs\WP\Module\ECommerce\RestApi\PluginsController;
-use NewfoldLabs\WP\Module\ECommerce\RestApi\UserController;
 use NewfoldLabs\WP\Module\ECommerce\Partials\CaptiveFlow;
 
 class ECommerce {
