@@ -30,4 +30,10 @@ button.nfd-ecommerce-atoms {
   width: 180px;
   color: #ffffff;
   background-color: var(--nfd-ecommerce-accent-primary);
+
+  &:disabled {
+    background: gray;
+    border: 1px solid gray;
+    cursor: not-allowed;
+  }
 }
