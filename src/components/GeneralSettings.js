@@ -157,6 +157,9 @@ export function GeneralSettings(props) {
           <div className="nfd-ecommerce-modal-content">
             <NativeOnboarding
               {...props}
+              isStoreDetailsFilled={completedSteps.find(
+                (step) => step[0] === "store_details"
+              )}
               refreshTasks={refreshTasks}
               onComplete={() => setOnboardingModal(null)}
             />

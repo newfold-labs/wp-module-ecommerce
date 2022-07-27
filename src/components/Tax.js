@@ -1,43 +1,70 @@
+import { StoreAddress } from "./StoreAddress";
+
 const taxManagementOptions = [
-  "Auto-calculate my taxes for me",
-  "I will configure my own tax info later",
-  "I don't charge sales tax",
+  {
+    title: "Auto-calculate my taxes for me",
+    data: {
+      wc_connect_taxes_enabled: "yes",
+      woocommerce_calc_taxes: "yes",
+    },
+  },
+  {
+    title: "I will configure my own tax info later",
+    data: {
+      wc_connect_taxes_enabled: "no",
+      woocommerce_calc_taxes: "yes",
+    },
+  },
+  {
+    title: "I don't charge sales tax",
+    data: {
+      woocommerce_no_sales_tax: true,
+      woocommerce_calc_taxes: "no",
+    },
+  },
 ];
 
-const Tax = (props) => {
-  let { wpModules, onComplete, refreshTasks } = props;
-  const [selectedOption, setSelectedOption] = wpModules.useState(
-    taxManagementOptions[0]
-  );
+const path = "/wc-admin/options";
 
-  const onClickContinue = async () => {
-    let data;
-    let path = "/wc-admin/options";
-    if (selectedOption == taxManagementOptions[0]) {
-      data = {
-        wc_connect_taxes_enabled: "yes",
-        woocommerce_calc_taxes: "yes",
-      };
-    } else if (selectedOption == taxManagementOptions[1]) {
-      data = {
-        wc_connect_taxes_enabled: "no",
-        woocommerce_calc_taxes: "yes",
-      };
-    } else {
-      data = {
-        woocommerce_no_sales_tax: true,
-        woocommerce_calc_taxes: "no",
-      };
-    }
+const Tax = (props) => {
+  let { wpModules, onComplete, refreshTasks, isStoreDetailsFilled } = props;
+  const [selectedOption, setSelectedOption] = wpModules.useState(null);
+  const [isAutoCalTaxWithoutStoreDetails, setIsAutoCalTaxWithoutStoreDetails] =
+    wpModules.useState(false);
+
+  const saveTaxOption = async () => {
     await wpModules.apiFetch({
       path,
       method: "POST",
-      data,
+      data: selectedOption.data,
     });
+  };
+
+  const onClickContinue = async () => {
+    if (
+      selectedOption.title == taxManagementOptions[0].title &&
+      !isStoreDetailsFilled
+    ) {
+      setIsAutoCalTaxWithoutStoreDetails(true);
+      return;
+    }
+    await saveTaxOption();
     await refreshTasks();
     onComplete();
   };
 
+  if (isAutoCalTaxWithoutStoreDetails) {
+    return (
+      <StoreAddress
+        {...props}
+        onComplete={async () => {
+          await saveTaxOption();
+          await refreshTasks();
+          onComplete();
+        }}
+      />
+    );
+  }
   return (
     <>
       <div className="nfd-ecommerce-modal-header">
@@ -50,20 +77,21 @@ const Tax = (props) => {
       <div className="nfd-ecommerce-modal-options">
         {taxManagementOptions.map((option) => (
           <div
-            key={option}
+            key={option.title}
             role="button"
             className={`nfd-ecommerce-modal-option ${
-              option == selectedOption
+              option.title == selectedOption?.title
                 ? "nfd-ecommerce-modal-option-selected"
                 : "nfd-ecommerce-modal-option-unselected"
             }`}
             onClick={() => setSelectedOption(option)}
           >
-            {option}
+            {option.title}
           </div>
         ))}
       </div>
       <button
+        disabled={!selectedOption}
         style={{ marginTop: "120px" }}
         className="nfd-ecommerce-atoms"
         onClick={onClickContinue}
