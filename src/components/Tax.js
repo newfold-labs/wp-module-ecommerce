@@ -27,18 +27,13 @@ const taxManagementOptions = [
 const path = "/wc-admin/options";
 
 const Tax = (props) => {
-  let { wpModules, onComplete, refreshTasks, isStoreDetailsFilled } = props;
+  let { wpModules, onComplete, isStoreDetailsFilled } = props;
   const [selectedOption, setSelectedOption] = wpModules.useState(null);
   const [isAutoCalTaxWithoutStoreDetails, setIsAutoCalTaxWithoutStoreDetails] =
     wpModules.useState(false);
 
-  const saveTaxOption = async () => {
-    await wpModules.apiFetch({
-      path,
-      method: "POST",
-      data: selectedOption.data,
-    });
-  };
+  const saveTaxOption = async () =>
+    wpModules.apiFetch({ path, method: "POST", data: selectedOption.data });
 
   const onClickContinue = async () => {
     if (
@@ -49,8 +44,7 @@ const Tax = (props) => {
       return;
     }
     await saveTaxOption();
-    await refreshTasks();
-    onComplete();
+    await onComplete();
   };
 
   if (isAutoCalTaxWithoutStoreDetails) {
@@ -59,8 +53,7 @@ const Tax = (props) => {
         {...props}
         onComplete={async () => {
           await saveTaxOption();
-          await refreshTasks();
-          onComplete();
+          await onComplete();
         }}
       />
     );

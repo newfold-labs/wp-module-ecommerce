@@ -5,19 +5,15 @@ function useProfile() {
   let { data: countries } = useSWR("/wc/v3/data/countries");
   let defaultContact = {};
   if (profile && countries) {
-    let bhStateCode = profile.contact.state ?? "";
-    let bhCountryCode = profile.contact.country ?? "";
-    let wcStateCode =
+    let country = profile.contact.country ?? "";
+    let state = profile.contact.state ?? "";
+    let isStateCodeValid =
       countries
-        .find((country) => bhCountryCode === country.code)
-        ?.states.find(
-          (state) =>
-            state.code === bhStateCode ||
-            state.name.toLowerCase() === bhStateCode.trim().toLowerCase()
-        ) ?? null;
+        .find((_) => country === _.code)
+        ?.states.find((_) => _.code === state) !== undefined;
     defaultContact = {
-      country: bhCountryCode,
-      state: wcStateCode,
+      country,
+      state: isStateCodeValid ? state : null,
       woocommerce_store_address: profile.contact.address,
       woocommerce_store_address_2: "",
       woocommerce_store_city: profile.contact.city,
@@ -27,16 +23,13 @@ function useProfile() {
   return [!profile || !countries, defaultContact, countries];
 }
 
-export function StoreAddress({ wpModules, refreshTasks, onComplete }) {
+export function StoreAddress({ wpModules, onComplete }) {
   let [address, setAddress] = wpModules.useState({});
   let [isLoading, defaultContact, countries] = useProfile();
-  function handleFieldChange(event) {
+  function handleChange(event) {
     setAddress({ ...address, [event.target.name]: event.target.value });
   }
-  const eventHandlers = {
-    onChange: handleFieldChange,
-    onBlur: handleFieldChange,
-  };
+  const eventHandlers = { onChange: handleChange, onBlur: handleChange };
   let selectedCountry = address?.country ?? defaultContact.country;
   let states =
     countries?.find((country) => country.code === selectedCountry)?.states ??
@@ -61,8 +54,7 @@ export function StoreAddress({ wpModules, refreshTasks, onComplete }) {
           method: "POST",
           data: { completed: true },
         });
-        await refreshTasks();
-        onComplete();
+        await onComplete();
       }}
       style={{ display: "grid", paddingTop: "64px", justifyItems: "center" }}
     >

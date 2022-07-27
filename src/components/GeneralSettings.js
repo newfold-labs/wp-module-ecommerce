@@ -158,10 +158,12 @@ export function GeneralSettings(props) {
             <NativeOnboarding
               {...props}
               isStoreDetailsFilled={completedSteps.find(
-                (step) => step[0] === "store_details"
+                ([step]) => step === "store_details"
               )}
-              refreshTasks={refreshTasks}
-              onComplete={() => setOnboardingModal(null)}
+              onComplete={async () => {
+                await refreshTasks();
+                setOnboardingModal(null);
+              }}
             />
           </div>
         </Modal>
