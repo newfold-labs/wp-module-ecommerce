@@ -122,6 +122,16 @@ export function StoreAddress({ wpModules, onComplete }) {
           )}
         </div>
         <div>
+          <label>Postcode/ZIP</label>
+          <input
+            name="woocommerce_store_postcode"
+            type="zip"
+            required
+            defaultValue={defaultContact.woocommerce_store_postcode}
+            {...eventHandlers}
+          />
+        </div>
+        <div>
           <label>Country</label>
           {isLoading ? (
             <input type="text" disabled />
@@ -140,16 +150,6 @@ export function StoreAddress({ wpModules, onComplete }) {
               ))}
             </select>
           )}
-        </div>
-        <div>
-          <label>Postcode/ZIP</label>
-          <input
-            name="woocommerce_store_postcode"
-            type="zip"
-            required
-            defaultValue={defaultContact.woocommerce_store_postcode}
-            {...eventHandlers}
-          />
         </div>
       </div>
       <button className="nfd-ecommerce-atoms" type="submit">
