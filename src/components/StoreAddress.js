@@ -1,60 +1,60 @@
 import useSWR from "swr";
 
-let SupportedCountries = {
-  AU: "Australia",
-  CA: "Canada",
-  JP: "Japan",
-  IN: "India",
-  MX: "Mexico",
-  BR: "Brazil",
-  US: "United States",
-};
-
 function useProfile() {
-  let { data } = useSWR("/newfold-ecommerce/v1/user/profile");
+  let { data: profile } = useSWR("/newfold-ecommerce/v1/user/profile");
+  let { data: countries } = useSWR("/wc/v3/data/countries");
   let defaultContact = {};
-  let countries = [];
-  if (data) {
+  if (profile && countries) {
+    let bhStateCode = profile.contact.state ?? "";
+    let bhCountryCode = profile.contact.country ?? "";
+    let wcStateCode =
+      countries
+        .find((country) => bhCountryCode === country.code)
+        ?.states.find(
+          (state) =>
+            state.code === bhStateCode ||
+            state.name.toLowerCase() === bhStateCode.trim().toLowerCase()
+        ) ?? null;
     defaultContact = {
-      woocommerce_default_country: `${data.contact?.country}:${data.contact?.state}`,
-      woocommerce_store_address: data.contact?.address,
+      country: bhCountryCode,
+      state: wcStateCode,
+      woocommerce_store_address: profile.contact.address,
       woocommerce_store_address_2: "",
-      woocommerce_store_city: data.contact?.city,
-      woocommerce_store_postcode: data.contact?.zip,
+      woocommerce_store_city: profile.contact.city,
+      woocommerce_store_postcode: profile.contact.zip,
     };
-    let bhSupportedCountries = Object.entries(data.provinces).flatMap(
-      ([country, states]) =>
-        states.map(([code, name]) => [
-          `${country}:${code}`,
-          `${SupportedCountries[country]} - ${name}`,
-        ])
-    );
-    let otherCountries = data.countries.filter(
-      ([country]) => SupportedCountries[country] === undefined
-    );
-    countries = bhSupportedCountries.concat(otherCountries);
   }
-  return [!data, defaultContact, countries];
+  return [!profile || !countries, defaultContact, countries];
 }
 
 export function StoreAddress({ wpModules, refreshTasks, onComplete }) {
   let [address, setAddress] = wpModules.useState({});
   let [isLoading, defaultContact, countries] = useProfile();
   function handleFieldChange(event) {
-    setAddress({
-      ...address,
-      [event.target.name]: event.target.value,
-    });
+    setAddress({ ...address, [event.target.name]: event.target.value });
   }
+  const eventHandlers = {
+    onChange: handleFieldChange,
+    onBlur: handleFieldChange,
+  };
+  let selectedCountry = address?.country ?? defaultContact.country;
+  let states =
+    countries?.find((country) => country.code === selectedCountry)?.states ??
+    [];
   return (
     <form
       onSubmit={async (event) => {
         event.preventDefault();
         event.stopPropagation();
+        let { country, state, ...wcAddress } = address;
         await wpModules.apiFetch({
           path: "/wc-admin/options",
           method: "POST",
-          data: { ...defaultContact, ...address },
+          data: {
+            ...defaultContact,
+            ...wcAddress,
+            woocommerce_default_country: `${country}:${state}`,
+          },
         });
         await wpModules.apiFetch({
           path: "/wc-admin/onboarding/profile",
@@ -87,8 +87,7 @@ export function StoreAddress({ wpModules, refreshTasks, onComplete }) {
             type="text"
             required
             defaultValue={defaultContact.woocommerce_store_address}
-            onChange={handleFieldChange}
-            onBlur={handleFieldChange}
+            {...eventHandlers}
           />
         </div>
         <div>
@@ -96,10 +95,8 @@ export function StoreAddress({ wpModules, refreshTasks, onComplete }) {
           <input
             name="woocommerce_store_address_2"
             type="text"
-            required
             defaultValue={defaultContact.woocommerce_store_address_2}
-            onChange={handleFieldChange}
-            onBlur={handleFieldChange}
+            {...eventHandlers}
           />
         </div>
         <div>
@@ -109,26 +106,44 @@ export function StoreAddress({ wpModules, refreshTasks, onComplete }) {
             type="text"
             required
             defaultValue={defaultContact.woocommerce_store_city}
-            onChange={handleFieldChange}
-            onBlur={handleFieldChange}
+            {...eventHandlers}
           />
         </div>
         <div>
-          <label>Country - State</label>
-          {isLoading ? (
-            <input type="text" />
+          <label>State</label>
+          {states.length === 0 ? (
+            <input type="text" name="state" required {...eventHandlers} />
           ) : (
             <select
               type="text"
-              name="woocommerce_default_country"
+              name="state"
               required
-              defaultValue={defaultContact.woocommerce_default_country}
-              onChange={handleFieldChange}
-              onBlur={handleFieldChange}
+              defaultValue={defaultContact.state}
+              {...eventHandlers}
             >
-              {countries.map(([country, value]) => (
-                <option key={country} value={country}>
-                  {value}
+              {states.map((state) => (
+                <option key={state.code} value={state.code}>
+                  {state.name}
+                </option>
+              ))}
+            </select>
+          )}
+        </div>
+        <div>
+          <label>Country</label>
+          {isLoading ? (
+            <input type="text" disabled />
+          ) : (
+            <select
+              type="text"
+              name="country"
+              required
+              defaultValue={defaultContact.country}
+              {...eventHandlers}
+            >
+              {countries.map((country) => (
+                <option key={country.code} value={country.code}>
+                  {country.name}
                 </option>
               ))}
             </select>
@@ -141,8 +156,7 @@ export function StoreAddress({ wpModules, refreshTasks, onComplete }) {
             type="zip"
             required
             defaultValue={defaultContact.woocommerce_store_postcode}
-            onChange={handleFieldChange}
-            onBlur={handleFieldChange}
+            {...eventHandlers}
           />
         </div>
       </div>

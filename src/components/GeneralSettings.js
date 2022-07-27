@@ -15,7 +15,7 @@ const OnboardingSteps = {
     setupAction: "Add Info",
     editAction: "Edit Info",
     editUrl: "/wp-admin/admin.php?page=wc-settings&tab=general",
-    isSetupDone: (state) => state.onboarding.isComplete,
+    isSetupDone: (state) => !state.onboarding.isComplete,
     SetupIcon: StoreIcon,
   },
   paypal: {
@@ -150,6 +150,7 @@ export function GeneralSettings(props) {
         <Modal
           overlayClassName="nfd-ecommerce-modal-overlay"
           className="nfd-ecommerce-atoms nfd-ecommerce-modal"
+          shouldCloseOnEsc={false}
           shouldCloseOnClickOutside={false}
           onRequestClose={() => setOnboardingModal(null)}
         >
@@ -167,6 +168,7 @@ export function GeneralSettings(props) {
           overlayClassName="nfd-ecommerce-modal-overlay"
           className="nfd-ecommerce-atoms nfd-ecommerce-modal"
           isFullScreen
+          shouldCloseOnEsc={false}
           shouldCloseOnClickOutside={false}
           onRequestClose={() => setOnboardingModal(null)}
         >
