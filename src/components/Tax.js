@@ -94,7 +94,7 @@ const Tax = (props) => {
       <p>
         <em>
           Need help?{" "}
-          <a href="/wp-admin/admin.php?page=bluehost#/marketplace/services/blue-sky">
+          <a href="admin.php?page=bluehost#/marketplace/services/blue-sky">
             Hire our experts
           </a>
         </em>

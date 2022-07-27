@@ -9,22 +9,22 @@ const ManageProductsList = [
   {
     title: "Add a product",
     action: "Add new",
-    actionUrl: "/wp-admin/admin.php?page=wc-admin&task=products",
+    actionUrl: "admin.php?page=wc-admin&task=products",
   },
   {
     title: "Manage products",
     action: "View all",
-    actionUrl: "/wp-admin/edit.php?post_type=product",
+    actionUrl: "edit.php?post_type=product",
   },
   {
     title: "Categories",
     action: "Manage",
-    actionUrl: "/wp-admin/edit-tags.php?taxonomy=product_cat&post_type=product",
+    actionUrl: "edit-tags.php?taxonomy=product_cat&post_type=product",
   },
   {
     title: "Tags",
     action: "Manage",
-    actionUrl: "/wp-admin/edit-tags.php?taxonomy=product_tag&post_type=product",
+    actionUrl: "edit-tags.php?taxonomy=product_tag&post_type=product",
   },
 ];
 
@@ -55,7 +55,7 @@ export function ManageProducts(props) {
               variant="standard"
               title="Add Products"
               action="Add"
-              href="/wp-admin/post-new.php?post_type=product"
+              href="post-new.php?post_type=product"
             >
               <AddProducts />
             </Card>
@@ -63,7 +63,7 @@ export function ManageProducts(props) {
               variant="standard"
               title="Import Products"
               action="Import"
-              href="/wp-admin/edit.php?post_type=product&page=product_importer"
+              href="edit.php?post_type=product&page=product_importer"
             >
               <ImportProducts />
             </Card>

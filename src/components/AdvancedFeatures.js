@@ -134,7 +134,7 @@ export function AdvancedFeatures(props) {
                       setInstalls(
                         inprogressInstalls.filter((_) => _ !== plugin.slug)
                       );
-                      window.href = `/wp-admin/admin.php?page=${plugin.slug}`;
+                      window.location.href = `admin.php?page=${plugin.slug}`;
                     }}
                   >
                     <Icon />
@@ -161,7 +161,7 @@ export function AdvancedFeatures(props) {
                   data-completed
                   title={plugin.title}
                   action="Manage"
-                  href={`/wp-admin/admin.php?page=${plugin.slug}`}
+                  href={`admin.php?page=${plugin.slug}`}
                   description={plugin.description}
                 >
                   <Icon />

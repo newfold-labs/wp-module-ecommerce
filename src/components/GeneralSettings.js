@@ -14,15 +14,15 @@ const OnboardingSteps = {
     title: "Store Info",
     setupAction: "Add Info",
     editAction: "Edit Info",
-    editUrl: "/wp-admin/admin.php?page=wc-settings&tab=general",
-    isSetupDone: (state) => !state.onboarding.isComplete,
+    editUrl: "admin.php?page=wc-settings&tab=general",
+    isSetupDone: (state) => state.onboarding.isComplete,
     SetupIcon: StoreIcon,
   },
   paypal: {
     title: "Payments",
     setupAction: "Setup",
     editAction: "Edit Settings",
-    editUrl: "/wp-admin/admin.php?page=yith_paypal_payments",
+    editUrl: "admin.php?page=yith_paypal_payments",
     isSetupDone: (state) => false,
     SetupIcon: Payments,
   },
@@ -30,7 +30,7 @@ const OnboardingSteps = {
     title: "Shipping",
     setupAction: "Setup",
     editAction: "Edit Settings",
-    editUrl: "/wp-admin/admin.php?page=yith_shippo_shipping_for_woocommerce",
+    editUrl: "admin.php?page=yith_shippo_shipping_for_woocommerce",
     isSetupDone: (state) => false,
     SetupIcon: Shipping,
   },
@@ -38,7 +38,7 @@ const OnboardingSteps = {
     title: "Tax Info",
     setupAction: "Add Info",
     editAction: "Edit Info",
-    editUrl: "/wp-admin/admin.php?page=wc-settings&task=tax",
+    editUrl: "admin.php?page=wc-settings&tab=tax",
     isSetupDone: (state) => state.onboarding.isComplete,
     SetupIcon: TaxInfo,
   },
@@ -179,7 +179,7 @@ export function GeneralSettings(props) {
         >
           <iframe
             style={{ width: "100%", height: "100%" }}
-            src={`/wp-admin/admin.php?page=nfd-ecommerce-captive-flow-${onboardingModalKey}`}
+            src={`admin.php?page=nfd-ecommerce-captive-flow-${onboardingModalKey}`}
           />
         </Modal>
       ) : null}
