@@ -26,7 +26,7 @@ class UserController {
 	}
 
 	/**
-	 * Connect to BlueRock API with token via AccessToken Class in Bluehost Plugin
+	 * Connect to UAPI with token via AccessToken Class in Bluehost Plugin
 	 * 
 	 * @param string $path of desired API endpoint
 	 * @return object of response data in json format
@@ -53,7 +53,7 @@ class UserController {
 	}
 
 	public function get_profile() {
-		$response = self::connect('account-center', 'profile');
+		$response = self::connect('account-center', 'profile?hide_country_list=1');
 
 		if ( ! is_object( $response ) ) {
 			return array( 'message' => 'error' );
