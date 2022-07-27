@@ -1,10 +1,11 @@
+import useSWR from "swr";
+import { ReactComponent as About } from "../icons/aboutpage.svg";
+import { ReactComponent as Account } from "../icons/account.svg";
+import { ReactComponent as Contact } from "../icons/contactpage.svg";
+import { ReactComponent as Home } from "../icons/homepage.svg";
+import { ReactComponent as StoreLayout } from "../icons/storelayout.svg";
 import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
-import { ReactComponent as Home } from "../icons/homepage.svg";
-import { ReactComponent as About } from "../icons/aboutpage.svg";
-import { ReactComponent as Contact } from "../icons/contactpage.svg";
-import { ReactComponent as StoreLayout } from "../icons/storelayout.svg";
-import { ReactComponent as Account } from "../icons/account.svg";
 
 const CustomizeList = [
   {
@@ -25,18 +26,14 @@ const CustomizeList = [
   {
     title: "Store Layout",
     customizeUrl:
-      "/wp-admin/customize.php?return=%2Fwp-admin%2Fadmin.php%3Fpage%3Dbluehost",
+      "customize.php?return=%2Fwp-admin%2Fadmin.php%3Fpage%3Dbluehost",
     action: "Configure",
     Icon: StoreLayout,
-  },
-  {
-    title: "Customer Account Page",
-    customizeUrl: "/wp-admin/admin.php?page=yith_wcmap_panel",
-    Icon: Account,
   },
 ];
 
 export function CustomizeStore(props) {
+  let { data: pluginsOnSite } = useSWR("/newfold-ecommerce/v1/plugins/status");
   return (
     <DashboardContent
       title="Customize Your Store"
@@ -54,6 +51,26 @@ export function CustomizeStore(props) {
             <Icon />
           </Card>
         ))}
+        <Card
+          variant="standard"
+          title="Customer Account Page"
+          action="Setup"
+          status={pluginsOnSite ? "ready" : "inprogress"}
+          onClick={async () => {
+            if (pluginsOnSite.yith_wcmap_panel !== "Active") {
+              await props.wpModules
+                .apiFetch({
+                  path: "/newfold-ecommerce/v1/plugins/install",
+                  method: "POST",
+                  data: { plugin: "yith_wcmap_panel" },
+                })
+                .catch((error) => {});
+            }
+            window.location.href = "admin.php?page=yith_wcmap_panel";
+          }}
+        >
+          <Account />
+        </Card>
       </div>
     </DashboardContent>
   );
