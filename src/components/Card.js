@@ -21,7 +21,7 @@ export function Card({
       type="button"
       disabled={status !== "ready"}
       onClick={() => {
-        location.href = href;
+        window.location.href = href;
       }}
       {...props}
     >

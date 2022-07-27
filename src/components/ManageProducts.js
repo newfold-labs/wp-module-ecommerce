@@ -97,7 +97,12 @@ export function ManageProducts(props) {
             variant="minimal"
             title="How to add products"
             action="Learn More"
-            href="/wp-admin/edit.php?post_type=product&page=product_importer"
+            onClick={() =>
+              window.open(
+                "https://woocommerce.com/document/managing-products/",
+                "_blank"
+              )
+            }
           >
             <Help />
           </Card>
