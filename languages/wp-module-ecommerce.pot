@@ -16,31 +16,31 @@ msgstr ""
 msgid "eCommerce"
 msgstr ""
 
-#: includes/ECommerce.php:53
-#: dist/wp-module-ecommerce.cjs.development.js:1856
-#: dist/wp-module-ecommerce.esm.js:1831
+#: includes/ECommerce.php:55
+#: dist/wp-module-ecommerce.cjs.development.js:1869
+#: dist/wp-module-ecommerce.esm.js:1844
 #: src/components/SiteStatus.js:30
-#: dist/wp-module-ecommerce.cjs.development.js:984
-#: dist/wp-module-ecommerce.cjs.production.min.js:984
-#: dist/wp-module-ecommerce.esm.js:984
+#: dist/wp-module-ecommerce.cjs.development.js:991
+#: dist/wp-module-ecommerce.cjs.production.min.js:991
+#: dist/wp-module-ecommerce.esm.js:991
 msgid "Coming Soon"
 msgstr ""
 
-#: includes/ECommerce.php:54
-#: dist/wp-module-ecommerce.cjs.development.js:1846
-#: dist/wp-module-ecommerce.esm.js:1821
+#: includes/ECommerce.php:56
+#: dist/wp-module-ecommerce.cjs.development.js:1859
+#: dist/wp-module-ecommerce.esm.js:1834
 #: src/components/SiteStatus.js:17
-#: dist/wp-module-ecommerce.cjs.development.js:971
-#: dist/wp-module-ecommerce.cjs.production.min.js:971
-#: dist/wp-module-ecommerce.esm.js:971
+#: dist/wp-module-ecommerce.cjs.development.js:978
+#: dist/wp-module-ecommerce.cjs.production.min.js:978
+#: dist/wp-module-ecommerce.esm.js:978
 msgid "Live"
 msgstr ""
 
-#: includes/ECommerce.php:59
+#: includes/ECommerce.php:61
 msgid "Site Status: "
 msgstr ""
 
-#: includes/ECommerce.php:61
+#: includes/ECommerce.php:63
 msgid "Launch Your Site"
 msgstr ""
 
@@ -62,254 +62,254 @@ msgstr ""
 msgid "Your site is currently displaying a \"Coming Soon\" page. Once you are ready, launch your site."
 msgstr ""
 
-#: dist/wp-module-ecommerce.cjs.development.js:688
-#: dist/wp-module-ecommerce.esm.js:663
+#: dist/wp-module-ecommerce.cjs.development.js:701
+#: dist/wp-module-ecommerce.esm.js:676
 #: src/components/AdvancedFeatures.js:14
-#: dist/wp-module-ecommerce.cjs.development.js:113
-#: dist/wp-module-ecommerce.cjs.production.min.js:113
-#: dist/wp-module-ecommerce.esm.js:113
+#: dist/wp-module-ecommerce.cjs.development.js:120
+#: dist/wp-module-ecommerce.cjs.production.min.js:120
+#: dist/wp-module-ecommerce.esm.js:120
 msgid "Manage bookable/rental products"
 msgstr ""
 
-#: dist/wp-module-ecommerce.cjs.development.js:689
-#: dist/wp-module-ecommerce.esm.js:664
+#: dist/wp-module-ecommerce.cjs.development.js:702
+#: dist/wp-module-ecommerce.esm.js:677
 #: src/components/AdvancedFeatures.js:15
-#: dist/wp-module-ecommerce.cjs.development.js:114
-#: dist/wp-module-ecommerce.cjs.production.min.js:114
-#: dist/wp-module-ecommerce.esm.js:114
+#: dist/wp-module-ecommerce.cjs.development.js:121
+#: dist/wp-module-ecommerce.cjs.production.min.js:121
+#: dist/wp-module-ecommerce.esm.js:121
 msgid "Enable a booking/appointment system to manage renting or booking of services, rooms, houses."
 msgstr ""
 
-#: dist/wp-module-ecommerce.cjs.development.js:693
-#: dist/wp-module-ecommerce.esm.js:668
+#: dist/wp-module-ecommerce.cjs.development.js:706
+#: dist/wp-module-ecommerce.esm.js:681
 #: src/components/AdvancedFeatures.js:23
-#: dist/wp-module-ecommerce.cjs.development.js:122
-#: dist/wp-module-ecommerce.cjs.production.min.js:122
-#: dist/wp-module-ecommerce.esm.js:122
+#: dist/wp-module-ecommerce.cjs.development.js:129
+#: dist/wp-module-ecommerce.cjs.production.min.js:129
+#: dist/wp-module-ecommerce.esm.js:129
 msgid "Add a powerful seach tool to your store"
 msgstr ""
 
-#: dist/wp-module-ecommerce.cjs.development.js:694
-#: dist/wp-module-ecommerce.esm.js:669
+#: dist/wp-module-ecommerce.cjs.development.js:707
+#: dist/wp-module-ecommerce.esm.js:682
 #: src/components/AdvancedFeatures.js:24
-#: dist/wp-module-ecommerce.cjs.development.js:123
-#: dist/wp-module-ecommerce.cjs.production.min.js:123
-#: dist/wp-module-ecommerce.esm.js:123
+#: dist/wp-module-ecommerce.cjs.development.js:130
+#: dist/wp-module-ecommerce.cjs.production.min.js:130
+#: dist/wp-module-ecommerce.esm.js:130
 msgid "Allow your users to search products in real time by title, description, tags, and more."
 msgstr ""
 
-#: dist/wp-module-ecommerce.cjs.development.js:698
-#: dist/wp-module-ecommerce.esm.js:673
+#: dist/wp-module-ecommerce.cjs.development.js:711
+#: dist/wp-module-ecommerce.esm.js:686
 #: src/components/AdvancedFeatures.js:32
-#: dist/wp-module-ecommerce.cjs.development.js:131
-#: dist/wp-module-ecommerce.cjs.production.min.js:131
-#: dist/wp-module-ecommerce.esm.js:131
+#: dist/wp-module-ecommerce.cjs.development.js:138
+#: dist/wp-module-ecommerce.cjs.production.min.js:138
+#: dist/wp-module-ecommerce.esm.js:138
 msgid "Allow your customers to save products in their Wishlist"
 msgstr ""
 
-#: dist/wp-module-ecommerce.cjs.development.js:699
-#: dist/wp-module-ecommerce.esm.js:674
+#: dist/wp-module-ecommerce.cjs.development.js:712
+#: dist/wp-module-ecommerce.esm.js:687
 #: src/components/AdvancedFeatures.js:36
-#: dist/wp-module-ecommerce.cjs.development.js:135
-#: dist/wp-module-ecommerce.cjs.production.min.js:135
-#: dist/wp-module-ecommerce.esm.js:135
+#: dist/wp-module-ecommerce.cjs.development.js:142
+#: dist/wp-module-ecommerce.cjs.production.min.js:142
+#: dist/wp-module-ecommerce.esm.js:142
 msgid "Make it easy for your customers to create lists and add their favorite items to them."
 msgstr ""
 
-#: dist/wp-module-ecommerce.cjs.development.js:703
-#: dist/wp-module-ecommerce.esm.js:678
+#: dist/wp-module-ecommerce.cjs.development.js:716
+#: dist/wp-module-ecommerce.esm.js:691
 #: src/components/AdvancedFeatures.js:44
-#: dist/wp-module-ecommerce.cjs.development.js:143
-#: dist/wp-module-ecommerce.cjs.production.min.js:143
-#: dist/wp-module-ecommerce.esm.js:143
+#: dist/wp-module-ecommerce.cjs.development.js:150
+#: dist/wp-module-ecommerce.cjs.production.min.js:150
+#: dist/wp-module-ecommerce.esm.js:150
 msgid "Add a powerful product filter to your store"
 msgstr ""
 
-#: dist/wp-module-ecommerce.cjs.development.js:704
-#: dist/wp-module-ecommerce.esm.js:679
+#: dist/wp-module-ecommerce.cjs.development.js:717
+#: dist/wp-module-ecommerce.esm.js:692
 #: src/components/AdvancedFeatures.js:48
-#: dist/wp-module-ecommerce.cjs.development.js:147
-#: dist/wp-module-ecommerce.cjs.production.min.js:147
-#: dist/wp-module-ecommerce.esm.js:147
+#: dist/wp-module-ecommerce.cjs.development.js:154
+#: dist/wp-module-ecommerce.cjs.production.min.js:154
+#: dist/wp-module-ecommerce.esm.js:154
 msgid "If your store has lots of products, help your customers find what they're looking for fast."
 msgstr ""
 
-#: dist/wp-module-ecommerce.cjs.development.js:708
-#: dist/wp-module-ecommerce.esm.js:683
+#: dist/wp-module-ecommerce.cjs.development.js:721
+#: dist/wp-module-ecommerce.esm.js:696
 #: src/components/AdvancedFeatures.js:56
-#: dist/wp-module-ecommerce.cjs.development.js:155
-#: dist/wp-module-ecommerce.cjs.production.min.js:155
-#: dist/wp-module-ecommerce.esm.js:155
+#: dist/wp-module-ecommerce.cjs.development.js:162
+#: dist/wp-module-ecommerce.cjs.production.min.js:162
+#: dist/wp-module-ecommerce.esm.js:162
 msgid "Sell Gift Cards in your store"
 msgstr ""
 
-#: dist/wp-module-ecommerce.cjs.development.js:709
-#: dist/wp-module-ecommerce.esm.js:684
+#: dist/wp-module-ecommerce.cjs.development.js:722
+#: dist/wp-module-ecommerce.esm.js:697
 #: src/components/AdvancedFeatures.js:57
-#: dist/wp-module-ecommerce.cjs.development.js:156
-#: dist/wp-module-ecommerce.cjs.production.min.js:156
-#: dist/wp-module-ecommerce.esm.js:156
+#: dist/wp-module-ecommerce.cjs.development.js:163
+#: dist/wp-module-ecommerce.cjs.production.min.js:163
+#: dist/wp-module-ecommerce.esm.js:163
 msgid "Use gift cards to increase your earnings and attract new customers."
 msgstr ""
 
-#: dist/wp-module-ecommerce.cjs.development.js:713
-#: dist/wp-module-ecommerce.esm.js:688
+#: dist/wp-module-ecommerce.cjs.development.js:726
+#: dist/wp-module-ecommerce.esm.js:701
 #: src/components/AdvancedFeatures.js:65
-#: dist/wp-module-ecommerce.cjs.development.js:164
-#: dist/wp-module-ecommerce.cjs.production.min.js:164
-#: dist/wp-module-ecommerce.esm.js:164
+#: dist/wp-module-ecommerce.cjs.development.js:171
+#: dist/wp-module-ecommerce.cjs.production.min.js:171
+#: dist/wp-module-ecommerce.esm.js:171
 msgid "Customize your customers' account page"
 msgstr ""
 
-#: dist/wp-module-ecommerce.cjs.development.js:714
-#: dist/wp-module-ecommerce.esm.js:689
+#: dist/wp-module-ecommerce.cjs.development.js:727
+#: dist/wp-module-ecommerce.esm.js:702
 #: src/components/AdvancedFeatures.js:66
-#: dist/wp-module-ecommerce.cjs.development.js:165
-#: dist/wp-module-ecommerce.cjs.production.min.js:165
-#: dist/wp-module-ecommerce.esm.js:165
+#: dist/wp-module-ecommerce.cjs.development.js:172
+#: dist/wp-module-ecommerce.cjs.production.min.js:172
+#: dist/wp-module-ecommerce.esm.js:172
 msgid "Show any kind of custom content in your customers' account page."
-msgstr ""
-
-#: dist/wp-module-ecommerce.cjs.development.js:1841
-#: dist/wp-module-ecommerce.esm.js:1816
-#: src/components/SiteStatus.js:9
-#: dist/wp-module-ecommerce.cjs.development.js:963
-#: dist/wp-module-ecommerce.cjs.production.min.js:963
-#: dist/wp-module-ecommerce.esm.js:963
-msgid "Launch Your Store!"
-msgstr ""
-
-#: dist/wp-module-ecommerce.cjs.development.js:1842
-#: dist/wp-module-ecommerce.esm.js:1817
-#: src/components/SiteStatus.js:10
-#: dist/wp-module-ecommerce.cjs.development.js:964
-#: dist/wp-module-ecommerce.cjs.production.min.js:964
-#: dist/wp-module-ecommerce.esm.js:964
-msgid "Once you're ready, click the button below to make your store live to the world!"
-msgstr ""
-
-#: dist/wp-module-ecommerce.cjs.development.js:1844
-#: dist/wp-module-ecommerce.esm.js:1819
-#: src/components/SiteStatus.js:15
-#: dist/wp-module-ecommerce.cjs.development.js:969
-#: dist/wp-module-ecommerce.cjs.production.min.js:969
-#: dist/wp-module-ecommerce.esm.js:969
-msgid "Launch your store"
-msgstr ""
-
-#: dist/wp-module-ecommerce.cjs.development.js:1851
-#: dist/wp-module-ecommerce.esm.js:1826
-#: src/components/SiteStatus.js:22
-#: dist/wp-module-ecommerce.cjs.development.js:976
-#: dist/wp-module-ecommerce.cjs.production.min.js:976
-#: dist/wp-module-ecommerce.esm.js:976
-msgid "Change your site status"
-msgstr ""
-
-#: dist/wp-module-ecommerce.cjs.development.js:1852
-#: dist/wp-module-ecommerce.esm.js:1827
-#: src/components/SiteStatus.js:23
-#: dist/wp-module-ecommerce.cjs.development.js:977
-#: dist/wp-module-ecommerce.cjs.production.min.js:977
-#: dist/wp-module-ecommerce.esm.js:977
-msgid "Your site is currently \"Live\", but you can disable your site and put back the \"Coming Soon\" page if needed."
 msgstr ""
 
 #: dist/wp-module-ecommerce.cjs.development.js:1854
 #: dist/wp-module-ecommerce.esm.js:1829
+#: src/components/SiteStatus.js:9
+#: dist/wp-module-ecommerce.cjs.development.js:970
+#: dist/wp-module-ecommerce.cjs.production.min.js:970
+#: dist/wp-module-ecommerce.esm.js:970
+msgid "Launch Your Store!"
+msgstr ""
+
+#: dist/wp-module-ecommerce.cjs.development.js:1855
+#: dist/wp-module-ecommerce.esm.js:1830
+#: src/components/SiteStatus.js:10
+#: dist/wp-module-ecommerce.cjs.development.js:971
+#: dist/wp-module-ecommerce.cjs.production.min.js:971
+#: dist/wp-module-ecommerce.esm.js:971
+msgid "Once you're ready, click the button below to make your store live to the world!"
+msgstr ""
+
+#: dist/wp-module-ecommerce.cjs.development.js:1857
+#: dist/wp-module-ecommerce.esm.js:1832
+#: src/components/SiteStatus.js:15
+#: dist/wp-module-ecommerce.cjs.development.js:976
+#: dist/wp-module-ecommerce.cjs.production.min.js:976
+#: dist/wp-module-ecommerce.esm.js:976
+msgid "Launch your store"
+msgstr ""
+
+#: dist/wp-module-ecommerce.cjs.development.js:1864
+#: dist/wp-module-ecommerce.esm.js:1839
+#: src/components/SiteStatus.js:22
+#: dist/wp-module-ecommerce.cjs.development.js:983
+#: dist/wp-module-ecommerce.cjs.production.min.js:983
+#: dist/wp-module-ecommerce.esm.js:983
+msgid "Change your site status"
+msgstr ""
+
+#: dist/wp-module-ecommerce.cjs.development.js:1865
+#: dist/wp-module-ecommerce.esm.js:1840
+#: src/components/SiteStatus.js:23
+#: dist/wp-module-ecommerce.cjs.development.js:984
+#: dist/wp-module-ecommerce.cjs.production.min.js:984
+#: dist/wp-module-ecommerce.esm.js:984
+msgid "Your site is currently \"Live\", but you can disable your site and put back the \"Coming Soon\" page if needed."
+msgstr ""
+
+#: dist/wp-module-ecommerce.cjs.development.js:1867
+#: dist/wp-module-ecommerce.esm.js:1842
 #: src/components/SiteStatus.js:28
-#: dist/wp-module-ecommerce.cjs.development.js:982
-#: dist/wp-module-ecommerce.cjs.production.min.js:982
-#: dist/wp-module-ecommerce.esm.js:982
+#: dist/wp-module-ecommerce.cjs.development.js:989
+#: dist/wp-module-ecommerce.cjs.production.min.js:989
+#: dist/wp-module-ecommerce.esm.js:989
 msgid "Switch back to \"Coming Soon\" mode"
 msgstr ""
 
-#: dist/wp-module-ecommerce.cjs.development.js:1902
-#: dist/wp-module-ecommerce.esm.js:1877
+#: dist/wp-module-ecommerce.cjs.development.js:1915
+#: dist/wp-module-ecommerce.esm.js:1890
 #: src/components/SiteStatus.js:59
-#: dist/wp-module-ecommerce.cjs.development.js:1013
-#: dist/wp-module-ecommerce.cjs.production.min.js:1013
-#: dist/wp-module-ecommerce.esm.js:1013
+#: dist/wp-module-ecommerce.cjs.development.js:1020
+#: dist/wp-module-ecommerce.cjs.production.min.js:1020
+#: dist/wp-module-ecommerce.esm.js:1020
 msgid "Go to your site!"
 msgstr ""
 
-#: dist/wp-module-ecommerce.cjs.development.js:1933
-#: dist/wp-module-ecommerce.esm.js:1908
+#: dist/wp-module-ecommerce.cjs.development.js:1946
+#: dist/wp-module-ecommerce.esm.js:1921
 #: src/components/SiteStatus.js:92
-#: dist/wp-module-ecommerce.cjs.development.js:1046
-#: dist/wp-module-ecommerce.cjs.production.min.js:1046
-#: dist/wp-module-ecommerce.esm.js:1046
+#: dist/wp-module-ecommerce.cjs.development.js:1053
+#: dist/wp-module-ecommerce.cjs.production.min.js:1053
+#: dist/wp-module-ecommerce.esm.js:1053
 msgid "Your store is online and ready for business!"
 msgstr ""
 
-#: dist/wp-module-ecommerce.cjs.development.js:1933
-#: dist/wp-module-ecommerce.esm.js:1908
+#: dist/wp-module-ecommerce.cjs.development.js:1946
+#: dist/wp-module-ecommerce.esm.js:1921
 #: src/components/SiteStatus.js:98
-#: dist/wp-module-ecommerce.cjs.development.js:1052
-#: dist/wp-module-ecommerce.cjs.production.min.js:1052
-#: dist/wp-module-ecommerce.esm.js:1052
+#: dist/wp-module-ecommerce.cjs.development.js:1059
+#: dist/wp-module-ecommerce.cjs.production.min.js:1059
+#: dist/wp-module-ecommerce.esm.js:1059
 msgid "Not ready? You can re-enable the 'Coming Soon' mode if you need."
-msgstr ""
-
-#: dist/wp-module-ecommerce.cjs.development.js:1939
-#: dist/wp-module-ecommerce.esm.js:1914
-#: src/components/SiteStatus.js:106
-#: dist/wp-module-ecommerce.cjs.development.js:1060
-#: dist/wp-module-ecommerce.cjs.production.min.js:1060
-#: dist/wp-module-ecommerce.esm.js:1060
-msgid "Continue"
-msgstr ""
-
-#: dist/wp-module-ecommerce.cjs.development.js:1944
-#: dist/wp-module-ecommerce.esm.js:1919
-#: src/components/Dashboard.js:11
-#: dist/wp-module-ecommerce.cjs.development.js:1079
-#: dist/wp-module-ecommerce.cjs.production.min.js:1079
-#: dist/wp-module-ecommerce.esm.js:1079
-msgid "General Settings"
-msgstr ""
-
-#: dist/wp-module-ecommerce.cjs.development.js:1948
-#: dist/wp-module-ecommerce.esm.js:1923
-#: src/components/Dashboard.js:16
-#: dist/wp-module-ecommerce.cjs.development.js:1084
-#: dist/wp-module-ecommerce.cjs.production.min.js:1084
-#: dist/wp-module-ecommerce.esm.js:1084
-msgid "Add products"
 msgstr ""
 
 #: dist/wp-module-ecommerce.cjs.development.js:1952
 #: dist/wp-module-ecommerce.esm.js:1927
+#: src/components/SiteStatus.js:106
+#: dist/wp-module-ecommerce.cjs.development.js:1067
+#: dist/wp-module-ecommerce.cjs.production.min.js:1067
+#: dist/wp-module-ecommerce.esm.js:1067
+msgid "Continue"
+msgstr ""
+
+#: dist/wp-module-ecommerce.cjs.development.js:1957
+#: dist/wp-module-ecommerce.esm.js:1932
+#: src/components/Dashboard.js:11
+#: dist/wp-module-ecommerce.cjs.development.js:1086
+#: dist/wp-module-ecommerce.cjs.production.min.js:1086
+#: dist/wp-module-ecommerce.esm.js:1086
+msgid "General Settings"
+msgstr ""
+
+#: dist/wp-module-ecommerce.cjs.development.js:1961
+#: dist/wp-module-ecommerce.esm.js:1936
+#: src/components/Dashboard.js:16
+#: dist/wp-module-ecommerce.cjs.development.js:1091
+#: dist/wp-module-ecommerce.cjs.production.min.js:1091
+#: dist/wp-module-ecommerce.esm.js:1091
+msgid "Add products"
+msgstr ""
+
+#: dist/wp-module-ecommerce.cjs.development.js:1965
+#: dist/wp-module-ecommerce.esm.js:1940
 #: src/components/Dashboard.js:21
-#: dist/wp-module-ecommerce.cjs.development.js:1089
-#: dist/wp-module-ecommerce.cjs.production.min.js:1089
-#: dist/wp-module-ecommerce.esm.js:1089
+#: dist/wp-module-ecommerce.cjs.development.js:1096
+#: dist/wp-module-ecommerce.cjs.production.min.js:1096
+#: dist/wp-module-ecommerce.esm.js:1096
 msgid "Customize your store"
 msgstr ""
 
-#: dist/wp-module-ecommerce.cjs.development.js:1956
-#: dist/wp-module-ecommerce.esm.js:1931
+#: dist/wp-module-ecommerce.cjs.development.js:1969
+#: dist/wp-module-ecommerce.esm.js:1944
 #: src/components/Dashboard.js:26
-#: dist/wp-module-ecommerce.cjs.development.js:1094
-#: dist/wp-module-ecommerce.cjs.production.min.js:1094
-#: dist/wp-module-ecommerce.esm.js:1094
+#: dist/wp-module-ecommerce.cjs.development.js:1101
+#: dist/wp-module-ecommerce.cjs.production.min.js:1101
+#: dist/wp-module-ecommerce.esm.js:1101
 msgid "Advanced features"
 msgstr ""
 
-#: dist/wp-module-ecommerce.cjs.development.js:1960
-#: dist/wp-module-ecommerce.esm.js:1935
+#: dist/wp-module-ecommerce.cjs.development.js:1973
+#: dist/wp-module-ecommerce.esm.js:1948
 #: src/components/Dashboard.js:31
-#: dist/wp-module-ecommerce.cjs.development.js:1099
-#: dist/wp-module-ecommerce.cjs.production.min.js:1099
-#: dist/wp-module-ecommerce.esm.js:1099
+#: dist/wp-module-ecommerce.cjs.development.js:1106
+#: dist/wp-module-ecommerce.cjs.production.min.js:1106
+#: dist/wp-module-ecommerce.esm.js:1106
 msgid "Site Status"
 msgstr ""
 
-#: dist/wp-module-ecommerce.cjs.development.js:1975
-#: dist/wp-module-ecommerce.esm.js:1950
+#: dist/wp-module-ecommerce.cjs.development.js:1988
+#: dist/wp-module-ecommerce.esm.js:1963
 #: src/components/Dashboard.js:42
-#: dist/wp-module-ecommerce.cjs.development.js:1110
-#: dist/wp-module-ecommerce.cjs.production.min.js:1110
-#: dist/wp-module-ecommerce.esm.js:1110
+#: dist/wp-module-ecommerce.cjs.development.js:1117
+#: dist/wp-module-ecommerce.cjs.production.min.js:1117
+#: dist/wp-module-ecommerce.esm.js:1117
 msgid "Setup Guide"
 msgstr ""
