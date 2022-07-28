@@ -1,0 +1,23 @@
+.nfd-woocommerce-link {
+  outline: none;
+  position: fixed;
+  width: 200px;
+  top: 32px;
+  padding-left: 32px;
+  z-index: 1010;
+  height: 60px;
+  display: grid;
+  text-decoration: none;
+  align-items: center;
+  background: white;
+  font: 400 16px/1.5 sans-serif;
+  color: #2c76dc;
+}
+.nfd-woocommerce-link:hover {
+  color: #2c76dc;
+}
+.nfd-woocommerce-link:focus {
+  color: #2c76dc;
+  box-shadow: none;
+  outline: none;
+}

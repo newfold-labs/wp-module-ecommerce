@@ -21,7 +21,14 @@ export function Card({
       type="button"
       disabled={status !== "ready"}
       onClick={() => {
-        window.location.href = href;
+        let [page, qs] = href.split("?");
+        let query = new URLSearchParams(qs);
+        if (query.get("page")?.startsWith("bluehost")) {
+          window.location.href = href;
+        } else {
+          query.set("return_to_nfd", window.location.hash.replace("#", ""));
+          window.location.href = `${page}?${query}`;
+        }
       }}
       {...props}
     >

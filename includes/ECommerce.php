@@ -4,6 +4,7 @@ namespace NewfoldLabs\WP\Module\ECommerce;
 
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\Module\ECommerce\Partials\CaptiveFlow;
+use NewfoldLabs\WP\Module\ECommerce\Partials\WooCommerceBacklink;
 
 class ECommerce {
 
@@ -27,6 +28,7 @@ class ECommerce {
 		add_action( 'admin_bar_menu', array( $this, 'newfold_site_status' ), 200 );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ));
 		CaptiveFlow::init();
+		WooCommerceBacklink::init();
 	}
 
 	public function register_routes() {
