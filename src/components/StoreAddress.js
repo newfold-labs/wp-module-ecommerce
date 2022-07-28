@@ -23,7 +23,7 @@ function useProfile() {
   return [!profile || !countries, defaultContact, countries];
 }
 
-export function StoreAddress({ wpModules, onComplete }) {
+export function StoreAddress({ wpModules, onComplete, isMandatory = false }) {
   let [address, setAddress] = wpModules.useState({});
   let [isLoading, defaultContact, countries] = useProfile();
   function handleChange(event) {
@@ -58,16 +58,18 @@ export function StoreAddress({ wpModules, onComplete }) {
       }}
       style={{ display: "grid", paddingTop: "64px", justifyItems: "center" }}
     >
-      <h1 className="nfd-ecommerce-store-address-title">
-        Confirm your business or store address{" "}
-      </h1>
-      <p>
+      <p className="nfd-ecommerce-modal-header">
+        {isMandatory
+          ? "First, we need your business or store address"
+          : "Confirm your business or store address"}
+      </p>
+      <p className="nfd-ecommerce-modal-header-description">
         Use the same address you provided for your Bluehost account or change it
         below:
       </p>
       {isLoading && (
         <div style={{ display: "inline-flex", alignItems: "center" }}>
-          Loading your information...{" "}
+          Loading your information...{"  "}
           <div className="bwa-loader nfd-ecommerce-loader-mini" />
         </div>
       )}

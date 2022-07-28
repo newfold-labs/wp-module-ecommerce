@@ -29,8 +29,7 @@ const path = "/wc-admin/options";
 const Tax = (props) => {
   let { wpModules, onComplete, isStoreDetailsFilled } = props;
   const [selectedOption, setSelectedOption] = wpModules.useState(null);
-  const [isAutoCalTaxWithoutStoreDetails, setIsAutoCalTaxWithoutStoreDetails] =
-    wpModules.useState(false);
+  const [isAddressMandatory, setIsAddressMandatory] = wpModules.useState(false);
 
   const saveTaxOption = async () =>
     wpModules.apiFetch({ path, method: "POST", data: selectedOption.data });
@@ -40,17 +39,18 @@ const Tax = (props) => {
       selectedOption.title == taxManagementOptions[0].title &&
       !isStoreDetailsFilled
     ) {
-      setIsAutoCalTaxWithoutStoreDetails(true);
+      setIsAddressMandatory(true);
       return;
     }
     await saveTaxOption();
     await onComplete();
   };
 
-  if (isAutoCalTaxWithoutStoreDetails) {
+  if (isAddressMandatory) {
     return (
       <StoreAddress
         {...props}
+        isMandatory
         onComplete={async () => {
           await saveTaxOption();
           await onComplete();
@@ -60,13 +60,12 @@ const Tax = (props) => {
   }
   return (
     <>
-      <div className="nfd-ecommerce-modal-header">
-        Confirm your tax information
-      </div>
-      <div className="nfd-ecommerce-modal-header-description">
+      <div style={{ height: "64px" }} />
+      <p className="nfd-ecommerce-modal-header">Confirm your tax information</p>
+      <p className="nfd-ecommerce-modal-header-description">
         Based on the address you provided, we can auto-calculate your taxes.
         <div> How would you like to manage your taxes:</div>
-      </div>
+      </p>
       <div className="nfd-ecommerce-modal-options">
         {taxManagementOptions.map((option) => (
           <div

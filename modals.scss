@@ -58,16 +58,11 @@
   }
 }
 
-
-h1.nfd-ecommerce-store-address-title {
-  color: var(--nfd-ecommerce-text-primary);
-  font: 274 40px/1.2 var(--nfd-ecommerce-font-primary);
-}
 div.nfd-ecommerce-store-address-form {
   display: grid;
   grid-template-columns: repeat(2, auto);
   gap: 24px;
-  padding: 64px 0 76px 0;
+  padding: 0 0 76px;
   label {
     display: block;
     font-size: 18px;
@@ -85,19 +80,19 @@ div.nfd-ecommerce-store-address-form {
 }
 
 .nfd-ecommerce-modal-header {
-  font: 274 40px var(--nfd-ecommerce-font-secondary);
-  margin-top: 64px;
+  color: var(--nfd-ecommerce-text-primary);
+  font: 274 40px/1.2 var(--nfd-ecommerce-font-primary);
+  margin: 0;
 }
 .nfd-ecommerce-modal-header-description {
-  font: 400 24px var(--nfd-ecommerce-font-secondary);
-  line-height: 29px;
+  color: var(--nfd-ecommerce-text-primary);
+  font: 400 20px/1.2 var(--nfd-ecommerce-font-primary);
   text-align: center;
-  margin-top: 24px;
+  margin: 16px 0 48px;
 }
 .nfd-ecommerce-modal-options {
   display: grid;
   grid-auto-flow: row;
-  padding-top: 32px;
   row-gap: 8px;
 }
 .nfd-ecommerce-modal-option {

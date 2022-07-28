@@ -125,7 +125,11 @@ export function GeneralSettings(props) {
       ) : null}
       {completedSteps.length > 0 ? (
         <DashboardContent
-          title="These steps are done, nice job!"
+          title={
+            incompleteSteps.length === 0
+              ? "You've got the basics covered!"
+              : "These steps are done, nice job!"
+          }
           subtitle="Feel free to come back at any time and update any of the information in the steps you've already completed."
         >
           <div className="nfd-ecommerce-minimal-tasks-container">
