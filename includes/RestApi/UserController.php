@@ -46,18 +46,23 @@ class UserController {
 		$response      = \wp_remote_get( $url, $args );
 		$response_code = \wp_remote_retrieve_response_code( $response );
 
-		if ( is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) != 200 ) {
-			return;
+		if ( is_wp_error( $response ) ) {
+			return array( response => array(), code => 500 );
 		}
-		return json_decode( \wp_remote_retrieve_body( $response ) );
+		return array(
+			code     => \wp_remote_retrieve_response_code( $response ),
+			response => json_decode( \wp_remote_retrieve_body( $response ) )
+		);
 	}
 
 	public function get_profile() {
 		$response = self::connect('account-center', 'profile?hide_country_list=1');
-
-		if ( ! is_object( $response ) ) {
-			return array( 'message' => 'error' );
+		if ( $response['code'] !== 200 ) {
+			return new \WP_REST_Response(
+				array( status => 'error', message => $response['response'] ),
+				$response['code']
+			);
 		}
-		return $response;
+		return new \WP_REST_Response( $response['response'], 200 );
 	}
 }
