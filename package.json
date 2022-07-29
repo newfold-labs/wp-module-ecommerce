@@ -11,9 +11,11 @@
   },
   "files": [
     "dist/",
-    "styles.scss"
+    "*.scss",
+    "*.css"
   ],
   "scripts": {
+    "prepare": "dts build",
     "build": "dts build",
     "lint": "dts lint",
     "start": "dts watch",
@@ -21,7 +23,7 @@
     "test:e2e": "echo \"No tests implemented\""
   },
   "dependencies": {
-    "@wordpress/i18n": "4.12.0",
+    "@wordpress/i18n": "^3.6.1",
     "swr": "^1.3.0"
   },
   "devDependencies": {
