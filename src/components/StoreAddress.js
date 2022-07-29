@@ -1,12 +1,16 @@
 import useSWR from "swr";
 
+/**
+ * @TODO We need to get customer details from Hiive before using this hook
+ * @deprecated
+ */
 function useProfile() {
   let { data: profile } = useSWR("/newfold-ecommerce/v1/user/profile");
   let { data: countries } = useSWR("/wc/v3/data/countries");
   let defaultContact = {};
   if (profile && countries) {
-    let country = profile.contact.country ?? "";
-    let state = profile.contact.state ?? "";
+    let country = profile.contact?.country ?? "US";
+    let state = profile.contact?.state ?? "";
     let isStateCodeValid =
       countries
         .find((_) => country === _.code)
@@ -14,18 +18,31 @@ function useProfile() {
     defaultContact = {
       country,
       state: isStateCodeValid ? state : null,
-      woocommerce_store_address: profile.contact.address,
+      woocommerce_store_address: profile.contact?.address,
       woocommerce_store_address_2: "",
-      woocommerce_store_city: profile.contact.city,
-      woocommerce_store_postcode: profile.contact.zip,
+      woocommerce_store_city: profile.contact?.city,
+      woocommerce_store_postcode: profile.contact?.zip,
     };
   }
   return [!profile || !countries, defaultContact, countries];
 }
 
+function useBasicProfile() {
+  let { data: countries } = useSWR("/wc/v3/data/countries");
+  let defaultContact = {
+    country: "US",
+    state: "",
+    woocommerce_store_address: "",
+    woocommerce_store_address_2: "",
+    woocommerce_store_city: "",
+    woocommerce_store_postcode: "",
+  };
+  return [!countries, defaultContact, countries];
+}
+
 export function StoreAddress({ wpModules, onComplete, isMandatory = false }) {
   let [address, setAddress] = wpModules.useState({});
-  let [isLoading, defaultContact, countries] = useProfile();
+  let [isLoading, defaultContact, countries] = useBasicProfile();
   function handleChange(event) {
     setAddress({ ...address, [event.target.name]: event.target.value });
   }
@@ -68,7 +85,13 @@ export function StoreAddress({ wpModules, onComplete, isMandatory = false }) {
         below:
       </p>
       {isLoading && (
-        <div style={{ display: "inline-flex", alignItems: "center" }}>
+        <div
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            marginBottom: "10px",
+          }}
+        >
           Loading your information...{"  "}
           <div className="bwa-loader nfd-ecommerce-loader-mini" />
         </div>
