@@ -9,29 +9,37 @@ import { DashboardContent } from "./DashboardContent";
 import { StoreAddress } from "./StoreAddress";
 import Tax from "./Tax";
 
+const YithOptions = {
+  paypal: "nfd-ecommerce-captive-flow-paypal",
+  shippo: "nfd-ecommerce-captive-flow-shippo",
+};
+const GET_WC_TASKS = `/wc-admin/onboarding/tasks?${new URLSearchParams({
+  ids: "setup",
+})}`;
+const GET_YITH_OPTIONS = `/wc-admin/options?${new URLSearchParams({
+  options: Object.values(YithOptions),
+})}`;
+
 const OnboardingSteps = {
   store_details: {
     title: "Store Info",
     setupAction: "Add Info",
     editAction: "Edit Info",
     editUrl: "admin.php?page=wc-settings&tab=general",
-    isSetupDone: (state) => state.onboarding.isComplete,
     SetupIcon: StoreIcon,
   },
-  paypal: {
+  [YithOptions.paypal]: {
     title: "Payments",
     setupAction: "Setup",
     editAction: "Edit Settings",
     editUrl: "admin.php?page=yith_paypal_payments",
-    isSetupDone: (state) => false,
     SetupIcon: Payments,
   },
-  shippo: {
+  [YithOptions.shippo]: {
     title: "Shipping",
     setupAction: "Setup",
     editAction: "Edit Settings",
     editUrl: "admin.php?page=yith_shippo_shipping_for_woocommerce",
-    isSetupDone: (state) => false,
     SetupIcon: Shipping,
   },
   tax: {
@@ -39,36 +47,48 @@ const OnboardingSteps = {
     setupAction: "Add Info",
     editAction: "Edit Info",
     editUrl: "admin.php?page=wc-settings&tab=tax",
-    isSetupDone: (state) => state.onboarding.isComplete,
     SetupIcon: TaxInfo,
   },
 };
 
-export function GeneralSettings(props) {
-  let { Modal, useEffect, useState } = props.wpModules;
-  let [onboardingModalKey, setOnboardingModal] = useState(null);
+function useOnBoardingStatus() {
   let {
-    data: onboardingResponse,
-    error,
-    mutate: refreshTasks,
-  } = useSWR("/wc-admin/onboarding/tasks?ids=setup");
-  useEffect(() => {
-    async function onExternalOnboardingComplete(messageEvent) {
-      if (
-        messageEvent.origin === window.location.origin &&
-        messageEvent?.data?.type === "onboarding-complete"
-      ) {
-        setOnboardingModal(null);
-      }
-    }
-    window.addEventListener("message", onExternalOnboardingComplete);
-    return () =>
-      window.removeEventListener("message", onExternalOnboardingComplete);
-  }, [setOnboardingModal]);
-  if (!onboardingResponse) {
+    data: wcOnboarding,
+    error: wcError,
+    mutate: refreshWC,
+  } = useSWR(GET_WC_TASKS);
+  let {
+    data: yithOnboarding,
+    error: yithError,
+    mutate: refreshYith,
+  } = useSWR(GET_YITH_OPTIONS);
+  let onboardingSetup = wcOnboarding?.[0];
+  let onboarding = Object.fromEntries(
+    (onboardingSetup?.tasks ?? [])
+      .map((task) => [task.id, task.isComplete])
+      .concat(
+        Object.entries(yithOnboarding ?? {}).map(([option, value]) => [
+          option,
+          value === "true",
+        ])
+      )
+  );
+  return [
+    !wcOnboarding || !yithOnboarding,
+    { wc: wcError, yith: yithError },
+    { wc: refreshWC, yith: refreshYith },
+    onboarding,
+  ];
+}
+
+export function GeneralSettings(props) {
+  let { Modal, useState } = props.wpModules;
+  let [onboardingModalKey, setOnboardingModal] = useState(null);
+  let [isLoading, errors, refresh, onboarding] = useOnBoardingStatus();
+  if (isLoading) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
-        {error ? (
+        {errors.wc || errors.yith ? (
           <h2>There was an error while loading this information</h2>
         ) : (
           <div className="bwa-loader" />
@@ -76,22 +96,11 @@ export function GeneralSettings(props) {
       </div>
     );
   }
-  let onboardingSetup = onboardingResponse[0];
-  let onboarding = Object.fromEntries(
-    (onboardingSetup ? onboardingSetup.tasks : []).map((task) => [
-      task.id,
-      task,
-    ])
-  );
   let completedSteps = Object.entries(OnboardingSteps).filter(
-    ([stepKey, stepProgress]) =>
-      stepProgress.isSetupDone({ onboarding: onboarding[stepKey] ?? {} })
+    ([stepKey]) => onboarding[stepKey] === true
   );
   let incompleteSteps = Object.entries(OnboardingSteps).filter(
-    ([stepKey, stepProgress]) =>
-      !stepProgress.isSetupDone({
-        onboarding: onboarding[stepKey] ?? {},
-      })
+    ([stepKey]) => onboarding[stepKey] !== true
   );
   let NativeOnboarding =
     onboardingModalKey === "store_details" ? StoreAddress : Tax;
@@ -161,18 +170,17 @@ export function GeneralSettings(props) {
           <div className="nfd-ecommerce-modal-content">
             <NativeOnboarding
               {...props}
-              isStoreDetailsFilled={completedSteps.find(
-                ([step]) => step === "store_details"
-              )}
+              isStoreDetailsFilled={onboarding.store_details === true}
               onComplete={async () => {
-                await refreshTasks();
+                await refresh.wc();
                 setOnboardingModal(null);
               }}
             />
           </div>
         </Modal>
       ) : null}
-      {onboardingModalKey === "paypal" || onboardingModalKey === "shippo" ? (
+      {onboardingModalKey === YithOptions.paypal ||
+      onboardingModalKey === YithOptions.shippo ? (
         <Modal
           overlayClassName="nfd-ecommerce-modal-overlay"
           className="nfd-ecommerce-atoms nfd-ecommerce-modal"
@@ -183,7 +191,7 @@ export function GeneralSettings(props) {
         >
           <iframe
             style={{ width: "100%", height: "100%" }}
-            src={`admin.php?page=nfd-ecommerce-captive-flow-${onboardingModalKey}`}
+            src={`admin.php?page=${onboardingModalKey}`}
           />
         </Modal>
       ) : null}
