@@ -13,17 +13,7 @@ class UserController {
 	protected $namespace = 'newfold-ecommerce/v1';
 	protected $rest_base = '/user';
 
-	public function register_routes() {
-		\register_rest_route(
-			$this->namespace,
-			$this->rest_base . '/profile',
-			array(
-				'methods'  => \WP_REST_Server::READABLE,
-				'permission_callback' => array( Permissions::class,'rest_is_authorized_admin' ),
-				'callback' => array ( $this, 'get_profile')
-			)
-		);
-	}
+	public function register_routes() {}
 
 	/**
 	 * Connect to UAPI with token via AccessToken Class in Bluehost Plugin
@@ -55,6 +45,11 @@ class UserController {
 		);
 	}
 
+	/**
+	 * @deprecated 0.1.0
+	 *
+	 * @return void
+	 */
 	public function get_profile() {
 		$response = self::connect('account-center', 'profile?hide_country_list=1');
 		if ( $response['code'] !== 200 ) {
