@@ -13,7 +13,27 @@ class UserController {
 	protected $namespace = 'newfold-ecommerce/v1';
 	protected $rest_base = '/user';
 
-	public function register_routes() {}
+	public function register_routes() {
+        \register_rest_route(
+            $this->namespace,
+            $this->rest_base . '/page-status',
+            array(
+                array(
+                    'methods'             => \WP_REST_Server::READABLE,
+                    'callback'            => array( $this, 'get_page_status' ),
+                    'permission_callback' => array( Permissions::class, 'rest_is_authorized_admin' ),
+                ),
+            )
+        );
+    }
+
+    public function get_page_status() {
+	    global $wpdb;
+        return $wpdb->get_results(
+            $wpdb->prepare(
+                "select post_id, meta_value from wp_postmeta where meta_key LIKE 'nf_dc_page'")
+        );
+    }
 
 	/**
 	 * Connect to UAPI with token via AccessToken Class in Bluehost Plugin
