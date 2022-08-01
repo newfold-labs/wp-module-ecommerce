@@ -23,7 +23,7 @@ export function Card({
       onClick={() => {
         let [page, qs] = href.split("?");
         let query = new URLSearchParams(qs);
-        if (query.get("page")?.startsWith("bluehost")) {
+        if (query.get("page")?.startsWith("bluehost") || page.startsWith("customize")) {
           window.location.href = href;
         } else {
           query.set("return_to_nfd", window.location.hash.replace("#", ""));

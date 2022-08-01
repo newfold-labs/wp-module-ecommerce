@@ -8,49 +8,49 @@ import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
 
 const CustomizeList = [
-  {
-    title: "Home Page",
-    customizeUrl: "post-new.php?dcpage=home&dcsrc=plugin",
-    Icon: Home,
-  },
-  {
-    title: "About Page",
-    customizeUrl: "post-new.php?dcpage=about&dcsrc=plugin",
-    Icon: About,
-  },
-  {
-    title: "Contact Page",
-    customizeUrl: "post-new.php?dcpage=contact&dcsrc=plugin",
-    Icon: Contact,
-  },
-  {
-    title: "Store Layout",
-    customizeUrl:
-      "customize.php?return=%2Fwp-admin%2Fadmin.php%3Fpage%3Dbluehost",
-    action: "Configure",
-    Icon: StoreLayout,
-  },
+  { title: "Home Page", dcpage: "home", Icon: Home },
+  { title: "About Page", dcpage: "about", Icon: About },
+  { title: "Contact Page", dcpage: "contact", Icon: Contact },
 ];
 
 export function CustomizeStore(props) {
   let { data: pluginsOnSite } = useSWR("/newfold-ecommerce/v1/plugins/status");
+  let { data: postsMeta } = useSWR("/newfold-ecommerce/v1/user/page-status");
+  let postsByName = Object.fromEntries(
+    postsMeta?.map((_) => [_["meta_value"], _["post_id"]]) ?? []
+  );
   return (
     <DashboardContent
       title="Customize Your Store"
       subtitle="Setup your core store pages and add general website content to provide a complete shopping experience for your customers."
     >
       <div className="nfd-ecommerce-standard-actions-container">
-        {CustomizeList.map(({ title, action, Icon, customizeUrl }) => (
+        {CustomizeList.map(({ title, Icon, dcpage }) => (
           <Card
             key={title}
             variant="standard"
             title={title}
-            action={action ?? "Setup"}
-            href={customizeUrl}
+            status={postsMeta === undefined ? "inprogress" : "ready"}
+            action="Setup"
+            href={
+              postsByName[dcpage]
+                ? `post.php?action=edit&post=${postsByName[dcpage]}`
+                : `post-new.php?dcpage=${dcpage}&dcsrc=plugin`
+            }
           >
             <Icon />
           </Card>
         ))}
+        <Card
+          variant="standard"
+          title="Store Layout"
+          action="Configure"
+          href={`customize.php?return=${encodeURIComponent(
+            window.location.href.replace(window.location.origin, "")
+          )}`}
+        >
+          <StoreLayout />
+        </Card>
         <Card
           variant="standard"
           title="Customer Account Page"

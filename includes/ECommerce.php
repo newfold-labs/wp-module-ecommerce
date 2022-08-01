@@ -15,7 +15,7 @@ class ECommerce {
 
 	protected $controllers = array(
 		'NewfoldLabs\\WP\\Module\\ECommerce\\RestApi\\PluginsController',
-        'NewfoldLabs\\WP\\Module\\ECommerce\\RestApi\\UserController',
+		'NewfoldLabs\\WP\\Module\\ECommerce\\RestApi\\UserController',
 	);
 
 	/**
