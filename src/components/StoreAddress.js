@@ -58,7 +58,7 @@ export function StoreAddress({ wpModules, onComplete, isMandatory = false }) {
         event.stopPropagation();
         let { country, state, ...wcAddress } = address;
         await wpModules.apiFetch({
-          path: "/wc-admin/options",
+          path: "/wp/v2/settings",
           method: "POST",
           data: {
             ...defaultContact,

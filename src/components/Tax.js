@@ -24,7 +24,7 @@ const taxManagementOptions = [
   },
 ];
 
-const path = "/wc-admin/options";
+const path = "/wp/v2/settings";
 
 const Tax = (props) => {
   let { wpModules, onComplete, isStoreDetailsFilled } = props;

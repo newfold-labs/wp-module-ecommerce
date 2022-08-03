@@ -16,9 +16,7 @@ const YithOptions = {
 const GET_WC_TASKS = `/wc-admin/onboarding/tasks?${new URLSearchParams({
   ids: "setup",
 })}`;
-const GET_YITH_OPTIONS = `/wc-admin/options?${new URLSearchParams({
-  options: Object.values(YithOptions),
-})}`;
+const GET_YITH_OPTIONS = `/wp/v2/settings`;
 
 const OnboardingSteps = {
   store_details: {
