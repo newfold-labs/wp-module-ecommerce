@@ -18,6 +18,18 @@ class ECommerce {
 		'NewfoldLabs\\WP\\Module\\ECommerce\\RestApi\\UserController',
 	);
 
+	protected $options = array(
+		'nfd-ecommerce-captive-flow-paypal',
+		'nfd-ecommerce-captive-flow-shippo',
+		'woocommerce_store_address',
+		'woocommerce_store_address_2',
+		'woocommerce_store_city',
+		'woocommerce_store_postcode',
+		'woocommerce_default_country',
+		'wc_connect_taxes_enabled',
+		'woocommerce_calc_taxes'
+	);
+
 	/**
 	 * ECommerce constructor.
 	 * @param $container
@@ -40,6 +52,18 @@ class ECommerce {
 			 */
 			$instance = new $Controller();
 			$instance->register_routes();
+		}
+		$this->register_settings();
+	}
+
+	public function register_settings() {
+		$option_settings = array(
+			'show_in_rest' => true,
+			'type'         => 'string',
+			'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
+		);
+		foreach ($this->options as $option) {
+			\register_setting( 'general', $option, $option_settings );
 		}
 	}
 	
