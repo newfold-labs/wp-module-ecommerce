@@ -21,3 +21,11 @@
   box-shadow: none;
   outline: none;
 }
+
+.is-wp-toolbar-disabled .nfd-woocommerce-link {
+  top: 0;
+}
+
+body.is-wc-nav-folded .nfd-woocommerce-link {
+  left: 60px;
+}
