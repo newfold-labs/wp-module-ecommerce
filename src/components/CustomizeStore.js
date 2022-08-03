@@ -17,7 +17,7 @@ export function CustomizeStore(props) {
   let { data: pluginsOnSite } = useSWR("/newfold-ecommerce/v1/plugins/status");
   let { data: postsMeta } = useSWR("/newfold-ecommerce/v1/user/page-status");
   let postsByName = Object.fromEntries(
-    postsMeta?.map((_) => [_["meta_value"], _["post_id"]]) ?? []
+    postsMeta?.map((_) => [_["post_name"], _["ID"]]) ?? []
   );
   return (
     <DashboardContent
