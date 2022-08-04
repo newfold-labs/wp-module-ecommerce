@@ -1,22 +1,23 @@
+import { __ } from "@wordpress/i18n";
 import { StoreAddress } from "./StoreAddress";
 
 const taxManagementOptions = [
   {
-    title: "Auto-calculate my taxes for me",
+    title: __("Auto-calculate my taxes for me", "wp-module-ecommerce"),
     data: {
       wc_connect_taxes_enabled: "yes",
       woocommerce_calc_taxes: "yes",
     },
   },
   {
-    title: "I will configure my own tax info later",
+    title: __("I will configure my own tax info later", "wp-module-ecommerce"),
     data: {
       wc_connect_taxes_enabled: "no",
       woocommerce_calc_taxes: "yes",
     },
   },
   {
-    title: "I don't charge sales tax",
+    title: __("I don't charge sales tax", "wp-module-ecommerce"),
     data: {
       woocommerce_no_sales_tax: true,
       woocommerce_calc_taxes: "no",
@@ -61,10 +62,20 @@ const Tax = (props) => {
   return (
     <>
       <div style={{ height: "64px" }} />
-      <p className="nfd-ecommerce-modal-header">Confirm your tax information</p>
+      <p className="nfd-ecommerce-modal-header">
+        {__("Confirm your tax information", "wp-module-ecoomerce")}
+      </p>
       <p className="nfd-ecommerce-modal-header-description">
-        Based on the address you provided, we can auto-calculate your taxes.
-        <div> How would you like to manage your taxes:</div>
+        {__(
+          "Based on the address you provided, we can auto-calculate your taxes.",
+          "wp-module-ecoomerce"
+        )}
+        <div>
+          {__(
+            "How would you like to manage your taxes:",
+            "wp-module-ecommerce"
+          )}
+        </div>
       </p>
       <div className="nfd-ecommerce-modal-options">
         {taxManagementOptions.map((option) => (
@@ -88,13 +99,13 @@ const Tax = (props) => {
         className="nfd-ecommerce-atoms"
         onClick={onClickContinue}
       >
-        Continue
+        {__("Continue", "wp-module-ecommerce")}
       </button>
       <p>
         <em>
-          Need help?{" "}
+          {__("Need help?", "wp-module-ecommerce")}{" "}
           <a href="admin.php?page=bluehost#/marketplace/services/blue-sky">
-            Hire our experts
+            {__("Hire our experts", "wp-module-ecommerce")}
           </a>
         </em>
       </p>

@@ -1,3 +1,4 @@
+import { __ } from "@wordpress/i18n/build-types";
 import useSWR from "swr";
 import { ReactComponent as About } from "../icons/aboutpage.svg";
 import { ReactComponent as Account } from "../icons/account.svg";
@@ -8,9 +9,17 @@ import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
 
 const CustomizeList = [
-  { title: "Home Page", dcpage: "home", Icon: Home },
-  { title: "About Page", dcpage: "about", Icon: About },
-  { title: "Contact Page", dcpage: "contact", Icon: Contact },
+  { title: __("Home Page", "wp-module-ecommerce"), dcpage: "home", Icon: Home },
+  {
+    title: __("About Page", "wp-module-ecommerce"),
+    dcpage: "about",
+    Icon: About,
+  },
+  {
+    title: __("Contact Page", "wp-module-ecommerce"),
+    dcpage: "contact",
+    Icon: Contact,
+  },
 ];
 
 export function CustomizeStore(props) {
@@ -21,8 +30,11 @@ export function CustomizeStore(props) {
   );
   return (
     <DashboardContent
-      title="Customize Your Store"
-      subtitle="Setup your core store pages and add general website content to provide a complete shopping experience for your customers."
+      title={__("Customize Your Store", "wp-module-ecommerce")}
+      subtitle={__(
+        "Setup your core store pages and add general website content to provide a complete shopping experience for your customers.",
+        "wp-module-ecommerce"
+      )}
     >
       <div className="nfd-ecommerce-standard-actions-container">
         {CustomizeList.map(({ title, Icon, dcpage }) => (
@@ -31,7 +43,7 @@ export function CustomizeStore(props) {
             variant="standard"
             title={title}
             status={postsMeta === undefined ? "inprogress" : "ready"}
-            action="Setup"
+            action={__("Setup", "wp-module-ecommerce")}
             href={
               postsByName[dcpage]
                 ? `post.php?action=edit&post=${postsByName[dcpage]}`
@@ -43,8 +55,8 @@ export function CustomizeStore(props) {
         ))}
         <Card
           variant="standard"
-          title="Store Layout"
-          action="Configure"
+          title={__("Store Layout", "wp-module-ecommerce")}
+          action={__("Configure", "wp-module-ecommerce")}
           href={`customize.php?return=${encodeURIComponent(
             window.location.href.replace(window.location.origin, "")
           )}`}
@@ -53,8 +65,8 @@ export function CustomizeStore(props) {
         </Card>
         <Card
           variant="standard"
-          title="Customer Account Page"
-          action="Setup"
+          title={__("Customer Account Page", "wp-module-ecommerce")}
+          action={__("Setup", "wp-module-ecommerce")}
           status={pluginsOnSite ? "ready" : "inprogress"}
           onClick={async () => {
             if (pluginsOnSite.yith_wcmap_panel !== "Active") {

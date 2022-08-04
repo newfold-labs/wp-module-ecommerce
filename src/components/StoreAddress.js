@@ -1,3 +1,4 @@
+import { __ } from "@wordpress/i18n";
 import useSWR from "swr";
 
 /**
@@ -77,12 +78,17 @@ export function StoreAddress({ wpModules, onComplete, isMandatory = false }) {
     >
       <p className="nfd-ecommerce-modal-header">
         {isMandatory
-          ? "First, we need your business or store address"
-          : "Confirm your business or store address"}
+          ? __(
+              "First, we need your business or store address",
+              "wp-module-ecoomerce"
+            )
+          : __("Confirm your business or store address", "wp-module-ecoomerce")}
       </p>
       <p className="nfd-ecommerce-modal-header-description">
-        Use the same address you provided for your Bluehost account or change it
-        below:
+        {__(
+          "Use the same address you provided for your Bluehost account or change it below:",
+          "wp-module-ecoomerce"
+        )}
       </p>
       {isLoading && (
         <div
@@ -92,13 +98,14 @@ export function StoreAddress({ wpModules, onComplete, isMandatory = false }) {
             marginBottom: "10px",
           }}
         >
-          Loading your information...{"  "}
+          {__("Loading your information...", "wp-module-ecoomerce")}
+          {"  "}
           <div className="bwa-loader nfd-ecommerce-loader-mini" />
         </div>
       )}
       <div className="nfd-ecommerce-store-address-form">
         <div>
-          <label>Address line 1</label>
+          <label> {__("Address line 1", "wp-module-ecommerce")}</label>
           <input
             name="woocommerce_store_address"
             type="text"
@@ -108,7 +115,7 @@ export function StoreAddress({ wpModules, onComplete, isMandatory = false }) {
           />
         </div>
         <div>
-          <label>Address line 2</label>
+          <label> {__("Address line 2", "wp-module-ecommerce")}</label>
           <input
             name="woocommerce_store_address_2"
             type="text"
@@ -117,7 +124,7 @@ export function StoreAddress({ wpModules, onComplete, isMandatory = false }) {
           />
         </div>
         <div>
-          <label>City</label>
+          <label> {__("City", "wp-module-ecommerce")}</label>
           <input
             name="woocommerce_store_city"
             type="text"
@@ -127,7 +134,7 @@ export function StoreAddress({ wpModules, onComplete, isMandatory = false }) {
           />
         </div>
         <div>
-          <label>State</label>
+          <label> {__("State", "wp-module-ecommerce")}</label>
           {states.length === 0 ? (
             <input type="text" name="state" required {...eventHandlers} />
           ) : (
@@ -147,7 +154,7 @@ export function StoreAddress({ wpModules, onComplete, isMandatory = false }) {
           )}
         </div>
         <div>
-          <label>Postcode/ZIP</label>
+          <label> {__("Postcode/ZIP", "wp-module-ecommerce")}</label>
           <input
             name="woocommerce_store_postcode"
             type="zip"
@@ -157,7 +164,7 @@ export function StoreAddress({ wpModules, onComplete, isMandatory = false }) {
           />
         </div>
         <div>
-          <label>Country</label>
+          <label> {__("Country", "wp-module-ecommerce")}</label>
           {isLoading ? (
             <input type="text" disabled />
           ) : (
@@ -178,13 +185,13 @@ export function StoreAddress({ wpModules, onComplete, isMandatory = false }) {
         </div>
       </div>
       <button className="nfd-ecommerce-atoms" type="submit">
-        Continue
+        {__("Continue", "wp-module-ecommerce")}
       </button>
       <p>
         <em>
-          Need help?{" "}
+          {__("Need help?", "wp-module-ecommerce")}{" "}
           <a href="admin.php?page=bluehost#/marketplace/services/blue-sky">
-            Hire our experts
+            {__("Hire our experts", "wp-module-ecommerce")}
           </a>
         </em>
       </p>

@@ -84,7 +84,12 @@ export function AdvancedFeatures(props) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
         {error ? (
-          <h2>There was an error while loading this information</h2>
+          <h2>
+            {__(
+              "There was an error while loading this information",
+              "wp-module-ecommerce"
+            )}
+          </h2>
         ) : (
           <div className="bwa-loader" />
         )}
@@ -102,8 +107,11 @@ export function AdvancedFeatures(props) {
       {unavailablePlugins.length > 0 ? (
         <>
           <DashboardContent
-            title="Advanced Features"
-            subtitle="Enjoy the free add-ons included in your plan and improve your store."
+            title={__("Advanced Features", "wp-module-ecommerce")}
+            subtitle={__(
+              "Enjoy the free add-ons included in your plan and improve your store.",
+              "wp-module-ecommerce"
+            )}
           >
             <div className="nfd-ecommerce-extended-actions-container">
               {unavailablePlugins.map((plugin) => {
@@ -114,7 +122,7 @@ export function AdvancedFeatures(props) {
                     variant="extended"
                     data-completed={false}
                     title={plugin.title}
-                    action="Enable"
+                    action={__("Enable", "wp-module-ecommerce")}
                     status={
                       inprogressInstalls.includes(plugin.slug)
                         ? "inprogress"
@@ -148,8 +156,11 @@ export function AdvancedFeatures(props) {
       ) : null}
       {installedPlugins.length > 0 ? (
         <DashboardContent
-          title="Already Installed Features"
-          subtitle="These tools are already installed and activated and ready for use."
+          title={__("Already Installed Features", "wp-module-ecommerce")}
+          subtitle={__(
+            "These tools are already installed and activated and ready for use.",
+            "wp-module-ecommerce"
+          )}
         >
           <div className="nfd-ecommerce-extended-actions-container">
             {installedPlugins.map((plugin) => {
@@ -160,7 +171,7 @@ export function AdvancedFeatures(props) {
                   variant="extended"
                   data-completed
                   title={plugin.title}
-                  action="Manage"
+                  action={__("Manage", "wp-module-ecommerce")}
                   href={`admin.php?page=${plugin.slug}`}
                   description={plugin.description}
                 >

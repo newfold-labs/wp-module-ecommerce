@@ -1,3 +1,4 @@
+import { __ } from "@wordpress/i18n/build-types";
 import useSWR from "swr";
 import { ReactComponent as Payments } from "../icons/payments.svg";
 import { ReactComponent as Shipping } from "../icons/shipping.svg";
@@ -20,30 +21,30 @@ const GET_YITH_OPTIONS = `/wp/v2/settings`;
 
 const OnboardingSteps = {
   store_details: {
-    title: "Store Info",
-    setupAction: "Add Info",
-    editAction: "Edit Info",
+    title: __("Store Info", "wp-module-ecommerce"),
+    setupAction: __("Add Info", "wp-module-ecommerce"),
+    editAction: __("Edit Info", "wp-module-ecommerce"),
     editUrl: "admin.php?page=wc-settings&tab=general",
     SetupIcon: StoreIcon,
   },
   [YithOptions.paypal]: {
-    title: "Payments",
-    setupAction: "Setup",
-    editAction: "Edit Settings",
+    title: __("Payments", "wp-module-ecommerce"),
+    setupAction: __("Setup", "wp-module-ecommerce"),
+    editAction: __("Edit Settingso", "wp-module-ecommerce"),
     editUrl: "admin.php?page=yith_paypal_payments",
     SetupIcon: Payments,
   },
   [YithOptions.shippo]: {
-    title: "Shipping",
-    setupAction: "Setup",
-    editAction: "Edit Settings",
+    title: __("Shipping", "wp-module-ecommerce"),
+    setupAction: __("Setup", "wp-module-ecommerce"),
+    editAction: __("Edit Settings", "wp-module-ecommerce"),
     editUrl: "admin.php?page=yith_shippo_shipping_for_woocommerce",
     SetupIcon: Shipping,
   },
   tax: {
-    title: "Tax Info",
-    setupAction: "Add Info",
-    editAction: "Edit Info",
+    title: __("Tax Info", "wp-module-ecommerce"),
+    setupAction: __("Add Info", "wp-module-ecommerce"),
+    editAction: __("Edit Info", "wp-module-ecommerce"),
     editUrl: "admin.php?page=wc-settings&tab=tax",
     SetupIcon: TaxInfo,
   },
@@ -87,7 +88,12 @@ export function GeneralSettings(props) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
         {errors.wc || errors.yith ? (
-          <h2>There was an error while loading this information</h2>
+          <h2>
+            {__(
+              "There was an error while loading this information",
+              "wp-module-ecommerce"
+            )}
+          </h2>
         ) : (
           <div className="bwa-loader" />
         )}
@@ -107,8 +113,11 @@ export function GeneralSettings(props) {
       {incompleteSteps.length > 0 ? (
         <>
           <DashboardContent
-            title="Get Started!"
-            subtitle="Here you can find the essential steps we recommend you complete so you can launch your store."
+            title={__("Get Started!", "wp-module-ecommerce")}
+            subtitle={__(
+              "Here you can find the essential steps we recommend you complete so you can launch your store.",
+              "wp-module-ecommerce"
+            )}
           >
             <div className="nfd-ecommerce-standard-actions-container">
               {incompleteSteps.map(([stepKey, stepProgress]) => {
@@ -134,10 +143,13 @@ export function GeneralSettings(props) {
         <DashboardContent
           title={
             incompleteSteps.length === 0
-              ? "You've got the basics covered!"
-              : "These steps are done, nice job!"
+              ? __("You've got the basics covered!", "wp-module-ecommerce")
+              : __("These steps are done, nice job!", "wp-module-ecommerce")
           }
-          subtitle="Feel free to come back at any time and update any of the information in the steps you've already completed."
+          subtitle={__(
+            "Feel free to come back at any time and update any of the information in the steps you've already completed.",
+            "wp-module-ecommerce"
+          )}
         >
           <div className="nfd-ecommerce-minimal-tasks-container">
             {completedSteps.map(([stepKey, stepProgress]) => {
