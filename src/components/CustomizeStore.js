@@ -67,6 +67,7 @@ export function CustomizeStore(props) {
           variant="standard"
           title={__("Customer Account Page", "wp-module-ecommerce")}
           action={__("Setup", "wp-module-ecommerce")}
+          data-action-gutter={"s"}
           status={pluginsOnSite ? "ready" : "inprogress"}
           onClick={async () => {
             if (pluginsOnSite.yith_wcmap_panel !== "Active") {

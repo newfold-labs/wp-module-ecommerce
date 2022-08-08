@@ -127,6 +127,9 @@
       place-items: center;
       gap: 16px;
     }
+    &[data-action-gutter="s"] .nfd-ecommerce-card-title {
+      gap: 5px;
+    }
     .nfd-ecommerce-card-link {
       gap: 5px;
       visibility: hidden;
