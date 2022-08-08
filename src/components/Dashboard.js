@@ -5,32 +5,31 @@ import { GeneralSettings } from "./GeneralSettings";
 import { ManageProducts } from "./ManageProducts";
 import { SiteStatus } from "./SiteStatus";
 
+function getStepName(stepKey, state) {
+  switch (stepKey) {
+    case "general":
+      return __("General Settings", "wp-module-ecommerce");
+    case "products":
+      return __("Add products", "wp-module-ecommerce");
+    case "customize":
+      return __("Customize your store", "wp-module-ecommerce");
+    case "advanced":
+      return __("Advanced features", "wp-module-ecommerce");
+    case "status":
+      return state.wp.comingSoon
+        ? __("Launch Your Store", "wp-module-ecommerce")
+        : __("Site Status", "wp-module-ecommerce");
+    default:
+      return null;
+  }
+}
+
 const guideSteps = [
-  {
-    key: "general",
-    name: __("General Settings", "wp-module-ecommerce"),
-    StepContent: GeneralSettings,
-  },
-  {
-    key: "products",
-    name: __("Add products", "wp-module-ecommerce"),
-    StepContent: ManageProducts,
-  },
-  {
-    key: "customize",
-    name: __("Customize your store", "wp-module-ecommerce"),
-    StepContent: CustomizeStore,
-  },
-  {
-    key: "advanced",
-    name: __("Advanced features", "wp-module-ecommerce"),
-    StepContent: AdvancedFeatures,
-  },
-  {
-    key: "status",
-    name: __("Site Status", "wp-module-ecommerce"),
-    StepContent: SiteStatus,
-  },
+  { key: "general", StepContent: GeneralSettings },
+  { key: "products", StepContent: ManageProducts },
+  { key: "customize", StepContent: CustomizeStore },
+  { key: "advanced", StepContent: AdvancedFeatures },
+  { key: "status", StepContent: SiteStatus },
 ];
 
 export function Dashboard(props) {
@@ -48,7 +47,7 @@ export function Dashboard(props) {
             data-active={key === step.key}
             href={`#/home/store/${step.key}`}
           >
-            <li>{step.name}</li>
+            <li>{getStepName(step.key, props.state)}</li>
           </a>
         ))}
       </nav>
