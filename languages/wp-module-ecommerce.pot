@@ -16,11 +16,11 @@ msgstr ""
 msgid "eCommerce"
 msgstr ""
 
-#: includes/ECommerce.php:63
+#: includes/ECommerce.php:64
 msgid "NFD eCommerce Options"
 msgstr ""
 
-#: includes/ECommerce.php:79
+#: includes/ECommerce.php:80
 #: dist/wp-module-ecommerce.cjs.development.js:1838
 #: dist/wp-module-ecommerce.esm.js:1813
 #: src/components/SiteStatus.js:30
@@ -30,7 +30,7 @@ msgstr ""
 msgid "Coming Soon"
 msgstr ""
 
-#: includes/ECommerce.php:80
+#: includes/ECommerce.php:81
 #: dist/wp-module-ecommerce.cjs.development.js:1828
 #: dist/wp-module-ecommerce.esm.js:1803
 #: src/components/SiteStatus.js:17
@@ -40,11 +40,11 @@ msgstr ""
 msgid "Live"
 msgstr ""
 
-#: includes/ECommerce.php:85
+#: includes/ECommerce.php:86
 msgid "Site Status: "
 msgstr ""
 
-#: includes/ECommerce.php:87
+#: includes/ECommerce.php:88
 msgid "Launch Your Site"
 msgstr ""
 
