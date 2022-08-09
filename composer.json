@@ -26,24 +26,46 @@
       "only": [
         "newfold-labs/*"
       ]
+    },
+    {
+      "type": "composer",
+      "url": "https://bluehost.github.io/satis/",
+      "only": [
+        "bluehost/*",
+        "endurance/*"
+      ]
     }
   ],
   "require": {},
   "require-dev": {
-    "wp-cli/wp-cli-bundle": "^2.4",
-    "wp-cli/i18n-command": "^2.2"
+    "bluehost/wp-php-standards": "@stable",
+    "wp-cli/wp-cli-bundle": "@stable",
+    "wp-cli/i18n-command": "@stable"
   },
   "scripts": {
     "i18n": [
       "vendor/bin/wp i18n make-pot . ./languages/wp-module-ecommerce.pot --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/aulisius/bluehost-wordpress-plugin/issues\",\"POT-Creation-Date\":null}' --exclude=node_modules,src,tests"
+    ],
+    "fix": [
+      "vendor/bin/phpcbf --standard=phpcs.xml ."
+    ],
+    "lint": [
+      "vendor/bin/phpcs --standard=phpcs.xml -s ."
     ]
   },
   "scripts-descriptions": {
-    "i18n": "Generate a .pot file for translation."
+    "i18n": "Generate a .pot file for translation.",
+    "fix": "Automatically fix coding standards issues where possible.",
+    "lint": "Check files against coding standards."
   },
   "config": {
+    "preferred-install": {
+      "bluehost/*": "source",
+      "endurance/*": "source",
+      "*": "dist"
+    },
     "allow-plugins": {
-      "dealerdirect/phpcodesniffer-composer-installer": false
+      "dealerdirect/phpcodesniffer-composer-installer": true
     }
   }
 }

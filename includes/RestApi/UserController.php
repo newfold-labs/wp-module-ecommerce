@@ -28,12 +28,12 @@ class UserController {
 	}
 
 	public function get_page_status() {
-		$args = array(
+		$args  = array(
 			'posts_per_page' => 3,
 			'post_type'      => 'page',
 			'meta_key'       => 'nf_dc_page',
-			'meta_value'     => array('home', 'about', 'contact'),
-			'meta_compare'   => 'IN'
+			'meta_value'     => array( 'home', 'about', 'contact' ),
+			'meta_compare'   => 'IN',
 		);
 		$query = new \WP_Query( $args );
 		return $query->get_posts();
@@ -41,7 +41,7 @@ class UserController {
 
 	/**
 	 * Connect to UAPI with token via AccessToken Class in Bluehost Plugin
-	 * 
+	 *
 	 * @param string $path of desired API endpoint
 	 * @return object of response data in json format
 	 */
@@ -51,21 +51,24 @@ class UserController {
 		}
 
 		AccessToken::maybe_refresh_token();
-		
+
 		$token         = AccessToken::get_token();
 		$user_id       = AccessToken::get_user();
 		$domain        = SiteMeta::get_domain();
-		$url           = sprintf( 'https://my.bluehost.com/api/users/%s/%s/%s/%s', $user_id, $namespace, $domain, $path);
+		$url           = sprintf( 'https://my.bluehost.com/api/users/%s/%s/%s/%s', $user_id, $namespace, $domain, $path );
 		$args          = array( 'headers' => array( 'X-SiteAPI-Token' => $token ) );
 		$response      = \wp_remote_get( $url, $args );
 		$response_code = \wp_remote_retrieve_response_code( $response );
 
 		if ( is_wp_error( $response ) ) {
-			return array( response => array(), code => 500 );
+			return array(
+				response => array(),
+				code     => 500,
+			);
 		}
 		return array(
 			code     => \wp_remote_retrieve_response_code( $response ),
-			response => json_decode( \wp_remote_retrieve_body( $response ) )
+			response => json_decode( \wp_remote_retrieve_body( $response ) ),
 		);
 	}
 
@@ -75,10 +78,13 @@ class UserController {
 	 * @return void
 	 */
 	public function get_profile() {
-		$response = self::connect('account-center', 'profile?hide_country_list=1');
+		$response = self::connect( 'account-center', 'profile?hide_country_list=1' );
 		if ( $response['code'] !== 200 ) {
 			return new \WP_REST_Response(
-				array( status => 'error', message => $response['response'] ),
+				array(
+					status  => 'error',
+					message => $response['response'],
+				),
 				$response['code']
 			);
 		}

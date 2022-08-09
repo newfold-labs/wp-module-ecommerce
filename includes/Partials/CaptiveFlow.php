@@ -18,7 +18,7 @@ class CaptiveFlow {
 				return "$classes is-fullscreen-mode";
 			}
 		);
-		\wp_enqueue_style( 'nfd-ecommerce-captive', BLUEHOST_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Partials/template.css', null, '1', 'screen');
+		\wp_enqueue_style( 'nfd-ecommerce-captive', BLUEHOST_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Partials/template.css', null, '1', 'screen' );
 	}
 
 	public static function register_page() {
@@ -39,13 +39,13 @@ class CaptiveFlow {
 			'nfd-ecommerce-captive-flow-shippo',
 			array( __CLASS__, 'render_shippo' ),
 			100
-	);
+		);
 	}
 
 	public static function render_paypal() {
 		echo PHP_EOL;
 		echo '<div id="nfd-ecommerce" class="nfd-ecommerce-captive-flow">';
-		echo do_action("nfd-ecommerce-captive-flow-paypal");
+		echo do_action( 'nfd-ecommerce-captive-flow-paypal' );
 		echo '</div>';
 		echo PHP_EOL;
 	}
@@ -53,7 +53,7 @@ class CaptiveFlow {
 	public static function render_shippo() {
 		echo PHP_EOL;
 		echo '<div id="nfd-ecommerce" class="nfd-ecommerce-captive-flow">';
-		echo do_action("nfd-ecommerce-captive-flow-shippo");
+		echo do_action( 'nfd-ecommerce-captive-flow-shippo' );
 		echo '</div>';
 		echo PHP_EOL;
 	}
