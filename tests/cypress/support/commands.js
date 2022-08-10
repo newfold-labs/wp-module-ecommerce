@@ -46,6 +46,31 @@ Cypress.Commands.add('login', (username, password) => {
 		});
 });
 
+Cypress.Commands.add('sso_login', (domain_username, domain_password, bluehost_username, bluehost_password) => {
+	cy
+		.getCookies()
+		.then(cookies => {
+			let hasMatch = false;
+			cookies.forEach((cookie) => {
+				if (cookie.name.substring(0, 20) === 'wordpress_logged_in_') {
+					hasMatch = true;
+				}
+			});
+			if (!hasMatch) {
+				cy.visit('/cgi-bin/cplogin').wait(1000);
+				cy.get('#ldomain').type(domain_username);
+				cy.get('#lpass').type(`${ domain_password }{enter}`);
+				cy.get("input[name=admin_user]").type(bluehost_username)
+				cy.get("input[name=admin_pass]").type(bluehost_password)
+		        cy.get("[value=Login]").click()
+				cy.get("[data-testid=login-wordpress]",{timeout:20000}).as('login-wordpress')
+				cy.get("@login-wordpress").parent().invoke('removeAttr','target')
+		        cy.get("@login-wordpress").click()
+				cy.get('[data-testid=desktop-nav]',{timeout:20000})
+			}
+		});
+});
+
 Cypress.Commands.add('logout', () => {
 	cy
 		.getCookies()

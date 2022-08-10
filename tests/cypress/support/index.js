@@ -20,6 +20,13 @@ Cypress.Cookies.defaults({
 	preserve: /wp|wordpress/,
 });
 
+// before(() => {
+// 	cy.login(Cypress.env('wpUsername'), Cypress.env('wpPassword'));
+// });
+
+
 before(() => {
-	cy.login(Cypress.env('wpUsername'), Cypress.env('wpPassword'));
+	cy.sso_login(
+		Cypress.env('domain_username'), Cypress.env('domain_password'), 
+		Cypress.env('bluehost_username'), Cypress.env('bluehost_password'));
 });
