@@ -24,8 +24,12 @@
     "test:e2e": "echo \"No tests implemented\""
   },
   "dependencies": {
-    "@wordpress/i18n": "^3.6.1",
     "swr": "^1.3.0"
+  },
+  "peerDependencies": {
+    "@wordpress/api-fetch": "^3.6.2",
+    "@wordpress/element": "^2.8.2",
+    "@wordpress/i18n": "^3.6.1"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.18.6",
