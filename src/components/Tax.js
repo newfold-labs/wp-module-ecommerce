@@ -1,4 +1,6 @@
 import { __ } from "@wordpress/i18n";
+import { useState } from "@wordpress/element";
+import { updateWPSettings } from "../services";
 import { StoreAddress } from "./StoreAddress";
 
 const taxManagementOptions = [
@@ -28,12 +30,9 @@ const taxManagementOptions = [
 const path = "/wp/v2/settings";
 
 const Tax = (props) => {
-  let { wpModules, onComplete, isStoreDetailsFilled } = props;
-  const [selectedOption, setSelectedOption] = wpModules.useState(null);
-  const [isAddressMandatory, setIsAddressMandatory] = wpModules.useState(false);
-
-  const saveTaxOption = async () =>
-    wpModules.apiFetch({ path, method: "POST", data: selectedOption.data });
+  let { onComplete, isStoreDetailsFilled } = props;
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [isAddressMandatory, setIsAddressMandatory] = useState(false);
 
   const onClickContinue = async () => {
     if (
@@ -43,7 +42,7 @@ const Tax = (props) => {
       setIsAddressMandatory(true);
       return;
     }
-    await saveTaxOption();
+    await updateWPSettings(selectedOption.data);
     await onComplete();
   };
 
@@ -53,7 +52,7 @@ const Tax = (props) => {
         {...props}
         isMandatory
         onComplete={async () => {
-          await saveTaxOption();
+          await updateWPSettings(selectedOption.data);
           await onComplete();
         }}
       />

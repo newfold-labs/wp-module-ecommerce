@@ -1,3 +1,4 @@
+import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import useSWR from "swr";
 import { ReactComponent as Booking } from "../icons/booking.svg";
@@ -6,6 +7,7 @@ import { ReactComponent as Filter } from "../icons/filter.svg";
 import { ReactComponent as Gift } from "../icons/gift.svg";
 import { ReactComponent as Search } from "../icons/search.svg";
 import { ReactComponent as WishList } from "../icons/wishlist.svg";
+import { queuePluginInstall } from "../services";
 import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
 
@@ -17,6 +19,7 @@ const SuggestedPlugins = [
       "wp-module-ecommerce"
     ),
     slug: "yith_wcbk_panel",
+    name: "nfd_slug_yith_woocommerce_booking",
     Icon: Booking,
   },
   {
@@ -26,6 +29,7 @@ const SuggestedPlugins = [
       "wp-module-ecommerce"
     ),
     slug: "yith_wcas_panel",
+    name: "yith_wcas_panel",
     Icon: Search,
   },
   {
@@ -38,6 +42,7 @@ const SuggestedPlugins = [
       "wp-module-ecommerce"
     ),
     slug: "yith_wcwl_panel",
+    name: "nfd_slug_yith_woocommerce_wishlist",
     Icon: WishList,
   },
   {
@@ -50,6 +55,7 @@ const SuggestedPlugins = [
       "wp-module-ecommerce"
     ),
     slug: "yith_wcan_panel",
+    name: "nfd_slug_yith_woocommerce_ajax_product_filter",
     Icon: Filter,
   },
   {
@@ -59,6 +65,7 @@ const SuggestedPlugins = [
       "wp-module-ecommerce"
     ),
     slug: "yith_woocommerce_gift_cards_panel",
+    name: "nfd_slug_yith_woocommerce_gift_cards",
     Icon: Gift,
   },
   {
@@ -68,13 +75,13 @@ const SuggestedPlugins = [
       "wp-module-ecommerce"
     ),
     slug: "yith_wcmap_panel",
+    name: "nfd_slug_yith_woocommerce_customize_myaccount_page",
     Icon: CustomizeAccount,
   },
 ];
 
 export function AdvancedFeatures(props) {
-  let { wpModules } = props;
-  let [inprogressInstalls, setInstalls] = wpModules.useState([]);
+  let [inprogressInstalls, setInstalls] = useState([]);
   let {
     data: pluginsOnSite,
     error,
@@ -131,13 +138,7 @@ export function AdvancedFeatures(props) {
                     description={plugin.description}
                     onClick={async () => {
                       setInstalls([...inprogressInstalls, plugin.slug]);
-                      await wpModules
-                        .apiFetch({
-                          path: "/newfold-ecommerce/v1/plugins/install",
-                          method: "POST",
-                          data: { plugin: plugin.slug },
-                        })
-                        .catch((error) => {});
+                      await queuePluginInstall(plugin.name);
                       await refreshPlugins();
                       setInstalls(
                         inprogressInstalls.filter((_) => _ !== plugin.slug)

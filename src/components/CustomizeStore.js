@@ -1,10 +1,11 @@
-import { __ } from "@wordpress/i18n/build-types";
+import { __ } from "@wordpress/i18n";
 import useSWR from "swr";
 import { ReactComponent as About } from "../icons/aboutpage.svg";
 import { ReactComponent as Account } from "../icons/account.svg";
 import { ReactComponent as Contact } from "../icons/contactpage.svg";
 import { ReactComponent as Home } from "../icons/homepage.svg";
 import { ReactComponent as StoreLayout } from "../icons/storelayout.svg";
+import { queuePluginInstall } from "../services";
 import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
 
@@ -71,13 +72,9 @@ export function CustomizeStore(props) {
           status={pluginsOnSite ? "ready" : "inprogress"}
           onClick={async () => {
             if (pluginsOnSite.yith_wcmap_panel !== "Active") {
-              await props.wpModules
-                .apiFetch({
-                  path: "/newfold-ecommerce/v1/plugins/install",
-                  method: "POST",
-                  data: { plugin: "yith_wcmap_panel" },
-                })
-                .catch((error) => {});
+              await queuePluginInstall(
+                "nfd_slug_yith_woocommerce_customize_myaccount_page"
+              );
             }
             window.location.href = "admin.php?page=yith_wcmap_panel";
           }}
