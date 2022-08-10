@@ -1,0 +1,71 @@
+import { useEffect, useState } from '@wordpress/element';
+import useSWR from 'swr';
+import {
+  Endpoints,
+  queuePluginInstall,
+  updateWCOnboarding,
+  updateWPSettings,
+} from '../services';
+
+const isEmpty = (object) => Object.keys(object).length === 0;
+
+const HighProductVolumes = ['11-100', '101-1000', '1000+'];
+
+export function useOnboardingCleanup(refresh) {
+  let [cleanupStatus, setCleanupStatus] = useState(false);
+  let { data: flow, error: flowError } = useSWR('/newfold-onboarding/v1/flow');
+  let { data: settings, error: settingsError } = useSWR(Endpoints.WP_SETTINGS);
+  useEffect(async () => {
+    setCleanupStatus(true);
+    if (flow && settings) {
+      let flowCheckpoint = flow.updatedAt ?? flow.createdAt;
+      let previousCheckpoint = Number(
+        settings['nfd-ecommerce-onboarding-check']
+      );
+      if (isNaN(previousCheckpoint) || previousCheckpoint < flowCheckpoint) {
+        let { address, tax, productInfo } = flow.storeDetails;
+        if (!isEmpty(address)) {
+          await updateWPSettings(address);
+          await updateWCOnboarding({ complete: true });
+        }
+        if (!isEmpty(tax)) {
+          await updateWPSettings(tax);
+        }
+        let wcOnboardingProfile = {};
+        if (HighProductVolumes.includes(productInfo.product_count)) {
+          await queuePluginInstall(
+            'nfd_slug_yith_woocommerce_ajax_product_filter'
+          );
+        }
+        for (const product_type of productInfo.product_types) {
+          if (product_type === 'physical') {
+            await queuePluginInstall(
+              'nfd_slug_yith_shippo_shippings_for_woocommerce'
+            );
+          }
+          if (product_type === 'bookings') {
+            await queuePluginInstall('nfd_slug_yith_woocommerce_booking');
+          }
+        }
+        if (productInfo.product_count !== '') {
+          wcOnboardingProfile.product_count = productInfo.product_count;
+        }
+        if (productInfo.product_types?.length > 0) {
+          wcOnboardingProfile.product_types = productInfo.product_types;
+        }
+        if (!isEmpty(wcOnboardingProfile)) {
+          await updateWCOnboarding(productInfo);
+        }
+        // await updateWPSettings({
+        //   'nfd-ecommerce-onboarding-check': flowCheckpoint,
+        // });
+        await refresh();
+      }
+      setCleanupStatus(false);
+    }
+    if (flowError || settingsError) {
+      setCleanupStatus(false);
+    }
+  }, [flow, settings]);
+  return cleanupStatus;
+}

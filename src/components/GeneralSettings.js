@@ -1,14 +1,17 @@
-import { __ } from "@wordpress/i18n/build-types";
+import { useState } from "@wordpress/element";
+import { __ } from "@wordpress/i18n";
 import useSWR from "swr";
 import { ReactComponent as Payments } from "../icons/payments.svg";
 import { ReactComponent as Shipping } from "../icons/shipping.svg";
 import { ReactComponent as StoreIcon } from "../icons/store.svg";
 import { ReactComponent as CompletedTask } from "../icons/task-complete.svg";
 import { ReactComponent as TaxInfo } from "../icons/taxinfo.svg";
+import { Endpoints } from "../services";
 import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
 import { StoreAddress } from "./StoreAddress";
 import Tax from "./Tax";
+import { useOnboardingCleanup } from "./useOnboardingCleanup";
 
 const YithOptions = {
   paypal: "nfd-ecommerce-captive-flow-paypal",
@@ -17,7 +20,6 @@ const YithOptions = {
 const GET_WC_TASKS = `/wc-admin/onboarding/tasks?${new URLSearchParams({
   ids: "setup",
 })}`;
-const GET_YITH_OPTIONS = `/wp/v2/settings`;
 
 const OnboardingSteps = {
   store_details: {
@@ -60,7 +62,7 @@ function useOnBoardingStatus() {
     data: yithOnboarding,
     error: yithError,
     mutate: refreshYith,
-  } = useSWR(GET_YITH_OPTIONS);
+  } = useSWR(Endpoints.WP_SETTINGS);
   let onboardingSetup = wcOnboarding?.[0];
   let onboarding = Object.fromEntries(
     (onboardingSetup?.tasks ?? [])
@@ -81,10 +83,11 @@ function useOnBoardingStatus() {
 }
 
 export function GeneralSettings(props) {
-  let { Modal, useState } = props.wpModules;
+  let { Modal } = props.wpModules;
   let [onboardingModalKey, setOnboardingModal] = useState(null);
   let [isLoading, errors, refresh, onboarding] = useOnBoardingStatus();
-  if (isLoading) {
+  let isCleanUpInProgress = useOnboardingCleanup(refresh.wc);
+  if (isLoading || isCleanUpInProgress) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
         {errors.wc || errors.yith ? (
