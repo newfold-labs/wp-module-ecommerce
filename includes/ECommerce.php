@@ -21,6 +21,7 @@ class ECommerce {
 	protected $options = array(
 		'nfd-ecommerce-captive-flow-paypal',
 		'nfd-ecommerce-captive-flow-shippo',
+		'nfd-ecommerce-onboarding-check',
 		'woocommerce_store_address',
 		'woocommerce_store_address_2',
 		'woocommerce_store_city',
@@ -66,6 +67,11 @@ class ECommerce {
 		foreach ( $this->options as $option ) {
 			\register_setting( 'general', $option, $option_settings );
 		}
+		\register_setting( 'general', 'woocommerce_no_sales_tax', array(
+			'show_in_rest' => true,
+			'type'         => 'boolean',
+			'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
+		));
 	}
 
 	/**
