@@ -1,9 +1,11 @@
 import { __ } from "@wordpress/i18n";
+import useSWR from "swr";
 import { AdvancedFeatures } from "./AdvancedFeatures";
 import { CustomizeStore } from "./CustomizeStore";
 import { GeneralSettings } from "./GeneralSettings";
 import { ManageProducts } from "./ManageProducts";
 import { SiteStatus } from "./SiteStatus";
+import { useOnboardingCleanup } from "./useOnboardingCleanup";
 
 function getStepName(stepKey, state) {
   switch (stepKey) {
@@ -35,6 +37,8 @@ const guideSteps = [
 export function Dashboard(props) {
   let { key, StepContent } =
     guideSteps.find((step) => step.key === props.section) ?? guideSteps[0];
+  let { data: token } = useSWR("/newfold-ecommerce/v1/plugins/verification");
+  let isCleanUpInProgress = useOnboardingCleanup(props.token);
   return (
     <div className="nfd-ecommerce-dashboard">
       <nav
@@ -52,7 +56,15 @@ export function Dashboard(props) {
         ))}
       </nav>
       <div className="nfd-ecommerce-dashboard-content">
-        <StepContent {...props} />
+        {isCleanUpInProgress ? (
+          <div
+            style={{ height: "100%", display: "grid", placeContent: "center" }}
+          >
+            <div className="bwa-loader" />
+          </div>
+        ) : (
+          <StepContent token={token} {...props} />
+        )}
       </div>
     </div>
   );

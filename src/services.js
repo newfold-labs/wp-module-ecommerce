@@ -3,7 +3,8 @@ import apiFetch from '@wordpress/api-fetch';
 export const Endpoints = {
   WP_SETTINGS: '/wp/v2/settings',
   WC_ONBOARDING: '/wc-admin/onboarding/profile',
-  PLUGIN_INSTALL: '/newfold-onboarding/v1/plugins/install',
+  PLUGIN_SYNC_INSTALL: '/wp/v2/plugins',
+  PLUGIN_ASYNC_INSTALL: '/newfold-onboarding/v1/plugins/install',
 };
 export async function fetchWPSettings() {
   return apiFetch({ path: Endpoints.WP_SETTINGS });
@@ -23,10 +24,20 @@ export async function updateWCOnboarding(data) {
   }).catch((error) => {});
 }
 
-export async function queuePluginInstall(plugin) {
+export async function syncPluginInstall(slug) {
   return apiFetch({
-    path: Endpoints.PLUGIN_INSTALL,
+    path: Endpoints.PLUGIN_ASYNC_INSTALL,
     method: 'POST',
+    headers: { 'X-NFD-ONBOARDING': token.hash },
+    data: { slug, status: 'active' },
+  }).catch((error) => {});
+}
+
+export async function queuePluginInstall(plugin, token) {
+  return apiFetch({
+    path: Endpoints.PLUGIN_ASYNC_INSTALL,
+    method: 'POST',
+    headers: { 'X-NFD-ONBOARDING': token.hash },
     data: { plugin, activate: true, queue: true },
   }).catch((error) => {});
 }

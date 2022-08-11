@@ -73,7 +73,8 @@ export function CustomizeStore(props) {
           onClick={async () => {
             if (pluginsOnSite.yith_wcmap_panel !== "Active") {
               await queuePluginInstall(
-                "nfd_slug_yith_woocommerce_customize_myaccount_page"
+                "nfd_slug_yith_woocommerce_customize_myaccount_page",
+                props.token
               );
             }
             window.location.href = "admin.php?page=yith_wcmap_panel";

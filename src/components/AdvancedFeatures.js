@@ -7,7 +7,7 @@ import { ReactComponent as Filter } from "../icons/filter.svg";
 import { ReactComponent as Gift } from "../icons/gift.svg";
 import { ReactComponent as Search } from "../icons/search.svg";
 import { ReactComponent as WishList } from "../icons/wishlist.svg";
-import { queuePluginInstall } from "../services";
+import { queuePluginInstall, syncPluginInstall } from "../services";
 import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
 
@@ -29,7 +29,8 @@ const SuggestedPlugins = [
       "wp-module-ecommerce"
     ),
     slug: "yith_wcas_panel",
-    name: "yith_wcas_panel",
+    name: "yith-woocommerce-ajax-search",
+    sync: true,
     Icon: Search,
   },
   {
@@ -138,7 +139,11 @@ export function AdvancedFeatures(props) {
                     description={plugin.description}
                     onClick={async () => {
                       setInstalls([...inprogressInstalls, plugin.slug]);
-                      await queuePluginInstall(plugin.name);
+                      if (plugin.sync === true) {
+                        await syncPluginInstall(plugin.name);
+                      } else {
+                        await queuePluginInstall(plugin.name, props.token);
+                      }
                       await refreshPlugins();
                       setInstalls(
                         inprogressInstalls.filter((_) => _ !== plugin.slug)

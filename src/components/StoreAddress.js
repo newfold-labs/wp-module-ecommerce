@@ -103,8 +103,8 @@ export function StoreAddress({ onComplete, isMandatory = false }) {
         </div>
         <div>
           <label> {__("State", "wp-module-ecommerce")}</label>
-          {states.length === 0 ? (
-            <input type="text" name="state" required {...eventHandlers} />
+          {states.length === 0 || isLoading ? (
+            <input type="text" name="state" disabled={isLoading} required {...eventHandlers} />
           ) : (
             <select
               type="text"
@@ -144,9 +144,11 @@ export function StoreAddress({ onComplete, isMandatory = false }) {
               {...eventHandlers}
             >
               {countries.map((country) => (
-                <option key={country.code} value={country.code}>
-                  {country.name}
-                </option>
+                <option
+                  key={country.code}
+                  value={country.code}
+                  dangerouslySetInnerHTML={{ __html: country.name }}
+                />
               ))}
             </select>
           )}

@@ -11,7 +11,6 @@ import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
 import { StoreAddress } from "./StoreAddress";
 import Tax from "./Tax";
-import { useOnboardingCleanup } from "./useOnboardingCleanup";
 
 const YithOptions = {
   paypal: "nfd-ecommerce-captive-flow-paypal",
@@ -86,8 +85,7 @@ export function GeneralSettings(props) {
   let { Modal } = props.wpModules;
   let [onboardingModalKey, setOnboardingModal] = useState(null);
   let [isLoading, errors, refresh, onboarding] = useOnBoardingStatus();
-  let isCleanUpInProgress = useOnboardingCleanup(refresh.wc);
-  if (isLoading || isCleanUpInProgress) {
+  if (isLoading) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
         {errors.wc || errors.yith ? (
