@@ -23,19 +23,13 @@ export function useOnboardingCleanup(refresh) {
         settings['nfd-ecommerce-onboarding-check']
       );
       if (isNaN(previousCheckpoint) || previousCheckpoint < flowCheckpoint) {
-        let { address, tax, productInfo } = flow.storeDetails;
-        if (!isEmpty(address)) {
-          await updateWPSettings(address);
-          await updateWCOnboarding({ complete: true });
-        }
-        if (!isEmpty(tax)) {
-          await updateWPSettings(tax);
-        }
+        let { productInfo } = flow.storeDetails;
         let wcOnboardingProfile = {};
         if (HighProductVolumes.includes(productInfo.product_count)) {
           await queuePluginInstall(
             'nfd_slug_yith_woocommerce_ajax_product_filter'
           );
+          // ajax search plugin
         }
         for (const product_type of productInfo.product_types) {
           if (product_type === 'physical') {
@@ -54,11 +48,12 @@ export function useOnboardingCleanup(refresh) {
           wcOnboardingProfile.product_types = productInfo.product_types;
         }
         if (!isEmpty(wcOnboardingProfile)) {
+          wcOnboardingProfile.completed = true;
           await updateWCOnboarding(productInfo);
         }
-        // await updateWPSettings({
-        //   'nfd-ecommerce-onboarding-check': flowCheckpoint,
-        // });
+        await updateWPSettings({
+          'nfd-ecommerce-onboarding-check': flowCheckpoint,
+        });
         await refresh();
       }
       setCleanupStatus(false);
