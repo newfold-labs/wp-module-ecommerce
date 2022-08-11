@@ -1,4 +1,4 @@
-import apiFetch from "@wordpress/api-fetch";
+import apiFetch from '@wordpress/api-fetch';
 
 export const Endpoints = {
   WP_SETTINGS: '/wp/v2/settings',
@@ -10,11 +10,17 @@ export async function fetchWPSettings() {
 }
 
 export async function updateWPSettings(data) {
-  return apiFetch({ path: Endpoints.WP_SETTINGS, method: 'POST', data });
+  return apiFetch({ path: Endpoints.WP_SETTINGS, method: 'POST', data }).catch(
+    (error) => {}
+  );
 }
 
 export async function updateWCOnboarding(data) {
-  return apiFetch({ path: Endpoints.WC_ONBOARDING, method: 'POST', data });
+  return apiFetch({
+    path: Endpoints.WC_ONBOARDING,
+    method: 'POST',
+    data,
+  }).catch((error) => {});
 }
 
 export async function queuePluginInstall(plugin) {
@@ -22,5 +28,5 @@ export async function queuePluginInstall(plugin) {
     path: Endpoints.PLUGIN_INSTALL,
     method: 'POST',
     data: { plugin, activate: true, queue: true },
-  }).catch(error => {});
+  }).catch((error) => {});
 }
