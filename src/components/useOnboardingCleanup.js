@@ -49,10 +49,10 @@ export function useOnboardingCleanup(refresh) {
         }
         if (!isEmpty(wcOnboardingProfile)) {
           wcOnboardingProfile.completed = true;
-          await updateWCOnboarding(productInfo);
+          await updateWCOnboarding(wcOnboardingProfile);
         }
         await updateWPSettings({
-          'nfd-ecommerce-onboarding-check': flowCheckpoint,
+          'nfd-ecommerce-onboarding-check': String(flowCheckpoint),
         });
         await refresh();
       }
