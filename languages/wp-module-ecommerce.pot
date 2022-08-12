@@ -52,62 +52,62 @@ msgid "Your site is currently displaying a \"Coming Soon\" page. Once you are re
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:16
+#: src/components/AdvancedFeatures.js:15
 msgid "Manage bookable/rental products"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:17
+#: src/components/AdvancedFeatures.js:16
 msgid "Enable a booking/appointment system to manage renting or booking of services, rooms, houses."
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:26
+#: src/components/AdvancedFeatures.js:25
 msgid "Add a powerful seach tool to your store"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:27
+#: src/components/AdvancedFeatures.js:26
 msgid "Allow your users to search products in real time by title, description, tags, and more."
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:37
+#: src/components/AdvancedFeatures.js:36
 msgid "Allow your customers to save products in their Wishlist"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:41
+#: src/components/AdvancedFeatures.js:40
 msgid "Make it easy for your customers to create lists and add their favorite items to them."
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:50
+#: src/components/AdvancedFeatures.js:49
 msgid "Add a powerful product filter to your store"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:54
+#: src/components/AdvancedFeatures.js:53
 msgid "If your store has lots of products, help your customers find what they're looking for fast."
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:63
+#: src/components/AdvancedFeatures.js:62
 msgid "Sell Gift Cards in your store"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:64
+#: src/components/AdvancedFeatures.js:63
 msgid "Use gift cards to increase your earnings and attract new customers."
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:73
+#: src/components/AdvancedFeatures.js:72
 msgid "Customize your customers' account page"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:74
+#: src/components/AdvancedFeatures.js:73
 msgid "Show any kind of custom content in your customers' account page."
 msgstr ""
 
@@ -218,9 +218,9 @@ msgid "Payments"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/CustomizeStore.js:50
-#: src/components/CustomizeStore.js:60
-#: src/components/CustomizeStore.js:79
+#: src/components/CustomizeStore.js:49
+#: src/components/CustomizeStore.js:59
+#: src/components/CustomizeStore.js:78
 #: src/components/GeneralSettings.js:33
 #: src/components/GeneralSettings.js:40
 msgid "Setup"
@@ -268,7 +268,7 @@ msgid "Categories"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:180
+#: src/components/AdvancedFeatures.js:175
 #: src/components/ManageProducts.js:22
 #: src/components/ManageProducts.js:27
 msgid "Manage"
@@ -310,37 +310,37 @@ msgid "Switch back to \"Coming Soon\" mode"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/Dashboard.js:14
+#: src/components/Dashboard.js:13
 msgid "General Settings"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/Dashboard.js:16
+#: src/components/Dashboard.js:15
 msgid "Add products"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/Dashboard.js:18
+#: src/components/Dashboard.js:17
 msgid "Customize your store"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/Dashboard.js:20
+#: src/components/Dashboard.js:19
 msgid "Advanced features"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/Dashboard.js:23
+#: src/components/Dashboard.js:22
 msgid "Launch Your Store"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/Dashboard.js:24
+#: src/components/Dashboard.js:23
 msgid "Site Status"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:96
+#: src/components/AdvancedFeatures.js:91
 #: src/components/GeneralSettings.js:93
 #: src/components/ManageProducts.js:40
 msgid "There was an error while loading this information"
@@ -414,57 +414,57 @@ msgid "Learn More"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/CustomizeStore.js:36
+#: src/components/CustomizeStore.js:35
 msgid "Customize Your Store"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/CustomizeStore.js:37
+#: src/components/CustomizeStore.js:36
 msgid "Setup your core store pages and add general website content to provide a complete shopping experience for your customers."
 msgstr ""
 
 #: build/index.js:1
-#: src/components/CustomizeStore.js:59
+#: src/components/CustomizeStore.js:58
 msgid "Add a Page"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/CustomizeStore.js:68
+#: src/components/CustomizeStore.js:67
 msgid "Store Layout"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/CustomizeStore.js:69
+#: src/components/CustomizeStore.js:68
 msgid "Configure"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/CustomizeStore.js:78
+#: src/components/CustomizeStore.js:77
 msgid "Customer Account Page"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:118
+#: src/components/AdvancedFeatures.js:113
 msgid "Advanced Features"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:119
+#: src/components/AdvancedFeatures.js:114
 msgid "Enjoy the free add-ons included in your plan and improve your store."
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:133
+#: src/components/AdvancedFeatures.js:128
 msgid "Enable"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:165
+#: src/components/AdvancedFeatures.js:160
 msgid "Already Installed Features"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:166
+#: src/components/AdvancedFeatures.js:161
 msgid "These tools are already installed and activated and ready for use."
 msgstr ""
 
@@ -484,51 +484,51 @@ msgid "Not ready? You can re-enable the 'Coming Soon' mode if you need."
 msgstr ""
 
 #: build/index.js:1
-#: src/components/Dashboard.js:48
+#: src/components/Dashboard.js:47
 msgid "Setup Guide"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:31
+#: src/components/WooCommerceUnavailable.js:35
 msgid " We hit a snag..."
 msgstr ""
 
 #: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:33
-msgid "We'are sorry, but there was an error installing WooCommerce, please try again."
+#: src/components/WooCommerceUnavailable.js:37
+msgid "We're sorry, but there was an error installing WooCommerce, please try again."
 msgstr ""
 
 #: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:39
+#: src/components/WooCommerceUnavailable.js:43
 msgid "Try again"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:42
+#: src/components/WooCommerceUnavailable.js:46
 msgid " If the problem persists, please "
 msgstr ""
 
 #: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:44
+#: src/components/WooCommerceUnavailable.js:48
 msgid "contact"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:46
+#: src/components/WooCommerceUnavailable.js:50
 msgid " support team."
 msgstr ""
 
 #: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:58
+#: src/components/WooCommerceUnavailable.js:62
 msgid "Uh-Oh! WooCommerce is not installed!"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:61
+#: src/components/WooCommerceUnavailable.js:65
 msgid "WooCommerce is required for this dashboard to work, install it now or contact our support team for more assistance."
 msgstr ""
 
 #: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:70
+#: src/components/WooCommerceUnavailable.js:74
 msgid "Contact Support"
 msgstr ""
