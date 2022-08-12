@@ -31,7 +31,7 @@ const OnboardingSteps = {
   [YithOptions.paypal]: {
     title: __("Payments", "wp-module-ecommerce"),
     setupAction: __("Setup", "wp-module-ecommerce"),
-    editAction: __("Edit Settingso", "wp-module-ecommerce"),
+    editAction: __("Edit Settings", "wp-module-ecommerce"),
     editUrl: "admin.php?page=yith_paypal_payments",
     SetupIcon: Payments,
   },

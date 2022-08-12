@@ -71,7 +71,7 @@ export function WooCommerceUnavailable({ wpModules }) {
               (window.location.href = "https://www.bluehost.com/contact")
             }
           >
-            {__("Conatct Support", "wp-module-ecommerce")}
+            {__("Contact Support", "wp-module-ecommerce")}
           </a>
         </div>
         <div style={{ margin: "61px 48px 60px 0" }}>
