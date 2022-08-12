@@ -6,6 +6,7 @@ import { GeneralSettings } from "./GeneralSettings";
 import { ManageProducts } from "./ManageProducts";
 import { SiteStatus } from "./SiteStatus";
 import { useOnboardingCleanup } from "./useOnboardingCleanup";
+import { useSetupYITHWonderTheme } from "./useSetupYITHWonderTheme";
 
 function getStepName(stepKey, state) {
   switch (stepKey) {
@@ -38,6 +39,7 @@ export function Dashboard(props) {
   let { key, StepContent } =
     guideSteps.find((step) => step.key === props.section) ?? guideSteps[0];
   let { data: token } = useSWR("/newfold-ecommerce/v1/plugins/verification");
+  useSetupYITHWonderTheme();
   let isCleanUpInProgress = useOnboardingCleanup(props.token);
   return (
     <div className="nfd-ecommerce-dashboard">

@@ -25,10 +25,12 @@ const CustomizeList = [
 
 export function CustomizeStore(props) {
   let { data: pluginsOnSite } = useSWR("/newfold-ecommerce/v1/plugins/status");
-  let { data: postsMeta } = useSWR("/newfold-ecommerce/v1/user/page-status");
-  let postsByName = Object.fromEntries(
-    postsMeta?.map((_) => [_["post_name"], _["ID"]]) ?? []
+  let { data: status } = useSWR("/newfold-ecommerce/v1/user/page-status");
+  let { pages, theme } = status ?? {};
+  let pagesByName = Object.fromEntries(
+    pages?.map((_) => [_["meta_value"], _["ID"]]) ?? []
   );
+  // TODO: Add Loading state
   return (
     <DashboardContent
       title={__("Customize Your Store", "wp-module-ecommerce")}
@@ -38,22 +40,29 @@ export function CustomizeStore(props) {
       )}
     >
       <div className="nfd-ecommerce-standard-actions-container">
-        {CustomizeList.map(({ title, Icon, dcpage }) => (
+        {theme?.name === "YITH Wonder" ? (
+          CustomizeList.map(({ title, Icon, dcpage }) => (
+            <Card
+              key={title}
+              variant="standard"
+              title={title}
+              status={status === undefined ? "inprogress" : "ready"}
+              action={__("Setup", "wp-module-ecommerce")}
+              href={`post.php?action=edit&post=${pagesByName[dcpage]}`}
+            >
+              <Icon />
+            </Card>
+          ))
+        ) : (
           <Card
-            key={title}
             variant="standard"
-            title={title}
-            status={postsMeta === undefined ? "inprogress" : "ready"}
+            title={__("Add a Page", "wp-module-ecommerce")}
             action={__("Setup", "wp-module-ecommerce")}
-            href={
-              postsByName[dcpage]
-                ? `post.php?action=edit&post=${postsByName[dcpage]}`
-                : `post-new.php?dcpage=${dcpage}&dcsrc=plugin`
-            }
+            href={`post-new.php?post_type=page`}
           >
-            <Icon />
+            <StoreLayout />
           </Card>
-        ))}
+        )}
         <Card
           variant="standard"
           title={__("Store Layout", "wp-module-ecommerce")}
