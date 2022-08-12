@@ -7,7 +7,7 @@ const fetcher = (path) => apiFetch({ path });
 
 export default function NewfoldECommerce(props) {
   return (
-    <SWRConfig value={{ fetcher }}>
+    <SWRConfig value={{ fetcher, revalidateOnReconnect: false }}>
       <div className="nfd-ecommerce-atoms nfd-ecommerce-setup">
         <Banner {...props} />
         <Dashboard {...props} />
