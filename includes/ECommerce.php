@@ -43,6 +43,16 @@ class ECommerce {
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
 		CaptiveFlow::init();
 		WooCommerceBacklink::init();
+		register_meta(
+			'post',
+			'nf_dc_page',
+			array(
+				'type'         => 'string',
+				'description'  => 'Reference to page category',
+				'show_in_rest' => true,
+				'single'       => true,
+			)
+		);
 	}
 
 	public function register_routes() {
