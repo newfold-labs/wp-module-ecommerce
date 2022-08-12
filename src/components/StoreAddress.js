@@ -104,7 +104,7 @@ export function StoreAddress({ onComplete, isMandatory = false }) {
         <div>
           <label> {__("State", "wp-module-ecommerce")}</label>
           {states.length === 0 || isLoading ? (
-            <input type="text" name="state" disabled={isLoading} required {...eventHandlers} />
+            <input type="text" name="state" disabled={isLoading} {...eventHandlers} />
           ) : (
             <select
               type="text"
