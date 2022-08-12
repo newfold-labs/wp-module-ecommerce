@@ -218,9 +218,9 @@ msgid "Payments"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/CustomizeStore.js:49
-#: src/components/CustomizeStore.js:59
-#: src/components/CustomizeStore.js:78
+#: src/components/CustomizeStore.js:65
+#: src/components/CustomizeStore.js:75
+#: src/components/CustomizeStore.js:94
 #: src/components/GeneralSettings.js:33
 #: src/components/GeneralSettings.js:40
 msgid "Setup"
@@ -341,6 +341,7 @@ msgstr ""
 
 #: build/index.js:1
 #: src/components/AdvancedFeatures.js:91
+#: src/components/CustomizeStore.js:38
 #: src/components/GeneralSettings.js:93
 #: src/components/ManageProducts.js:40
 msgid "There was an error while loading this information"
@@ -414,32 +415,32 @@ msgid "Learn More"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/CustomizeStore.js:35
+#: src/components/CustomizeStore.js:51
 msgid "Customize Your Store"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/CustomizeStore.js:36
+#: src/components/CustomizeStore.js:52
 msgid "Setup your core store pages and add general website content to provide a complete shopping experience for your customers."
 msgstr ""
 
 #: build/index.js:1
-#: src/components/CustomizeStore.js:58
+#: src/components/CustomizeStore.js:74
 msgid "Add a Page"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/CustomizeStore.js:67
+#: src/components/CustomizeStore.js:83
 msgid "Store Layout"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/CustomizeStore.js:68
+#: src/components/CustomizeStore.js:84
 msgid "Configure"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/CustomizeStore.js:77
+#: src/components/CustomizeStore.js:93
 msgid "Customer Account Page"
 msgstr ""
 
