@@ -1,0 +1,25 @@
+{
+    "store_address": {
+        "address1": "Varanasi",
+        "address2": "",
+        "city": "Varanasi",
+        "state": "Uttar Pradesh",
+        "country": "India",
+        "zipcode": "221011"
+    },
+    "shipping": {
+        "environment": "sandbox",
+        "test_api": "shippo_test_a3aa2d1881ddfc7cd13151137830a527ae09ab97",
+        "sender_name": "Commerce Demo",
+        "sender_company": "Commerce Demo",
+        "email": "jocelyn.hendrickson@endurance.com",
+        "phone": "",
+        "use_woocommerce_address": true,
+        "address1": "",
+        "address2": "",
+        "city": "",
+        "zipcode": "",
+        "country": ""
+        
+    }
+}
