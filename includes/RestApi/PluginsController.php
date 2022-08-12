@@ -36,17 +36,6 @@ class PluginsController {
 				),
 			)
 		);
-		\register_rest_route(
-			$this->namespace,
-			$this->rest_base . '/verification',
-			array(
-				array(
-					'methods'             => \WP_REST_Server::READABLE,
-					'callback'            => array( Permissions::class, 'rest_get_plugin_install_hash' ),
-					'permission_callback' => array( Permissions::class, 'rest_is_authorized_admin' ),
-				),
-			)
-		);
 	}
 
 	/**
@@ -56,6 +45,7 @@ class PluginsController {
 	 */
 	public function get_plugins_status() {
 		$plugins = array(
+			'woocommerce',
 			'yith_wcmap_panel',
 			'yith_woocommerce_gift_cards_panel',
 			'yith_wcwl_panel',
@@ -70,16 +60,19 @@ class PluginsController {
 			if ( file_exists( WP_PLUGIN_DIR . '/' . $map[1] ) ) {
 				$active = is_plugin_active( $map[1] );
 				if ( $active ) {
-					$result[ $plugin ] = 'Active';
+					$status[ $plugin ] = 'Active';
 				} else {
-					$result[ $plugin ] = 'Inactive';
+					$status[ $plugin ] = 'Inactive';
 				}
 			} else {
-				$result[ $plugin ] = 'Not Installed';
+				$status[ $plugin ] = 'Not Installed';
 			}
 		}
 		return new \WP_REST_Response(
-			$result,
+			array(
+				'status' => $status,
+				'token'   => Permissions::rest_get_plugin_install_hash()
+			),
 			200
 		);
 	}

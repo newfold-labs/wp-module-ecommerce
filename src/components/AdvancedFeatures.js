@@ -1,6 +1,5 @@
 import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
-import useSWR from "swr";
 import { ReactComponent as Booking } from "../icons/booking.svg";
 import { ReactComponent as CustomizeAccount } from "../icons/customize-account.svg";
 import { ReactComponent as Filter } from "../icons/filter.svg";
@@ -81,17 +80,13 @@ const SuggestedPlugins = [
   },
 ];
 
-export function AdvancedFeatures(props) {
+export function AdvancedFeatures({ plugins }) {
   let [inprogressInstalls, setInstalls] = useState([]);
-  let {
-    data: pluginsOnSite,
-    error,
-    mutate: refreshPlugins,
-  } = useSWR("/newfold-ecommerce/v1/plugins/status");
-  if (!pluginsOnSite) {
+  
+  if (plugins.status === undefined) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
-        {error ? (
+        {plugins.errors ? (
           <h2>
             {__(
               "There was an error while loading this information",
@@ -105,10 +100,10 @@ export function AdvancedFeatures(props) {
     );
   }
   let installedPlugins = SuggestedPlugins.filter(
-    (pluginDef) => pluginsOnSite[pluginDef.slug] === "Active"
+    (pluginDef) => plugins.status?.[pluginDef.slug] === "Active"
   );
   let unavailablePlugins = SuggestedPlugins.filter(
-    (pluginDef) => pluginsOnSite[pluginDef.slug] !== "Active"
+    (pluginDef) => plugins.status?.[pluginDef.slug] !== "Active"
   );
   return (
     <>
@@ -132,7 +127,7 @@ export function AdvancedFeatures(props) {
                     title={plugin.title}
                     action={__("Enable", "wp-module-ecommerce")}
                     status={
-                      inprogressInstalls.includes(plugin.slug) || props.token === undefined
+                      inprogressInstalls.includes(plugin.slug)
                         ? "inprogress"
                         : "ready"
                     }
@@ -142,9 +137,9 @@ export function AdvancedFeatures(props) {
                       if (plugin.sync === true) {
                         await syncPluginInstall(plugin.name);
                       } else {
-                        await queuePluginInstall(plugin.name, props.token);
+                        await queuePluginInstall(plugin.name, plugins.token);
                       }
-                      await refreshPlugins();
+                      await plugins.refresh();
                       setInstalls(
                         inprogressInstalls.filter((_) => _ !== plugin.slug)
                       );

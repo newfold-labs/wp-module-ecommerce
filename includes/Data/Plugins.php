@@ -16,6 +16,7 @@ final class Plugins {
 			'yith_wcas_panel'                      => array( 'https://downloads.wordpress.org/plugin/yith-woocommerce-ajax-search.1.21.0.zip', 'yith-woocommerce-ajax-search/init.php' ),
 			'yith_shippo_shipping_for_woocommerce' => array( 'https://hiive.cloud/workers/plugin-downloads/yith-shippo-shippings-for-woocommerce', 'yith-shippo-shippings-for-woocommerce-extended/init.php' ),
 			'yith_paypal_payments'                 => array( 'https://hiive.cloud/workers/plugin-downloads/yith-paypal-payments-for-woocommerce', 'yith-paypal-payments-for-woocommerce-extended/init.php' ),
+			'woocommerce'                          => array( 'ignore', 'woocommerce/woocommerce.php'),
 		);
 		if ( in_array( $plugin, array_keys( $map ) ) ) {
 			$plugin = $map[ $plugin ];

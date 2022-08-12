@@ -30,7 +30,7 @@ export async function syncPluginInstall(slug) {
     path: Endpoints.PLUGIN_SYNC_INSTALL,
     method: 'POST',
     data: { slug, status: 'active' },
-  }).catch((error) => {return 'Failed'});
+  }).catch((error) => 'failed');
 }
 
 export async function queuePluginInstall(plugin, token) {
@@ -39,5 +39,5 @@ export async function queuePluginInstall(plugin, token) {
     method: 'POST',
     headers: { 'X-NFD-ONBOARDING': token.hash },
     data: { plugin, activate: true, queue: true },
-  }).catch((error) => {});
+  }).catch((error) => 'failed');
 }

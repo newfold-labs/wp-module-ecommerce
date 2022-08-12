@@ -12,12 +12,12 @@ const isEmpty = (object) => Object.keys(object).length === 0;
 
 const HighProductVolumes = ['11-100', '101-1000', '1000+'];
 
-export function useOnboardingCleanup(token) {
+export function useOnboardingCleanup(hash) {
   let [cleanupStatus, setCleanupStatus] = useState(false);
   let { data: flow, error: flowError } = useSWR('/newfold-onboarding/v1/flow');
   let { data: settings, error: settingsError } = useSWR(Endpoints.WP_SETTINGS);
   useEffect(async () => {
-    if (flow && settings && token) {
+    if (flow && settings && hash) {
       setCleanupStatus(true);
       let flowCheckpoint = flow.updatedAt ?? flow.createdAt;
       let previousCheckpoint = Number(
@@ -40,7 +40,7 @@ export function useOnboardingCleanup(token) {
         if (HighProductVolumes.includes(productInfo.product_count)) {
           await queuePluginInstall(
             'nfd_slug_yith_woocommerce_ajax_product_filter',
-            token
+            { hash }
           );
           await syncPluginInstall('yith-woocommerce-ajax-search');
         }
@@ -48,24 +48,25 @@ export function useOnboardingCleanup(token) {
           if (product_type === 'physical') {
             await queuePluginInstall(
               'nfd_slug_yith_shippo_shippings_for_woocommerce',
-              token
+              { hash }
             );
           }
           if (product_type === 'bookings') {
-            await queuePluginInstall(
-              'nfd_slug_yith_woocommerce_booking',
-              token
-            );
+            await queuePluginInstall('nfd_slug_yith_woocommerce_booking', {
+              hash,
+            });
           }
         }
         await updateWPSettings({
           'nfd-ecommerce-onboarding-check': String(flowCheckpoint),
         });
+      } else {
+        setCleanupStatus(false);
       }
     }
     if (flowError || settingsError) {
       setCleanupStatus(false);
     }
-  }, [flow, settings, token]);
+  }, [flow, settings, hash]);
   return cleanupStatus;
 }

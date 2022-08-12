@@ -1,20 +1,24 @@
 import { __ } from "@wordpress/i18n";
 import { useState } from "@wordpress/element";
 import { ReactComponent as WCUnAvailableIllustaration } from "../icons/wc-unavailable-illustration.svg";
-import { syncPluginInstall } from "../services";
+import { queuePluginInstall, syncPluginInstall } from "../services";
 
-export function WooCommerceUnavailable({ wpModules }) {
+export function WooCommerceUnavailable({ wpModules, plugins }) {
   let { Modal } = wpModules;
   let [installationFailed, setInstallationFailed] = useState(false);
   let [isInstalling, setIsInstalling] = useState(false);
 
   async function installWooCommerce() {
     setIsInstalling(true);
-    let resposne = await syncPluginInstall("woocommerce");
+    let response =
+      plugins.status?.woocommerce === 'Inactive'
+        ? await queuePluginInstall('woocommerce', plugins.token)
+        : await syncPluginInstall('woocommerce');
     setIsInstalling(false);
-    if (resposne == "Failed") {
+    if (response === 'failed') {
       setInstallationFailed(true);
     } else {
+      await plugins.refresh();
       window.location.reload();
     }
   }
@@ -31,11 +35,11 @@ export function WooCommerceUnavailable({ wpModules }) {
           <h1>{__(" We hit a snag...", "wp-module-ecommerce")}</h1>
           <span style={{ marginTop: "48px" }}>
             {__(
-              "We'are sorry, but there was an error installing WooCommerce, please try again.",
+              "We're sorry, but there was an error installing WooCommerce, please try again.",
               "wp-module-ecommerce"
             )}
           </span>
-          <button onClick={installWooCommerce}>
+          <button disabled={plugins.token === undefined} onClick={installWooCommerce}>
             {__("Try again", "wp-module-ecommerce")}
           </button>
           <span style={{ marginTop: "32px" }}>
@@ -63,8 +67,8 @@ export function WooCommerceUnavailable({ wpModules }) {
               "wp-module-ecommerce"
             )}
           </div>
-          <button onClick={installWooCommerce}>
-            {isInstalling ? "Installing WooCommerce..." : "Install Woocommerce"}
+          <button disabled={isInstalling} onClick={installWooCommerce}>
+            {isInstalling ? "Installing WooCommerce..." : "Install WooCommerce"}
           </button>
           <a href="https://www.bluehost.com/contact" target="_blank">
             {__("Contact Support", "wp-module-ecommerce")}

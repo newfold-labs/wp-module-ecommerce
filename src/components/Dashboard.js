@@ -1,5 +1,4 @@
 import { __ } from "@wordpress/i18n";
-import useSWR from "swr";
 import { AdvancedFeatures } from "./AdvancedFeatures";
 import { CustomizeStore } from "./CustomizeStore";
 import { GeneralSettings } from "./GeneralSettings";
@@ -38,10 +37,10 @@ const guideSteps = [
 export function Dashboard(props) {
   let { key, StepContent } =
     guideSteps.find((step) => step.key === props.section) ?? guideSteps[0];
-  let { data: token } = useSWR("/newfold-ecommerce/v1/plugins/verification");
   useSetupYITHWonderTheme();
-  let isCleanUpInProgress = useOnboardingCleanup(props.token);
-  let className = `nfd-ecommerce-dashboard ${props.state.wp?.isWooActive !== 1 ? 'disableDashboardContent' : ''}` ;
+  let isCleanUpInProgress = useOnboardingCleanup(props.plugins.token?.hash);
+  let addCurtain = props.plugins?.status?.woocommerce !== 'Active';
+  let className = `nfd-ecommerce-dashboard ${addCurtain ? 'disableDashboardContent' : ''}` ;
   return (
     <div className={className}>
       <nav
@@ -66,7 +65,7 @@ export function Dashboard(props) {
             <div className="bwa-loader" />
           </div>
         ) : (
-          <StepContent token={token} {...props} />
+          <StepContent {...props} />
         )}
       </div>
     </div>

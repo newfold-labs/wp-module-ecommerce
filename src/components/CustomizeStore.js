@@ -5,7 +5,7 @@ import { ReactComponent as Account } from "../icons/account.svg";
 import { ReactComponent as Contact } from "../icons/contactpage.svg";
 import { ReactComponent as Home } from "../icons/homepage.svg";
 import { ReactComponent as StoreLayout } from "../icons/storelayout.svg";
-import { queuePluginInstall } from "../services";
+import { Endpoints, queuePluginInstall } from "../services";
 import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
 
@@ -23,9 +23,8 @@ const CustomizeList = [
   },
 ];
 
-export function CustomizeStore(props) {
-  let { data: pluginsOnSite } = useSWR("/newfold-ecommerce/v1/plugins/status");
-  let { data: status } = useSWR("/newfold-ecommerce/v1/user/page-status");
+export function CustomizeStore({ plugins }) {
+  let { data: status } = useSWR(Endpoints.PAGE_STATUS);
   let { pages, theme } = status ?? {};
   let pagesByName = Object.fromEntries(
     pages?.map((_) => [_["meta_value"], _["ID"]]) ?? []
@@ -78,12 +77,12 @@ export function CustomizeStore(props) {
           title={__("Customer Account Page", "wp-module-ecommerce")}
           action={__("Setup", "wp-module-ecommerce")}
           data-action-gutter={"s"}
-          status={pluginsOnSite ? "ready" : "inprogress"}
+          status={plugins.status !== undefined ? "ready" : "inprogress"}
           onClick={async () => {
-            if (pluginsOnSite.yith_wcmap_panel !== "Active") {
+            if (plugins.status?.yith_wcmap_panel !== "Active") {
               await queuePluginInstall(
                 "nfd_slug_yith_woocommerce_customize_myaccount_page",
-                props.token
+                plugins.token
               );
             }
             window.location.href = "admin.php?page=yith_wcmap_panel";
