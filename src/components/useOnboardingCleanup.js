@@ -17,8 +17,8 @@ export function useOnboardingCleanup(token) {
   let { data: flow, error: flowError } = useSWR('/newfold-onboarding/v1/flow');
   let { data: settings, error: settingsError } = useSWR(Endpoints.WP_SETTINGS);
   useEffect(async () => {
-    setCleanupStatus(true);
-    if (flow && settings) {
+    if (flow && settings && token) {
+      setCleanupStatus(true);
       let flowCheckpoint = flow.updatedAt ?? flow.createdAt;
       let previousCheckpoint = Number(
         settings['nfd-ecommerce-onboarding-check']
@@ -66,6 +66,6 @@ export function useOnboardingCleanup(token) {
     if (flowError || settingsError) {
       setCleanupStatus(false);
     }
-  }, [flow, settings]);
+  }, [flow, settings, token]);
   return cleanupStatus;
 }

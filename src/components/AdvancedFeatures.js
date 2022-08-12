@@ -132,7 +132,7 @@ export function AdvancedFeatures(props) {
                     title={plugin.title}
                     action={__("Enable", "wp-module-ecommerce")}
                     status={
-                      inprogressInstalls.includes(plugin.slug)
+                      inprogressInstalls.includes(plugin.slug) || props.token === undefined
                         ? "inprogress"
                         : "ready"
                     }
