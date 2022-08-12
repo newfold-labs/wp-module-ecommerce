@@ -40,7 +40,7 @@ export function WooCommerceUnavailable({ wpModules }) {
           </button>
           <span style={{ marginTop: "32px" }}>
             {__(" If the problem persists, please ", "wp-module-ecommerce")}
-            <a href="https://www.bluehost.com/contact">
+            <a href="https://www.bluehost.com/contact" target="_blank">
               {__("contact", "wp-module-ecommerce")}
             </a>
             {__(" support team.", "wp-module-ecommerce")}
@@ -66,11 +66,7 @@ export function WooCommerceUnavailable({ wpModules }) {
           <button onClick={installWooCommerce}>
             {isInstalling ? "Installing WooCommerce..." : "Install Woocommerce"}
           </button>
-          <a
-            onClick={() =>
-              (window.location.href = "https://www.bluehost.com/contact")
-            }
-          >
+          <a href="https://www.bluehost.com/contact" target="_blank">
             {__("Contact Support", "wp-module-ecommerce")}
           </a>
         </div>
