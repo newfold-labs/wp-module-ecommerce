@@ -24,12 +24,28 @@ const CustomizeList = [
 ];
 
 export function CustomizeStore({ plugins }) {
-  let { data: status } = useSWR(Endpoints.PAGE_STATUS);
+  let { data: status, error } = useSWR(Endpoints.PAGE_STATUS);
   let { pages, theme } = status ?? {};
   let pagesByName = Object.fromEntries(
     pages?.map((_) => [_["meta_value"], _["ID"]]) ?? []
   );
-  // TODO: Add Loading state
+
+  if (status === undefined) {
+    return (
+      <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
+        {error ? (
+          <h2>
+            {__(
+              "There was an error while loading this information",
+              "wp-module-ecommerce"
+            )}
+          </h2>
+        ) : (
+          <div className="bwa-loader" />
+        )}
+      </div>
+    );
+  }
   return (
     <DashboardContent
       title={__("Customize Your Store", "wp-module-ecommerce")}
