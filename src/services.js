@@ -27,11 +27,10 @@ export async function updateWCOnboarding(data) {
 
 export async function syncPluginInstall(slug) {
   return apiFetch({
-    path: Endpoints.PLUGIN_ASYNC_INSTALL,
+    path: Endpoints.PLUGIN_SYNC_INSTALL,
     method: 'POST',
-    headers: { 'X-NFD-ONBOARDING': token.hash },
     data: { slug, status: 'active' },
-  }).catch((error) => {});
+  }).catch((error) => {return 'Failed'});
 }
 
 export async function queuePluginInstall(plugin, token) {

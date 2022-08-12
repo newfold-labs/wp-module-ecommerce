@@ -27,8 +27,6 @@ const taxManagementOptions = [
   },
 ];
 
-const path = "/wp/v2/settings";
-
 const Tax = (props) => {
   let { onComplete, isStoreDetailsFilled } = props;
   const [selectedOption, setSelectedOption] = useState(null);

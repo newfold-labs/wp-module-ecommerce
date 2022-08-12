@@ -41,8 +41,9 @@ export function Dashboard(props) {
   let { data: token } = useSWR("/newfold-ecommerce/v1/plugins/verification");
   useSetupYITHWonderTheme();
   let isCleanUpInProgress = useOnboardingCleanup(props.token);
+  let className = `${props.state.wp.isWooActive !== 1 ? 'disableDashboardContent' : ''} nfd-ecommerce-dashboard` ;
   return (
-    <div className="nfd-ecommerce-dashboard">
+    <div className={className}>
       <nav
         aria-label={__("Setup Guide", "wp-module-ecommerce")}
         className="nfd-ecommerce-dashboard-menu"
