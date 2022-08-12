@@ -42,7 +42,7 @@ class PluginsController {
 			array(
 				array(
 					'methods'             => \WP_REST_Server::READABLE,
-					'callback'            => array( $this, 'rest_get_plugin_install_hash' ),
+					'callback'            => array( Permissions::class, 'rest_get_plugin_install_hash' ),
 					'permission_callback' => array( Permissions::class, 'rest_is_authorized_admin' ),
 				),
 			)
@@ -81,26 +81,6 @@ class PluginsController {
 		return new \WP_REST_Response(
 			$result,
 			200
-		);
-
-	}
-
-	/**
-	 * Verify caller has permissions to install plugins.
-	 *
-	 * @param \WP_REST_Request $request
-	 *
-	 * @return boolean
-	 */
-	public function check_install_permissions( \WP_REST_Request $request ) {
-		$install_hash = $request->get_header( 'X-NFD-ONBOARDING' );
-		return Permissions::rest_verify_plugin_install_hash( $install_hash )
-			&& Permissions::rest_is_authorized_admin();
-	}
-	
-	public function rest_get_plugin_install_hash() {
-		return array(
-			'hash' => 'NFD_ONBOARDING_' . hash( 'sha256', NFD_ONBOARDING_VERSION . wp_salt( 'nonce' ) . site_url() )
 		);
 	}
 }

@@ -14,11 +14,9 @@ final class Permissions {
 	const EDIT_THEMES    = 'edit_themes';
 
 	public static function rest_get_plugin_install_hash() {
-		return 'NFD_ONBOARDING_' . hash( 'sha256', NFD_ONBOARDING_VERSION . wp_salt( 'nonce' ) . site_url() );
-	}
-
-	public static function rest_verify_plugin_install_hash( $hash ) {
-		return $hash === self::rest_get_plugin_install_hash();
+		return array(
+			'hash' => 'NFD_ONBOARDING_' . hash( 'sha256', NFD_ONBOARDING_VERSION . wp_salt( 'nonce' ) . site_url() )
+		);
 	}
 
 	/**
@@ -45,13 +43,4 @@ final class Permissions {
 			\current_user_can( Permissions::EDIT_THEMES );
 	}
 
-	/**
-	 * Confirm whether user has ADMIN user and edit_post capabilities for creating pages.
-	 *
-	 * @return boolean
-	 */
-	public static function custom_post_authorized_admin() {
-		return \current_user_can( 'edit_posts' ) && \current_user_can( Permissions::ADMIN );
-	}
-
-} // END \NewfoldLabs\WP\Module\Onboarding\Permissions()
+}
