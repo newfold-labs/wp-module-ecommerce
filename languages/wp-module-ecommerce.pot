@@ -566,12 +566,18 @@ msgid "Payments"
 msgstr ""
 
 #: dist/wp-module-ecommerce.cjs.development.js:1578
+#: dist/wp-module-ecommerce.cjs.development.js:1584
 #: dist/wp-module-ecommerce.esm.js:1552
+#: dist/wp-module-ecommerce.esm.js:1558
 #: src/components/GeneralSettings.js:34
+#: src/components/GeneralSettings.js:41
 #: dist/wp-module-ecommerce.cjs.development.js:771
+#: dist/wp-module-ecommerce.cjs.development.js:778
 #: dist/wp-module-ecommerce.cjs.production.min.js:772
+#: dist/wp-module-ecommerce.cjs.production.min.js:779
 #: dist/wp-module-ecommerce.esm.js:771
-msgid "Edit Settingso"
+#: dist/wp-module-ecommerce.esm.js:778
+msgid "Edit Settings"
 msgstr ""
 
 #: dist/wp-module-ecommerce.cjs.development.js:1582
@@ -581,15 +587,6 @@ msgstr ""
 #: dist/wp-module-ecommerce.cjs.production.min.js:777
 #: dist/wp-module-ecommerce.esm.js:776
 msgid "Shipping"
-msgstr ""
-
-#: dist/wp-module-ecommerce.cjs.development.js:1584
-#: dist/wp-module-ecommerce.esm.js:1558
-#: src/components/GeneralSettings.js:41
-#: dist/wp-module-ecommerce.cjs.development.js:778
-#: dist/wp-module-ecommerce.cjs.production.min.js:779
-#: dist/wp-module-ecommerce.esm.js:778
-msgid "Edit Settings"
 msgstr ""
 
 #: dist/wp-module-ecommerce.cjs.development.js:1588
@@ -1006,5 +1003,5 @@ msgstr ""
 #: dist/wp-module-ecommerce.cjs.development.js:1485
 #: dist/wp-module-ecommerce.cjs.production.min.js:1485
 #: dist/wp-module-ecommerce.esm.js:1485
-msgid "Conatct Support"
+msgid "Contact Support"
 msgstr ""
