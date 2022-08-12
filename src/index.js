@@ -6,13 +6,15 @@ import { WooCommerceUnavailable } from "./components/WooCommerceUnavailable";
 
 const fetcher = (path) => apiFetch({ path });
 
-export default function NewfoldECommerce(props) {
+window.NewfoldECommerce = function NewfoldECommerce(props) {
+  let Hero =
+    props.state.wp?.isWooActive === 1 ? Banner : WooCommerceUnavailable;
   return (
     <SWRConfig value={{ fetcher, revalidateOnReconnect: false }}>
       <div className="nfd-ecommerce-atoms nfd-ecommerce-setup">
-        {props.state.wp.isWooActive === 1 ? <Banner {...props} /> :<WooCommerceUnavailable {...props}/> }
+        <Hero {...props} />
         <Dashboard {...props} />
       </div>
     </SWRConfig>
   );
-}
+};
