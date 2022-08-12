@@ -41,7 +41,7 @@ export function Dashboard(props) {
   let { data: token } = useSWR("/newfold-ecommerce/v1/plugins/verification");
   useSetupYITHWonderTheme();
   let isCleanUpInProgress = useOnboardingCleanup(props.token);
-  let className = `${props.state.wp.isWooActive !== 1 ? 'disableDashboardContent' : ''} nfd-ecommerce-dashboard` ;
+  let className = `nfd-ecommerce-dashboard ${props.state.wp?.isWooActive !== 1 ? 'disableDashboardContent' : ''}` ;
   return (
     <div className={className}>
       <nav
@@ -50,7 +50,7 @@ export function Dashboard(props) {
       >
         {guideSteps.map((step) => (
           <a
-            key={step.key}
+            key={getStepName(step.key, props.state)}
             data-active={key === step.key}
             href={`#/home/store/${step.key}`}
           >
