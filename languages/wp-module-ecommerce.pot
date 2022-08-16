@@ -63,7 +63,7 @@ msgstr ""
 
 #: build/index.js:1
 #: src/components/AdvancedFeatures.js:25
-msgid "Add a powerful seach tool to your store"
+msgid "Add a powerful search tool to your store"
 msgstr ""
 
 #: build/index.js:1
@@ -72,42 +72,42 @@ msgid "Allow your users to search products in real time by title, description, t
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:36
+#: src/components/AdvancedFeatures.js:35
 msgid "Allow your customers to save products in their Wishlist"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:40
+#: src/components/AdvancedFeatures.js:39
 msgid "Make it easy for your customers to create lists and add their favorite items to them."
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:49
+#: src/components/AdvancedFeatures.js:48
 msgid "Add a powerful product filter to your store"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:53
+#: src/components/AdvancedFeatures.js:52
 msgid "If your store has lots of products, help your customers find what they're looking for fast."
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:62
+#: src/components/AdvancedFeatures.js:61
 msgid "Sell Gift Cards in your store"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:63
+#: src/components/AdvancedFeatures.js:62
 msgid "Use gift cards to increase your earnings and attract new customers."
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:72
+#: src/components/AdvancedFeatures.js:71
 msgid "Customize your customers' account page"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:73
+#: src/components/AdvancedFeatures.js:72
 msgid "Show any kind of custom content in your customers' account page."
 msgstr ""
 
@@ -159,40 +159,40 @@ msgstr ""
 #: build/index.js:1
 #: src/components/SiteStatus.js:107
 #: src/components/StoreAddress.js:158
-#: src/components/Tax.js:99
+#: src/components/Tax.js:97
 msgid "Continue"
 msgstr ""
 
 #: build/index.js:1
 #: src/components/StoreAddress.js:162
-#: src/components/Tax.js:103
+#: src/components/Tax.js:101
 msgid "Need help?"
 msgstr ""
 
 #: build/index.js:1
 #: src/components/StoreAddress.js:164
-#: src/components/Tax.js:105
+#: src/components/Tax.js:103
 msgid "Hire our experts"
 msgstr ""
 
 #: build/index.js:1
 #: src/components/Tax.js:8
-msgid "Auto-calculate my taxes for me"
+msgid "Yes, enable tax rates and calculations"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/Tax.js:15
+#: src/components/Tax.js:14
 msgid "I will configure my own tax info later"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/Tax.js:22
+#: src/components/Tax.js:20
 msgid "I don't charge sales tax"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/Tax.js:71
-msgid "How would you like to manage your taxes:"
+#: src/components/Tax.js:69
+msgid "Do you want to enable tax rates and calculations?"
 msgstr ""
 
 #: build/index.js:1
@@ -268,7 +268,7 @@ msgid "Categories"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:175
+#: src/components/AdvancedFeatures.js:165
 #: src/components/ManageProducts.js:22
 #: src/components/ManageProducts.js:27
 msgid "Manage"
@@ -340,7 +340,7 @@ msgid "Site Status"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:91
+#: src/components/AdvancedFeatures.js:90
 #: src/components/CustomizeStore.js:38
 #: src/components/GeneralSettings.js:93
 #: src/components/ManageProducts.js:40
@@ -445,27 +445,27 @@ msgid "Customer Account Page"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:113
+#: src/components/AdvancedFeatures.js:112
 msgid "Advanced Features"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:114
+#: src/components/AdvancedFeatures.js:113
 msgid "Enjoy the free add-ons included in your plan and improve your store."
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:128
+#: src/components/AdvancedFeatures.js:127
 msgid "Enable"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:160
+#: src/components/AdvancedFeatures.js:150
 msgid "Already Installed Features"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/AdvancedFeatures.js:161
+#: src/components/AdvancedFeatures.js:151
 msgid "These tools are already installed and activated and ready for use."
 msgstr ""
 
@@ -490,46 +490,51 @@ msgid "Setup Guide"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:35
+#: src/components/WooCommerceUnavailable.js:36
 msgid " We hit a snag..."
 msgstr ""
 
 #: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:37
+#: src/components/WooCommerceUnavailable.js:38
 msgid "We're sorry, but there was an error installing WooCommerce, please try again."
 msgstr ""
 
 #: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:43
+#: src/components/WooCommerceUnavailable.js:47
 msgid "Try again"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:46
+#: src/components/WooCommerceUnavailable.js:50
 msgid " If the problem persists, please "
 msgstr ""
 
 #: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:48
+#: src/components/WooCommerceUnavailable.js:52
 msgid "contact"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:50
+#: src/components/WooCommerceUnavailable.js:54
 msgid " support team."
 msgstr ""
 
 #: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:62
+#: src/components/WooCommerceUnavailable.js:66
 msgid "Uh-Oh! WooCommerce is not installed!"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:65
+#: src/components/WooCommerceUnavailable.js:69
 msgid "WooCommerce is required for this dashboard to work, install it now or contact our support team for more assistance."
 msgstr ""
 
 #: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:74
+#: src/components/WooCommerceUnavailable.js:84
+msgid "Install WooCommerce"
+msgstr ""
+
+#: build/index.js:1
+#: src/components/WooCommerceUnavailable.js:91
 msgid "Contact Support"
 msgstr ""
