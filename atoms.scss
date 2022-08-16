@@ -18,6 +18,15 @@
     height: 1em;
     margin: 0;
   }
+  .nfd-ecommerce-loader-inverse {
+    background: linear-gradient(to right, #f1f5f7 5%, rgba(0,0,0,0) 32%);
+    &:before {
+      background: #f1f5f7;
+    }
+    &:after {
+      background: var(--nfd-ecommerce-accent-primary);
+    }
+  }
 }
 
 button.nfd-ecommerce-atoms {

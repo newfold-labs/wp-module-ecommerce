@@ -56,7 +56,7 @@ export function useSetupYITHWonderTheme() {
         (name) => !postNames.includes(name)
       );
       for (const slug of pendingPages) {
-        await createPage({ slug, ...getPage(slug, theme.template) });
+        await createPage({ slug, ...getPage(slug, 'yith-wonder') });
       }
     }
   }, [status]);

@@ -6,7 +6,7 @@ import { ReactComponent as Filter } from "../icons/filter.svg";
 import { ReactComponent as Gift } from "../icons/gift.svg";
 import { ReactComponent as Search } from "../icons/search.svg";
 import { ReactComponent as WishList } from "../icons/wishlist.svg";
-import { queuePluginInstall, syncPluginInstall } from "../services";
+import { queuePluginInstall } from "../services";
 import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
 
@@ -22,14 +22,13 @@ const SuggestedPlugins = [
     Icon: Booking,
   },
   {
-    title: __("Add a powerful seach tool to your store", "wp-module-ecommerce"),
+    title: __("Add a powerful search tool to your store", "wp-module-ecommerce"),
     description: __(
       "Allow your users to search products in real time by title, description, tags, and more.",
       "wp-module-ecommerce"
     ),
     slug: "yith_wcas_panel",
     name: "yith-woocommerce-ajax-search",
-    sync: true,
     Icon: Search,
   },
   {
@@ -134,16 +133,7 @@ export function AdvancedFeatures({ plugins }) {
                     description={plugin.description}
                     onClick={async () => {
                       setInstalls([...inprogressInstalls, plugin.slug]);
-                      if (plugin.sync === true) {
-                        await syncPluginInstall(plugin.name);
-                      } else {
-                        await queuePluginInstall(plugin.name, plugins.token);
-                      }
-                      await plugins.refresh();
-                      setInstalls(
-                        inprogressInstalls.filter((_) => _ !== plugin.slug)
-                      );
-                      window.location.href = `admin.php?page=${plugin.slug}`;
+                      await queuePluginInstall(plugin.name, plugins.token);
                     }}
                   >
                     <Icon />

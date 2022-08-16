@@ -5,17 +5,15 @@ import { StoreAddress } from "./StoreAddress";
 
 const taxManagementOptions = [
   {
-    title: __("Auto-calculate my taxes for me", "wp-module-ecommerce"),
+    title: __("Yes, enable tax rates and calculations", "wp-module-ecommerce"),
     data: {
-      wc_connect_taxes_enabled: "yes",
       woocommerce_calc_taxes: "yes",
     },
   },
   {
     title: __("I will configure my own tax info later", "wp-module-ecommerce"),
     data: {
-      wc_connect_taxes_enabled: "no",
-      woocommerce_calc_taxes: "yes",
+      woocommerce_calc_taxes: "no",
     },
   },
   {
@@ -63,13 +61,13 @@ const Tax = (props) => {
         {__("Confirm your tax information", "wp-module-ecoomerce")}
       </p>
       <p className="nfd-ecommerce-modal-header-description">
-        {__(
+        {/* {__(
           "Based on the address you provided, we can auto-calculate your taxes.",
           "wp-module-ecoomerce"
-        )}
+        )} */}
         <div>
           {__(
-            "How would you like to manage your taxes:",
+            "Do you want to enable tax rates and calculations?",
             "wp-module-ecommerce"
           )}
         </div>

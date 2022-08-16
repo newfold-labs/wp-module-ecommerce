@@ -3,6 +3,7 @@ import useSWR, { SWRConfig } from "swr";
 import { Banner } from "./components/Banner";
 import { Dashboard } from "./components/Dashboard";
 import { WooCommerceUnavailable } from "./components/WooCommerceUnavailable";
+import { Endpoints } from "./services";
 
 const fetcher = (path) => apiFetch({ path });
 
@@ -11,7 +12,7 @@ window.NewfoldECommerce = function NewfoldECommerce(props) {
     data,
     error,
     mutate: refreshPlugins,
-  } = useSWR("/newfold-ecommerce/v1/plugins/status", fetcher, {
+  } = useSWR(Endpoints.PLUGIN_STATUS, fetcher, {
     revalidateOnReconnect: false,
   });
   let plugins = {

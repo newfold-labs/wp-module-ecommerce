@@ -10,16 +10,17 @@ export function WooCommerceUnavailable({ wpModules, plugins }) {
 
   async function installWooCommerce() {
     setIsInstalling(true);
-    let response =
-      plugins.status?.woocommerce === 'Inactive'
-        ? await queuePluginInstall('woocommerce', plugins.token)
-        : await syncPluginInstall('woocommerce');
-    setIsInstalling(false);
-    if (response === 'failed') {
+    let needsSyncInstall = plugins.status?.woocommerce === "Not Installed";
+    let response = needsSyncInstall
+      ? await syncPluginInstall("woocommerce")
+      : await queuePluginInstall("woocommerce", plugins.token);
+    if (needsSyncInstall) {
+      setIsInstalling(false);
+    }
+    if (response === "failed") {
       setInstallationFailed(true);
     } else {
       await plugins.refresh();
-      window.location.reload();
     }
   }
 
@@ -39,7 +40,10 @@ export function WooCommerceUnavailable({ wpModules, plugins }) {
               "wp-module-ecommerce"
             )}
           </span>
-          <button disabled={plugins.token === undefined} onClick={installWooCommerce}>
+          <button
+            disabled={plugins.token === undefined}
+            onClick={installWooCommerce}
+          >
             {__("Try again", "wp-module-ecommerce")}
           </button>
           <span style={{ marginTop: "32px" }}>
@@ -68,7 +72,20 @@ export function WooCommerceUnavailable({ wpModules, plugins }) {
             )}
           </div>
           <button disabled={isInstalling} onClick={installWooCommerce}>
-            {isInstalling ? "Installing WooCommerce..." : "Install WooCommerce"}
+            <div
+              style={{
+                height: "100%",
+                display: "grid",
+                gridAutoFlow: "column",
+                placeContent: "center",
+                gap: "5px",
+              }}
+            >
+              {__("Install WooCommerce", "wp-module-ecommerce")}
+              {isInstalling ? (
+                <div className="bwa-loader nfd-ecommerce-loader-mini nfd-ecommerce-loader-inverse" />
+              ) : null}
+            </div>
           </button>
           <a href="https://www.bluehost.com/contact" target="_blank">
             {__("Contact Support", "wp-module-ecommerce")}

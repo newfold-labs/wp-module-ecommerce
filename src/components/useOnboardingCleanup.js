@@ -3,7 +3,6 @@ import useSWR from 'swr';
 import {
   Endpoints,
   queuePluginInstall,
-  syncPluginInstall,
   updateWCOnboarding,
   updateWPSettings,
 } from '../services';
@@ -42,7 +41,7 @@ export function useOnboardingCleanup(hash) {
             'nfd_slug_yith_woocommerce_ajax_product_filter',
             { hash }
           );
-          await syncPluginInstall('yith-woocommerce-ajax-search');
+          await queuePluginInstall('yith-woocommerce-ajax-search', { hash });
         }
         for (const product_type of productInfo.product_types) {
           if (product_type === 'physical') {
