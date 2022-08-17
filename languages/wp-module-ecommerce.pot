@@ -17,27 +17,27 @@ msgid "eCommerce"
 msgstr ""
 
 #: includes/ECommerce.php:75
-#: includes/ECommerce.php:83
+#: includes/ECommerce.php:86
 msgid "NFD eCommerce Options"
 msgstr ""
 
-#: includes/ECommerce.php:96
+#: includes/ECommerce.php:100
 #: build/index.js:1
 #: src/components/SiteStatus.js:31
 msgid "Coming Soon"
 msgstr ""
 
-#: includes/ECommerce.php:97
+#: includes/ECommerce.php:101
 #: build/index.js:1
 #: src/components/SiteStatus.js:18
 msgid "Live"
 msgstr ""
 
-#: includes/ECommerce.php:102
+#: includes/ECommerce.php:106
 msgid "Site Status: "
 msgstr ""
 
-#: includes/ECommerce.php:104
+#: includes/ECommerce.php:108
 msgid "Launch Your Site"
 msgstr ""
 
