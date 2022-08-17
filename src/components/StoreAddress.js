@@ -3,6 +3,7 @@ import { __ } from "@wordpress/i18n";
 import useSWR from "swr";
 import { updateWCOnboarding, updateWPSettings } from "../services";
 
+const CountriesInOFAC = ["CU", "KP", "IR", "RU", "SY", "AF", "BY", "MM", "VN"];
 
 function useBasicProfile() {
   let { data: countries } = useSWR("/wc/v3/data/countries");
@@ -14,7 +15,11 @@ function useBasicProfile() {
     woocommerce_store_city: "",
     woocommerce_store_postcode: "",
   };
-  return [!countries, defaultContact, countries];
+  return [
+    !countries,
+    defaultContact,
+    countries?.filter((_) => !CountriesInOFAC.includes(_.code)),
+  ];
 }
 
 export function StoreAddress({ onComplete, isMandatory = false }) {
