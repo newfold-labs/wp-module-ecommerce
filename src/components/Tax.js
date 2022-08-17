@@ -30,32 +30,32 @@ const taxManagementOptions = [
 const Tax = (props) => {
   let { onComplete, isStoreDetailsFilled } = props;
   const [selectedOption, setSelectedOption] = useState(null);
-  const [isAddressMandatory, setIsAddressMandatory] = useState(false);
+ // const [isAddressMandatory, setIsAddressMandatory] = useState(false);
 
   const onClickContinue = async () => {
-    if (
-      selectedOption.title == taxManagementOptions[0].title &&
-      !isStoreDetailsFilled
-    ) {
-      setIsAddressMandatory(true);
-      return;
-    }
+    // if (
+    //   selectedOption.title == taxManagementOptions[0].title &&
+    //   !isStoreDetailsFilled
+    // ) {
+    //   setIsAddressMandatory(true);
+    //   return;
+    // }
     await updateWPSettings(selectedOption.data);
     await onComplete();
   };
 
-  if (isAddressMandatory) {
-    return (
-      <StoreAddress
-        {...props}
-        isMandatory
-        onComplete={async () => {
-          await updateWPSettings(selectedOption.data);
-          await onComplete();
-        }}
-      />
-    );
-  }
+  // if (isAddressMandatory) {
+  //   return (
+  //     <StoreAddress
+  //       {...props}
+  //       isMandatory
+  //       onComplete={async () => {
+  //         await updateWPSettings(selectedOption.data);
+  //         await onComplete();
+  //       }}
+  //     />
+  //   );
+  // }
   return (
     <>
       <div style={{ height: "64px" }} />
