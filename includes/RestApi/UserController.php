@@ -26,20 +26,20 @@ class UserController {
 
 	public function get_page_status() {
 		$args  = array(
-			'post_status'    => array( 'pending', 'draft', 'future', 'publish', 'private' ),
-			'post_type'      => 'page',
-			'meta_key'       => 'nf_dc_page',
-			'meta_value'     => array( 'home', 'about', 'contact' )
+			'post_status' => array( 'pending', 'draft', 'future', 'publish', 'private' ),
+			'post_type'   => 'page',
+			'meta_key'    => 'nf_dc_page',
+			'meta_value'  => array( 'home', 'about', 'contact' ),
 		);
 		$pages = \get_pages( $args );
 		$theme = \wp_get_theme();
 		return array(
-			'theme'       => array(
-					'manage'   => Permissions::rest_can_manage_themes(),
-					'template' => $theme->get_template(),
-					'name'     => $theme->get( 'Name' )
+			'theme' => array(
+				'manage'   => Permissions::rest_can_manage_themes(),
+				'template' => $theme->get_template(),
+				'name'     => $theme->get( 'Name' ),
 			),
-			'pages'       => $pages
+			'pages' => $pages,
 		);
 	}
 }

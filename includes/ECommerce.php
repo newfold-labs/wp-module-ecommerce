@@ -77,11 +77,15 @@ class ECommerce {
 		foreach ( $this->options as $option ) {
 			\register_setting( 'general', $option, $option_settings );
 		}
-		\register_setting( 'general', 'woocommerce_no_sales_tax', array(
-			'show_in_rest' => true,
-			'type'         => 'boolean',
-			'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
-		));
+		\register_setting(
+			'general',
+			'woocommerce_no_sales_tax',
+			array(
+				'show_in_rest' => true,
+				'type'         => 'boolean',
+				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
+			)
+		);
 	}
 
 	/**

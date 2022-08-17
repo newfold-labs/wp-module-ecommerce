@@ -15,7 +15,7 @@ final class Permissions {
 
 	public static function rest_get_plugin_install_hash() {
 		return array(
-			'hash' => 'NFD_ONBOARDING_' . hash( 'sha256', NFD_ONBOARDING_VERSION . wp_salt( 'nonce' ) . site_url() )
+			'hash' => 'NFD_ONBOARDING_' . hash( 'sha256', NFD_ONBOARDING_VERSION . wp_salt( 'nonce' ) . site_url() ),
 		);
 	}
 
