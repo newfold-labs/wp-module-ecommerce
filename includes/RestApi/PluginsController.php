@@ -68,7 +68,7 @@ class PluginsController {
 				$status[ $plugin ] = 'Not Installed';
 			}
 		}
-		$status['queue-status'] = $status = \get_option('nfd_module_onboarding_plugin_install_queue',array());
+		$status['queue-status'] = \get_option('nfd_module_onboarding_plugin_install_queue',array());
 		return new \WP_REST_Response(
 			array(
 				'status' => $status,
