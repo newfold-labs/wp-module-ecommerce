@@ -159,19 +159,19 @@ msgstr ""
 #: build/index.js:1
 #: src/components/SiteStatus.js:107
 #: src/components/StoreAddress.js:158
-#: src/components/Tax.js:97
+#: src/components/Tax.js:99
 msgid "Continue"
 msgstr ""
 
 #: build/index.js:1
 #: src/components/StoreAddress.js:162
-#: src/components/Tax.js:101
+#: src/components/Tax.js:103
 msgid "Need help?"
 msgstr ""
 
 #: build/index.js:1
 #: src/components/StoreAddress.js:164
-#: src/components/Tax.js:103
+#: src/components/Tax.js:105
 msgid "Hire our experts"
 msgstr ""
 
@@ -181,17 +181,17 @@ msgid "Yes, enable tax rates and calculations"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/Tax.js:14
+#: src/components/Tax.js:15
 msgid "I will configure my own tax info later"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/Tax.js:20
+#: src/components/Tax.js:22
 msgid "I don't charge sales tax"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/Tax.js:69
+#: src/components/Tax.js:71
 msgid "Do you want to enable tax rates and calculations?"
 msgstr ""
 
