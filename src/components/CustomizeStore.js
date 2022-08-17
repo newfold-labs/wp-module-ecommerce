@@ -2,10 +2,11 @@ import { __ } from "@wordpress/i18n";
 import useSWR from "swr";
 import { ReactComponent as About } from "../icons/aboutpage.svg";
 import { ReactComponent as Account } from "../icons/account.svg";
+import { ReactComponent as AddNewPage } from "../icons/add-card.svg";
 import { ReactComponent as Contact } from "../icons/contactpage.svg";
 import { ReactComponent as Home } from "../icons/homepage.svg";
 import { ReactComponent as StoreLayout } from "../icons/storelayout.svg";
-import { Endpoints, queuePluginInstall } from "../services";
+import { Endpoints, syncPluginInstall } from "../services";
 import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
 
@@ -75,7 +76,7 @@ export function CustomizeStore({ plugins }) {
             action={__("Setup", "wp-module-ecommerce")}
             href={`post-new.php?post_type=page`}
           >
-            <StoreLayout />
+            <AddNewPage style={{ transform: "scale(1.5)" }} />
           </Card>
         )}
         <Card
@@ -96,7 +97,7 @@ export function CustomizeStore({ plugins }) {
           status={plugins.status !== undefined ? "ready" : "inprogress"}
           onClick={async () => {
             if (plugins.status?.yith_wcmap_panel !== "Active") {
-              await queuePluginInstall(
+              await syncPluginInstall(
                 "nfd_slug_yith_woocommerce_customize_myaccount_page",
                 plugins.token
               );
