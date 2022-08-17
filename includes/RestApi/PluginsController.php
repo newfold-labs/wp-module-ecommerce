@@ -36,27 +36,10 @@ class PluginsController {
 				),
 			)
 		);
-        \register_rest_route(
-            $this->namespace,
-            $this->rest_base . '/queue-status',
-            array(
-                array(
-                    'methods'             => \WP_REST_Server::READABLE,
-                    'callback'            => array( $this, 'get_plugins_queue_status' ),
-                    'permission_callback' => array( Permissions::class, 'rest_is_authorized_admin' ),
-                ),
-            )
-        );
-
 	}
 
-	public function get_plugins_queue_status() {
-	   $status = \get_option('nfd_module_onboarding_plugin_install_queue',array());
-	   return $status;
-    }
-
 	/**
-	 * Get approved plugin slugs, urls and domains.
+	 * Get approved plugin slugs, urls, domains and queue status.
 	 *
 	 * @return \WP_REST_Response
 	 */
@@ -85,6 +68,7 @@ class PluginsController {
 				$status[ $plugin ] = 'Not Installed';
 			}
 		}
+		$status['queue-status'] = $status = \get_option('nfd_module_onboarding_plugin_install_queue',array());
 		return new \WP_REST_Response(
 			array(
 				'status' => $status,
