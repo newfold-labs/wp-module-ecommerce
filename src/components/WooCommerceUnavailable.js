@@ -8,11 +8,15 @@ export function WooCommerceUnavailable({ wpModules, plugins }) {
   let [installationFailed, setInstallationFailed] = useState(false);
   let [isInstalling, setIsInstalling] = useState(false);
 
+  let isWCInQueue = plugins?.status?.["queue-status"]?.some(
+    (queue) => queue.slug === "woocommerce"
+  );
+
   async function installWooCommerce() {
     setIsInstalling(true);
     let needsSyncInstall = plugins.status?.woocommerce === "Not Installed";
     let response = needsSyncInstall
-      ? await syncPluginInstall("woocommerce")
+      ? await syncPluginInstall("woocommerce", plugins.token)
       : await queuePluginInstall("woocommerce", plugins.token);
     if (needsSyncInstall) {
       setIsInstalling(false);
@@ -57,7 +61,7 @@ export function WooCommerceUnavailable({ wpModules, plugins }) {
       </Modal>
     );
   }
-
+  let showInProgress = isInstalling || isWCInQueue;
   return (
     <>
       <div className="nfd-ecommerce-woocommerce-unavailable">
@@ -66,12 +70,17 @@ export function WooCommerceUnavailable({ wpModules, plugins }) {
             {__("Uh-Oh! WooCommerce is not installed!", "wp-module-ecommerce")}
           </h1>
           <div className="status-notice">
-            {__(
-              `WooCommerce is required for this dashboard to work, install it now or contact our support team for more assistance.`,
-              "wp-module-ecommerce"
-            )}
+            {isWCInQueue
+              ? __(
+                  `We are currently installing WooCommerce which is required for this dashboard to work.`,
+                  "wp-module-ecommerce"
+                )
+              : __(
+                  `WooCommerce is required for this dashboard to work, install it now or contact our support team for more assistance.`,
+                  "wp-module-ecommerce"
+                )}
           </div>
-          <button disabled={isInstalling} onClick={installWooCommerce}>
+          <button disabled={showInProgress} onClick={installWooCommerce}>
             <div
               style={{
                 height: "100%",
@@ -82,7 +91,7 @@ export function WooCommerceUnavailable({ wpModules, plugins }) {
               }}
             >
               {__("Install WooCommerce", "wp-module-ecommerce")}
-              {isInstalling ? (
+              {showInProgress ? (
                 <div className="bwa-loader nfd-ecommerce-loader-mini nfd-ecommerce-loader-inverse" />
               ) : null}
             </div>

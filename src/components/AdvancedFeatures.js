@@ -1,12 +1,13 @@
 import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
+import useSWR from "swr";
 import { ReactComponent as Booking } from "../icons/booking.svg";
 import { ReactComponent as CustomizeAccount } from "../icons/customize-account.svg";
 import { ReactComponent as Filter } from "../icons/filter.svg";
 import { ReactComponent as Gift } from "../icons/gift.svg";
 import { ReactComponent as Search } from "../icons/search.svg";
 import { ReactComponent as WishList } from "../icons/wishlist.svg";
-import { queuePluginInstall } from "../services";
+import { Endpoints, queuePluginInstall } from "../services";
 import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
 
@@ -79,9 +80,10 @@ const SuggestedPlugins = [
   },
 ];
 
-export function AdvancedFeatures({ plugins }) {
+export function AdvancedFeatures() {
   let [inprogressInstalls, setInstalls] = useState([]);
-  
+  let { data, error, mutate, isValidating } = useSWR(Endpoints.PLUGIN_STATUS);
+  let plugins = { errors: error, ...(data ?? {}), refresh: mutate };
   if (plugins.status === undefined) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
@@ -118,6 +120,9 @@ export function AdvancedFeatures({ plugins }) {
             <div className="nfd-ecommerce-extended-actions-container">
               {unavailablePlugins.map((plugin) => {
                 let { Icon } = plugin;
+                let isInQueue = plugins.status?.['queue-status']?.some(
+                  (queue) => queue.slug === plugin.name
+                );
                 return (
                   <Card
                     key={plugin.slug}
@@ -126,7 +131,7 @@ export function AdvancedFeatures({ plugins }) {
                     title={plugin.title}
                     action={__("Enable", "wp-module-ecommerce")}
                     status={
-                      inprogressInstalls.includes(plugin.slug)
+                      inprogressInstalls.includes(plugin.slug) || isInQueue || isValidating
                         ? "inprogress"
                         : "ready"
                     }
