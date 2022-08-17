@@ -7,12 +7,14 @@ const taxManagementOptions = [
   {
     title: __("Yes, enable tax rates and calculations", "wp-module-ecommerce"),
     data: {
+      wc_connect_taxes_enabled: "no",
       woocommerce_calc_taxes: "yes",
     },
   },
   {
     title: __("I will configure my own tax info later", "wp-module-ecommerce"),
     data: {
+      wc_connect_taxes_enabled: "no",
       woocommerce_calc_taxes: "no",
     },
   },
