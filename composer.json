@@ -36,7 +36,9 @@
       ]
     }
   ],
-  "require": {},
+  "require": {
+    "newfold-labs/wp-module-onboarding": "^1.0"
+  },
   "require-dev": {
     "bluehost/wp-php-standards": "@stable",
     "wp-cli/wp-cli-bundle": "@stable",
