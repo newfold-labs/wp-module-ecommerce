@@ -127,50 +127,50 @@ msgid "Contact Page"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/StoreAddress.js:76
+#: src/components/StoreAddress.js:81
 msgid "Address line 1"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/StoreAddress.js:86
+#: src/components/StoreAddress.js:91
 msgid "Address line 2"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/StoreAddress.js:95
+#: src/components/StoreAddress.js:100
 msgid "City"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/StoreAddress.js:105
+#: src/components/StoreAddress.js:110
 msgid "State"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/StoreAddress.js:125
+#: src/components/StoreAddress.js:130
 msgid "Postcode/ZIP"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/StoreAddress.js:135
+#: src/components/StoreAddress.js:140
 msgid "Country"
 msgstr ""
 
 #: build/index.js:1
 #: src/components/SiteStatus.js:107
-#: src/components/StoreAddress.js:158
+#: src/components/StoreAddress.js:163
 #: src/components/Tax.js:99
 msgid "Continue"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/StoreAddress.js:162
+#: src/components/StoreAddress.js:167
 #: src/components/Tax.js:103
 msgid "Need help?"
 msgstr ""
 
 #: build/index.js:1
-#: src/components/StoreAddress.js:164
+#: src/components/StoreAddress.js:169
 #: src/components/Tax.js:105
 msgid "Hire our experts"
 msgstr ""
