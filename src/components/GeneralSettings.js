@@ -210,20 +210,24 @@ export function GeneralSettings(props) {
             onRequestClose={() => setOnboardingModal(null)}
           >
             <div className="nfd-ecommerce-modal-content">
-              <h1>We hit a snag...</h1>
+              <h1>Hold tight...</h1>
               <span style={{ marginTop: "48px" }}>
                 {onboardingModalKey == YithOptions.paypal
                   ? "Payment"
                   : "Shipping"}{" "}
-                support is being setup. Please check back in sometime.
+                support is still being setup. Please wait a few minutes and try
+                again.
               </span>
-              <span style={{ marginTop: "32px", height: "60px" }}>
+              <span style={{ marginTop: "32px" }}>
                 If the problem persists, please{" "}
                 <a href="https://www.bluehost.com/contact" target="_blank">
                   contact
                 </a>{" "}
                 the support team.
               </span>
+              <button onClick={() => setOnboardingModal(null)}>
+                Okay
+              </button>
             </div>
           </Modal>
         ) : (

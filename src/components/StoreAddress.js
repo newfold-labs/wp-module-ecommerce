@@ -59,7 +59,7 @@ export function StoreAddress({ onComplete, isMandatory = false }) {
       </p>
       <p className="nfd-ecommerce-modal-header-description">
         {__(
-          "Use the same address you provided for your Bluehost account or change it below:",
+          "We'll use this information to help you setup your online store",
           "wp-module-ecoomerce"
         )}
       </p>
