@@ -82,9 +82,19 @@ function useOnBoardingStatus() {
 }
 
 export function GeneralSettings(props) {
-  let { Modal } = props.wpModules;
+  let { wpModules, plugins } = props;
+  let { Modal } = wpModules;
   let [onboardingModalKey, setOnboardingModal] = useState(null);
   let [isLoading, errors, refresh, onboarding] = useOnBoardingStatus();
+  let isPaypalPluginInstalled =
+    plugins?.status?.yith_paypal_payments === "Active";
+  let isShippoPluginInstalled =
+    plugins?.status?.yith_shippo_shipping_for_woocommerce === "Active";
+  let showThirdPartyIntegration =
+    onboardingModalKey === YithOptions.paypal ||
+    onboardingModalKey === YithOptions.shippo;
+  let isThirdPartyIntegrationPending =
+    !isPaypalPluginInstalled || !isShippoPluginInstalled;
   if (isLoading) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
@@ -190,21 +200,47 @@ export function GeneralSettings(props) {
           </div>
         </Modal>
       ) : null}
-      {onboardingModalKey === YithOptions.paypal ||
-      onboardingModalKey === YithOptions.shippo ? (
-        <Modal
-          overlayClassName="nfd-ecommerce-modal-overlay"
-          className="nfd-ecommerce-atoms nfd-ecommerce-modal"
-          isFullScreen
-          shouldCloseOnEsc={false}
-          shouldCloseOnClickOutside={false}
-          onRequestClose={() => setOnboardingModal(null)}
-        >
-          <iframe
-            style={{ width: "100%", height: "100%" }}
-            src={`admin.php?page=${onboardingModalKey}`}
-          />
-        </Modal>
+      {showThirdPartyIntegration ? (
+        isThirdPartyIntegrationPending ? (
+          <Modal
+            overlayClassName="nfd-ecommerce-modal-overlay"
+            className="nfd-ecommerce-atoms nfd-ecommerce-modal-wc-install-failed"
+            shouldCloseOnEsc={false}
+            shouldCloseOnClickOutside={false}
+            onRequestClose={() => setOnboardingModal(null)}
+          >
+            <div className="nfd-ecommerce-modal-content">
+              <h1>We hit a snag...</h1>
+              <span style={{ marginTop: "48px" }}>
+                {onboardingModalKey == YithOptions.paypal
+                  ? "Payment"
+                  : "Shipping"}{" "}
+                support is being setup. Please check back in sometime.
+              </span>
+              <span style={{ marginTop: "32px", height: "60px" }}>
+                If the problem persists, please{" "}
+                <a href="https://www.bluehost.com/contact" target="_blank">
+                  contact
+                </a>{" "}
+                the support team.
+              </span>
+            </div>
+          </Modal>
+        ) : (
+          <Modal
+            overlayClassName="nfd-ecommerce-modal-overlay"
+            className="nfd-ecommerce-atoms nfd-ecommerce-modal"
+            isFullScreen
+            shouldCloseOnEsc={false}
+            shouldCloseOnClickOutside={false}
+            onRequestClose={() => setOnboardingModal(null)}
+          >
+            <iframe
+              style={{ width: "100%", height: "100%" }}
+              src={`admin.php?page=${onboardingModalKey}`}
+            />
+          </Modal>
+        )
       ) : null}
     </>
   );
