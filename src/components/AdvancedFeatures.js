@@ -106,7 +106,7 @@ export function AdvancedFeatures() {
   let unavailablePlugins = SuggestedPlugins.filter(
     (pluginDef) => plugins.status?.[pluginDef.slug] !== "Active"
   );
-  let isQueueEmpty = plugins.status?.['queue-status'].length == 0;
+  let isQueueEmpty = plugins.status?.['queue-status'].length === 0;
   return (
     <>
       {unavailablePlugins.length > 0 ? (
@@ -121,9 +121,6 @@ export function AdvancedFeatures() {
             <div className="nfd-ecommerce-extended-actions-container">
               {unavailablePlugins.map((plugin, index) => {
                 let { Icon } = plugin;
-                // let isInQueue = plugins.status?.['queue-status']?.some(
-                //   (queue) => queue.slug === plugin.name
-                // );
                 return (
                   <Card
                     key={plugin.slug}
@@ -132,7 +129,7 @@ export function AdvancedFeatures() {
                     title={plugin.title}
                     action={__("Enable", "wp-module-ecommerce")}
                     status={
-                      inprogressInstalls != null || !isQueueEmpty || isValidating
+                      inprogressInstalls !== null || !isQueueEmpty || isValidating
                         ? "inprogress"
                         : "ready"
                     }

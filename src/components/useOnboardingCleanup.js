@@ -42,7 +42,11 @@ export function useOnboardingCleanup(hash) {
             { hash },
             11
           );
-          await queuePluginInstall('yith-woocommerce-ajax-search', { hash }, 12);
+          await queuePluginInstall(
+            'yith-woocommerce-ajax-search',
+            { hash },
+            12
+          );
         }
         for (const product_type of productInfo.product_types) {
           if (product_type === 'physical') {
@@ -53,10 +57,11 @@ export function useOnboardingCleanup(hash) {
             );
           }
           if (product_type === 'bookings') {
-            await queuePluginInstall('nfd_slug_yith_woocommerce_booking', {
-              hash,
-            },
-            14);
+            await queuePluginInstall(
+              'nfd_slug_yith_woocommerce_booking',
+              { hash },
+              14
+            );
           }
         }
         await updateWPSettings({
