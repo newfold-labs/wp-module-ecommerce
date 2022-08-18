@@ -34,11 +34,11 @@ export async function syncPluginInstall(plugin, token) {
   }).catch((error) => 'failed');
 }
 
-export async function queuePluginInstall(plugin, token) {
+export async function queuePluginInstall(plugin, token, priority = 10) {
   return apiFetch({
     path: Endpoints.PLUGIN_INSTALL,
     method: 'POST',
     headers: { 'X-NFD-ONBOARDING': token.hash },
-    data: { plugin, activate: true, queue: true },
+    data: { plugin, activate: true, queue: true, priority },
   }).catch((error) => 'failed');
 }

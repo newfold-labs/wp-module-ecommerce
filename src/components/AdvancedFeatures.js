@@ -81,8 +81,8 @@ const SuggestedPlugins = [
 ];
 
 export function AdvancedFeatures() {
-  let [inprogressInstalls, setInstalls] = useState([]);
-  let { data, error, mutate, isValidating } = useSWR(Endpoints.PLUGIN_STATUS);
+  let [inprogressInstalls, setInstalls] = useState(null);
+  let { data, error, mutate, isValidating } = useSWR(Endpoints.PLUGIN_STATUS, { refreshInterval: 10*1000 });
   let plugins = { errors: error, ...(data ?? {}), refresh: mutate };
   if (plugins.status === undefined) {
     return (
@@ -106,6 +106,7 @@ export function AdvancedFeatures() {
   let unavailablePlugins = SuggestedPlugins.filter(
     (pluginDef) => plugins.status?.[pluginDef.slug] !== "Active"
   );
+  let isQueueEmpty = plugins.status?.['queue-status'].length === 0;
   return (
     <>
       {unavailablePlugins.length > 0 ? (
@@ -118,11 +119,8 @@ export function AdvancedFeatures() {
             )}
           >
             <div className="nfd-ecommerce-extended-actions-container">
-              {unavailablePlugins.map((plugin) => {
+              {unavailablePlugins.map((plugin, index) => {
                 let { Icon } = plugin;
-                let isInQueue = plugins.status?.['queue-status']?.some(
-                  (queue) => queue.slug === plugin.name
-                );
                 return (
                   <Card
                     key={plugin.slug}
@@ -131,14 +129,16 @@ export function AdvancedFeatures() {
                     title={plugin.title}
                     action={__("Enable", "wp-module-ecommerce")}
                     status={
-                      inprogressInstalls.includes(plugin.slug) || isInQueue || isValidating
+                      inprogressInstalls !== null || !isQueueEmpty || isValidating
                         ? "inprogress"
                         : "ready"
                     }
                     description={plugin.description}
                     onClick={async () => {
-                      setInstalls([...inprogressInstalls, plugin.slug]);
-                      await queuePluginInstall(plugin.name, plugins.token);
+                      setInstalls(plugin.slug);
+                      await queuePluginInstall(plugin.name, plugins.token, index+1);
+                      await plugins.refresh();
+                      setInstalls(null);
                     }}
                   >
                     <Icon />
