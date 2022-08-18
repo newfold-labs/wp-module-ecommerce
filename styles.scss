@@ -222,6 +222,10 @@
         background-color: var(--nfd-ecommerce-bg-secondary);
       }
     }
+    &:disabled{
+      pointer-events: none;
+      cursor: not-allowed;
+    }
   }
 
   .nfd-ecommerce-standard-actions-container {
