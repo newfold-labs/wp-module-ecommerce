@@ -27,6 +27,12 @@
         "city": "",
         "zipcode": "",
         "country": ""
-        
+    },
+    
+    "standard_tax_setting":{
+        "country_code": "US",
+        "state_code": "",
+        "rate_percentage": "",
+        "apply_to_shipping": true
     }
 }

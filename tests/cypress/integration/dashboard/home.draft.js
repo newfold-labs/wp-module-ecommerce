@@ -130,10 +130,10 @@ describe('As a customer, I want to ', function () {
 
 	// it("add create new shippo account and link in General Setting",()=>{})
 
-	// it('configure "do not charge sales tax" from "General setting" "Tax Info" card', ()=>{
-	// 	cy.get('@general_setting_cards').find("button .nfd-ecommerce-card-title").contains("Tax Info").click()
-	// 	cy.get("div.nfd-ecommerce-modal-options>div").eq(3).click()
-	// })
+	it('configure "do not charge sales tax" from "General setting" "Tax Info" card', ()=>{
+		cy.get('@general_setting_cards').find("button .nfd-ecommerce-card-title").contains("Tax Info").click()
+		cy.get("div.nfd-ecommerce-modal-options>div").eq(3).click()
+	})
 
 	// it('see the all the completed card in done section of general setting tab', ()=>{})
 	// it('configure "auto calculate my taxes for me" from "General setting" "Tax Info" card', ()=>{})
