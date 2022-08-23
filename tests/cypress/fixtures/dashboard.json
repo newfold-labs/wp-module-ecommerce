@@ -7,11 +7,18 @@
         "country": "India",
         "zipcode": "221011"
     },
-    "shipping": {
+    "existing_payment": {
+        "title": "Pay with Paypal",
+        "environment": "sandbox",
+        "payment_action": "authorize",
+        "paypal_id": "4VYQPATYH32A8"
+    },
+
+    "existing_shipping": {
         "environment": "sandbox",
         "test_api": "shippo_test_a3aa2d1881ddfc7cd13151137830a527ae09ab97",
-        "sender_name": "Commerce Demo",
-        "sender_company": "Commerce Demo",
+        "sender_name": "jocelyn",
+        "sender_company": "Newfold",
         "email": "jocelyn.hendrickson@endurance.com",
         "phone": "",
         "use_woocommerce_address": true,

@@ -63,10 +63,10 @@ Cypress.Commands.add('sso_login', (domain_username, domain_password, bluehost_us
 				cy.get("input[name=admin_user]").type(bluehost_username)
 				cy.get("input[name=admin_pass]").type(bluehost_password)
 		        cy.get("[value=Login]").click()
-				cy.get("[data-testid=login-wordpress]",{timeout:20000}).as('login-wordpress')
+				cy.get("[data-testid=login-wordpress]",{timeout:30000}).as('login-wordpress')
 				cy.get("@login-wordpress").parent().invoke('removeAttr','target')
 		        cy.get("@login-wordpress").click()
-				cy.get('[data-testid=desktop-nav]',{timeout:20000})
+				cy.get('[data-testid=desktop-nav]',{timeout:30000})
 			}
 		});
 });
@@ -84,3 +84,9 @@ Cypress.Commands.add('logout', () => {
 			}
 		);
 });
+
+Cypress.Commands.add('getText',(element_selector)=>{
+	element_selector.then(($element)=>{
+		return $element.text()
+	})
+})

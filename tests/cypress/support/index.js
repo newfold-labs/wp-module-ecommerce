@@ -24,6 +24,8 @@ Cypress.Cookies.defaults({
 // 	cy.login(Cypress.env('wpUsername'), Cypress.env('wpPassword'));
 // });
 
+import sqlServer from 'cypress-sql-server';
+sqlServer.loadDBCommands();
 
 before(() => {
 	cy.sso_login(

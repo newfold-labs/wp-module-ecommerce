@@ -34,6 +34,9 @@
     "@testing-library/cypress": "^8.0.3",
     "cypress": "^10.4.0",
     "cypress-axe": "^1.0.0",
-    "dts-cli": "1.5.2"
+    "cypress-iframe": "^1.0.1",
+    "cypress-sql-server": "^1.0.0",
+    "dts-cli": "1.5.2",
+    "mysql": "github:mysqljs/mysql"
   }
 }

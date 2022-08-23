@@ -5,7 +5,7 @@ module.exports = defineConfig({
     domain_username: 'commerce-demo.store',
     domain_password: 'Commerce_Testing!2#4',
     bluehost_username: 'roshan.si',
-    bluehost_password: 'XXXXXXXXXXX',
+    bluehost_password: 'Rks@4151',
     wpUsername: 'admin',
     wpPassword: 'password',
   },
@@ -28,4 +28,14 @@ module.exports = defineConfig({
     specPattern: 'tests/cypress/integration/**/*.cy.{js,jsx,ts,tsx}',
     supportFile: 'tests/cypress/support/index.js',
   },
+  db: {
+    userName: "commesy5",
+    password: "",
+    server: "box5307.bluehost.com:2083",
+    options: {
+      database: "commesy5_WP38X",
+      encrypt: true,
+      rowCollectionOnRequestCompletion : true
+    }
+  }
 });

@@ -1,7 +1,8 @@
 'use strict';
 
-module.exports = (on, config) => {
+const sqlServer = require('cypress-sql-server');
 
+module.exports = (on, config) => {
     if (config.env && config.env.baseUrl) {
         config.baseUrl = config.env.baseUrl;
     }
