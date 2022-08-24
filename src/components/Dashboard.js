@@ -15,7 +15,7 @@ function getStepName(stepKey, state) {
       return __("Products and Services", "wp-module-ecommerce");
     case "pages":
       return __("Pages", "wp-module-ecommerce");
-    case "advanced":
+    case "features":
       return __("Additional Features", "wp-module-ecommerce");
     case "status":
       return state.wp.comingSoon
@@ -30,7 +30,7 @@ const guideSteps = [
   { key: "general", StepContent: GeneralSettings },
   { key: "products", StepContent: ManageProducts },
   { key: "pages", StepContent: CustomizeStore },
-  { key: "advanced", StepContent: AdvancedFeatures },
+  { key: "features", StepContent: AdvancedFeatures },
   { key: "status", StepContent: SiteStatus },
 ];
 
