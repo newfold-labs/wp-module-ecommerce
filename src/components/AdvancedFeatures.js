@@ -112,7 +112,7 @@ export function AdvancedFeatures() {
       {unavailablePlugins.length > 0 ? (
         <>
           <DashboardContent
-            title={__("Advanced Features", "wp-module-ecommerce")}
+            title={__("Additional Features", "wp-module-ecommerce")}
             subtitle={__(
               "Enjoy the free add-ons included in your plan and improve your store.",
               "wp-module-ecommerce"

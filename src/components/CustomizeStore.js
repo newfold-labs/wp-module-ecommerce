@@ -49,7 +49,7 @@ export function CustomizeStore({ plugins }) {
   }
   return (
     <DashboardContent
-      title={__("Customize Your Store", "wp-module-ecommerce")}
+      title={__("Pages", "wp-module-ecommerce")}
       subtitle={__(
         "Setup your core store pages and add general website content to provide a complete shopping experience for your customers.",
         "wp-module-ecommerce"
