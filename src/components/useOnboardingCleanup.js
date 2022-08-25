@@ -1,5 +1,5 @@
 import { useEffect, useState } from '@wordpress/element';
-import useSWR from 'swr';
+import useSWRImmutable from 'swr/immutable';
 import {
   Endpoints,
   queuePluginInstall,
@@ -13,8 +13,12 @@ const HighProductVolumes = ['11-100', '101-1000', '1000+'];
 
 export function useOnboardingCleanup(hash) {
   let [cleanupStatus, setCleanupStatus] = useState(false);
-  let { data: flow, error: flowError } = useSWR('/newfold-onboarding/v1/flow');
-  let { data: settings, error: settingsError } = useSWR(Endpoints.WP_SETTINGS);
+  let { data: flow, error: flowError } = useSWRImmutable(
+    '/newfold-onboarding/v1/flow'
+  );
+  let { data: settings, error: settingsError } = useSWRImmutable(
+    Endpoints.WP_SETTINGS
+  );
   useEffect(async () => {
     if (flow && settings && hash) {
       setCleanupStatus(true);
