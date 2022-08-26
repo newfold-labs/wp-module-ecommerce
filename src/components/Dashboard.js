@@ -10,13 +10,13 @@ import { useSetupYITHWonderTheme } from "./useSetupYITHWonderTheme";
 function getStepName(stepKey, state) {
   switch (stepKey) {
     case "general":
-      return __("General Settings", "wp-module-ecommerce");
+      return __("Store Info", "wp-module-ecommerce");
     case "products":
-      return __("Add products", "wp-module-ecommerce");
-    case "customize":
-      return __("Customize your store", "wp-module-ecommerce");
-    case "advanced":
-      return __("Advanced features", "wp-module-ecommerce");
+      return __("Products and Services", "wp-module-ecommerce");
+    case "pages":
+      return __("Pages", "wp-module-ecommerce");
+    case "features":
+      return __("Additional Features", "wp-module-ecommerce");
     case "status":
       return state.wp.comingSoon
         ? __("Launch Your Store", "wp-module-ecommerce")
@@ -29,8 +29,8 @@ function getStepName(stepKey, state) {
 const guideSteps = [
   { key: "general", StepContent: GeneralSettings },
   { key: "products", StepContent: ManageProducts },
-  { key: "customize", StepContent: CustomizeStore },
-  { key: "advanced", StepContent: AdvancedFeatures },
+  { key: "pages", StepContent: CustomizeStore },
+  { key: "features", StepContent: AdvancedFeatures },
   { key: "status", StepContent: SiteStatus },
 ];
 
