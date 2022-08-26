@@ -1,6 +1,6 @@
 import apiFetch from '@wordpress/api-fetch';
 import { useEffect } from '@wordpress/element';
-import useSWR from 'swr';
+import useSWRImmutable from 'swr/immutable';
 import { Endpoints } from '../services';
 
 async function createPage(page) {
@@ -41,7 +41,7 @@ function getPage(slug, template) {
 let PagesToBeCreated = ['home', 'about', 'contact'];
 
 export function useSetupYITHWonderTheme() {
-  let { data: status } = useSWR(Endpoints.PAGE_STATUS);
+  let { data: status } = useSWRImmutable(Endpoints.PAGE_STATUS);
   useEffect(async () => {
     if (status !== undefined) {
       let { theme, pages } = status;
