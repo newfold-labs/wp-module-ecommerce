@@ -6,6 +6,7 @@ use NewfoldLabs\WP\Module\ECommerce\Permissions;
 class WooCommerceBacklink {
 
 	public static $hook_suffixes = array(
+		'post.php',
 		'post-new.php',
 		'edit-tags.php',
 		'woocommerce_page_wc-admin',
