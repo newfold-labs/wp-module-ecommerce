@@ -6,18 +6,38 @@ use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\Module\ECommerce\Partials\CaptiveFlow;
 use NewfoldLabs\WP\Module\ECommerce\Partials\WooCommerceBacklink;
 
+/**
+ * Class ECommerce
+ *
+ * @package NewfoldLabs\WP\Module\ECommerce
+ */
 class ECommerce {
+	/**
+	 * Main Ecommerce file
+	 *
+	 * Entry point via bootstrap.php
+	 */
 
 	/**
 	 * @var Container
+	 *
+	 * Container loaded from Blueshot Repo
 	 */
 	protected $container;
-
+	/**
+	 * @var array
+	 *
+	 * Array map of API controllers
+	 */
 	protected $controllers = array(
 		'NewfoldLabs\\WP\\Module\\ECommerce\\RestApi\\PluginsController',
 		'NewfoldLabs\\WP\\Module\\ECommerce\\RestApi\\UserController',
 	);
-
+	/**
+	 * @var array
+	 *
+	 * Option settings
+	 */
 	protected $options = array(
 		'nfd-ecommerce-captive-flow-paypal',
 		'nfd-ecommerce-captive-flow-shippo',
@@ -34,7 +54,7 @@ class ECommerce {
 	/**
 	 * ECommerce constructor.
 	 *
-	 * @param $container
+	 * @param Container $container
 	 */
 	public function __construct( Container $container ) {
 		$this->container = $container;
@@ -55,6 +75,9 @@ class ECommerce {
 		);
 	}
 
+	/**
+	 * Registering API routes
+	 */
 	public function register_routes() {
 		foreach ( $this->controllers as $Controller ) {
 			/**
@@ -68,6 +91,9 @@ class ECommerce {
 		$this->register_settings();
 	}
 
+	/**
+	 * TO register settings in local DB
+	 */
 	public function register_settings() {
 		$option_settings = array(
 			'show_in_rest' => true,

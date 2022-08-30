@@ -13,6 +13,11 @@ final class Permissions {
 	const INSTALL_THEMES = 'install_themes';
 	const EDIT_THEMES    = 'edit_themes';
 
+	/**
+	 * @return array
+	 *
+	 * To get Plugin install hash
+	 */
 	public static function rest_get_plugin_install_hash() {
 		return array(
 			'hash' => 'NFD_ONBOARDING_' . hash( 'sha256', NFD_ONBOARDING_VERSION . wp_salt( 'nonce' ) . site_url() ),
@@ -37,6 +42,9 @@ final class Permissions {
 		return \is_admin() && self::rest_is_authorized_admin();
 	}
 
+	/**
+	 * @return bool
+	 */
 	public static function rest_can_manage_themes() {
 		return \is_user_logged_in() &&
 			\current_user_can( Permissions::INSTALL_THEMES ) &&
