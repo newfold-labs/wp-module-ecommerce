@@ -13,22 +13,13 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
-import 'cypress-axe';
-import './commands';
+import "cypress-axe";
+import "./commands";
 
 Cypress.Cookies.defaults({
-	preserve: /wp|wordpress/,
+  preserve: /wp|wordpress/,
 });
 
-// before(() => {
-// 	cy.login(Cypress.env('wpUsername'), Cypress.env('wpPassword'));
-// });
-
-import sqlServer from 'cypress-sql-server';
-sqlServer.loadDBCommands();
-
 before(() => {
-	cy.sso_login(
-		Cypress.env('domain_username'), Cypress.env('domain_password'), 
-		Cypress.env('bluehost_username'), Cypress.env('bluehost_password'));
+  cy.login(Cypress.env("wpUsername"), Cypress.env("wpPassword"));
 });

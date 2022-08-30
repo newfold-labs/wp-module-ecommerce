@@ -1,23 +1,24 @@
 const COMMON_SELECTOR = {
   save_changes_btton: "button[name=save]",
+  ADD_MANUALLY: "Add manually",
 };
 
 const GENERAL_SETTING_SELECTOR = {
-  ADDRESS1: "#woocommerce_store_address",
-  CITY: "#woocommerce_store_city",
-  COUNTRY: "[name=woocommerce_default_country] option:selected",
-  ZIPCODE: "#woocommerce_store_postcode",
+  ADDRESS1: "input#woocommerce_store_address",
+  CITY: "input#woocommerce_store_city",
+  COUNTRY: "select[name=woocommerce_default_country] option:selected",
+  ZIPCODE: "input#woocommerce_store_postcode",
   ENABLE_TAX: "input#woocommerce_calc_taxes",
 };
 
 const TAX_SETTING_SELECTOR = {
-  TAX_OPTION_LIST: "ul.subsubsub>li>a",
+  STANDARD_RATE: "Standard rates",
   INSERT_ROW: "a.button.plus.insert",
   REMOVE_ROW: "a.button.minus.remove_tax_rates",
   COUNTRY_ROW_LIST: "td.country",
   STATE_ROW_LIST: "td.state",
   RATE_ROW_LIST: "td.rate",
-  APPLY_SHIPPING_ROW_LIST: "apply_to_shipping",
+  APPLY_SHIPPING_ROW_LIST: "td.apply_to_shipping",
 };
 
 class WooCommercePage {
@@ -49,8 +50,8 @@ class WooCommercePage {
     return cy.get(GENERAL_SETTING_SELECTOR.ENABLE_TAX);
   }
 
-  standardTaxOptionTabList() {
-    return cy.get(TAX_SETTING_SELECTOR.TAX_OPTION_LIST);
+  standardTaxOption() {
+    return cy.findByText(TAX_SETTING_SELECTOR.STANDARD_RATE);
   }
 
   deleteRow() {
@@ -70,11 +71,28 @@ class WooCommercePage {
   }
 
   applyToShippingRowList() {
-    return cy.get(TAX_SETTING_SELECTOR.APPLY_SHIPPING_ROW_LIST);
+    return cy.get(TAX_SETTING_SELECTOR.APPLY_SHIPPING_ROW_LIST).find("input");
   }
 
   stateCodeRowList() {
     return cy.get(TAX_SETTING_SELECTOR.STATE_ROW_LIST);
+  }
+
+  addProductManually() {
+    return cy.findByText(COMMON_SELECTOR.ADD_MANUALLY);
+  }
+
+  clearTable() {
+    cy.get("td.compound>[type=checkbox]").each(($element, index, $list) => {
+      for (let j = 0; j < $list.length - 1; j++) {
+        cy.get("td.compound>[type=checkbox]").eq(0).click();
+        WooCommercePage.deleteRow().click();
+      }
+      this.saveChanges().click();
+    });
+  }
+  backButton() {
+    return cy.get("[role=main]").contains("Back");
   }
 }
 

@@ -1,38 +1,53 @@
 {
-    "store_address": {
-        "address1": "Varanasi",
-        "address2": "",
-        "city": "Varanasi",
-        "state": "Uttar Pradesh",
-        "country": "India",
-        "zipcode": "221011"
-    },
-    "existing_payment": {
-        "title": "Pay with Paypal",
-        "environment": "sandbox",
-        "payment_action": "authorize",
-        "paypal_id": "4VYQPATYH32A8"
-    },
+  "myGlobalVariable": "",
 
-    "existing_shipping": {
-        "environment": "sandbox",
-        "test_api": "shippo_test_a3aa2d1881ddfc7cd13151137830a527ae09ab97",
-        "sender_name": "jocelyn",
-        "sender_company": "Newfold",
-        "email": "jocelyn.hendrickson@endurance.com",
-        "phone": "",
-        "use_woocommerce_address": true,
-        "address1": "",
-        "address2": "",
-        "city": "",
-        "zipcode": "",
-        "country": ""
-    },
-    
-    "standard_tax_setting":{
-        "country_code": "US",
-        "state_code": "",
-        "rate_percentage": "",
-        "apply_to_shipping": true
-    }
+  "store_address": {
+    "address1": "Varanasi",
+    "address2": "",
+    "city": "Varanasi",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "zipcode": "221011"
+  },
+  "existing_payment": {
+    "title": "Pay with Paypal",
+    "environment": "sandbox",
+    "payment_action": "authorize",
+    "paypal_id": "4VYQPATYH32A8"
+  },
+
+  "existing_shipping": {
+    "environment": "sandbox",
+    "test_api": "shippo_test_a3aa2d1881ddfc7cd13151137830a527ae09ab97",
+    "sender_name": "jocelyn",
+    "sender_company": "Newfold",
+    "email": "jocelyn.hendrickson@endurance.com",
+    "phone": "",
+    "use_woocommerce_address": true,
+    "address1": "",
+    "address2": "",
+    "city": "",
+    "zipcode": "",
+    "country": ""
+  },
+
+  "standard_tax_setting": {
+    "country_code": "US",
+    "state_code": "MS",
+    "rate_percentage": "11",
+    "apply_to_shipping": true
+  },
+
+  "simple_product_details": {
+    "name": "Cello Armour",
+    "regular_price": "8",
+    "sale_price": "2",
+    "tax_status": "Taxable",
+    "tax_class": "Standard",
+    "sku": "12344534",
+    "stock_quantity": "10",
+    "low_stock_threshold": "2",
+    "category": "bottle",
+    "tags": "stainless steel,thermo"
+  }
 }

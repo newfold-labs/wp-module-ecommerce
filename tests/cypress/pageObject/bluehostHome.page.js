@@ -4,10 +4,17 @@
 import "cypress-iframe";
 
 const SELECTOR = {
-  BLUEHOST_HORIZONTAL_TAB: "[data-testid=desktop-nav]",
-  HERO_BANNER: "div.nfd-ecommerce-banner",
-  SITE_STATUS: "#nfd-site-status-text",
-  VERTICLE_TAB: ".nfd-ecommerce-dashboard-menu>a>li",
+  BLUEHOST_HORIZONTAL_TAB: "[data-testid=desktop-nav] ul>li",
+  HERO_BANNER: "Congrats on your new store! Let's get it ready to launch!",
+  SITE_STATUS_TITLE: "Launch Your Site",
+  VERTICLE_TAB: "Setup Guide",
+  Add_PRODUCT_TAB: "Add products",
+  CUSTOMIZE_YOUR_STORE_TAB: "Customize your store",
+  ADVANCED_FEATURE_TAB: "Advanced features",
+  LAUNCH_YOUR_STORE_TAB: "Launch Your Store",
+  SITE_STATUS: "Site Status",
+
+  WORDPRESS_ADMIN_MENU_LIST: "div.wp-menu-name",
 };
 
 class HomePage {
@@ -16,15 +23,39 @@ class HomePage {
   }
 
   heroBanner() {
-    return cy.get(SELECTOR.HERO_BANNER).find("h1");
+    return cy.findByText(SELECTOR.HERO_BANNER);
+  }
+
+  siteStatusInHeader() {
+    return cy.findByTitle(SELECTOR.SITE_STATUS_TITLE).find("span");
+  }
+
+  verticleTabs() {
+    return cy.findByLabelText(SELECTOR.VERTICLE_TAB).find("li");
+  }
+
+  addProductTab() {
+    return cy.findByText(SELECTOR.Add_PRODUCT_TAB);
+  }
+
+  customizeYourTab() {
+    return cy.findByText(SELECTOR.CUSTOMIZE_YOUR_STORE_TAB);
+  }
+
+  advancedFeature() {
+    return cy.findByText(SELECTOR.ADVANCED_FEATURE_TAB);
+  }
+
+  launchYourSite() {
+    return this.verticleTabs().contains(SELECTOR.LAUNCH_YOUR_STORE_TAB);
   }
 
   siteStatus() {
-    return cy.get(SELECTOR.SITE_STATUS);
+    return this.verticleTabs().contains(SELECTOR.SITE_STATUS);
   }
 
-  verticleTab() {
-    return cy.get(SELECTOR.VERTICLE_TAB);
+  wpMenu() {
+    return cy.get(SELECTOR.WORDPRESS_ADMIN_MENU_LIST);
   }
 }
 

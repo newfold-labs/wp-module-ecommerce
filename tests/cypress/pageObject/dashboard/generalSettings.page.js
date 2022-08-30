@@ -6,33 +6,34 @@ import "cypress-iframe";
 const SELECTOR = {
   UNCOMPLETED_CARDS: ".nfd-ecommerce-standard-actions-container>button",
   COMPLETED_CARDS: ".nfd-ecommerce-minimal-tasks-container>button",
-  OVERLAY_IFRAME: "div.components-modal__content>iframe",
+  OVERLAY_IFRAME: "iframe",
 
   // Store Info Card Elements
-  ADDRESS_LINE_1: "[name=woocommerce_store_address]",
+  ADDRESS_LINE_1: "input[name=woocommerce_store_address]",
   CITY: "[name=woocommerce_store_city]",
-  ZIPCODE: "[name=woocommerce_store_postcode]",
-  COUNTRY: "[name=country]",
-  STATE: "[name=state]",
+  ZIPCODE: "input[name=woocommerce_store_postcode]",
+  COUNTRY: "select[name=country]",
+  STATE: "select[name=state]",
   STORE_CONTINUE_BUTTON: "button[type=submit]",
 
   // Payment Card
-  PAYPAL_TITLE: "input.yith-plugin-fw-text-input",
-  PAYPAL_RADIO_BUTTON_LIST: ".yith-plugin-fw-radio__row>label",
+  PAYPAL_TITLE: "Title",
+  PAYPAL_RADIO_BUTTON_LIST: "[data-type=radio] label",
   PYAPAL_SAVE_BUTTON: "button#yith-bh-save-button",
+  CONNECT_WITH_PAYPAL: "Connect with PayPal",
 
   // Shippo card
-  SHIPPO_ENV_RADIO_BUTTON_LIST: "div#yith_shippo_environment label",
+  SHIPPO_ENV_RADIO_BUTTON_LIST: "[data-type=radio] label",
   API: "input#yith_shippo_sandbox_token",
-  SENDER_NAME: "input#yith-shippo-sender-info-name",
-  COMPANY_NAME: "input#yith-shippo-sender-info-company",
-  EMAIL: "input#yith-shippo-sender-info-email",
-  USE_WC_ADDRESS_CHECKBOX: "input#yith-shippo-sender-use_wc_address",
-  SHIPPO_SAVE_BUTTON: "button#yith-bh-save-button",
+  SENDER_NAME: "Name",
+  COMPANY_NAME: "Company",
+  EMAIL: "Email",
+  USE_WC_ADDRESS_CHECKBOX: "[type=checkbox]",
+  SHIPPO_SAVE_BUTTON: "Save",
 
   // Tax Info Crad
-  ENABLE_TAX_OPTIONS: "div.nfd-ecommerce-modal-options>div",
-  TAX_CONTINUE_BUTTON: "div.nfd-ecommerce-modal-content>button",
+  ENABLE_TAX_OPTIONS: "div[role=button]",
+  TAX_CONTINUE_BUTTON: "Continue",
 };
 
 class GeneralSettingPage {
@@ -77,11 +78,19 @@ class GeneralSettingPage {
   }
 
   paypalTitle() {
-    return cy.iframe().find(SELECTOR.PAYPAL_TITLE);
+    return cy
+      .iframe()
+      .findByLabelText(SELECTOR.PAYPAL_TITLE)
+      .parent()
+      .find("input");
   }
 
   paypalRadioButtonList() {
     return cy.iframe().find(SELECTOR.PAYPAL_RADIO_BUTTON_LIST);
+  }
+
+  connectWithPayPal() {
+    return cy.iframe().contains(SELECTOR.CONNECT_WITH_PAYPAL);
   }
 
   paypalSaveButton() {
@@ -93,19 +102,29 @@ class GeneralSettingPage {
   }
 
   shippoEnvRadioButtonList() {
-    return cy.get(SELECTOR.SHIPPO_ENV_RADIO_BUTTON_LIST);
+    return cy
+      .iframe()
+      .find(SELECTOR.SHIPPO_ENV_RADIO_BUTTON_LIST, { timeout: 30000 });
   }
 
   senderName() {
-    return cy.iframe().find(SELECTOR.SENDER_NAME);
+    return cy
+      .iframe()
+      .findByLabelText(SELECTOR.SENDER_NAME)
+      .parent()
+      .find("input[type=text]");
   }
 
   companyName() {
-    return cy.iframe().find(SELECTOR.COMPANY_NAME);
+    return cy
+      .iframe()
+      .findByLabelText(SELECTOR.COMPANY_NAME)
+      .parent()
+      .find("input");
   }
 
   senderEmail() {
-    return cy.iframe().find(SELECTOR.EMAIL);
+    return cy.iframe().findByLabelText(SELECTOR.EMAIL).parent().find("input");
   }
 
   useWooCommerceSavedStoreAddress() {
@@ -113,7 +132,7 @@ class GeneralSettingPage {
   }
 
   shippoSaveButton() {
-    return cy.iframe().find(SELECTOR.SHIPPO_SAVE_BUTTON);
+    return cy.iframe().findByText(SELECTOR.SHIPPO_SAVE_BUTTON);
   }
 
   taxOptionList() {
@@ -121,7 +140,7 @@ class GeneralSettingPage {
   }
 
   taxContinueButton() {
-    return cy.get(SELECTOR.TAX_CONTINUE_BUTTON);
+    return cy.findByText(SELECTOR.TAX_CONTINUE_BUTTON);
   }
 }
 
