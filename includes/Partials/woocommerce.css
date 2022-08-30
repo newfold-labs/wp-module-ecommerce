@@ -22,6 +22,15 @@
   outline: none;
 }
 
+.post-php .nfd-woocommerce-link,
+.post-new-php .nfd-woocommerce-link {
+  font-size: 14px;
+  top: 0;
+  width: 4vw;
+  padding-left: 1em;
+  border-bottom: 1px solid #ecece0;
+}
+
 .is-wp-toolbar-disabled .nfd-woocommerce-link {
   top: 0;
 }

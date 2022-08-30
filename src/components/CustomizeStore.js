@@ -1,10 +1,12 @@
-import { __ } from "@wordpress/i18n/build-types";
+import { __ } from "@wordpress/i18n";
 import useSWR from "swr";
 import { ReactComponent as About } from "../icons/aboutpage.svg";
 import { ReactComponent as Account } from "../icons/account.svg";
+import { ReactComponent as AddNewPage } from "../icons/add-card.svg";
 import { ReactComponent as Contact } from "../icons/contactpage.svg";
 import { ReactComponent as Home } from "../icons/homepage.svg";
 import { ReactComponent as StoreLayout } from "../icons/storelayout.svg";
+import { Endpoints, syncPluginInstall } from "../services";
 import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
 
@@ -22,37 +24,61 @@ const CustomizeList = [
   },
 ];
 
-export function CustomizeStore(props) {
-  let { data: pluginsOnSite } = useSWR("/newfold-ecommerce/v1/plugins/status");
-  let { data: postsMeta } = useSWR("/newfold-ecommerce/v1/user/page-status");
-  let postsByName = Object.fromEntries(
-    postsMeta?.map((_) => [_["post_name"], _["ID"]]) ?? []
+export function CustomizeStore({ plugins }) {
+  let { data: status, error } = useSWR(Endpoints.PAGE_STATUS);
+  let { pages, theme } = status ?? {};
+  let pagesByName = Object.fromEntries(
+    pages?.map((_) => [_["meta_value"], _["ID"]]) ?? []
   );
+
+  if (status === undefined) {
+    return (
+      <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
+        {error ? (
+          <h2>
+            {__(
+              "There was an error while loading this information",
+              "wp-module-ecommerce"
+            )}
+          </h2>
+        ) : (
+          <div className="bwa-loader" />
+        )}
+      </div>
+    );
+  }
   return (
     <DashboardContent
-      title={__("Customize Your Store", "wp-module-ecommerce")}
+      title={__("Pages", "wp-module-ecommerce")}
       subtitle={__(
         "Setup your core store pages and add general website content to provide a complete shopping experience for your customers.",
         "wp-module-ecommerce"
       )}
     >
       <div className="nfd-ecommerce-standard-actions-container">
-        {CustomizeList.map(({ title, Icon, dcpage }) => (
+        {theme?.name === "YITH Wonder" ? (
+          CustomizeList.map(({ title, Icon, dcpage }) => (
+            <Card
+              key={title}
+              variant="standard"
+              title={title}
+              status={status === undefined ? "inprogress" : "ready"}
+              action={__("Setup", "wp-module-ecommerce")}
+              href={`post.php?action=edit&post=${pagesByName[dcpage]}`}
+            >
+              <Icon />
+            </Card>
+          ))
+        ) : (
           <Card
-            key={title}
             variant="standard"
-            title={title}
-            status={postsMeta === undefined ? "inprogress" : "ready"}
+            title={__("Add a Page", "wp-module-ecommerce")}
             action={__("Setup", "wp-module-ecommerce")}
-            href={
-              postsByName[dcpage]
-                ? `post.php?action=edit&post=${postsByName[dcpage]}`
-                : `post-new.php?dcpage=${dcpage}&dcsrc=plugin`
-            }
+            href={`post-new.php?post_type=page`}
           >
-            <Icon />
+            <AddNewPage style={{ transform: "scale(1.5)" }} />
           </Card>
-        ))}
+        )}
         <Card
           variant="standard"
           title={__("Store Layout", "wp-module-ecommerce")}
@@ -68,16 +94,13 @@ export function CustomizeStore(props) {
           title={__("Customer Account Page", "wp-module-ecommerce")}
           action={__("Setup", "wp-module-ecommerce")}
           data-action-gutter={"s"}
-          status={pluginsOnSite ? "ready" : "inprogress"}
+          status={plugins.status !== undefined ? "ready" : "inprogress"}
           onClick={async () => {
-            if (pluginsOnSite.yith_wcmap_panel !== "Active") {
-              await props.wpModules
-                .apiFetch({
-                  path: "/newfold-ecommerce/v1/plugins/install",
-                  method: "POST",
-                  data: { plugin: "yith_wcmap_panel" },
-                })
-                .catch((error) => {});
+            if (plugins.status?.yith_wcmap_panel !== "Active") {
+              await syncPluginInstall(
+                "nfd_slug_yith_woocommerce_customize_myaccount_page",
+                plugins.token
+              );
             }
             window.location.href = "admin.php?page=yith_wcmap_panel";
           }}

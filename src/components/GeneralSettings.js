@@ -1,10 +1,12 @@
-import { __ } from "@wordpress/i18n/build-types";
+import { useState } from "@wordpress/element";
+import { __ } from "@wordpress/i18n";
 import useSWR from "swr";
 import { ReactComponent as Payments } from "../icons/payments.svg";
 import { ReactComponent as Shipping } from "../icons/shipping.svg";
 import { ReactComponent as StoreIcon } from "../icons/store.svg";
 import { ReactComponent as CompletedTask } from "../icons/task-complete.svg";
 import { ReactComponent as TaxInfo } from "../icons/taxinfo.svg";
+import { Endpoints } from "../services";
 import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
 import { StoreAddress } from "./StoreAddress";
@@ -17,7 +19,6 @@ const YithOptions = {
 const GET_WC_TASKS = `/wc-admin/onboarding/tasks?${new URLSearchParams({
   ids: "setup",
 })}`;
-const GET_YITH_OPTIONS = `/wp/v2/settings`;
 
 const OnboardingSteps = {
   store_details: {
@@ -30,7 +31,7 @@ const OnboardingSteps = {
   [YithOptions.paypal]: {
     title: __("Payments", "wp-module-ecommerce"),
     setupAction: __("Setup", "wp-module-ecommerce"),
-    editAction: __("Edit Settingso", "wp-module-ecommerce"),
+    editAction: __("Edit Settings", "wp-module-ecommerce"),
     editUrl: "admin.php?page=yith_paypal_payments",
     SetupIcon: Payments,
   },
@@ -60,7 +61,7 @@ function useOnBoardingStatus() {
     data: yithOnboarding,
     error: yithError,
     mutate: refreshYith,
-  } = useSWR(GET_YITH_OPTIONS);
+  } = useSWR(Endpoints.WP_SETTINGS);
   let onboardingSetup = wcOnboarding?.[0];
   let onboarding = Object.fromEntries(
     (onboardingSetup?.tasks ?? [])
@@ -81,9 +82,19 @@ function useOnBoardingStatus() {
 }
 
 export function GeneralSettings(props) {
-  let { Modal, useState } = props.wpModules;
+  let { wpModules, plugins } = props;
+  let { Modal } = wpModules;
   let [onboardingModalKey, setOnboardingModal] = useState(null);
   let [isLoading, errors, refresh, onboarding] = useOnBoardingStatus();
+  let isPaypalPluginInstalled =
+    plugins?.status?.yith_paypal_payments === "Active";
+  let isShippoPluginInstalled =
+    plugins?.status?.yith_shippo_shipping_for_woocommerce === "Active";
+  let showThirdPartyIntegration =
+    onboardingModalKey === YithOptions.paypal ||
+    onboardingModalKey === YithOptions.shippo;
+  let isThirdPartyIntegrationPending =
+    !isPaypalPluginInstalled || !isShippoPluginInstalled;
   if (isLoading) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
@@ -189,21 +200,51 @@ export function GeneralSettings(props) {
           </div>
         </Modal>
       ) : null}
-      {onboardingModalKey === YithOptions.paypal ||
-      onboardingModalKey === YithOptions.shippo ? (
-        <Modal
-          overlayClassName="nfd-ecommerce-modal-overlay"
-          className="nfd-ecommerce-atoms nfd-ecommerce-modal"
-          isFullScreen
-          shouldCloseOnEsc={false}
-          shouldCloseOnClickOutside={false}
-          onRequestClose={() => setOnboardingModal(null)}
-        >
-          <iframe
-            style={{ width: "100%", height: "100%" }}
-            src={`admin.php?page=${onboardingModalKey}`}
-          />
-        </Modal>
+      {showThirdPartyIntegration ? (
+        isThirdPartyIntegrationPending ? (
+          <Modal
+            overlayClassName="nfd-ecommerce-modal-overlay"
+            className="nfd-ecommerce-atoms nfd-ecommerce-modal-wc-install-failed"
+            shouldCloseOnEsc={false}
+            shouldCloseOnClickOutside={false}
+            onRequestClose={() => setOnboardingModal(null)}
+          >
+            <div className="nfd-ecommerce-modal-content">
+              <h1>Hold tight...</h1>
+              <span style={{ marginTop: "48px" }}>
+                {onboardingModalKey == YithOptions.paypal
+                  ? "Payment"
+                  : "Shipping"}{" "}
+                support is still being setup. Please wait a few minutes and try
+                again.
+              </span>
+              <span style={{ marginTop: "32px" }}>
+                If the problem persists, please{" "}
+                <a href="https://www.bluehost.com/contact" target="_blank">
+                  contact
+                </a>{" "}
+                the support team.
+              </span>
+              <button onClick={() => setOnboardingModal(null)}>
+                Okay
+              </button>
+            </div>
+          </Modal>
+        ) : (
+          <Modal
+            overlayClassName="nfd-ecommerce-modal-overlay"
+            className="nfd-ecommerce-atoms nfd-ecommerce-modal"
+            isFullScreen
+            shouldCloseOnEsc={false}
+            shouldCloseOnClickOutside={false}
+            onRequestClose={() => setOnboardingModal(null)}
+          >
+            <iframe
+              style={{ width: "100%", height: "100%" }}
+              src={`admin.php?page=${onboardingModalKey}`}
+            />
+          </Modal>
+        )
       ) : null}
     </>
   );

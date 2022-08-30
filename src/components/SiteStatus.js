@@ -1,3 +1,4 @@
+import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import { ReactComponent as ComingSoonIllustration } from "../icons/coming-soon-illustration.svg";
 import { ReactComponent as LaunchStoreIllustration } from "../icons/launch-store.svg";
@@ -36,7 +37,7 @@ const SiteStatusContent = {
 export function SiteStatus(props) {
   let { wp } = props.state;
   let { toggleComingSoon } = props.actions;
-  let { Modal, useState } = props.wpModules;
+  let { Modal } = props.wpModules;
   let [showModal, setModal] = useState(false);
   let { title, subtitle, Illustration, cta, status } = wp.comingSoon
     ? SiteStatusContent.comingSoon

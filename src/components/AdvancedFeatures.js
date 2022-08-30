@@ -1,3 +1,4 @@
+import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import useSWR from "swr";
 import { ReactComponent as Booking } from "../icons/booking.svg";
@@ -6,6 +7,7 @@ import { ReactComponent as Filter } from "../icons/filter.svg";
 import { ReactComponent as Gift } from "../icons/gift.svg";
 import { ReactComponent as Search } from "../icons/search.svg";
 import { ReactComponent as WishList } from "../icons/wishlist.svg";
+import { Endpoints, queuePluginInstall } from "../services";
 import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
 
@@ -17,15 +19,17 @@ const SuggestedPlugins = [
       "wp-module-ecommerce"
     ),
     slug: "yith_wcbk_panel",
+    name: "nfd_slug_yith_woocommerce_booking",
     Icon: Booking,
   },
   {
-    title: __("Add a powerful seach tool to your store", "wp-module-ecommerce"),
+    title: __("Add a powerful search tool to your store", "wp-module-ecommerce"),
     description: __(
       "Allow your users to search products in real time by title, description, tags, and more.",
       "wp-module-ecommerce"
     ),
     slug: "yith_wcas_panel",
+    name: "yith-woocommerce-ajax-search",
     Icon: Search,
   },
   {
@@ -38,6 +42,7 @@ const SuggestedPlugins = [
       "wp-module-ecommerce"
     ),
     slug: "yith_wcwl_panel",
+    name: "nfd_slug_yith_woocommerce_wishlist",
     Icon: WishList,
   },
   {
@@ -50,6 +55,7 @@ const SuggestedPlugins = [
       "wp-module-ecommerce"
     ),
     slug: "yith_wcan_panel",
+    name: "nfd_slug_yith_woocommerce_ajax_product_filter",
     Icon: Filter,
   },
   {
@@ -59,6 +65,7 @@ const SuggestedPlugins = [
       "wp-module-ecommerce"
     ),
     slug: "yith_woocommerce_gift_cards_panel",
+    name: "nfd_slug_yith_woocommerce_gift_cards",
     Icon: Gift,
   },
   {
@@ -68,22 +75,19 @@ const SuggestedPlugins = [
       "wp-module-ecommerce"
     ),
     slug: "yith_wcmap_panel",
+    name: "nfd_slug_yith_woocommerce_customize_myaccount_page",
     Icon: CustomizeAccount,
   },
 ];
 
-export function AdvancedFeatures(props) {
-  let { wpModules } = props;
-  let [inprogressInstalls, setInstalls] = wpModules.useState([]);
-  let {
-    data: pluginsOnSite,
-    error,
-    mutate: refreshPlugins,
-  } = useSWR("/newfold-ecommerce/v1/plugins/status");
-  if (!pluginsOnSite) {
+export function AdvancedFeatures() {
+  let [inprogressInstalls, setInstalls] = useState(null);
+  let { data, error, mutate, isValidating } = useSWR(Endpoints.PLUGIN_STATUS, { refreshInterval: 10*1000 });
+  let plugins = { errors: error, ...(data ?? {}), refresh: mutate };
+  if (plugins.status === undefined) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
-        {error ? (
+        {plugins.errors ? (
           <h2>
             {__(
               "There was an error while loading this information",
@@ -97,24 +101,25 @@ export function AdvancedFeatures(props) {
     );
   }
   let installedPlugins = SuggestedPlugins.filter(
-    (pluginDef) => pluginsOnSite[pluginDef.slug] === "Active"
+    (pluginDef) => plugins.status?.[pluginDef.slug] === "Active"
   );
   let unavailablePlugins = SuggestedPlugins.filter(
-    (pluginDef) => pluginsOnSite[pluginDef.slug] !== "Active"
+    (pluginDef) => plugins.status?.[pluginDef.slug] !== "Active"
   );
+  let isQueueEmpty = plugins.status?.['queue-status'].length === 0;
   return (
     <>
       {unavailablePlugins.length > 0 ? (
         <>
           <DashboardContent
-            title={__("Advanced Features", "wp-module-ecommerce")}
+            title={__("Additional Features", "wp-module-ecommerce")}
             subtitle={__(
               "Enjoy the free add-ons included in your plan and improve your store.",
               "wp-module-ecommerce"
             )}
           >
             <div className="nfd-ecommerce-extended-actions-container">
-              {unavailablePlugins.map((plugin) => {
+              {unavailablePlugins.map((plugin, index) => {
                 let { Icon } = plugin;
                 return (
                   <Card
@@ -124,25 +129,16 @@ export function AdvancedFeatures(props) {
                     title={plugin.title}
                     action={__("Enable", "wp-module-ecommerce")}
                     status={
-                      inprogressInstalls.includes(plugin.slug)
+                      inprogressInstalls !== null || !isQueueEmpty || isValidating
                         ? "inprogress"
                         : "ready"
                     }
                     description={plugin.description}
                     onClick={async () => {
-                      setInstalls([...inprogressInstalls, plugin.slug]);
-                      await wpModules
-                        .apiFetch({
-                          path: "/newfold-ecommerce/v1/plugins/install",
-                          method: "POST",
-                          data: { plugin: plugin.slug },
-                        })
-                        .catch((error) => {});
-                      await refreshPlugins();
-                      setInstalls(
-                        inprogressInstalls.filter((_) => _ !== plugin.slug)
-                      );
-                      window.location.href = `admin.php?page=${plugin.slug}`;
+                      setInstalls(plugin.slug);
+                      await queuePluginInstall(plugin.name, plugins.token, index+1);
+                      await plugins.refresh();
+                      setInstalls(null);
                     }}
                   >
                     <Icon />

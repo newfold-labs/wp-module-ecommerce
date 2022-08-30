@@ -1,48 +1,29 @@
+import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import useSWR from "swr";
+import { updateWCOnboarding, updateWPSettings } from "../services";
 
-/**
- * @TODO We need to get customer details from Hiive before using this hook
- * @deprecated
- */
-function useProfile() {
-  let { data: profile } = useSWR("/newfold-ecommerce/v1/user/profile");
-  let { data: countries } = useSWR("/wc/v3/data/countries");
-  let defaultContact = {};
-  if (profile && countries) {
-    let country = profile.contact?.country ?? "US";
-    let state = profile.contact?.state ?? "";
-    let isStateCodeValid =
-      countries
-        .find((_) => country === _.code)
-        ?.states.find((_) => _.code === state) !== undefined;
-    defaultContact = {
-      country,
-      state: isStateCodeValid ? state : null,
-      woocommerce_store_address: profile.contact?.address,
-      woocommerce_store_address_2: "",
-      woocommerce_store_city: profile.contact?.city,
-      woocommerce_store_postcode: profile.contact?.zip,
-    };
-  }
-  return [!profile || !countries, defaultContact, countries];
-}
+const CountriesInOFAC = ["CU", "KP", "IR", "RU", "SY", "AF", "BY", "MM", "VN"];
 
 function useBasicProfile() {
   let { data: countries } = useSWR("/wc/v3/data/countries");
   let defaultContact = {
     country: "US",
-    state: "",
+    state: "AZ",
     woocommerce_store_address: "",
     woocommerce_store_address_2: "",
     woocommerce_store_city: "",
     woocommerce_store_postcode: "",
   };
-  return [!countries, defaultContact, countries];
+  return [
+    !countries,
+    defaultContact,
+    countries?.filter((_) => !CountriesInOFAC.includes(_.code)),
+  ];
 }
 
-export function StoreAddress({ wpModules, onComplete, isMandatory = false }) {
-  let [address, setAddress] = wpModules.useState({});
+export function StoreAddress({ onComplete, isMandatory = false }) {
+  let [address, setAddress] = useState({});
   let [isLoading, defaultContact, countries] = useBasicProfile();
   function handleChange(event) {
     setAddress({ ...address, [event.target.name]: event.target.value });
@@ -57,21 +38,13 @@ export function StoreAddress({ wpModules, onComplete, isMandatory = false }) {
       onSubmit={async (event) => {
         event.preventDefault();
         event.stopPropagation();
-        let { country, state, ...wcAddress } = address;
-        await wpModules.apiFetch({
-          path: "/wp/v2/settings",
-          method: "POST",
-          data: {
-            ...defaultContact,
-            ...wcAddress,
-            woocommerce_default_country: `${country}:${state}`,
-          },
+        let { country, state = defaultContact.state, ...wcAddress } = address;
+        await updateWPSettings({
+          ...defaultContact,
+          ...wcAddress,
+          woocommerce_default_country: `${selectedCountry}:${state}`,
         });
-        await wpModules.apiFetch({
-          path: "/wc-admin/onboarding/profile",
-          method: "POST",
-          data: { completed: true },
-        });
+        await updateWCOnboarding({ completed: true });
         await onComplete();
       }}
       style={{ display: "grid", paddingTop: "64px", justifyItems: "center" }}
@@ -86,7 +59,7 @@ export function StoreAddress({ wpModules, onComplete, isMandatory = false }) {
       </p>
       <p className="nfd-ecommerce-modal-header-description">
         {__(
-          "Use the same address you provided for your Bluehost account or change it below:",
+          "We'll use this information to help you setup your online store",
           "wp-module-ecoomerce"
         )}
       </p>
@@ -135,8 +108,8 @@ export function StoreAddress({ wpModules, onComplete, isMandatory = false }) {
         </div>
         <div>
           <label> {__("State", "wp-module-ecommerce")}</label>
-          {states.length === 0 ? (
-            <input type="text" name="state" required {...eventHandlers} />
+          {states.length === 0 || isLoading ? (
+            <input type="text" name="state" disabled={isLoading} {...eventHandlers} />
           ) : (
             <select
               type="text"
@@ -176,9 +149,11 @@ export function StoreAddress({ wpModules, onComplete, isMandatory = false }) {
               {...eventHandlers}
             >
               {countries.map((country) => (
-                <option key={country.code} value={country.code}>
-                  {country.name}
-                </option>
+                <option
+                  key={country.code}
+                  value={country.code}
+                  dangerouslySetInnerHTML={{ __html: country.name }}
+                />
               ))}
             </select>
           )}

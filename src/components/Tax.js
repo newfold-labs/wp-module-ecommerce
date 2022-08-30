@@ -1,11 +1,13 @@
 import { __ } from "@wordpress/i18n";
+import { useState } from "@wordpress/element";
+import { updateWPSettings } from "../services";
 import { StoreAddress } from "./StoreAddress";
 
 const taxManagementOptions = [
   {
-    title: __("Auto-calculate my taxes for me", "wp-module-ecommerce"),
+    title: __("Yes, enable tax rates and calculations", "wp-module-ecommerce"),
     data: {
-      wc_connect_taxes_enabled: "yes",
+      wc_connect_taxes_enabled: "no",
       woocommerce_calc_taxes: "yes",
     },
   },
@@ -13,7 +15,7 @@ const taxManagementOptions = [
     title: __("I will configure my own tax info later", "wp-module-ecommerce"),
     data: {
       wc_connect_taxes_enabled: "no",
-      woocommerce_calc_taxes: "yes",
+      woocommerce_calc_taxes: "no",
     },
   },
   {
@@ -25,40 +27,35 @@ const taxManagementOptions = [
   },
 ];
 
-const path = "/wp/v2/settings";
-
 const Tax = (props) => {
-  let { wpModules, onComplete, isStoreDetailsFilled } = props;
-  const [selectedOption, setSelectedOption] = wpModules.useState(null);
-  const [isAddressMandatory, setIsAddressMandatory] = wpModules.useState(false);
-
-  const saveTaxOption = async () =>
-    wpModules.apiFetch({ path, method: "POST", data: selectedOption.data });
+  let { onComplete, isStoreDetailsFilled } = props;
+  const [selectedOption, setSelectedOption] = useState(null);
+ // const [isAddressMandatory, setIsAddressMandatory] = useState(false);
 
   const onClickContinue = async () => {
-    if (
-      selectedOption.title == taxManagementOptions[0].title &&
-      !isStoreDetailsFilled
-    ) {
-      setIsAddressMandatory(true);
-      return;
-    }
-    await saveTaxOption();
+    // if (
+    //   selectedOption.title == taxManagementOptions[0].title &&
+    //   !isStoreDetailsFilled
+    // ) {
+    //   setIsAddressMandatory(true);
+    //   return;
+    // }
+    await updateWPSettings(selectedOption.data);
     await onComplete();
   };
 
-  if (isAddressMandatory) {
-    return (
-      <StoreAddress
-        {...props}
-        isMandatory
-        onComplete={async () => {
-          await saveTaxOption();
-          await onComplete();
-        }}
-      />
-    );
-  }
+  // if (isAddressMandatory) {
+  //   return (
+  //     <StoreAddress
+  //       {...props}
+  //       isMandatory
+  //       onComplete={async () => {
+  //         await updateWPSettings(selectedOption.data);
+  //         await onComplete();
+  //       }}
+  //     />
+  //   );
+  // }
   return (
     <>
       <div style={{ height: "64px" }} />
@@ -66,13 +63,13 @@ const Tax = (props) => {
         {__("Confirm your tax information", "wp-module-ecoomerce")}
       </p>
       <p className="nfd-ecommerce-modal-header-description">
-        {__(
+        {/* {__(
           "Based on the address you provided, we can auto-calculate your taxes.",
           "wp-module-ecoomerce"
-        )}
+        )} */}
         <div>
           {__(
-            "How would you like to manage your taxes:",
+            "Do you want to enable tax rates and calculations?",
             "wp-module-ecommerce"
           )}
         </div>
