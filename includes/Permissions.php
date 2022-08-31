@@ -1,4 +1,5 @@
 <?php
+
 namespace NewfoldLabs\WP\Module\ECommerce;
 
 /**
@@ -14,9 +15,9 @@ final class Permissions {
 	const EDIT_THEMES    = 'edit_themes';
 
 	/**
-	 * @return array
+	 * Get plugin install hash
 	 *
-	 * To get Plugin install hash
+	 * @return array
 	 */
 	public static function rest_get_plugin_install_hash() {
 		return array(
@@ -43,12 +44,12 @@ final class Permissions {
 	}
 
 	/**
+	 * Permission check to see if the current user can manage themes.
+	 *
 	 * @return bool
 	 */
 	public static function rest_can_manage_themes() {
-		return \is_user_logged_in() &&
-			\current_user_can( Permissions::INSTALL_THEMES ) &&
-			\current_user_can( Permissions::EDIT_THEMES );
+		return \is_user_logged_in() && \current_user_can( Permissions::INSTALL_THEMES ) && \current_user_can( Permissions::EDIT_THEMES );
 	}
 
 }

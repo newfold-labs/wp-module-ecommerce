@@ -56,7 +56,7 @@ class ECommerce {
 	/**
 	 * ECommerce constructor.
 	 *
-	 * @param Container $container
+	 * @param Container $container Container loaded from the brand plugin.
 	 */
 	public function __construct( Container $container ) {
 		$this->container = $container;
