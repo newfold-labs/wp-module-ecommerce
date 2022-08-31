@@ -19,24 +19,26 @@ class ECommerce {
 	 */
 
 	/**
-	 * @var Container
+	 * Container loaded from the brand plugin.
 	 *
-	 * Container loaded from Blueshot Repo
+	 * @var Container
 	 */
 	protected $container;
+
 	/**
-	 * @var array
+	 * Array map of API controllers.
 	 *
-	 * Array map of API controllers
+	 * @var array
 	 */
 	protected $controllers = array(
 		'NewfoldLabs\\WP\\Module\\ECommerce\\RestApi\\PluginsController',
 		'NewfoldLabs\\WP\\Module\\ECommerce\\RestApi\\UserController',
 	);
+
 	/**
-	 * @var array
-	 *
 	 * Option settings
+	 *
+	 * @var array
 	 */
 	protected $options = array(
 		'nfd-ecommerce-captive-flow-paypal',
@@ -76,14 +78,14 @@ class ECommerce {
 	}
 
 	/**
-	 * Registering API routes
+	 * Register API routes.
 	 */
 	public function register_routes() {
 		foreach ( $this->controllers as $Controller ) {
 			/**
 			 * Get an instance of the WP_REST_Controller.
 			 *
-			 * @var $instance WP_REST_Controller
+			 * @var $instance \WP_REST_Controller
 			 */
 			$instance = new $Controller();
 			$instance->register_routes();
@@ -92,7 +94,7 @@ class ECommerce {
 	}
 
 	/**
-	 * TO register settings in local DB
+	 * Register settings.
 	 */
 	public function register_settings() {
 		$option_settings = array(
@@ -117,7 +119,7 @@ class ECommerce {
 	/**
 	 * Customize the admin bar with site status.
 	 *
-	 * @param WP_Admin_Bar $admin_bar An instance of the WP_Admin_Bar class.
+	 * @param \WP_Admin_Bar $admin_bar An instance of the WP_Admin_Bar class.
 	 */
 	public function newfold_site_status( \WP_Admin_Bar $admin_bar ) {
 		if ( current_user_can( 'manage_options' ) ) {
