@@ -1,147 +1,151 @@
 /// <reference types="cypress" />
 ///<reference types="cypress-iframe" />
 
-import "cypress-iframe";
+import 'cypress-iframe';
 
 const SELECTOR = {
-  UNCOMPLETED_CARDS: "[data-variant=standard]",
-  COMPLETED_CARDS: "[data-variant=minimal]",
-  OVERLAY_IFRAME: "iframe",
+	UNCOMPLETED_CARDS: '[data-variant=standard]',
+	COMPLETED_CARDS: '[data-variant=minimal]',
+	OVERLAY_IFRAME: 'iframe',
 
-  // Store Info Card Elements
-  ADDRESS_LINE_1: "input[name=woocommerce_store_address]",
-  CITY: "[name=woocommerce_store_city]",
-  ZIPCODE: "input[name=woocommerce_store_postcode]",
-  COUNTRY: "select[name=country]",
-  STATE: "select[name=state]",
-  STORE_CONTINUE_BUTTON: "button[type=submit]",
+	// Store Info Card Elements
+	ADDRESS_LINE_1: 'input[name=woocommerce_store_address]',
+	CITY: '[name=woocommerce_store_city]',
+	ZIPCODE: 'input[name=woocommerce_store_postcode]',
+	COUNTRY: 'select[name=country]',
+	STATE: 'select[name=state]',
+	STORE_CONTINUE_BUTTON: 'button[type=submit]',
 
-  // Payment Card
-  PAYPAL_TITLE: "Title",
-  PAYPAL_RADIO_BUTTON_LIST: "[data-type=radio] label",
-  PYAPAL_SAVE_BUTTON: "button#yith-bh-save-button",
-  CONNECT_WITH_PAYPAL: "Connect with PayPal",
+	// Payment Card
+	PAYPAL_TITLE: 'Title',
+	PAYPAL_RADIO_BUTTON_LIST: '[data-type=radio] label',
+	PYAPAL_SAVE_BUTTON: 'button#yith-bh-save-button',
+	CONNECT_WITH_PAYPAL: 'Connect with PayPal',
 
-  // Shippo card
-  SHIPPO_ENV_RADIO_BUTTON_LIST: "[data-type=radio] label",
-  API: "input#yith_shippo_sandbox_token",
-  SENDER_NAME: "Name",
-  COMPANY_NAME: "Company",
-  EMAIL: "Email",
-  USE_WC_ADDRESS_CHECKBOX: "[type=checkbox]",
-  SHIPPO_SAVE_BUTTON: "Save",
+	// Shippo card
+	SHIPPO_ENV_RADIO_BUTTON_LIST: '[data-type=radio] label',
+	API: 'input#yith_shippo_sandbox_token',
+	SENDER_NAME: 'Name',
+	COMPANY_NAME: 'Company',
+	EMAIL: 'Email',
+	USE_WC_ADDRESS_CHECKBOX: '[type=checkbox]',
+	SHIPPO_SAVE_BUTTON: 'Save',
 
-  // Tax Info Crad
-  ENABLE_TAX_OPTIONS: "div[role=button]",
-  TAX_CONTINUE_BUTTON: "Continue",
+	// Tax Info Crad
+	ENABLE_TAX_OPTIONS: 'div[role=button]',
+	TAX_CONTINUE_BUTTON: 'Continue',
 };
 
 class GeneralSettingPage {
-  uncompletedCards() {
-    return cy.get(SELECTOR.UNCOMPLETED_CARDS);
-  }
+	uncompletedCards() {
+		return cy.get( SELECTOR.UNCOMPLETED_CARDS );
+	}
 
-  completedCards() {
-    return cy.get(SELECTOR.COMPLETED_CARDS, { timeout: 5000 });
-  }
+	completedCards() {
+		return cy.get( SELECTOR.COMPLETED_CARDS, { timeout: 5000 } );
+	}
 
-  cardsLinkText() {
-    return cy.get(SELECTOR.UNCOMPLETED_CARDS).find("span>span");
-  }
+	cardsLinkText() {
+		return cy.get( SELECTOR.UNCOMPLETED_CARDS ).find( 'span>span' );
+	}
 
-  address1() {
-    return cy.get(SELECTOR.ADDRESS_LINE_1);
-  }
+	address1() {
+		return cy.get( SELECTOR.ADDRESS_LINE_1 );
+	}
 
-  city() {
-    return cy.get(SELECTOR.CITY);
-  }
+	city() {
+		return cy.get( SELECTOR.CITY );
+	}
 
-  postalCode() {
-    return cy.get(SELECTOR.ZIPCODE);
-  }
+	postalCode() {
+		return cy.get( SELECTOR.ZIPCODE );
+	}
 
-  country() {
-    return cy.get(SELECTOR.COUNTRY);
-  }
+	country() {
+		return cy.get( SELECTOR.COUNTRY );
+	}
 
-  state() {
-    return cy.get(SELECTOR.STATE);
-  }
+	state() {
+		return cy.get( SELECTOR.STATE );
+	}
 
-  storeInfoContinueButton() {
-    return cy.get(SELECTOR.STORE_CONTINUE_BUTTON);
-  }
+	storeInfoContinueButton() {
+		return cy.get( SELECTOR.STORE_CONTINUE_BUTTON );
+	}
 
-  loadIframe() {
-    return cy.frameLoaded(SELECTOR.OVERLAY_IFRAME);
-  }
+	loadIframe() {
+		return cy.frameLoaded( SELECTOR.OVERLAY_IFRAME );
+	}
 
-  paypalTitle() {
-    return cy
-      .iframe()
-      .findByLabelText(SELECTOR.PAYPAL_TITLE)
-      .parent()
-      .find("input");
-  }
+	paypalTitle() {
+		return cy
+			.iframe()
+			.findByLabelText( SELECTOR.PAYPAL_TITLE )
+			.parent()
+			.find( 'input' );
+	}
 
-  paypalRadioButtonList() {
-    return cy.iframe().find(SELECTOR.PAYPAL_RADIO_BUTTON_LIST);
-  }
+	paypalRadioButtonList() {
+		return cy.iframe().find( SELECTOR.PAYPAL_RADIO_BUTTON_LIST );
+	}
 
-  connectWithPayPal() {
-    return cy.iframe().contains(SELECTOR.CONNECT_WITH_PAYPAL);
-  }
+	connectWithPayPal() {
+		return cy.iframe().contains( SELECTOR.CONNECT_WITH_PAYPAL );
+	}
 
-  paypalSaveButton() {
-    return cy.iframe().find(SELECTOR.PYAPAL_SAVE_BUTTON);
-  }
+	paypalSaveButton() {
+		return cy.iframe().find( SELECTOR.PYAPAL_SAVE_BUTTON );
+	}
 
-  shippingAPI() {
-    return cy.iframe().find(SELECTOR.API);
-  }
+	shippingAPI() {
+		return cy.iframe().find( SELECTOR.API );
+	}
 
-  shippoEnvRadioButtonList() {
-    return cy
-      .iframe()
-      .find(SELECTOR.SHIPPO_ENV_RADIO_BUTTON_LIST, { timeout: 30000 });
-  }
+	shippoEnvRadioButtonList() {
+		return cy
+			.iframe()
+			.find( SELECTOR.SHIPPO_ENV_RADIO_BUTTON_LIST, { timeout: 30000 } );
+	}
 
-  senderName() {
-    return cy
-      .iframe()
-      .findByLabelText(SELECTOR.SENDER_NAME)
-      .parent()
-      .find("input[type=text]");
-  }
+	senderName() {
+		return cy
+			.iframe()
+			.findByLabelText( SELECTOR.SENDER_NAME )
+			.parent()
+			.find( 'input[type=text]' );
+	}
 
-  companyName() {
-    return cy
-      .iframe()
-      .findByLabelText(SELECTOR.COMPANY_NAME)
-      .parent()
-      .find("input");
-  }
+	companyName() {
+		return cy
+			.iframe()
+			.findByLabelText( SELECTOR.COMPANY_NAME )
+			.parent()
+			.find( 'input' );
+	}
 
-  senderEmail() {
-    return cy.iframe().findByLabelText(SELECTOR.EMAIL).parent().find("input");
-  }
+	senderEmail() {
+		return cy
+			.iframe()
+			.findByLabelText( SELECTOR.EMAIL )
+			.parent()
+			.find( 'input' );
+	}
 
-  useWooCommerceSavedStoreAddress() {
-    return cy.iframe().find(SELECTOR.USE_WC_ADDRESS_CHECKBOX);
-  }
+	wooCommerceSavedStoreAddress() {
+		return cy.iframe().find( SELECTOR.USE_WC_ADDRESS_CHECKBOX );
+	}
 
-  shippoSaveButton() {
-    return cy.iframe().findByText(SELECTOR.SHIPPO_SAVE_BUTTON);
-  }
+	shippoSaveButton() {
+		return cy.iframe().findByText( SELECTOR.SHIPPO_SAVE_BUTTON );
+	}
 
-  taxOptionList() {
-    return cy.get(SELECTOR.ENABLE_TAX_OPTIONS);
-  }
+	taxOptionList() {
+		return cy.get( SELECTOR.ENABLE_TAX_OPTIONS );
+	}
 
-  taxContinueButton() {
-    return cy.findByText(SELECTOR.TAX_CONTINUE_BUTTON);
-  }
+	taxContinueButton() {
+		return cy.findByText( SELECTOR.TAX_CONTINUE_BUTTON );
+	}
 }
 
 export default new GeneralSettingPage();

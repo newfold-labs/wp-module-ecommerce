@@ -13,16 +13,16 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
-import "cypress-axe";
-import "./commands";
+import 'cypress-axe';
+import './commands';
 
-Cypress.Cookies.defaults({
-  preserve: /wp|wordpress/,
-});
+Cypress.Cookies.defaults( {
+	preserve: /wp|wordpress/,
+} );
 
-import sqlServer from "cypress-sql-server";
+import sqlServer from 'cypress-sql-server';
 sqlServer.loadDBCommands();
 
-before(() => {
-  cy.login(Cypress.env("wpUsername"), Cypress.env("wpPassword"));
-});
+before( () => {
+	cy.login( Cypress.env( 'wpUsername' ), Cypress.env( 'wpPassword' ) );
+} );

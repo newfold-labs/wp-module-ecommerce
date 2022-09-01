@@ -11,7 +11,7 @@ module.exports = defineConfig({
       password: "root",
       database: "local",
       socketPath:
-        "/Users/roshan.si/Library/Application Support/Local/run/dWsvNxyko/mysql/mysqld.sock",
+        "/Users/roshan.si/Library/Application Support/Local/run/cr6iRdxbW/mysql/mysqld.sock",
     },
   },
   downloadsFolder: "tests/cypress/downloads",
@@ -31,7 +31,7 @@ module.exports = defineConfig({
       return require("./tests/cypress/plugins/index.js")(on, config);
     },
     experimentalSessionAndOrigin: true,
-    baseUrl: "http://localhost:10003",
+    baseUrl: "http://localhost:10008",
     specPattern: "tests/cypress/integration/**/*.cy.{js,jsx,ts,tsx}",
     supportFile: "tests/cypress/support/index.js",
   },

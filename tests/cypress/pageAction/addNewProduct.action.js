@@ -1,121 +1,120 @@
-import BluehostHomePage from "../pageObject/bluehostHome.page";
-import ProductPage from "../pageObject/dashboard/addProduct.page";
-import AddNewProductPage from "../pageObject/productPage.page";
-import wooCommercePage from "../pageObject/wooCommerce.page";
+import BluehostHomePage from '../pageObject/bluehostHome.page';
+import ProductPage from '../pageObject/dashboard/addProduct.page';
+import AddNewProductPage from '../pageObject/productPage.page';
+import wooCommercePage from '../pageObject/wooCommerce.page';
 
-const data = require("../fixtures/dashboard.json");
+const data = require( '../fixtures/dashboard.json' );
 
-export function verifyCardsExists(cards) {
-  BluehostHomePage.addProductTab().click();
-  cards.forEach((element) => {
-    cy.contains(element);
-  });
+export function verifyCardsExists( cards ) {
+	BluehostHomePage.addProductTab().click();
+	cards.forEach( ( element ) => {
+		cy.contains( element );
+	} );
 }
 
 export function addAProduct() {
-  BluehostHomePage.addProductTab().click();
-  ProductPage.addProductCard().eq(1).click();
+	BluehostHomePage.addProductTab().click();
+	ProductPage.addProductCard().eq( 1 ).click();
 
-  AddNewProductPage.productName().type(data.simple_product_details.name);
+	AddNewProductPage.productName().type( data.simple_product_details.name );
 
-  AddNewProductPage.productData().select("Simple product");
-  AddNewProductPage.generalRegularPrice().type(
-    data.simple_product_details.regular_price
-  );
-  AddNewProductPage.generalSalesPrice().type(
-    data.simple_product_details.sale_price
-  );
-  AddNewProductPage.generalTaxStatus().select(
-    data.simple_product_details.tax_status
-  );
-  AddNewProductPage.generalTaxClass().select(
-    data.simple_product_details.tax_class
-  );
+	AddNewProductPage.productData().select( 'Simple product' );
+	AddNewProductPage.generalRegularPrice().type(
+		data.simple_product_details.regular_price
+	);
+	AddNewProductPage.generalSalesPrice().type(
+		data.simple_product_details.sale_price
+	);
+	AddNewProductPage.generalTaxStatus().select(
+		data.simple_product_details.tax_status
+	);
+	AddNewProductPage.generalTaxClass().select(
+		data.simple_product_details.tax_class
+	);
 
-  AddNewProductPage.inventoryTab().click();
-  AddNewProductPage.inventorySku().type(data.simple_product_details.sku);
-  AddNewProductPage.manageStock().click();
-  AddNewProductPage.stockQuanity().type(
-    data.simple_product_details.stock_quantity
-  );
-  AddNewProductPage.lowStockThreshold().type(
-    data.simple_product_details.low_stock_threshold
-  );
+	AddNewProductPage.inventoryTab().click();
+	AddNewProductPage.inventorySku().type( data.simple_product_details.sku );
+	AddNewProductPage.manageStock().click();
+	AddNewProductPage.stockQuanity().type(
+		data.simple_product_details.stock_quantity
+	);
+	AddNewProductPage.lowStockThreshold().type(
+		data.simple_product_details.low_stock_threshold
+	);
 
-  AddNewProductPage.addNewCategoryButton().click();
-  AddNewProductPage.addNewCategories()
-    .eq(0)
-    .type(data.simple_product_details.category);
-  AddNewProductPage.addNewCategoryButtonNextButton().eq(0).click();
-  AddNewProductPage.categoriesChecklist()
-    .contains(data.simple_product_details.category.toString())
-    .find("input")
-    .then(($element) => {
-      if ($element.prop("checked") == false) {
-        cy.wrap($element).check();
-      }
-    });
+	AddNewProductPage.addNewCategoryButton().click();
+	AddNewProductPage.addNewCategories()
+		.eq( 0 )
+		.type( data.simple_product_details.category );
+	AddNewProductPage.addNewCategoryButtonNextButton().eq( 0 ).click();
+	AddNewProductPage.categoriesChecklist()
+		.contains( data.simple_product_details.category.toString() )
+		.find( 'input' )
+		.then( ( $element ) => {
+			if ( $element.prop( 'checked' ) === false ) {
+				cy.wrap( $element ).check();
+			}
+		} );
 
-  AddNewProductPage.productTagsBox().type(data.simple_product_details.tags);
-  AddNewProductPage.productTagAddButton().click();
+	AddNewProductPage.productTagsBox().type( data.simple_product_details.tags );
+	AddNewProductPage.productTagAddButton().click();
 
-  AddNewProductPage.publish().click();
-  cy.go("back");
-  cy.go("back");
+	AddNewProductPage.publish().click();
+	cy.go( 'back' );
+	cy.go( 'back' );
 
-  ProductPage.addNewProductCard().should("exist");
+	ProductPage.addNewProductCard().should( 'exist' );
 }
 
 export function ImportProducts() {
-  BluehostHomePage.addProductTab().click();
-  ProductPage.importProduct().click();
-  AddNewProductPage.importButton().selectFile(
-    "./tests/cypress/fixtures/wc-products-list.csv"
-  );
-  AddNewProductPage.continueToImport().click();
-  AddNewProductPage.runTheImporter().click();
-  AddNewProductPage.viewProduct().click();
-  AddNewProductPage.productList().should("have.length.gte", 8);
+	BluehostHomePage.addProductTab().click();
+	ProductPage.importProduct().click();
+	AddNewProductPage.importButton().selectFile(
+		'./tests/cypress/fixtures/wc-products-list.csv'
+	);
+	AddNewProductPage.continueToImport().click();
+	AddNewProductPage.runTheImporter().click();
+	AddNewProductPage.viewProduct().click();
+	AddNewProductPage.productList().should( 'have.length.gte', 8 );
 }
 
 export function verifyAddaProductCardNavigatedToRightPage() {
-  BluehostHomePage.addProductTab().click();
-  ProductPage.cardsAfterAddingProject().eq(0).click();
-  wooCommercePage.addProductManually().should("exist");
-  wooCommercePage.backButton().click();
+	BluehostHomePage.addProductTab().click();
+	ProductPage.cardsAfterAddingProject().eq( 0 ).click();
+	wooCommercePage.addProductManually().should( 'exist' );
+	wooCommercePage.backButton().click();
 }
 
 export function verifyManageaProductCardNavigatedToRightPage() {
-  ProductPage.cardsAfterAddingProject().eq(1).click();
-  AddNewProductPage.addNewButton().should("exist");
-  cy.go("back");
+	ProductPage.cardsAfterAddingProject().eq( 1 ).click();
+	AddNewProductPage.addNewButton().should( 'exist' );
+	cy.go( 'back' );
 }
 
 export function verifyCategoriesCardNavigatedToRightPage() {
-  ProductPage.cardsAfterAddingProject().eq(2).click();
-  AddNewProductPage.addNewCategoryButtonNextButton().should("exist");
-  wooCommercePage.backButton().click();
+	ProductPage.cardsAfterAddingProject().eq( 2 ).click();
+	AddNewProductPage.addNewCategoryButtonNextButton().should( 'exist' );
+	wooCommercePage.backButton().click();
 }
 
 export function verifyTagsCardNavigatedToRightPage() {
-  ProductPage.cardsAfterAddingProject().eq(3).click();
-  AddNewProductPage.addNewTag().should("exist");
-  wooCommercePage.backButton().click();
+	ProductPage.cardsAfterAddingProject().eq( 3 ).click();
+	AddNewProductPage.addNewTag().should( 'exist' );
+	wooCommercePage.backButton().click();
 }
 
 export function verifyHowToAddProductCardExist() {
-  let urlToVerify = "https://woocommerce.com/document/managing-products/";
+	const urlToVerify = 'https://woocommerce.com/document/managing-products/';
 
-  BluehostHomePage.addProductTab().click();
-  let newUrl = "";
-  cy.window().then((win) => {
-    cy.stub(win, "open")
-      .as("windowOpen")
-      .callsFake((url) => {
-        newUrl = url;
-      });
-  });
+	BluehostHomePage.addProductTab().click();
+	cy.window().then( ( win ) => {
+		cy.stub( win, 'open' )
+			.as( 'windowOpen' )
+			.callsFake( () => {} );
+	} );
 
-  ProductPage.cardsAfterAddingProject().contains("How to add products").click();
-  cy.get("@windowOpen").should("be.calledWith", urlToVerify, "_blank");
+	ProductPage.cardsAfterAddingProject()
+		.contains( 'How to add products' )
+		.click();
+	cy.get( '@windowOpen' ).should( 'be.calledWith', urlToVerify, '_blank' );
 }
