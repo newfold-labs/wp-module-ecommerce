@@ -1,9 +1,8 @@
-// / <reference types="cypress" />
+/// <reference types="cypress" />
 
 import * as GeneralSetting from "../../pageAction/generalSetting.action";
 import * as AddProducts from "../../pageAction/addNewProduct.action";
 import * as CustomizeYourStore from "../../pageAction/customizeStore.action";
-import * as AdvancedFeature from "../../pageAction/advancedFeature.action";
 import * as LaunchYourStore from "../../pageAction/launchYourStore.action";
 
 const homePageUrl = "/wp-admin/admin.php?page=bluehost#/home/store/general";
@@ -15,9 +14,16 @@ describe("As a customer, I want to ", function () {
     });
   });
 
+  before(() => {
+    cy.removeAllTax();
+    cy.deleteAllProducts();
+    cy.deleteAllPages();
+    cy.resetGeneralSettingTab("wp_options");
+  });
+
   beforeEach(() => {
     cy.login(Cypress.env("wpUsername"), Cypress.env("wpPassword"));
-    cy.visit("/wp-admin/admin.php?page=bluehost#/home/store/general");
+    cy.visit(homePageUrl, { timeout: 3000 });
   });
 
   it("see the launch pad banner on top of the home page when site status is not live", () => {
@@ -28,10 +34,10 @@ describe("As a customer, I want to ", function () {
 
   it("see all 5 verticle tabs on Home Page", () => {
     GeneralSetting.verifyVerticleTabsHave([
-      "General Settings",
-      "Add products",
-      "Customize your store",
-      "Advanced features",
+      "Store Info",
+      "Products and Services",
+      "Pages",
+      "Additional Features",
       "Launch Your Store/Site Status",
     ]);
   });
@@ -52,9 +58,8 @@ describe("As a customer, I want to ", function () {
     GeneralSetting.verifyEnteredStoreAddressIsSameOnWooCommerceSetting();
   });
 
-  it.skip("link my existing payment method in General Setting", () => {
+  it("see the option to link my existing payment method in General Setting", () => {
     GeneralSetting.linkExistingPaymentAccount();
-    GeneralSetting.verifyPaymentCardsInDoneSection();
   });
 
   it("link my existing shippo account in General Setting", () => {
@@ -70,20 +75,14 @@ describe("As a customer, I want to ", function () {
     GeneralSetting.setStandardRate();
   });
 
-  it.skip("verify all general setting cards are in done state", () => {
-    GeneralSetting.verifyAllCardAreInDoneState();
-  });
-
   it('see "Add a product" and "Import Product" cards in Your Product tab', () => {
     AddProducts.verifyCardsExists(["Add Products", "Import Products"]);
   });
 
   it('add a product from "Your product" tabs', () => {
     AddProducts.addAProduct();
-
-    AddProducts.deleteAllProduct();
+    cy.deleteAllProducts();
     cy.visit(homePageUrl);
-
     AddProducts.ImportProducts();
   });
 
@@ -117,14 +116,14 @@ describe("As a customer, I want to ", function () {
     ]);
   });
 
-  it("create home page, about page, contat page", () => {
+  it("create home page, about page, contcat page", () => {
     CustomizeYourStore.createPages();
   });
 
   it("change my store layout", () => {
     Cypress.on("uncaught:exception", (err, runnable) => {
-      // returning false here prevents Cypress from failing the test
-      // Error: Cannot read properties of null (reading 'addEventListener')
+      // returning false here to prevents Cypress from failing the test
+      // Application Error: Cannot read properties of null (reading 'addEventListener')
       return false;
     });
     CustomizeYourStore.storeLayout();
@@ -134,11 +133,7 @@ describe("As a customer, I want to ", function () {
     CustomizeYourStore.customerAccount();
   });
 
-  it("install all free adons of advanced feature tab", () => {
-    AdvancedFeature.installAndEnableFreeAddons();
-  });
-
-  it("Luanch My Store", () => {
+  it("Launch My Store", () => {
     LaunchYourStore.launchYourStore();
   });
 });

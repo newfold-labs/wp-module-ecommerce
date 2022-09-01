@@ -85,6 +85,10 @@ class CustomizeYourStorePage {
   publishStoreLayout() {
     return cy.get(SELECTOR.STORE_LAYOUT_PUBLISH_BUTTON);
   }
+
+  isNowLiveText() {
+    return cy.contains("is now live.", { timeout: 10000 });
+  }
 }
 
 export default new CustomizeYourStorePage();

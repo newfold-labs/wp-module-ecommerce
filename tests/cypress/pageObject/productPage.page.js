@@ -21,14 +21,10 @@ const SELECTOR = {
   ADD_TAG_BUTTON: "[value=Add]",
   PUBLISH: "[name=publish]",
 
-  SELECT_ALL_CHECKBOX: "thead [type=checkbox]",
-  SELECT_BULK_ACTION: ".top div.bulkactions select",
-  APPLY_BUTTON: ".top div.bulkactions input",
-
   ADD_NEW_BUTTON: "Add New",
   ADD_NEW_TAG: "[value='Add new tag']",
 
-  // Export
+  // Export Card
   IMPORT_BUTTON: "[name=import]",
   CONTINUE_TO_IMPORT_BUTTON: "Continue",
   RUN_THE_IMPORTER: "Run the importer",
@@ -116,18 +112,6 @@ class AddNewProductPage {
     return cy.get(SELECTOR.PUBLISH);
   }
 
-  selectAllProductButton() {
-    return cy.get(SELECTOR.SELECT_ALL_CHECKBOX);
-  }
-
-  selectActionOnProduct() {
-    return cy.get(SELECTOR.SELECT_BULK_ACTION);
-  }
-
-  applyButton() {
-    return cy.get(SELECTOR.APPLY_BUTTON);
-  }
-
   addNewButton() {
     return cy.contains(SELECTOR.ADD_NEW_BUTTON);
   }
@@ -149,7 +133,7 @@ class AddNewProductPage {
   }
 
   viewProduct() {
-    return cy.findByText(SELECTOR.VIEW_PRODUCT_BUTTON);
+    return cy.findByText(SELECTOR.VIEW_PRODUCT_BUTTON, { timeout: 15000 });
   }
 
   productList() {

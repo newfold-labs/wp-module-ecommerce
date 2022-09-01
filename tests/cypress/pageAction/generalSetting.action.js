@@ -77,36 +77,6 @@ export function verifyEnteredStoreAddressIsSameOnWooCommerceSetting() {
   WooCommercePage.zipCode().should("have.value", data.store_address.zipcode);
 }
 
-// #####################################################
-
-const getIframeDocument = () => {
-  return (
-    cy
-      .get("iframe")
-      // Cypress yields jQuery element, which has the real
-      // DOM element under property "0".
-      // From the real DOM iframe element we can get
-      // the "document" element, it is stored in "contentDocument" property
-      // Cypress "its" command can access deep properties using dot notation
-      // https://on.cypress.io/its
-      .its("0.contentDocument")
-      .should("exist")
-  );
-};
-
-const getIframeBody = () => {
-  // get the document
-  return (
-    getIframeDocument()
-      // automatically retries until body is loaded
-      .its("body")
-      .should("not.be.undefined")
-      // wraps "body" DOM element to allow
-      // chaining more Cypress commands, like ".find(...)"
-      .then(cy.wrap)
-  );
-};
-
 export function linkExistingPaymentAccount() {
   GeneralSettingPage.uncompletedCards().contains("Payments").click();
   GeneralSettingPage.loadIframe();
@@ -122,70 +92,7 @@ export function linkExistingPaymentAccount() {
   } else {
     GeneralSettingPage.paypalRadioButtonList().eq(3).click();
   }
-
-  cy.contains("PayPal ID").find("input").type("xyz");
-  // GeneralSettingPage.paypalSaveButton().click();
-
-  // Testing #######################################################
-  // let newUrl = "https://www.sandbox.paypal.com/bizsignup/#/checkAccount";
-  // cy.window().then((win) => {
-  //   const stub = cy.stub(win, "open").as("windowOpen");
-  // });
-
-  // GeneralSettingPage.connectWithPayPal().click();
-  // cy.wait(10000);
-  // cy.frameLoaded("iframe");
-  // cy.iframe("iframe.aut-iframe")
-  // .its("0.contentDocument.body")
-  // cy.wait(10000);
-  // cy.get('[label="Email"]');
-  // .type("sb-4lydi20305701@business.example.com");
-  // cy.frameLoaded("iframe.aut-iframe");
-  // cy.iframe()
-  //   .get(["name=Email"], { timeout: 20000 })
-  //   .type("sb-4lydi20305701@business.example.com");
-
-  // cy.window().then((win) => (win.location.href = newUrl));
-  // cy.wait(10000);
-  // cy.frameLoaded("iframe.aut-iframe");
-  // cy.iframe()
-  //   .get(["name=Email"], { timeout: 20000 })
-  //   .type("sb-4lydi20305701@business.example.com");
-  // cy.findByText("Next").click();
-  // cy.iframe().get("input#password").type("_^evP^H2");
-  // cy.get("value=Login").click();
-  // cy.window().then((win) => {
-  //   cy.origin(newUrl);
-  //   cy.wait(20000);
-  //   cy.get(["name=Email"], { timeout: 10000 }).type(
-  //     "sb-4lydi20305701@business.example.com"
-  //   );
-  // });
-  // cy.window().then((win) => {
-  //   win.location.href = newUrl;
-  //   cy.get(["name=Email"], { timeout: 10000 }).type(
-  //     "sb-4lydi20305701@business.example.com"
-  //   );
-  //   cy.findByText("Next").click();
-  //   cy.get("input#password").type("_^evP^H2");
-  //   cy.get("value=Login").click();
-  // });
-}
-
-export function test() {
-  // let newUrl = "https://www.sandbox.paypal.com/bizsignup/#/checkAccount";
-  // cy.window().then((win) => {
-  //   win.location.href = newUrl;
-  // });
-  // cy.visit(newUrl);
-  // cy.get("iframe").then(($element) => {
-  //   cy.log($element.length);
-  // });
-  // cy.wait(2000);
-  // cy.frameLoaded("iframe");
-  // cy.iframe().find('[label="Email"]').type("test");
-  // cy.get("iframe").its("0.contentDocument").should("exist");
-  // // getIframeBody().find('[label="Email"]').click();
+  GeneralSettingPage.paypalSaveButton().click();
 }
 
 export function verifyPaymentCardsInDoneSection() {
@@ -243,7 +150,7 @@ export function verifyFilledShippingInformationSavedInYith() {
   YithShippoPage.email().should("have.value", data.existing_shipping.email);
 }
 export function selectTaxOption(option) {
-  GeneralSettingPage.uncompletedCards().contains("Tax").click();
+  GeneralSettingPage.uncompletedCards().contains("Tax Info").click();
   GeneralSettingPage.taxOptionList().eq(option).click();
   GeneralSettingPage.taxContinueButton().click();
 }

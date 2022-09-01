@@ -8,13 +8,11 @@ const SELECTOR = {
   HERO_BANNER: "Congrats on your new store! Let's get it ready to launch!",
   SITE_STATUS_TITLE: "Launch Your Site",
   VERTICLE_TAB: "Setup Guide",
-  Add_PRODUCT_TAB: "Add products",
-  CUSTOMIZE_YOUR_STORE_TAB: "Customize your store",
-  ADVANCED_FEATURE_TAB: "Advanced features",
+  Add_PRODUCT_TAB: "Products and Services",
+  CUSTOMIZE_YOUR_STORE_TAB: "Pages",
+  ADVANCED_FEATURE_TAB: "Additional Features",
   LAUNCH_YOUR_STORE_TAB: "Launch Your Store",
   SITE_STATUS: "Site Status",
-
-  WORDPRESS_ADMIN_MENU_LIST: "div.wp-menu-name",
 };
 
 class HomePage {
@@ -31,7 +29,7 @@ class HomePage {
   }
 
   verticleTabs() {
-    return cy.findByLabelText(SELECTOR.VERTICLE_TAB).find("li");
+    return cy.findByLabelText(SELECTOR.VERTICLE_TAB).find("a>li");
   }
 
   addProductTab() {
@@ -39,23 +37,19 @@ class HomePage {
   }
 
   customizeYourTab() {
-    return cy.findByText(SELECTOR.CUSTOMIZE_YOUR_STORE_TAB);
+    return cy.get("a > li").contains(SELECTOR.CUSTOMIZE_YOUR_STORE_TAB);
   }
 
   advancedFeature() {
-    return cy.findByText(SELECTOR.ADVANCED_FEATURE_TAB);
+    return cy.get("a > li").contains(SELECTOR.ADVANCED_FEATURE_TAB);
   }
 
   launchYourSite() {
-    return this.verticleTabs().contains(SELECTOR.LAUNCH_YOUR_STORE_TAB);
+    return cy.get("a > li").contains(SELECTOR.LAUNCH_YOUR_STORE_TAB);
   }
 
   siteStatus() {
-    return this.verticleTabs().contains(SELECTOR.SITE_STATUS);
-  }
-
-  wpMenu() {
-    return cy.get(SELECTOR.WORDPRESS_ADMIN_MENU_LIST);
+    return cy.get("a > li").contains(SELECTOR.SITE_STATUS);
   }
 }
 

@@ -107,8 +107,6 @@ export function verifyHowToAddProductCardExist() {
   let urlToVerify = "https://woocommerce.com/document/managing-products/";
 
   BluehostHomePage.addProductTab().click();
-  ProductPage.cardsAfterAddingProject().eq(4).should("exist");
-
   let newUrl = "";
   cy.window().then((win) => {
     cy.stub(win, "open")
@@ -118,31 +116,6 @@ export function verifyHowToAddProductCardExist() {
       });
   });
 
-  ProductPage.cardsAfterAddingProject().eq(4).click();
+  ProductPage.cardsAfterAddingProject().contains("How to add products").click();
   cy.get("@windowOpen").should("be.calledWith", urlToVerify, "_blank");
-}
-
-const myObject = {
-  value: "",
-};
-
-export function deleteAllProduct() {
-  BluehostHomePage.addProductTab().click();
-  ProductPage.manageProductCard().click();
-  try {
-    cy.get("div.top span.total-pages").then(($element) => {
-      var count = parseInt($element.text());
-      for (let index = 0; index < count; index++) {
-        deleteAllRow();
-      }
-    });
-  } catch (error) {
-    deleteAllRow();
-  }
-}
-
-function deleteAllRow() {
-  AddNewProductPage.selectAllProductButton().check();
-  AddNewProductPage.selectActionOnProduct().select("Move to Trash");
-  AddNewProductPage.applyButton().click();
 }

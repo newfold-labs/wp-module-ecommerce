@@ -4,8 +4,8 @@
 import "cypress-iframe";
 
 const SELECTOR = {
-  UNCOMPLETED_CARDS: ".nfd-ecommerce-standard-actions-container>button",
-  COMPLETED_CARDS: ".nfd-ecommerce-minimal-tasks-container>button",
+  UNCOMPLETED_CARDS: "[data-variant=standard]",
+  COMPLETED_CARDS: "[data-variant=minimal]",
   OVERLAY_IFRAME: "iframe",
 
   // Store Info Card Elements
@@ -42,7 +42,7 @@ class GeneralSettingPage {
   }
 
   completedCards() {
-    return cy.get(SELECTOR.COMPLETED_CARDS);
+    return cy.get(SELECTOR.COMPLETED_CARDS, { timeout: 5000 });
   }
 
   cardsLinkText() {

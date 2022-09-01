@@ -1,10 +1,18 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
-  // projectId: "gpdgcu",
+  projectId: "gpdgcu",
   env: {
     wpUsername: "admin",
     wpPassword: "password",
+    db: {
+      host: "localhost",
+      user: "root",
+      password: "root",
+      database: "local",
+      socketPath:
+        "/Users/roshan.si/Library/Application Support/Local/run/dWsvNxyko/mysql/mysqld.sock",
+    },
   },
   downloadsFolder: "tests/cypress/downloads",
   fixturesFolder: "tests/cypress/fixtures",
@@ -23,7 +31,7 @@ module.exports = defineConfig({
       return require("./tests/cypress/plugins/index.js")(on, config);
     },
     experimentalSessionAndOrigin: true,
-    baseUrl: "http://localhost:10008",
+    baseUrl: "http://localhost:10003",
     specPattern: "tests/cypress/integration/**/*.cy.{js,jsx,ts,tsx}",
     supportFile: "tests/cypress/support/index.js",
   },

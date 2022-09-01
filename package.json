@@ -29,13 +29,13 @@
     "@rollup/plugin-url": "^7.0.0",
     "@svgr/rollup": "^6.2.1",
     "@testing-library/cypress": "^8.0.3",
+    "@wordpress/scripts": "23.7.0",
     "cypress": "^10.6.0",
     "cypress-axe": "^1.0.0",
     "cypress-iframe": "^1.0.1",
     "cypress-sql-server": "^1.0.0",
     "cypress-wait-until": "^1.7.2",
     "dts-cli": "1.5.2",
-    "mysql": "github:mysqljs/mysql",
-    "@wordpress/scripts": "23.7.0"
+    "mysql": "github:mysqljs/mysql"
   }
 }

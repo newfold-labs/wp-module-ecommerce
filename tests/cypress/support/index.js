@@ -20,6 +20,9 @@ Cypress.Cookies.defaults({
   preserve: /wp|wordpress/,
 });
 
+import sqlServer from "cypress-sql-server";
+sqlServer.loadDBCommands();
+
 before(() => {
   cy.login(Cypress.env("wpUsername"), Cypress.env("wpPassword"));
 });
