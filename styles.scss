@@ -9,11 +9,9 @@
     background-color: var(--nfd-ecommerce-bg-primary);
     border-radius: 2px;
     border: 1px solid var(--nfd-ecommerce-border-primary);
-
     display: grid;
     place-items: center;
     padding: 0 22px;
-
     h1 {
       color: var(--nfd-ecommerce-accent-primary);
     }
@@ -74,6 +72,13 @@
     border-radius: 2px;
     display: grid;
     grid-template-columns: 350px auto;
+    @media (max-width: 1200px) {
+      grid-template-columns: 244px auto;
+    }
+    @media (max-width: 480px) {
+      display: block;
+      min-height: auto;
+    }
 
     nav.nfd-ecommerce-dashboard-menu {
       padding: 0;
@@ -94,7 +99,7 @@
         &[data-active="true"] {
           background: #ffffff;
 
-          >li {
+          > li {
             color: var(--nfd-ecommerce-accent-primary);
             font-weight: 590;
           }
@@ -118,6 +123,37 @@
 
       .nfd-ecommerce-dashboard-subtitle {
         color: var(--nfd-ecommerce-text-secondary);
+      }
+    }
+
+    .components-navigation__menu {
+      background: #ffffff;
+      .components-navigation__back-button {
+        background: #f5f5f5;
+        opacity: inherit;
+        margin-bottom: 0px;
+        padding-bottom: 35px;
+      }
+      li{
+        height: 60px;
+        padding: 0px;
+        border-bottom: 1px solid var(--nfd-ecommerce-border-primary);
+        display: flex;
+      }
+      a.components-button {
+        opacity: inherit;
+        color: #333333;
+      }
+      span {
+        font-size: 16px;
+      }
+    }
+
+    .is-from-left {
+      li {
+        padding: 16px;
+        display: block;
+        height: auto;
       }
     }
   }
@@ -213,7 +249,6 @@
 
     .nfd-ecommerce-card-image {
       height: auto;
-      padding-left: 16px;
     }
 
     .nfd-ecommerce-card-title {
@@ -269,24 +304,44 @@
 
   .nfd-ecommerce-standard-actions-container {
     display: grid;
-    grid: 155px / auto-flow 170px;
+    grid-template-columns: repeat(4, 170px);
+    grid-auto-rows: 155px;
     gap: 16px;
     padding-top: 32px;
+
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(3, 170px);
+    }
+    @media (max-width: 960px) {
+      grid-template-columns: repeat(2, 170px);
+    }
+    @media (max-width: 480px) {
+      grid-template-columns: repeat(1, 170px);
+    }
   }
 
   .nfd-ecommerce-minimal-tasks-container {
     display: grid;
-    grid: 78px / auto-flow 220px;
+    grid-template-columns: repeat(4, 220px);
+    grid-auto-rows: 78px;
     gap: 16px;
     padding-top: 16px;
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(2, 220px);
+    }
+    @media (max-width: 780px) {
+      grid-template-columns: repeat(1, 220px);
+    }
   }
 
   .nfd-ecommerce-extended-actions-container {
     display: grid;
     grid-auto-flow: row;
-    grid-auto-rows: 114px;
     row-gap: 12px;
     padding-top: 32px;
+    button {
+      padding: 16px;
+    }
   }
 
   .nfd-ecommerce-button {
@@ -317,3 +372,4 @@
   pointer-events: none;
   filter: opacity(0.2);
 }
+

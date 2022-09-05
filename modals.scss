@@ -77,11 +77,24 @@ div.nfd-ecommerce-store-address-form {
     border: 1px solid #d6d6d6;
     border-radius: 2px;
   }
+
+  @media (max-width: 960px) {
+    input,
+    select {
+      width: 300px;
+    }
+  }
+
+  @media (max-width: 780px) {
+    grid-template-columns:  auto;
+  }
+
 }
 
 .nfd-ecommerce-modal-header {
   color: var(--nfd-ecommerce-text-primary);
   font: 274 40px/1.2 var(--nfd-ecommerce-font-primary);
+  text-align: center;
   margin: 0;
 }
 .nfd-ecommerce-modal-header-description {
