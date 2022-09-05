@@ -317,3 +317,29 @@
   pointer-events: none;
   filter: opacity(0.2);
 }
+
+.nfd-ecommerce-store-analytics {
+  border: 1px solid #D7DBE0;
+  background-color: white;
+  padding-left: 24px;
+  padding-top: 24px;
+  padding-bottom: 19px;
+
+  .store-analytics-notice {
+    font-size : 16px ;
+    color: #425466;
+  }
+  a {
+    display:block;
+    font:400 18px var(--nfd-ecommerce-font-primary);
+    padding: 10px 41px 9px 41px ;
+    width: 123px;
+    height: 21px;
+    border: 1px solid var(--nfd-ecommerce-accent-primary);
+    border-radius: 2px;
+    background-color: white;
+    color: var(--nfd-ecommerce-accent-primary);
+    cursor: grab;
+    text-decoration: none;
+  }
+}
