@@ -321,25 +321,21 @@
 .nfd-ecommerce-store-analytics {
   border: 1px solid #D7DBE0;
   background-color: white;
-  padding-left: 24px;
-  padding-top: 24px;
-  padding-bottom: 19px;
+  padding: 24px 24px 19px;
 
   .store-analytics-notice {
     font-size : 16px ;
-    color: #425466;
+    color: var(--nfd-ecommerce-text-secondary);
   }
   a {
     display:block;
-    font:400 18px var(--nfd-ecommerce-font-primary);
-    padding: 10px 41px 9px 41px ;
-    width: 123px;
-    height: 21px;
+    font:400 18px/1.2 var(--nfd-ecommerce-font-primary);
+    padding: 10px 40px  ;
+    width: fit-content;
     border: 1px solid var(--nfd-ecommerce-accent-primary);
     border-radius: 2px;
     background-color: white;
     color: var(--nfd-ecommerce-accent-primary);
-    cursor: grab;
     text-decoration: none;
   }
 }

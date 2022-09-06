@@ -2,7 +2,7 @@ import apiFetch from "@wordpress/api-fetch";
 import useSWR, { SWRConfig } from "swr";
 import { Banner } from "./components/Banner";
 import { Dashboard } from "./components/Dashboard";
-import StoreAnalytics from "./components/StoreAnalytics";
+import { StoreAnalytics } from "./components/StoreAnalytics";
 import { WooCommerceUnavailable } from "./components/WooCommerceUnavailable";
 import { Endpoints } from "./services";
 

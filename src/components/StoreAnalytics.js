@@ -1,8 +1,13 @@
 import { __ } from "@wordpress/i18n";
-export default function StoreAnalytics(props) {
+export function StoreAnalytics(props) {
     if (props?.plugins?.status?.woocommerce !== "Active" || props?.state?.wp.comingSoon === true) {
         return null;
     }
+    let storeAnalyticsLink = `/wp-admin/admin.php?${new URLSearchParams({
+        page: "wc-admin",
+        path: "/analytics/overview",
+        return_to_nfd: "/home/store/"+props.section
+    })}`;
     return (
         <>
             <div className="nfd-ecommerce-store-analytics">
@@ -20,7 +25,7 @@ export default function StoreAnalytics(props) {
                     )}
                 </span>
                 <div style={{height: "16px"}}/>
-                <a href={"admin.php?page=wc-admin&path=/analytics/overview&return_to_nfd=/home/store/"+props.section}>
+                <a href= {storeAnalyticsLink}>
                     {__("View Analytics", "wp-module-ecommerce")}
                 </a>
             </div>
