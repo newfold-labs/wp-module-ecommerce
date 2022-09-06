@@ -20,7 +20,7 @@ export default function StoreAnalytics(props) {
                     )}
                 </span>
                 <div style={{height: "16px"}}/>
-                <a href="admin.php?page=wc-admin&path=/analytics/overview">
+                <a href={"admin.php?page=wc-admin&path=/analytics/overview&return_to_nfd=/home/store/"+props.section}>
                     {__("View Analytics", "wp-module-ecommerce")}
                 </a>
             </div>
