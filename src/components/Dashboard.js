@@ -1,3 +1,8 @@
+import {
+  __experimentalNavigation as Navigation, __experimentalNavigationItem as NavigationItem, __experimentalNavigationMenu as NavigationMenu
+} from "@wordpress/components";
+import { useViewportMatch } from "@wordpress/compose";
+import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import { AdvancedFeatures } from "./AdvancedFeatures";
 import { CustomizeStore } from "./CustomizeStore";
@@ -6,13 +11,6 @@ import { ManageProducts } from "./ManageProducts";
 import { SiteStatus } from "./SiteStatus";
 import { useOnboardingCleanup } from "./useOnboardingCleanup";
 import { useSetupYITHWonderTheme } from "./useSetupYITHWonderTheme";
-import {
-  __experimentalNavigation as Navigation,
-  __experimentalNavigationMenu as NavigationMenu,
-  __experimentalNavigationItem as NavigationItem,
-} from "@wordpress/components";
-import { useViewportMatch } from "@wordpress/compose";
-import { useState } from "@wordpress/element";
 
 function getStepName(stepKey, state) {
   switch (stepKey) {
