@@ -78,6 +78,12 @@
     @media (max-width: 480px) {
       display: block;
       min-height: auto;
+      background-color: inherit;
+      border:none;
+    }
+
+    .css-h9haai{
+      padding: 0px;
     }
 
     nav.nfd-ecommerce-dashboard-menu {
@@ -129,10 +135,11 @@
     .components-navigation__menu {
       background: #ffffff;
       .components-navigation__back-button {
-        background: #f5f5f5;
+        background: #f1f5f7;
         opacity: inherit;
         margin-bottom: 0px;
         padding-bottom: 35px;
+        font-size: 18px;
       }
       li{
         height: 60px;
@@ -304,34 +311,18 @@
 
   .nfd-ecommerce-standard-actions-container {
     display: grid;
-    grid-template-columns: repeat(4, 170px);
+    grid-template-columns: repeat(auto-fit, 170px);
     grid-auto-rows: 155px;
     gap: 16px;
     padding-top: 32px;
-
-    @media (max-width: 1200px) {
-      grid-template-columns: repeat(3, 170px);
-    }
-    @media (max-width: 960px) {
-      grid-template-columns: repeat(2, 170px);
-    }
-    @media (max-width: 480px) {
-      grid-template-columns: repeat(1, 170px);
-    }
   }
 
   .nfd-ecommerce-minimal-tasks-container {
     display: grid;
-    grid-template-columns: repeat(4, 220px);
+    grid-template-columns: repeat(auto-fit, 220px);
     grid-auto-rows: 78px;
     gap: 16px;
     padding-top: 16px;
-    @media (max-width: 1200px) {
-      grid-template-columns: repeat(2, 220px);
-    }
-    @media (max-width: 780px) {
-      grid-template-columns: repeat(1, 220px);
-    }
   }
 
   .nfd-ecommerce-extended-actions-container {
