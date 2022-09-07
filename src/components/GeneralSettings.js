@@ -6,7 +6,7 @@ import { ReactComponent as Shipping } from "../icons/shipping.svg";
 import { ReactComponent as StoreIcon } from "../icons/store.svg";
 import { ReactComponent as CompletedTask } from "../icons/task-complete.svg";
 import { ReactComponent as TaxInfo } from "../icons/taxinfo.svg";
-import { Endpoints } from "../services";
+import { Endpoints, queuePluginInstall } from "../services";
 import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
 import { StoreAddress } from "./StoreAddress";
@@ -81,20 +81,25 @@ function useOnBoardingStatus() {
   ];
 }
 
+function isSelectedThirdPartyPending(key, plugins) {
+  switch (key) {
+    case YithOptions.paypal:
+      return plugins?.status?.yith_paypal_payments === "Active";
+    case YithOptions.shippo:
+      return plugins?.status?.yith_shippo_shipping_for_woocommerce === "Active";
+    default:
+      return false;
+  }
+}
+
 export function GeneralSettings(props) {
   let { wpModules, plugins } = props;
   let { Modal } = wpModules;
   let [onboardingModalKey, setOnboardingModal] = useState(null);
   let [isLoading, errors, refresh, onboarding] = useOnBoardingStatus();
-  let isPaypalPluginInstalled =
-    plugins?.status?.yith_paypal_payments === "Active";
-  let isShippoPluginInstalled =
-    plugins?.status?.yith_shippo_shipping_for_woocommerce === "Active";
   let showThirdPartyIntegration =
     onboardingModalKey === YithOptions.paypal ||
     onboardingModalKey === YithOptions.shippo;
-  let isThirdPartyIntegrationPending =
-    !isPaypalPluginInstalled || !isShippoPluginInstalled;
   if (isLoading) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
@@ -119,6 +124,9 @@ export function GeneralSettings(props) {
   );
   let NativeOnboarding =
     onboardingModalKey === "store_details" ? StoreAddress : Tax;
+  function onClose() {
+    setOnboardingModal(null);
+  }
   return (
     <>
       {incompleteSteps.length > 0 ? (
@@ -186,7 +194,7 @@ export function GeneralSettings(props) {
           className="nfd-ecommerce-atoms nfd-ecommerce-modal"
           shouldCloseOnEsc={false}
           shouldCloseOnClickOutside={false}
-          onRequestClose={() => setOnboardingModal(null)}
+          onRequestClose={onClose}
         >
           <div className="nfd-ecommerce-modal-content">
             <NativeOnboarding
@@ -194,25 +202,25 @@ export function GeneralSettings(props) {
               isStoreDetailsFilled={onboarding.store_details === true}
               onComplete={async () => {
                 await refresh.wc();
-                setOnboardingModal(null);
+                onClose();
               }}
             />
           </div>
         </Modal>
       ) : null}
       {showThirdPartyIntegration ? (
-        isThirdPartyIntegrationPending ? (
+        isSelectedThirdPartyPending(onboardingModalKey, plugins) ? (
           <Modal
             overlayClassName="nfd-ecommerce-modal-overlay"
             className="nfd-ecommerce-atoms nfd-ecommerce-modal-wc-install-failed"
             shouldCloseOnEsc={false}
             shouldCloseOnClickOutside={false}
-            onRequestClose={() => setOnboardingModal(null)}
+            onRequestClose={onClose}
           >
             <div className="nfd-ecommerce-modal-content">
               <h1>Hold tight...</h1>
               <span style={{ marginTop: "48px" }}>
-                {onboardingModalKey == YithOptions.paypal
+                {onboardingModalKey === YithOptions.paypal
                   ? "Payment"
                   : "Shipping"}{" "}
                 support is still being setup. Please wait a few minutes and try
@@ -225,7 +233,16 @@ export function GeneralSettings(props) {
                 </a>{" "}
                 the support team.
               </span>
-              <button onClick={() => setOnboardingModal(null)}>
+              <button
+                onClick={async () => {
+                  let pluginToInstall =
+                    onboardingModalKey === YithOptions.paypal
+                      ? "nfd_slug_yith_paypal_payments_for_woocommerce"
+                      : "nfd_slug_yith_shippo_shippings_for_woocommerce";
+                  await queuePluginInstall(pluginToInstall, plugins?.token);
+                  onClose();
+                }}
+              >
                 Okay
               </button>
             </div>
@@ -237,7 +254,7 @@ export function GeneralSettings(props) {
             isFullScreen
             shouldCloseOnEsc={false}
             shouldCloseOnClickOutside={false}
-            onRequestClose={() => setOnboardingModal(null)}
+            onRequestClose={onClose}
           >
             <iframe
               style={{ width: "100%", height: "100%" }}
