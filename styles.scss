@@ -324,13 +324,14 @@
   padding: 24px 24px 19px;
 
   .store-analytics-notice {
-    font-size : 16px ;
+    font-size: 16px;
     color: var(--nfd-ecommerce-text-secondary);
   }
+
   a {
-    display:block;
-    font:400 18px/1.2 var(--nfd-ecommerce-font-primary);
-    padding: 10px 40px  ;
+    display: block;
+    font: 400 18px/1.2 var(--nfd-ecommerce-font-primary);
+    padding: 10px 40px;
     width: fit-content;
     border: 1px solid var(--nfd-ecommerce-accent-primary);
     border-radius: 2px;
