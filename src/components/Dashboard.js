@@ -1,8 +1,9 @@
 import {
-  __experimentalNavigation as Navigation, __experimentalNavigationItem as NavigationItem, __experimentalNavigationMenu as NavigationMenu
+  __experimentalNavigation as Navigation,
+  __experimentalNavigationItem as NavigationItem,
+  __experimentalNavigationMenu as NavigationMenu,
 } from "@wordpress/components";
 import { useViewportMatch } from "@wordpress/compose";
-import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import { AdvancedFeatures } from "./AdvancedFeatures";
 import { CustomizeStore } from "./CustomizeStore";
@@ -40,8 +41,8 @@ const guideSteps = [
 ];
 
 export function Dashboard(props) {
-  const isLargeViewport = useViewportMatch("mobile");
-  const [activeTab, setActiveTab] = useState(props.section =='general' ?'dashboard-tabs' : props.section);
+  const {navigate} = props.wpModules;
+  const isLargeViewport = useViewportMatch("mobile", ">=");
   let { key, StepContent } =
     guideSteps.find((step) => step.key === props.section) ?? guideSteps[0];
   useSetupYITHWonderTheme();
@@ -50,7 +51,9 @@ export function Dashboard(props) {
   let className = `nfd-ecommerce-dashboard ${
     addCurtain ? "disableDashboardContent" : ""
   }`;
-  
+  function onBackButtonClick() {
+    navigate("/home/store");
+  }
   return (
     <div className={className}>
       {isLargeViewport ? (
@@ -71,8 +74,7 @@ export function Dashboard(props) {
       ) : (
         <Navigation
           className="nf-onboarding__mobile"
-          activeMenu={activeTab}
-          onActivateMenu={setActiveTab}
+          activeMenu={props.section ?? "dashboard-tabs"}
         >
           <NavigationMenu menu="dashboard-tabs">
             {guideSteps.map((tab) => (
@@ -90,6 +92,7 @@ export function Dashboard(props) {
                 key={`${tab.key}-menu`}
                 menu={tab.key}
                 parentMenu="dashboard-tabs"
+                onBackButtonClick={onBackButtonClick}
               >
                 <NavigationItem>
                   <tab.StepContent {...props} />
