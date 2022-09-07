@@ -41,7 +41,7 @@ const guideSteps = [
 
 export function Dashboard(props) {
   const isLargeViewport = useViewportMatch("mobile");
-  const [activeTab, setActiveTab] = useState("dashboard-tabs");
+  const [activeTab, setActiveTab] = useState(props.section =='general' ?'dashboard-tabs' : props.section);
   let { key, StepContent } =
     guideSteps.find((step) => step.key === props.section) ?? guideSteps[0];
   useSetupYITHWonderTheme();
@@ -50,7 +50,7 @@ export function Dashboard(props) {
   let className = `nfd-ecommerce-dashboard ${
     addCurtain ? "disableDashboardContent" : ""
   }`;
-
+  
   return (
     <div className={className}>
       {isLargeViewport ? (
