@@ -84,9 +84,9 @@ function useOnBoardingStatus() {
 function isSelectedThirdPartyPending(key, plugins) {
   switch (key) {
     case YithOptions.paypal:
-      return plugins?.status?.yith_paypal_payments === "Active";
+      return plugins?.status?.yith_paypal_payments !== "Active";
     case YithOptions.shippo:
-      return plugins?.status?.yith_shippo_shipping_for_woocommerce === "Active";
+      return plugins?.status?.yith_shippo_shipping_for_woocommerce !== "Active";
     default:
       return false;
   }
