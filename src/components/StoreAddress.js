@@ -38,11 +38,17 @@ export function StoreAddress({ onComplete, isMandatory = false }) {
       onSubmit={async (event) => {
         event.preventDefault();
         event.stopPropagation();
-        let { country, state = defaultContact.state, ...wcAddress } = address;
+        let { country, state, ...wcAddress } = address;
+        let selectedState;
+        if (selectedCountry === defaultContact.country && state === undefined) {
+          selectedState = defaultContact.state;
+        }
         await updateWPSettings({
           ...defaultContact,
           ...wcAddress,
-          woocommerce_default_country: `${selectedCountry}:${state}`,
+          woocommerce_default_country: selectedState
+            ? `${selectedCountry}:${selectedState}`
+            : selectedCountry,
         });
         await updateWCOnboarding({ completed: true });
         await onComplete();
