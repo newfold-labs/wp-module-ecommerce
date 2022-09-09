@@ -25,6 +25,10 @@
     "swr": "^1.3.0"
   },
   "devDependencies": {
-    "@wordpress/scripts": "23.7.0"
+    "@wordpress/scripts": "23.7.0",
+    "@testing-library/cypress": "^8.0.3",
+    "cypress": "^10.7.0",
+    "cypress-iframe": "^1.0.1",
+    "cypress-axe": "^1.0.0"
   }
 }

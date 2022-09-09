@@ -1,0 +1,17 @@
+{
+  "status": {
+    "woocommerce": "Active",
+    "yith_wcmap_panel": "Active",
+    "yith_woocommerce_gift_cards_panel": "Active",
+    "yith_wcwl_panel": "Active",
+    "yith_wcan_panel": "Active",
+    "yith_wcbk_panel": "Active",
+    "yith_wcas_panel": "Active",
+    "yith_paypal_payments": "Active",
+    "yith_shippo_shipping_for_woocommerce": "Active",
+    "queue-status": []
+  },
+  "token": {
+    "hash": "NFD_ONBOARDING_f4b9dc164a6c5d46d3b4a92b4e435d51300260f4a89775ebf8b083e7bfc3fae2"
+  }
+}
