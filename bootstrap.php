@@ -15,6 +15,7 @@ if ( function_exists( 'add_action' ) ) {
 					'name'     => 'ecommerce',
 					'label'    => __( 'eCommerce', 'wp-module-ecommerce' ),
 					'callback' => function ( Container $container ) {
+                        define( 'NFD_ECOMMERCE_BUILD_DIR', __DIR__ . '/build/' );
 						new ECommerce( $container );
 					},
 					'isActive' => true,

@@ -41,6 +41,7 @@ class ECommerce {
 		// Module functionality goes here
 		add_action( 'admin_bar_menu', array( $this, 'newfold_site_status' ), 200 );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
+        add_action( 'load-toplevel_page_bluehost' , array( $this, 'register_assets')  );
 		CaptiveFlow::init();
 		WooCommerceBacklink::init();
 		register_meta(
@@ -112,4 +113,17 @@ class ECommerce {
 			$admin_bar->remove_menu( 'mojo-home' ); // Remove status added by bwp
 		}
 	}
+
+    public static function register_assets() {
+        $asset_file = NFD_ECOMMERCE_BUILD_DIR.'index.asset.php';
+        if ( file_exists($asset_file) ) {
+            $asset = require_once $asset_file;
+            \wp_enqueue_script(
+                'nfd-ecommerce-dependency',
+                BLUEHOST_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Partials/load-dependencies.js',
+                array_merge( $asset['dependencies'], array() ),
+                $asset['version']
+            );
+        }
+    }
 }
