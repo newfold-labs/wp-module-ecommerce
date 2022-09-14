@@ -28,155 +28,86 @@
 
 import '@testing-library/cypress/add-commands';
 
-Cypress.Commands.add('login', (username, password) => {
-  cy.getCookies().then((cookies) => {
-    let hasMatch = false;
-    cookies.forEach((cookie) => {
-      if (cookie.name.substr(0, 20) === 'wordpress_logged_in_') {
-        hasMatch = true;
-      }
-    });
-    if (!hasMatch) {
-      cy.visit('/wp-login.php').wait(1000);
-      cy.get('#user_login').type(username);
-      cy.get('#user_pass').type(`${password}{enter}`);
-    }
-  });
-});
+Cypress.Commands.add( 'login', ( username, password ) => {
+	cy.getCookies().then( ( cookies ) => {
+		let hasMatch = false;
+		cookies.forEach( ( cookie ) => {
+			if ( cookie.name.substr( 0, 20 ) === 'wordpress_logged_in_' ) {
+				hasMatch = true;
+			}
+		} );
+		if ( ! hasMatch ) {
+			cy.visit( '/wp-login.php' ).wait( 1000 );
+			cy.get( '#user_login' ).type( username );
+			cy.get( '#user_pass' ).type( `${ password }{enter}` );
+		}
+	} );
+} );
 
-Cypress.Commands.add('logout', () => {
-  cy.getCookies().then((cookies) => {
-    cookies.forEach((cookie) => {
-      cy.clearCookie(cookie.name);
-    });
-  });
-});
+Cypress.Commands.add( 'logout', () => {
+	cy.getCookies().then( ( cookies ) => {
+		cookies.forEach( ( cookie ) => {
+			cy.clearCookie( cookie.name );
+		} );
+	} );
+} );
 
 /**
  * Use cy.removeAllStandardTax() to delete all configured standard taxes
  */
-Cypress.Commands.add('removeAllStandardTax', () => {
-  cy.visit('/wp-admin/admin.php?page=wc-settings');
-  cy.contains('Enable tax rates and calculations')
-    .parent()
-    .find('input')
-    .check();
-  cy.get('button[type=submit]').click();
-  cy.get('a.nav-tab').contains('Tax').click();
-  cy.findByText('Standard rates').click();
-
-  cy.get('tbody > tr').then(($tr) => {
-    if ($tr.find('td').length >= 1) {
-      $tr.find('td.country').each(() => {
-        cy.get('td.compound>input')
-          .eq(0)
-          .then(($element) => {
-            if ($element.is(':checked')) cy.wrap($element).uncheck();
-            else cy.wrap($element).check();
-          });
-        cy.get('a.button.minus.remove_tax_rates').click();
-      });
-      cy.get('button[type=submit]').click();
-    }
-  });
-});
+Cypress.Commands.add( 'deleteALLTaxRates', () => {
+	cy.exec( 'npx wp-env run cli wp wc tool run delete_taxes --user=1', {
+		failOnNonZeroExit: false,
+	} );
+} );
 
 /**
  * @param {string} pluginName - The string
- * Use deactivatePlugin('anyPluginName') from test to deactivate plugin
+ *                            Use deactivatePlugin('anyPluginName') from test to deactivate plugin
  */
-Cypress.Commands.add('deactivatePlugin', (pluginName) => {
-  cy.contains('Plugins').click();
-  cy.get('[type=search]').type(pluginName);
-  cy.wait(2000);
-  cy.get('tbody>tr').then(($tr) => {
-    if (
-      $tr.find('td.plugin-title>strong').length > 0 &&
-      $tr.find('td.plugin-title>strong').text() === pluginName
-    ) {
-      cy.get('span.deactivate>a').click();
-    } else {
-      throw new Error(pluginName, ' Plugin Does Not Exist');
-    }
-  });
-});
+Cypress.Commands.add( 'deactivatePlugin', ( pluginName ) => {
+	if ( pluginName.toLowerCase() === 'all' ) {
+		cy.exec( 'npx wp-env run cli wp plugin deactivate --all' );
+	} else {
+		cy.exec( `npx wp-env run cli wp plugin deactivate ${ pluginName }` );
+	}
+} );
 
 /**
  * @param {string} pluginName - The string
- * Use activatePlugin('All') from test to activate all plugins
- * Use activatePlugin('anyPluginName') from test to activate plugin
+ *                            Use activatePlugin('All') from test to activate all plugins
+ *                            Use activatePlugin('anyPluginName') from test to activate plugin
  */
-Cypress.Commands.add('activatePlugin', (pluginName) => {
-  cy.contains('Plugins', { timeout: 2000 }).click();
-
-  if (pluginName.toLowerCase() !== 'all') {
-    cy.get('[type=search]').type(pluginName);
-    cy.wait(2000);
-    cy.get('tbody>tr').then(($tr) => {
-      if ($tr.find('td.plugin-title>strong').length > 0) {
-        cy.wrap($tr.find('td.plugin-title>strong')).should(
-          'include.text',
-          pluginName
-        );
-      } else {
-        throw new Error(pluginName, ' Plugin Does Not Exist');
-      }
-    });
-  }
-  cy.get('thead>tr>td>input').check();
-  cy.get('.top div>select').select('Activate');
-  cy.get('.top [value=Apply]').click();
-});
+Cypress.Commands.add( 'activatePlugin', ( pluginName ) => {
+	if ( pluginName.toLowerCase() !== 'all' ) {
+		cy.exec( `npx wp-env run cli wp plugin activate ${ pluginName }` );
+	} else {
+		cy.exec( 'npx wp-env run cli wp plugin activate --all' );
+	}
+} );
 
 /**
  * Use cy.deleteAllProducts() to delete all commerce product
  */
-Cypress.Commands.add('deleteAllProducts', () => {
-  cy.get('div.wp-menu-name').contains('Products').click();
-  deleteAllRowInPagination();
-});
+Cypress.Commands.add( 'deleteAllProducts', () => {
+	cy.exec(
+		"npx wp-env run cli wp post delete '$(npx wp-env run cli wp wc product list --user=1 --format=ids)' --force",
+		{ failOnNonZeroExit: false }
+	);
+} );
 
 /**
  * Use cy.deleteAllProducts() to delete all commerce pages
  */
-Cypress.Commands.add('deleteAllPages', () => {
-  cy.get('div.wp-menu-name').contains('Pages').click();
-  deleteAllRowInPagination();
-});
+Cypress.Commands.add( 'deleteAllPages', () => {
+	cy.exec(
+		"npx wp-env run cli wp post delete '$(npx wp-env run cli wp post list --post_type='page')' --force",
+		{ failOnNonZeroExit: false }
+	);
+} );
 
-function deleteAllRowInPagination() {
-  try {
-    cy.get('div.top span.total-pages').then(($element) => {
-      const count = parseInt($element.text());
-      for (let index = 0; index < count; index++) {
-        deleteAllRow();
-      }
-    });
-  } catch (error) {
-    deleteAllRow();
-  }
-}
-
-function deleteAllRow() {
-  cy.get('thead [type=checkbox]').check();
-  cy.get('.top div.bulkactions select').select('Move to Trash');
-  cy.get('.top div.bulkactions input').click();
-}
-
-Cypress.Commands.add('resetGeneralSettingTabs', () => {
-  [
-    // 'nfd-ecommerce-captive-flow-paypal',
-    // 'nfd-ecommerce-captive-flow-shippo',
-    // 'woocommerce_onboarding_profile',
-    // 'woocommerce_store_address',
-    // 'woocommerce_store_address_2',
-    // 'woocommerce_store_city',
-    // 'woocommerce_store_postcode',
-    // 'woocommerce_default_country',
-    // 'wc_connect_taxes_enabled',
-    'woocommerce_calc_taxes',
-    'woocommerce_no_sales_tax',
-  ].forEach((optionName) => {
-    cy.exec(`wp option delete ${optionName}`);
-  });
-});
+Cypress.Commands.add( 'resetGeneralSettingTabs', () => {
+	cy.exec(
+		`npx wp-env run cli wp db query < tests/cypress/fixtures/clearStoreInfo.sql`
+	);
+} );

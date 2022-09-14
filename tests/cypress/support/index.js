@@ -16,10 +16,10 @@
 import 'cypress-axe';
 import './commands';
 
-Cypress.Cookies.defaults({
+Cypress.Cookies.defaults( {
 	preserve: /wp|wordpress/,
-});
+} );
 
-before(() => {
-	cy.login(Cypress.env('wpUsername'), Cypress.env('wpPassword'));
-});
+before( () => {
+	cy.login( Cypress.env( 'wpUsername' ), Cypress.env( 'wpPassword' ) );
+} );

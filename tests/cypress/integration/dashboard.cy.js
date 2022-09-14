@@ -5,16 +5,16 @@ import 'cypress-iframe';
 
 const homePageUrl = '/wp-admin/admin.php?page=bluehost#/home/store/general';
 
-describe( 'As a customer, I want to ', function () {
+describe( 'As a wp-admin user, I want to ', function () {
 	before( () => {
 		cy.fixture( 'dashboard' ).then( ( data ) => {
 			this.data = data;
 		} );
 	} );
 
-	before( () => {
+	before( 'activate all theplugin and delete existing data', () => {
 		cy.activatePlugin( 'all' );
-		cy.removeAllStandardTax();
+		cy.deleteALLTaxRates();
 		cy.deleteAllProducts();
 		cy.deleteAllPages();
 		cy.resetGeneralSettingTabs();
@@ -27,6 +27,8 @@ describe( 'As a customer, I want to ', function () {
 	} );
 
 	it( 'verify "WooCommerce is not installed!" model displaying when WooCommerce plugin is not install or active', () => {
+		cy.deactivatePlugin( 'woocommerce' );
+		cy.reload();
 		cy.findByText( 'Uh-Oh! WooCommerce is not installed!' ).should(
 			'exist'
 		);
@@ -37,6 +39,7 @@ describe( 'As a customer, I want to ', function () {
 		cy.findByText( 'Contact Support' )
 			.should( 'exist' )
 			.and( 'have.attr', 'href', 'https://www.bluehost.com/contact' );
+		cy.activatePlugin( 'woocommerce' );
 	} );
 
 	it( 'see the launch pad banner on top of the home page when site status is not live', () => {
@@ -45,10 +48,12 @@ describe( 'As a customer, I want to ', function () {
 			.then( ( $element ) => {
 				const status = $element.text();
 				if ( status !== 'Live' ) {
-					BluehostHomePage.heroBanner().should(
-						'have.length.greaterThan',
-						0
-					);
+					cy.findByText(
+						"Congrats on your new store! Let's get it ready to launch!"
+					).should( 'exist' );
+					cy.findByText(
+						'Your site is currently displaying a "Coming Soon" page. Once you are ready, launch your site.'
+					).should( 'exist' );
 				}
 			} );
 	} );
@@ -119,7 +124,7 @@ describe( 'As a customer, I want to ', function () {
 		cy.get( 'select[name=state]' ).select( this.data.store_address.state );
 		cy.get( 'button[type=submit]' ).click();
 
-		cy.get( '[data-variant=minimal]' )
+		cy.get( '[data-variant=minimal]', { timeout: 20000 } )
 			.as( 'completedCard' )
 			.should( 'include.text', 'Store Info' );
 		cy.get( '@completedCard' ).contains( 'Store Info' ).click();
@@ -128,7 +133,6 @@ describe( 'As a customer, I want to ', function () {
 			'have.value',
 			this.data.store_address.address1
 		);
-
 		cy.get( 'input#woocommerce_store_city' ).should(
 			'have.value',
 			this.data.store_address.city
@@ -178,8 +182,8 @@ describe( 'As a customer, I want to ', function () {
 	} );
 
 	it( 'verify a model is displaying when "YITH PayPal Payments" plugin is not installed', () => {
-		cy.deactivatePlugin( 'YITH PayPal Payments for WooCommerce Extended' );
-		cy.visit( homePageUrl );
+		cy.deactivatePlugin( 'yith-paypal-payments-for-woocommerce-extended' );
+		cy.reload();
 		cy.get( '[data-variant=standard]' ).contains( 'Payments' ).click();
 		cy.get( '[role=document] h1' )
 			.should( 'exist' )
@@ -187,8 +191,8 @@ describe( 'As a customer, I want to ', function () {
 	} );
 
 	it( 'verify a model is displaying when "YITH Shippo" plugin is not installed', () => {
-		cy.deactivatePlugin( 'YITH Shippo Shippings for WooCommerce Extended' );
-		cy.visit( homePageUrl );
+		cy.deactivatePlugin( 'yith-shippo-shippings-for-woocommerce-extended' );
+		cy.reload();
 		cy.get( '[data-variant=standard]' ).contains( 'Shipping' ).click();
 		cy.get( '[role=document] h1' )
 			.should( 'exist' )
@@ -197,16 +201,14 @@ describe( 'As a customer, I want to ', function () {
 
 	//  Currently Failing Due To Bug Id: PRESS4-88
 	it( 'link my existing shippo account in General Setting', () => {
-		cy.activatePlugin( 'YITH Shippo Shippings for WooCommerce Extended' );
-		cy.visit( homePageUrl );
-
-		cy.get( '[data-variant=standard]' ).contains( 'Shipping' ).click();
-		cy.get( '[data-variant=standard]' )
-			.as( 'uncompletedCards' )
-			.contains( 'Payments' )
+		cy.activatePlugin( 'yith-shippo-shippings-for-woocommerce-extended' );
+		cy.reload();
+		cy.get( '[data-variant=standard]', { timeout: 10000 } )
+			.contains( 'Shipping' )
 			.click();
 		cy.frameLoaded( 'iframe' );
 
+		cy.log( 'link Shipping Account' );
 		cy.iframe()
 			.find( '[data-type=radio] label' )
 			.as( 'shippoRadioButtonList' );
@@ -250,25 +252,25 @@ describe( 'As a customer, I want to ', function () {
 		}
 		cy.iframe().findByText( 'Save' ).click();
 
+		cy.log( 'check shipping is in done state' );
 		cy.get( '[data-variant=minimal]' )
 			.as( 'completedCard' )
 			.should( 'include.text', 'Shipping' );
-		cy.contains( 'Shipping' ).click();
+		cy.contains( 'Shipping' ).click( { force: true } );
 
-		// Verify Value has enter properly into Yith SHippo
-
+		cy.log(
+			'Verify data provided entered correctly into Yith SHippo plugin'
+		);
+		cy.reload();
 		cy.get( 'input[type=radio][checked=checked]' ).should(
 			'include.value',
 			this.data.existing_shipping.environment
 		);
-
 		cy.get( '#yith_shippo_sandbox_token' ).should(
 			'have.value',
 			this.data.existing_shipping.test_api
 		);
-
 		cy.get( 'ul.yith-plugin-fw-tabs>li' ).eq( 1 ).click();
-
 		cy.get( '#yith-shippo-sender-info-name' ).should(
 			'have.value',
 			this.data.existing_shipping.sender_name
@@ -283,23 +285,17 @@ describe( 'As a customer, I want to ', function () {
 		);
 	} );
 
-	it.skip( 'select, "I dont charge sales taxes"', () => {
+	it( 'select, "I dont charge sales taxes"', () => {
 		cy.contains( 'Tax Info' ).click();
 		cy.get( 'div[role=button]' ).eq( 2 ).click();
 		cy.findByText( 'Continue' ).click();
-
 		cy.get( '[data-variant=minimal]' ).should( 'include.text', 'Tax Info' );
+
 		cy.exec( 'npx wp-env run cli wp option delete woocommerce_calc_taxes' );
 		cy.exec(
 			'npx wp-env run cli wp option delete woocommerce_no_sales_tax'
 		);
-
-		// cy.task(
-		//   'queryDb',
-		//   `DELETE FROM ${Cypress.env(
-		//     'wpOptionTableName'
-		//   )} WHERE option_name IN ('woocommerce_calc_taxes','woocommerce_no_sales_tax');`
-		// );
+		cy.reload();
 	} );
 
 	it( 'configure "Yes, enable tax rates and calculations" from "General setting" "Tax Info" card', () => {
@@ -312,11 +308,9 @@ describe( 'As a customer, I want to ', function () {
 
 		cy.get( 'form#mainform>nav>a' ).should( 'include.text', 'Tax' );
 
-		// setStandardRate
+		cy.log( 'Add a standard rate' );
 		cy.findByText( 'Standard rates' ).click();
-
 		cy.get( 'a.button.plus.insert' ).click();
-
 		cy.get( 'td.country' ).then( ( $element ) => {
 			const count = $element.length;
 			cy.get( 'td.country' )
@@ -362,17 +356,6 @@ describe( 'As a customer, I want to ', function () {
 		cy.get( '[name=_sale_price]' ).type(
 			this.data.simple_product_details.sale_price
 		);
-
-		cy.findByLabelText( 'Tax status' )
-			.parent()
-			.find( 'select' )
-			.select( this.data.simple_product_details.tax_status );
-
-		cy.findByLabelText( 'Tax class' )
-			.parent()
-			.find( 'select' )
-			.select( this.data.simple_product_details.tax_class );
-
 		cy.findByText( 'Inventory' ).parent().click();
 
 		cy.get( '[name=_sku]' ).type( this.data.simple_product_details.sku );
@@ -409,10 +392,11 @@ describe( 'As a customer, I want to ', function () {
 		cy.go( 'back' );
 
 		cy.findByText( 'Add a product' ).should( 'exist' );
-		cy.deleteAllProducts();
 	} );
 
 	it( 'import product from external file', () => {
+		cy.deleteAllProducts();
+		cy.reload();
 		cy.findByText( 'Products and Services' ).click();
 		cy.findByText( 'Import Products' ).click();
 		cy.get( '[name=import]' ).selectFile(
@@ -444,8 +428,7 @@ describe( 'As a customer, I want to ', function () {
 
 		cy.get( '@Cards' ).eq( 1 ).click();
 		cy.contains( 'Add New' ).should( 'exist' );
-
-		//FIXME: Fix after [Bug ID:]
+		//FIXME: Fix after [Bug ID:PRESS4-86]
 		cy.go( 'back' );
 
 		cy.get( '@Cards' ).eq( 2 ).click();
@@ -495,48 +478,49 @@ describe( 'As a customer, I want to ', function () {
 	it( 'create home page, about page, contcat page', () => {
 		cy.get( 'a > li' ).contains( 'Pages' ).click();
 
-		// Create HomePage
+		cy.log( 'Create HomePage' );
 		cy.contains( 'Home Page' ).click();
-		// cy.get('div.loaded', { timeout: 1000 });
 		cy.contains( 'Homepage' ).should( 'exist' );
-		cy.get( 'button' ).contains( 'Publish' ).click();
+		cy.get( 'button' ).contains( 'Publish' ).click( { force: true } );
 		cy.get( 'div.editor-post-publish-panel' )
 			.find( 'button' )
 			.contains( 'Publish' )
-			.click();
+			.click( { force: true } );
 		cy.contains( 'is now live.', { timeout: 10000 } );
 		cy.contains( 'Back' ).click();
 
+		cy.log( 'Create About Page' );
 		cy.contains( 'About Page' ).click();
 		cy.contains( 'About Us' ).should( 'exist' );
-		// cy.get('div.loaded', { timeout: 1000 });
-		cy.get( 'button' ).contains( 'Publish' ).click();
+		cy.get( 'button' ).contains( 'Publish' ).click( { force: true } );
 		cy.get( 'div.editor-post-publish-panel' )
 			.find( 'button' )
 			.contains( 'Publish' )
-			.click();
+			.click( { force: true } );
 		cy.contains( 'is now live.', { timeout: 10000 } );
 		cy.contains( 'Back' ).click();
 
+		cy.log( 'Create Contact Page' );
 		cy.contains( 'Contact Page' ).click();
 		cy.contains( 'Contact Us' ).should( 'exist' );
-		// cy.get('div.loaded', { timeout: 1000 });
-		cy.get( 'button' ).contains( 'Publish' ).click();
+		cy.get( 'button' ).contains( 'Publish' ).click( { force: true } );
 		cy.get( 'div.editor-post-publish-panel' )
 			.find( 'button' )
 			.contains( 'Cancel' );
 		cy.get( 'div.editor-post-publish-panel' )
 			.find( 'button' )
 			.contains( 'Publish' )
-			.click();
+			.click( { force: true } );
 		cy.contains( 'is now live.', { timeout: 10000 } );
 		cy.contains( 'Back' ).click();
 	} );
 
 	it( 'change my store layout', () => {
 		Cypress.on( 'uncaught:exception', () => {
-			// returning false here to prevents Cypress from failing the test
-			// Application Error: Cannot read properties of null (reading 'addEventListener')
+			/* 
+      Returning false here to prevents Cypress from failing the test Because Getting
+      Application Error: Cannot read properties of null (reading 'addEventListener')
+      */
 			return false;
 		} );
 		cy.get( 'a > li' ).contains( 'Pages' ).click();
@@ -552,7 +536,7 @@ describe( 'As a customer, I want to ', function () {
 		cy.get( '[name=save]' ).should( 'be.disabled' );
 	} );
 
-	it.skip( 'go to "WooCommerce Customize My Account Page"', () => {
+	it( 'go to "WooCommerce Customize My Account Page"', () => {
 		cy.get( 'a > li' ).contains( 'Pages' ).click();
 		cy.contains( 'Customer Account Page' ).click();
 		cy.findByText( 'YITH WooCommerce Customize My Account Page' ).should(
@@ -571,11 +555,13 @@ describe( 'As a customer, I want to ', function () {
 		];
 
 		cy.contains( 'Additional Features' ).click();
-		cy.intercept( 'GET', '/wp-json/newfold-ecommerce/v1/plugins/status*', {
+		cy.log( 'Mocking `**status&_locale=user` API response' );
+		cy.intercept( 'GET', '**status&_locale=user', {
 			fixture: 'additionalFeature.json',
 		} );
 		cy.reload();
 
+		cy.log( 'Verify all the addons in is `Already Installed` section' );
 		freeAddOns.forEach( ( addon ) =>
 			cy.get( '[data-completed=true]' ).contains( addon )
 		);
@@ -586,9 +572,11 @@ describe( 'As a customer, I want to ', function () {
 			.find( 'span' )
 			.then( ( $element ) => {
 				const status = $element.text();
+				cy.log( `Current State of Site is ${ status }` );
 				if ( status === 'Live' ) {
 					cy.get( 'a > li' ).contains( 'Site Status' ).click();
 				} else {
+					cy.log( 'launching the store' );
 					cy.get( 'a > li' ).contains( 'Launch Your Store' ).click();
 					cy.get( 'button' ).contains( 'Launch your store' ).click();
 					cy.findByText( 'Continue' ).click();

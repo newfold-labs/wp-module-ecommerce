@@ -1,10 +1,9 @@
 'use strict';
 
-module.exports = (on, config) => {
+module.exports = ( on, config ) => {
+	if ( config.env && config.env.baseUrl ) {
+		config.baseUrl = config.env.baseUrl;
+	}
 
-    if (config.env && config.env.baseUrl) {
-        config.baseUrl = config.env.baseUrl;
-    }
-
-    return config;
+	return config;
 };
