@@ -1,23 +1,40 @@
-name: Tests
+name: Cypress Tests
+
 on:
   push:
     branches:
+      - main
+      - master
       - trunk
-    paths-ignore:
-      - '.github/**'
-      - '.gitignore'
-      - '**.md'
+      - develop
+      - release/*
+      - feature/*
+      - add/*
+      - update/*
+      - fix/*
+      - try/*
   pull_request:
-    types: [ opened, edited, synchronize, reopened, ready_for_review ]
+    types: [opened, edited, reopened, ready_for_review]
+  workflow_dispatch:
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
   cancel-in-progress: true
+
 jobs:
-  tests:
+  test:
+    name: Run Cypress Tests
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          coverage: none
+          tools: composer, cs2pr
 
       - name: Setup workflow context
         id: workflow
@@ -29,12 +46,22 @@ jobs:
           echo ::set-output name=DIST::${PWD}/dist
           echo ::set-output name=PACKAGE::${REPO##*/}
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v1
         with:
-          php-version: '7.4'
-          coverage: none
-          tools: composer
+          node-version: 16.x
+
+      - name: Get npm cache directory
+        id: npm-cache
+        run: echo "::set-output name=dir::$(npm config get cache)"
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.npm-cache.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Get Composer cache directory
         id: composer-cache
@@ -46,62 +73,76 @@ jobs:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
-            ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+            ${{ runner.os }}-composer-
 
-      - name: Setup Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-
-      - name: Cache node modules
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-
-      - name: Log debug information
+      - name: Show versions
         run: |
           php --version
           composer --version
           node --version
           npm --version
 
-      - name: Validate composer.json and composer.lock files
-        run: composer validate
-
-      - name: Install PHP Dependencies
-        run: composer install --no-progress --no-dev --optimize-autoloader
-
-      - name: Run NPM Install
-        run: npm install
-
-      - name: Build JavaScript
-        run: npm run build
+      - name: NPM Install
+        run: npm install --legacy-peer-deps
 
       - name: Create Distribution Copy
-        run: rsync -r --exclude-from=.distignore --include-from=.distinclude . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
+        run: rsync -r --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
 
       - name: List Distribution Files
         working-directory: ${{ steps.workflow.outputs.DIST }}
         run: find .
 
+      - name: clone wordpress-bluehost-plugin as submodule
+        if: ${{ github.repository != 'bluehost/bluehost-wordpress-plugin' }}
+        run: |
+          git submodule add -b 'release/2.12.6' https://github.com/bluehost/bluehost-wordpress-plugin.git bluehost-wordpress-plugin
+          cd "$(pwd)"/bluehost-wordpress-plugin
+          npm i --legacy-peer-deps
+          composer install
+
       - name: Configure WordPress
-        run: echo '{"config":{"WP_DEBUG_DISPLAY":false},"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
+        if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
+        run: |
+          echo '{"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
+          echo '{"themes":["https://downloads.wordpress.org/theme/yith-wonder.1.0.1.zip"]}' > .wp-env.override.json
+
+      - name: Configure WordPress
+        if: ${{ github.repository != 'bluehost/bluehost-wordpress-plugin' }}
+        run: |
+          echo '{"themes":["https://downloads.wordpress.org/theme/yith-wonder.1.0.1.zip"]}' > .wp-env.override.json
 
       - name: Install WordPress
-        run: npx @wordpress/env@latest start
+        run: npx wp-env start --debug
 
-      - name: Run PHPUnit Tests
-        run: npm run test:unit
+      - name: Install Yith PayPal, Shippo and 'Customize MyAccount' Plugins
+        run: |
+          cd ~/wp-env/"$(ls ~/wp-env/)"
+          docker-compose run --rm -u $(id -u) -e HOME=/tmp cli plugin install woocommerce
+          docker-compose run --rm -u $(id -u) -e HOME=/tmp cli plugin install https://hiive.cloud/workers/plugin-downloads/yith-paypal-payments-for-woocommerce
+          docker-compose run --rm -u $(id -u) -e HOME=/tmp cli plugin install https://hiive.cloud/workers/plugin-downloads/yith-shippo-shippings-for-woocommerce
+          docker-compose run --rm -u $(id -u) -e HOME=/tmp cli plugin install https://hiive.cloud/workers/plugin-downloads/yith-woocommerce-customize-myaccount-page
+
+      - name: Installed Plugin List
+        run: |
+          npx wp-env run cli wp plugin list
 
       - name: Run Cypress Tests
-        run: npm run test:e2e
+        if: ${{ github.repository != 'bluehost/bluehost-wordpress-plugin' }}
+        run: npx cypress run
+
+      - name: Run Cypress Tests
+        uses: replayio/action-cypress@v0.2.3
+        if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
+        with:
+          api-key: ${{ secrets.RECORD_REPLAY_API_KEY }}
+          browser: 'Replay Chromium'
+          command: npm run test:e2e -- --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
+          upload-all: false
+
+      - name: List Replays
+        if: always()
+        shell: bash
+        run: npx @replayio/replay ls --json
 
       - name: Store screenshots of test failures
         if: ${{ failure() }}
@@ -110,24 +151,14 @@ jobs:
           name: screenshots
           path: ./tests/cypress/screenshots
 
-      - name: Check if a debug.log file exists
-        id: hasErrors
-        run: npx wp-env run wordpress test ! -f /var/www/html/wp-content/debug.log
-
-      - name: Copy debug.log file
-        if: ${{ steps.hasErrors.outputs.failure }}
-        run: cat /var/www/html/wp-content/debug.log 1>./debug.log 2>/dev/null
-
-      - name: Store debug.log file
-        if: ${{ steps.hasErrors.outputs.failure }}
+      - name: Store screenshots of test failures
+        if: ${{ failure() }}
         uses: actions/upload-artifact@v2
         with:
-          name: logs
-          path: ./debug.log
+          name: Video_file
+          path: ./tests/cypress/videos
 
-      - name: Store a copy of the plugin on success
-        if: ${{ success() }}
-        uses: actions/upload-artifact@v1
-        with:
-          name: ${{ steps.workflow.outputs.PACKAGE }}
-          path: ${{ steps.workflow.outputs.DIST }}
+      - name: Output debug.log file contents
+        if: ${{ always() }}
+        continue-on-error: true
+        run: npx wp-env run wordpress "cat /var/www/html/wp-content/debug.log"
