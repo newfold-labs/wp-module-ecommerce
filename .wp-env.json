@@ -9,8 +9,10 @@
   },
   "phpVersion": "8.1",
   "plugins": [
+    "./bluehost-wordpress-plugin",
     "https://downloads.wordpress.org/plugin/woocommerce.latest-stable.zip"
   ],
+  "themes": ["https://downloads.wordpress.org/theme/yith-wonder.1.0.1.zip"],
   "port": 8882,
   "testsPort": 8883
 }
