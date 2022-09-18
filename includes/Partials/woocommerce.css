@@ -2,7 +2,6 @@
   outline: none;
   position: fixed;
   width: 200px;
-  top: 32px;
   padding-left: 32px;
   z-index: 1010;
   height: 60px;
@@ -10,7 +9,8 @@
   text-decoration: none;
   align-items: center;
   background: white;
-  font: 400 16px/1.5 sans-serif;
+  font: 400 16px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   color: #2c76dc;
 }
 .nfd-woocommerce-link:hover {
@@ -29,6 +29,22 @@
   width: 4vw;
   padding-left: 1em;
   border-bottom: 1px solid #ecece0;
+}
+
+.post-php .wp-responsive-open .nfd-woocommerce-link {
+  z-index: 0;
+}
+
+.mobile.post-php .nfd-woocommerce-link,
+.mobile.post-new-php .nfd-woocommerce-link {
+  left: 12%;
+  width: fit-content;
+}
+
+.mobile .nfd-woocommerce-link {
+  width: 115px;
+  padding-left: 20px;
+  font-size: 13px;
 }
 
 .is-wp-toolbar-disabled .nfd-woocommerce-link {
