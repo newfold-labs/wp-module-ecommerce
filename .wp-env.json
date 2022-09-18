@@ -7,6 +7,10 @@
     "FS_METHOD": "direct",
     "NFD_ONBOARDING_VERSION": "0.0.10"
   },
+  "plugins": ["./bluehost-wordpress-plugin"],
+  "themes": [
+    "https://downloads.wordpress.org/theme/yith-wonder.latest-stable.zip"
+  ],
   "phpVersion": "8.1",
   "port": 8882,
   "testsPort": 8883

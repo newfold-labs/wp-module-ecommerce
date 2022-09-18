@@ -1,20 +1,15 @@
 const { defineConfig } = require('cypress');
+const cypressReplay = require('@replayio/cypress');
+const { phpVersion, core } = require('./.wp-env.json');
+const wpVersion = /[^/]*$/.exec(core)[0];
 
 module.exports = defineConfig({
-  // projectId: 'gpdgcu',
+  // projectId: 'h78f39',
   env: {
     wpUsername: 'admin',
     wpPassword: 'password',
-    db: {
-      host: 'localhost',
-      user: 'root',
-      password: 'root',
-      database: 'local',
-      socketPath:
-        '/Users/roshan.si/Library/Application Support/Local/run/dWsvNxyko/mysql/mysqld.sock',
-    },
-    // change table name if used different
-    wpOptionTableName: 'wp_options',
+    wpVersion,
+    phpVersion,
   },
   downloadsFolder: 'tests/cypress/downloads',
   fixturesFolder: 'tests/cypress/fixtures',
@@ -26,15 +21,31 @@ module.exports = defineConfig({
   chromeWebSecurity: false,
   viewportWidth: 1024,
   viewportHeight: 768,
+  pageLoadTimeout: 600000,
   e2e: {
-    // We've imported your old cypress plugins here.
-    // You may want to clean this up later by importing these.
     setupNodeEvents(on, config) {
-      return require('./tests/cypress/plugins/index.js')(on, config);
+      // Setup Replay
+      cypressReplay.default(on, config);
+
+      // Ensure that the base URL is always properly set.
+      if (config.env && config.env.baseUrl) {
+        config.baseUrl = config.env.baseUrl;
+      }
+
+      // Ensure that we have a semantically correct WordPress version number for comparisons.
+      if (config.env.wpVersion) {
+        if (config.env.wpVersion.split('.').length !== 3) {
+          config.env.wpSemverVersion = `${config.env.wpVersion}.0`;
+        } else {
+          config.env.wpSemverVersion = config.env.wpVersion;
+        }
+      }
+
+      return config;
     },
-    experimentalSessionAndOrigin: true,
     baseUrl: 'http://localhost:8882',
     specPattern: 'tests/cypress/integration/**/*.cy.{js,jsx,ts,tsx}',
     supportFile: 'tests/cypress/support/index.js',
+    excludeSpecPattern: ['**/wp-module-onboarding/**'],
   },
 });
