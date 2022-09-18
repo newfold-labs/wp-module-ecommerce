@@ -131,7 +131,6 @@ jobs:
         run: npm run test:unit
 
       - name: Run Cypress Tests
-        if: ${{ failure() && steps.phpTest.conclusion == 'failure' }}
         run: npx cypress run
 
       - name: Store screenshots of test failures
