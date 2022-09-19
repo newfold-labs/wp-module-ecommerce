@@ -106,6 +106,7 @@ jobs:
           cd "$(pwd)"/bluehost-wordpress-plugin
           npm i --legacy-peer-deps
           composer install
+          npm run build
 
       - name: Install WordPress
         run: npx wp-env start --debug
