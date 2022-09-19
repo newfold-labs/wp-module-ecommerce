@@ -442,7 +442,7 @@ describe( 'As a wp-admin user, I want to ', function () {
 			.as( 'Cards' )
 			.eq( 0 )
 			.click();
-		cy.contains( 'Add manually' {timeout: customCommandTimeout}).should( 'exist' );
+		cy.contains( 'Add manually', {timeout: customCommandTimeout}).should( 'exist' );
 		cy.get( '[role=main]' ).contains( 'Back' ).as( 'backButton' ).click();
 		cy.get( '@Cards' ).eq( 1 ).click();
 		cy.contains( 'Add New' ).should( 'exist' );
