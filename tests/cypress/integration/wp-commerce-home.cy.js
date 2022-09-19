@@ -26,29 +26,29 @@ describe( 'As a wp-admin user, I want to ', function () {
 	it( 'verify "WooCommerce is not installed!" model displaying when WooCommerce plugin is not install or active', () => {
 		cy.deactivatePlugin( 'woocommerce' );
 		cy.reload();
-		cy.findByText( 'Uh-Oh! WooCommerce is not installed!', {
+		cy.contains( 'Uh-Oh! WooCommerce is not installed!', {
 			timeout: customCommandTimeout,
 		} ).should( 'exist' );
-		cy.findByText(
+		cy.contains(
 			'WooCommerce is required for this dashboard to work, install it now or contact our support team for more assistance.'
 		).should( 'exist' );
-		cy.findByText( 'Install WooCommerce' ).should( 'exist' );
-		cy.findByText( 'Contact Support' )
+		cy.contains( 'Install WooCommerce' ).should( 'exist' );
+		cy.contains( 'Contact Support' )
 			.should( 'exist' )
 			.and( 'have.attr', 'href', 'https://www.bluehost.com/contact' );
 		cy.activatePlugin( 'woocommerce' );
 	} );
 
 	it( 'see the launch pad banner on top of the home page when site status is not live', () => {
-		cy.findByTitle( 'Launch Your Site' )
+		cy.get( '[title="Launch Your Site"]' )
 			.find( 'span' )
 			.then( ( $element ) => {
 				const status = $element.text();
 				if ( status !== 'Live' ) {
-					cy.findByText(
+					cy.contains(
 						"Congrats on your new store! Let's get it ready to launch!"
 					).should( 'exist' );
-					cy.findByText(
+					cy.contains(
 						'Your site is currently displaying a "Coming Soon" page. Once you are ready, launch your site.'
 					).should( 'exist' );
 				}
@@ -63,7 +63,7 @@ describe( 'As a wp-admin user, I want to ', function () {
 			'Additional Features',
 			'Launch Your Store/Site Status',
 		];
-		cy.findByTitle( 'Launch Your Site' )
+		cy.get( '[title="Launch Your Site"]' )
 			.find( 'span' )
 			.then( ( $element ) => {
 				const status = $element.text().trim();
@@ -73,7 +73,7 @@ describe( 'As a wp-admin user, I want to ', function () {
 					tabList[ 4 ] = 'Site Status';
 				}
 				tabList.forEach( ( element ) => {
-					cy.findByLabelText( 'Setup Guide' )
+					cy.get( '[aria-label="Setup Guide"]' )
 						.find( 'a>li' )
 						.contains( element );
 				} );
@@ -152,7 +152,12 @@ describe( 'As a wp-admin user, I want to ', function () {
 		cy.get( '[data-variant=standard]' ).contains( 'Payments' ).click();
 		cy.frameLoaded( 'iframe' );
 
-		cy.iframe().findByLabelText( 'Title' ).parent().find( 'input' ).clear();
+		cy.iframe()
+			.contains( 'Title' )
+			.parent()
+			.parent()
+			.find( 'input' )
+			.clear();
 		cy.iframe()
 			.find( '[data-type=radio] label' )
 			.as( 'paypalRadioButtons' );
@@ -195,7 +200,6 @@ describe( 'As a wp-admin user, I want to ', function () {
 			.and( 'have.text', 'Hold tight...' );
 	} );
 
-	//  Currently Failing Due To Bug Id: PRESS4-88
 	it( 'link my existing shippo account in General Setting', () => {
 		cy.activatePlugin( 'yith-shippo-shippings-for-woocommerce-extended' );
 		cy.reload();
@@ -223,21 +227,21 @@ describe( 'As a wp-admin user, I want to ', function () {
 			.type( this.data.existing_shipping.test_api );
 
 		cy.iframe()
-			.findByLabelText( 'Name' )
+			.contains( 'Name' )
 			.parent()
 			.find( 'input[type=text]' )
 			.clear()
 			.type( this.data.existing_shipping.sender_name );
 
 		cy.iframe()
-			.findByLabelText( 'Company' )
+			.contains( 'Company' )
 			.parent()
 			.find( 'input' )
 			.clear()
 			.type( this.data.existing_shipping.sender_company );
 
 		cy.iframe()
-			.findByLabelText( 'Email' )
+			.contains( 'Email' )
 			.parent()
 			.find( 'input' )
 			.clear()
@@ -246,7 +250,7 @@ describe( 'As a wp-admin user, I want to ', function () {
 		if ( this.data.existing_shipping.use_woocommerce_address ) {
 			cy.iframe().find( '[type=checkbox]' ).click();
 		}
-		cy.iframe().findByText( 'Save' ).click();
+		cy.iframe().contains( 'Save' ).click();
 
 		cy.log( 'check shipping is in done state' );
 		cy.reload();
@@ -282,7 +286,7 @@ describe( 'As a wp-admin user, I want to ', function () {
 	it( 'select, "I dont charge sales taxes"', () => {
 		cy.contains( 'Tax Info' ).click();
 		cy.get( 'div[role=button]' ).eq( 2 ).click();
-		cy.findByText( 'Continue' ).click();
+		cy.contains( 'Continue' ).click();
 		cy.get( '[data-variant=minimal]', {
 			timeout: customCommandTimeout,
 		} ).should( ( completedCards ) => {
@@ -299,7 +303,7 @@ describe( 'As a wp-admin user, I want to ', function () {
 	it( 'configure "Yes, enable tax rates and calculations" from "General setting" "Tax Info" card', () => {
 		cy.contains( 'Tax Info' ).click();
 		cy.get( 'div[role=button]' ).eq( 0 ).click();
-		cy.findByText( 'Continue' ).click();
+		cy.contains( 'Continue' ).click();
 
 		cy.get( '[data-variant=minimal]', {
 			timeout: customCommandTimeout,
@@ -313,7 +317,7 @@ describe( 'As a wp-admin user, I want to ', function () {
 		} );
 
 		cy.log( 'Add a standard rate' );
-		cy.findByText( 'Standard rates' ).click();
+		cy.contains( 'Standard rates' ).click();
 		cy.get( 'a.button.plus.insert' ).click();
 		cy.get( 'td.country' ).then( ( $element ) => {
 			const count = $element.length;
@@ -340,15 +344,16 @@ describe( 'As a wp-admin user, I want to ', function () {
 	} );
 
 	it( 'see "Add a product" and "Import Product" cards in Your Product tab', () => {
-		cy.findByText( 'Products and Services' ).click();
+		cy.contains( 'Products and Services' ).click();
 		[ 'Add Products', 'Import Products' ].forEach( ( card ) => {
 			cy.contains( card );
 		} );
 	} );
 
 	it( 'add a product from "Your product" tabs', () => {
-		cy.findByText( 'Products and Services' ).click();
-		cy.findAllByText( 'Add Products' ).eq( 1 ).click();
+		cy.contains( 'Products and Services' ).click();
+
+		cy.get( '[data-variant=standard]' ).eq( 0 ).click();
 
 		cy.get( '[name=post_title]' ).type(
 			this.data.simple_product_details.name
@@ -360,7 +365,7 @@ describe( 'As a wp-admin user, I want to ', function () {
 		cy.get( '[name=_sale_price]' ).type(
 			this.data.simple_product_details.sale_price
 		);
-		cy.findByText( 'Inventory' ).parent().click();
+		cy.contains( 'Inventory' ).parent().click();
 
 		cy.get( '[name=_sku]' ).type( this.data.simple_product_details.sku );
 
@@ -394,29 +399,30 @@ describe( 'As a wp-admin user, I want to ', function () {
 		cy.get( '[name=publish]' ).click();
 		cy.go( 'back' );
 		cy.go( 'back' );
-		cy.findByText( 'Add a product', { timeout: 15000 } ).should( 'exist' );
+		cy.contains( 'Products and Services', { timeout: 10000 } ).click();
+		cy.contains( 'Add a product', { timeout: 15000 } ).should( 'exist' );
 	} );
 
 	it( 'import product from external file', () => {
 		cy.deleteAllProducts();
 		cy.reload();
-		cy.findByText( 'Products and Services' ).click();
-		cy.findByText( 'Import Products', {
+		cy.contains( 'Products and Services' ).click();
+		cy.contains( 'Import Products', {
 			timeout: customCommandTimeout,
 		} ).click();
 		cy.get( '[name=import]' ).selectFile(
 			'./tests/cypress/fixtures/wc-products-list.csv'
 		);
-		cy.findByText( 'Continue' ).click();
-		cy.findByText( 'Run the importer' ).click();
+		cy.contains( 'Continue' ).click();
+		cy.contains( 'Run the importer' ).click();
 		cy.get( 'section.woocommerce-importer-done', {
 			timeout: 30000,
 		} ).should( 'exist' );
-		cy.findByText( 'View products' ).should( 'exist' );
+		cy.contains( 'View products' ).should( 'exist' );
 	} );
 
 	it( 'Verify Add a Product, Manage a Product, Categories, Tags cards is visible after adding a product', () => {
-		cy.findByText( 'Products and Services' ).click();
+		cy.contains( 'Products and Services' ).click();
 		[ 'Add a product', 'Manage products', 'Categories', 'Tags' ].forEach(
 			( card ) => {
 				cy.contains( card );
@@ -425,7 +431,7 @@ describe( 'As a wp-admin user, I want to ', function () {
 	} );
 
 	it( "verify 'Add a Product', 'Manage a Product', 'Categories', 'Tags' redirecting to right page after click", () => {
-		cy.findByText( 'Products and Services' ).click();
+		cy.contains( 'Products and Services' ).click();
 
 		cy.get( 'button[data-variant=minimal]', {
 			timeout: customCommandTimeout,
@@ -433,7 +439,7 @@ describe( 'As a wp-admin user, I want to ', function () {
 			.as( 'Cards' )
 			.eq( 0 )
 			.click();
-		cy.findByText( 'Add manually' ).should( 'exist' );
+		cy.contains( 'Add manually' ).should( 'exist' );
 		cy.get( '[role=main]' ).contains( 'Back' ).as( 'backButton' ).click();
 		cy.get( '@Cards' ).eq( 1 ).click();
 		cy.contains( 'Add New' ).should( 'exist' );
@@ -451,7 +457,7 @@ describe( 'As a wp-admin user, I want to ', function () {
 		const urlToVerify =
 			'https://woocommerce.com/document/managing-products/';
 
-		cy.findByText( 'Products and Services' ).click();
+		cy.contains( 'Products and Services' ).click();
 		cy.window().then( ( win ) => {
 			cy.stub( win, 'open' )
 				.as( 'windowOpen' )
@@ -548,7 +554,7 @@ describe( 'As a wp-admin user, I want to ', function () {
 	it( 'go to "WooCommerce Customize My Account Page"', () => {
 		cy.get( 'a > li' ).contains( 'Pages' ).click();
 		cy.contains( 'Customer Account Page' ).click();
-		cy.findByText( 'YITH WooCommerce Customize My Account Page' ).should(
+		cy.contains( 'YITH WooCommerce Customize My Account Page' ).should(
 			'exist'
 		);
 	} );
@@ -578,7 +584,7 @@ describe( 'As a wp-admin user, I want to ', function () {
 	} );
 
 	it( 'Launch My Store', () => {
-		cy.findByTitle( 'Launch Your Site' )
+		cy.get( '[title="Launch Your Site"]' )
 			.find( 'span' )
 			.then( ( $element ) => {
 				const status = $element.text();
@@ -589,9 +595,9 @@ describe( 'As a wp-admin user, I want to ', function () {
 					cy.log( 'launching the store' );
 					cy.get( 'a > li' ).contains( 'Launch Your Store' ).click();
 					cy.get( 'button' ).contains( 'Launch your store' ).click();
-					cy.findByText( 'Continue' ).click();
+					cy.contains( 'Continue' ).click();
 				}
-				cy.findByText( 'Go to your site!' ).should( 'exist' );
+				cy.contains( 'Go to your site!' ).should( 'exist' );
 			} );
 	} );
 } );

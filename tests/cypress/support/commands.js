@@ -26,8 +26,6 @@
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
-import '@testing-library/cypress/add-commands';
-
 Cypress.Commands.add( 'login', ( username, password ) => {
 	cy.getCookies().then( ( cookies ) => {
 		let hasMatch = false;
