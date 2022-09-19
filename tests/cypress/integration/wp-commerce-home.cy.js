@@ -268,7 +268,7 @@ describe( 'As a wp-admin user, I want to ', function () {
 			'have.value',
 			this.data.existing_shipping.test_api
 		);
-		cy.get( 'ul.yith-plugin-fw-tabs>li' ).eq( 1 ).click();
+		cy.get( 'ul.yith-plugin-fw-tabs>li' ).eq( 1 ).click({force: true});
 		cy.get( '#yith-shippo-sender-info-name' ).should(
 			'have.value',
 			this.data.existing_shipping.sender_name
@@ -414,7 +414,9 @@ describe( 'As a wp-admin user, I want to ', function () {
 			'./tests/cypress/fixtures/wc-products-list.csv'
 		);
 		cy.contains( 'Continue' ).click();
-		cy.contains( 'Run the importer' ).click();
+		cy.contains( 'Run the importer' ,{
+			timeout: customCommandTimeout,
+		}).click();
 		cy.get( 'section.woocommerce-importer-done', {
 			timeout: 30000,
 		} ).should( 'exist' );
@@ -423,6 +425,7 @@ describe( 'As a wp-admin user, I want to ', function () {
 
 	it( 'Verify Add a Product, Manage a Product, Categories, Tags cards is visible after adding a product', () => {
 		cy.contains( 'Products and Services' ).click();
+		cy.contains('Add a product', {timeout: customCommandTimeout});
 		[ 'Add a product', 'Manage products', 'Categories', 'Tags' ].forEach(
 			( card ) => {
 				cy.contains( card );
@@ -439,7 +442,7 @@ describe( 'As a wp-admin user, I want to ', function () {
 			.as( 'Cards' )
 			.eq( 0 )
 			.click();
-		cy.contains( 'Add manually' ).should( 'exist' );
+		cy.contains( 'Add manually' {timeout: customCommandTimeout}).should( 'exist' );
 		cy.get( '[role=main]' ).contains( 'Back' ).as( 'backButton' ).click();
 		cy.get( '@Cards' ).eq( 1 ).click();
 		cy.contains( 'Add New' ).should( 'exist' );
