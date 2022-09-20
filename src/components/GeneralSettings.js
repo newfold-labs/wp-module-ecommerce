@@ -119,7 +119,9 @@ export function GeneralSettings(props) {
   let completedSteps = Object.entries(OnboardingSteps).filter(
     ([stepKey]) => onboarding[stepKey] === true
   );
-  let incompleteSteps = Object.entries(OnboardingSteps)
+  let incompleteSteps = Object.entries(OnboardingSteps).filter(
+      ([stepKey]) => onboarding[stepKey] !== true
+  );
   let NativeOnboarding =
     onboardingModalKey === "store_details" ? StoreAddress : Tax;
   function onClose() {
