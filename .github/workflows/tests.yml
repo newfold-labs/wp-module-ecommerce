@@ -104,9 +104,7 @@ jobs:
         run: |
           git submodule add -b 'master' https://github.com/bluehost/bluehost-wordpress-plugin.git bluehost-wordpress-plugin
           cd "$(pwd)"/bluehost-wordpress-plugin
-          npm i --legacy-peer-deps
-          composer install
-          npm run build
+          npm i --legacy-peer-deps && npm run php-deps && npm run build && npm run create:dist
 
       - name: Install WordPress
         run: npx wp-env start --debug
@@ -140,6 +138,13 @@ jobs:
         with:
           name: screenshots
           path: ./tests/cypress/screenshots
+
+      - name: Store screenshots of test failures
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: video
+          path: ./tests/cypress/videos
 
       - name: Check if a debug.log file exists
         id: hasErrors

@@ -96,7 +96,7 @@ describe('As a wp-admin user, I want to ', function () {
       });
   });
 
-  it('add my Store address from "General Setting" "Store Info" card', () => {
+  it.only('add my Store address from "General Setting" "Store Info" card', () => {
     cy.get('[data-variant=standard]').as('uncompletedCard').eq(0).click();
 
     cy.get('input[name=woocommerce_store_address]').type(
@@ -383,18 +383,23 @@ describe('As a wp-admin user, I want to ', function () {
     cy.contains('Add a product', { timeout: 15000 }).should('exist');
   });
 
-  it('import product from external file', () => {
+  it.only('import product from external file', () => {
     cy.deleteAllProducts();
     cy.reload();
-    cy.contains('Products and Services').click();
-    cy.contains('Import Products', {
+    cy.contains('Products and Services', {
       timeout: customCommandTimeout,
     }).click();
+    cy.get('[data-variant="standard"]', { timeout: customCommandTimeout })
+      .eq(1)
+      .click();
+    // cy.contains('Import Products', {
+    //   timeout: customCommandTimeout,
+    // }).click();
     cy.get('[name=import]').selectFile(
       './tests/cypress/fixtures/wc-products-list.csv'
     );
-    cy.contains('Continue').click();
-    cy.contains('Run the importer', {
+    cy.get('[value="Continue"]').click();
+    cy.get('[value="Run the importer"]', {
       timeout: customCommandTimeout,
     }).click();
     cy.get('section.woocommerce-importer-done', {
