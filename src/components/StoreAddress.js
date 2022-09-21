@@ -85,36 +85,36 @@ export function StoreAddress({ onComplete, isMandatory = false }) {
       <div className="nfd-ecommerce-store-address-form">
         <div>
           <label> {__("Address line 1", "wp-module-ecommerce")}</label>
-            <input
-              name="woocommerce_store_address"
-              type="text"
-              required
-              defaultValue={defaultContact.woocommerce_store_address}
-              {...eventHandlers}
+          <input
+            name="woocommerce_store_address"
+            type="text"
+            required
+            defaultValue={defaultContact.woocommerce_store_address}
+            {...eventHandlers}
           />
         </div>
         <div>
           <label> {__("Address line 2", "wp-module-ecommerce")}</label>
           <input
-              name="woocommerce_store_address_2"
-              type="text"
-              defaultValue={defaultContact.woocommerce_store_address_2}
-              {...eventHandlers}
+            name="woocommerce_store_address_2"
+            type="text"
+            defaultValue={defaultContact.woocommerce_store_address_2}
+            {...eventHandlers}
           />
         </div>
         <div>
           <label> {__("City", "wp-module-ecommerce")}</label>
-            <input
-              name="woocommerce_store_city"
-              type="text"
-              required
-              defaultValue={defaultContact.woocommerce_store_city}
-              {...eventHandlers}
+          <input
+            name="woocommerce_store_city"
+            type="text"
+            required
+            defaultValue={defaultContact.woocommerce_store_city}
+            {...eventHandlers}
           />
         </div>
         {states.length === 0 || isLoading ? null : (
-        <div>
-          <label> {__("State", "wp-module-ecommerce")}</label>
+          <div>
+            <label> {__("State", "wp-module-ecommerce")}</label>
             <select
               type="text"
               name="state"
@@ -122,23 +122,23 @@ export function StoreAddress({ onComplete, isMandatory = false }) {
               defaultValue=""
               {...eventHandlers}
             >
-              <option key={""} value={""} selected={true}/>
+              <option key={""} value={""} selected />
               {states.map((state) => (
                 <option key={state.code} value={state.code}>
                   {state.name}
                 </option>
               ))}
             </select>
-        </div>
-            )}
+          </div>
+        )}
         <div>
           <label> {__("Postcode/ZIP", "wp-module-ecommerce")}</label>
-           <input
-              name="woocommerce_store_postcode"
-              type="zip"
-              required
-              defaultValue={defaultContact.woocommerce_store_postcode}
-              {...eventHandlers}
+          <input
+            name="woocommerce_store_postcode"
+            type="zip"
+            required
+            defaultValue={defaultContact.woocommerce_store_postcode}
+            {...eventHandlers}
           />
         </div>
         <div>
