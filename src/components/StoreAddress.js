@@ -39,7 +39,7 @@ export function StoreAddress({ onComplete, isMandatory = false }) {
         event.preventDefault();
         event.stopPropagation();
         let { country, state, ...wcAddress } = address;
-        let selectedState;
+        let selectedState = state;
         if (selectedCountry === defaultContact.country && state === undefined) {
           selectedState = defaultContact.state;
         }
@@ -112,26 +112,25 @@ export function StoreAddress({ onComplete, isMandatory = false }) {
             {...eventHandlers}
           />
         </div>
-        <div>
-          <label> {__("State", "wp-module-ecommerce")}</label>
-          {states.length === 0 || isLoading ? (
-            <input type="text" name="state" disabled={isLoading} {...eventHandlers} />
-          ) : (
+        {states.length === 0 || isLoading ? null : (
+          <div>
+            <label> {__("State", "wp-module-ecommerce")}</label>
             <select
               type="text"
               name="state"
               required
-              defaultValue={defaultContact.state}
+              defaultValue=""
               {...eventHandlers}
             >
+              <option key={""} value={""} selected />
               {states.map((state) => (
                 <option key={state.code} value={state.code}>
                   {state.name}
                 </option>
               ))}
             </select>
-          )}
-        </div>
+          </div>
+        )}
         <div>
           <label> {__("Postcode/ZIP", "wp-module-ecommerce")}</label>
           <input
