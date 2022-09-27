@@ -1,15 +1,6 @@
 import { Modal } from "@wordpress/components";
 
 const ModalCard = (props) => {
-  let refreshCalls = [];
-  (props.modal?.onClose ?? []).forEach((endpoint) => {
-    Object.entries(props.responses)?.forEach(([key, value] = response) => {
-      if (key == endpoint) {
-        refreshCalls.push(value[endpoint]);
-      }
-    });
-  });
-
   return (
     <Modal
       overlayClassName="nfd-ecommerce-modal-overlay"
@@ -21,8 +12,18 @@ const ModalCard = (props) => {
     >
       {props.modal.contentType == "component" ? (
         <props.modal.content
-          onComplete={() => {
-            refreshCalls?.forEach(async (refresh) => await refresh());
+          onComplete={async () => {
+            let refreshCalls = [];
+            (props.modal?.onClose ?? []).forEach((endpoint) => {
+              Object.entries(props.responses)?.forEach(([key, value]) => {
+                if (key == endpoint) {
+                  refreshCalls.push(value[endpoint]);
+                }
+              });
+            });
+            for (let refresh of refreshCalls) {
+              await refresh();
+            }
             props.setShowModal(false);
           }}
         />

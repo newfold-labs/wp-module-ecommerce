@@ -66,7 +66,7 @@ const generalSettings = (plugins) => [
   {
     Card: StandardCard,
     shouldRender: () => true,
-    title: [YithOptions.paypal],
+    title: YithOptions.paypal,
     assets: () => ({
       image: Payments,
     }),
@@ -121,7 +121,7 @@ const generalSettings = (plugins) => [
   {
     Card: StandardCard,
     shouldRender: () => true,
-    title: [YithOptions.shippo],
+    title: YithOptions.shippo,
     assets: () => ({
       image: Shipping,
     }),
