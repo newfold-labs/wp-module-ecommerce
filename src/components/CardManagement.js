@@ -4,18 +4,18 @@ import FetchDataDependencies from "./FetchdataDependencies";
 const CardManagement = ({ config: configList, setIsLoading, setHasError }) => {
   const [allResponses, setAllResponses] = useState({});
   const requiredConfigs = configList.filter((config) => config.shouldRender());
-  let globalData = allResponses;
+  let allResponsesTemp = allResponses;
 
   const updateAllResponses = (title, responses) => {
-    if (globalData?.title) {
-      const value = globalData[title];
-      globalData[title] = { ...value, responses };
+    if (allResponsesTemp?.title) {
+      const value = allResponsesTemp[title];
+      allResponsesTemp[title] = { ...value, responses };
     } else {
-      globalData[title] = responses;
+      allResponsesTemp[title] = responses;
     }
-    if (Object.keys(globalData).length == requiredConfigs.length) {
+    if (Object.keys(allResponsesTemp).length == requiredConfigs.length) {
       setIsLoading(false);
-      setAllResponses(globalData);
+      setAllResponses(allResponsesTemp);
     }
   };
 

@@ -11,17 +11,17 @@ export function StandardCard(props) {
     const response = responses[key];
     response.parsedData = response.parser(response.data);
   }
-  let { title, actionName } = props.text(responses);
+  const taskCompleted = props.taskCompleted(responses);
+  let { title, actionName } = props.text(taskCompleted);
   let Action = responses
     ? Arrow
     : () => <div className="bwa-loader nfd-ecommerce-loader-mini" />;
 
   const buttonClickHandler = () => {
-    let showModal = props.actions.getShowModal(responses);
-    if (showModal) {
-      setShowModal(true);
-    } else {
+    if (taskCompleted) {
       props.actions.buttonClick();
+    } else {
+      setShowModal(true);
     }
   };
 

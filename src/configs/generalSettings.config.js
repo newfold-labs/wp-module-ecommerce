@@ -33,18 +33,14 @@ const generalSettings = (plugins) => [
     assets: () => ({
       image: StoreIcon,
     }),
-    text: (responses) => ({
+    text: (taskCompleted) => ({
       title: "Store Info",
-      actionName: responses?.wcTasksRefresh?.parsedData?.isCompleted
-        ? "Edit Info"
-        : "Add Info",
+      actionName: taskCompleted ? "Edit Info" : "Add Info",
     }),
+    taskCompleted: (responses) => {
+      return responses?.wcTasksRefresh?.parsedData?.isCompleted ? true : false;
+    },
     actions: {
-      getShowModal: (responses) => {
-        return responses?.wcTasksRefresh?.parsedData?.isCompleted
-          ? false
-          : true;
-      },
       buttonClick: () => {
         window.location.href = getUrl("admin.php?page=wc-settings&tab=general");
       },
@@ -54,7 +50,7 @@ const generalSettings = (plugins) => [
         endpoint: GET_WC_TASKS,
         parser: wcTasksParser("store_details"),
         refresh: "wcTasksRefresh",
-      }
+      },
     ],
     modal: () => ({
       contentType: "component",
@@ -70,18 +66,16 @@ const generalSettings = (plugins) => [
     assets: () => ({
       image: Payments,
     }),
-    text: (responses) => ({
+    text: (taskCompleted) => ({
       title: "Payments",
-      actionName: responses?.yithOnboardingRefresh?.parsedData?.isCompleted
-        ? "Edit Settings"
-        : "Setup",
+      actionName: taskCompleted ? "Edit Settings" : "Setup",
     }),
+    taskCompleted: (responses) => {
+      return responses?.yithOnboardingRefresh?.parsedData?.isCompleted
+        ? true
+        : false;
+    },
     actions: {
-      getShowModal: (responses) => {
-        return responses?.yithOnboardingRefresh?.parsedData?.isCompleted
-          ? false
-          : true;
-      },
       buttonClick: () => {
         window.location.href = getUrl("admin.php?page=yith_paypal_payments");
       },
@@ -125,18 +119,16 @@ const generalSettings = (plugins) => [
     assets: () => ({
       image: Shipping,
     }),
-    text: (responses) => ({
+    text: (taskCompleted) => ({
       title: "Shipping",
-      actionName: responses?.yithOnboardingShippoRefresh?.parsedData?.isCompleted
-        ? "Edit Settings"
-        : "Setup",
+      actionName: taskCompleted ? "Edit Settings" : "Setup",
     }),
+    taskCompleted: (responses) => {
+      return responses?.yithOnboardingShippoRefresh?.parsedData?.isCompleted
+        ? true
+        : false;
+    },
     actions: {
-      getShowModal: (responses) => {
-        return responses?.yithOnboardingShippoRefresh?.parsedData?.isCompleted
-          ? false
-          : true;
-      },
       buttonClick: () => {
         window.location.href = getUrl(
           "admin.php?page=yith_shippo_shipping_for_woocommerce"
@@ -182,18 +174,16 @@ const generalSettings = (plugins) => [
     assets: () => ({
       image: TaxInfo,
     }),
-    text: (responses) => ({
+    text: (taskCompleted) => ({
       title: "Tax Info",
-      actionName: responses?.wcTasksTaxRefresh?.parsedData?.isCompleted
-        ? "Edit Info"
-        : "Add Info",
+      actionName: taskCompleted ? "Edit Info" : "Add Info",
     }),
+    taskCompleted: (responses) => {
+      return responses?.wcTasksTaxRefresh?.parsedData?.isCompleted
+        ? true
+        : false;
+    },
     actions: {
-      getShowModal: (responses) => {
-        return responses?.wcTasksTaxRefresh?.parsedData?.isCompleted
-          ? false
-          : true;
-      },
       buttonClick: () => {
         window.location.href = getUrl("admin.php?page=wc-settings&tab=taxl");
       },
