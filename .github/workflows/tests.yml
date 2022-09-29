@@ -80,10 +80,7 @@ jobs:
         working-directory: ${{ steps.workflow.outputs.DIST }}
         run: find .
 
-      - name: Configure WordPress
-        run: echo '{"config":{"WP_DEBUG_DISPLAY":false},"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
-
-      - name: clone wordpress-bluehost-plugin as submodule
+      - name: Clone wordpress-bluehost-plugin as submodule
         run: |
           git submodule add -b 'master' https://github.com/bluehost/bluehost-wordpress-plugin.git bluehost-wordpress-plugin
           cd "$(pwd)"/bluehost-wordpress-plugin
