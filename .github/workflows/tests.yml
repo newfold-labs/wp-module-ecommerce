@@ -74,7 +74,7 @@ jobs:
         run: npm run build
 
       - name: Create Distribution Copy
-        run: rsync -r --exclude-from=.distignore --include-from=.distinclude . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
+        run: rsync -r . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
 
       - name: List Distribution Files
         working-directory: ${{ steps.workflow.outputs.DIST }}
