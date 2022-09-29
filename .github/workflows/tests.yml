@@ -129,20 +129,10 @@ jobs:
           name: video
           path: ./tests/cypress/videos
 
-      - name: Check if a debug.log file exists
-        id: hasErrors
-        run: npx wp-env run wordpress test ! -f /var/www/html/wp-content/debug.log
-
-      - name: Copy debug.log file
-        if: ${{ steps.hasErrors.outputs.failure }}
-        run: cat /var/www/html/wp-content/debug.log 1>./debug.log 2>/dev/null
-
-      - name: Store debug.log file
-        if: ${{ steps.hasErrors.outputs.failure }}
-        uses: actions/upload-artifact@v2
-        with:
-          name: logs
-          path: ./debug.log
+      - name: Output debug.log file contents
+        if: ${{ always() }}
+        continue-on-error: true
+        run: npx wp-env run wordpress "cat /var/www/html/wp-content/debug.log"
 
       - name: Store a copy of the plugin on success
         if: ${{ success() }}
