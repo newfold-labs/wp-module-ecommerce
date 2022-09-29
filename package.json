@@ -14,6 +14,8 @@
     "prepare": "npm run build",
     "build": "wp-scripts build ./src/index.js",
     "lint": "wp-scripts lint-js ./src/index.js",
+    "postprepare": "npm run set-wp-version",
+    "set-wp-version": "node ./set-latest-wp-version.js",
     "start": "wp-scripts start ./src/index.js",
     "test:unit": "echo \"No tests implemented\"",
     "test:e2e": "echo \"No tests implemented\""
