@@ -59,6 +59,9 @@
     "lint": "Check files against coding standards."
   },
   "config": {
+    "platform": {
+      "php": "7.0.0"
+    },
     "preferred-install": {
       "bluehost/*": "source",
       "endurance/*": "source",
