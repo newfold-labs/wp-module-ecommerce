@@ -68,7 +68,7 @@ jobs:
         run: composer install --no-progress --no-dev --optimize-autoloader
 
       - name: Run NPM Install
-        run: npm install --legacy-peer-deps
+        run: npm install
 
       - name: Build JavaScript
         run: npm run build
