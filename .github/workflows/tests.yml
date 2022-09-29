@@ -62,22 +62,18 @@ jobs:
           npm --version
 
       - name: Validate composer.json and composer.lock files
-        if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
         run: composer validate
 
       - name: Install PHP Dependencies
-        if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
         run: composer install --no-progress --no-dev --optimize-autoloader
 
       - name: Run NPM Install
         run: npm install --legacy-peer-deps
 
       - name: Build JavaScript
-        if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
         run: npm run build
 
       - name: Create Distribution Copy
-        if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
         run: rsync -r --exclude-from=.distignore --include-from=.distinclude . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
 
       - name: List Distribution Files
@@ -85,11 +81,9 @@ jobs:
         run: find .
 
       - name: Configure WordPress
-        if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' }}
         run: echo '{"config":{"WP_DEBUG_DISPLAY":false},"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
 
       - name: clone wordpress-bluehost-plugin as submodule
-        if: ${{ github.repository != 'bluehost/bluehost-wordpress-plugin' }}
         run: |
           git submodule add -b 'master' https://github.com/bluehost/bluehost-wordpress-plugin.git bluehost-wordpress-plugin
           cd "$(pwd)"/bluehost-wordpress-plugin
