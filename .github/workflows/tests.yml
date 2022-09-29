@@ -19,16 +19,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Setup workflow context
-        id: workflow
-        working-directory: ${{ runner.temp }}
-        env:
-          REPO: ${{ github.repository }}
-        run: |
-          mkdir dist
-          echo ::set-output name=DIST::${PWD}/dist
-          echo ::set-output name=PACKAGE::${REPO##*/}
-
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -72,13 +62,6 @@ jobs:
 
       - name: Build JavaScript
         run: npm run build
-
-      - name: Create Distribution Copy
-        run: rsync -r . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
-
-      - name: List Distribution Files
-        working-directory: ${{ steps.workflow.outputs.DIST }}
-        run: find .
 
       - name: Clone wordpress-bluehost-plugin as submodule
         run: |
