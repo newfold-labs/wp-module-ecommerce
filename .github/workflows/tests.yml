@@ -122,7 +122,7 @@ jobs:
           name: screenshots
           path: ./tests/cypress/screenshots
 
-      - name: Store screenshots of test failures
+      - name: Store videos of test failures
         if: ${{ failure() }}
         uses: actions/upload-artifact@v2
         with:
