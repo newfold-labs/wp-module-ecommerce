@@ -3,7 +3,7 @@ import { ReactComponent as Arrow } from "../icons/goto-arrow.svg";
 import { ReactComponent as CompletedTask } from "../icons/task-completed-solid.svg";
 import ModalCard from "./ModalCard";
 
-export function StandardCard(props) {
+export function MinimalCard(props) {
   const [showModal, setShowModal] = useState(null);
   let modal = props.modal();
   let { image: Icon } = props.assets();
@@ -31,7 +31,7 @@ export function StandardCard(props) {
         className={`nfd-ecommerce-card ${
           taskCompleted ? "nfd-ecommerce-taskCompleted" : ""
         }`}
-        data-variant="standard"
+        data-variant="minimal"
         type="button"
         onClick={buttonClickHandler}
       >
@@ -40,14 +40,16 @@ export function StandardCard(props) {
             <CompletedTask />
           </div>
         )}
-        <div className="nfd-ecommerce-card-image">
-          <Icon />
-        </div>
+        {Icon && (
+          <div className="nfd-ecommerce-card-image">
+            <Icon />
+          </div>
+        )}
         <span className="nfd-ecommerce-card-title">
           {title}
-          <span className="nfd-ecommerce-card-link">
-            {actionName} <Action />
-          </span>
+          {actionName ? (
+            <span className="nfd-ecommerce-card-link">{actionName}</span>
+          ) : null}
         </span>
       </button>
       {showModal && (

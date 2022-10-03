@@ -154,7 +154,7 @@
       span {
         font-size: 16px;
       }
-      .components-navigation__item{
+      .components-navigation__item {
         padding: 16px;
         display: block;
         height: auto;
@@ -200,6 +200,8 @@
 
     .nfd-ecommerce-card-image {
       grid-area: 1 / 1;
+      display: flex;
+      align-items: center;
     }
 
     .nfd-ecommerce-card-title {
@@ -242,6 +244,14 @@
 
     &:hover .nfd-ecommerce-card-link {
       visibility: visible;
+    }
+  }
+  .nfd-ecommerce-taskCompleted {
+    position: relative;
+    .nfd-ecommerce-taskCompleted-image{
+      position: absolute;
+      top:8px;
+      right:8px
     }
   }
 

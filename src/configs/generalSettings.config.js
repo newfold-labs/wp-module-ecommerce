@@ -1,6 +1,6 @@
 import { wcTasksParser, yithOnboardingParser } from "../components/Parsers";
 import PluginsUnavailable from "../components/PluginsUnavailable";
-import { StandardCard } from "../components/StandardCard";
+import { MinimalCard } from "../components/MinimalCard";
 import { StoreAddress } from "../components/StoreAddress";
 import Tax from "../components/Tax";
 import { ReactComponent as Payments } from "../icons/payments.svg";
@@ -27,7 +27,7 @@ const getUrl = (href) => {
 
 const generalSettings = (plugins) => [
   {
-    Card: StandardCard,
+    Card: MinimalCard,
     shouldRender: () => true,
     title: "store_details",
     assets: () => ({
@@ -41,8 +41,14 @@ const generalSettings = (plugins) => [
       return responses?.wcTasksRefresh?.parsedData?.isCompleted ? true : false;
     },
     actions: {
-      buttonClick: () => {
-        window.location.href = getUrl("admin.php?page=wc-settings&tab=general");
+      buttonClick: (data, setShowModal) => {
+        if (data.taskCompleted) {
+          window.location.href = getUrl(
+            "admin.php?page=wc-settings&tab=general"
+          );
+        } else {
+          setShowModal(true);
+        }
       },
     },
     dataDependencies: [
@@ -60,7 +66,7 @@ const generalSettings = (plugins) => [
     }),
   },
   {
-    Card: StandardCard,
+    Card: MinimalCard,
     shouldRender: () => true,
     title: YithOptions.paypal,
     assets: () => ({
@@ -76,8 +82,12 @@ const generalSettings = (plugins) => [
         : false;
     },
     actions: {
-      buttonClick: () => {
-        window.location.href = getUrl("admin.php?page=yith_paypal_payments");
+      buttonClick: (data, setShowModal) => {
+        if (data.taskCompleted) {
+          window.location.href = getUrl("admin.php?page=yith_paypal_payments");
+        } else {
+          setShowModal(true);
+        }
       },
     },
     dataDependencies: [
@@ -113,7 +123,7 @@ const generalSettings = (plugins) => [
     },
   },
   {
-    Card: StandardCard,
+    Card: MinimalCard,
     shouldRender: () => true,
     title: YithOptions.shippo,
     assets: () => ({
@@ -129,10 +139,14 @@ const generalSettings = (plugins) => [
         : false;
     },
     actions: {
-      buttonClick: () => {
-        window.location.href = getUrl(
-          "admin.php?page=yith_shippo_shipping_for_woocommerce"
-        );
+      buttonClick: (data, setShowModal) => {
+        if (data.taskCompleted) {
+          window.location.href = getUrl(
+            "admin.php?page=yith_shippo_shipping_for_woocommerce"
+          );
+        } else {
+          setShowModal(true);
+        }
       },
     },
     dataDependencies: [
@@ -168,7 +182,7 @@ const generalSettings = (plugins) => [
     },
   },
   {
-    Card: StandardCard,
+    Card: MinimalCard,
     shouldRender: () => true,
     title: "tax",
     assets: () => ({
@@ -184,8 +198,12 @@ const generalSettings = (plugins) => [
         : false;
     },
     actions: {
-      buttonClick: () => {
-        window.location.href = getUrl("admin.php?page=wc-settings&tab=taxl");
+      buttonClick: (data, setShowModal) => {
+        if (data.taskCompleted) {
+          window.location.href = getUrl("admin.php?page=wc-settings&tab=tax");
+        } else {
+          setShowModal(true);
+        }
       },
     },
     dataDependencies: [
