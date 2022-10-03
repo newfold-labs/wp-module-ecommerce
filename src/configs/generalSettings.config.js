@@ -1,4 +1,4 @@
-import { wcTasksParser, yithOnboardingParser } from "../components/Parsers";
+import { wcTasksParser, yithOnboardingParser } from "./selectors";
 import PluginsUnavailable from "../components/PluginsUnavailable";
 import { MinimalCard } from "../components/MinimalCard";
 import { StoreAddress } from "../components/StoreAddress";
@@ -25,7 +25,7 @@ const getUrl = (href) => {
   return `${page}?${query}`;
 };
 
-const generalSettings = (plugins) => [
+const GeneralSettings = (plugins) => [
   {
     Card: MinimalCard,
     shouldRender: () => true,
@@ -38,9 +38,7 @@ const generalSettings = (plugins) => [
       actionName: taskCompleted ? "Edit Info" : "Add Info",
     }),
     state: {
-      taskCompleted: (responses) => {
-        return responses?.wcTasksRefresh?.parsedData?.isCompleted;
-      },
+      taskCompleted: (state) => state?.wcTasksRefresh?.isCompleted,
     },
     actions: {
       buttonClick: (data, setShowModal) => {
@@ -79,9 +77,7 @@ const generalSettings = (plugins) => [
       actionName: taskCompleted ? "Edit Settings" : "Setup",
     }),
     state: {
-      taskCompleted: (responses) => {
-        return responses?.yithOnboardingRefresh?.parsedData?.isCompleted;
-      },
+      taskCompleted: (state) => state?.yithOnboardingRefresh?.isCompleted,
     },
     actions: {
       buttonClick: (data, setShowModal) => {
@@ -119,7 +115,7 @@ const generalSettings = (plugins) => [
           onClose: [],
         },
       };
-      return plugins?.status?.yith_paypal_payments == "Active"
+      return plugins?.status?.yith_paypal_payments === "Active"
         ? modals.pluginAvailable
         : modals.pluginUnavailable;
     },
@@ -136,9 +132,7 @@ const generalSettings = (plugins) => [
       actionName: taskCompleted ? "Edit Settings" : "Setup",
     }),
     state: {
-      taskCompleted: (responses) => {
-        return responses?.yithOnboardingShippoRefresh?.parsedData?.isCompleted;
-      },
+      taskCompleted: (state) => state?.yithOnboardingShippoRefresh?.isCompleted,
     },
     actions: {
       buttonClick: (data, setShowModal) => {
@@ -178,7 +172,7 @@ const generalSettings = (plugins) => [
           onClose: [],
         },
       };
-      return plugins?.status?.yith_shippo_shipping_for_woocommerce == "Active"
+      return plugins?.status?.yith_shippo_shipping_for_woocommerce === "Active"
         ? modals.pluginAvailable
         : modals.pluginUnavailable;
     },
@@ -195,9 +189,7 @@ const generalSettings = (plugins) => [
       actionName: taskCompleted ? "Edit Info" : "Add Info",
     }),
     state: {
-      taskCompleted: (responses) => {
-        return responses?.wcTasksTaxRefresh?.parsedData?.isCompleted;
-      },
+      taskCompleted: (state) => state?.wcTasksTaxRefresh?.isCompleted,
     },
     actions: {
       buttonClick: (data, setShowModal) => {
@@ -224,4 +216,4 @@ const generalSettings = (plugins) => [
   },
 ];
 
-export default generalSettings;
+export default GeneralSettings;

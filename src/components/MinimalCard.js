@@ -1,22 +1,13 @@
 import { useState } from "@wordpress/element";
-import { ReactComponent as Arrow } from "../icons/goto-arrow.svg";
 import { ReactComponent as CompletedTask } from "../icons/task-completed-solid.svg";
 import ModalCard from "./ModalCard";
 
 export function MinimalCard(props) {
   const [showModal, setShowModal] = useState(null);
   let modal = props.modal();
-  let { image: Icon } = props.assets();
-  let responses = props.responses;
-  for (const key in responses) {
-    const response = responses[key];
-    response.parsedData = response.selector(response.data);
-  }
-  const taskCompleted = props.state.taskCompleted(responses);
+  let { image: Icon } = props.assets(props.state);
+  const taskCompleted = props.state.taskCompleted;
   let { title, actionName } = props.text(taskCompleted);
-  let Action = responses
-    ? Arrow
-    : () => <div className="bwa-loader nfd-ecommerce-loader-mini" />;
 
   const buttonClickHandler = () => {
     const data = {

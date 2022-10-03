@@ -6,21 +6,16 @@ import ModalCard from "./ModalCard";
 export function StandardCard(props) {
   const [showModal, setShowModal] = useState(null);
   let modal = props.modal();
-  let { image: Icon } = props.assets();
-  let responses = props.responses;
-  for (const key in responses) {
-    const response = responses[key];
-    response.parsedData = response.selector(response.data);
-  }
-  const taskCompleted = props.state.taskCompleted(responses);
+  let { image: Icon } = props.assets(props.state);
+  const taskCompleted = props.state.taskCompleted;
   let { title, actionName } = props.text(taskCompleted);
-  let Action = responses
+  let Action = props.isLoading
     ? Arrow
     : () => <div className="bwa-loader nfd-ecommerce-loader-mini" />;
 
   const buttonClickHandler = () => {
     const data = {
-      taskCompleted: taskCompleted,
+      taskCompleted,
     };
     props.actions.buttonClick(data, setShowModal);
   };
