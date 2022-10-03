@@ -10,9 +10,9 @@ export function MinimalCard(props) {
   let responses = props.responses;
   for (const key in responses) {
     const response = responses[key];
-    response.parsedData = response.parser(response.data);
+    response.parsedData = response.selector(response.data);
   }
-  const taskCompleted = props.taskCompleted(responses);
+  const taskCompleted = props.state.taskCompleted(responses);
   let { title, actionName } = props.text(taskCompleted);
   let Action = responses
     ? Arrow

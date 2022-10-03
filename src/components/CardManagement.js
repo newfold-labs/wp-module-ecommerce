@@ -1,5 +1,5 @@
 import { useState } from "@wordpress/element";
-import FetchDataDependencies from "./FetchdataDependencies";
+import FetchDependency from "./FetchDependency";
 
 const CardManagement = ({ config: configList, setIsLoading, setHasError }) => {
   const [allResponses, setAllResponses] = useState({});
@@ -59,7 +59,7 @@ const FetchCardData = ({
   return (
     <>
       {config.dataDependencies.map((onLoad, index) => (
-        <FetchDataDependencies
+        <FetchDependency
           key={index}
           onLoad={onLoad}
           updateResponse={updateCardData}

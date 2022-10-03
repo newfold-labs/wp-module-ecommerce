@@ -37,8 +37,10 @@ const generalSettings = (plugins) => [
       title: "Store Info",
       actionName: taskCompleted ? "Edit Info" : "Add Info",
     }),
-    taskCompleted: (responses) => {
-      return responses?.wcTasksRefresh?.parsedData?.isCompleted ? true : false;
+    state: {
+      taskCompleted: (responses) => {
+        return responses?.wcTasksRefresh?.parsedData?.isCompleted;
+      },
     },
     actions: {
       buttonClick: (data, setShowModal) => {
@@ -54,7 +56,7 @@ const generalSettings = (plugins) => [
     dataDependencies: [
       {
         endpoint: GET_WC_TASKS,
-        parser: wcTasksParser("store_details"),
+        selector: wcTasksParser("store_details"),
         refresh: "wcTasksRefresh",
       },
     ],
@@ -76,10 +78,10 @@ const generalSettings = (plugins) => [
       title: "Payments",
       actionName: taskCompleted ? "Edit Settings" : "Setup",
     }),
-    taskCompleted: (responses) => {
-      return responses?.yithOnboardingRefresh?.parsedData?.isCompleted
-        ? true
-        : false;
+    state: {
+      taskCompleted: (responses) => {
+        return responses?.yithOnboardingRefresh?.parsedData?.isCompleted;
+      },
     },
     actions: {
       buttonClick: (data, setShowModal) => {
@@ -93,7 +95,7 @@ const generalSettings = (plugins) => [
     dataDependencies: [
       {
         endpoint: Endpoints.WP_SETTINGS,
-        parser: yithOnboardingParser(YithOptions.paypal),
+        selector: yithOnboardingParser(YithOptions.paypal),
         refresh: "yithOnboardingRefresh",
       },
     ],
@@ -133,10 +135,10 @@ const generalSettings = (plugins) => [
       title: "Shipping",
       actionName: taskCompleted ? "Edit Settings" : "Setup",
     }),
-    taskCompleted: (responses) => {
-      return responses?.yithOnboardingShippoRefresh?.parsedData?.isCompleted
-        ? true
-        : false;
+    state: {
+      taskCompleted: (responses) => {
+        return responses?.yithOnboardingShippoRefresh?.parsedData?.isCompleted;
+      },
     },
     actions: {
       buttonClick: (data, setShowModal) => {
@@ -152,7 +154,7 @@ const generalSettings = (plugins) => [
     dataDependencies: [
       {
         endpoint: Endpoints.WP_SETTINGS,
-        parser: yithOnboardingParser(YithOptions.shippo),
+        selector: yithOnboardingParser(YithOptions.shippo),
         refresh: "yithOnboardingShippoRefresh",
       },
     ],
@@ -192,10 +194,10 @@ const generalSettings = (plugins) => [
       title: "Tax Info",
       actionName: taskCompleted ? "Edit Info" : "Add Info",
     }),
-    taskCompleted: (responses) => {
-      return responses?.wcTasksTaxRefresh?.parsedData?.isCompleted
-        ? true
-        : false;
+    state: {
+      taskCompleted: (responses) => {
+        return responses?.wcTasksTaxRefresh?.parsedData?.isCompleted;
+      },
     },
     actions: {
       buttonClick: (data, setShowModal) => {
@@ -209,7 +211,7 @@ const generalSettings = (plugins) => [
     dataDependencies: [
       {
         endpoint: GET_WC_TASKS,
-        parser: wcTasksParser("tax"),
+        selector: wcTasksParser("tax"),
         refresh: "wcTasksTaxRefresh",
       },
     ],
