@@ -72,7 +72,7 @@ export function CustomizeStore({ plugins }) {
         )}
           <Card
             variant="standard"
-            title={__("Add a New  Page", "wp-module-ecommerce")}
+            title={__("Add a Page", "wp-module-ecommerce")}
             action={__("Setup", "wp-module-ecommerce")}
             href={`post-new.php?post_type=page`}
           >
