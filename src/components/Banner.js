@@ -34,13 +34,11 @@ const BannerContent = {
 
 export function Banner({ state }) {
   let { data: settings } = useSWRImmutable(Endpoints.WP_SETTINGS);
-  console.log(settings);
-  let { title, notice, Illustration } =
-    Number(settings?.['nfd-ecommerce-counter'] ?? 0) <= 1
+  let { title, notice, Illustration } = state.wp.comingSoon
+    ? Number(settings?.['nfd-ecommerce-counter'] ?? 0) <= 1
       ? BannerContent.firstTime
-      : state.wp.comingSoon
-      ? BannerContent.comingSoon
-      : BannerContent.live;
+      : BannerContent.comingSoon
+    : BannerContent.live;
   return (
     <>
       <div className='nfd-ecommerce-banner'>
