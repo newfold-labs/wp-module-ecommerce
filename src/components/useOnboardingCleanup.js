@@ -26,6 +26,12 @@ export function useOnboardingCleanup(hash) {
       let previousCheckpoint = Number(
         settings['nfd-ecommerce-onboarding-check']
       );
+      let viewCounter = Number(settings['nfd-ecommerce-counter']);
+      await updateWPSettings({
+        'nfd-ecommerce-counter': String(
+          isNaN(viewCounter) ? 1 : viewCounter + 1
+        ),
+      });
       if (isNaN(previousCheckpoint) || previousCheckpoint < flowCheckpoint) {
         let { productInfo } = flow.storeDetails;
         let wcOnboardingProfile = {};
