@@ -16,7 +16,7 @@ function createDependencyTree(config) {
 
 function useLoadDependencies(tree) {
   let endpoints = Object.keys(tree);
-  return useSWR(endpoints, async () => {
+  let { data, mutate } = useSWR(endpoints, async () => {
     let realisedTree = {};
     for (let path of endpoints) {
       try {
@@ -28,6 +28,15 @@ function useLoadDependencies(tree) {
     }
     return realisedTree;
   });
+  async function onRefresh(refresh) {
+    let [path] = Object.entries(tree).find(([, deps]) => deps.include(refresh));
+    let updatedResponse = await apiFetch({ path });
+    await mutate(
+      (realisedTree) => ({ ...realisedTree, [path]: updatedResponse }),
+      { revalidate: false }
+    );
+  }
+  return { realisedTree: data, onRefresh };
 }
 
 function extractDependencies(realisedTree, cardConfig) {
@@ -41,12 +50,12 @@ function extractDependencies(realisedTree, cardConfig) {
   );
 }
 
-export const CardManager = ({ config }) => {
+export const useCardManager = (config) => {
   const tree = createDependencyTree(config);
-  let { data: realisedTree, mutate } = useLoadDependencies(tree);
-  const requiredConfigs = config.filter((config) => config.shouldRender());
-  return requiredConfigs.map((cardConfig) => {
-    let { Card, state: stateDefinition, title } = cardConfig;
+  let { realisedTree, onRefresh } = useLoadDependencies(tree);
+  // TODO: Complete logic to actually filter Cards using `shouldRender`
+  return config.map((cardConfig) => {
+    let { state: stateDefinition } = cardConfig;
     let dependencies = extractDependencies(realisedTree, cardConfig);
     let state = Object.fromEntries(
       Object.entries(stateDefinition).map(([key, selector]) => [
@@ -54,23 +63,6 @@ export const CardManager = ({ config }) => {
         selector(dependencies),
       ])
     );
-    return (
-      <Card
-        key={title}
-        {...cardConfig}
-        state={state}
-        isLoading={!!realisedTree}
-        onRefresh={async (refresh) => {
-          let [path] = Object.entries(tree).find(([, deps]) =>
-            deps.include(refresh)
-          );
-          let updatedResponse = await apiFetch({ path });
-          await mutate(
-            (realisedTree) => ({ ...realisedTree, [path]: updatedResponse }),
-            { revalidate: false }
-          );
-        }}
-      />
-    );
+    return { ...cardConfig, state, onRefresh, isLoading: !!realisedTree };
   });
 };
