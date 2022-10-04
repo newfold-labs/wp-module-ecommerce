@@ -1,27 +1,11 @@
 @import "./atoms.scss";
 @import "./modals.scss";
+@import "./src/sections/Banner.scss";
+@import "./src/sections/SiteStatus.scss";
 
 .nfd-ecommerce-setup {
   margin: 0;
   padding: 0;
-
-  .nfd-ecommerce-banner {
-    background-color: var(--nfd-ecommerce-bg-primary);
-    border-radius: 2px;
-    border: 1px solid var(--nfd-ecommerce-border-primary);
-    display: grid;
-    place-items: center;
-    padding: 0 22px;
-    h1 {
-      color: var(--nfd-ecommerce-accent-primary);
-    }
-
-    .status-notice {
-      color: var(--nfd-ecommerce-text-secondary);
-      font-size: 14px;
-      margin-top: 24px;
-    }
-  }
 
   .nfd-ecommerce-woocommerce-unavailable {
     background-color: var(--nfd-ecommerce-bg-primary);
@@ -80,9 +64,11 @@
     border-radius: 2px;
     display: grid;
     grid-template-columns: 350px auto;
+
     @media (max-width: 1200px) {
       grid-template-columns: 244px auto;
     }
+
     @media (max-width: 480px) {
       display: block;
       min-height: auto;
@@ -113,7 +99,7 @@
         &[data-active="true"] {
           background: #ffffff;
 
-          > li {
+          >li {
             color: var(--nfd-ecommerce-accent-primary);
             font-weight: 590;
           }
@@ -142,6 +128,7 @@
 
     .components-navigation__menu {
       background: #ffffff;
+
       .components-navigation__back-button {
         background: #f1f5f7;
         opacity: inherit;
@@ -149,19 +136,23 @@
         padding-bottom: 35px;
         font-size: 18px;
       }
+
       li {
         height: 60px;
         padding: 0px;
         border-bottom: 1px solid var(--nfd-ecommerce-border-primary);
         display: flex;
       }
+
       a.components-button {
         opacity: inherit;
         color: #333333;
       }
+
       span {
         font-size: 16px;
       }
+      
       .components-navigation__item {
         padding: 16px;
         display: block;
@@ -335,6 +326,7 @@
     grid-auto-flow: row;
     row-gap: 12px;
     padding-top: 32px;
+
     button {
       padding: 16px;
     }
@@ -352,6 +344,15 @@
     min-width: 240px;
     color: #ffffff;
     background-color: var(--nfd-ecommerce-accent-primary);
+  }
+
+  .nfd-ecommerce-button[data-variant="hollow"] {
+    border: 1px solid var(--nfd-ecommerce-accent-primary);
+    padding: 16px 25px;
+    border-radius: 2px;
+    min-width: 240px;
+    color: var(--nfd-ecommerce-accent-primary);
+    background-color: white;
   }
 
   .nfd-ecommerce-button[data-variant="link"] {

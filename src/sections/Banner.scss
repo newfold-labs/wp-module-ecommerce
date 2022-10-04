@@ -1,0 +1,33 @@
+.nfd-ecommerce-banner {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0 18px 0 22px;
+
+  h1 {
+    color: #576373;
+  }
+
+  .status-notice {
+    color: var(--nfd-ecommerce-text-secondary);
+    font-size: 18px;
+    white-space: pre-line;
+  }
+
+  .illustration {
+    justify-self: end;
+  }
+}
+
+@media (max-width: 600px) {
+  .nfd-ecommerce-banner {
+    grid-template: max-content / auto;
+    padding: 0 0 0 1em;
+    gap: 2em;
+
+    .illustration {
+      width: 100%;
+      justify-self: center;
+    }
+  }
+}

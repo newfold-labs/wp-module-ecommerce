@@ -56,7 +56,7 @@ export function CustomizeStore({ plugins }) {
       )}
     >
       <div className="nfd-ecommerce-standard-actions-container">
-        {theme?.name === "YITH Wonder" ? (
+        {theme?.name === "YITH Wonder" && (
           CustomizeList.map(({ title, Icon, dcpage }) => (
             <Card
               key={title}
@@ -69,7 +69,7 @@ export function CustomizeStore({ plugins }) {
               <Icon />
             </Card>
           ))
-        ) : (
+        )}
           <Card
             variant="standard"
             title={__("Add a Page", "wp-module-ecommerce")}
@@ -78,7 +78,6 @@ export function CustomizeStore({ plugins }) {
           >
             <AddNewPage style={{ transform: "scale(1.5)" }} />
           </Card>
-        )}
         <Card
           variant="standard"
           title={__("Store Layout", "wp-module-ecommerce")}

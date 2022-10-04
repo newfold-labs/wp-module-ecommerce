@@ -9,7 +9,7 @@ export function StoreAnalytics(props) {
   let storeAnalyticsLink = `admin.php?${new URLSearchParams({
     page: 'wc-admin',
     path: '/analytics/overview',
-    return_to_nfd: '/home/store/' + props.section,
+    return_to_nfd: "/home/store/" + (props.section ?? ""),
   })}`;
   return (
     <>
