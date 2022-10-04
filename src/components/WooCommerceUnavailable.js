@@ -101,7 +101,7 @@ export function WooCommerceUnavailable({ wpModules, plugins }) {
           </a>
         </div>
         <div style={{ margin: "61px 48px 60px 0" }}>
-          <WCUnAvailableIllustaration />
+          <WCUnAvailableIllustaration className="wcUnAvailableIllustaration"/>
         </div>
       </div>
       <div style={{ height: "32px" }} />

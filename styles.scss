@@ -27,7 +27,8 @@
     background-color: var(--nfd-ecommerce-bg-primary);
     border-radius: 2px;
     border: 1px solid var(--nfd-ecommerce-border-primary);
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     padding: 0 22px;
 
     h1 {
@@ -63,8 +64,12 @@
       cursor: grab;
       text-decoration: none;
     }
-    @media (max-width: 480px) {
-      display: block;
+
+    @media (max-width: 600px) {
+      grid-template: max-content / auto;
+      .wcUnAvailableIllustaration {
+        width: 100%;
+      }
     }
   }
 
@@ -157,7 +162,7 @@
       span {
         font-size: 16px;
       }
-      .components-navigation__item{
+      .components-navigation__item {
         padding: 16px;
         display: block;
         height: auto;
