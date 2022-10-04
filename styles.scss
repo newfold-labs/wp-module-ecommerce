@@ -63,6 +63,9 @@
       cursor: grab;
       text-decoration: none;
     }
+    @media (max-width: 480px) {
+      display: block;
+    }
   }
 
   .nfd-ecommerce-dashboard {
