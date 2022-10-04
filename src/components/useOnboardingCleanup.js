@@ -27,7 +27,7 @@ export function useOnboardingCleanup(hash) {
         settings['nfd-ecommerce-onboarding-check']
       );
       let viewCounter = Number(settings['nfd-ecommerce-counter']);
-      if (viewCounter > 1) {
+      if (viewCounter < 2) {
         await updateWPSettings({
           "nfd-ecommerce-counter": String(
             isNaN(viewCounter) ? 1 : viewCounter + 1
