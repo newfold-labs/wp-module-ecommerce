@@ -30,7 +30,7 @@ function useLoadDependencies(tree) {
   });
   async function onRefresh(dependency) {
     // TODO: Add Checks for if path is not found.
-    let [path] = Object.entries(tree).find(([, deps]) => deps.include(dependency));
+    let [path] = Object.entries(tree).find(([, deps]) => deps.includes(dependency));
     let updatedResponse = await apiFetch({ path });
     await mutate(
       (realisedTree) => ({ ...realisedTree, [path]: updatedResponse }),
