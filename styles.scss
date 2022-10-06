@@ -12,9 +12,10 @@
     border-radius: 2px;
     border: 1px solid var(--nfd-ecommerce-border-primary);
     display: grid;
-    grid-template-columns: 1fr 1fr;
     padding: 0 22px;
-
+    grid-template-areas:
+      "title illustration"
+      "actions illustration";
     h1 {
       color: var(--nfd-ecommerce-accent-primary);
     }
@@ -47,12 +48,37 @@
       text-align: center;
       cursor: grab;
       text-decoration: none;
+      margin-bottom: 32px;
     }
 
+    .title {
+      grid-area: title;
+      margin-top: 24px;
+    }
+
+    .actions-container {
+      grid-area: actions;
+    }
+
+    .banner-image {
+      grid-area: illustration;
+      display: flex;
+      align-self: center;
+    }
+    
     @media (max-width: 600px) {
-      grid-template: max-content / auto;
+      grid-template-areas:
+        "title"
+        "illustration"
+        "actions";
       .wcUnAvailableIllustaration {
         width: 100%;
+      }
+      h1 {
+        text-align: center;
+      }
+      .status-notice {
+        text-align: center;
       }
     }
   }
@@ -99,7 +125,7 @@
         &[data-active="true"] {
           background: #ffffff;
 
-          >li {
+          > li {
             color: var(--nfd-ecommerce-accent-primary);
             font-weight: 590;
           }
@@ -152,7 +178,6 @@
       span {
         font-size: 16px;
       }
-      
       .components-navigation__item {
         padding: 16px;
         display: block;
@@ -371,7 +396,7 @@
 }
 
 .nfd-ecommerce-store-analytics {
-  border: 1px solid #D7DBE0;
+  border: 1px solid #d7dbe0;
   background-color: white;
   padding: 24px 24px 19px;
 

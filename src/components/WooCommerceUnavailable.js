@@ -80,6 +80,9 @@ export function WooCommerceUnavailable({ wpModules, plugins }) {
                   "wp-module-ecommerce"
                 )}
           </div>
+        </div>
+
+        <div className="actions-container">
           <button disabled={showInProgress} onClick={installWooCommerce}>
             <div
               style={{
@@ -100,8 +103,8 @@ export function WooCommerceUnavailable({ wpModules, plugins }) {
             {__("Contact Support", "wp-module-ecommerce")}
           </a>
         </div>
-        <div style={{ margin: "61px 48px 60px 0" }}>
-          <WCUnAvailableIllustaration className="wcUnAvailableIllustaration"/>
+        <div className="banner-image">
+          <WCUnAvailableIllustaration className="wcUnAvailableIllustaration" />
         </div>
       </div>
       <div style={{ height: "32px" }} />
