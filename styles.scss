@@ -28,7 +28,6 @@
     border-radius: 2px;
     border: 1px solid var(--nfd-ecommerce-border-primary);
     display: grid;
-    grid-template-columns: 1fr 1fr;
     padding: 0 22px;
 
     h1 {
@@ -63,12 +62,36 @@
       text-align: center;
       cursor: grab;
       text-decoration: none;
+      margin-bottom: 32px;
+    }
+
+    .actions-container {
+      grid-row: 2;
+    }
+    .banner-image {
+      grid-column: 2;
+      grid-row: 1/3;
     }
 
     @media (max-width: 600px) {
       grid-template: max-content / auto;
       .wcUnAvailableIllustaration {
         width: 100%;
+      }
+      h1 {
+        text-align: center;
+      }
+      .status-notice {
+        text-align: center;
+      }
+      .actions-container {
+        grid-row: auto;
+      }
+      .banner-image {
+        grid-column: 1;
+        grid-row: 2/3;
+        display: flex;
+        align-content: center;
       }
     }
   }
@@ -370,7 +393,7 @@
 }
 
 .nfd-ecommerce-store-analytics {
-  border: 1px solid #D7DBE0;
+  border: 1px solid #d7dbe0;
   background-color: white;
   padding: 24px 24px 19px;
 
