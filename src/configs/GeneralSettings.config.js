@@ -111,6 +111,8 @@ const GeneralSettings = (plugins) => [
         pluginUnavailable: {
           contentType: "component",
           content: PluginsUnavailable,
+          pluginName:"Paypal",
+          token:plugins.token,
           isFullScreen: false,
           onClose: [],
         },
@@ -168,6 +170,8 @@ const GeneralSettings = (plugins) => [
         pluginUnavailable: {
           contentType: "component",
           content: PluginsUnavailable,
+          pluginName:"Shippo",
+          token:plugins.token,
           isFullScreen: false,
           onClose: [],
         },
