@@ -7,7 +7,7 @@
   "main": "build/index.js",
   "files": [
     "build/",
-    "*.scss",
+    "**/*.scss",
     "*.css"
   ],
   "scripts": {
