@@ -118,13 +118,12 @@ class ECommerce {
 	 * Load WP dependencies into the page.
 	 */
 	public function register_assets() {
-		$PLUGIN_URL = $this->container->plugin()->url;
 		$asset_file = NFD_ECOMMERCE_BUILD_DIR . 'index.asset.php';
 		if ( file_exists($asset_file) ) {
 			$asset = require_once $asset_file;
 			\wp_enqueue_script(
 				'nfd-ecommerce-dependency',
-				$PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Partials/load-dependencies.js',
+				NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Partials/load-dependencies.js',
 				array_merge( $asset['dependencies'], array() ),
 				$asset_file
 			);
