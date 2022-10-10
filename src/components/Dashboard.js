@@ -9,11 +9,10 @@ import { AdvancedFeatures } from "./AdvancedFeatures";
 import { CustomizeStore } from "./CustomizeStore";
 import { GeneralSettings } from "./GeneralSettings";
 import { ManageProducts } from "./ManageProducts";
-import { SiteStatus } from "./SiteStatus";
 import { useOnboardingCleanup } from "./useOnboardingCleanup";
 import { useSetupYITHWonderTheme } from "./useSetupYITHWonderTheme";
 
-function getStepName(stepKey, state) {
+function getStepName(stepKey) {
   switch (stepKey) {
     case "general":
       return __("Store Info", "wp-module-ecommerce");
@@ -23,10 +22,6 @@ function getStepName(stepKey, state) {
       return __("Pages", "wp-module-ecommerce");
     case "features":
       return __("Additional Features", "wp-module-ecommerce");
-    case "status":
-      return state.wp.comingSoon
-        ? __("Launch Your Store", "wp-module-ecommerce")
-        : __("Site Status", "wp-module-ecommerce");
     default:
       return null;
   }
@@ -36,12 +31,11 @@ const guideSteps = [
   { key: "general", StepContent: GeneralSettings },
   { key: "products", StepContent: ManageProducts },
   { key: "pages", StepContent: CustomizeStore },
-  { key: "features", StepContent: AdvancedFeatures },
-  { key: "status", StepContent: SiteStatus },
+  { key: "features", StepContent: AdvancedFeatures }
 ];
 
 export function Dashboard(props) {
-  const {navigate} = props.wpModules;
+  const { navigate } = props.wpModules;
   const isLargeViewport = useViewportMatch("mobile", ">=");
   let { key, StepContent } =
     guideSteps.find((step) => step.key === props.section) ?? guideSteps[0];
@@ -63,11 +57,11 @@ export function Dashboard(props) {
         >
           {guideSteps.map((step) => (
             <a
-              key={getStepName(step.key, props.state)}
+              key={getStepName(step.key)}
               data-active={key === step.key}
               href={`#/home/store/${step.key}`}
             >
-              <li>{getStepName(step.key, props.state)}</li>
+              <li>{getStepName(step.key)}</li>
             </a>
           ))}
         </nav>
@@ -80,7 +74,7 @@ export function Dashboard(props) {
             {guideSteps.map((tab) => (
               <NavigationItem
                 key={tab.key}
-                title={getStepName(tab.key, props.state)}
+                title={getStepName(tab.key)}
                 navigateToMenu={tab.key}
                 href={`#/home/store/${tab.key}`}
               />
