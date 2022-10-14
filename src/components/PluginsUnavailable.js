@@ -1,32 +1,40 @@
 import { queuePluginInstall } from "../services";
+import { __ } from "@wordpress/i18n";
 
 const PluginsUnavailable = (props) => {
-  let { pluginName, token, closeModal } = props;
+  let { pluginName, token, onComplete } = props;
+  let pluginToInstall =
+    pluginName == "Paypal"
+      ? "nfd_slug_yith_paypal_payments_for_woocommerce"
+      : "nfd_slug_yith_shippo_shippings_for_woocommerce";
+
   return (
     <div className="nfd-ecommerce-modal-content">
-      <h1>Hold tight...</h1>
+      <h1>{__("Hold tight...", "wp-module-ecommerce")} </h1>
+
       <span style={{ marginTop: "48px" }}>
-        {pluginName} support is still being setup. Please wait a few minutes and
-        try again.
+        {__(
+          `${pluginName} support is still being setup. Please wait a few minutes and
+        try again.`,
+          "wp-module-ecommerce"
+        )}
       </span>
+
       <span style={{ marginTop: "32px" }}>
-        If the problem persists, please{" "}
+        {__("If the problem persists, please", "wp-module-ecommerce")}{" "}
         <a href="https://www.bluehost.com/contact" target="_blank">
-          contact
+          {__("contact.", "wp-module-ecommerce")}
         </a>{" "}
-        the support team.
+        {__("the support team.", "wp-module-ecommerce")}
       </span>
+
       <button
         onClick={async () => {
-          let pluginToInstall =
-            pluginName == "Paypal"
-              ? "nfd_slug_yith_paypal_payments_for_woocommerce"
-              : "nfd_slug_yith_shippo_shippings_for_woocommerce";
           await queuePluginInstall(pluginToInstall, token);
-          closeModal();
+          await onComplete();
         }}
       >
-        Okay
+        {__("Okay", "wp-module-ecommerce")}
       </button>
     </div>
   );

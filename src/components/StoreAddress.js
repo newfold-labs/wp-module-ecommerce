@@ -22,7 +22,7 @@ function useBasicProfile() {
   ];
 }
 
-export function StoreAddress({ onComplete,closeModal, isMandatory = false }) {
+export function StoreAddress({ onComplete, isMandatory = false }) {
   let [address, setAddress] = useState({});
   let [isLoading, defaultContact, countries] = useBasicProfile();
   function handleChange(event) {
@@ -52,7 +52,6 @@ export function StoreAddress({ onComplete,closeModal, isMandatory = false }) {
         });
         await updateWCOnboarding({ completed: true });
         await onComplete();
-        closeModal();
       }}
       style={{ display: "grid", paddingTop: "64px", justifyItems: "center" }}
     >

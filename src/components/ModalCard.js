@@ -9,7 +9,7 @@ const ModalCard = (props) => {
       isFullScreen={props.modal.isFullScreen}
       shouldCloseOnEsc={false}
       shouldCloseOnClickOutside={false}
-      onRequestClose={() => props.setShowModal(false)}
+      onRequestClose={closeModal}
     >
       {props.modal.contentType == "component" ? (
         <props.modal.content
@@ -17,9 +17,9 @@ const ModalCard = (props) => {
             for (let refreshDependency of props.modal?.onClose ?? []) {
               await props.onRefresh(refreshDependency);
             }
+            closeModal();
           }}
           {...props.modal}
-          closeModal={closeModal}
         />
       ) : (
         { ...props.modal.content }

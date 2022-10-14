@@ -28,7 +28,7 @@ const taxManagementOptions = [
 ];
 
 const Tax = (props) => {
-  let { onComplete, closeModal,isStoreDetailsFilled } = props;
+  let { onComplete,isStoreDetailsFilled } = props;
   const [selectedOption, setSelectedOption] = useState(null);
  // const [isAddressMandatory, setIsAddressMandatory] = useState(false);
 
@@ -42,7 +42,6 @@ const Tax = (props) => {
     // }
     await updateWPSettings(selectedOption.data);
     await onComplete();
-    closeModal();
   };
 
   // if (isAddressMandatory) {
