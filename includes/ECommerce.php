@@ -118,15 +118,15 @@ class ECommerce {
 	/**
 	 * Load WP dependencies into the page.
 	 */
-	public static function register_assets() {
+	public function register_assets() {
 		$asset_file = NFD_ECOMMERCE_BUILD_DIR . 'index.asset.php';
 		if ( file_exists($asset_file) ) {
 			$asset = require_once $asset_file;
 			\wp_enqueue_script(
 				'nfd-ecommerce-dependency',
-				BLUEHOST_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Partials/load-dependencies.js',
+				NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Partials/load-dependencies.js',
 				array_merge( $asset['dependencies'], array() ),
-				$asset['version']
+				$asset_file
 			);
 		}
 	}

@@ -18,7 +18,7 @@ class CaptiveFlow {
 				return "$classes is-fullscreen-mode";
 			}
 		);
-		\wp_enqueue_style( 'nfd-ecommerce-captive', BLUEHOST_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Partials/template.css', null, '1', 'screen' );
+		\wp_enqueue_style( 'nfd-ecommerce-captive', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Partials/template.css', null, '1', 'screen' );
 	}
 
 	public static function register_page() {
