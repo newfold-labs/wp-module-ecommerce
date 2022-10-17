@@ -32,11 +32,11 @@ export function WooCommerceUnavailable({ wpModules, plugins }) {
     return (
       <Modal
         overlayClassName="nfd-ecommerce-modal-overlay"
-        className="nfd-ecommerce-atoms nfd-ecommerce-modal-wc-install-failed"
+        className="nfd-ecommerce-atoms nfd-ecommerce-modal-plugin-install-failed"
         shouldCloseOnClickOutside
         onRequestClose={() => setInstallationFailed(false)}
       >
-        <div className="nfd-ecommerce-modal-content">
+        <div className="nfd-ecommerce-modal-plugin-install-failed-content">
           <h1>{__(" We hit a snag...", "wp-module-ecommerce")}</h1>
           <span style={{ marginTop: "48px" }}>
             {__(

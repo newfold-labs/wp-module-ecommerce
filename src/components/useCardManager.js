@@ -54,8 +54,7 @@ function extractDependencies(realisedTree, cardConfig) {
 export const useCardManager = (config) => {
   const tree = createDependencyTree(config);
   let { realisedTree, onRefresh } = useLoadDependencies(tree);
-  // TODO: Complete logic to actually filter Cards using `shouldRender`
-  return config.map((cardConfig) => {
+  return config.filter(cardConfig => cardConfig.shouldRender()).map((cardConfig) => {
     let { state: stateDefinition } = cardConfig;
     let dependencies = extractDependencies(realisedTree, cardConfig);
     let state = Object.fromEntries(
@@ -64,6 +63,6 @@ export const useCardManager = (config) => {
         selector(dependencies),
       ])
     );
-    return { ...cardConfig, state, onRefresh, isLoading: !!realisedTree };
+    return { ...cardConfig, state, onRefresh, isLoading: !realisedTree };
   });
 };

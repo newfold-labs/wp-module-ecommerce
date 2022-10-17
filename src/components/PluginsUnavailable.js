@@ -9,7 +9,7 @@ const PluginsUnavailable = (props) => {
       : "nfd_slug_yith_shippo_shippings_for_woocommerce";
 
   return (
-    <div className="nfd-ecommerce-modal-content">
+    <div className="nfd-ecommerce-modal-plugin-install-failed-content">
       <h1>{__("Hold tight...", "wp-module-ecommerce")} </h1>
 
       <span style={{ marginTop: "48px" }}>

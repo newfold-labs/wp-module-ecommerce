@@ -86,9 +86,8 @@ div.nfd-ecommerce-store-address-form {
   }
 
   @media (max-width: 780px) {
-    grid-template-columns:  auto;
+    grid-template-columns: auto;
   }
-
 }
 
 .nfd-ecommerce-modal-header {
@@ -125,7 +124,7 @@ div.nfd-ecommerce-store-address-form {
   background-color: #f0f0f0;
 }
 
-.nfd-ecommerce-modal-wc-install-failed {
+.nfd-ecommerce-modal-plugin-install-failed {
   width: 800px;
   max-height: 100%;
   .components-modal__header {
@@ -133,27 +132,29 @@ div.nfd-ecommerce-store-address-form {
     border: none;
     padding: 0 10px;
   }
-  .nfd-ecommerce-modal-content {
-    max-width: unset;
-    display: grid;
-    grid-auto-flow: row;
-    grid-auto-rows: min-content;
-    place-items: center;
-    span {
-      font-size: 20px;
-      color: var(--nfd-ecommerce-text-secondary);
-    }
-    button {
-      background-color: var(--nfd-ecommerce-accent-primary);
-      border: 2px solid var(--nfd-ecommerce-accent-primary);
-      color: white;
-      width: 247px;
-      height: 56px;
-      margin-top: 32px;
-      cursor: grab;
-    }
-    a {
-      text-decoration: none;
-    }
+}
+
+.nfd-ecommerce-modal-plugin-install-failed-content {
+  max-width: unset;
+  display: grid;
+  grid-auto-flow: row;
+  grid-auto-rows: min-content;
+  place-items: center;
+  padding: 20px 0;
+  span {
+    font-size: 20px;
+    color: var(--nfd-ecommerce-text-secondary);
+  }
+  button {
+    background-color: var(--nfd-ecommerce-accent-primary);
+    border: 2px solid var(--nfd-ecommerce-accent-primary);
+    color: white;
+    width: 247px;
+    height: 56px;
+    margin-top: 32px;
+    cursor: grab;
+  }
+  a {
+    text-decoration: none;
   }
 }
