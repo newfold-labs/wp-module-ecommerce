@@ -2,6 +2,7 @@ import apiFetch from "@wordpress/api-fetch";
 import useSWR, { SWRConfig } from "swr";
 import { Banner } from "./components/Banner";
 import { Dashboard } from "./components/Dashboard";
+import { SiteStatus } from "./components/SiteStatus";
 import { StoreAnalytics } from "./components/StoreAnalytics";
 import { WooCommerceUnavailable } from "./components/WooCommerceUnavailable";
 import { Endpoints } from "./services";
@@ -43,6 +44,7 @@ window.NewfoldECommerce = function NewfoldECommerce(props) {
             <Hero plugins={plugins} {...props} />
             <StoreAnalytics plugins={plugins} {...props}/>
             <Dashboard plugins={plugins} {...props} />
+            <SiteStatus plugins={plugins} {...props} />
           </>
         )}
       </div>

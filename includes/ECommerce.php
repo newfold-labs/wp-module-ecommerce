@@ -22,6 +22,7 @@ class ECommerce {
 		'nfd-ecommerce-captive-flow-paypal',
 		'nfd-ecommerce-captive-flow-shippo',
 		'nfd-ecommerce-onboarding-check',
+		'nfd-ecommerce-counter',
 		'woocommerce_store_address',
 		'woocommerce_store_address_2',
 		'woocommerce_store_city',
