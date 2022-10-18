@@ -20,9 +20,9 @@ export function GeneralSettings(props) {
   return (
     <>
       <DashboardContent
-        title={__("Get Started!", "wp-module-ecommerce")}
+        title={__("Store Info", "wp-module-ecommerce")}
         subtitle={__(
-          "Start with the basic info needed to run your store.",
+          "Fill out the basic info and settings needed to run your store.",
           "wp-module-ecommerce"
         )}
       >

@@ -6,5 +6,5 @@ export const wcTasksParser = (title) => (data) => {
 };
 
 export const yithOnboardingParser = (title) => (data) => {
-  return { isCompleted: data?.[title] == "true" ? true : false };
+  return { isCompleted: data?.[title] == "true" };
 };
