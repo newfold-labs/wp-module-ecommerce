@@ -1,10 +1,10 @@
 .nfd-woocommerce-link {
   outline: none;
   position: fixed;
-  width: 200px;
+  width: 115px;
   padding-left: 32px;
   z-index: 1010;
-  height: 60px;
+  height: 48px;
   display: grid;
   text-decoration: none;
   align-items: center;
