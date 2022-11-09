@@ -327,7 +327,7 @@
         font-style: italic;
 
         &[data-inqueue="true"] {
-          background: #84c0fc;
+          background: var(--nfd-ecommerce-accent-secondary);
           border-radius: 4px;
           display: flex;
           flex-direction: row;
@@ -337,7 +337,7 @@
             background: #5c5c5c !important;
           }
           .bwa-loader:after {
-            background: #84c0fc !important;
+            background: var(--nfd-ecommerce-accent-secondary) !important;
           }
         }
         &[data-inqueue="false"] {
