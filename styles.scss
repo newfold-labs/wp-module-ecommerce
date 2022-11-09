@@ -65,7 +65,7 @@
       display: flex;
       align-self: center;
     }
-    
+
     @media (max-width: 600px) {
       grid-template-areas:
         "title"
@@ -272,24 +272,28 @@
   }
   .nfd-ecommerce-taskCompleted {
     position: relative;
-    .nfd-ecommerce-taskCompleted-image{
+    .nfd-ecommerce-taskCompleted-image {
       position: absolute;
-      top:8px;
-      right:8px
+      top: 8px;
+      right: 8px;
     }
   }
 
   .nfd-ecommerce-card[data-variant="extended"] {
+    grid-template-areas: "image description action";
     grid-template-columns: min-content;
     column-gap: 16px;
     align-items: center;
     text-align: left;
+    cursor: default;
 
     .nfd-ecommerce-card-image {
+      grid-area: image;
       height: auto;
     }
 
     .nfd-ecommerce-card-title {
+      grid-area: description;
       grid-column: 2;
       color: var(--nfd-ecommerce-text-primary);
       gap: 16px;
@@ -302,8 +306,47 @@
       font-weight: 400;
     }
 
-    .nfd-ecommerce-card-link {
-      gap: 5px;
+    .nfd-ecommerce-card-action {
+      grid-area: action;
+      justify-self: end;
+      margin-right: 24px;
+
+      button {
+        width: 121px;
+        height: 40px;
+        background: #ffffff;
+        border: 1px solid var(--nfd-ecommerce-accent-primary);
+        color: var(--nfd-ecommerce-accent-primary);
+        border-radius: 2px;
+        padding: 0px !important;
+        cursor: pointer;
+      }
+
+      div {
+        font-size: 14px;
+        font-style: italic;
+
+        &[data-inqueue="true"] {
+          background: #84c0fc;
+          border-radius: 4px;
+          display: flex;
+          flex-direction: row;
+          padding: 5.5px 8px 5.5px 8px;
+
+          .grey-loader::before {
+            background: #5c5c5c !important;
+          }
+          .bwa-loader:after {
+            background: #84c0fc !important;
+          }
+        }
+        &[data-inqueue="false"] {
+          width: 173px;
+          height: 34px;
+          line-height: 17px;
+          color: #777777;
+        }
+      }
     }
 
     .nfd-ecommerce-card-circle {
@@ -337,6 +380,15 @@
     &:disabled {
       pointer-events: none;
       cursor: not-allowed;
+    }
+
+    @media (max-width: 960px) {
+      grid-template-areas:
+        "image description"
+        "image action";
+      .nfd-ecommerce-card-action {
+        justify-self: auto;
+      }
     }
   }
 
