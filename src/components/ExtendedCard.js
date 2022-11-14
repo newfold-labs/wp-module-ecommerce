@@ -2,14 +2,14 @@ import { __ } from "@wordpress/i18n";
 
 export function ExtendedCard(props) {
   let { image: Icon } = props.assets(props.state);
-  const pluginInstalled = props.state.isInstalled;
-  const pluginInstalling = props.state.isInstalling;
-  const isQueueEmpty = props.state.isQueueEmpty;
+  const actionCompleted = props.state.actionCompleted;
+  const actionInProgress = props.state.actionInProgress;
+  const isActionQueueEmpty = props.state.isQueueEmpty;
 
-  let { title, description, actionName } = props.text(pluginInstalled);
+  let { title, description, actionName } = props.text(actionCompleted);
 
   const buttonClickHandler = () => {
-    props.actions.buttonClick(pluginInstalled, props.onRefresh);
+    props.actions.buttonClick(actionCompleted, props.onRefresh);
   };
 
   return (
@@ -30,11 +30,11 @@ export function ExtendedCard(props) {
       </span>
 
       <div className="nfd-ecommerce-card-action">
-        {pluginInstalled || isQueueEmpty ? (
+        {actionCompleted || isActionQueueEmpty ? (
           <button onClick={buttonClickHandler}>{actionName}</button>
         ) : (
           <>
-            {pluginInstalling ? (
+            {actionInProgress ? (
               <div data-inqueue={true}>
                 {__(" installing...", "wp-module-ecommerce")}
                 <div className="bwa-loader nfd-ecommerce-loader-mini grey-loader" />

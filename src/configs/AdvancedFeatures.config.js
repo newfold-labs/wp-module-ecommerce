@@ -17,29 +17,32 @@ const GeneralSettings = (plugins) => [
     assets: () => ({
       image: Booking,
     }),
-    text: (isInstalled) => ({
+    text: (actionCompleted) => ({
       title: __("Manage bookable/rental products", "wp-module-ecommerce"),
       description: __(
         "Enable a booking/appointment system to manage renting or booking of services, rooms, houses.",
         "wp-module-ecommerce"
       ),
-      actionName: isInstalled ? "Manage" : "Enable",
+      actionName: actionCompleted ? "Manage" : "Enable",
       slug: "yith_wcbk_panel",
     }),
     state: {
-      isInstalled: (state) => state?.wcBookingPluginRefresh?.isInstalled,
-      isInstalling: (state) => state?.wcBookingPluginRefresh?.isInstalling,
-      isQueueEmpty: (state) => state?.wcBookingPluginRefresh?.isQueueEmpty,
+      actionCompleted: () => plugins?.status?.["yith_wcbk_panel"] === "Active",
+      actionInProgress: () =>
+        plugins?.status?.["queue-status"].some(
+          (queue) => queue.slug === "nfd_slug_yith_woocommerce_booking"
+        ),
+      isQueueEmpty: () => plugins?.status?.["queue-status"].length === 0,
     },
     actions: {
-      buttonClick: async (isInstalled, onRefresh) => {
-        if (isInstalled) {
+      buttonClick: async (actionCompleted, onRefresh) => {
+        if (actionCompleted) {
           window.location.href = "admin.php?page=yith_wcbk_panel";
         } else {
           await queuePluginInstall(
             "nfd_slug_yith_woocommerce_booking",
             plugins.token,
-            6
+            10
           );
           await onRefresh("wcBookingPluginRefresh");
         }
@@ -64,7 +67,7 @@ const GeneralSettings = (plugins) => [
     assets: () => ({
       image: Search,
     }),
-    text: (isInstalled) => ({
+    text: (actionCompleted) => ({
       title: __(
         "Add a powerful search tool to your store",
         "wp-module-ecommerce"
@@ -73,20 +76,28 @@ const GeneralSettings = (plugins) => [
         "Allow your users to search products in real time by title, description, tags, and more.",
         "wp-module-ecommerce"
       ),
-      actionName: isInstalled ? "Manage" : "Enable",
+      actionName: actionCompleted ? "Manage" : "Enable",
       slug: "yith_wcas_panel",
     }),
     state: {
-      isInstalled: (state) => state?.wcSearchPluginRefresh?.isInstalled,
-      isInstalling: (state) => state?.wcSearchPluginRefresh?.isInstalling,
-      isQueueEmpty: (state) => state?.wcSearchPluginRefresh?.isQueueEmpty,
+      actionCompleted: () => plugins?.status?.["yith_wcas_panel"] === "Active",
+      actionInProgress: () =>
+        plugins?.status?.["queue-status"].some(
+          (queue) => queue.slug === "yith-woocommerce-ajax-search"
+        ),
+      isQueueEmpty: () => plugins?.status?.["queue-status"].length === 0,
     },
     actions: {
-      buttonClick: (isInstalled) => {
-        if (isInstalled) {
+      buttonClick: async (actionCompleted, onRefresh) => {
+        if (actionCompleted) {
           window.location.href = "admin.php?page=yith_wcas_panel";
         } else {
-          queuePluginInstall("yith-woocommerce-ajax-search", plugins.token, 6);
+          await queuePluginInstall(
+            "yith-woocommerce-ajax-search",
+            plugins.token,
+            11
+          );
+          await onRefresh("wcSearchPluginRefresh");
         }
       },
     },
@@ -109,7 +120,7 @@ const GeneralSettings = (plugins) => [
     assets: () => ({
       image: WishList,
     }),
-    text: (isInstalled) => ({
+    text: (actionCompleted) => ({
       title: __(
         "Allow your customers to save products in their Wishlist",
         "wp-module-ecommerce"
@@ -118,24 +129,28 @@ const GeneralSettings = (plugins) => [
         "Make it easy for your customers to create lists and add their favorite items to them.",
         "wp-module-ecommerce"
       ),
-      actionName: isInstalled ? "Manage" : "Enable",
+      actionName: actionCompleted ? "Manage" : "Enable",
       slug: "yith_wcwl_panel",
     }),
     state: {
-      isInstalled: (state) => state?.wcWishlistPluginRefresh?.isInstalled,
-      isInstalling: (state) => state?.wcWishlistPluginRefresh?.isInstalling,
-      isQueueEmpty: (state) => state?.wcWishlistPluginRefresh?.isQueueEmpty,
+      actionCompleted: () => plugins?.status?.["yith_wcwl_panel"] === "Active",
+      actionInProgress: () =>
+        plugins?.status?.["queue-status"].some(
+          (queue) => queue.slug === "nfd_slug_yith_woocommerce_wishlist"
+        ),
+      isQueueEmpty: () => plugins?.status?.["queue-status"].length === 0,
     },
     actions: {
-      buttonClick: (isInstalled) => {
-        if (isInstalled) {
+      buttonClick: async (actionCompleted, onRefresh) => {
+        if (actionCompleted) {
           window.location.href = "admin.php?page=yith_wcwl_panel";
         } else {
-          queuePluginInstall(
+          await queuePluginInstall(
             "nfd_slug_yith_woocommerce_wishlist",
             plugins.token,
-            6
+            12
           );
+          await onRefresh("wcWishlistPluginRefresh");
         }
       },
     },
@@ -158,7 +173,7 @@ const GeneralSettings = (plugins) => [
     assets: () => ({
       image: Filter,
     }),
-    text: (isInstalled) => ({
+    text: (actionCompleted) => ({
       title: __(
         "Add a powerful product filter to your store",
         "wp-module-ecommerce"
@@ -167,24 +182,29 @@ const GeneralSettings = (plugins) => [
         "If your store has lots of products, help your customers find what they're looking for fast.",
         "wp-module-ecommerce"
       ),
-      actionName: isInstalled ? "Manage" : "Enable",
+      actionName: actionCompleted ? "Manage" : "Enable",
       slug: "yith_wcan_panel",
     }),
     state: {
-      isInstalled: (state) => state?.wcFilterPluginRefresh?.isInstalled,
-      isInstalling: (state) => state?.wcFilterPluginRefresh?.isInstalling,
-      isQueueEmpty: (state) => state?.wcFilterPluginRefresh?.isQueueEmpty,
+      actionCompleted: () => plugins?.status?.["yith_wcan_panel"] === "Active",
+      actionInProgress: () =>
+        plugins?.status?.["queue-status"].some(
+          (queue) =>
+            queue.slug === "nfd_slug_yith_woocommerce_ajax_product_filter"
+        ),
+      isQueueEmpty: () => plugins?.status?.["queue-status"].length === 0,
     },
     actions: {
-      buttonClick: (isInstalled) => {
-        if (isInstalled) {
+      buttonClick: async (actionCompleted, onRefresh) => {
+        if (actionCompleted) {
           window.location.href = "admin.php?page=yith_wcan_panel";
         } else {
-          queuePluginInstall(
+          await queuePluginInstall(
             "nfd_slug_yith_woocommerce_ajax_product_filter",
             plugins.token,
-            6
+            13
           );
+          await onRefresh("wcFilterPluginRefresh");
         }
       },
     },
@@ -207,31 +227,36 @@ const GeneralSettings = (plugins) => [
     assets: () => ({
       image: Gift,
     }),
-    text: (isInstalled) => ({
+    text: (actionCompleted) => ({
       title: __("Sell Gift Cards in your store", "wp-module-ecommerce"),
       description: __(
         "Use gift cards to increase your earnings and attract new customers.",
         "wp-module-ecommerce"
       ),
-      actionName: isInstalled ? "Manage" : "Enable",
+      actionName: actionCompleted ? "Manage" : "Enable",
       slug: "yith_woocommerce_gift_cards_panel",
     }),
     state: {
-      isInstalled: (state) => state?.wcGiftPluginRefresh?.isInstalled,
-      isInstalling: (state) => state?.wcGiftPluginRefresh?.isInstalling,
-      isQueueEmpty: (state) => state?.wcGiftPluginRefresh?.isQueueEmpty,
+      actionCompleted: () =>
+        plugins?.status?.["yith_woocommerce_gift_cards_panel"] === "Active",
+      actionInProgress: () =>
+        plugins?.status?.["queue-status"].some(
+          (queue) => queue.slug === "nfd_slug_yith_woocommerce_gift_cards"
+        ),
+      isQueueEmpty: () => plugins?.status?.["queue-status"].length === 0,
     },
     actions: {
-      buttonClick: (isInstalled) => {
-        if (isInstalled) {
+      buttonClick: async (actionCompleted, onRefresh) => {
+        if (actionCompleted) {
           window.location.href =
             "admin.php?page=yith_woocommerce_gift_cards_panel";
         } else {
-          queuePluginInstall(
-            "nfd_slug_yith_woocommerce_wishlist",
+          await queuePluginInstall(
+            "nfd_slug_yith_woocommerce_gift_cards",
             plugins.token,
-            6
+            14
           );
+          await onRefresh("wcGiftPluginRefresh");
         }
       },
     },
@@ -240,7 +265,7 @@ const GeneralSettings = (plugins) => [
         refreshInterval: 10 * 1000,
         endpoint: Endpoints.PLUGIN_STATUS,
         selector: wcPluginStatusParser(
-          "nfd_slug_yith_woocommerce_wishlist",
+          "nfd_slug_yith_woocommerce_gift_cards",
           "yith_woocommerce_gift_cards_panel"
         ),
         refresh: "wcGiftPluginRefresh",
@@ -254,7 +279,7 @@ const GeneralSettings = (plugins) => [
     assets: () => ({
       image: CustomizeAccount,
     }),
-    text: (isInstalled) => ({
+    text: (actionCompleted) => ({
       title: __(
         "Customize your customers' account page",
         "wp-module-ecommerce"
@@ -263,26 +288,29 @@ const GeneralSettings = (plugins) => [
         "Show any kind of custom content in your customers' account page.",
         "wp-module-ecommerce"
       ),
-      actionName: isInstalled ? "Manage" : "Enable",
+      actionName: actionCompleted ? "Manage" : "Enable",
       slug: "yith_wcmap_panel",
     }),
     state: {
-      isInstalled: (state) => state?.wcCustomizeAcctPluginRefresh?.isInstalled,
-      isInstalling: (state) =>
-        state?.wcCustomizeAcctPluginRefresh?.isInstalling,
-      isQueueEmpty: (state) =>
-        state?.wcCustomizeAcctPluginRefresh?.isQueueEmpty,
+      actionCompleted: () => plugins?.status?.["yith_wcmap_panel"] === "Active",
+      actionInProgress: () =>
+        plugins?.status?.["queue-status"].some(
+          (queue) =>
+            queue.slug === "nfd_slug_yith_woocommerce_customize_myaccount_page"
+        ),
+      isQueueEmpty: () => plugins?.status?.["queue-status"].length === 0,
     },
     actions: {
-      buttonClick: (isInstalled) => {
-        if (isInstalled) {
+      buttonClick: async (actionCompleted, onRefresh) => {
+        if (actionCompleted) {
           window.location.href = "admin.php?page=yith_wcmap_panel";
         } else {
-          queuePluginInstall(
+          await queuePluginInstall(
             "nfd_slug_yith_woocommerce_customize_myaccount_page",
             plugins.token,
-            6
+            15
           );
+          await onRefresh("wcCustomizeAcctPluginRefresh");
         }
       },
     },

@@ -6,18 +6,15 @@ function createDependencyTree(config) {
     .map((_) => _.dataDependencies)
     .flat()
     .reduce(
-      (tree, { endpoint, refresh, refreshInterval = 0 }) => ({
+      (tree, { endpoint, refresh}) => ({
         ...tree,
         [endpoint]: tree[endpoint] ? [...tree[endpoint], refresh] : [refresh],
-        refreshInterval,
       }),
       {}
     );
 }
 
 function useLoadDependencies(tree) {
-  let refreshInterval = tree.refreshInterval;
-  delete tree.refreshInterval;
   let endpoints = Object.keys(tree);
   let { data, mutate } = useSWR(
     endpoints,
@@ -32,8 +29,7 @@ function useLoadDependencies(tree) {
         }
       }
       return realisedTree;
-    },
-    { refreshInterval }
+    }
   );
 
   async function onRefresh(dependency) {

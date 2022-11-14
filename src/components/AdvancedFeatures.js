@@ -1,11 +1,11 @@
 import { __ } from "@wordpress/i18n";
-import GeneralSettingsConfig from "../configs/AdvancedFeatures.config";
+import AdvancedFeaturesConfig from "../configs/AdvancedFeatures.config";
 import { DashboardContent } from "./DashboardContent";
 import { useCardManager } from "./useCardManager";
 
 export function AdvancedFeatures(props) {
   let { plugins } = props;
-  let cards = useCardManager(GeneralSettingsConfig(plugins));
+  let cards = useCardManager(AdvancedFeaturesConfig(plugins));
   const isLoading = !(cards ?? []).every(
     (cardConfig) => cardConfig.isLoading == false
   );
