@@ -6,7 +6,7 @@ function createDependencyTree(config) {
     .map((_) => _.dataDependencies)
     .flat()
     .reduce(
-      (tree, { endpoint, refresh }) => ({
+      (tree, { endpoint, refresh}) => ({
         ...tree,
         [endpoint]: tree[endpoint] ? [...tree[endpoint], refresh] : [refresh],
       }),
@@ -16,18 +16,22 @@ function createDependencyTree(config) {
 
 function useLoadDependencies(tree) {
   let endpoints = Object.keys(tree);
-  let { data, mutate } = useSWR(endpoints, async () => {
-    let realisedTree = {};
-    for (let path of endpoints) {
-      try {
-        let response = await apiFetch({ path });
-        realisedTree[path] = response;
-      } catch (error) {
-        //
+  let { data, mutate } = useSWR(
+    endpoints,
+    async () => {
+      let realisedTree = {};
+      for (let path of endpoints) {
+        try {
+          let response = await apiFetch({ path });
+          realisedTree[path] = response;
+        } catch (error) {
+          //
+        }
       }
+      return realisedTree;
     }
-    return realisedTree;
-  });
+  );
+
   async function onRefresh(dependency) {
     // TODO: Add Checks for if path is not found.
     let [path] = Object.entries(tree).find(([, deps]) =>
