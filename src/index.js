@@ -16,6 +16,7 @@ window.NewfoldECommerce = function NewfoldECommerce(props) {
     mutate: refreshPlugins,
   } = useSWR(Endpoints.PLUGIN_STATUS, fetcher, {
     revalidateOnReconnect: false,
+    refreshInterval: 10 * 1000,
   });
   let plugins = {
     errors: error,
@@ -42,7 +43,7 @@ window.NewfoldECommerce = function NewfoldECommerce(props) {
         ) : (
           <>
             <Hero plugins={plugins} {...props} />
-            <StoreAnalytics plugins={plugins} {...props}/>
+            <StoreAnalytics plugins={plugins} {...props} />
             <Dashboard plugins={plugins} {...props} />
             <SiteStatus plugins={plugins} {...props} />
           </>
