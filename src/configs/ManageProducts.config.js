@@ -68,7 +68,7 @@ const ManageProducts = (plugins) => [
     },
     actions: {
       buttonClick: (state, setShowModal) => {
-        window.location.href = getUrl("admin.php?page=yith_paypal_payments");
+        window.location.href = getUrl("edit.php?post_type=product&page=product_importer");
       },
     },
     dataDependencies: [],
