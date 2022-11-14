@@ -9,7 +9,7 @@ export function ExtendedCard(props) {
   let { title, description, actionName } = props.text(actionCompleted);
 
   const buttonClickHandler = () => {
-    props.actions.buttonClick(actionCompleted, props.onRefresh);
+    props.actions.buttonClick(actionCompleted);
   };
 
   return (

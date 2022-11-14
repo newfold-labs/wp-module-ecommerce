@@ -35,30 +35,19 @@ const GeneralSettings = (plugins) => [
       isQueueEmpty: () => plugins?.status?.["queue-status"].length === 0,
     },
     actions: {
-      buttonClick: async (actionCompleted, onRefresh) => {
+      buttonClick: (actionCompleted) => {
         if (actionCompleted) {
           window.location.href = "admin.php?page=yith_wcbk_panel";
         } else {
-          await queuePluginInstall(
+          queuePluginInstall(
             "nfd_slug_yith_woocommerce_booking",
             plugins.token,
             10
           );
-          await onRefresh("wcBookingPluginRefresh");
         }
       },
     },
-    dataDependencies: [
-      {
-        refreshInterval: 10 * 1000,
-        endpoint: Endpoints.PLUGIN_STATUS,
-        selector: wcPluginStatusParser(
-          "nfd_slug_yith_woocommerce_booking",
-          "yith_wcbk_panel"
-        ),
-        refresh: "wcBookingPluginRefresh",
-      },
-    ],
+    dataDependencies: [],
   },
   {
     Card: ExtendedCard,
@@ -88,30 +77,15 @@ const GeneralSettings = (plugins) => [
       isQueueEmpty: () => plugins?.status?.["queue-status"].length === 0,
     },
     actions: {
-      buttonClick: async (actionCompleted, onRefresh) => {
+      buttonClick: (actionCompleted) => {
         if (actionCompleted) {
           window.location.href = "admin.php?page=yith_wcas_panel";
         } else {
-          await queuePluginInstall(
-            "yith-woocommerce-ajax-search",
-            plugins.token,
-            11
-          );
-          await onRefresh("wcSearchPluginRefresh");
+          queuePluginInstall("yith-woocommerce-ajax-search", plugins.token, 11);
         }
       },
     },
-    dataDependencies: [
-      {
-        refreshInterval: 10 * 1000,
-        endpoint: Endpoints.PLUGIN_STATUS,
-        selector: wcPluginStatusParser(
-          "yith-woocommerce-ajax-search",
-          "yith_wcas_panel"
-        ),
-        refresh: "wcSearchPluginRefresh",
-      },
-    ],
+    dataDependencies: [],
   },
   {
     Card: ExtendedCard,
@@ -141,16 +115,15 @@ const GeneralSettings = (plugins) => [
       isQueueEmpty: () => plugins?.status?.["queue-status"].length === 0,
     },
     actions: {
-      buttonClick: async (actionCompleted, onRefresh) => {
+      buttonClick: (actionCompleted) => {
         if (actionCompleted) {
           window.location.href = "admin.php?page=yith_wcwl_panel";
         } else {
-          await queuePluginInstall(
+          queuePluginInstall(
             "nfd_slug_yith_woocommerce_wishlist",
             plugins.token,
             12
           );
-          await onRefresh("wcWishlistPluginRefresh");
         }
       },
     },
@@ -195,30 +168,19 @@ const GeneralSettings = (plugins) => [
       isQueueEmpty: () => plugins?.status?.["queue-status"].length === 0,
     },
     actions: {
-      buttonClick: async (actionCompleted, onRefresh) => {
+      buttonClick: (actionCompleted) => {
         if (actionCompleted) {
           window.location.href = "admin.php?page=yith_wcan_panel";
         } else {
-          await queuePluginInstall(
+          queuePluginInstall(
             "nfd_slug_yith_woocommerce_ajax_product_filter",
             plugins.token,
             13
           );
-          await onRefresh("wcFilterPluginRefresh");
         }
       },
     },
-    dataDependencies: [
-      {
-        refreshInterval: 10 * 1000,
-        endpoint: Endpoints.PLUGIN_STATUS,
-        selector: wcPluginStatusParser(
-          "nfd_slug_yith_woocommerce_ajax_product_filter",
-          "yith_wcan_panel"
-        ),
-        refresh: "wcFilterPluginRefresh",
-      },
-    ],
+    dataDependencies: [],
   },
   {
     Card: ExtendedCard,
@@ -246,31 +208,20 @@ const GeneralSettings = (plugins) => [
       isQueueEmpty: () => plugins?.status?.["queue-status"].length === 0,
     },
     actions: {
-      buttonClick: async (actionCompleted, onRefresh) => {
+      buttonClick: (actionCompleted) => {
         if (actionCompleted) {
           window.location.href =
             "admin.php?page=yith_woocommerce_gift_cards_panel";
         } else {
-          await queuePluginInstall(
+          queuePluginInstall(
             "nfd_slug_yith_woocommerce_gift_cards",
             plugins.token,
             14
           );
-          await onRefresh("wcGiftPluginRefresh");
         }
       },
     },
-    dataDependencies: [
-      {
-        refreshInterval: 10 * 1000,
-        endpoint: Endpoints.PLUGIN_STATUS,
-        selector: wcPluginStatusParser(
-          "nfd_slug_yith_woocommerce_gift_cards",
-          "yith_woocommerce_gift_cards_panel"
-        ),
-        refresh: "wcGiftPluginRefresh",
-      },
-    ],
+    dataDependencies: [],
   },
   {
     Card: ExtendedCard,
@@ -301,30 +252,19 @@ const GeneralSettings = (plugins) => [
       isQueueEmpty: () => plugins?.status?.["queue-status"].length === 0,
     },
     actions: {
-      buttonClick: async (actionCompleted, onRefresh) => {
+      buttonClick: (actionCompleted) => {
         if (actionCompleted) {
           window.location.href = "admin.php?page=yith_wcmap_panel";
         } else {
-          await queuePluginInstall(
+          queuePluginInstall(
             "nfd_slug_yith_woocommerce_customize_myaccount_page",
             plugins.token,
             15
           );
-          await onRefresh("wcCustomizeAcctPluginRefresh");
         }
       },
     },
-    dataDependencies: [
-      {
-        refreshInterval: 10 * 1000,
-        endpoint: Endpoints.PLUGIN_STATUS,
-        selector: wcPluginStatusParser(
-          "nfd_slug_yith_woocommerce_customize_myaccount_page",
-          "yith_wcmap_panel "
-        ),
-        refresh: "wcCustomizeAcctPluginRefresh",
-      },
-    ],
+    dataDependencies: [],
   },
 ];
 
