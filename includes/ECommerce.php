@@ -97,7 +97,7 @@ class ECommerce {
 	 */
 	public function newfold_site_status( \WP_Admin_Bar $admin_bar ) {
 		if ( current_user_can( 'manage_options' ) ) {
-			$is_coming_soon   = 'true' === get_option( 'mm_coming_soon', 'false' );
+			$is_coming_soon   = 'true' === get_option( 'nfd_coming_soon', 'false' );
 			$status           = $is_coming_soon
 			? '<span id="nfd-site-status-text" style="color:#E01C1C;">' . esc_html__( 'Coming Soon', 'wp-module-ecommerce' ) . '</span>'
 			: '<span id="nfd-site-status-text" style="color:#048200;">' . esc_html__( 'Live', 'wp-module-ecommerce' ) . '</span>';
@@ -111,7 +111,9 @@ class ECommerce {
 				),
 			);
 			$admin_bar->add_menu( $site_status_menu );
-			$admin_bar->remove_menu( 'mojo-home' ); // Remove status added by bwp
+			// Remove status added by newfold-labs/wp-module-coming-soon
+			$menu_name = $this->container->plugin()->id . '-coming_soon';
+			$admin_bar->remove_menu( $menu_name ); 
 		}
 	}
 	
