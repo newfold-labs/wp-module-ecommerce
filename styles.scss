@@ -452,11 +452,13 @@
   }
 }
 
-.disableDashboardContent {
+.nfd-ecommerce-disable {
   pointer-events: none;
   filter: opacity(0.2);
 }
-
+.nfd-wc-unavailable-msg {
+  color: #f72f26;
+}
 .nfd-ecommerce-store-analytics {
   border: 1px solid #d7dbe0;
   background-color: white;

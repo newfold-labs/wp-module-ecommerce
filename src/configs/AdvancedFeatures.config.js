@@ -33,6 +33,7 @@ const GeneralSettings = (plugins) => [
           (queue) => queue.slug === "nfd_slug_yith_woocommerce_booking"
         ),
       isQueueEmpty: () => plugins?.status?.["queue-status"].length === 0,
+      isDisabled: () => plugins.status?.woocommerce !== "Active",
     },
     actions: {
       buttonClick: (actionCompleted) => {
@@ -75,6 +76,7 @@ const GeneralSettings = (plugins) => [
           (queue) => queue.slug === "yith-woocommerce-ajax-search"
         ),
       isQueueEmpty: () => plugins?.status?.["queue-status"].length === 0,
+      isDisabled: () => plugins.status?.woocommerce !== "Active",
     },
     actions: {
       buttonClick: (actionCompleted) => {
@@ -113,6 +115,7 @@ const GeneralSettings = (plugins) => [
           (queue) => queue.slug === "nfd_slug_yith_woocommerce_wishlist"
         ),
       isQueueEmpty: () => plugins?.status?.["queue-status"].length === 0,
+      isDisabled: () => plugins.status?.woocommerce !== "Active",
     },
     actions: {
       buttonClick: (actionCompleted) => {
@@ -166,6 +169,7 @@ const GeneralSettings = (plugins) => [
             queue.slug === "nfd_slug_yith_woocommerce_ajax_product_filter"
         ),
       isQueueEmpty: () => plugins?.status?.["queue-status"].length === 0,
+      isDisabled: () => plugins.status?.woocommerce !== "Active",
     },
     actions: {
       buttonClick: (actionCompleted) => {
@@ -206,6 +210,7 @@ const GeneralSettings = (plugins) => [
           (queue) => queue.slug === "nfd_slug_yith_woocommerce_gift_cards"
         ),
       isQueueEmpty: () => plugins?.status?.["queue-status"].length === 0,
+      isDisabled: () => plugins.status?.woocommerce !== "Active",
     },
     actions: {
       buttonClick: (actionCompleted) => {
@@ -250,6 +255,7 @@ const GeneralSettings = (plugins) => [
             queue.slug === "nfd_slug_yith_woocommerce_customize_myaccount_page"
         ),
       isQueueEmpty: () => plugins?.status?.["queue-status"].length === 0,
+      isDisabled: () => plugins.status?.woocommerce !== "Active",
     },
     actions: {
       buttonClick: (actionCompleted) => {

@@ -2,6 +2,7 @@ import { __ } from "@wordpress/i18n";
 
 export function ExtendedCard(props) {
   let { image: Icon } = props.assets(props.state);
+  let disableCard = props.state.isDisabled;
   const actionCompleted = props.state.actionCompleted;
   const actionInProgress = props.state.actionInProgress;
   const isActionQueueEmpty = props.state.isQueueEmpty;
@@ -14,7 +15,7 @@ export function ExtendedCard(props) {
 
   return (
     <button
-      className="nfd-ecommerce-card"
+      className={`nfd-ecommerce-card ${disableCard ? "nfd-ecommerce-disable" : ""}`}
       data-variant="extended"
       type="button"
       data-completed="false"

@@ -18,13 +18,18 @@ export function SiteStatus(props) {
   let { Modal } = props.wpModules;
   let [showModal, setModal] = useState(false);
   let { title, subtitle, cta, status } = SiteStatusContent;
+  let addCurtain = props.plugins?.status?.woocommerce !== "Active";
   if (!wp.comingSoon && !showModal) {
     return null;
   }
   return (
     <>
       <div style={{ height: "32px" }} />
-      <div className="site-status-banner">
+      <div
+        className={`site-status-banner ${
+          addCurtain ? "nfd-ecommerce-disable" : ""
+        }`}
+      >
         <h2>{title}</h2>
         <div style={{ height: "24px" }} />
         <div className="content">
@@ -64,7 +69,10 @@ export function SiteStatus(props) {
             onRequestClose={() => setModal(false)}
           >
             <div className="nfd-ecommerce-modal-content">
-              <StoreOnlineIllustration style={{ width: "100%" }} className="nfd-ecommerce-hero" />
+              <StoreOnlineIllustration
+                style={{ width: "100%" }}
+                className="nfd-ecommerce-hero"
+              />
               <h1>
                 {__(
                   "Your store is online and ready for business!",

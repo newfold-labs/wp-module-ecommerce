@@ -7,6 +7,7 @@ export function Card({
   action,
   href,
   variant,
+  disable,
   status = "ready",
   ...props
 }) {
@@ -16,7 +17,7 @@ export function Card({
       : () => <div className="bwa-loader nfd-ecommerce-loader-mini" />;
   return (
     <button
-      className="nfd-ecommerce-card"
+      className={`nfd-ecommerce-card ${disable ? " nfd-ecommerce-disable" : ""}`}
       data-variant={variant}
       type="button"
       disabled={status !== "ready"}

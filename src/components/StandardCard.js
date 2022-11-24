@@ -9,6 +9,7 @@ export function StandardCard(props) {
   let { Icon } = props.assets(props.state);
   const taskCompleted = props.state.showCompletedIcon;
   let { title, actionName } = props.text(props.state);
+  let disableCard = props.state.isDisabled;
   let Action = !props.isLoading
     ? Arrow
     : () => <div className="bwa-loader nfd-ecommerce-loader-mini" />;
@@ -21,7 +22,7 @@ export function StandardCard(props) {
       <button
         className={`nfd-ecommerce-card ${
           taskCompleted ? "nfd-ecommerce-taskCompleted" : ""
-        }`}
+        } ${disableCard ? " nfd-ecommerce-disable" : ""}`}
         data-variant="standard"
         type="button"
         onClick={buttonClickHandler}
