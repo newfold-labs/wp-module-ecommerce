@@ -3,86 +3,13 @@
 @import "./src/sections/Banner.scss";
 @import "./src/sections/MultipleActionsCard.scss";
 @import "./src/sections/SiteStatus.scss";
+@import "./src/sections/StoreAnalytics.scss";
+@import "./src/sections/WooCommerceUnavailable.scss";
+
 
 .nfd-ecommerce-setup {
   margin: 0;
   padding: 0;
-
-  .nfd-ecommerce-woocommerce-unavailable {
-    background-color: var(--nfd-ecommerce-bg-primary);
-    border-radius: 2px;
-    border: 1px solid var(--nfd-ecommerce-border-primary);
-    display: grid;
-    padding: 0 22px;
-    grid-template-areas:
-      "title illustration"
-      "actions illustration";
-    h1 {
-      color: var(--nfd-ecommerce-accent-primary);
-    }
-
-    .status-notice {
-      color: var(--nfd-ecommerce-text-secondary);
-      font-size: 16px;
-      margin-top: 24px;
-    }
-
-    button {
-      display: block;
-      width: 272px;
-      padding: 10px 24px;
-      border: 2px solid var(--nfd-ecommerce-accent-primary);
-      margin-top: 24px;
-      background-color: var(--nfd-ecommerce-accent-primary);
-      color: white;
-      margin-bottom: 16px;
-      cursor: grab;
-    }
-
-    a {
-      display: block;
-      width: 220px;
-      padding: 10px 24px;
-      border: 2px solid var(--nfd-ecommerce-accent-primary);
-      background-color: white;
-      color: var(--nfd-ecommerce-accent-primary);
-      text-align: center;
-      cursor: grab;
-      text-decoration: none;
-      margin-bottom: 32px;
-    }
-
-    .title {
-      grid-area: title;
-      margin-top: 24px;
-    }
-
-    .actions-container {
-      grid-area: actions;
-    }
-
-    .banner-image {
-      grid-area: illustration;
-      display: flex;
-      align-self: center;
-    }
-
-    @media (max-width: 600px) {
-      grid-template-areas:
-        "title"
-        "illustration"
-        "actions";
-      .wcUnAvailableIllustaration {
-        width: 100%;
-      }
-      h1 {
-        text-align: center;
-      }
-      .status-notice {
-        text-align: center;
-      }
-    }
-  }
 
   .nfd-ecommerce-dashboard {
     min-height: 500px;
@@ -215,6 +142,11 @@
       background: var(--nfd-ecommerce-bg-secondary);
       border-color: var(--nfd-ecommerce-accent-secondary);
     }
+
+    &:disabled {
+      pointer-events: none;
+      filter: opacity(0.2);
+    }
   }
 
   .nfd-ecommerce-card[data-variant="minimal"] {
@@ -271,6 +203,7 @@
       visibility: visible;
     }
   }
+
   .nfd-ecommerce-taskCompleted {
     position: relative;
     .nfd-ecommerce-taskCompleted-image {
@@ -377,11 +310,6 @@
       }
     }
 
-    &:disabled {
-      pointer-events: none;
-      cursor: not-allowed;
-    }
-
     @media (max-width: 960px) {
       grid-template-areas:
         "image description"
@@ -452,32 +380,7 @@
   }
 }
 
-.nfd-ecommerce-disable {
-  pointer-events: none;
-  filter: opacity(0.2);
-}
 .nfd-wc-unavailable-msg {
   color: #f72f26;
 }
-.nfd-ecommerce-store-analytics {
-  border: 1px solid #d7dbe0;
-  background-color: white;
-  padding: 24px 24px 19px;
 
-  .store-analytics-notice {
-    font-size: 16px;
-    color: var(--nfd-ecommerce-text-secondary);
-  }
-
-  a {
-    display: block;
-    font: 400 18px/1.2 var(--nfd-ecommerce-font-primary);
-    padding: 10px 40px;
-    width: fit-content;
-    border: 1px solid var(--nfd-ecommerce-accent-primary);
-    border-radius: 2px;
-    background-color: white;
-    color: var(--nfd-ecommerce-accent-primary);
-    text-decoration: none;
-  }
-}

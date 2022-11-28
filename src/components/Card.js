@@ -17,10 +17,10 @@ export function Card({
       : () => <div className="bwa-loader nfd-ecommerce-loader-mini" />;
   return (
     <button
-      className={`nfd-ecommerce-card ${disable ? " nfd-ecommerce-disable" : ""}`}
+      className="nfd-ecommerce-card"
       data-variant={variant}
       type="button"
-      disabled={status !== "ready"}
+      disabled={status !== "ready" || disable}
       onClick={() => {
         let [page, qs] = href.split("?");
         let query = new URLSearchParams(qs);

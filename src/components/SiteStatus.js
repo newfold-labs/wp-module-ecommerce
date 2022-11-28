@@ -27,7 +27,7 @@ export function SiteStatus(props) {
       <div style={{ height: "32px" }} />
       <div
         className={`site-status-banner ${
-          addCurtain ? "nfd-ecommerce-disable" : ""
+          addCurtain ? "nfd-site-status-disable" : ""
         }`}
       >
         <h2>{title}</h2>
