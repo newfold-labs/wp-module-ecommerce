@@ -30,9 +30,9 @@ export function CustomizeStore({ plugins }) {
   let pagesByName = Object.fromEntries(
     pages?.map((_) => [_["meta_value"], _["ID"]]) ?? []
   );
-  let WCUnavialable = plugins?.status?.woocommerce !== "Active";
+  let WCUnavailable = plugins?.status?.woocommerce !== "Active";
 
-  if (status === undefined && !WCUnavialable) {
+  if (status === undefined && !WCUnavailable) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
         {error ? (
@@ -63,7 +63,7 @@ export function CustomizeStore({ plugins }) {
               key={title}
               variant="standard"
               title={title}
-              disable = {WCUnavialable}
+              disable = {WCUnavailable}
               status={status === undefined ? "inprogress" : "ready"}
               action={__("Setup", "wp-module-ecommerce")}
               href={`post.php?action=edit&post=${pagesByName[dcpage]}`}
@@ -75,7 +75,7 @@ export function CustomizeStore({ plugins }) {
           <Card
             variant="standard"
             title={__("Add a Page", "wp-module-ecommerce")}
-            disable = {WCUnavialable}
+            disable = {WCUnavailable}
             action={__("Setup", "wp-module-ecommerce")}
             href={`post-new.php?post_type=page`}
           >
@@ -84,7 +84,7 @@ export function CustomizeStore({ plugins }) {
         <Card
           variant="standard"
           title={__("Store Layout", "wp-module-ecommerce")}
-          disable = {WCUnavialable}
+          disable = {WCUnavailable}
           action={__("Configure", "wp-module-ecommerce")}
           href={`customize.php?return=${encodeURIComponent(
             window.location.href.replace(window.location.origin, "")
@@ -95,7 +95,7 @@ export function CustomizeStore({ plugins }) {
         <Card
           variant="standard"
           title={__("Customer Account Page", "wp-module-ecommerce")}
-          disable = {WCUnavialable}
+          disable = {WCUnavailable}
           action={__("Setup", "wp-module-ecommerce")}
           data-action-gutter={"s"}
           status={plugins.status !== undefined ? "ready" : "inprogress"}

@@ -10,9 +10,9 @@ export function ManageProducts(props) {
   const isLoading = !(cards ?? []).every(
     (cardConfig) => cardConfig.isLoading == false
   );
-  let WCUnavialable = props?.plugins?.status?.woocommerce !== "Active";
+  let WCUnavailable = props?.plugins?.status?.woocommerce !== "Active";
 
-  if (isLoading && !WCUnavialable)
+  if (isLoading && !WCUnavailable)
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
         <div className="bwa-loader" />
@@ -48,7 +48,7 @@ export function ManageProducts(props) {
             variant="minimal"
             title={__("How to add products", "wp-module-ecommerce")}
             action={__("Learn More", "wp-module-ecommerce")}
-            disable = {WCUnavialable}
+            disable = {WCUnavailable}
             onClick={() =>
               window.open(
                 "https://woocommerce.com/document/managing-products/",

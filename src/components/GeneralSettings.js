@@ -9,8 +9,8 @@ export function GeneralSettings(props) {
   const isLoading = !(cards ?? []).every(
     (cardConfig) => cardConfig.isLoading == false
   );
-  let WCUnavialable = plugins?.status?.woocommerce !== "Active";
-  if (isLoading && !WCUnavialable)
+  let WCUnavailable = plugins?.status?.woocommerce !== "Active";
+  if (isLoading && !WCUnavailable)
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
         <div className="bwa-loader" />
@@ -33,7 +33,7 @@ export function GeneralSettings(props) {
           })}
         </div>
         <div style={{ height: "24px" }} />
-        {WCUnavialable && (
+        {WCUnavailable && (
           <div className="nfd-wc-unavailable-msg">
             WooCommerce is required for these features to work, install it now
             or contact our support team for more assistance.{" "}
