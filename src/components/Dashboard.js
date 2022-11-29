@@ -42,14 +42,11 @@ export function Dashboard(props) {
   useSetupYITHWonderTheme();
   let isCleanUpInProgress = useOnboardingCleanup(props.plugins.token?.hash);
   let addCurtain = props.plugins?.status?.woocommerce !== "Active";
-  let className = `nfd-ecommerce-dashboard ${
-    addCurtain ? "disableDashboardContent" : ""
-  }`;
   function onBackButtonClick() {
     navigate("/home/store");
   }
   return (
-    <div className={className}>
+    <div className="nfd-ecommerce-dashboard">
       {isLargeViewport ? (
         <nav
           aria-label={__("Setup Guide", "wp-module-ecommerce")}

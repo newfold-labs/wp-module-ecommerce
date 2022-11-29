@@ -25,6 +25,7 @@ export function StandardCard(props) {
         data-variant="standard"
         type="button"
         onClick={buttonClickHandler}
+        disabled={props.state.isDisabled}
       >
         {taskCompleted && (
           <div className="nfd-ecommerce-taskCompleted-image">

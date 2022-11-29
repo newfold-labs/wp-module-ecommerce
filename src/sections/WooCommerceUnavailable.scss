@@ -1,0 +1,75 @@
+.nfd-ecommerce-woocommerce-unavailable {
+  background-color: var(--nfd-ecommerce-bg-primary);
+  border-radius: 2px;
+  border: 1px solid var(--nfd-ecommerce-border-primary);
+  display: grid;
+  padding: 0 22px;
+  grid-template-areas:
+    "title illustration"
+    "actions illustration";
+  h1 {
+    color: var(--nfd-ecommerce-accent-primary);
+  }
+
+  .status-notice {
+    color: var(--nfd-ecommerce-text-secondary);
+    font-size: 16px;
+    margin-top: 24px;
+  }
+
+  button {
+    display: block;
+    width: 272px;
+    padding: 10px 24px;
+    border: 2px solid var(--nfd-ecommerce-accent-primary);
+    margin-top: 24px;
+    background-color: var(--nfd-ecommerce-accent-primary);
+    color: white;
+    margin-bottom: 16px;
+    cursor: grab;
+  }
+
+  a {
+    display: block;
+    width: 220px;
+    padding: 10px 24px;
+    border: 2px solid var(--nfd-ecommerce-accent-primary);
+    background-color: white;
+    color: var(--nfd-ecommerce-accent-primary);
+    text-align: center;
+    cursor: grab;
+    text-decoration: none;
+    margin-bottom: 32px;
+  }
+
+  .title {
+    grid-area: title;
+    margin-top: 24px;
+  }
+
+  .actions-container {
+    grid-area: actions;
+  }
+
+  .banner-image {
+    grid-area: illustration;
+    display: flex;
+    align-self: center;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-areas:
+      "title"
+      "illustration"
+      "actions";
+    .wcUnAvailableIllustaration {
+      width: 100%;
+    }
+    h1 {
+      text-align: center;
+    }
+    .status-notice {
+      text-align: center;
+    }
+  }
+}

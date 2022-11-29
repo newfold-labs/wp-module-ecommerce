@@ -9,8 +9,9 @@ export function AdvancedFeatures(props) {
   const isLoading = !(cards ?? []).every(
     (cardConfig) => cardConfig.isLoading == false
   );
-
-  if (isLoading)
+  let WCUnavailable = plugins?.status?.woocommerce !== "Active";
+ 
+  if (isLoading && !WCUnavailable)
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
         <div className="bwa-loader" />

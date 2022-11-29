@@ -8,7 +8,6 @@ export function MinimalCard(props) {
   let { image: Icon } = props.assets(props.state);
   const taskCompleted = props.state.taskCompleted;
   let { title, actionName } = props.text(taskCompleted);
-
   const buttonClickHandler = () => {
     const data = {
       taskCompleted: taskCompleted,
@@ -19,12 +18,13 @@ export function MinimalCard(props) {
   return (
     <>
       <button
-        className={`nfd-ecommerce-card ${
-          taskCompleted ? "nfd-ecommerce-taskCompleted" : ""
-        }`}
+        className={`nfd-ecommerce-card
+         ${taskCompleted ? "nfd-ecommerce-taskCompleted" : ""} 
+        `}
         data-variant="minimal"
         type="button"
         onClick={buttonClickHandler}
+        disabled={props.state.isDisabled}
       >
         {taskCompleted && (
           <div className="nfd-ecommerce-taskCompleted-image">

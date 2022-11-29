@@ -18,6 +18,7 @@ export function ExtendedCard(props) {
       data-variant="extended"
       type="button"
       data-completed="false"
+      disabled={props.state.isDisabled}
     >
       <div className="nfd-ecommerce-card-image">
         <div className="nfd-ecommerce-card-circle">

@@ -36,6 +36,7 @@ const ManageProducts = (plugins) => [
     state: {
       hasAddedProduct: (data) => data?.wcProductsList?.length > 0,
       showCompletedIcon: (data) => false,
+      isDisabled: () => plugins.status?.woocommerce !== "Active",
     },
     actions: {
       buttonClick: (state, setShowModal) => {
@@ -65,10 +66,13 @@ const ManageProducts = (plugins) => [
     }),
     state: {
       showCompletedIcon: (data) => false,
+      isDisabled: () => plugins.status?.woocommerce !== "Active",
     },
     actions: {
       buttonClick: (state, setShowModal) => {
-        window.location.href = getUrl("edit.php?post_type=product&page=product_importer");
+        window.location.href = getUrl(
+          "edit.php?post_type=product&page=product_importer"
+        );
       },
     },
     dataDependencies: [],
@@ -88,6 +92,7 @@ const ManageProducts = (plugins) => [
       showCompletedIcon: (data) => false,
       hasUsedPlugin: (data) =>
         data.yith_woocommerce_gift_cards_panel.length > 0,
+      isDisabled: () => plugins.status?.woocommerce !== "Active",
     },
     actions: {
       buttonClick: (state, setShowModal) => {
@@ -118,6 +123,7 @@ const ManageProducts = (plugins) => [
         { title: "View/Edit a gift card", action: "view_gift_card" },
         { title: "Manage gift card settings", action: "manage_gift_card" },
       ],
+      isDisabled: () => plugins.status?.woocommerce !== "Active",
     },
     actions: {
       onSelectAction: (state, action, opts) => {
@@ -152,6 +158,7 @@ const ManageProducts = (plugins) => [
       hasUsedPlugin: (data) =>
         data.nfd_slug_yith_woocommerce_booking.length > 0,
       showCompletedIcon: (data) => false,
+      isDisabled: () => plugins.status?.woocommerce !== "Active",
     },
     actions: {
       buttonClick: (state, setShowModal) => {
