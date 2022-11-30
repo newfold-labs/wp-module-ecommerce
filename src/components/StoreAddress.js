@@ -43,13 +43,10 @@ export function StoreAddress({ onComplete, isMandatory = false }) {
         if (selectedCountry === defaultContact.country && state === undefined) {
           selectedState = defaultContact.state;
         }
-        if (states.length == 0) {
-          selectedState = "";
-        }
         await updateWPSettings({
           ...defaultContact,
           ...wcAddress,
-          woocommerce_default_country: selectedState
+          woocommerce_default_country: states.length && selectedState 
             ? `${selectedCountry}:${selectedState}`
             : selectedCountry,
         });
