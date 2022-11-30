@@ -4,7 +4,7 @@
   width: 200px;
   padding-left: 32px;
   z-index: 1010;
-  height: 46px;
+  height: 60px;
   display: grid;
   text-decoration: none;
   align-items: center;
@@ -37,14 +37,25 @@
 
 .mobile.post-php .nfd-woocommerce-link,
 .mobile.post-new-php .nfd-woocommerce-link {
-  left: 12%;
   width: fit-content;
 }
 
+@media (max-width: 600px) {
+  .mobile.post-php .nfd-woocommerce-link,
+  .mobile.post-new-php .nfd-woocommerce-link {
+    left: 12%;
+  }
+}
+
 .mobile .nfd-woocommerce-link {
-  width: 115px;
-  padding-left: 20px;
+  padding-left: 15px;
   font-size: 13px;
+}
+
+@media (max-width: 960px) {
+  .mobile .nfd-woocommerce-link {
+    width: 115px;
+  }
 }
 
 .is-wp-toolbar-disabled .nfd-woocommerce-link {
