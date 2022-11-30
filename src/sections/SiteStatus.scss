@@ -59,7 +59,11 @@
       }
     }
   }
+}
 
+.nfd-site-status-disable{
+  pointer-events: none;
+  filter: opacity(0.2);
 }
 
 .nfd-site-live-modal {

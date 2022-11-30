@@ -39,6 +39,7 @@ const GeneralSettings = (plugins) => [
     }),
     state: {
       taskCompleted: (state) => state?.wcTasksRefresh?.isCompleted,
+      isDisabled: () => plugins.status?.woocommerce !== "Active",
     },
     actions: {
       buttonClick: (data, setShowModal) => {
@@ -78,6 +79,7 @@ const GeneralSettings = (plugins) => [
     }),
     state: {
       taskCompleted: (state) => state?.yithOnboardingRefresh?.isCompleted,
+      isDisabled: () => plugins.status?.woocommerce !== "Active",
     },
     actions: {
       buttonClick: (data, setShowModal) => {
@@ -111,8 +113,8 @@ const GeneralSettings = (plugins) => [
         pluginUnavailable: {
           contentType: "component",
           content: PluginsUnavailable,
-          pluginName:"Paypal",
-          token:plugins.token,
+          pluginName: "Paypal",
+          token: plugins.token,
           isFullScreen: false,
           onClose: [],
         },
@@ -135,6 +137,7 @@ const GeneralSettings = (plugins) => [
     }),
     state: {
       taskCompleted: (state) => state?.yithOnboardingShippoRefresh?.isCompleted,
+      isDisabled: () => plugins.status?.woocommerce !== "Active",
     },
     actions: {
       buttonClick: (data, setShowModal) => {
@@ -170,8 +173,8 @@ const GeneralSettings = (plugins) => [
         pluginUnavailable: {
           contentType: "component",
           content: PluginsUnavailable,
-          pluginName:"Shippo",
-          token:plugins.token,
+          pluginName: "Shippo",
+          token: plugins.token,
           isFullScreen: false,
           onClose: [],
         },
@@ -194,6 +197,7 @@ const GeneralSettings = (plugins) => [
     }),
     state: {
       taskCompleted: (state) => state?.wcTasksTaxRefresh?.isCompleted,
+      isDisabled: () => plugins.status?.woocommerce !== "Active",
     },
     actions: {
       buttonClick: (data, setShowModal) => {
