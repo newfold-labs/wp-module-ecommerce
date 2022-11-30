@@ -190,7 +190,7 @@ export function StoreAddress({ onComplete, isMandatory = false }) {
                   key={currency.code}
                   value={currency.code}
                   dangerouslySetInnerHTML={{
-                    __html: `${currency.name} (${currency.code})`,
+                    __html: `${currency.name} (${currency.code}) (${currency.symbol})`,
                   }}
                 />
               ))}
