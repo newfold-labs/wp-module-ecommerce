@@ -58,37 +58,6 @@
   }
 }
 
-div.nfd-ecommerce-store-address-form {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  gap: 24px;
-  padding: 0 0 76px;
-  label {
-    display: block;
-    font-size: 18px;
-    line-height: 1;
-    padding-bottom: 13px;
-  }
-  input,
-  select {
-    padding-left: 17px;
-    width: 400px;
-    height: 48px;
-    border: 1px solid #d6d6d6;
-    border-radius: 2px;
-  }
-
-  @media (max-width: 960px) {
-    input,
-    select {
-      width: 300px;
-    }
-  }
-
-  @media (max-width: 780px) {
-    grid-template-columns: auto;
-  }
-}
 
 .nfd-ecommerce-modal-header {
   color: var(--nfd-ecommerce-text-primary);

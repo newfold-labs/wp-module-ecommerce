@@ -7,6 +7,7 @@ const CountriesInOFAC = ["CU", "KP", "IR", "RU", "SY", "AF", "BY", "MM", "VN"];
 
 function useBasicProfile() {
   let { data: countries } = useSWR("/wc/v3/data/countries");
+  let { data: currencies } = useSWR("/wc/v3/data/currencies");
   let defaultContact = {
     country: "US",
     state: "AZ",
@@ -16,15 +17,16 @@ function useBasicProfile() {
     woocommerce_store_postcode: "",
   };
   return [
-    !countries,
+    !countries || !currencies,
     defaultContact,
     countries?.filter((_) => !CountriesInOFAC.includes(_.code)),
+    currencies,
   ];
 }
 
 export function StoreAddress({ onComplete, isMandatory = false }) {
   let [address, setAddress] = useState({});
-  let [isLoading, defaultContact, countries] = useBasicProfile();
+  let [isLoading, defaultContact, countries, currencies] = useBasicProfile();
   function handleChange(event) {
     setAddress({ ...address, [event.target.name]: event.target.value });
   }
@@ -83,68 +85,12 @@ export function StoreAddress({ onComplete, isMandatory = false }) {
         </div>
       )}
       <div className="nfd-ecommerce-store-address-form">
-        <div>
-          <label> {__("Address line 1", "wp-module-ecommerce")}</label>
-          <input
-            name="woocommerce_store_address"
-            type="text"
-            required
-            defaultValue={defaultContact.woocommerce_store_address}
-            {...eventHandlers}
-          />
-        </div>
-        <div>
-          <label> {__("Address line 2", "wp-module-ecommerce")}</label>
-          <input
-            name="woocommerce_store_address_2"
-            type="text"
-            defaultValue={defaultContact.woocommerce_store_address_2}
-            {...eventHandlers}
-          />
-        </div>
-        <div>
-          <label> {__("City", "wp-module-ecommerce")}</label>
-          <input
-            name="woocommerce_store_city"
-            type="text"
-            required
-            defaultValue={defaultContact.woocommerce_store_city}
-            {...eventHandlers}
-          />
-        </div>
-        {states.length === 0 || isLoading ? null : (
-          <div>
-            <label> {__("State", "wp-module-ecommerce")}</label>
-            <select
-              type="text"
-              name="state"
-              required
-              defaultValue=""
-              {...eventHandlers}
-            >
-              <option key={""} value={""} selected />
-              {states.map((state) => (
-                <option key={state.code} value={state.code}>
-                  {state.name}
-                </option>
-              ))}
-            </select>
-          </div>
-        )}
-        <div>
-          <label> {__("Postcode/ZIP", "wp-module-ecommerce")}</label>
-          <input
-            name="woocommerce_store_postcode"
-            type="zip"
-            required
-            defaultValue={defaultContact.woocommerce_store_postcode}
-            {...eventHandlers}
-          />
-        </div>
-        <div>
-          <label> {__("Country", "wp-module-ecommerce")}</label>
+        <div data-name="country">
+          <label aria-required>
+            {__("Where is your store based?", "wp-module-ecommerce")}
+          </label>
           {isLoading ? (
-            <input type="text" disabled />
+            <input type="text" name="country" disabled />
           ) : (
             <select
               type="text"
@@ -158,6 +104,94 @@ export function StoreAddress({ onComplete, isMandatory = false }) {
                   key={country.code}
                   value={country.code}
                   dangerouslySetInnerHTML={{ __html: country.name }}
+                />
+              ))}
+            </select>
+          )}
+        </div>
+        <div data-name="woocommerce_store_address">
+          <label aria-required> {__("Address", "wp-module-ecommerce")}</label>
+          <input
+            name="woocommerce_store_address"
+            type="text"
+            required
+            defaultValue={defaultContact.woocommerce_store_address}
+            {...eventHandlers}
+          />
+        </div>
+        <div
+          data-name="full-address"
+          data-state-empty={states.length === 0 || isLoading}
+        >
+          <div data-name="woocommerce_store_city">
+            <label aria-required> {__("City", "wp-module-ecommerce")}</label>
+            <input
+              name="woocommerce_store_city"
+              type="text"
+              required
+              defaultValue={defaultContact.woocommerce_store_city}
+              {...eventHandlers}
+            />
+          </div>
+          {states.length === 0 || isLoading ? null : (
+            <div data-name="state">
+              <label aria-required> {__("State", "wp-module-ecommerce")}</label>
+              <select
+                type="text"
+                name="state"
+                required
+                defaultValue=""
+                {...eventHandlers}
+              >
+                <option key={""} value={""} selected />
+                {states.map((state) => (
+                  <option key={state.code} value={state.code}>
+                    {state.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+          <div data-name="woocommerce_store_postcode">
+            <label aria-required>
+              {__("Postal Code", "wp-module-ecommerce")}
+            </label>
+            <input
+              name="woocommerce_store_postcode"
+              type="zip"
+              required
+              defaultValue={defaultContact.woocommerce_store_postcode}
+              {...eventHandlers}
+            />
+          </div>
+        </div>
+        <div>
+          <label aria-required> {__("Email", "wp-module-ecommerce")}</label>
+          <input
+            name="woocommerce_email_from_address"
+            type="email"
+            required
+            {...eventHandlers}
+          />
+        </div>
+        <div>
+          <label>
+            {__(
+              "What currency do you want to display in your store?",
+              "wp-module-ecommerce"
+            )}
+          </label>
+          {isLoading ? (
+            <input type="text" disabled />
+          ) : (
+            <select name="woocommerce_currency" {...eventHandlers}>
+              {currencies.map((currency) => (
+                <option
+                  key={currency.code}
+                  value={currency.code}
+                  dangerouslySetInnerHTML={{
+                    __html: `${currency.name} (${currency.code})`,
+                  }}
                 />
               ))}
             </select>
