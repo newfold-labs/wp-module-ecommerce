@@ -16,6 +16,10 @@ function updateBacklink() {
   let offset = Object.values(offsets).reduce((a, b) => a + b, 0);
   let backlink = document.querySelector('.nfd-woocommerce-link');
   if (backlink !== null) {
+    let wcHeader = document.querySelector('.woocommerce-layout__header-wrapper');
+    if (wcHeader) {
+      wcHeader.dataset.backlink = 'true';
+    }
     let heightSource = heightSelectors
       .map((selector) => document.querySelector(selector))
       .find((node) => node !== null);

@@ -40,13 +40,6 @@
   width: fit-content;
 }
 
-@media (max-width: 600px) {
-  .mobile.post-php .nfd-woocommerce-link,
-  .mobile.post-new-php .nfd-woocommerce-link {
-    left: 12%;
-  }
-}
-
 .mobile .nfd-woocommerce-link {
   padding-left: 15px;
   font-size: 13px;
@@ -64,4 +57,22 @@
 
 body.is-wc-nav-folded .nfd-woocommerce-link {
   left: 60px;
+}
+
+body.has-woocommerce-navigation.is-wc-nav-expanded .nfd-woocommerce-link {
+  left: min(240px, 40vw);
+}
+
+.woocommerce-layout__header-wrapper[data-backlink="true"] > h1 {
+  visibility: hidden;
+}
+
+@media (max-width: 600px) {
+  body.mobile .nfd-woocommerce-link {
+    width: fit-content;
+  }
+  .mobile.post-php .nfd-woocommerce-link,
+  .mobile.post-new-php .nfd-woocommerce-link {
+    left: 12%;
+  }
 }
