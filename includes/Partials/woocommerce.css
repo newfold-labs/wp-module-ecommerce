@@ -76,3 +76,10 @@ body.has-woocommerce-navigation.is-wc-nav-expanded .nfd-woocommerce-link {
     left: 12%;
   }
 }
+
+@media (max-width: 350px) {
+  .mobile.post-php .nfd-woocommerce-link,
+  .mobile.post-new-php .nfd-woocommerce-link {
+    display: none;
+  }
+}
