@@ -80,7 +80,7 @@ const ManageProducts = (plugins) => [
   {
     Card: StandardCard,
     shouldRender: (state) =>
-      plugins?.status.yith_woocommerce_gift_cards_panel !== "Not Installed" &&
+      plugins?.status.yith_woocommerce_gift_cards_panel === "Active" &&
       state?.hasUsedPlugin === false,
     title: "create_gift_card",
     assets: (state) => ({ Icon: GiftCardIcon }),
@@ -110,7 +110,7 @@ const ManageProducts = (plugins) => [
   {
     Card: MultipleActionsCard,
     shouldRender: (state) =>
-      plugins?.status.yith_woocommerce_gift_cards_panel !== "Not Installed" &&
+      plugins?.status.yith_woocommerce_gift_cards_panel === "Active" &&
       state?.hasAddedGiftCards === true,
     title: "manage_gift_card",
     assets: (state) => ({ Icon: GiftCardIcon }),
@@ -147,7 +147,7 @@ const ManageProducts = (plugins) => [
   {
     Card: StandardCard,
     shouldRender: () =>
-      plugins?.status.nfd_slug_yith_woocommerce_booking !== "Not Installed",
+      plugins?.status.nfd_slug_yith_woocommerce_booking === "Active",
     title: "nfd_slug_yith_woocommerce_booking",
     assets: (state) => ({ Icon: BookingIcon }),
     text: (state) => ({
