@@ -24,6 +24,12 @@ div.nfd-ecommerce-store-address-form {
   div[data-name="full-address"] {
     &[data-state-empty="false"] {
       grid-template-columns: repeat(3, auto);
+      @media (min-width: 780px) and (max-width: 960px) {
+        input,
+        select {
+          width: 180px;
+        }
+      }
     }
     &[data-state-empty="true"] {
       grid-template-columns: repeat(2, auto);
