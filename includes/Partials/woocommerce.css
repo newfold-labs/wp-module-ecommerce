@@ -37,14 +37,18 @@
 
 .mobile.post-php .nfd-woocommerce-link,
 .mobile.post-new-php .nfd-woocommerce-link {
-  left: 12%;
   width: fit-content;
 }
 
 .mobile .nfd-woocommerce-link {
-  width: 115px;
-  padding-left: 20px;
+  padding-left: 15px;
   font-size: 13px;
+}
+
+@media (max-width: 960px) {
+  .mobile .nfd-woocommerce-link {
+    width: 115px;
+  }
 }
 
 .is-wp-toolbar-disabled .nfd-woocommerce-link {
@@ -53,4 +57,29 @@
 
 body.is-wc-nav-folded .nfd-woocommerce-link {
   left: 60px;
+}
+
+body.has-woocommerce-navigation.is-wc-nav-expanded .nfd-woocommerce-link {
+  left: min(240px, 40vw);
+}
+
+.woocommerce-layout__header-wrapper[data-backlink="true"] > h1 {
+  visibility: hidden;
+}
+
+@media (max-width: 600px) {
+  body.mobile .nfd-woocommerce-link {
+    width: fit-content;
+  }
+  .mobile.post-php .nfd-woocommerce-link,
+  .mobile.post-new-php .nfd-woocommerce-link {
+    left: 12%;
+  }
+}
+
+@media (max-width: 350px) {
+  .mobile.post-php .nfd-woocommerce-link,
+  .mobile.post-new-php .nfd-woocommerce-link {
+    display: none;
+  }
 }

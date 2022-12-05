@@ -1,11 +1,13 @@
+const offsetSelectors = [
+  '#wpadminbar',
+  '.woocommerce-mobile-app-banner',
+  '.woocommerce-layout__header-tasks-reminder-bar',
+];
+const heightSelectors = ['.woocommerce-layout__header-wrapper'];
+
 function updateBacklink() {
   let offsets = {};
-  const selectors = [
-    '#wpadminbar',
-    '.woocommerce-mobile-app-banner',
-    '.woocommerce-layout__header-tasks-reminder-bar',
-  ];
-  selectors.forEach((selector) => {
+  offsetSelectors.forEach((selector) => {
     const node = document.querySelector(selector);
     if (node !== null) {
       offsets[selector] = node.getBoundingClientRect().height;
@@ -14,8 +16,19 @@ function updateBacklink() {
   let offset = Object.values(offsets).reduce((a, b) => a + b, 0);
   let backlink = document.querySelector('.nfd-woocommerce-link');
   if (backlink !== null) {
-    backlink.style.top = `${offset}px`;
+    let wcHeader = document.querySelector('.woocommerce-layout__header-wrapper');
+    if (wcHeader) {
+      wcHeader.dataset.backlink = 'true';
+    }
+    let heightSource = heightSelectors
+      .map((selector) => document.querySelector(selector))
+      .find((node) => node !== null);
+    if (heightSource) {
+      let height = heightSource.getBoundingClientRect().height;
+      backlink.style.height = `${height}px`;
+    }
   }
+  backlink.style.top = `${offset}px`;
 }
 
 function observeAndAdjustBacklink(event) {
