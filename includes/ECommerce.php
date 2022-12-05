@@ -30,6 +30,8 @@ class ECommerce {
 		'woocommerce_default_country',
 		'wc_connect_taxes_enabled',
 		'woocommerce_calc_taxes',
+		'woocommerce_currency',
+		'woocommerce_email_from_address'
 	);
 
 	/**

@@ -133,7 +133,7 @@ const ManageProducts = (plugins) => [
             : action === "view_gift_card"
             ? "admin.php?page=yith_woocommerce_gift_cards_panel"
             : "admin.php?page=yith_woocommerce_gift_cards_panel&tab=general";
-        window.location.href = getUrl(url);
+        window.location.href = url;
       },
     },
     dataDependencies: [
@@ -162,7 +162,7 @@ const ManageProducts = (plugins) => [
     },
     actions: {
       buttonClick: (state, setShowModal) => {
-        window.location.href = getUrl("admin.php?page=yith_wcbk_panel");
+        window.location.href = "admin.php?page=yith_wcbk_panel";
       },
     },
     dataDependencies: [
