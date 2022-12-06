@@ -47,13 +47,6 @@ div.nfd-ecommerce-store-address-form {
     }
   }
 
-  @media (max-width: 960px) {
-    input,
-    select {
-      width: 300px;
-    }
-  }
-
   @media (max-width: 780px) {
     grid-template-columns: auto;
     padding: 0 24px 76px;
