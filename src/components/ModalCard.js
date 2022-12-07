@@ -1,7 +1,27 @@
 import { Modal } from "@wordpress/components";
+import { useEffect } from "@wordpress/element";
 
 const ModalCard = (props) => {
   const closeModal = () => props.setShowModal(false);
+
+  useEffect(() => {
+    let captiveFlowCompletion = (e) => {
+      if (
+        e.origin === window.location.origin &&
+        e?.data?.type === "captive-flow-completion"
+      ) {
+        for (let refreshDependency of props.modal?.onClose ?? []) {
+          props.onRefresh(refreshDependency);
+        }
+        closeModal();
+      }
+    };
+    let iframeEvent = window.addEventListener("message", captiveFlowCompletion);
+    return () => {
+      window.removeEventListener("message", iframeEvent);
+    };
+  }, []);
+
   return (
     <Modal
       overlayClassName="nfd-ecommerce-modal-overlay"
@@ -22,7 +42,7 @@ const ModalCard = (props) => {
           {...props.modal}
         />
       ) : (
-        { ...props.modal.content }
+        props.modal.content
       )}
     </Modal>
   );
