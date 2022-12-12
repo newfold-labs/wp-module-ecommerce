@@ -9,13 +9,6 @@ import { Endpoints } from "./services";
 
 const fetcher = (path) => apiFetch({ path });
 
-if(window.parent){
-  window.parent.postMessage({
-    type:"captive-flow-completion"
-  },
-  window.location.origin
-  )
-}
 window.NewfoldECommerce = function NewfoldECommerce(props) {
   let {
     data,

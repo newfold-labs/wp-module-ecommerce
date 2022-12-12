@@ -46,6 +46,9 @@ class CaptiveFlow {
 		echo PHP_EOL;
 		echo '<div id="nfd-ecommerce" class="nfd-ecommerce-captive-flow">';
 		echo do_action( 'nfd-ecommerce-captive-flow-paypal' );
+		if (get_option('nfd-ecommerce-captive-flow-paypal', 'false') == 'true') {
+			echo '<script id="captive-flow-completion"> window.parent && window.parent.postMessage({ type: "captive-flow-completion" }, window.location.origin);</script>';
+		}
 		echo '</div>';
 		echo PHP_EOL;
 	}
