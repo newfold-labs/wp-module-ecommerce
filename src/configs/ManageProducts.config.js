@@ -96,7 +96,7 @@ const ManageProducts = (plugins) => [
     },
     actions: {
       buttonClick: (state, setShowModal) => {
-        window.location.href = getUrl("post-new.php?post_type=gift_card");
+        window.location.href = getUrl("post-new.php?post_type=product");
       },
     },
     dataDependencies: [
@@ -129,9 +129,9 @@ const ManageProducts = (plugins) => [
       onSelectAction: (state, action, opts) => {
         let url =
           action === "create_gift_card"
-            ? "post-new.php?post_type=gift_card"
+            ? "post-new.php?post_type=product"
             : action === "view_gift_card"
-            ? "admin.php?page=yith_woocommerce_gift_cards_panel"
+            ? "edit.php?post_type=product"
             : "admin.php?page=yith_woocommerce_gift_cards_panel&tab=general";
         window.location.href = url;
       },
@@ -147,8 +147,8 @@ const ManageProducts = (plugins) => [
   {
     Card: StandardCard,
     shouldRender: () =>
-      plugins?.status.nfd_slug_yith_woocommerce_booking === "Active",
-    title: "nfd_slug_yith_woocommerce_booking",
+      plugins?.status.yith_wcbk_panel === "Active",
+    title: "booking",
     assets: (state) => ({ Icon: BookingIcon }),
     text: (state) => ({
       title: state.hasUsedPlugin ? "Manage Bookings" : "Setup Bookings",
@@ -156,20 +156,20 @@ const ManageProducts = (plugins) => [
     }),
     state: {
       hasUsedPlugin: (data) =>
-        data.nfd_slug_yith_woocommerce_booking.length > 0,
+        data.yith_wcbk_panel.length > 0,
       showCompletedIcon: (data) => false,
       isDisabled: () => plugins.status?.woocommerce !== "Active",
     },
     actions: {
       buttonClick: (state, setShowModal) => {
-        window.location.href = "admin.php?page=yith_wcbk_panel";
+        window.location.href = state.hasUsedPlugin ? "admin.php?page=yith_wcbk_panel" : "post-new.php?post_type=product";
       },
     },
     dataDependencies: [
       {
         endpoint: "/wc/v3/products",
         selector: wcBookings,
-        refresh: "nfd_slug_yith_woocommerce_booking",
+        refresh: "yith_wcbk_panel",
       },
     ],
   },
