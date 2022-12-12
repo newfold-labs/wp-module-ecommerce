@@ -5,13 +5,13 @@ const ModalCard = (props) => {
   const closeModal = () => props.setShowModal(false);
 
   useEffect(() => {
-    let captiveFlowCompletion = (e) => {
+    let captiveFlowCompletion = async (e) => {
       if (
         e.origin === window.location.origin &&
         e?.data?.type === "captive-flow-completion"
       ) {
         for (let refreshDependency of props.modal?.onClose ?? []) {
-          props.onRefresh(refreshDependency);
+          await props.onRefresh(refreshDependency);
         }
         closeModal();
       }
