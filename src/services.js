@@ -49,5 +49,5 @@ export async function createProduct(data) {
     path: Endpoints.WC_PRODUCTS,
     method: 'POST',
     data
-  }).catch((error) => 'failed');
+  }).catch((error) => null);
 }

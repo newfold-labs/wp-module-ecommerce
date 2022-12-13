@@ -97,10 +97,13 @@ const ManageProducts = (plugins) => [
     },
     actions: {
       buttonClick: async (state, setShowModal) => {
-        await createProduct({ type: "gift-card", status: "draft" }).then(
-          (product) =>
-            (window.location.href = `post.php?post=${product?.id}&action=edit`)
-        );
+        let product = await createProduct({
+          type: "gift-card",
+          status: "draft",
+        });
+        window.location.href = product
+          ? `post.php?post=${product.id}&action=edit`
+          : "post-new.php?post_type=product";
       },
     },
     dataDependencies: [
@@ -132,10 +135,13 @@ const ManageProducts = (plugins) => [
     actions: {
       onSelectAction: async (state, action, opts) => {
         if (action === "create_gift_card") {
-          await createProduct({ type: "gift-card", status: "draft" }).then(
-            (product) =>
-              (window.location.href = `post.php?post=${product?.id}&action=edit`)
-          );
+          let product = await createProduct({
+            type: "gift-card",
+            status: "draft",
+          });
+          window.location.href = product
+            ? `post.php?post=${product.id}&action=edit`
+            : "post-new.php?post_type=product";
         } else if (action === "view_gift_card") {
           window.location.href = "edit.php?post_type=product";
         } else {
@@ -171,10 +177,13 @@ const ManageProducts = (plugins) => [
         if (state.hasUsedPlugin) {
           window.location.href = "admin.php?page=yith_wcbk_panel";
         } else {
-          await createProduct({ type: "booking", status: "draft" }).then(
-            (product) =>
-              (window.location.href = `post.php?post=${product?.id}&action=edit`)
-          );
+          let product = await createProduct({
+            type: "booking",
+            status: "draft",
+          });
+          window.location.href = product
+            ? `post.php?post=${product.id}&action=edit`
+            : "post-new.php?post_type=product";
         }
       },
     },
