@@ -6,6 +6,7 @@ export const Endpoints = {
   PAGE_STATUS: '/newfold-ecommerce/v1/user/page-status',
   PLUGIN_STATUS: '/newfold-ecommerce/v1/plugins/status',
   PLUGIN_INSTALL: '/newfold-onboarding/v1/plugins/install',
+  WC_PRODUCTS: '/wc/v3/products',
 };
 export async function fetchWPSettings() {
   return apiFetch({ path: Endpoints.WP_SETTINGS });
@@ -41,4 +42,12 @@ export async function queuePluginInstall(plugin, token, priority = 10) {
     headers: { 'X-NFD-ONBOARDING': token.hash },
     data: { plugin, activate: true, queue: true, priority },
   }).catch((error) => 'failed');
+}
+
+export async function createProduct(data) {
+  return apiFetch({
+    path: Endpoints.WC_PRODUCTS,
+    method: 'POST',
+    data
+  }).catch((error) => null);
 }
