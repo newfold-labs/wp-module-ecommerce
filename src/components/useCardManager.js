@@ -6,7 +6,7 @@ function createDependencyTree(config) {
     .map((_) => _.dataDependencies)
     .flat()
     .reduce(
-      (tree, { endpoint, refresh}) => ({
+      (tree, { endpoint, refresh }) => ({
         ...tree,
         [endpoint]: tree[endpoint] ? [...tree[endpoint], refresh] : [refresh],
       }),
@@ -14,7 +14,7 @@ function createDependencyTree(config) {
     );
 }
 
-function useLoadDependencies(tree) {
+function useLoadDependencies(tree, { refreshInterval }) {
   let endpoints = Object.keys(tree);
   let { data, mutate } = useSWR(
     endpoints,
@@ -29,7 +29,8 @@ function useLoadDependencies(tree) {
         }
       }
       return realisedTree;
-    }
+    },
+    { refreshInterval }
   );
 
   async function onRefresh(dependency) {
@@ -57,9 +58,9 @@ function extractDependencies(realisedTree, cardConfig) {
   );
 }
 
-export const useCardManager = (config) => {
+export const useCardManager = (config, fetchOptions = {}) => {
   const tree = createDependencyTree(config);
-  let { realisedTree, onRefresh } = useLoadDependencies(tree);
+  let { realisedTree, onRefresh } = useLoadDependencies(tree, fetchOptions);
   return config
     .map((cardConfig) => {
       let { state: stateDefinition } = cardConfig;

@@ -5,7 +5,9 @@ import { DashboardContent } from "./DashboardContent";
 
 export function GeneralSettings(props) {
   let { plugins } = props;
-  let cards = useCardManager(GeneralSettingsConfig(plugins));
+  let cards = useCardManager(GeneralSettingsConfig(plugins), {
+    refreshInterval: 8 * 1000,
+  });
   const isLoading = !(cards ?? []).every(
     (cardConfig) => cardConfig.isLoading == false
   );

@@ -1,4 +1,4 @@
-import { useState } from "@wordpress/element";
+import { useEffect, useState } from "@wordpress/element";
 import { ReactComponent as CompletedTask } from "../icons/task-completed-solid.svg";
 import ModalCard from "./ModalCard";
 
@@ -7,6 +7,11 @@ export function MinimalCard(props) {
   let modal = props.modal();
   let { image: Icon } = props.assets(props.state);
   const taskCompleted = props.state.taskCompleted;
+  useEffect(() => {
+    if (taskCompleted && showModal) {
+      setShowModal(false);
+    }
+  }, [taskCompleted, showModal]);
   let { title, actionName } = props.text(taskCompleted);
   const buttonClickHandler = () => {
     const data = {
