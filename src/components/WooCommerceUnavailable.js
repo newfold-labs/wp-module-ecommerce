@@ -32,11 +32,11 @@ export function WooCommerceUnavailable({ wpModules, plugins }) {
     return (
       <Modal
         overlayClassName="nfd-ecommerce-modal-overlay"
-        className="nfd-ecommerce-atoms nfd-ecommerce-modal-wc-install-failed"
+        className="nfd-ecommerce-atoms nfd-ecommerce-modal-plugin-install-failed"
         shouldCloseOnClickOutside
         onRequestClose={() => setInstallationFailed(false)}
       >
-        <div className="nfd-ecommerce-modal-content">
+        <div className="nfd-ecommerce-modal-plugin-install-failed-content">
           <h1>{__(" We hit a snag...", "wp-module-ecommerce")}</h1>
           <span style={{ marginTop: "48px" }}>
             {__(
@@ -80,6 +80,9 @@ export function WooCommerceUnavailable({ wpModules, plugins }) {
                   "wp-module-ecommerce"
                 )}
           </div>
+        </div>
+
+        <div className="actions-container">
           <button disabled={showInProgress} onClick={installWooCommerce}>
             <div
               style={{
@@ -100,8 +103,8 @@ export function WooCommerceUnavailable({ wpModules, plugins }) {
             {__("Contact Support", "wp-module-ecommerce")}
           </a>
         </div>
-        <div style={{ margin: "61px 48px 60px 0" }}>
-          <WCUnAvailableIllustaration />
+        <div className="banner-image">
+          <WCUnAvailableIllustaration className="wcUnAvailableIllustaration" />
         </div>
       </div>
       <div style={{ height: "32px" }} />

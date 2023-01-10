@@ -44,6 +44,7 @@ class ECommerce {
 		'nfd-ecommerce-captive-flow-paypal',
 		'nfd-ecommerce-captive-flow-shippo',
 		'nfd-ecommerce-onboarding-check',
+		'nfd-ecommerce-counter',
 		'woocommerce_store_address',
 		'woocommerce_store_address_2',
 		'woocommerce_store_city',
@@ -51,6 +52,8 @@ class ECommerce {
 		'woocommerce_default_country',
 		'wc_connect_taxes_enabled',
 		'woocommerce_calc_taxes',
+		'woocommerce_currency',
+		'woocommerce_email_from_address'
 	);
 
 	/**
@@ -63,6 +66,7 @@ class ECommerce {
 		// Module functionality goes here
 		add_action( 'admin_bar_menu', array( $this, 'newfold_site_status' ), 200 );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
+		add_action( 'load-toplevel_page_bluehost' , array( $this, 'register_assets') );
 		CaptiveFlow::init();
 		WooCommerceBacklink::init();
 		register_meta(
@@ -123,7 +127,7 @@ class ECommerce {
 	 */
 	public function newfold_site_status( \WP_Admin_Bar $admin_bar ) {
 		if ( current_user_can( 'manage_options' ) ) {
-			$is_coming_soon   = 'true' === get_option( 'mm_coming_soon', 'false' );
+			$is_coming_soon   = 'true' === get_option( 'nfd_coming_soon', 'false' );
 			$status           = $is_coming_soon
 			? '<span id="nfd-site-status-text" style="color:#E01C1C;">' . esc_html__( 'Coming Soon', 'wp-module-ecommerce' ) . '</span>'
 			: '<span id="nfd-site-status-text" style="color:#048200;">' . esc_html__( 'Live', 'wp-module-ecommerce' ) . '</span>';
@@ -137,7 +141,25 @@ class ECommerce {
 				),
 			);
 			$admin_bar->add_menu( $site_status_menu );
-			$admin_bar->remove_menu( 'mojo-home' ); // Remove status added by bwp
+			// Remove status added by newfold-labs/wp-module-coming-soon
+			$menu_name = $this->container->plugin()->id . '-coming_soon';
+			$admin_bar->remove_menu( $menu_name ); 
+		}
+	}
+	
+	/**
+	 * Load WP dependencies into the page.
+	 */
+	public function register_assets() {
+		$asset_file = NFD_ECOMMERCE_BUILD_DIR . 'index.asset.php';
+		if ( file_exists($asset_file) ) {
+			$asset = require_once $asset_file;
+			\wp_enqueue_script(
+				'nfd-ecommerce-dependency',
+				NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Partials/load-dependencies.js',
+				array_merge( $asset['dependencies'], array() ),
+				$asset_file
+			);
 		}
 	}
 }

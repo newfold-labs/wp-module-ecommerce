@@ -7,6 +7,7 @@ export function Card({
   action,
   href,
   variant,
+  disable,
   status = "ready",
   ...props
 }) {
@@ -19,7 +20,7 @@ export function Card({
       className="nfd-ecommerce-card"
       data-variant={variant}
       type="button"
-      disabled={status !== "ready"}
+      disabled={status !== "ready" || disable}
       onClick={() => {
         let [page, qs] = href.split("?");
         let query = new URLSearchParams(qs);

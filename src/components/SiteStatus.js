@@ -1,37 +1,15 @@
 import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
-import { ReactComponent as ComingSoonIllustration } from "../icons/coming-soon-illustration.svg";
-import { ReactComponent as LaunchStoreIllustration } from "../icons/launch-store.svg";
 import { ReactComponent as StoreOnlineIllustration } from "../icons/store-online.svg";
-import { DashboardContent } from "./DashboardContent";
 
 const SiteStatusContent = {
-  comingSoon: {
-    title: __("Launch Your Store!", "wp-module-ecommerce"),
-    subtitle: __(
-      "Once you're ready, click the button below to make your store live to the world!",
-      "wp-module-ecommerce"
-    ),
-    Illustration: LaunchStoreIllustration,
-    cta: __("Launch your store", "wp-module-ecommerce"),
-    status: {
-      text: __("Live", "wp-module-ecommerce"),
-      color: "#048200",
-    },
-  },
-  live: {
-    title: __("Change your site status", "wp-module-ecommerce"),
-    subtitle: __(
-      `Your site is currently "Live", but you can disable your site and put back the "Coming Soon" page if needed.`,
-      "wp-module-ecommerce"
-    ),
-    Illustration: ComingSoonIllustration,
-    cta: __(`Switch back to "Coming Soon" mode`, "wp-module-ecommerce"),
-    status: {
-      text: __("Coming Soon", "wp-module-ecommerce"),
-      color: "#E01C1C",
-    },
-  },
+  title: __("Ready to go live?", "wp-module-ecommerce"),
+  subtitle: __(
+    "Preview your store before setting it live to make sure everything is how you want it. Once you're ready, set your store live!",
+    "wp-module-ecommerce"
+  ),
+  cta: __("Launch your store", "wp-module-ecommerce"),
+  status: { text: __("Live", "wp-module-ecommerce"), color: "#048200" },
 };
 
 export function SiteStatus(props) {
@@ -39,76 +17,83 @@ export function SiteStatus(props) {
   let { toggleComingSoon } = props.actions;
   let { Modal } = props.wpModules;
   let [showModal, setModal] = useState(false);
-  let { title, subtitle, Illustration, cta, status } = wp.comingSoon
-    ? SiteStatusContent.comingSoon
-    : SiteStatusContent.live;
+  let { title, subtitle, cta, status } = SiteStatusContent;
+  let addCurtain = props.plugins?.status?.woocommerce !== "Active";
+  if (!wp.comingSoon && !showModal) {
+    return null;
+  }
   return (
-    <DashboardContent title={title} subtitle={subtitle}>
+    <>
+      <div style={{ height: "32px" }} />
       <div
-        style={{ display: "grid", placeItems: "center", paddingBottom: "32px" }}
+        className={`site-status-banner ${
+          addCurtain ? "nfd-site-status-disable" : ""
+        }`}
       >
-        {!wp.comingSoon ? <div style={{ height: "24px" }} /> : null}
-        <Illustration />
-        {!wp.comingSoon ? (
-          <>
-            <div style={{ height: "3px" }} />
-            <button
-              className="nfd-ecommerce-button"
-              data-variant="flat"
-              onClick={() => window.open(window.location.origin, "_blank")}
-            >
-              <h3>{__("Go to your site!", "wp-module-ecommerce")}</h3>
-            </button>
-            <div style={{ height: "16px" }} />
-          </>
+        <h2>{title}</h2>
+        <div style={{ height: "24px" }} />
+        <div className="content">
+          <p>{subtitle}</p>
+          <button
+            className="nfd-ecommerce-button"
+            data-variant="hollow"
+            onClick={() => window.open(window.location.origin, "_blank")}
+          >
+            <h3>{__("Preview your store", "wp-module-ecommerce")}</h3>
+          </button>
+          <button
+            className="nfd-ecommerce-button"
+            data-variant="flat"
+            onClick={() => {
+              setModal(true);
+              toggleComingSoon().then(() => {
+                let $statusText = document.getElementById(
+                  "nfd-site-status-text"
+                );
+                if ($statusText) {
+                  $statusText.textContent = status.text;
+                  $statusText.style.setProperty("color", status.color);
+                }
+              });
+            }}
+          >
+            <h3>{cta}</h3>
+          </button>
+        </div>
+        {showModal ? (
+          <Modal
+            __experimentalHideHeader
+            overlayClassName="nfd-ecommerce-modal-overlay"
+            className="nfd-ecommerce-atoms nfd-ecommerce-modal nfd-site-live-modal"
+            shouldCloseOnClickOutside
+            onRequestClose={() => setModal(false)}
+          >
+            <div className="nfd-ecommerce-modal-content">
+              <StoreOnlineIllustration
+                style={{ width: "100%" }}
+                className="nfd-ecommerce-hero"
+              />
+              <h1>
+                {__(
+                  "Your store is online and ready for business!",
+                  "wp-module-ecommerce"
+                )}
+              </h1>
+              <span>
+                {__(
+                  `Not ready? You can re-enable the "Coming Soon" mode if you need.`,
+                  "wp-module-ecommerce"
+                )}
+              </span>
+            </div>
+            <div className="nfd-ecommerce-modal-actions">
+              <button onClick={() => setModal(false)}>
+                <h3>{__("Continue", "wp-module-ecommerce")}</h3>
+              </button>
+            </div>
+          </Modal>
         ) : null}
-        <button
-          className="nfd-ecommerce-button"
-          data-variant={wp.comingSoon ? "flat" : "link"}
-          onClick={() => {
-            toggleComingSoon().then(() => {
-              let $statusText = document.getElementById("nfd-site-status-text");
-              if ($statusText) {
-                $statusText.textContent = status.text;
-                $statusText.style.setProperty("color", status.color);
-              }
-              setModal(wp.comingSoon);
-            });
-          }}
-        >
-          <h3>{cta}</h3>
-        </button>
       </div>
-      {showModal ? (
-        <Modal
-          __experimentalHideHeader
-          overlayClassName="nfd-ecommerce-modal-overlay"
-          className="nfd-ecommerce-atoms nfd-ecommerce-modal"
-          shouldCloseOnClickOutside
-          onRequestClose={() => setModal(false)}
-        >
-          <div className="nfd-ecommerce-modal-content">
-            <StoreOnlineIllustration className="nfd-ecommerce-hero" />
-            <h1>
-              {__(
-                "Your store is online and ready for business!",
-                "wp-module-ecommerce"
-              )}
-            </h1>
-            <span>
-              {__(
-                "Not ready? You can re-enable the 'Coming Soon' mode if you need.",
-                "wp-module-ecommerce"
-              )}
-            </span>
-          </div>
-          <div className="nfd-ecommerce-modal-actions">
-            <button onClick={() => setModal(false)}>
-              <h3>{__("Continue", "wp-module-ecommerce")}</h3>
-            </button>
-          </div>
-        </Modal>
-      ) : null}
-    </DashboardContent>
+    </>
   );
 }

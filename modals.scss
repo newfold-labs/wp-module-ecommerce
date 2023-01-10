@@ -58,30 +58,11 @@
   }
 }
 
-div.nfd-ecommerce-store-address-form {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  gap: 24px;
-  padding: 0 0 76px;
-  label {
-    display: block;
-    font-size: 18px;
-    line-height: 1;
-    padding-bottom: 13px;
-  }
-  input,
-  select {
-    padding-left: 17px;
-    width: 400px;
-    height: 48px;
-    border: 1px solid #d6d6d6;
-    border-radius: 2px;
-  }
-}
 
 .nfd-ecommerce-modal-header {
   color: var(--nfd-ecommerce-text-primary);
   font: 274 40px/1.2 var(--nfd-ecommerce-font-primary);
+  text-align: center;
   margin: 0;
 }
 .nfd-ecommerce-modal-header-description {
@@ -112,7 +93,7 @@ div.nfd-ecommerce-store-address-form {
   background-color: #f0f0f0;
 }
 
-.nfd-ecommerce-modal-wc-install-failed {
+.nfd-ecommerce-modal-plugin-install-failed {
   width: 800px;
   max-height: 100%;
   .components-modal__header {
@@ -120,27 +101,29 @@ div.nfd-ecommerce-store-address-form {
     border: none;
     padding: 0 10px;
   }
-  .nfd-ecommerce-modal-content {
-    max-width: unset;
-    display: grid;
-    grid-auto-flow: row;
-    grid-auto-rows: min-content;
-    place-items: center;
-    span {
-      font-size: 20px;
-      color: var(--nfd-ecommerce-text-secondary);
-    }
-    button {
-      background-color: var(--nfd-ecommerce-accent-primary);
-      border: 2px solid var(--nfd-ecommerce-accent-primary);
-      color: white;
-      width: 247px;
-      height: 56px;
-      margin-top: 32px;
-      cursor: grab;
-    }
-    a {
-      text-decoration: none;
-    }
+}
+
+.nfd-ecommerce-modal-plugin-install-failed-content {
+  max-width: unset;
+  display: grid;
+  grid-auto-flow: row;
+  grid-auto-rows: min-content;
+  place-items: center;
+  padding: 20px 0;
+  span {
+    font-size: 20px;
+    color: var(--nfd-ecommerce-text-secondary);
+  }
+  button {
+    background-color: var(--nfd-ecommerce-accent-primary);
+    border: 2px solid var(--nfd-ecommerce-accent-primary);
+    color: white;
+    width: 247px;
+    height: 56px;
+    margin-top: 32px;
+    cursor: grab;
+  }
+  a {
+    text-decoration: none;
   }
 }
