@@ -44,7 +44,7 @@ const ManageProducts = (plugins) => [
         window.location.href = getUrl(
           state.hasAddedProduct
             ? "edit.php?post_type=product"
-            : "admin.php?page=wc-admin&task=products"
+            : "post-new.php?post_type=product"
         );
       },
     },
