@@ -9,9 +9,13 @@ import { AdvancedFeatures } from "./AdvancedFeatures";
 import { CustomizeStore } from "./CustomizeStore";
 import { GeneralSettings } from "./GeneralSettings";
 import { ManageProducts } from "./ManageProducts";
+import { Marketplace } from "./Marketplace";
 import { useOnboardingCleanup } from "./useOnboardingCleanup";
 import { useSetupYITHWonderTheme } from "./useSetupYITHWonderTheme";
 
+/**
+ * @param {string} stepKey
+ */
 function getStepName(stepKey) {
   switch (stepKey) {
     case "general":
@@ -22,6 +26,8 @@ function getStepName(stepKey) {
       return __("Pages", "wp-module-ecommerce");
     case "features":
       return __("Additional Features", "wp-module-ecommerce");
+    case "recommended":
+      return __("Recommended Plugins", "wp-module-ecommerce");
     default:
       return null;
   }
@@ -31,7 +37,8 @@ const guideSteps = [
   { key: "general", StepContent: GeneralSettings },
   { key: "products", StepContent: ManageProducts },
   { key: "pages", StepContent: CustomizeStore },
-  { key: "features", StepContent: AdvancedFeatures }
+  { key: "features", StepContent: AdvancedFeatures },
+  { key: "recommended", StepContent: Marketplace },
 ];
 
 export function Dashboard(props) {
