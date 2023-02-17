@@ -25,7 +25,7 @@ const getUrl = (href) => {
   return `${page}?${query}`;
 };
 
-const GeneralSettings = (plugins) => [
+const GeneralSettings = (user, plugins) => [
   {
     Card: MinimalCard,
     shouldRender: () => true,
@@ -126,16 +126,15 @@ const GeneralSettings = (plugins) => [
   },
   {
     Card: MinimalCard,
-    shouldRender: () => true,
+    shouldRender: (state) => !state?.isBHINCustomer,
     title: YithOptions.shippo,
-    assets: () => ({
-      image: Shipping,
-    }),
+    assets: () => ({ image: Shipping }),
     text: (taskCompleted) => ({
       title: "Shipping",
       actionName: taskCompleted ? "Edit Settings" : "Setup",
     }),
     state: {
+      isBHINCustomer: () => user?.brand === "bluehost-india",
       taskCompleted: (state) => state?.yithOnboardingShippoRefresh?.isCompleted,
       isDisabled: () => plugins.status?.woocommerce !== "Active",
     },
