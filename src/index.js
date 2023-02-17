@@ -9,6 +9,19 @@ import { Endpoints } from "./services";
 
 const fetcher = (path) => apiFetch({ path });
 
+/**
+ * @typedef {object} NewfoldECommerceOptions
+ * @property {{ wp: Record<string, boolean>}} state
+ * @property {Record<string, any>} wpModules
+ * @property {Record<string, any>} actions
+ * @property {string} section
+ */
+
+/**
+ *
+ * @param {NewfoldECommerceOptions} props
+ * @returns {import("react").ReactElement}
+ */
 window.NewfoldECommerce = function NewfoldECommerce(props) {
   let {
     data,
@@ -23,14 +36,14 @@ window.NewfoldECommerce = function NewfoldECommerce(props) {
     ...(data ?? {}),
     refresh: refreshPlugins,
   };
-  let Hero =
-    plugins.status?.woocommerce === "Active" ? Banner : WooCommerceUnavailable;
+  let isWooActive = props.state.wp.isWooActive;
+  let Hero = isWooActive ? Banner : WooCommerceUnavailable;
   return (
     <SWRConfig
       value={{
         fetcher,
         revalidateOnReconnect: false,
-        isPaused: () => plugins.status?.woocommerce !== "Active",
+        isPaused: () => !isWooActive,
       }}
     >
       <div className="nfd-ecommerce-atoms nfd-ecommerce-setup">
