@@ -14,10 +14,10 @@ const HighProductVolumes = ['11-100', '101-1000', '1000+'];
 export function useOnboardingCleanup(hash) {
   let [cleanupStatus, setCleanupStatus] = useState(false);
   let { data: flow, error: flowError } = useSWRImmutable(
-    '/newfold-onboarding/v1/flow'
+    hash ? '/newfold-onboarding/v1/flow' : null
   );
   let { data: settings, error: settingsError } = useSWRImmutable(
-    Endpoints.WP_SETTINGS
+    hash ? Endpoints.WP_SETTINGS : null
   );
   useEffect(async () => {
     if (flow && settings && hash) {
