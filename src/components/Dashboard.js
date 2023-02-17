@@ -44,11 +44,16 @@ const guideSteps = [
 export function Dashboard(props) {
   const { navigate } = props.wpModules;
   const isLargeViewport = useViewportMatch("mobile", ">=");
+  let isUpsellNeeded =
+    props.state.wp.isWooActive && !props.state.wp.isOnECommercePlan;
   let { key, StepContent } =
-    guideSteps.find((step) => step.key === props.section) ?? guideSteps[0];
+    guideSteps
+      .filter((step) =>
+        isUpsellNeeded ? step.key !== "features" : step.key !== "recommended"
+      )
+      .find((step) => step.key === props.section) ?? guideSteps[0];
   useSetupYITHWonderTheme();
   let isCleanUpInProgress = useOnboardingCleanup(props.plugins.token?.hash);
-  let addCurtain = props.plugins?.status?.woocommerce !== "Active";
   function onBackButtonClick() {
     navigate("/home/store");
   }
