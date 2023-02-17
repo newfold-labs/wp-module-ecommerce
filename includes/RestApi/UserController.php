@@ -4,6 +4,7 @@ namespace NewfoldLabs\WP\Module\ECommerce\RestApi;
 
 use NewfoldLabs\WP\Module\ECommerce\Permissions;
 use function NewfoldLabs\WP\ModuleLoader\container;
+use NewfoldLabs\WP\Module\Onboarding\Data\Data;
 
 class UserController {
 
@@ -33,7 +34,21 @@ class UserController {
 		);
 		$pages = \get_pages( $args );
 		$theme = \wp_get_theme();
+		$brand = 'newfold';
+		$customer = array(
+			plan_subtype => 'wc_premium'
+		);
+		if (class_exists('NewfoldLabs\WP\Module\Onboarding\Data\Data')) {
+			$brand_details = Data::current_brand();
+			$brand = $brand_details['brand'];
+			$customer_from_options = Data::customer_data();
+			if ($customer_from_options != false) {
+				$customer = $customer_from_options;
+			}
+		}
 		return array(
+			'details' => $customer,
+			'brand' => $brand,
 			'theme' => array(
 				'manage'   => Permissions::rest_can_manage_themes(),
 				'template' => $theme->get_template(),

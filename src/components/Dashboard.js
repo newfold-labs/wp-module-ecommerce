@@ -39,7 +39,7 @@ export function Dashboard(props) {
   const isLargeViewport = useViewportMatch("mobile", ">=");
   let { key, StepContent } =
     guideSteps.find((step) => step.key === props.section) ?? guideSteps[0];
-  useSetupYITHWonderTheme();
+  useSetupYITHWonderTheme(props.user);
   let isCleanUpInProgress = useOnboardingCleanup(props.plugins.token?.hash);
   let addCurtain = props.plugins?.status?.woocommerce !== "Active";
   function onBackButtonClick() {
