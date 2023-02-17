@@ -5,11 +5,12 @@ import { ReactComponent as CustomizeAccount } from "../icons/customize-account.s
 import { ReactComponent as Filter } from "../icons/filter.svg";
 import { ReactComponent as Gift } from "../icons/gift.svg";
 import { ReactComponent as Search } from "../icons/search.svg";
+import { ReactComponent as Store } from "../icons/store.svg";
 import { ReactComponent as WishList } from "../icons/wishlist.svg";
 import { Endpoints, queuePluginInstall } from "../services";
 import { wcPluginStatusParser } from "./selectors";
 
-const GeneralSettings = (plugins) => [
+const AdvancedFeatures = (user, plugins) => [
   {
     Card: ExtendedCard,
     shouldRender: () => true,
@@ -272,6 +273,50 @@ const GeneralSettings = (plugins) => [
     },
     dataDependencies: [],
   },
+  {
+    Card: ExtendedCard,
+    shouldRender: (state) => state.isAvailable,
+    title: "nfd_slug_ecomdash_wordpress_plugin",
+    assets: () => ({ image: Store }),
+    text: (actionCompleted) => ({
+      title: __(
+        "Sell your products across multiple marketplaces",
+        "wp-module-ecommerce"
+      ),
+      description: __(
+        "Ecomdash is a multi-channel inventory control, listing, dropshipping and shipping management system.",
+        "wp-module-ecommerce"
+      ),
+      actionName: actionCompleted ? "Manage" : "Enable",
+      slug: "nfd_slug_ecomdash_wordpress_plugin",
+    }),
+    state: {
+      actionCompleted: () =>
+        plugins?.status?.["nfd_slug_ecomdash_wordpress_plugin"] === "Active",
+      actionInProgress: () =>
+        plugins?.status?.["queue-status"].some(
+          (queue) => queue.slug === "nfd_slug_ecomdash_wordpress_plugin"
+        ),
+      isQueueEmpty: () => plugins?.status?.["queue-status"].length === 0,
+      isDisabled: () => plugins.status?.woocommerce !== "Active",
+      isAvailable: () => user?.details?.plan_subtype === "wc_premium",
+    },
+    actions: {
+      buttonClick: (actionCompleted) => {
+        if (actionCompleted) {
+          window.location.href =
+            "admin.php?page=nfd_slug_ecomdash_wordpress_plugin";
+        } else {
+          queuePluginInstall(
+            "nfd_slug_ecomdash_wordpress_plugin",
+            plugins.token,
+            15
+          );
+        }
+      },
+    },
+    dataDependencies: [],
+  },
 ];
 
-export default GeneralSettings;
+export default AdvancedFeatures;

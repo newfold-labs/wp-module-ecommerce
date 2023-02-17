@@ -4,8 +4,8 @@ import { DashboardContent } from "./DashboardContent";
 import { useCardManager } from "./useCardManager";
 
 export function AdvancedFeatures(props) {
-  let { plugins } = props;
-  let cards = useCardManager(AdvancedFeaturesConfig(plugins));
+  let { user, plugins } = props;
+  let cards = useCardManager(AdvancedFeaturesConfig(user, plugins));
   const isLoading = !(cards ?? []).every(
     (cardConfig) => cardConfig.isLoading == false
   );
