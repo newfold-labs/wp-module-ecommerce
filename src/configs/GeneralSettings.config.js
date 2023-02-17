@@ -38,6 +38,7 @@ const GeneralSettings = (user, plugins) => [
       actionName: taskCompleted ? "Edit Info" : "Add Info",
     }),
     state: {
+      brand: () => user?.brand,
       taskCompleted: (state) => state?.wcTasksRefresh?.isCompleted,
       isDisabled: () => plugins.status?.woocommerce !== "Active",
     },
@@ -59,9 +60,10 @@ const GeneralSettings = (user, plugins) => [
         refresh: "wcTasksRefresh",
       },
     ],
-    modal: () => ({
+    modal: (state) => ({
       contentType: "component",
       content: StoreAddress,
+      state,
       isFullScreen: false,
       onClose: ["wcTasksRefresh"],
     }),

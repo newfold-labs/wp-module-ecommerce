@@ -4,7 +4,7 @@ import ModalCard from "./ModalCard";
 
 export function MinimalCard(props) {
   const [showModal, setShowModal] = useState(null);
-  let modal = props.modal();
+  let modal = props.modal(props.state);
   let { image: Icon } = props.assets(props.state);
   const taskCompleted = props.state.taskCompleted;
   useEffect(() => {
