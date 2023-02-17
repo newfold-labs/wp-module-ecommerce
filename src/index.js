@@ -1,5 +1,6 @@
 import apiFetch from "@wordpress/api-fetch";
 import useSWR, { SWRConfig } from "swr";
+import useSWRImmutable from "swr/immutable";
 import { Banner } from "./components/Banner";
 import { Dashboard } from "./components/Dashboard";
 import { SiteStatus } from "./components/SiteStatus";
@@ -18,6 +19,7 @@ window.NewfoldECommerce = function NewfoldECommerce(props) {
     revalidateOnReconnect: false,
     refreshInterval: 10 * 1000,
   });
+  let { data: user } = useSWRImmutable(Endpoints.PAGE_STATUS, fetcher);
   let plugins = {
     errors: error,
     ...(data ?? {}),
@@ -42,10 +44,10 @@ window.NewfoldECommerce = function NewfoldECommerce(props) {
           </div>
         ) : (
           <>
-            <Hero plugins={plugins} {...props} />
-            <StoreAnalytics plugins={plugins} {...props} />
-            <Dashboard plugins={plugins} {...props} />
-            <SiteStatus plugins={plugins} {...props} />
+            <Hero plugins={plugins} user={user} {...props} />
+            <StoreAnalytics plugins={plugins} user={user} {...props} />
+            <Dashboard plugins={plugins} user={user} {...props} />
+            <SiteStatus plugins={plugins} user={user} {...props} />
           </>
         )}
       </div>
