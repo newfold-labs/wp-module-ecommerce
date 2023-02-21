@@ -305,7 +305,7 @@ const AdvancedFeatures = (user, plugins) => [
       buttonClick: (actionCompleted) => {
         if (actionCompleted) {
           window.location.href =
-            "admin.php?page=nfd_slug_ecomdash_wordpress_plugin";
+            "admin.php?page=newfold-ecomdash";
         } else {
           queuePluginInstall(
             "nfd_slug_ecomdash_wordpress_plugin",

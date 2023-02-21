@@ -54,11 +54,12 @@ class PluginsController {
 			'yith_wcas_panel',
 			'yith_paypal_payments',
 			'yith_shippo_shipping_for_woocommerce',
+			'nfd_slug_ecomdash_wordpress_plugin'
 		);
 		foreach ( $plugins as $plugin ) {
-			$map = Plugins::get_slug_map( $plugin );
-			if ( file_exists( WP_PLUGIN_DIR . '/' . $map[1] ) ) {
-				$active = is_plugin_active( $map[1] );
+			$file = Plugins::get_init_file( $plugin );
+			if ( file_exists( WP_PLUGIN_DIR . '/' . $file ) ) {
+				$active = is_plugin_active( $file );
 				if ( $active ) {
 					$status[ $plugin ] = 'Active';
 				} else {
