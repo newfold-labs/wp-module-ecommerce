@@ -49,7 +49,7 @@ export function MinimalCard(props) {
     title,
     actionName,
     inProgressMessage = "",
-  } = props.text(taskCompleted, taskInProgress);
+  } = props.text(taskCompleted, taskStatus);
   const buttonClickHandler = () => {
     props.actions.buttonClick(props.state, setShowModal);
   };

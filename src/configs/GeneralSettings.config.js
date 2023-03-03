@@ -138,10 +138,11 @@ const GeneralSettings = (user, plugins) => [
     shouldRender: (state) => state.isBHINCustomer,
     title: CaptiveFlows.razorpay,
     assets: () => ({ image: Payments }),
-    text: (taskCompleted, taskInProgress) => ({
+    text: (taskCompleted, taskStatus) => ({
       title: "Payments",
       actionName: taskCompleted ? "Edit Settings" : "Setup",
-      inProgressMessage: taskInProgress ? "Test mode is active" : "",
+      inProgressMessage:
+        taskStatus === "inprogress" ? "Test mode is active" : "",
     }),
     state: {
       razorpaySettings: (data) => data.razorpaySetup.settings,
