@@ -10,6 +10,7 @@ const ModalCard = (props) => {
       isFullScreen={props.modal.isFullScreen}
       shouldCloseOnEsc={false}
       shouldCloseOnClickOutside={false}
+      style={props.modal.style ?? {}}
       onRequestClose={closeModal}
     >
       {props.modal.contentType == "component" ? (
