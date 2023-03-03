@@ -6,7 +6,7 @@
 @import "./src/sections/StoreAnalytics.scss";
 @import "./src/sections/WooCommerceUnavailable.scss";
 @import "./src/sections/StoreAddress.scss";
-
+@import "./src/sections/WordPress.scss";
 
 .nfd-ecommerce-setup {
   margin: 0;
@@ -205,9 +205,9 @@
     }
   }
 
-  .nfd-ecommerce-taskCompleted {
+  .nfd-ecommerce-taskCompleted, .task-status-needed {
     position: relative;
-    .nfd-ecommerce-taskCompleted-image {
+    .nfd-ecommerce-taskCompleted-image, .task-status-indicator {
       position: absolute;
       top: 8px;
       right: 8px;
