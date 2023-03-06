@@ -35,9 +35,10 @@ class UserController {
 		);
 		$pages = \get_pages( $args );
 		$theme = \wp_get_theme();
-		$brand  = \get_option('mm_brand', 'newfold' );
+		$brand_raw_value  = \get_option('mm_brand', 'newfold' );
+		$brand = \sanitize_title_with_dashes( strtolower( str_replace( '_', '-', $brand_raw_value ) ) );
 		$customer = array(
-			plan_subtype => 'wc_premium'
+			plan_subtype => 'unknown'
 		);
 		$brands = Brands::get_brands();
 		$currentBrandConfig = $brands[$brand];

@@ -114,7 +114,7 @@ export function CaptiveRazorpay({ onComplete, settings }) {
         <p>
           {__("Already have an account? ", "wp-module-ecommerce")}
           <a
-            href="https://dashboard.razorpay.com/signin?screen=sign_in&source=bluehost"
+            href="https://dashboard.razorpay.com/?screen=sign_in&source=bluehost&next=app%2Fwebsite-app-settings%2Fapi-keys"
             target="_blank"
           >
             {__("Login", "wp-module-ecommerce")}
