@@ -18,7 +18,7 @@ let DefaultBHContact = {
 let DefaultBHINContact = {
   ...DefaultBHContact,
   country: "IN",
-  state: "TN",
+  state: "AP",
   woocommerce_currency: "INR",
 };
 
