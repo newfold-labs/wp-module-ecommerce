@@ -11,7 +11,7 @@ const isEmpty = (object) => Object.keys(object).length === 0;
 
 const HighProductVolumes = ['11-100', '101-1000', '1000+'];
 
-export function useOnboardingCleanup(hash) {
+export function useOnboardingCleanup(hash, user) {
   let [cleanupStatus, setCleanupStatus] = useState(false);
   let { data: flow, error: flowError } = useSWRImmutable(
     '/newfold-onboarding/v1/flow'
@@ -20,7 +20,7 @@ export function useOnboardingCleanup(hash) {
     Endpoints.WP_SETTINGS
   );
   useEffect(async () => {
-    if (flow && settings && hash) {
+    if (flow && settings && hash && user) {
       setCleanupStatus(true);
       let flowCheckpoint = flow.updatedAt ?? flow.createdAt;
       let previousCheckpoint = Number(
@@ -34,6 +34,7 @@ export function useOnboardingCleanup(hash) {
           ),
         });
       }
+      let brandFeatures = user.currentBrandConfig;
       if (isNaN(previousCheckpoint) || previousCheckpoint < flowCheckpoint) {
         let { productInfo } = flow.storeDetails;
         let wcOnboardingProfile = {};
@@ -61,7 +62,9 @@ export function useOnboardingCleanup(hash) {
           );
         }
         for (const product_type of productInfo.product_types) {
-          if (product_type === 'physical') {
+          let isShippoAvailable =
+            brandFeatures?.setup?.shipping?.includes('Shippo');
+          if (product_type === 'physical' && isShippoAvailable) {
             await queuePluginInstall(
               'nfd_slug_yith_shippo_shippings_for_woocommerce',
               { hash },
@@ -86,6 +89,6 @@ export function useOnboardingCleanup(hash) {
     if (flowError || settingsError) {
       setCleanupStatus(false);
     }
-  }, [flow, settings, hash]);
+  }, [flow, settings, hash, user]);
   return cleanupStatus;
 }
