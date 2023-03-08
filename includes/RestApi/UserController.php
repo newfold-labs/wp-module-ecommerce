@@ -50,7 +50,6 @@ class UserController {
 		}
 		return array(
 			'details' => $customer,
-			'brand' => $brand,
 			'currentBrandConfig' => $currentBrandConfig,
 			'theme' => array(
 				'manage'   => Permissions::rest_can_manage_themes(),

@@ -44,7 +44,7 @@ const GeneralSettings = (user, plugins) => [
       actionName: taskCompleted ? "Edit Info" : "Add Info",
     }),
     state: {
-      brand: () => user?.brand,
+      brandConfig: () => user?.currentBrandConfig,
       taskCompleted: (state) => state?.wcTasksRefresh?.isCompleted,
       isDisabled: () => plugins.status?.woocommerce !== "Active",
     },
@@ -76,7 +76,8 @@ const GeneralSettings = (user, plugins) => [
   },
   {
     Card: MinimalCard,
-    shouldRender: (state) => !state.isBHINCustomer,
+    shouldRender: (state) =>
+      user?.currentBrandConfig?.setup?.["payment"].includes("Paypal"),
     title: CaptiveFlows.paypal,
     assets: () => ({
       image: Payments,
@@ -86,7 +87,6 @@ const GeneralSettings = (user, plugins) => [
       actionName: taskCompleted ? "Edit Settings" : "Setup",
     }),
     state: {
-      isBHINCustomer: () => user?.brand === "bluehost-india",
       taskCompleted: (state) => state?.yithOnboardingRefresh?.isCompleted,
       isDisabled: () => plugins.status?.woocommerce !== "Active",
     },
@@ -135,7 +135,8 @@ const GeneralSettings = (user, plugins) => [
   },
   {
     Card: MinimalCard,
-    shouldRender: (state) => state.isBHINCustomer,
+    shouldRender: (state) =>
+      user?.currentBrandConfig?.setup?.["payment"].includes("Razorpay"),
     title: CaptiveFlows.razorpay,
     assets: () => ({ image: Payments }),
     text: (taskCompleted, taskStatus) => ({
@@ -146,7 +147,6 @@ const GeneralSettings = (user, plugins) => [
     }),
     state: {
       razorpaySettings: (data) => data.razorpaySetup.settings,
-      isBHINCustomer: () => user?.brand === "bluehost-india",
       taskCompleted: (data) => data?.razorpaySetup?.isCompleted,
       taskStatus: (data) =>
         data?.razorpaySetup?.isCompleted
@@ -178,6 +178,7 @@ const GeneralSettings = (user, plugins) => [
         pluginAvailable: {
           contentType: "component",
           content: CaptiveRazorpay,
+          hireExpertsUrl: user?.currentBrandConfig?.hireExpertsInfo,
           settings: state.razorpaySettings,
           isFullScreen: false,
           style: { width: "800px" },
@@ -199,7 +200,8 @@ const GeneralSettings = (user, plugins) => [
   },
   {
     Card: MinimalCard,
-    shouldRender: (state) => !state?.isBHINCustomer,
+    shouldRender: (state) =>
+      user?.currentBrandConfig?.setup?.["shipping"].includes("Shippo"),
     title: CaptiveFlows.shippo,
     assets: () => ({ image: Shipping }),
     text: (taskCompleted) => ({
@@ -207,7 +209,7 @@ const GeneralSettings = (user, plugins) => [
       actionName: taskCompleted ? "Edit Settings" : "Setup",
     }),
     state: {
-      isBHINCustomer: () => user?.brand === "bluehost-india",
+      brandConfig: () => user?.currentBrandConfig,
       taskCompleted: (state) => state?.yithOnboardingShippoRefresh?.isCompleted,
       isDisabled: () => plugins.status?.woocommerce !== "Active",
     },
@@ -290,6 +292,7 @@ const GeneralSettings = (user, plugins) => [
     modal: () => ({
       contentType: "component",
       content: Tax,
+      hireExpertsUrl: user?.currentBrandConfig?.hireExpertsInfo,
       isFullScreen: false,
       onClose: ["wcTasksTaxRefresh"],
     }),

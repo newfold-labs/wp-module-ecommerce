@@ -11,8 +11,8 @@ import { updateWPSettings } from "../services";
 
 /** @type {((key: string) => boolean)[]} */
 const KeyChecks = [
-  (key) => key.startsWith("rzp_test_"),
-  (key) => key.startsWith("rzp_live_"),
+  (key) => key?.startsWith("rzp_test_"),
+  (key) => key?.startsWith("rzp_live_"),
 ];
 
 const Content = {
@@ -57,7 +57,7 @@ const rzrPaySettings = {
   enable_1cc_debug_mode: "yes",
 };
 
-export function CaptiveRazorpay({ onComplete, settings }) {
+export function CaptiveRazorpay({ onComplete, settings, hireExpertsUrl }) {
   let [isTestMode, setTestMode] = useState(() =>
     settings?.key_id?.startsWith("rzp_test_")
   );
@@ -193,7 +193,7 @@ export function CaptiveRazorpay({ onComplete, settings }) {
       <p style={{ justifySelf: "end" }}>
         <em>
           {__("Need help?", "wp-module-ecommerce")}{" "}
-          <a href="admin.php?page=bluehost#/marketplace/services/blue-sky">
+          <a href={hireExpertsUrl}>
             {__("Hire our experts", "wp-module-ecommerce")}
           </a>
         </em>
