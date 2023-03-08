@@ -4,7 +4,7 @@ import {
   TextControl,
   ToggleControl,
 } from "@wordpress/components";
-import { useState } from "@wordpress/element";
+import { useEffect, useState } from "@wordpress/element";
 import { sprintf, __ } from "@wordpress/i18n";
 import { ReactComponent as RazorPayBrand } from "../icons/razorpay-brand.svg";
 import { updateWPSettings } from "../services";
@@ -58,13 +58,17 @@ const rzrPaySettings = {
 };
 
 export function CaptiveRazorpay({ onComplete, settings, hireExpertsUrl }) {
-  let [isTestMode, setTestMode] = useState(() =>
-    settings?.key_id?.startsWith("rzp_test_")
-  );
-  let [rzrKeys, updateKeys] = useState(() => ({
-    key_id: settings?.key_id,
-    key_secret: settings?.key_secret,
-  }));
+  let [isTestMode, setTestMode] = useState(() => false);
+  let [rzrKeys, updateKeys] = useState({
+    key_id: "",
+    key_secret: "",
+  });
+  useEffect(() => {
+    if (settings) {
+      setTestMode(settings?.key_id?.startsWith("rzp_test_"));
+      updateKeys(settings);
+    }
+  }, [settings]);
   let isFormDisabled = settings === undefined;
   let [isTestKeyValid, isProductionKeyValid] = KeyChecks.map(
     (check) => rzrKeys.key_id === "" || check(rzrKeys.key_id)
@@ -81,7 +85,7 @@ export function CaptiveRazorpay({ onComplete, settings, hireExpertsUrl }) {
         });
         await onComplete();
       }}
-      style={{ display: "grid", padding: "40px 40px 1em", gap: "1.5em" }}
+      style={{ display: "grid", padding: "40px 40px 0.3em", gap: "1.5em" }}
     >
       <h1 style={{ justifySelf: "center" }}>
         {__("Connect your Razorpay Account", "wp-module-ecommerce")}
@@ -105,6 +109,7 @@ export function CaptiveRazorpay({ onComplete, settings, hireExpertsUrl }) {
           )}
         </p>
         <Button
+          className="nfd-ecommerce-button"
           variant="secondary"
           target="_blank"
           href="https://rzp.io/i/egoPZR2rbu"
@@ -191,10 +196,20 @@ export function CaptiveRazorpay({ onComplete, settings, hireExpertsUrl }) {
       <ButtonGroup
         style={{ justifySelf: "end", display: "inline-flex", gap: "1em" }}
       >
-        <Button variant="secondary" type="button" onClick={onComplete}>
+        <Button
+          className="nfd-ecommerce-button"
+          variant="secondary"
+          type="button"
+          onClick={onComplete}
+        >
           {__("Cancel", "wp-module-ecommerce")}
         </Button>
-        <Button variant="primary" type="submit" disabled={!isKeyValid}>
+        <Button
+          className="nfd-ecommerce-button"
+          variant="primary"
+          type="submit"
+          disabled={!isKeyValid}
+        >
           {__("Save", "wp-module-ecommerce")}
         </Button>
       </ButtonGroup>

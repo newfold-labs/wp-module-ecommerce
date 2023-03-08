@@ -136,24 +136,29 @@ const GeneralSettings = (user, plugins) => [
   {
     Card: MinimalCard,
     shouldRender: (state) =>
-      user?.currentBrandConfig?.setup?.["payment"].includes("Razorpay"),
+      user?.currentBrandConfig?.setup?.payment.includes("Razorpay"),
     title: CaptiveFlows.razorpay,
     assets: () => ({ image: Payments }),
-    text: (taskCompleted, taskStatus) => ({
+    text: (_, taskStatus) => ({
       title: "Payments",
-      actionName: taskCompleted ? "Edit Settings" : "Setup",
+      actionName: taskStatus === "complete" ? "Edit Settings" : "Setup",
       inProgressMessage:
         taskStatus === "inprogress" ? "Test mode is active" : "",
     }),
     state: {
       razorpaySettings: (data) => data.razorpaySetup.settings,
-      taskCompleted: (data) => data?.razorpaySetup?.isCompleted,
-      taskStatus: (data) =>
-        data?.razorpaySetup?.isCompleted
-          ? "complete"
-          : data?.razorpaySetup?.settings?.key_id?.startsWith("rzp_test_")
-          ? "inprogress"
-          : "pending",
+      taskCompleted: () => false,
+      taskStatus: (data) => {
+        if (plugins.status?.woo_razorpay !== "Active") {
+          return "pending";
+        }
+        const credentials = data?.razorpaySetup?.settings;
+        return data?.razorpaySetup?.hasCompletedSetupOnce
+          ? credentials?.key_id?.startsWith("rzp_live")
+            ? "complete"
+            : "inprogress"
+          : "pending";
+      },
       isDisabled: () => plugins.status?.woocommerce !== "Active",
     },
     actions: {

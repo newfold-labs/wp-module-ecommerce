@@ -49,6 +49,9 @@ class UserController {
 			}
 		}
 		return array(
+			'site' => array (
+				'url' => \get_site_url()
+			),
 			'details' => $customer,
 			'currentBrandConfig' => $currentBrandConfig,
 			'theme' => array(

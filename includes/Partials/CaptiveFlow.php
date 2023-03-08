@@ -17,48 +17,45 @@ class CaptiveFlow {
 	}
 
 	public static function register_options() {
-		$razorpay_status = \get_option( self::$RAZORPAY_CAPTIVE_FLOW, 'false' );
-		if ($razorpay_status == 'false') {
-			\register_setting(
-				'general',
-				'woocommerce_razorpay_settings',
-				array(
-					'show_in_rest' => array(
-						'schema' => array(
-							'type'  => 'object',
-							'properties' => array(
-								'enabled' => array(
-									'type' => 'string',
-								),
-								'title' => array(
-									'type' => 'string',
-								),
-								'description' => array(
-									'type' => 'string',
-								),
-								'key_id' => array(
-									'type' => 'string',
-								),
-								'key_secret' => array(
-									'type' => 'string',
-								),
-								'payment_action' => array(
-									'type' => 'string',
-								),
-								'order_success_message' => array(
-									'type' => 'string',
-								),
-								'enable_1cc_debug_mode' => array(
-									'type' => 'string',
-								),
+		\register_setting(
+			'general',
+			'woocommerce_razorpay_settings',
+			array(
+				'show_in_rest' => array(
+					'schema' => array(
+						'type'  => 'object',
+						'properties' => array(
+							'enabled' => array(
+								'type' => 'string',
+							),
+							'title' => array(
+								'type' => 'string',
+							),
+							'description' => array(
+								'type' => 'string',
+							),
+							'key_id' => array(
+								'type' => 'string',
+							),
+							'key_secret' => array(
+								'type' => 'string',
+							),
+							'payment_action' => array(
+								'type' => 'string',
+							),
+							'order_success_message' => array(
+								'type' => 'string',
+							),
+							'enable_1cc_debug_mode' => array(
+								'type' => 'string',
 							),
 						),
 					),
-					'type'         => 'object',
-					'description'  => __( 'NFD eCommerce RazorPay Options', 'wp-module-ecommerce' ),
-				)
-			);
-		}
+				),
+				'type'         => 'object',
+				'description'  => __( 'NFD eCommerce RazorPay Options', 'wp-module-ecommerce' ),
+			)
+		);
 	}
 
 	public static function enqueue_styles() {

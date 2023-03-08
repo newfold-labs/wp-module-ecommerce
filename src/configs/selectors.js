@@ -12,7 +12,7 @@ export const yithOnboardingParser = (title) => (data) => {
 export const razorpaySelector = (onboardingKey) => (response) => {
   return {
     settings: response?.woocommerce_razorpay_settings,
-    isCompleted: response?.[onboardingKey] == "true",
+    hasCompletedSetupOnce: response?.[onboardingKey] == "true",
   };
 };
 
