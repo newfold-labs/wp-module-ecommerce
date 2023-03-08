@@ -81,7 +81,7 @@ export function CaptiveRazorpay({ onComplete, settings, hireExpertsUrl }) {
         event.preventDefault();
         event.stopPropagation();
         await updateWPSettings({
-          "nfd-ecommerce-captive-flow-razorpay": isTestMode ? "false" : "true",
+          "nfd-ecommerce-captive-flow-razorpay": "true",
           woocommerce_razorpay_settings: { ...rzrPaySettings, ...rzrKeys },
         });
         await onComplete();

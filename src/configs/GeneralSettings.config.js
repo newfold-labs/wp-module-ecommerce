@@ -152,11 +152,11 @@ const GeneralSettings = (user, plugins) => [
         if (plugins.status?.woo_razorpay !== "Active") {
           return "pending";
         }
-        const credentials = data?.razorpaySetup?.settings;
-        return data?.razorpaySetup?.hasCompletedSetupOnce
-          ? credentials?.key_id?.startsWith("rzp_live")
-            ? "complete"
-            : "inprogress"
+        const keyId = data?.razorpaySetup?.settings?.key_id ?? "";
+        return keyId?.startsWith("rzp_live")
+          ? "complete"
+          : keyId?.startsWith("rzp_test")
+          ? "inprogress"
           : "pending";
       },
       isDisabled: () => plugins.status?.woocommerce !== "Active",
@@ -174,7 +174,7 @@ const GeneralSettings = (user, plugins) => [
     dataDependencies: [
       {
         endpoint: Endpoints.WP_SETTINGS,
-        selector: razorpaySelector(CaptiveFlows.razorpay),
+        selector: razorpaySelector,
         refresh: "razorpaySetup",
       },
     ],

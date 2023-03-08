@@ -9,10 +9,9 @@ export const yithOnboardingParser = (title) => (data) => {
   return { isCompleted: data?.[title] == "true" };
 };
 
-export const razorpaySelector = (onboardingKey) => (response) => {
+export const razorpaySelector = (response) => {
   return {
     settings: response?.woocommerce_razorpay_settings,
-    hasCompletedSetupOnce: response?.[onboardingKey] == "true",
   };
 };
 
