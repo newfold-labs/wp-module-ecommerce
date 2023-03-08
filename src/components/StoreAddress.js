@@ -8,25 +8,28 @@ const CountriesInOFAC = ["CU", "KP", "IR", "RU", "SY", "AF", "BY", "MM", "VN"];
 function useBasicProfile() {
   let { data: countries } = useSWR("/wc/v3/data/countries");
   let { data: currencies } = useSWR("/wc/v3/data/currencies");
-  let defaultContact = {
-    country: "US",
-    state: "AZ",
-    woocommerce_store_address: "",
-    woocommerce_store_address_2: "",
-    woocommerce_store_city: "",
-    woocommerce_store_postcode: "",
-  };
   return [
     !countries || !currencies,
-    defaultContact,
     countries?.filter((_) => !CountriesInOFAC.includes(_.code)),
     currencies,
   ];
 }
 
-export function StoreAddress({ onComplete, isMandatory = false }) {
+export function StoreAddress({ onComplete, state, isMandatory = false }) {
   let [address, setAddress] = useState({});
-  let [isLoading, defaultContact, countries, currencies] = useBasicProfile();
+  let [defaultCountry, defaultState] =
+    state?.brandConfig?.defaultContact?.woocommerce_default_country.split(":");
+  let defaultContact = {
+    country: defaultCountry ?? "US",
+    state: defaultState ?? "AZ",
+    woocommerce_currency:
+      state?.brandConfig?.defaultContact?.woocommerce_currency ?? "USD",
+    woocommerce_store_address: "",
+    woocommerce_store_address_2: "",
+    woocommerce_store_city: "",
+    woocommerce_store_postcode: "",
+  };
+  let [isLoading, countries, currencies] = useBasicProfile();
   function handleChange(event) {
     setAddress({ ...address, [event.target.name]: event.target.value });
   }
@@ -48,9 +51,10 @@ export function StoreAddress({ onComplete, isMandatory = false }) {
         await updateWPSettings({
           ...defaultContact,
           ...wcAddress,
-          woocommerce_default_country: states.length > 0 && selectedState 
-            ? `${selectedCountry}:${selectedState}`
-            : selectedCountry,
+          woocommerce_default_country:
+            states.length > 0 && selectedState
+              ? `${selectedCountry}:${selectedState}`
+              : selectedCountry,
         });
         await updateWCOnboarding({ completed: true });
         await onComplete();
@@ -140,7 +144,12 @@ export function StoreAddress({ onComplete, isMandatory = false }) {
                 type="text"
                 name="state"
                 required
-                defaultValue=""
+                defaultValue={
+                  selectedCountry === defaultContact.country &&
+                  address?.state === undefined
+                    ? defaultContact.state
+                    : ""
+                }
                 {...eventHandlers}
               >
                 <option key={""} value={""} selected />
@@ -184,7 +193,17 @@ export function StoreAddress({ onComplete, isMandatory = false }) {
           {isLoading ? (
             <input type="text" disabled />
           ) : (
-            <select name="woocommerce_currency" {...eventHandlers}>
+            <select
+              type="text"
+              name="woocommerce_currency"
+              defaultValue={
+                selectedCountry === defaultContact.country &&
+                address?.woocommerce_currency === undefined
+                  ? defaultContact.woocommerce_currency
+                  : ""
+              }
+              {...eventHandlers}
+            >
               {currencies.map((currency) => (
                 <option
                   key={currency.code}
@@ -204,7 +223,7 @@ export function StoreAddress({ onComplete, isMandatory = false }) {
       <p>
         <em>
           {__("Need help?", "wp-module-ecommerce")}{" "}
-          <a href="admin.php?page=bluehost#/marketplace/services/blue-sky">
+          <a href={state?.brandConfig?.hireExpertsInfo}>
             {__("Hire our experts", "wp-module-ecommerce")}
           </a>
         </em>

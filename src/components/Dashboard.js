@@ -40,7 +40,7 @@ export function Dashboard(props) {
   let { key, StepContent } =
     guideSteps.find((step) => step.key === props.section) ?? guideSteps[0];
   useSetupYITHWonderTheme(props.user);
-  let isCleanUpInProgress = useOnboardingCleanup(props.plugins.token?.hash);
+  let isCleanUpInProgress = useOnboardingCleanup(props.plugins.token?.hash, props.user);
   let addCurtain = props.plugins?.status?.woocommerce !== "Active";
   function onBackButtonClick() {
     navigate("/home/store");

@@ -37,7 +37,7 @@ export function SiteStatus(props) {
           <button
             className="nfd-ecommerce-button"
             data-variant="hollow"
-            onClick={() => window.open(window.location.origin, "_blank")}
+            onClick={() => window.open(props.user?.site.url, "_blank")}
           >
             <h3>{__("Preview your store", "wp-module-ecommerce")}</h3>
           </button>

@@ -4,8 +4,8 @@ import { useCardManager } from "./useCardManager";
 import { DashboardContent } from "./DashboardContent";
 
 export function GeneralSettings(props) {
-  let { plugins } = props;
-  let cards = useCardManager(GeneralSettingsConfig(plugins), {
+  let { user, plugins } = props;
+  let cards = useCardManager(GeneralSettingsConfig(user, plugins), {
     refreshInterval: 8 * 1000,
   });
   const isLoading = !(cards ?? []).every(

@@ -9,6 +9,12 @@ export const yithOnboardingParser = (title) => (data) => {
   return { isCompleted: data?.[title] == "true" };
 };
 
+export const razorpaySelector = (response) => {
+  return {
+    settings: response?.woocommerce_razorpay_settings,
+  };
+};
+
 export const wcProductsSelector = (products) => products;
 
 export const wcGiftCardsSelector = (products) =>

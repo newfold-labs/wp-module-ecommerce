@@ -5,6 +5,7 @@ namespace NewfoldLabs\WP\Module\ECommerce\RestApi;
 use NewfoldLabs\WP\Module\ECommerce\Permissions;
 use function NewfoldLabs\WP\ModuleLoader\container;
 use NewfoldLabs\WP\Module\Onboarding\Data\Data;
+use NewfoldLabs\WP\Module\ECommerce\Data\Brands;
 
 class UserController {
 
@@ -34,21 +35,25 @@ class UserController {
 		);
 		$pages = \get_pages( $args );
 		$theme = \wp_get_theme();
-		$brand = 'newfold';
+		$brand_raw_value  = \get_option('mm_brand', 'newfold' );
+		$brand = \sanitize_title_with_dashes( strtolower( str_replace( '_', '-', $brand_raw_value ) ) );
 		$customer = array(
-			plan_subtype => 'wc_premium'
+			'plan_subtype' => 'unknown'
 		);
+		$brands = Brands::get_brands();
+		$currentBrandConfig = $brands[$brand];
 		if (class_exists('NewfoldLabs\WP\Module\Onboarding\Data\Data')) {
-			$brand_details = Data::current_brand();
-			$brand = $brand_details['brand'];
 			$customer_from_options = Data::customer_data();
 			if ($customer_from_options != false) {
 				$customer = $customer_from_options;
 			}
 		}
 		return array(
+			'site' => array (
+				'url' => \get_site_url()
+			),
 			'details' => $customer,
-			'brand' => $brand,
+			'currentBrandConfig' => $currentBrandConfig,
 			'theme' => array(
 				'manage'   => Permissions::rest_can_manage_themes(),
 				'template' => $theme->get_template(),
