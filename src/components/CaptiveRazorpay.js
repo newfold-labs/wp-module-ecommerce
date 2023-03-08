@@ -146,6 +146,10 @@ export function CaptiveRazorpay({ onComplete, settings, hireExpertsUrl }) {
           required
           __nextHasNoMarginBottom
           label={isTestMode ? Content.keyTestIdLabel : Content.keyIdLabel}
+          placeholder={__(
+            `enter your ${isTestMode ? "test" : "production"} key ID here.`,
+            "wp-module-ecommerce"
+          )}
           help={
             <span
               style={{ color: isKeyValid ? "inherit" : "#F72F26" }}
@@ -172,6 +176,10 @@ export function CaptiveRazorpay({ onComplete, settings, hireExpertsUrl }) {
           label={
             isTestMode ? Content.keyTestSecretLabel : Content.keySecretLabel
           }
+          placeholder={__(
+            `enter your ${isTestMode ? "test" : "production"} key secret here.`,
+            "wp-module-ecommerce"
+          )}
           help={
             <span dangerouslySetInnerHTML={{ __html: Content.keySecret }} />
           }
