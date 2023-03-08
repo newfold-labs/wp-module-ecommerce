@@ -19,8 +19,8 @@ final class Brands {
 				'hireExpertsInfo'   => 'admin.php?page=crazy-domains#/marketplace/services/blue-sky',
 				'adminPage'         => 'admin.php?page=crazy-domains',
 				'setup'                => array(
-					'payment'   => 'Paypal',
-					'shipping'  => 'Shippo',
+					'payment'   => array('Paypal'),
+					'shipping'  => array('Shippo'),
 				),
 				'defaultContact'       => array(
 					'woocommerce_default_country'   => 'AU:NSW',
@@ -34,8 +34,8 @@ final class Brands {
 				'hireExpertsInfo'   => 'admin.php?page=bluehost#/marketplace/services/blue-sky',
 				'adminPage'         => 'admin.php?page=bluehost',
 				'setup'                => array(
-					'payment'   => 'Paypal',
-					'shipping'  => 'Shippo',
+					'payment'   => array('Paypal'),
+					'shipping'  => array('Shippo'),
 				),
 				'defaultContact'       => array(
 					'woocommerce_default_country'   => 'US:AZ',
@@ -46,11 +46,11 @@ final class Brands {
 				'brand'                       => 'bluehost-india',
 				'name'                        => 'Bluehost',
 				'url'                         => 'https://bluehost.in',
-				'hireExpertsInfo'   => '',
+				'hireExpertsInfo'   => 'https://www.bluehost.in/solutions/full-service',
 				'adminPage'         => 'admin.php?page=bluehost',
 				'setup'                => array(
-					'payment'   => 'Razorpay',
-					'shipping'  => 'None',
+					'payment'   => array('Razorpay'),
+					'shipping'  => array(),
 				),
 				'defaultContact'       => array(
 					'woocommerce_default_country'   => 'IN:AP',

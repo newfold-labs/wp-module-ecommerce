@@ -57,7 +57,7 @@ const rzrPaySettings = {
   enable_1cc_debug_mode: "yes",
 };
 
-export function CaptiveRazorpay({ onComplete, settings }) {
+export function CaptiveRazorpay({ onComplete, settings, hireExpertsUrl }) {
   let [isTestMode, setTestMode] = useState(() =>
     settings?.key_id?.startsWith("rzp_test_")
   );
@@ -146,6 +146,10 @@ export function CaptiveRazorpay({ onComplete, settings }) {
           required
           __nextHasNoMarginBottom
           label={isTestMode ? Content.keyTestIdLabel : Content.keyIdLabel}
+          placeholder={__(
+            `enter your ${isTestMode ? "test" : "production"} key ID here.`,
+            "wp-module-ecommerce"
+          )}
           help={
             <span
               style={{ color: isKeyValid ? "inherit" : "#F72F26" }}
@@ -172,6 +176,10 @@ export function CaptiveRazorpay({ onComplete, settings }) {
           label={
             isTestMode ? Content.keyTestSecretLabel : Content.keySecretLabel
           }
+          placeholder={__(
+            `enter your ${isTestMode ? "test" : "production"} key secret here.`,
+            "wp-module-ecommerce"
+          )}
           help={
             <span dangerouslySetInnerHTML={{ __html: Content.keySecret }} />
           }
@@ -193,7 +201,7 @@ export function CaptiveRazorpay({ onComplete, settings }) {
       <p style={{ justifySelf: "end" }}>
         <em>
           {__("Need help?", "wp-module-ecommerce")}{" "}
-          <a href="admin.php?page=bluehost#/marketplace/services/blue-sky">
+          <a href={hireExpertsUrl}>
             {__("Hire our experts", "wp-module-ecommerce")}
           </a>
         </em>

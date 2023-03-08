@@ -5,23 +5,6 @@ import { updateWCOnboarding, updateWPSettings } from "../services";
 
 const CountriesInOFAC = ["CU", "KP", "IR", "RU", "SY", "AF", "BY", "MM", "VN"];
 
-let DefaultBHContact = {
-  country: "US",
-  state: "AZ",
-  woocommerce_currency: "USD",
-  woocommerce_store_address: "",
-  woocommerce_store_address_2: "",
-  woocommerce_store_city: "",
-  woocommerce_store_postcode: "",
-};
-
-let DefaultBHINContact = {
-  ...DefaultBHContact,
-  country: "IN",
-  state: "AP",
-  woocommerce_currency: "INR",
-};
-
 function useBasicProfile() {
   let { data: countries } = useSWR("/wc/v3/data/countries");
   let { data: currencies } = useSWR("/wc/v3/data/currencies");
@@ -34,8 +17,18 @@ function useBasicProfile() {
 
 export function StoreAddress({ onComplete, state, isMandatory = false }) {
   let [address, setAddress] = useState({});
-  let defaultContact =
-    state?.brand === "bluehost-india" ? DefaultBHINContact : DefaultBHContact;
+  let [defaultCountry, defaultState] =
+    state?.brandConfig?.defaultContact?.woocommerce_default_country.split(":");
+  let defaultContact = {
+    country: defaultCountry ?? "US",
+    state: defaultState ?? "AZ",
+    woocommerce_currency:
+      state?.brandConfig?.defaultContact?.woocommerce_currency ?? "USD",
+    woocommerce_store_address: "",
+    woocommerce_store_address_2: "",
+    woocommerce_store_city: "",
+    woocommerce_store_postcode: "",
+  };
   let [isLoading, countries, currencies] = useBasicProfile();
   function handleChange(event) {
     setAddress({ ...address, [event.target.name]: event.target.value });
@@ -230,7 +223,7 @@ export function StoreAddress({ onComplete, state, isMandatory = false }) {
       <p>
         <em>
           {__("Need help?", "wp-module-ecommerce")}{" "}
-          <a href="admin.php?page=bluehost#/marketplace/services/blue-sky">
+          <a href={state?.brandConfig?.hireExpertsInfo}>
             {__("Hire our experts", "wp-module-ecommerce")}
           </a>
         </em>
