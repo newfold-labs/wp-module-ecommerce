@@ -76,6 +76,7 @@ export function CaptiveRazorpay({ onComplete, settings, hireExpertsUrl }) {
   let isKeyValid = isTestMode ? isTestKeyValid : isProductionKeyValid;
   return (
     <form
+      className="nfd-ecommerce-modal-razorpay"
       onSubmit={async (event) => {
         event.preventDefault();
         event.stopPropagation();
@@ -85,29 +86,14 @@ export function CaptiveRazorpay({ onComplete, settings, hireExpertsUrl }) {
         });
         await onComplete();
       }}
-      style={{ display: "grid", padding: "40px 40px 0.3em", gap: "1.5em" }}
     >
       <h1 style={{ justifySelf: "center" }}>
         {__("Connect your Razorpay Account", "wp-module-ecommerce")}
       </h1>
-      <RazorPayBrand />
+      <RazorPayBrand className="razorpay-logo" />
       <section
         style={{ padding: "0 0 1.5em", borderBottom: "solid 1px #cccccc" }}
       >
-        <h2
-          style={{
-            color: "var(--nfd-ecommerce-accent-primary)",
-            textTransform: "uppercase",
-          }}
-        >
-          {__("Special Offer!", "wp-module-ecoomerce")}
-        </h2>
-        <p style={{ color: "var(--nfd-ecommerce-text-secondary)" }}>
-          {__(
-            "Create a Razorpay account through our link below and get up to Rs 1,50,000 credits free in your account and a lower transaction fee rate!",
-            "wp-module-ecommerce"
-          )}
-        </p>
         <Button
           className="nfd-ecommerce-button"
           variant="secondary"
