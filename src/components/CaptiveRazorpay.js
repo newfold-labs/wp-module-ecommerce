@@ -11,8 +11,8 @@ import { updateWPSettings } from "../services";
 
 /** @type {((key: string) => boolean)[]} */
 const KeyChecks = [
-  (key) => key.startsWith("rzp_test_"),
-  (key) => key.startsWith("rzp_live_"),
+  (key) => key?.startsWith("rzp_test_"),
+  (key) => key?.startsWith("rzp_live_"),
 ];
 
 const Content = {
@@ -61,10 +61,10 @@ export function CaptiveRazorpay({ onComplete, settings }) {
   let [isTestMode, setTestMode] = useState(() =>
     settings?.key_id?.startsWith("rzp_test_")
   );
-  let [rzrKeys, updateKeys] = useState({
+  let [rzrKeys, updateKeys] = useState(() => ({
     key_id: settings?.key_id,
     key_secret: settings?.key_secret,
-  });
+  }));
   let isFormDisabled = settings === undefined;
   let [isTestKeyValid, isProductionKeyValid] = KeyChecks.map(
     (check) => rzrKeys.key_id === "" || check(rzrKeys.key_id)
