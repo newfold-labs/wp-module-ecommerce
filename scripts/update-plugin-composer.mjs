@@ -25,6 +25,7 @@ try {
   delete composerJson.repositories.newfold.only;
   composerJson.repositories.newfold.exclude = [moduleName];
   composerJson.repositories.module = repository;
+  composerJson.require[moduleName] = "@dev";
   fs.writeFileSync(absPath, JSON.stringify(composerJson, null, 2), {
     encoding: "utf-8",
   });
