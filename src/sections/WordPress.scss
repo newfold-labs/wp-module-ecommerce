@@ -44,11 +44,13 @@
     }
     .toggle-control {
       justify-self: baseline;
+      margin: 0;
       .components-base-control__field {
-        align-items: baseline !important;
-        flex-direction: row-reverse;
-        gap: 4em;
-        margin: 0;
+        .components-flex {
+          flex-direction: row-reverse ;
+          align-items: baseline ;
+          gap: 4em;
+        }
       }
       .components-form-toggle {
         .components-form-toggle__track {
@@ -82,6 +84,9 @@
         color: var(--nfd-ecommerce-text-tertiary);
         font-size: 14px;
         margin: 8px 0 0 0;
+      }
+      label.components-base-control__label{
+        text-transform: none;
       }
     }
   }
