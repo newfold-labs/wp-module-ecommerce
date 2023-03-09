@@ -49,6 +49,9 @@ class CaptiveFlow {
 							'enable_1cc_debug_mode' => array(
 								'type' => 'string',
 							),
+							'route_enable' => array(
+								'type' => 'string',
+							),
 						),
 					),
 				),
