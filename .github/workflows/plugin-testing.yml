@@ -8,7 +8,7 @@ concurrency:
 
 jobs:
   build:
-    name: On Push to Master
+    name: Build Plugin Zip
     runs-on: ubuntu-latest
     steps:
       - name: Setup PHP
@@ -76,7 +76,7 @@ jobs:
         run: npm install --legacy-peer-deps
 
       - name: NPM Install module
-        run: npm install ./modules/wp-module-ecommerce --force
+        run: npm install ./modules/newfold-labs/wp-module-ecommerce --force
 
       - name: Build JavaScript
         run: npm run build
