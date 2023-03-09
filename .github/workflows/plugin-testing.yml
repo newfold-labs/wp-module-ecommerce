@@ -14,7 +14,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: "8.1"
           coverage: none
           tools: composer, cs2pr
 
@@ -27,7 +27,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
-          cache: 'npm'
+          cache: "npm"
 
       - name: Checkout module
         uses: actions/checkout@v3
@@ -68,6 +68,9 @@ jobs:
 
       - name: NPM Install module
         run: npm install ./modules/newfold-labs/wp-module-ecommerce --force
+
+      - name: NPM Install Temporary
+        run: npm install @wordpress/dependency-extraction-webpack-plugin@3.1.2 --force
 
       - name: Build JavaScript
         run: npm run build
