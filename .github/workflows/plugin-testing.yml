@@ -70,10 +70,28 @@ jobs:
         run: npm install ./modules/newfold-labs/wp-module-ecommerce --force
 
       - name: NPM Install Temporary
-        run: npm install @wordpress/dependency-extraction-webpack-plugin@3.1.2 --force
+        run: npm install @wordpress/dependency-extraction-webpack-plugin@3.1.2 --legacy-peer-deps
+
+      - name: package.json
+        run: cat package.json
 
       - name: Build JavaScript
         run: npm run build
 
-      - name: Generate zip
-        uses: 10up/action-wordpress-plugin-build-zip@stable
+      - name: Setup workflow context
+        id: workflow
+        working-directory: ${{ runner.temp }}
+        env:
+          REPO: "bluehost-wordpress-plugin"
+        run: |
+          mkdir dist
+          echo "DIST=${PWD}/dist" >> $GITHUB_OUTPUT
+          echo "PACKAGE=${REPO##*/}" >> $GITHUB_OUTPUT
+
+      - name: Prepare files
+        run: rsync -r --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: ${{ steps.workflow.outputs.PACKAGE }}
+          path: ${{ steps.workflow.outputs.DIST }}
