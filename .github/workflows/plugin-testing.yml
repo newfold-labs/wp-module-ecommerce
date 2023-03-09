@@ -34,10 +34,6 @@ jobs:
         with:
           path: ./modules/${{ github.repository }}
 
-      - name: Setup module
-        working-directory: ./modules/${{ github.repository }}
-        run: npm ci --legacy-peer-deps
-
       - name: Get Composer cache directory
         id: composer-cache
         run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
@@ -57,6 +53,13 @@ jobs:
           node --version
           npm --version
 
+      - name: Modify composer.json
+        run: |
+          node ./modules/newfold-labs/wp-module-ecommerce/scripts/update-plugin-composer.mjs ${PWD}/composer.json ${PWD}/modules
+
+      - name: Update lockfile
+        run: composer update
+
       - name: Validate composer.json and composer.lock
         run: composer validate
 
@@ -66,14 +69,18 @@ jobs:
       - name: NPM Install
         run: npm ci --legacy-peer-deps
 
+      - name: Setup module
+        working-directory: ./modules/${{ github.repository }}
+        run: npm ci --legacy-peer-deps
+
       - name: NPM Install module
         run: npm install ./modules/newfold-labs/wp-module-ecommerce --force
 
       - name: NPM Install Temporary
         run: npm install @wordpress/dependency-extraction-webpack-plugin@3.1.2 --legacy-peer-deps
 
-      - name: package.json
-        run: cat package.json
+      - name: View modified files
+        run: cat package.json composer.json
 
       - name: Build JavaScript
         run: npm run build
