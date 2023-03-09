@@ -23,15 +23,13 @@ jobs:
         with:
           node-version: 16.x
 
-      - name: Setup workflow context
-        id: workflow
-        working-directory: ${{ runner.temp }}
-        env:
-          REPO: ${{ github.repository }}
-        run: |
-          mkdir modules
-          echo "modules=${PWD}/modules/" >> $GITHUB_OUTPUT
-          echo "PACKAGE=${REPO##*/}" >> $GITHUB_OUTPUT
+      # - name: Setup workflow context
+      #   id: workflow
+      #   working-directory: ${{ runner.temp }}
+      #   env:
+      #     REPO: ${{ github.repository }}
+      #   run: |
+      #     mkdir modules
 
       - name: Checkout module
         uses: actions/checkout@v3
@@ -71,6 +69,13 @@ jobs:
 
       - name: Install PHP Dependencies
         run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
+
+      - name: List Module Files
+        working-directory: ./modules/${{ github.repository }}
+        run: find .
+
+      - name: List Plugin Files
+        run: ls -l
 
       - name: NPM Install
         run: npm install --legacy-peer-deps
