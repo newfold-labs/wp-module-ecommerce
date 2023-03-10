@@ -12,6 +12,9 @@ class UserController {
 	protected $namespace = 'newfold-ecommerce/v1';
 	protected $rest_base = '/user';
 
+	/**
+	 * To get the status of WordPress Pages
+	 */
 	public function register_routes() {
 		\register_rest_route(
 			$this->namespace,
@@ -26,6 +29,9 @@ class UserController {
 		);
 	}
 
+	/**
+	 * @return array
+	 */
 	public function get_page_status() {
 		$args  = array(
 			'post_status' => array( 'pending', 'draft', 'future', 'publish', 'private' ),

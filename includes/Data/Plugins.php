@@ -6,6 +6,12 @@ namespace NewfoldLabs\WP\Module\ECommerce\Data;
  */
 final class Plugins {
 
+	/**
+	 * @param $plugin
+	 * @return mixed
+	 *
+	 * To retrieve URL for slug downloads
+	 */
 	public static function get_slug_map( $plugin ) {
 		$map = array(
 			'yith_wcmap_panel'                     => array( 'https://hiive.cloud/workers/plugin-downloads/yith-woocommerce-customize-myaccount-page', 'yith-woocommerce-customize-myaccount-page-extended/init.php' ),

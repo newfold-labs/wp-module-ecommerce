@@ -2,7 +2,6 @@
 
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\Module\ECommerce\ECommerce;
-use NewfoldLabs\WP\Module\ECommerce\Data\Plugins;
 
 use function NewfoldLabs\WP\ModuleLoader\register;
 
