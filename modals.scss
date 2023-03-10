@@ -127,3 +127,15 @@
     text-decoration: none;
   }
 }
+
+form.nfd-ecommerce-modal-razorpay {
+  display: grid;
+  padding: 40px 40px 0.3em;
+  gap: 1.5em;
+  @media screen and (max-width: 481px) {
+    padding: 40px 1em 0.3em;
+    .razorpay-logo {
+      justify-self: center;
+    }
+  }
+}

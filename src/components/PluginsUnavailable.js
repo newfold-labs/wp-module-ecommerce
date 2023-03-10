@@ -1,12 +1,15 @@
 import { queuePluginInstall } from "../services";
 import { __ } from "@wordpress/i18n";
 
+const nameToSlug = {
+  Paypal: "nfd_slug_yith_paypal_payments_for_woocommerce",
+  RazorPay: "woo-razorpay",
+  Shippo: "nfd_slug_yith_shippo_shippings_for_woocommerce",
+};
+
 const PluginsUnavailable = (props) => {
   let { pluginName, token, onComplete } = props;
-  let pluginToInstall =
-    pluginName == "Paypal"
-      ? "nfd_slug_yith_paypal_payments_for_woocommerce"
-      : "nfd_slug_yith_shippo_shippings_for_woocommerce";
+  let pluginToInstall = nameToSlug[pluginName];
 
   return (
     <div className="nfd-ecommerce-modal-plugin-install-failed-content">

@@ -23,6 +23,7 @@ final class Plugins {
 			'yith_shippo_shipping_for_woocommerce' => array( 'https://hiive.cloud/workers/plugin-downloads/yith-shippo-shippings-for-woocommerce', 'yith-shippo-shippings-for-woocommerce-extended/init.php' ),
 			'yith_paypal_payments'                 => array( 'https://hiive.cloud/workers/plugin-downloads/yith-paypal-payments-for-woocommerce', 'yith-paypal-payments-for-woocommerce-extended/init.php' ),
 			'woocommerce'                          => array( 'ignore', 'woocommerce/woocommerce.php' ),
+			'woo_razorpay'                          => array( 'ignore', 'woo-razorpay/woo-razorpay.php' ),
 		);
 		if ( in_array( $plugin, array_keys( $map ) ) ) {
 			$plugin = $map[ $plugin ];

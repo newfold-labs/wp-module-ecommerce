@@ -5,10 +5,60 @@ use NewfoldLabs\WP\Module\ECommerce\Permissions;
 
 class CaptiveFlow {
 
+	static $PAYPAL_CAPTIVE_FLOW = 'nfd-ecommerce-captive-flow-paypal';
+	static $SHIPPO_CAPTIVE_FLOW = 'nfd-ecommerce-captive-flow-shippo';
+	static $RAZORPAY_CAPTIVE_FLOW = 'nfd-ecommerce-captive-flow-razorpay';
+
 	public static function init() {
 		add_action( 'admin_menu', array( __CLASS__, 'register_page' ) );
-		add_action( 'load-admin_page_' . 'nfd-ecommerce-captive-flow-paypal', array( __CLASS__, 'enqueue_styles' ), 100 );
-		add_action( 'load-admin_page_' . 'nfd-ecommerce-captive-flow-shippo', array( __CLASS__, 'enqueue_styles' ), 100 );
+		add_action( 'rest_api_init', array( __CLASS__, 'register_options' ) );
+		add_action( 'load-admin_page_' . self::$PAYPAL_CAPTIVE_FLOW, array( __CLASS__, 'enqueue_styles' ), 100 );
+		add_action( 'load-admin_page_' . self::$SHIPPO_CAPTIVE_FLOW, array( __CLASS__, 'enqueue_styles' ), 100 );
+	}
+
+	public static function register_options() {
+		\register_setting(
+			'general',
+			'woocommerce_razorpay_settings',
+			array(
+				'show_in_rest' => array(
+					'schema' => array(
+						'type'  => 'object',
+						'properties' => array(
+							'enabled' => array(
+								'type' => 'string',
+							),
+							'title' => array(
+								'type' => 'string',
+							),
+							'description' => array(
+								'type' => 'string',
+							),
+							'key_id' => array(
+								'type' => 'string',
+							),
+							'key_secret' => array(
+								'type' => 'string',
+							),
+							'payment_action' => array(
+								'type' => 'string',
+							),
+							'order_success_message' => array(
+								'type' => 'string',
+							),
+							'enable_1cc_debug_mode' => array(
+								'type' => 'string',
+							),
+							'route_enable' => array(
+								'type' => 'string',
+							),
+						),
+					),
+				),
+				'type'         => 'object',
+				'description'  => __( 'NFD eCommerce RazorPay Options', 'wp-module-ecommerce' ),
+			)
+		);
 	}
 
 	public static function enqueue_styles() {
@@ -27,7 +77,7 @@ class CaptiveFlow {
 			null,
 			null,
 			Permissions::ADMIN,
-			'nfd-ecommerce-captive-flow-paypal',
+			self::$PAYPAL_CAPTIVE_FLOW,
 			array( __CLASS__, 'render_paypal' ),
 			100
 		);
@@ -36,7 +86,7 @@ class CaptiveFlow {
 			null,
 			null,
 			Permissions::ADMIN,
-			'nfd-ecommerce-captive-flow-shippo',
+			self::$SHIPPO_CAPTIVE_FLOW,
 			array( __CLASS__, 'render_shippo' ),
 			100
 		);
@@ -45,7 +95,7 @@ class CaptiveFlow {
 	public static function render_paypal() {
 		echo PHP_EOL;
 		echo '<div id="nfd-ecommerce" class="nfd-ecommerce-captive-flow">';
-		echo do_action( 'nfd-ecommerce-captive-flow-paypal' );
+		echo do_action( self::$PAYPAL_CAPTIVE_FLOW );
 		echo '</div>';
 		echo PHP_EOL;
 	}
@@ -53,7 +103,7 @@ class CaptiveFlow {
 	public static function render_shippo() {
 		echo PHP_EOL;
 		echo '<div id="nfd-ecommerce" class="nfd-ecommerce-captive-flow">';
-		echo do_action( 'nfd-ecommerce-captive-flow-shippo' );
+		echo do_action( self::$SHIPPO_CAPTIVE_FLOW );
 		echo '</div>';
 		echo PHP_EOL;
 	}

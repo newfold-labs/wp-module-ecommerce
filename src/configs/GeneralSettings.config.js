@@ -1,4 +1,8 @@
-import { wcTasksParser, yithOnboardingParser } from "./selectors";
+import {
+  razorpaySelector,
+  wcTasksParser,
+  yithOnboardingParser,
+} from "./selectors";
 import PluginsUnavailable from "../components/PluginsUnavailable";
 import { MinimalCard } from "../components/MinimalCard";
 import { StoreAddress } from "../components/StoreAddress";
@@ -8,10 +12,12 @@ import { ReactComponent as Shipping } from "../icons/shipping.svg";
 import { ReactComponent as StoreIcon } from "../icons/store.svg";
 import { ReactComponent as TaxInfo } from "../icons/taxinfo.svg";
 import { Endpoints } from "../services";
+import { CaptiveRazorpay } from "../components/CaptiveRazorpay";
 
-const YithOptions = {
+const CaptiveFlows = {
   paypal: "nfd-ecommerce-captive-flow-paypal",
   shippo: "nfd-ecommerce-captive-flow-shippo",
+  razorpay: "nfd-ecommerce-captive-flow-razorpay",
 };
 
 const GET_WC_TASKS = `/wc-admin/onboarding/tasks?${new URLSearchParams({
@@ -25,7 +31,7 @@ const getUrl = (href) => {
   return `${page}?${query}`;
 };
 
-const GeneralSettings = (plugins) => [
+const GeneralSettings = (user, plugins) => [
   {
     Card: MinimalCard,
     shouldRender: () => true,
@@ -38,6 +44,7 @@ const GeneralSettings = (plugins) => [
       actionName: taskCompleted ? "Edit Info" : "Add Info",
     }),
     state: {
+      brandConfig: () => user?.currentBrandConfig,
       taskCompleted: (state) => state?.wcTasksRefresh?.isCompleted,
       isDisabled: () => plugins.status?.woocommerce !== "Active",
     },
@@ -59,17 +66,19 @@ const GeneralSettings = (plugins) => [
         refresh: "wcTasksRefresh",
       },
     ],
-    modal: () => ({
+    modal: (state) => ({
       contentType: "component",
       content: StoreAddress,
+      state,
       isFullScreen: false,
       onClose: ["wcTasksRefresh"],
     }),
   },
   {
     Card: MinimalCard,
-    shouldRender: () => true,
-    title: YithOptions.paypal,
+    shouldRender: (state) =>
+      user?.currentBrandConfig?.setup?.["payment"].includes("Paypal"),
+    title: CaptiveFlows.paypal,
     assets: () => ({
       image: Payments,
     }),
@@ -93,7 +102,7 @@ const GeneralSettings = (plugins) => [
     dataDependencies: [
       {
         endpoint: Endpoints.WP_SETTINGS,
-        selector: yithOnboardingParser(YithOptions.paypal),
+        selector: yithOnboardingParser(CaptiveFlows.paypal),
         refresh: "yithOnboardingRefresh",
       },
     ],
@@ -126,16 +135,86 @@ const GeneralSettings = (plugins) => [
   },
   {
     Card: MinimalCard,
-    shouldRender: () => true,
-    title: YithOptions.shippo,
-    assets: () => ({
-      image: Shipping,
+    shouldRender: (state) =>
+      user?.currentBrandConfig?.setup?.payment.includes("Razorpay"),
+    title: CaptiveFlows.razorpay,
+    assets: () => ({ image: Payments }),
+    text: (_, taskStatus) => ({
+      title: "Payments",
+      actionName: taskStatus === "complete" ? "Edit Settings" : "Setup",
+      inProgressMessage:
+        taskStatus === "inprogress" ? "Test mode is active" : "",
     }),
+    state: {
+      razorpaySettings: (data) => data.razorpaySetup.settings,
+      taskCompleted: () => false,
+      taskStatus: (data) => {
+        if (plugins.status?.woo_razorpay !== "Active") {
+          return "pending";
+        }
+        const keyId = data?.razorpaySetup?.settings?.key_id ?? "";
+        return keyId?.startsWith("rzp_live")
+          ? "complete"
+          : keyId?.startsWith("rzp_test")
+          ? "inprogress"
+          : "pending";
+      },
+      isDisabled: () => plugins.status?.woocommerce !== "Active",
+    },
+    actions: {
+      buttonClick: (state, setShowModal) => {
+        if (state.taskStatus === "complete") {
+          window.location.href =
+            "admin.php?page=wc-settings&tab=checkout&section=razorpay";
+        } else {
+          setShowModal(true);
+        }
+      },
+    },
+    dataDependencies: [
+      {
+        endpoint: Endpoints.WP_SETTINGS,
+        selector: razorpaySelector,
+        refresh: "razorpaySetup",
+      },
+    ],
+    modal: (state) => {
+      let modals = {
+        pluginAvailable: {
+          contentType: "component",
+          content: CaptiveRazorpay,
+          hireExpertsUrl: user?.currentBrandConfig?.hireExpertsInfo,
+          settings: state.razorpaySettings,
+          isFullScreen: false,
+          style: { width: "800px" },
+          onClose: ["razorpaySetup"],
+        },
+        pluginUnavailable: {
+          contentType: "component",
+          content: PluginsUnavailable,
+          pluginName: "RazorPay",
+          token: plugins.token,
+          isFullScreen: false,
+          onClose: [],
+        },
+      };
+      return plugins?.status?.woo_razorpay === "Active"
+        ? modals.pluginAvailable
+        : modals.pluginUnavailable;
+    },
+  },
+  {
+    Card: MinimalCard,
+    shouldRender: (state) =>
+      user?.currentBrandConfig?.setup?.["shipping"].includes("Shippo"),
+    title: CaptiveFlows.shippo,
+    assets: () => ({ image: Shipping }),
     text: (taskCompleted) => ({
       title: "Shipping",
       actionName: taskCompleted ? "Edit Settings" : "Setup",
     }),
     state: {
+      brandConfig: () => user?.currentBrandConfig,
       taskCompleted: (state) => state?.yithOnboardingShippoRefresh?.isCompleted,
       isDisabled: () => plugins.status?.woocommerce !== "Active",
     },
@@ -153,7 +232,7 @@ const GeneralSettings = (plugins) => [
     dataDependencies: [
       {
         endpoint: Endpoints.WP_SETTINGS,
-        selector: yithOnboardingParser(YithOptions.shippo),
+        selector: yithOnboardingParser(CaptiveFlows.shippo),
         refresh: "yithOnboardingShippoRefresh",
       },
     ],
@@ -218,6 +297,7 @@ const GeneralSettings = (plugins) => [
     modal: () => ({
       contentType: "component",
       content: Tax,
+      hireExpertsUrl: user?.currentBrandConfig?.hireExpertsInfo,
       isFullScreen: false,
       onClose: ["wcTasksTaxRefresh"],
     }),

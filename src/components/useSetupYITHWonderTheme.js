@@ -1,7 +1,5 @@
 import apiFetch from '@wordpress/api-fetch';
 import { useEffect } from '@wordpress/element';
-import useSWRImmutable from 'swr/immutable';
-import { Endpoints } from '../services';
 
 async function createPage(page) {
   apiFetch({
@@ -40,11 +38,10 @@ function getPage(slug, template) {
 
 let PagesToBeCreated = ['home', 'about', 'contact'];
 
-export function useSetupYITHWonderTheme() {
-  let { data: status } = useSWRImmutable(Endpoints.PAGE_STATUS);
+export function useSetupYITHWonderTheme(user) {
   useEffect(async () => {
-    if (status !== undefined) {
-      let { theme, pages } = status;
+    if (user !== undefined) {
+      let { theme, pages } = user;
       if (
         theme.name?.toLowerCase() !== 'yith wonder' ||
         theme.manage === false
@@ -59,5 +56,5 @@ export function useSetupYITHWonderTheme() {
         await createPage({ slug, ...getPage(slug, 'yith-wonder') });
       }
     }
-  }, [status]);
+  }, [user]);
 }
