@@ -1,10 +1,5 @@
 name: Lint PHP
 on:
-  push:
-    branches:
-      - '**'
-    paths:
-      - '**.php'
   pull_request:
     types: [ opened, edited, reopened, ready_for_review ]
     paths:
