@@ -1,4 +1,4 @@
-name: Build Plugin For Testing
+name: Build CrazyDomains Plugin For Testing
 on:
   workflow_dispatch:
 
@@ -21,7 +21,7 @@ jobs:
       - name: Checkout plugin
         uses: actions/checkout@v3
         with:
-          repository: bluehost/bluehost-wordpress-plugin
+          repository: aulisius/wp-plugin-crazy-domains
 
       - name: Use Node.js 16.x
         uses: actions/setup-node@v3
@@ -89,7 +89,7 @@ jobs:
         id: workflow
         working-directory: ${{ runner.temp }}
         env:
-          REPO: "bluehost-wordpress-plugin"
+          REPO: "wp-plugin-crazy-domains"
         run: |
           mkdir dist
           echo "DIST=${PWD}/dist" >> $GITHUB_OUTPUT
