@@ -17,6 +17,7 @@ final class Brands {
 				'name'                        => 'CrazyDomains',
 				'url'                         => 'https://crazydomains.com',
 				'hireExpertsInfo'   => 'admin.php?page=crazy-domains#/marketplace/services/blue-sky',
+				'support'			=> 'https://www.crazydomains.in/contact',
 				'adminPage'         => 'admin.php?page=crazy-domains',
 				'setup'                => array(
 					'payment'   => array('Paypal'),
@@ -32,6 +33,7 @@ final class Brands {
 				'name'                        => 'Bluehost',
 				'url'                         => 'https://bluehost.com',
 				'hireExpertsInfo'   => 'admin.php?page=bluehost#/marketplace/services/blue-sky',
+				'support'			=> 'https://www.bluehost.com/contact',
 				'adminPage'         => 'admin.php?page=bluehost',
 				'setup'                => array(
 					'payment'   => array('Paypal'),
@@ -47,6 +49,7 @@ final class Brands {
 				'name'                        => 'Bluehost',
 				'url'                         => 'https://bluehost.in',
 				'hireExpertsInfo'   => 'https://www.bluehost.in/solutions/full-service',
+				'support'			=> 'https://helpchat.bluehost.in',
 				'adminPage'         => 'admin.php?page=bluehost',
 				'setup'                => array(
 					'payment'   => array('Razorpay'),

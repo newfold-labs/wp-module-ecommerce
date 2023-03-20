@@ -8,7 +8,7 @@ const nameToSlug = {
 };
 
 const PluginsUnavailable = (props) => {
-  let { pluginName, token, onComplete } = props;
+  let { pluginName, token, onComplete, supportUrl } = props;
   let pluginToInstall = nameToSlug[pluginName];
 
   return (
@@ -25,8 +25,8 @@ const PluginsUnavailable = (props) => {
 
       <span style={{ marginTop: "32px" }}>
         {__("If the problem persists, please", "wp-module-ecommerce")}{" "}
-        <a href="https://www.bluehost.com/contact" target="_blank">
-          {__("contact.", "wp-module-ecommerce")}
+        <a href={supportUrl} target="_blank">
+          {__("contact", "wp-module-ecommerce")}
         </a>{" "}
         {__("the support team.", "wp-module-ecommerce")}
       </span>
