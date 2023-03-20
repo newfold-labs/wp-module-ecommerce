@@ -8,6 +8,10 @@
 @import "./src/sections/StoreAddress.scss";
 @import "./src/sections/WordPress.scss";
 
+.nfd-ecommerce-setup *{
+  box-sizing: border-box;
+}
+
 .nfd-ecommerce-setup {
   margin: 0;
   padding: 0;
@@ -175,7 +179,7 @@
 
   .nfd-ecommerce-card[data-variant="standard"] {
     place-items: center;
-    padding: 25px 0 18px;
+    padding: 40px 0 18px;
     grid-auto-rows: min-content;
 
     .nfd-ecommerce-card-image {
@@ -205,9 +209,11 @@
     }
   }
 
-  .nfd-ecommerce-taskCompleted, .task-status-needed {
+  .nfd-ecommerce-taskCompleted,
+  .task-status-needed {
     position: relative;
-    .nfd-ecommerce-taskCompleted-image, .task-status-indicator {
+    .nfd-ecommerce-taskCompleted-image,
+    .task-status-indicator {
       position: absolute;
       top: 8px;
       right: 8px;
@@ -351,11 +357,13 @@
   .nfd-ecommerce-button {
     cursor: pointer;
     appearance: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .nfd-ecommerce-button[data-variant="flat"] {
     border: 1px solid var(--nfd-ecommerce-accent-primary);
-    padding: 16px 25px;
     border-radius: 2px;
     min-width: 240px;
     color: #ffffff;
@@ -364,7 +372,6 @@
 
   .nfd-ecommerce-button[data-variant="hollow"] {
     border: 1px solid var(--nfd-ecommerce-accent-primary);
-    padding: 16px 25px;
     border-radius: 2px;
     min-width: 240px;
     color: var(--nfd-ecommerce-accent-primary);
@@ -382,6 +389,5 @@
 }
 
 .nfd-wc-unavailable-msg {
-  color: #f72f26;
+  color: #f72f26 !important;
 }
-
