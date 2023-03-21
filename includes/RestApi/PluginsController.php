@@ -59,7 +59,7 @@ class PluginsController {
 			'yith_wcas_panel',
 			'yith_paypal_payments',
 			'yith_shippo_shipping_for_woocommerce',
-			'woo_razorpay'
+			'nfd_slug_woo_razorpay'
 		);
 		foreach ( $plugins as $plugin ) {
 			$map = Plugins::get_slug_map( $plugin );

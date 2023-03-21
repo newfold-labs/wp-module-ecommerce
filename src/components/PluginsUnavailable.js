@@ -3,7 +3,7 @@ import { __ } from "@wordpress/i18n";
 
 const nameToSlug = {
   Paypal: "nfd_slug_yith_paypal_payments_for_woocommerce",
-  RazorPay: "woo-razorpay",
+  RazorPay: "nfd_slug_woo_razorpay",
   Shippo: "nfd_slug_yith_shippo_shippings_for_woocommerce",
 };
 
