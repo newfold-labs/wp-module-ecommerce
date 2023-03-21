@@ -149,7 +149,7 @@ const GeneralSettings = (user, plugins) => [
       razorpaySettings: (data) => data.razorpaySetup.settings,
       taskCompleted: () => false,
       taskStatus: (data) => {
-        if (plugins.status?.woo_razorpay !== "Active") {
+        if (plugins.status?.nfd_slug_woo_razorpay !== "Active") {
           return "pending";
         }
         const keyId = data?.razorpaySetup?.settings?.key_id ?? "";
@@ -198,7 +198,7 @@ const GeneralSettings = (user, plugins) => [
           onClose: [],
         },
       };
-      return plugins?.status?.woo_razorpay === "Active"
+      return plugins?.status?.nfd_slug_woo_razorpay === "Active"
         ? modals.pluginAvailable
         : modals.pluginUnavailable;
     },
