@@ -123,9 +123,11 @@ const GeneralSettings = (user, plugins) => [
           contentType: "component",
           content: PluginsUnavailable,
           pluginName: "Paypal",
+          supportUrl:user?.currentBrandConfig?.support,
           token: plugins.token,
           isFullScreen: false,
           onClose: [],
+
         },
       };
       return plugins?.status?.yith_paypal_payments === "Active"
@@ -193,6 +195,7 @@ const GeneralSettings = (user, plugins) => [
           contentType: "component",
           content: PluginsUnavailable,
           pluginName: "RazorPay",
+          supportUrl:user?.currentBrandConfig?.support,
           token: plugins.token,
           isFullScreen: false,
           onClose: [],
@@ -254,6 +257,7 @@ const GeneralSettings = (user, plugins) => [
           content: PluginsUnavailable,
           pluginName: "Shippo",
           token: plugins.token,
+          supportUrl:user?.currentBrandConfig?.support,
           isFullScreen: false,
           onClose: [],
         },
