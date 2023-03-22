@@ -103,7 +103,7 @@ export function WooCommerceUnavailable({ wpModules, plugins, user }) {
             >
               {__("Install WooCommerce", "wp-module-ecommerce")}
               {showInProgress ? (
-                <div className="bwa-loader nfd-ecommerce-loader-mini nfd-ecommerce-loader-inverse" />
+                <div className="nfd-ecommerce-loader nfd-ecommerce-loader-mini nfd-ecommerce-loader-inverse" />
               ) : null}
             </span>
           </button>

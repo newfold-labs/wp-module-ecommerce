@@ -85,7 +85,7 @@ export function StoreAddress({ onComplete, state, isMandatory = false }) {
         >
           {__("Loading your information...", "wp-module-ecoomerce")}
           {"  "}
-          <div className="bwa-loader nfd-ecommerce-loader-mini" />
+          <div className="nfd-ecommerce-loader nfd-ecommerce-loader-mini" />
         </div>
       )}
       <div className="nfd-ecommerce-store-address-form">

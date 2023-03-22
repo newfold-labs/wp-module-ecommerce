@@ -103,7 +103,7 @@ export function Dashboard(props) {
                 placeContent: "center",
               }}
             >
-              <div className="bwa-loader" />
+              <div className="nfd-ecommerce-loader" />
             </div>
           ) : (
             <StepContent {...props} />

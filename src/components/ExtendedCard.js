@@ -38,7 +38,7 @@ export function ExtendedCard(props) {
             {actionInProgress ? (
               <div data-inqueue={true}>
                 {__(" installing...", "wp-module-ecommerce")}
-                <div className="bwa-loader nfd-ecommerce-loader-mini grey-loader" />
+                <div className="nfd-ecommerce-loader nfd-ecommerce-loader-mini grey-loader" />
               </div>
             ) : (
               <div data-inqueue={false}>

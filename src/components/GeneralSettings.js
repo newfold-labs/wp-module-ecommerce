@@ -15,7 +15,7 @@ export function GeneralSettings(props) {
   if (isLoading && !WCUnavailable)
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
-        <div className="bwa-loader" />
+        <div className="nfd-ecommerce-loader" />
       </div>
     );
 

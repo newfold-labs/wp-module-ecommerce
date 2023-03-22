@@ -7,7 +7,7 @@ export function MultipleActionsCard(props) {
   let { title, actionName } = props.text(props.state);
   let Action = !props.isLoading
     ? Arrow
-    : () => <div className="bwa-loader nfd-ecommerce-loader-mini" />;
+    : () => <div className="nfd-ecommerce-loader nfd-ecommerce-loader-mini" />;
 
   return (
     <DropdownMenu

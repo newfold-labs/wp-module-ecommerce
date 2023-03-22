@@ -43,7 +43,7 @@ export function CustomizeStore({ plugins }) {
             )}
           </h2>
         ) : (
-          <div className="bwa-loader" />
+          <div className="nfd-ecommerce-loader" />
         )}
       </div>
     );
