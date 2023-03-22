@@ -68,6 +68,7 @@ class ECommerce {
 		add_action( 'admin_bar_menu', array( $this, 'newfold_site_status' ), 200 );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
 		add_action( 'load-toplevel_page_bluehost' , array( $this, 'register_assets') );
+		add_action( 'load-toplevel_page_crazy-domains' , array( $this, 'register_assets') );
 		CaptiveFlow::init();
 		WooCommerceBacklink::init();
 		register_meta(
