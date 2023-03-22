@@ -92,7 +92,7 @@ class ECommerce {
 			 *
 			 * @var $instance \WP_REST_Controller
 			 */
-			$instance = new $Controller();
+			$instance = new $Controller( $this->container );
 			$instance->register_routes();
 		}
 		$this->register_settings();
