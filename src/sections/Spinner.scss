@@ -1,4 +1,4 @@
-.bwa-loader {
+.nfd-ecommerce-loader {
     margin: 50px auto;
     width: 6rem;
     height: 6rem;
@@ -17,7 +17,7 @@
     -ms-transform: translateZ(0);
     transform: translateZ(0);
   }
-  .bwa-loader:before {
+  .nfd-ecommerce-loader:before {
     width: 50%;
     height: 50%;
     background: var(--nfd-ecommerce-accent-primary);
@@ -27,7 +27,7 @@
     left: 0;
     content: '';
   }
-  .bwa-loader:after {
+  .nfd-ecommerce-loader:after {
     background:  #f1f5f7;
     width: 88%;
     height: 88%;
