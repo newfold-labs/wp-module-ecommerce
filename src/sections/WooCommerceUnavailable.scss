@@ -17,29 +17,18 @@
     margin-top: 24px;
   }
 
-  button {
-    display: block;
+  #install-wc-btn {
     width: 272px;
-    padding: 10px 24px;
-    border: 2px solid var(--nfd-ecommerce-accent-primary);
     margin-top: 24px;
-    background-color: var(--nfd-ecommerce-accent-primary);
-    color: white;
     margin-bottom: 16px;
-    cursor: grab;
+    height: 46px;
   }
 
-  a {
+  #ctc-btn {
     display: block;
-    width: 220px;
-    padding: 10px 24px;
-    border: 2px solid var(--nfd-ecommerce-accent-primary);
-    background-color: white;
-    color: var(--nfd-ecommerce-accent-primary);
-    text-align: center;
-    cursor: grab;
-    text-decoration: none;
+    width: 272px;
     margin-bottom: 32px;
+    height: 42px;
   }
 
   .title {

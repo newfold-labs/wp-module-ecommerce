@@ -1,4 +1,5 @@
 <?php
+
 namespace NewfoldLabs\WP\Module\ECommerce\RestApi;
 
 use NewfoldLabs\WP\Module\ECommerce\Permissions;
@@ -10,11 +11,15 @@ use NewfoldLabs\WP\Module\ECommerce\Data\Plugins;
 class PluginsController {
 
 	/**
+	 * REST namespace
+	 *
 	 * @var string
 	 */
 	protected $namespace = 'newfold-ecommerce/v1';
 
 	/**
+	 * REST base
+	 *
 	 * @var string
 	 */
 	protected $rest_base = '/plugins';
@@ -39,7 +44,7 @@ class PluginsController {
 	}
 
 	/**
-	 * Get approved plugin slugs, urls, domains and queue status.
+	 * Get approved plugin slugs, urls, domains, and queue status.
 	 *
 	 * @return \WP_REST_Response
 	 */
@@ -54,7 +59,8 @@ class PluginsController {
 			'yith_wcas_panel',
 			'yith_paypal_payments',
 			'yith_shippo_shipping_for_woocommerce',
-			'nfd_slug_ecomdash_wordpress_plugin'
+			'nfd_slug_ecomdash_wordpress_plugin',
+			'nfd_slug_woo_razorpay',
 		);
 		foreach ( $plugins as $plugin ) {
 			$file = Plugins::get_init_file( $plugin );
@@ -70,6 +76,7 @@ class PluginsController {
 			}
 		}
 		$status['queue-status'] = \get_option( 'nfd_module_onboarding_plugin_install_queue', array() );
+
 		return new \WP_REST_Response(
 			array(
 				'status' => $status,

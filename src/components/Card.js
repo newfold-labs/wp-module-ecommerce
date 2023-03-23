@@ -14,7 +14,7 @@ export function Card({
   let Action =
     status === "ready"
       ? Arrow
-      : () => <div className="bwa-loader nfd-ecommerce-loader-mini" />;
+      : () => <div className="nfd-ecommerce-loader nfd-ecommerce-loader-mini" />;
   return (
     <button
       className="nfd-ecommerce-card"

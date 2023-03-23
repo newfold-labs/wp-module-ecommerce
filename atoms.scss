@@ -13,13 +13,17 @@
     color: currentColor;
     font: 400 18px var(--nfd-ecommerce-font-primary);
   }
+  a {
+    color: var(--nfd-ecommerce-accent-primary);
+    text-decoration: none;
+  }
   .nfd-ecommerce-loader-mini {
     width: 1em;
     height: 1em;
     margin: 0;
   }
   .nfd-ecommerce-loader-inverse {
-    background: linear-gradient(to right, #f1f5f7 5%, rgba(0,0,0,0) 32%);
+    background: linear-gradient(to right, #f1f5f7 5%, rgba(0, 0, 0, 0) 32%);
     &:before {
       background: #f1f5f7;
     }

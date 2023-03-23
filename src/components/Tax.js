@@ -28,9 +28,9 @@ const taxManagementOptions = [
 ];
 
 const Tax = (props) => {
-  let { onComplete,isStoreDetailsFilled } = props;
+  let { onComplete, isStoreDetailsFilled, hireExpertsUrl } = props;
   const [selectedOption, setSelectedOption] = useState(null);
- // const [isAddressMandatory, setIsAddressMandatory] = useState(false);
+  // const [isAddressMandatory, setIsAddressMandatory] = useState(false);
 
   const onClickContinue = async () => {
     // if (
@@ -101,7 +101,7 @@ const Tax = (props) => {
       <p>
         <em>
           {__("Need help?", "wp-module-ecommerce")}{" "}
-          <a href="admin.php?page=bluehost#/marketplace/services/blue-sky">
+          <a href={hireExpertsUrl}>
             {__("Hire our experts", "wp-module-ecommerce")}
           </a>
         </em>

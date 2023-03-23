@@ -16,7 +16,7 @@
     margin: 0;
     padding: 0;
     background: #ffffff;
-    border: 1px solid #dbdbdb;
+    border: 1px solid var(--nfd-ecommerce-border-primary);
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 2px;
     &::before {
@@ -87,7 +87,7 @@
   padding-left: 16px;
 }
 .nfd-ecommerce-modal-option-selected {
-  background-color: #e5f6ff;
+  background-color: var(--nfd-ecommerce-bg-primary);
 }
 .nfd-ecommerce-modal-option-unselected {
   background-color: #f0f0f0;
@@ -125,5 +125,17 @@
   }
   a {
     text-decoration: none;
+  }
+}
+
+form.nfd-ecommerce-modal-razorpay {
+  display: grid;
+  padding: 40px 40px 0.3em;
+  gap: 1.5em;
+  @media screen and (max-width: 481px) {
+    padding: 40px 1em 0.3em;
+    .razorpay-logo {
+      justify-self: center;
+    }
   }
 }

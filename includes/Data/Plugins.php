@@ -17,7 +17,8 @@ final class Plugins {
 			'yith_shippo_shipping_for_woocommerce' => 'yith-shippo-shippings-for-woocommerce-extended/init.php',
 			'yith_paypal_payments'                 => 'yith-paypal-payments-for-woocommerce-extended/init.php',
 			'woocommerce'                          => 'woocommerce/woocommerce.php',
-			'nfd_slug_ecomdash_wordpress_plugin'   => 'ecomdash-wordpress-plugin/ecomdash-plugin.php'
+			'nfd_slug_ecomdash_wordpress_plugin'   => 'ecomdash-wordpress-plugin/ecomdash-plugin.php',
+			'nfd_slug_woo_razorpay'                => 'woo-razorpay/woo-razorpay.php',
 		);
 		if ( array_key_exists( $plugin, $map ) ) {
 			$plugin = $map[ $plugin ];

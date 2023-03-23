@@ -1,4 +1,5 @@
 import apiFetch from "@wordpress/api-fetch";
+import { Popover, SlotFillProvider } from "@wordpress/components";
 import useSWR, { SWRConfig } from "swr";
 import useSWRImmutable from "swr/immutable";
 import { Banner } from "./components/Banner";
@@ -35,22 +36,29 @@ window.NewfoldECommerce = function NewfoldECommerce(props) {
         isPaused: () => plugins.status?.woocommerce !== "Active",
       }}
     >
-      <div className="nfd-ecommerce-atoms nfd-ecommerce-setup">
-        {data === undefined ? (
-          <div
-            style={{ height: "100%", display: "grid", placeContent: "center" }}
-          >
-            <div className="bwa-loader" />
-          </div>
-        ) : (
-          <>
-            <Hero plugins={plugins} user={user} {...props} />
-            <StoreAnalytics plugins={plugins} user={user} {...props} />
-            <Dashboard plugins={plugins} user={user} {...props} />
-            <SiteStatus plugins={plugins} user={user} {...props} />
-          </>
-        )}
-      </div>
+      <SlotFillProvider>
+        <div className="nfd-ecommerce-atoms nfd-ecommerce-setup">
+          {data === undefined ? (
+            <div
+              style={{
+                height: "100%",
+                display: "grid",
+                placeContent: "center",
+              }}
+            >
+              <div className="nfd-ecommerce-loader" />
+            </div>
+          ) : (
+            <>
+              <Hero plugins={plugins} user={user} {...props} />
+              <StoreAnalytics plugins={plugins} user={user} {...props} />
+              <Dashboard plugins={plugins} user={user} {...props} />
+              <SiteStatus plugins={plugins} user={user} {...props} />
+            </>
+          )}
+        </div>
+        <Popover.Slot />
+      </SlotFillProvider>
     </SWRConfig>
   );
 };

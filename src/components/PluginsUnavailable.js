@@ -1,12 +1,15 @@
 import { queuePluginInstall } from "../services";
 import { __ } from "@wordpress/i18n";
 
+const nameToSlug = {
+  Paypal: "nfd_slug_yith_paypal_payments_for_woocommerce",
+  RazorPay: "nfd_slug_woo_razorpay",
+  Shippo: "nfd_slug_yith_shippo_shippings_for_woocommerce",
+};
+
 const PluginsUnavailable = (props) => {
-  let { pluginName, token, onComplete } = props;
-  let pluginToInstall =
-    pluginName == "Paypal"
-      ? "nfd_slug_yith_paypal_payments_for_woocommerce"
-      : "nfd_slug_yith_shippo_shippings_for_woocommerce";
+  let { pluginName, token, onComplete, supportUrl } = props;
+  let pluginToInstall = nameToSlug[pluginName];
 
   return (
     <div className="nfd-ecommerce-modal-plugin-install-failed-content">
@@ -22,8 +25,8 @@ const PluginsUnavailable = (props) => {
 
       <span style={{ marginTop: "32px" }}>
         {__("If the problem persists, please", "wp-module-ecommerce")}{" "}
-        <a href="https://www.bluehost.com/contact" target="_blank">
-          {__("contact.", "wp-module-ecommerce")}
+        <a href={supportUrl} target="_blank">
+          {__("contact", "wp-module-ecommerce")}
         </a>{" "}
         {__("the support team.", "wp-module-ecommerce")}
       </span>

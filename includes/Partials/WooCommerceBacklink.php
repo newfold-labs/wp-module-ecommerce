@@ -5,6 +5,11 @@ use NewfoldLabs\WP\Module\ECommerce\Permissions;
 
 class WooCommerceBacklink {
 
+	/**
+	 * @var array
+	 *
+	 * Hook suffixes to attach Back button
+	 */
 	public static $hook_suffixes = array(
 		'post.php',
 		'post-new.php',

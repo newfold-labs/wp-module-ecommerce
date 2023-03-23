@@ -6,21 +6,44 @@ use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\Module\ECommerce\Partials\CaptiveFlow;
 use NewfoldLabs\WP\Module\ECommerce\Partials\WooCommerceBacklink;
 
+/**
+ * Class ECommerce
+ *
+ * @package NewfoldLabs\WP\Module\ECommerce
+ */
 class ECommerce {
+	/**
+	 * Main Ecommerce file
+	 *
+	 * Entry point via bootstrap.php
+	 */
 
 	/**
+	 * Container loaded from the brand plugin.
+	 *
 	 * @var Container
 	 */
 	protected $container;
 
+	/**
+	 * Array map of API controllers.
+	 *
+	 * @var array
+	 */
 	protected $controllers = array(
 		'NewfoldLabs\\WP\\Module\\ECommerce\\RestApi\\PluginsController',
 		'NewfoldLabs\\WP\\Module\\ECommerce\\RestApi\\UserController',
 	);
 
+	/**
+	 * Option settings
+	 *
+	 * @var array
+	 */
 	protected $options = array(
 		'nfd-ecommerce-captive-flow-paypal',
 		'nfd-ecommerce-captive-flow-shippo',
+		'nfd-ecommerce-captive-flow-razorpay',
 		'nfd-ecommerce-onboarding-check',
 		'nfd-ecommerce-counter',
 		'woocommerce_store_address',
@@ -37,7 +60,7 @@ class ECommerce {
 	/**
 	 * ECommerce constructor.
 	 *
-	 * @param $container
+	 * @param Container $container Container loaded from the brand plugin.
 	 */
 	public function __construct( Container $container ) {
 		$this->container = $container;
@@ -45,6 +68,7 @@ class ECommerce {
 		add_action( 'admin_bar_menu', array( $this, 'newfold_site_status' ), 200 );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
 		add_action( 'load-toplevel_page_bluehost' , array( $this, 'register_assets') );
+		add_action( 'load-toplevel_page_crazy-domains' , array( $this, 'register_assets') );
 		CaptiveFlow::init();
 		WooCommerceBacklink::init();
 		register_meta(
@@ -59,19 +83,25 @@ class ECommerce {
 		);
 	}
 
+	/**
+	 * Register API routes.
+	 */
 	public function register_routes() {
 		foreach ( $this->controllers as $Controller ) {
 			/**
 			 * Get an instance of the WP_REST_Controller.
 			 *
-			 * @var $instance WP_REST_Controller
+			 * @var $instance \WP_REST_Controller
 			 */
-			$instance = new $Controller();
+			$instance = new $Controller( $this->container );
 			$instance->register_routes();
 		}
 		$this->register_settings();
 	}
 
+	/**
+	 * Register settings.
+	 */
 	public function register_settings() {
 		$option_settings = array(
 			'show_in_rest' => true,
@@ -95,7 +125,7 @@ class ECommerce {
 	/**
 	 * Customize the admin bar with site status.
 	 *
-	 * @param WP_Admin_Bar $admin_bar An instance of the WP_Admin_Bar class.
+	 * @param \WP_Admin_Bar $admin_bar An instance of the WP_Admin_Bar class.
 	 */
 	public function newfold_site_status( \WP_Admin_Bar $admin_bar ) {
 		if ( current_user_can( 'manage_options' ) ) {

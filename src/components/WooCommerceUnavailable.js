@@ -3,7 +3,7 @@ import { useState } from "@wordpress/element";
 import { ReactComponent as WCUnAvailableIllustaration } from "../icons/wc-unavailable-illustration.svg";
 import { queuePluginInstall, syncPluginInstall } from "../services";
 
-export function WooCommerceUnavailable({ wpModules, plugins }) {
+export function WooCommerceUnavailable({ wpModules, plugins, user }) {
   let { Modal } = wpModules;
   let [installationFailed, setInstallationFailed] = useState(false);
   let [isInstalling, setIsInstalling] = useState(false);
@@ -47,12 +47,14 @@ export function WooCommerceUnavailable({ wpModules, plugins }) {
           <button
             disabled={plugins.token === undefined}
             onClick={installWooCommerce}
+            className="nfd-ecommerce-button"
+            data-variant="flat"
           >
             {__("Try again", "wp-module-ecommerce")}
           </button>
           <span style={{ marginTop: "32px" }}>
             {__(" If the problem persists, please ", "wp-module-ecommerce")}
-            <a href="https://www.bluehost.com/contact" target="_blank">
+            <a href={user?.currentBrandConfig?.support} target="_blank">
               {__("contact", "wp-module-ecommerce")}
             </a>
             {__(" support team.", "wp-module-ecommerce")}
@@ -83,8 +85,14 @@ export function WooCommerceUnavailable({ wpModules, plugins }) {
         </div>
 
         <div className="actions-container">
-          <button disabled={showInProgress} onClick={installWooCommerce}>
-            <div
+          <button
+          id="install-wc-btn"
+            disabled={showInProgress}
+            onClick={installWooCommerce}
+            className="nfd-ecommerce-button"
+            data-variant="flat"
+          >
+            <span
               style={{
                 height: "100%",
                 display: "grid",
@@ -95,13 +103,20 @@ export function WooCommerceUnavailable({ wpModules, plugins }) {
             >
               {__("Install WooCommerce", "wp-module-ecommerce")}
               {showInProgress ? (
-                <div className="bwa-loader nfd-ecommerce-loader-mini nfd-ecommerce-loader-inverse" />
+                <div className="nfd-ecommerce-loader nfd-ecommerce-loader-mini nfd-ecommerce-loader-inverse" />
               ) : null}
-            </div>
+            </span>
           </button>
-          <a href="https://www.bluehost.com/contact" target="_blank">
-            {__("Contact Support", "wp-module-ecommerce")}
-          </a>
+          <button
+          id="ctc-btn"
+            className="nfd-ecommerce-button"
+            data-variant="hollow"
+            onClick={() =>
+              window.open(user?.currentBrandConfig?.support, "_blank")
+            }
+          >
+            <span> {__("Contact Support", "wp-module-ecommerce")}</span>
+          </button>
         </div>
         <div className="banner-image">
           <WCUnAvailableIllustaration className="wcUnAvailableIllustaration" />
