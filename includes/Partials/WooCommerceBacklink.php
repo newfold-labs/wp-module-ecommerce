@@ -26,7 +26,13 @@ class WooCommerceBacklink {
 	}
 
 	public static function add_back_link() {
+		$brand = \get_option('mm_brand', 'newfold' );
 		\wp_enqueue_script( 'nfd-ecommerce-woocommerce-captive', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Partials/woocommerce.js', array(), '1', true );
 		\wp_enqueue_style( 'nfd-ecommerce-woocommerce-captive', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Partials/woocommerce.css', null, '1', 'screen' );
+		\wp_add_inline_script(
+			'nfd-ecommerce-woocommerce-captive',
+			'var brand =' . \wp_json_encode( $brand ) . ';',
+			'before'
+		);
 	}
 }
