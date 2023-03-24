@@ -3,14 +3,19 @@
 namespace NewfoldLabs\WP\Module\ECommerce\RestApi;
 
 use NewfoldLabs\WP\Module\ECommerce\Permissions;
-use function NewfoldLabs\WP\ModuleLoader\container;
+use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\Module\Onboarding\Data\Data;
 use NewfoldLabs\WP\Module\ECommerce\Data\Brands;
 
 class UserController {
 
+	protected $container;
 	protected $namespace = 'newfold-ecommerce/v1';
 	protected $rest_base = '/user';
+
+	public function __construct( Container $container ) {
+		$this->container = $container;
+	}
 
 	/**
 	 * To get the status of WordPress Pages
@@ -41,7 +46,7 @@ class UserController {
 		);
 		$pages = \get_pages( $args );
 		$theme = \wp_get_theme();
-		$brand_raw_value  = \get_option('mm_brand', 'newfold' );
+		$brand_raw_value  = $this->container->plugin()->brand;
 		$brand = \sanitize_title_with_dashes( strtolower( str_replace( '_', '-', $brand_raw_value ) ) );
 		$customer = array(
 			'plan_subtype' => 'unknown'
