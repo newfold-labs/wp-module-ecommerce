@@ -64,6 +64,8 @@ async function cleanupOnboarding(flow, settings, hash, user, actions) {
     await updateWPSettings({
       'nfd-ecommerce-onboarding-check': String(flowCheckpoint),
     });
+  } else {
+    actions.setCleanupStatus(false);
   }
 }
 
