@@ -3,6 +3,7 @@
 namespace NewfoldLabs\WP\Module\ECommerce\RestApi;
 
 use NewfoldLabs\WP\Module\ECommerce\Permissions;
+use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\Module\ECommerce\Data\Plugins;
 
 /**
@@ -25,6 +26,17 @@ class PluginsController {
 	protected $rest_base = '/plugins';
 
 	/**
+	 * Container loaded from the brand plugin.
+	 * 
+	 * @var Container
+	 */
+	protected $container;
+
+	public function __construct( Container $container ) {
+		$this->container = $container;
+	}
+
+	/**
 	 * Registers rest routes for PluginsController class.
 	 *
 	 * @return void
@@ -44,28 +56,14 @@ class PluginsController {
 	}
 
 	/**
-	 * Get approved plugin slugs, urls, domains, and queue status.
+	 * Get status of supported plugins.
 	 *
 	 * @return \WP_REST_Response
 	 */
 	public function get_plugins_status() {
-		$plugins = array(
-			'woocommerce',
-			'yith_wcmap_panel',
-			'yith_woocommerce_gift_cards_panel',
-			'yith_wcwl_panel',
-			'yith_wcan_panel',
-			'yith_wcbk_panel',
-			'yith_wcas_panel',
-			'yith_paypal_payments',
-			'yith_shippo_shipping_for_woocommerce',
-			'nfd_slug_ecomdash_wordpress_plugin',
-			'nfd_slug_woo_razorpay',
-		);
-		foreach ( $plugins as $plugin ) {
-			$file = Plugins::get_init_file( $plugin );
+		foreach ( Plugins::supported_plugins() as $plugin => $file ) {
 			if ( file_exists( WP_PLUGIN_DIR . '/' . $file ) ) {
-				$active = is_plugin_active( $file );
+				$active = \is_plugin_active( $file );
 				if ( $active ) {
 					$status[ $plugin ] = 'Active';
 				} else {
