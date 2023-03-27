@@ -75,7 +75,7 @@ export function useOnboardingCleanup(hash, user) {
   let { data: settings, error: settingsError } = useSWRImmutable(
     Endpoints.WP_SETTINGS
   );
-  useEffect(async () => {
+  useEffect(() => {
     if (flow && settings && hash && user) {
       setCleanupStatus(true);
       cleanupOnboarding(flow, settings, hash, user, { setCleanupStatus });
