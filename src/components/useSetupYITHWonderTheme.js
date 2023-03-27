@@ -38,23 +38,27 @@ function getPage(slug, template) {
 
 let PagesToBeCreated = ['home', 'about', 'contact'];
 
+async function setupYITHWonderTheme(user) {
+  let { theme, pages } = user;
+  if (
+    theme.name?.toLowerCase() !== 'yith wonder' ||
+    theme.manage === false
+  ) {
+    return;
+  }
+  let postNames = pages.map((post) => post.meta_value);
+  let pendingPages = PagesToBeCreated.filter(
+    (name) => !postNames.includes(name)
+  );
+  for (const slug of pendingPages) {
+    await createPage({ slug, ...getPage(slug, 'yith-wonder') });
+  }
+}
+
 export function useSetupYITHWonderTheme(user) {
-  useEffect(async () => {
+  useEffect(() => {
     if (user !== undefined) {
-      let { theme, pages } = user;
-      if (
-        theme.name?.toLowerCase() !== 'yith wonder' ||
-        theme.manage === false
-      ) {
-        return;
-      }
-      let postNames = pages.map((post) => post.meta_value);
-      let pendingPages = PagesToBeCreated.filter(
-        (name) => !postNames.includes(name)
-      );
-      for (const slug of pendingPages) {
-        await createPage({ slug, ...getPage(slug, 'yith-wonder') });
-      }
+      setupYITHWonderTheme(user);
     }
   }, [user]);
 }
