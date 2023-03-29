@@ -69,6 +69,7 @@ class ECommerce {
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
 		add_action( 'load-toplevel_page_bluehost' , array( $this, 'register_assets') );
 		add_action( 'load-toplevel_page_crazy-domains' , array( $this, 'register_assets') );
+		add_filter( 'http_request_args', array( $this, 'replace_retired_bn_codes' ), 10, 2 );
 		CaptiveFlow::init();
 		WooCommerceBacklink::init($container );
 		register_meta(
@@ -145,10 +146,10 @@ class ECommerce {
 			$admin_bar->add_menu( $site_status_menu );
 			// Remove status added by newfold-labs/wp-module-coming-soon
 			$menu_name = $this->container->plugin()->id . '-coming_soon';
-			$admin_bar->remove_menu( $menu_name ); 
+			$admin_bar->remove_menu( $menu_name );
 		}
 	}
-	
+
 	/**
 	 * Load WP dependencies into the page.
 	 */
@@ -162,6 +163,36 @@ class ECommerce {
 				array_merge( $asset['dependencies'], array() ),
 				$asset_file
 			);
+		}
+	}
+
+	/**
+	 * Ensure that any retired BN codes are not sent with outbound requests to Paypal
+	 *
+	 * @return array
+	 */
+	public function replace_retired_bn_codes( $parsed_args, $url ) {
+		try {
+			// Bail early if the request is not to paypal's v2 checkout API
+			if ( false === stripos( parse_url( $url,  PHP_URL_HOST ), 'paypal.com' )
+				&& false === stripos( parse_url( $url,  PHP_URL_PATH ), 'v2/checkout' ) ) {
+				return $parsed_args;
+			}
+
+			// Check for an existing bn_code and normalize to uppercase
+			$bn_code = isset( $parsed_args['headers']['PayPal-Partner-Attribution-Id'] ) ? strtoupper( $parsed_args['headers']['PayPal-Partner-Attribution-Id'] ) : null;
+
+			// Ensure we only set when blank, or when using one of our stale codes (not the current one)
+			if ( is_null( $bn_code ) ||
+				( $bn_code !== 'YITH_PCP' && ( false !== stripos( $bn_code, 'YITH' ) || false !== strpos( $bn_code, 'NEWFOLD' ) ) )
+			) {
+				// The correct code is case sensitive. YITH brand is uppercase, but the code is not.
+				$parsed_args['headers']['PayPal-Partner-Attribution-Id'] = 'Yith_PCP';
+			}
+		} catch (\Exception $e) {
+			error_log( 'NFD: Unable to fix partner attribution.' );
+		} finally {
+			return $parsed_args;
 		}
 	}
 }
