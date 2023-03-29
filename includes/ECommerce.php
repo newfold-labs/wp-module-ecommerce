@@ -54,7 +54,7 @@ class ECommerce {
 		'wc_connect_taxes_enabled',
 		'woocommerce_calc_taxes',
 		'woocommerce_currency',
-		'woocommerce_email_from_address'
+		'woocommerce_email_from_address',
 	);
 
 	/**
@@ -67,11 +67,11 @@ class ECommerce {
 		// Module functionality goes here
 		add_action( 'admin_bar_menu', array( $this, 'newfold_site_status' ), 200 );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
-		add_action( 'load-toplevel_page_bluehost' , array( $this, 'register_assets') );
-		add_action( 'load-toplevel_page_crazy-domains' , array( $this, 'register_assets') );
+		add_action( 'load-toplevel_page_bluehost', array( $this, 'register_assets' ) );
+		add_action( 'load-toplevel_page_crazy-domains', array( $this, 'register_assets' ) );
 		add_filter( 'http_request_args', array( $this, 'replace_retired_bn_codes' ), 10, 2 );
 		CaptiveFlow::init();
-		WooCommerceBacklink::init($container );
+		WooCommerceBacklink::init( $container );
 		register_meta(
 			'post',
 			'nf_dc_page',
@@ -155,7 +155,7 @@ class ECommerce {
 	 */
 	public function register_assets() {
 		$asset_file = NFD_ECOMMERCE_BUILD_DIR . 'index.asset.php';
-		if ( file_exists($asset_file) ) {
+		if ( file_exists( $asset_file ) ) {
 			$asset = require_once $asset_file;
 			\wp_enqueue_script(
 				'nfd-ecommerce-dependency',
