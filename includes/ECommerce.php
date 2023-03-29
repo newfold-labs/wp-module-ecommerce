@@ -169,13 +169,16 @@ class ECommerce {
 	/**
 	 * Ensure that any retired BN codes are not sent with outbound requests to Paypal
 	 *
-	 * @return array
+	 * @param array  $parsed_args An array of HTTP request arguments
+	 * @param string $url         The request URL
+	 *
+	 * @return array Array of modified HTTP request arguments
 	 */
 	public function replace_retired_bn_codes( $parsed_args, $url ) {
 		try {
 			// Bail early if the request is not to paypal's v2 checkout API
-			if ( false === stripos( parse_url( $url,  PHP_URL_HOST ), 'paypal.com' )
-				&& false === stripos( parse_url( $url,  PHP_URL_PATH ), 'v2/checkout' ) ) {
+			if ( false === stripos( wp_parse_url( $url, PHP_URL_HOST ), 'paypal.com' )
+				&& false === stripos( wp_parse_url( $url, PHP_URL_PATH ), 'v2/checkout' ) ) {
 				return $parsed_args;
 			}
 
@@ -184,12 +187,12 @@ class ECommerce {
 
 			// Ensure we only set when blank, or when using one of our stale codes (not the current one)
 			if ( is_null( $bn_code ) ||
-				( $bn_code !== 'YITH_PCP' && ( false !== stripos( $bn_code, 'YITH' ) || false !== strpos( $bn_code, 'NEWFOLD' ) ) )
+				( 'YITH_PCP' !== $bn_code && ( false !== stripos( $bn_code, 'YITH' ) || false !== strpos( $bn_code, 'NEWFOLD' ) ) )
 			) {
 				// The correct code is case sensitive. YITH brand is uppercase, but the code is not.
 				$parsed_args['headers']['PayPal-Partner-Attribution-Id'] = 'Yith_PCP';
 			}
-		} catch (\Exception $e) {
+		} catch ( \Exception $e ) {
 			error_log( 'NFD: Unable to fix partner attribution.' );
 		} finally {
 			return $parsed_args;
