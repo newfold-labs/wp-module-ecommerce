@@ -4,12 +4,11 @@ import { DashboardContent } from "./DashboardContent";
 import { useCardManager } from "./useCardManager";
 
 export function AdvancedFeatures(props) {
-  let { user, plugins } = props;
-  let cards = useCardManager(AdvancedFeaturesConfig(user, plugins));
+  let cards = useCardManager(AdvancedFeaturesConfig(props));
   const isLoading = !(cards ?? []).every(
     (cardConfig) => cardConfig.isLoading == false
   );
-  let WCUnavailable = plugins?.status?.woocommerce !== "Active";
+  let WCUnavailable = props.plugins?.status?.woocommerce !== "Active";
  
   if (isLoading && !WCUnavailable)
     return (
