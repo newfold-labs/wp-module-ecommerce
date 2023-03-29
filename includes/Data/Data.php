@@ -9,7 +9,7 @@ final class Data {
 	public static function runtime(Container $container) {
 		return array(
 			'adminUrl'          => \admin_url(),
-            'brand'             => $container->plugin()->id,
+            'pluginId'             => $container->plugin()->id,
 		);
 	}
 
