@@ -54,7 +54,7 @@ class ECommerce {
 		'wc_connect_taxes_enabled',
 		'woocommerce_calc_taxes',
 		'woocommerce_currency',
-		'woocommerce_email_from_address'
+		'woocommerce_email_from_address',
 	);
 
 	/**
@@ -67,10 +67,11 @@ class ECommerce {
 		// Module functionality goes here
 		add_action( 'admin_bar_menu', array( $this, 'newfold_site_status' ), 200 );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
-		add_action( 'load-toplevel_page_bluehost' , array( $this, 'register_assets') );
-		add_action( 'load-toplevel_page_crazy-domains' , array( $this, 'register_assets') );
+		add_action( 'load-toplevel_page_bluehost', array( $this, 'register_assets' ) );
+		add_action( 'load-toplevel_page_crazy-domains', array( $this, 'register_assets' ) );
+		add_filter( 'http_request_args', array( $this, 'replace_retired_bn_codes' ), 10, 2 );
 		CaptiveFlow::init();
-		WooCommerceBacklink::init($container );
+		WooCommerceBacklink::init( $container );
 		register_meta(
 			'post',
 			'nf_dc_page',
@@ -145,16 +146,16 @@ class ECommerce {
 			$admin_bar->add_menu( $site_status_menu );
 			// Remove status added by newfold-labs/wp-module-coming-soon
 			$menu_name = $this->container->plugin()->id . '-coming_soon';
-			$admin_bar->remove_menu( $menu_name ); 
+			$admin_bar->remove_menu( $menu_name );
 		}
 	}
-	
+
 	/**
 	 * Load WP dependencies into the page.
 	 */
 	public function register_assets() {
 		$asset_file = NFD_ECOMMERCE_BUILD_DIR . 'index.asset.php';
-		if ( file_exists($asset_file) ) {
+		if ( file_exists( $asset_file ) ) {
 			$asset = require_once $asset_file;
 			\wp_enqueue_script(
 				'nfd-ecommerce-dependency',
@@ -163,5 +164,32 @@ class ECommerce {
 				$asset_file
 			);
 		}
+	}
+
+	/**
+	 * Ensure that any retired BN codes are not sent with outbound requests to Paypal
+	 *
+	 * @param array  $parsed_args An array of HTTP request arguments
+	 * @param string $url         The request URL
+	 *
+	 * @return array Array of modified HTTP request arguments
+	 */
+	public function replace_retired_bn_codes( $parsed_args, $url ) {
+		// Bail early if the request is not to paypal's v2 checkout API
+		if ( false === stripos( wp_parse_url( $url, PHP_URL_HOST ), 'paypal.com' )
+			&& false === stripos( wp_parse_url( $url, PHP_URL_PATH ), 'v2/checkout' ) ) {
+			return $parsed_args;
+		}
+
+		// Check for an existing bn_code
+		$bn_code = isset( $parsed_args['headers']['PayPal-Partner-Attribution-Id'] ) ? $parsed_args['headers']['PayPal-Partner-Attribution-Id'] : null;
+
+		// Ensure we only set when blank, or when using one of our stale codes
+		if ( is_null( $bn_code ) || false !== stripos( $bn_code, 'yith' ) || false !== stripos( $bn_code, 'newfold' ) ) {
+			// The correct code is case sensitive. YITH brand is uppercase, but the code is not.
+			$parsed_args['headers']['PayPal-Partner-Attribution-Id'] = 'Yith_PCP';
+		}
+
+		return $parsed_args;
 	}
 }
