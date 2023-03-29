@@ -186,9 +186,7 @@ class ECommerce {
 			$bn_code = isset( $parsed_args['headers']['PayPal-Partner-Attribution-Id'] ) ? $parsed_args['headers']['PayPal-Partner-Attribution-Id'] : null;
 
 			// Ensure we only set when blank, or when using one of our stale codes (not the current one)
-			if ( is_null( $bn_code ) ||
-				( 'Yith_PCP' !== $bn_code && ( false !== stripos( $bn_code, 'yith' ) || false !== stripos( $bn_code, 'newfold' ) ) )
-			) {
+			if ( is_null( $bn_code ) || false !== stripos( $bn_code, 'yith' ) || false !== stripos( $bn_code, 'newfold' ) ) {
 				// The correct code is case sensitive. YITH brand is uppercase, but the code is not.
 				$parsed_args['headers']['PayPal-Partner-Attribution-Id'] = 'Yith_PCP';
 			}
