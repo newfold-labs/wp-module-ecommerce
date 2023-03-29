@@ -175,25 +175,21 @@ class ECommerce {
 	 * @return array Array of modified HTTP request arguments
 	 */
 	public function replace_retired_bn_codes( $parsed_args, $url ) {
-		try {
-			// Bail early if the request is not to paypal's v2 checkout API
-			if ( false === stripos( wp_parse_url( $url, PHP_URL_HOST ), 'paypal.com' )
-				&& false === stripos( wp_parse_url( $url, PHP_URL_PATH ), 'v2/checkout' ) ) {
-				return $parsed_args;
-			}
-
-			// Check for an existing bn_code and normalize to uppercase
-			$bn_code = isset( $parsed_args['headers']['PayPal-Partner-Attribution-Id'] ) ? $parsed_args['headers']['PayPal-Partner-Attribution-Id'] : null;
-
-			// Ensure we only set when blank, or when using one of our stale codes (not the current one)
-			if ( is_null( $bn_code ) || false !== stripos( $bn_code, 'yith' ) || false !== stripos( $bn_code, 'newfold' ) ) {
-				// The correct code is case sensitive. YITH brand is uppercase, but the code is not.
-				$parsed_args['headers']['PayPal-Partner-Attribution-Id'] = 'Yith_PCP';
-			}
-		} catch ( \Exception $e ) {
-			error_log( 'NFD: Unable to fix partner attribution.' );
-		} finally {
+		// Bail early if the request is not to paypal's v2 checkout API
+		if ( false === stripos( wp_parse_url( $url, PHP_URL_HOST ), 'paypal.com' )
+			&& false === stripos( wp_parse_url( $url, PHP_URL_PATH ), 'v2/checkout' ) ) {
 			return $parsed_args;
 		}
+
+		// Check for an existing bn_code
+		$bn_code = isset( $parsed_args['headers']['PayPal-Partner-Attribution-Id'] ) ? $parsed_args['headers']['PayPal-Partner-Attribution-Id'] : null;
+
+		// Ensure we only set when blank, or when using one of our stale codes
+		if ( is_null( $bn_code ) || false !== stripos( $bn_code, 'yith' ) || false !== stripos( $bn_code, 'newfold' ) ) {
+			// The correct code is case sensitive. YITH brand is uppercase, but the code is not.
+			$parsed_args['headers']['PayPal-Partner-Attribution-Id'] = 'Yith_PCP';
+		}
+
+		return $parsed_args;
 	}
 }
