@@ -70,7 +70,7 @@ class ECommerce {
 		add_action( 'load-toplevel_page_bluehost' , array( $this, 'register_assets') );
 		add_action( 'load-toplevel_page_crazy-domains' , array( $this, 'register_assets') );
 		CaptiveFlow::init();
-		WooCommerceBacklink::init();
+		WooCommerceBacklink::init($container );
 		register_meta(
 			'post',
 			'nf_dc_page',

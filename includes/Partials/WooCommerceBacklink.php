@@ -2,9 +2,12 @@
 namespace NewfoldLabs\WP\Module\ECommerce\Partials;
 
 use NewfoldLabs\WP\Module\ECommerce\Permissions;
+use NewfoldLabs\WP\Module\ECommerce\Data\Data;
+use NewfoldLabs\WP\ModuleLoader\Container;
 
 class WooCommerceBacklink {
 
+	public static $container;
 	/**
 	 * @var array
 	 *
@@ -19,19 +22,19 @@ class WooCommerceBacklink {
 		'product_page_product_importer',
 	);
 
-	public static function init() {
+	public static function init(Container $container) {
+		WooCommerceBacklink::$container = $container;
 		foreach ( self::$hook_suffixes as $hook_suffix ) {
 			add_action( 'load-' . $hook_suffix, array( __CLASS__, 'add_back_link' ), 100 );
 		}
 	}
 
 	public static function add_back_link() {
-		$brand = \get_option('mm_brand', 'newfold' );
 		\wp_enqueue_script( 'nfd-ecommerce-woocommerce-captive', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Partials/woocommerce.js', array(), '1', true );
 		\wp_enqueue_style( 'nfd-ecommerce-woocommerce-captive', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Partials/woocommerce.css', null, '1', 'screen' );
 		\wp_add_inline_script(
 			'nfd-ecommerce-woocommerce-captive',
-			'var brand =' . \wp_json_encode( $brand ) . ';',
+			'nfdEcommerce =' . wp_json_encode( Data::runtime(WooCommerceBacklink::$container) ) . ';',
 			'before'
 		);
 	}
