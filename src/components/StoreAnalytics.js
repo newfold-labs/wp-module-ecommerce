@@ -23,9 +23,13 @@ export function StoreAnalytics(props) {
           )}
         </span>
         <div style={{ height: '16px' }} />
-        <a href={storeAnalyticsLink}>
+        <button
+          className='nfd-ecommerce-button'
+          data-variant='hollow'
+          onClick={() => window.open(storeAnalyticsLink, '_blank')}
+        >
           {__('View Analytics', 'wp-module-ecommerce')}
-        </a>
+        </button>
       </div>
       <div style={{ height: '32px' }} />
     </>
