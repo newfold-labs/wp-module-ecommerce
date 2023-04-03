@@ -137,5 +137,12 @@ form.nfd-ecommerce-modal-razorpay {
     .razorpay-logo {
       justify-self: center;
     }
+    .components-button-group {
+      margin: auto;
+      flex-direction: column-reverse;
+      button{
+        width: 247px;
+      }
+    }
   }
 }
