@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - trunk
+      - automation/test-building-bluehost-plugin
     paths-ignore:
       - '.github/**'
       - '.gitignore'
