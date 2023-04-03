@@ -1,23 +1,39 @@
-name: Tests
+name: Cypress Test Matrix
+
 on:
-  push:
-    branches:
-      - automation/test-building-bluehost-plugin
-    paths-ignore:
-      - '.github/**'
-      - '.gitignore'
-      - '**.md'
-  pull_request:
-    types: [opened, edited, synchronize, reopened, ready_for_review]
+  release:
+    types:
+      - published
+  workflow_dispatch:
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
   cancel-in-progress: true
+
 jobs:
-  tests:
+  test:
+    name: Run Cypress Test Matrix
     runs-on: ubuntu-latest
+    timeout-minutes: 40
+
+    strategy:
+      fail-fast: false
+      matrix:
+        phpVersion:
+          - '8.1'
+        wpVersion:
+          - '6.2'
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          coverage: none
+          tools: composer, cs2pr
 
       - name: Setup workflow context
         id: workflow
@@ -26,108 +42,93 @@ jobs:
           REPO: ${{ github.repository }}
         run: |
           mkdir dist
-          echo ::set-output name=DIST::${PWD}/dist
-          echo ::set-output name=PACKAGE::${REPO##*/}
+          echo "DIST=${PWD}/dist" >> $GITHUB_OUTPUT
+          echo "PACKAGE=${REPO##*/}" >> $GITHUB_OUTPUT
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3
         with:
-          php-version: '7.4'
-          coverage: none
-          tools: composer
+          node-version: 16.x
+          cache: 'npm'
 
       - name: Get Composer cache directory
         id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache Composer vendor directory
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
-            ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+            ${{ runner.os }}-composer-
 
-      - name: Setup Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-
-      - name: Cache node modules
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-
-      - name: Log debug information
+      - name: Show versions
         run: |
           php --version
           composer --version
           node --version
           npm --version
 
-      - name: Validate composer.json and composer.lock files
+      - name: Validate composer.json and composer.lock
         run: composer validate
 
       - name: Install PHP Dependencies
-        run: composer install --no-progress --no-dev --optimize-autoloader
+        run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
 
-      - name: Run NPM Install
-        run: npm install
+      - name: NPM Install
+        run: npm install --legacy-peer-deps
 
       - name: Build JavaScript
         run: npm run build
 
       - name: Create Distribution Copy
-        run: rsync -r --exclude-from=.distignore --include-from=.distinclude . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
+        run: rsync -r --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
 
       - name: List Distribution Files
         working-directory: ${{ steps.workflow.outputs.DIST }}
         run: find .
 
+      - name: Download Bluehost plugin from bluehost-plugin.yml workflow
+        id: download-bluehost-plugin-artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: bluehost-plugin.yml
+          workflow_conclusion: success
+          name: bluehost-wordpress-plugin
+          path: ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
+          check_artifacts: false
+          search_artifacts: false
+          skip_unpack: false
+          if_no_artifact_found: fail
+
       - name: Configure WordPress
-        run: echo '{"config":{"WP_DEBUG_DISPLAY":false},"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
+        run: |
+          echo '{"core": "WordPress/WordPress#tags/${{ matrix.wpVersion }}","phpVersion": "${{ matrix.phpVersion }}","plugins": [ "${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}" ] }' > .wp-env.override.json
+
+      - name: Configure Cypress
+        run: |
+          echo '{"wpVersion": "${{ matrix.wpVersion }}","phpVersion": "${{ matrix.phpVersion }}"}' > cypress.env.json
 
       - name: Install WordPress
-        run: npx @wordpress/env@latest start
-
-      - name: Run PHPUnit Tests
-        run: npm run test:unit
+        run: npx wp-env start --debug
 
       - name: Run Cypress Tests
-        run: npm run test:e2e
+        run: npx cypress run
+
+      - name: List Replays
+        if: always()
+        shell: bash
+        run: npx @replayio/replay ls --json
 
       - name: Store screenshots of test failures
         if: ${{ failure() }}
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: screenshots
           path: ./tests/cypress/screenshots
 
-      - name: Check if a debug.log file exists
-        id: hasErrors
-        run: npx wp-env run wordpress test ! -f /var/www/html/wp-content/debug.log
-
-      - name: Copy debug.log file
-        if: ${{ steps.hasErrors.outputs.failure }}
-        run: cat /var/www/html/wp-content/debug.log 1>./debug.log 2>/dev/null
-
-      - name: Store debug.log file
-        if: ${{ steps.hasErrors.outputs.failure }}
-        uses: actions/upload-artifact@v2
-        with:
-          name: logs
-          path: ./debug.log
-
-      - name: Store a copy of the plugin on success
-        if: ${{ success() }}
-        uses: actions/upload-artifact@v1
-        with:
-          name: ${{ steps.workflow.outputs.PACKAGE }}
-          path: ${{ steps.workflow.outputs.DIST }}
+      - name: Output debug.log file contents
+        if: ${{ always() }}
+        continue-on-error: true
+        run: npx wp-env run wordpress "cat /var/www/html/wp-content/debug.log"
