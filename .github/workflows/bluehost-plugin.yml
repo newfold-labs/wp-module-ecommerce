@@ -3,7 +3,6 @@ on:
   # workflow_dispatch:
   push:
     branches:
-      - trunk
       - automation/test-building-bluehost-plugin
     paths-ignore:
       - '.github/**'
