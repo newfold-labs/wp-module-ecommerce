@@ -17,6 +17,8 @@ jobs:
           php-version: "8.1"
           coverage: none
           tools: composer, cs2pr
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Checkout plugin
         uses: actions/checkout@v3
