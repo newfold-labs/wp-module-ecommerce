@@ -76,10 +76,7 @@ jobs:
         run: npm ci --legacy-peer-deps
 
       - name: NPM Install module
-        run: npm install ./modules/newfold-labs/wp-module-ecommerce --force
-
-      - name: NPM Install Temporary
-        run: npm install @wordpress/dependency-extraction-webpack-plugin@3.1.2 --legacy-peer-deps
+        run: npm install ./modules/newfold-labs/wp-module-ecommerce --legacy-peer-deps --force
 
       - name: View modified files
         run: cat package.json composer.json
