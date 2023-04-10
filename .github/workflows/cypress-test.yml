@@ -19,7 +19,7 @@ concurrency:
 
 jobs:
   build:
-    name: Build Plugin Zip
+    name: Build and Test
     runs-on: ubuntu-latest
     timeout-minutes: 40
 
@@ -32,15 +32,6 @@ jobs:
           - '6.2'
 
     steps:
-      # - name: Setup PHP
-      #   uses: shivammathur/setup-php@v2
-      #   with:
-      #     php-version: '8.1'
-      #     coverage: none
-      #     tools: composer, cs2pr
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Checkout plugin
         uses: actions/checkout@v3
 
@@ -55,37 +46,10 @@ jobs:
         with:
           path: ./modules/${{ github.repository }}
 
-      # - name: Get Composer cache directory
-      #   id: composer-cache
-      #   run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-
-      # - name: Cache Composer vendor directory
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: ${{ steps.composer-cache.outputs.dir }}
-      #     key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-composer-
-
       - name: Show versions
         run: |
           node --version
           npm --version
-
-      # - name: Modify composer.json
-      #   run: |
-      #     node ./modules/newfold-labs/wp-module-ecommerce/scripts/update-plugin-composer.mjs ${PWD}/composer.json ${PWD}/modules
-
-      # - name: Update lockfile
-      #   run: composer update
-
-      # - name: Validate composer.json and composer.lock
-      #   run: |
-      #   composer config github-oauth.github.com ${{ secrets.composer-update-token }}
-      #   composer validate
-
-      # - name: Install PHP Dependencies
-      #   run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
 
       - name: NPM Install
         run: npm ci --legacy-peer-deps
@@ -116,19 +80,8 @@ jobs:
       - name: Prepare files
         run: rsync -r --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}
 
-      # - name: Validate composer.json and composer.lock
-      #   run: |
-      #   composer config github-oauth.github.com ${{ secrets.composer-update-token }}
-      #   composer validate
-
-      # - name: Install PHP Dependencies
-      #   run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
-
       - name: NPM Install
         run: npm install --legacy-peer-deps
-
-      # - name: Build JavaScript
-      #   run: npm run build
 
       - name: Create Distribution Copy
         run: rsync -r --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
@@ -154,10 +107,6 @@ jobs:
         run: |
           echo '{"core": "WordPress/WordPress#tags/${{ matrix.wpVersion }}","phpVersion": "${{ matrix.phpVersion }}","plugins": [ "${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"],"mappings":{"wp-content/plugins/wpforms-lite": "https://downloads.wordpress.org/plugin/wpforms-lite.latest-stable.zip"} }' > .wp-env.override.json
 
-      # - name: Configure Cypress
-      #   run: |
-      #     echo '{"wpVersion": "${{ matrix.wpVersion }}","phpVersion": "${{ matrix.phpVersion }}"}' > cypress.env.json
-
       - name: Install WordPress
         run: npx wp-env start --debug
 
@@ -166,31 +115,8 @@ jobs:
           npx wp-env run cli wp plugin list
           npx wp-env run cli wp plugin activate --all
 
-      # - name: Run Cypress Tests
-      #   run: npx cypress run
-
-      # - name: Run Cypress Tests
-      #   env:
-      #     RECORD_REPLAY_API_KEY: ${{ secrets.RECORD_REPLAY_API_KEY }}
-      #   if: ${{ github.repository != 'bluehost/bluehost-wordpress-plugin' || env.RECORD_REPLAY_API_KEY == '' }}
-      #   run: npx cypress run
-
-      # - name: Run Cypress Tests
-      #   uses: replayio/action-cypress@v0.2.8
-      #   env:
-      #     RECORD_REPLAY_METADATA_TEST_RUN_TITLE: 'php-${{ matrix.phpVersion }}, wp-${{ matrix.wpVersion }}'
-      #     RECORD_REPLAY_API_KEY: ${{ secrets.RECORD_REPLAY_API_KEY }}
-      #   if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' && env.RECORD_REPLAY_API_KEY != '' }}
-      #   with:
-      #     api-key: ${{ secrets.RECORD_REPLAY_API_KEY }}
-      #     browser: 'Replay Chromium'
-      #     command: npm run test:e2e -- --record --key ${{ secrets.CYPRESS_RECORD_KEY }} --tag php-${{ matrix.phpVersion }},wp-${{ matrix.wpVersion }}
-      #     upload-all: false
-
-      - name: List Replays
-        if: always()
-        shell: bash
-        run: npx @replayio/replay ls --json
+      - name: Run Cypress Tests
+        run: npx cypress run
 
       - name: Store screenshots of test failures
         if: ${{ failure() }}
