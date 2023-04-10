@@ -1,6 +1,9 @@
 name: Cypress Test Matrix
 
 on:
+  release:
+    types:
+      - published
   workflow_dispatch:
 
 concurrency:
@@ -11,7 +14,7 @@ jobs:
   test:
     name: Run Cypress Test Matrix
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    # timeout-minutes: 40
 
     strategy:
       fail-fast: false
@@ -31,6 +34,8 @@ jobs:
           php-version: '8.1'
           coverage: none
           tools: composer, cs2pr
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup workflow context
         id: workflow
@@ -67,37 +72,33 @@ jobs:
           node --version
           npm --version
 
-      # - name: Validate composer.json and composer.lock
-      #   run: composer validate
+      - name: Validate composer.json and composer.lock
+        run: composer validate
 
-      # - name: Install PHP Dependencies
-      #   run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
+      - name: Install PHP Dependencies
+        run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
 
       - name: NPM Install
         run: npm install --legacy-peer-deps
 
-      # - name: Build JavaScript
-      #   run: npm run build
+      - name: Build JavaScript
+        run: npm run build
 
       - name: Create Distribution Copy
         run: rsync -r --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
 
-      - name: List Distribution Files
-        working-directory: ${{ steps.workflow.outputs.DIST }}
-        run: find .
-
-      - name: Download Bluehost plugin from bluehost-plugin.yml workflow
-        id: download-bluehost-plugin-artifact
+      - name: Download Bluehost Plugin
+        id: download-artifact
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: bluehost-plugin.yml
           workflow_conclusion: success
           name: bluehost-wordpress-plugin
           path: ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
-          check_artifacts: false
-          search_artifacts: false
-          skip_unpack: false
-          if_no_artifact_found: fail
+
+      - name: List Distribution Files
+        working-directory: ${{ steps.workflow.outputs.DIST }}
+        run: find .
 
       - name: Configure WordPress
         run: |
@@ -112,6 +113,24 @@ jobs:
 
       - name: Run Cypress Tests
         run: npx cypress run
+
+      # - name: Run Cypress Tests
+      #   env:
+      #     RECORD_REPLAY_API_KEY: ${{ secrets.RECORD_REPLAY_API_KEY }}
+      #   if: ${{ github.repository != 'bluehost/bluehost-wordpress-plugin' || env.RECORD_REPLAY_API_KEY == '' }}
+      #   run: npx cypress run
+
+      # - name: Run Cypress Tests
+      #   uses: replayio/action-cypress@v0.2.8
+      #   env:
+      #     RECORD_REPLAY_METADATA_TEST_RUN_TITLE: 'php-${{ matrix.phpVersion }}, wp-${{ matrix.wpVersion }}'
+      #     RECORD_REPLAY_API_KEY: ${{ secrets.RECORD_REPLAY_API_KEY }}
+      #   if: ${{ github.repository == 'bluehost/bluehost-wordpress-plugin' && env.RECORD_REPLAY_API_KEY != '' }}
+      #   with:
+      #     api-key: ${{ secrets.RECORD_REPLAY_API_KEY }}
+      #     browser: 'Replay Chromium'
+      #     command: npm run test:e2e -- --record --key ${{ secrets.CYPRESS_RECORD_KEY }} --tag php-${{ matrix.phpVersion }},wp-${{ matrix.wpVersion }}
+      #     upload-all: false
 
       - name: List Replays
         if: always()
