@@ -1,9 +1,6 @@
 name: Cypress Test Matrix
 
 on:
-  release:
-    types:
-      - published
   workflow_dispatch:
 
 concurrency:
