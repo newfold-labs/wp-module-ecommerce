@@ -31,10 +31,6 @@ jobs:
         wpVersion:
           - '6.2'
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
       steps:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -44,6 +40,10 @@ jobs:
           tools: composer, cs2pr
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       
       - name: Use Node.js 16.x
         uses: actions/setup-node@v3
