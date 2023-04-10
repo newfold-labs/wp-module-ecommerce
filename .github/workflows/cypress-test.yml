@@ -73,7 +73,9 @@ jobs:
           npm --version
 
       - name: Validate composer.json and composer.lock
-        run: composer validate
+        run: |
+        composer config github-oauth.github.com ${{ secrets.composer-update-token }}
+        composer validate
 
       - name: Install PHP Dependencies
         run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
