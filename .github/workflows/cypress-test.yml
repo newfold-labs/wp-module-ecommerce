@@ -138,13 +138,13 @@ jobs:
         working-directory: ${{ steps.workflow.outputs.DIST }}
         run: find .
 
-      - name: Configure WordPress
-        run: |
-          echo '{"core": "WordPress/WordPress#tags/${{ matrix.wpVersion }}","phpVersion": "${{ matrix.phpVersion }}","plugins": [ "${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}" ] }' > .wp-env.override.json
+      # - name: Configure WordPress
+      #   run: |
+      #     echo '{"core": "WordPress/WordPress#tags/${{ matrix.wpVersion }}","phpVersion": "${{ matrix.phpVersion }}","plugins": [ "${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}" ] }' > .wp-env.override.json
 
-      - name: Configure Cypress
-        run: |
-          echo '{"wpVersion": "${{ matrix.wpVersion }}","phpVersion": "${{ matrix.phpVersion }}"}' > cypress.env.json
+      # - name: Configure Cypress
+      #   run: |
+      #     echo '{"wpVersion": "${{ matrix.wpVersion }}","phpVersion": "${{ matrix.phpVersion }}"}' > cypress.env.json
 
       - name: Install WordPress
         run: npx wp-env start --debug
