@@ -18,20 +18,10 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
-    name: Run Cypress Test Matrix
+  build:
+    name: Build Plugin Zip
     runs-on: ubuntu-latest
-    # timeout-minutes: 40
-
-    strategy:
-      fail-fast: false
-      matrix:
-        phpVersion:
-          - '8.1'
-        wpVersion:
-          - '6.2'
-
-      steps:
+    steps:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -40,37 +30,20 @@ jobs:
           tools: composer, cs2pr
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
-      steps:
-      - name: Checkout
+
+      - name: Checkout plugin
         uses: actions/checkout@v3
-      
+
       - name: Use Node.js 16.x
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
           cache: 'npm'
-      
+
       - name: Checkout module
         uses: actions/checkout@v3
         with:
           path: ./modules/${{ github.repository }}
-
-      - name: Setup workflow context
-        id: workflow
-        working-directory: ${{ runner.temp }}
-        env:
-          REPO: ${{ github.repository }}
-        run: |
-          mkdir dist
-          echo "DIST=${PWD}/dist" >> $GITHUB_OUTPUT
-          echo "PACKAGE=${REPO##*/}" >> $GITHUB_OUTPUT
-
-      # - name: Use Node.js 16.x
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: 16.x
-      #     cache: 'npm'
 
       - name: Get Composer cache directory
         id: composer-cache
@@ -90,6 +63,50 @@ jobs:
           composer --version
           node --version
           npm --version
+
+      - name: Modify composer.json
+        run: |
+          node ./modules/newfold-labs/wp-module-ecommerce/scripts/update-plugin-composer.mjs ${PWD}/composer.json ${PWD}/modules
+
+      - name: Update lockfile
+        run: composer update
+
+      - name: Validate composer.json and composer.lock
+        run: |
+        composer config github-oauth.github.com ${{ secrets.composer-update-token }}
+        composer validate
+
+      - name: Install PHP Dependencies
+        run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
+
+      - name: NPM Install
+        run: npm ci --legacy-peer-deps
+
+      - name: Setup module
+        working-directory: ./modules/${{ github.repository }}
+        run: npm ci --legacy-peer-deps
+
+      - name: NPM Install module
+        run: npm install ./modules/newfold-labs/wp-module-ecommerce --legacy-peer-deps --force
+
+      - name: View modified files
+        run: cat package.json composer.json
+
+      - name: Build JavaScript
+        run: npm run build
+
+      - name: Setup workflow context
+        id: workflow
+        working-directory: ${{ runner.temp }}
+        env:
+          REPO: 'bluehost-wordpress-plugin'
+        run: |
+          mkdir dist
+          echo "DIST=${PWD}/dist" >> $GITHUB_OUTPUT
+          echo "PACKAGE=${REPO##*/}" >> $GITHUB_OUTPUT
+
+      # - name: Prepare files
+      #   run: rsync -r --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}
 
       # - name: Validate composer.json and composer.lock
       #   run: |
