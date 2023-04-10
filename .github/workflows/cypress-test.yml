@@ -61,12 +61,6 @@ jobs:
       - name: NPM Install module
         run: npm install ./modules/newfold-labs/wp-module-ecommerce --legacy-peer-deps --force
 
-      - name: View modified files
-        run: cat package.json composer.json
-
-      - name: Build JavaScript
-        run: npm run build
-
       - name: Setup workflow context
         id: workflow
         working-directory: ${{ runner.temp }}
@@ -76,9 +70,6 @@ jobs:
           mkdir dist
           echo "DIST=${PWD}/dist" >> $GITHUB_OUTPUT
           echo "PACKAGE=${REPO##*/}" >> $GITHUB_OUTPUT
-
-      - name: Prepare files
-        run: rsync -r --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}
 
       - name: NPM Install
         run: npm install --legacy-peer-deps
@@ -98,10 +89,6 @@ jobs:
       - name: List Distribution Files
         working-directory: ${{ steps.workflow.outputs.DIST }}
         run: find .
-
-      - name: Print Dist
-        run: |
-          ls ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
 
       - name: Configure WordPress
         run: |
