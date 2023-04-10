@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - trunk
-      - automation/test-building-bluehost-plugin
     paths-ignore:
       - '.github/**'
       - '.gitignore'
@@ -17,8 +16,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
-    name: Install & Setup env
+  test:
+    name: Setup & Test
     runs-on: ubuntu-latest
     timeout-minutes: 60
 
@@ -96,21 +95,18 @@ jobs:
         run: |
           npx wp-env run cli wp plugin list
           npx wp-env run cli wp plugin activate --all
-    
-    test:
-      name: Running Cypress Test
-      steps:
-        - name: Run Cypress Tests
-          run: npx cypress run
 
-        - name: Store screenshots of test failures
-          if: ${{ failure() }}
-          uses: actions/upload-artifact@v3
-          with:
-            name: screenshots
-            path: ./tests/cypress/screenshots
+      - name: Run Cypress Tests
+        run: npx cypress run
 
-        - name: Output debug.log file contents
-          if: ${{ always() }}
-          continue-on-error: true
-          run: npx wp-env run wordpress "cat /var/www/html/wp-content/debug.log"
+      - name: Store screenshots of test failures
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: screenshots
+          path: ./tests/cypress/screenshots
+
+      - name: Output debug.log file contents
+        if: ${{ always() }}
+        continue-on-error: true
+        run: npx wp-env run wordpress "cat /var/www/html/wp-content/debug.log"
