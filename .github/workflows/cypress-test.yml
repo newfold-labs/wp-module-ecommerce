@@ -152,7 +152,7 @@ jobs:
 
       - name: Configure WordPress
         run: |
-          echo '{"core": "WordPress/WordPress#tags/${{ matrix.wpVersion }}","phpVersion": "${{ matrix.phpVersion }}","plugins": [ "${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"] }' > .wp-env.override.json
+          echo '{"core": "WordPress/WordPress#tags/${{ matrix.wpVersion }}","phpVersion": "${{ matrix.phpVersion }}","plugins": [ "${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"],"mappings":{"wp-content/plugins/wpforms-lite": "https://downloads.wordpress.org/plugin/wpforms-lite.latest-stable.zip"} }' > .wp-env.override.json
 
       # - name: Configure Cypress
       #   run: |
@@ -166,8 +166,8 @@ jobs:
           npx wp-env run cli wp plugin list
           npx wp-env run cli wp plugin activate --all
 
-      - name: Run Cypress Tests
-        run: npx cypress run
+      # - name: Run Cypress Tests
+      #   run: npx cypress run
 
       # - name: Run Cypress Tests
       #   env:

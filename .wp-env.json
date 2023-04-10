@@ -12,8 +12,7 @@
     "https://downloads.wordpress.org/theme/yith-wonder.latest-stable.zip"
   ],
   "mappings": {
-    "wp-content/plugins/woocommerce": "https://downloads.wordpress.org/plugin/woocommerce.latest-stable.zip",
-    "wp-content/plugins/wpforms-lite": "https://downloads.wordpress.org/plugin/wpforms-lite.latest-stable.zip"
+    "wp-content/plugins/woocommerce": "https://downloads.wordpress.org/plugin/woocommerce.latest-stable.zip"
   },
   "phpVersion": "8.1",
   "port": 8882,
