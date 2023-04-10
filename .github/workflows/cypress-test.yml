@@ -1,6 +1,15 @@
 name: Cypress Test Matrix
 
 on:
+  push:
+    branches:
+      - trunk
+    paths-ignore:
+      - '.github/**'
+      - '.gitignore'
+      - '**.md'
+  pull_request:
+    types: [opened, edited, synchronize, reopened, ready_for_review]
   workflow_dispatch:
 
 concurrency:
