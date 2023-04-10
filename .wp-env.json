@@ -7,12 +7,14 @@
     "FS_METHOD": "direct",
     "NFD_ONBOARDING_VERSION": "0.0.10"
   },
-  "plugins": [
-    "https://downloads.wordpress.org/plugin/woocommerce.latest-stable.zip"
-  ],
+  "plugins": [],
   "themes": [
     "https://downloads.wordpress.org/theme/yith-wonder.latest-stable.zip"
   ],
+  "mappings": {
+    "wp-content/plugins/woocommerce": "https://downloads.wordpress.org/plugin/woocommerce.latest-stable.zip",
+    "wp-content/plugins/wpforms-lite": "https://downloads.wordpress.org/plugin/wpforms-lite.latest-stable.zip"
+  },
   "phpVersion": "8.1",
   "port": 8882,
   "testsPort": 8883
