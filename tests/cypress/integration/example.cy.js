@@ -2,10 +2,6 @@ const customCommandTimeout = 10000;
 var homeUrl = '/wp-admin/admin.php?page=bluehost#/home/store/general';
 
 describe('As a wp-admin user, I want to ', function () {
-  before(() => {
-    cy.activatePlugin('all');
-  });
-
   beforeEach(() => {
     cy.visit(homeUrl);
     cy.injectAxe();
