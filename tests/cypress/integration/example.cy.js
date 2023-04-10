@@ -27,6 +27,5 @@ describe('As a wp-admin user, I want to ', function () {
     });
     cy.contains('Contact Support').click();
     cy.get('@windowOpen').should('be.calledWith', urlToVerify, '_blank');
-    cy.activatePlugin('woocommerce');
   });
 });
