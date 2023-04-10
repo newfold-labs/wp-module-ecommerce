@@ -29,33 +29,33 @@
 import '@testing-library/cypress/add-commands';
 
 Cypress.Commands.add('login', (username, password) => {
-	cy
-		.getCookies()
-		.then(cookies => {
-			let hasMatch = false;
-			cookies.forEach((cookie) => {
-				if (cookie.name.substr(0, 20) === 'wordpress_logged_in_') {
-					hasMatch = true;
-				}
-			});
-			if (!hasMatch) {
-				cy.visit('/wp-login.php').wait(1000);
-				cy.get('#user_login').type(username);
-				cy.get('#user_pass').type(`${ password }{enter}`);
-			}
-		});
+  cy.getCookies().then((cookies) => {
+    let hasMatch = false;
+    cookies.forEach((cookie) => {
+      if (cookie.name.substr(0, 20) === 'wordpress_logged_in_') {
+        hasMatch = true;
+      }
+    });
+    if (!hasMatch) {
+      cy.visit('/wp-login.php').wait(1000);
+      cy.get('#user_login').type(username);
+      cy.get('#user_pass').type(`${password}{enter}`);
+    }
+  });
 });
 
 Cypress.Commands.add('logout', () => {
-	cy
-		.getCookies()
-		.then(
-			cookies => {
-				cookies.forEach(
-					cookie => {
-						cy.clearCookie(cookie.name);
-					}
-				)
-			}
-		);
+  cy.getCookies().then((cookies) => {
+    cookies.forEach((cookie) => {
+      cy.clearCookie(cookie.name);
+    });
+  });
+});
+
+Cypress.Commands.add('deactivatePlugin', (pluginName) => {
+  if (pluginName.toLowerCase() === 'all') {
+    cy.exec('npx wp-env run cli wp plugin deactivate --all');
+  } else {
+    cy.exec(`npx wp-env run cli wp plugin deactivate ${pluginName}`);
+  }
 });
