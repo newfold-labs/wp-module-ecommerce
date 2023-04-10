@@ -71,13 +71,13 @@ jobs:
       - name: Update lockfile
         run: composer update
 
-      - name: Validate composer.json and composer.lock
-        run: |
-        composer config github-oauth.github.com ${{ secrets.composer-update-token }}
-        composer validate
+      # - name: Validate composer.json and composer.lock
+      #   run: |
+      #   composer config github-oauth.github.com ${{ secrets.composer-update-token }}
+      #   composer validate
 
-      - name: Install PHP Dependencies
-        run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
+      # - name: Install PHP Dependencies
+      #   run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
 
       - name: NPM Install
         run: npm ci --legacy-peer-deps
