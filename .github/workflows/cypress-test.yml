@@ -72,19 +72,19 @@ jobs:
           node --version
           npm --version
 
-      - name: Validate composer.json and composer.lock
-        run: |
-        composer config github-oauth.github.com ${{ secrets.composer-update-token }}
-        composer validate
+      # - name: Validate composer.json and composer.lock
+      #   run: |
+      #   composer config github-oauth.github.com ${{ secrets.composer-update-token }}
+      #   composer validate
 
-      - name: Install PHP Dependencies
-        run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
+      # - name: Install PHP Dependencies
+      #   run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
 
-      - name: NPM Install
-        run: npm install --legacy-peer-deps
+      # - name: NPM Install
+      #   run: npm install --legacy-peer-deps
 
-      - name: Build JavaScript
-        run: npm run build
+      # - name: Build JavaScript
+      #   run: npm run build
 
       - name: Create Distribution Copy
         run: rsync -r --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
