@@ -7,7 +7,6 @@
     "FS_METHOD": "direct",
     "NFD_ONBOARDING_VERSION": "0.0.10"
   },
-  "plugins": [],
   "themes": [
     "https://downloads.wordpress.org/theme/yith-wonder.latest-stable.zip"
   ],
