@@ -64,12 +64,12 @@ jobs:
           node --version
           npm --version
 
-      - name: Modify composer.json
-        run: |
-          node ./modules/newfold-labs/wp-module-ecommerce/scripts/update-plugin-composer.mjs ${PWD}/composer.json ${PWD}/modules
+      # - name: Modify composer.json
+      #   run: |
+      #     node ./modules/newfold-labs/wp-module-ecommerce/scripts/update-plugin-composer.mjs ${PWD}/composer.json ${PWD}/modules
 
-      - name: Update lockfile
-        run: composer update
+      # - name: Update lockfile
+      #   run: composer update
 
       # - name: Validate composer.json and composer.lock
       #   run: |
