@@ -35,6 +35,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      steps:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -43,6 +44,17 @@ jobs:
           tools: composer, cs2pr
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: 'npm'
+      
+      - name: Checkout module
+        uses: actions/checkout@v3
+        with:
+          path: ./modules/${{ github.repository }}
 
       - name: Setup workflow context
         id: workflow
@@ -54,11 +66,11 @@ jobs:
           echo "DIST=${PWD}/dist" >> $GITHUB_OUTPUT
           echo "PACKAGE=${REPO##*/}" >> $GITHUB_OUTPUT
 
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16.x
-          cache: 'npm'
+      # - name: Use Node.js 16.x
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 16.x
+      #     cache: 'npm'
 
       - name: Get Composer cache directory
         id: composer-cache
