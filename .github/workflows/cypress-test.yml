@@ -164,9 +164,10 @@ jobs:
       - name: list of installed plugin
         run: |
           npx wp-env run cli wp plugin list
-      # # npx wp-env run cli wp plugin activate --all
-      # - name: Run Cypress Tests
-      #   run: npx cypress run
+          npx wp-env run cli wp plugin activate --all
+
+      - name: Run Cypress Tests
+        run: npx cypress run
 
       # - name: Run Cypress Tests
       #   env:

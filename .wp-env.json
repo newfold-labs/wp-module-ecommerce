@@ -8,7 +8,6 @@
     "NFD_ONBOARDING_VERSION": "0.0.10"
   },
   "plugins": [
-    "/home/runner/work/_temp/dist/bluehost-wordpress-plugin",
     "https://downloads.wordpress.org/plugin/woocommerce.latest-stable.zip"
   ],
   "themes": [
