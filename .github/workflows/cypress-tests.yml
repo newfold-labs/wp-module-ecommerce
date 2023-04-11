@@ -1,0 +1,117 @@
+name: Cypress Test
+
+on:
+  push:
+    branches:
+      - trunk
+    paths-ignore:
+      - '.github/**'
+      - '.gitignore'
+      - '**.md'
+  pull_request:
+    types: [opened, edited, synchronize, reopened, ready_for_review]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    strategy:
+      fail-fast: false
+      matrix:
+        phpVersion:
+          - '8.1'
+        wpVersion:
+          - '6.2'
+
+    steps:
+      - name: Checkout plugin
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: 'npm'
+
+      - name: Checkout module
+        uses: actions/checkout@v3
+        with:
+          path: ./modules/${{ github.repository }}
+
+      - name: Show versions
+        run: |
+          node --version
+          npm --version
+
+      - name: NPM Install
+        run: npm ci --legacy-peer-deps
+
+      - name: Setup module
+        working-directory: ./modules/${{ github.repository }}
+        run: npm ci --legacy-peer-deps
+
+      - name: NPM Install module
+        run: npm install ./modules/newfold-labs/wp-module-ecommerce --legacy-peer-deps --force
+
+      - name: Setup workflow context
+        id: workflow
+        working-directory: ${{ runner.temp }}
+        env:
+          REPO: 'bluehost-wordpress-plugin'
+        run: |
+          mkdir dist
+          echo "DIST=${PWD}/dist" >> $GITHUB_OUTPUT
+          echo "PACKAGE=${REPO##*/}" >> $GITHUB_OUTPUT
+
+      - name: NPM Install
+        run: npm install --legacy-peer-deps
+
+      - name: Create Distribution Copy
+        run: rsync -r --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
+
+      - name: Download Bluehost Plugin
+        id: download-artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: bluehost-plugin.yml
+          workflow_conclusion: success
+          name: bluehost-wordpress-plugin
+          path: ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
+
+      - name: List Distribution Files
+        working-directory: ${{ steps.workflow.outputs.DIST }}
+        run: find .
+
+      - name: Configure WordPress
+        run: |
+          echo '{"core": "WordPress/WordPress#tags/${{ matrix.wpVersion }}","phpVersion": "${{ matrix.phpVersion }}","plugins": [ "${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"],"mappings":{"wp-content/plugins/wpforms-lite": "https://downloads.wordpress.org/plugin/wpforms-lite.latest-stable.zip"} }' > .wp-env.override.json
+
+      - name: Install WordPress
+        run: npx wp-env start --debug
+
+      - name: list of installed plugin
+        run: |
+          npx wp-env run cli wp plugin list
+          npx wp-env run cli wp plugin activate --all
+
+      - name: Run Cypress Tests
+        run: npx cypress run
+
+      - name: Store screenshots of test failures
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: screenshots
+          path: ./tests/cypress/screenshots
+
+      - name: Output debug.log file contents
+        if: ${{ always() }}
+        continue-on-error: true
+        run: npx wp-env run wordpress "cat /var/www/html/wp-content/debug.log"
