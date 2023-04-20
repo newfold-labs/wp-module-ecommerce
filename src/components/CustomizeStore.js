@@ -10,7 +10,7 @@ import { Endpoints, syncPluginInstall } from "../services";
 import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
 
-const CustomizeList = [
+let CustomizeList = [
   { title: __("Home Page", "wp-module-ecommerce"), dcpage: "home", Icon: Home },
   {
     title: __("About Page", "wp-module-ecommerce"),
