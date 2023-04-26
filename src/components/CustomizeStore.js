@@ -10,7 +10,7 @@ import { Endpoints, syncPluginInstall } from "../services";
 import { Card } from "./Card";
 import { DashboardContent } from "./DashboardContent";
 
-const CustomizeList = [
+let CustomizeList = [
   { title: __("Home Page", "wp-module-ecommerce"), dcpage: "home", Icon: Home },
   {
     title: __("About Page", "wp-module-ecommerce"),
@@ -31,7 +31,11 @@ export function CustomizeStore({ plugins }) {
     pages?.map((_) => [_["meta_value"], _["ID"]]) ?? []
   );
   let WCUnavailable = plugins?.status?.woocommerce !== "Active";
-
+  if (Object.keys(pagesByName).length > 0) {
+    CustomizeList = CustomizeList.filter((page) =>
+      pagesByName?.hasOwnProperty(page.dcpage)
+    );
+  }
   if (status === undefined && !WCUnavailable) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
@@ -57,34 +61,32 @@ export function CustomizeStore({ plugins }) {
       )}
     >
       <div className="nfd-ecommerce-standard-actions-container">
-        {theme?.name === "YITH Wonder" && (
-          CustomizeList.map(({ title, Icon, dcpage }) => (
-            <Card
-              key={title}
-              variant="standard"
-              title={title}
-              disable = {WCUnavailable}
-              status={status === undefined ? "inprogress" : "ready"}
-              action={__("Setup", "wp-module-ecommerce")}
-              href={`post.php?action=edit&post=${pagesByName[dcpage]}`}
-            >
-              <Icon />
-            </Card>
-          ))
-        )}
+        {CustomizeList.map(({ title, Icon, dcpage }) => (
           <Card
+            key={title}
             variant="standard"
-            title={__("Add a Page", "wp-module-ecommerce")}
-            disable = {WCUnavailable}
+            title={title}
+            disable={WCUnavailable}
+            status={status === undefined ? "inprogress" : "ready"}
             action={__("Setup", "wp-module-ecommerce")}
-            href={`post-new.php?post_type=page`}
+            href={`post.php?action=edit&post=${pagesByName[dcpage]}`}
           >
-            <AddNewPage style={{ transform: "scale(1.5)" }} />
+            <Icon />
           </Card>
+        ))}
+        <Card
+          variant="standard"
+          title={__("Add a Page", "wp-module-ecommerce")}
+          disable={WCUnavailable}
+          action={__("Setup", "wp-module-ecommerce")}
+          href={`post-new.php?post_type=page`}
+        >
+          <AddNewPage style={{ transform: "scale(1.5)" }} />
+        </Card>
         <Card
           variant="standard"
           title={__("Store Layout", "wp-module-ecommerce")}
-          disable = {WCUnavailable}
+          disable={WCUnavailable}
           action={__("Configure", "wp-module-ecommerce")}
           href={`customize.php?return=${encodeURIComponent(
             window.location.href.replace(window.location.origin, "")
@@ -95,7 +97,7 @@ export function CustomizeStore({ plugins }) {
         <Card
           variant="standard"
           title={__("Customer Account Page", "wp-module-ecommerce")}
-          disable = {WCUnavailable}
+          disable={WCUnavailable}
           action={__("Setup", "wp-module-ecommerce")}
           data-action-gutter={"s"}
           status={plugins.status !== undefined ? "ready" : "inprogress"}
