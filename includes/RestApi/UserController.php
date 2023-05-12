@@ -11,7 +11,7 @@ class UserController {
 
 	protected $container;
 	protected $namespace = 'newfold-ecommerce/v1';
-	protected $rest_base = '/user';
+	protected $rest_base = '/experience';
 
 	public function __construct( Container $container ) {
 		$this->container = $container;
@@ -23,11 +23,11 @@ class UserController {
 	public function register_routes() {
 		\register_rest_route(
 			$this->namespace,
-			$this->rest_base . '/page-status',
+			$this->rest_base . '/bootstrap',
 			array(
 				array(
 					'methods'             => \WP_REST_Server::READABLE,
-					'callback'            => array( $this, 'get_page_status' ),
+					'callback'            => array( $this, 'fetch_bootstrap_info' ),
 					'permission_callback' => array( Permissions::class, 'rest_is_authorized_admin' ),
 				),
 			)
@@ -37,7 +37,7 @@ class UserController {
 	/**
 	 * @return array
 	 */
-	public function get_page_status() {
+	public function fetch_bootstrap_info() {
 		$args  = array(
 			'post_status' => array( 'pending', 'draft', 'future', 'publish', 'private' ),
 			'post_type'   => 'page',
@@ -59,10 +59,12 @@ class UserController {
 				$customer = $customer_from_options;
 			}
 		}
+		$capabilities = $this->container->get('capabilities')->all();
 		return array(
 			'site' => array (
 				'url' => \get_site_url()
 			),
+			'capabilities' => $capabilities,
 			'details' => $customer,
 			'currentBrandConfig' => $currentBrandConfig,
 			'theme' => array(

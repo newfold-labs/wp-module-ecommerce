@@ -20,7 +20,7 @@ window.NewfoldECommerce = function NewfoldECommerce(props) {
     revalidateOnReconnect: false,
     refreshInterval: 10 * 1000,
   });
-  let { data: user } = useSWRImmutable(Endpoints.PAGE_STATUS, fetcher);
+  let { data: user } = useSWRImmutable(Endpoints.BOOTSTRAP, fetcher);
   let plugins = {
     errors: error,
     ...(data ?? {}),

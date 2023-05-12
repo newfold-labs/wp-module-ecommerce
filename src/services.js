@@ -3,7 +3,7 @@ import apiFetch from '@wordpress/api-fetch';
 export const Endpoints = {
   WP_SETTINGS: '/wp/v2/settings',
   WC_ONBOARDING: '/wc-admin/onboarding/profile',
-  PAGE_STATUS: '/newfold-ecommerce/v1/user/page-status',
+  BOOTSTRAP: '/newfold-ecommerce/v1/experience/bootstrap',
   PLUGIN_STATUS: '/newfold-ecommerce/v1/plugins/status',
   PLUGIN_INSTALL: '/newfold-onboarding/v1/plugins/install',
   WC_PRODUCTS: '/wc/v3/products',
