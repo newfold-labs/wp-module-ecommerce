@@ -2,10 +2,7 @@ import apiFetch from "@wordpress/api-fetch";
 import { Popover, SlotFillProvider } from "@wordpress/components";
 import useSWR, { SWRConfig } from "swr";
 import useSWRImmutable from "swr/immutable";
-import { Banner } from "./components/Banner";
-import { Dashboard } from "./components/Dashboard";
 import { SiteStatus } from "./components/SiteStatus";
-import { StoreAnalytics } from "./components/StoreAnalytics";
 import { WooCommerceUnavailable } from "./components/WooCommerceUnavailable";
 import { Endpoints } from "./services";
 
@@ -26,8 +23,6 @@ window.NewfoldECommerce = function NewfoldECommerce(props) {
     ...(data ?? {}),
     refresh: refreshPlugins,
   };
-  let Hero =
-    plugins.status?.woocommerce === "Active" ? Banner : WooCommerceUnavailable;
   return (
     <SWRConfig
       value={{
@@ -37,7 +32,7 @@ window.NewfoldECommerce = function NewfoldECommerce(props) {
       }}
     >
       <SlotFillProvider>
-        <div className="nfd-ecommerce-atoms nfd-ecommerce-setup">
+        <div>
           {data === undefined ? (
             <div
               style={{
@@ -50,9 +45,11 @@ window.NewfoldECommerce = function NewfoldECommerce(props) {
             </div>
           ) : (
             <>
-              <Hero plugins={plugins} user={user} {...props} />
-              <StoreAnalytics plugins={plugins} user={user} {...props} />
-              <Dashboard plugins={plugins} user={user} {...props} />
+              <WooCommerceUnavailable
+                plugins={plugins}
+                user={user}
+                {...props}
+              />
               <SiteStatus plugins={plugins} user={user} {...props} />
             </>
           )}
