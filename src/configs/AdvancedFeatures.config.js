@@ -10,7 +10,7 @@ import { ReactComponent as WishList } from "../icons/wishlist.svg";
 import { Endpoints, queuePluginInstall } from "../services";
 import { wcPluginStatusParser } from "./selectors";
 
-const AdvancedFeatures = ({ plugins, state }) => [
+const AdvancedFeatures = ({ plugins, user }) => [
   {
     Card: ExtendedCard,
     shouldRender: () => true,
@@ -299,7 +299,7 @@ const AdvancedFeatures = ({ plugins, state }) => [
         ),
       isQueueEmpty: () => plugins?.status?.["queue-status"].length === 0,
       isDisabled: () => plugins.status?.woocommerce !== "Active",
-      isAvailable: () => state.wp.capabilities.has("premium"),
+      isAvailable: () => user.capabilities.hasEcomdash,
     },
     actions: {
       buttonClick: (actionCompleted) => {
