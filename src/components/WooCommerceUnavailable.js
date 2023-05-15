@@ -64,29 +64,27 @@ export function WooCommerceUnavailable({ plugins, user }) {
   }
   let showInProgress = isInstalling || isWCInQueue;
   return (
-    <div className="yst-p-8 yst-bg-white">
-      <div className="yst-px-4 yst-py-2 yst-flex yst-rounded-lg yst-items-center yst-bg-slate-100">
-        <div className="yst-flex-1">
-          <Title size={4} className="yst-leading-normal">
-            {__("Add a store to your site", "wp-module-ecommerce")}
-          </Title>
-          <span className="yst-whitespace-pre-wrap">
-            {__(
-              "Adding a store to your website is quick and easy!\nJust install WooCommerce and get ready to start making money!",
-              "wp-module-ecommerce"
-            )}
-          </span>
-        </div>
-        <div className="yst-flex-none">
-          <Button
-            type="button"
-            variant="upsell"
-            isLoading={showInProgress}
-            onClick={installWooCommerce.trigger}
-          >
-            {__("Install WooCommerce", "wp-module-ecommerce")}
-          </Button>
-        </div>
+    <div className="yst-px-4 yst-py-2 yst-flex yst-rounded-lg yst-items-center yst-bg-slate-100">
+      <div className="yst-flex-1">
+        <Title size={4} className="yst-leading-normal">
+          {__("Add a store to your site", "wp-module-ecommerce")}
+        </Title>
+        <span className="yst-whitespace-pre-wrap">
+          {__(
+            "Adding a store to your website is quick and easy!\nJust install WooCommerce and get ready to start making money!",
+            "wp-module-ecommerce"
+          )}
+        </span>
+      </div>
+      <div className="yst-flex-none">
+        <Button
+          type="button"
+          variant="upsell"
+          isLoading={showInProgress}
+          onClick={installWooCommerce.trigger}
+        >
+          {__("Install WooCommerce", "wp-module-ecommerce")}
+        </Button>
       </div>
     </div>
   );
