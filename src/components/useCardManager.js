@@ -17,7 +17,7 @@ function createDependencyTree(config) {
 function useLoadDependencies(tree, { refreshInterval }) {
   let endpoints = Object.keys(tree);
   let { data, mutate } = useSWR(
-    endpoints,
+    endpoints.length === 0 ? "no-dependencies": endpoints,
     async () => {
       let realisedTree = {};
       for (let path of endpoints) {

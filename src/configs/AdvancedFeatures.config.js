@@ -18,13 +18,13 @@ const AdvancedFeatures = ({ plugins, user }) => [
     assets: () => ({
       image: Booking,
     }),
-    text: (actionCompleted) => ({
+    text: ({ actionCompleted }) => ({
       title: __("Manage bookable/rental products", "wp-module-ecommerce"),
       description: __(
         "Enable a booking/appointment system to manage renting or booking of services, rooms, houses.",
         "wp-module-ecommerce"
       ),
-      actionName: actionCompleted ? "Manage" : "Enable",
+      actionName: actionCompleted ? __("Manage") : __("Enable"),
       slug: "yith_wcbk_panel",
     }),
     state: {
@@ -58,7 +58,7 @@ const AdvancedFeatures = ({ plugins, user }) => [
     assets: () => ({
       image: Search,
     }),
-    text: (actionCompleted) => ({
+    text: ({ actionCompleted }) => ({
       title: __(
         "Add a powerful search tool to your store",
         "wp-module-ecommerce"
@@ -97,7 +97,7 @@ const AdvancedFeatures = ({ plugins, user }) => [
     assets: () => ({
       image: WishList,
     }),
-    text: (actionCompleted) => ({
+    text: ({ actionCompleted }) => ({
       title: __(
         "Allow your customers to save products in their Wishlist",
         "wp-module-ecommerce"
@@ -150,7 +150,7 @@ const AdvancedFeatures = ({ plugins, user }) => [
     assets: () => ({
       image: Filter,
     }),
-    text: (actionCompleted) => ({
+    text: ({ actionCompleted }) => ({
       title: __(
         "Add a powerful product filter to your store",
         "wp-module-ecommerce"
@@ -194,7 +194,7 @@ const AdvancedFeatures = ({ plugins, user }) => [
     assets: () => ({
       image: Gift,
     }),
-    text: (actionCompleted) => ({
+    text: ({ actionCompleted }) => ({
       title: __("Sell Gift Cards in your store", "wp-module-ecommerce"),
       description: __(
         "Use gift cards to increase your earnings and attract new customers.",
@@ -236,7 +236,7 @@ const AdvancedFeatures = ({ plugins, user }) => [
     assets: () => ({
       image: CustomizeAccount,
     }),
-    text: (actionCompleted) => ({
+    text: ({ actionCompleted }) => ({
       title: __(
         "Customize your customers' account page",
         "wp-module-ecommerce"
@@ -278,7 +278,7 @@ const AdvancedFeatures = ({ plugins, user }) => [
     shouldRender: (state) => state.isAvailable,
     title: "nfd_slug_ecomdash_wordpress_plugin",
     assets: () => ({ image: Store }),
-    text: (actionCompleted) => ({
+    text: ({ actionCompleted }) => ({
       title: __(
         "Sell your products across multiple marketplaces",
         "wp-module-ecommerce"
@@ -299,7 +299,7 @@ const AdvancedFeatures = ({ plugins, user }) => [
         ),
       isQueueEmpty: () => plugins?.status?.["queue-status"].length === 0,
       isDisabled: () => plugins.status?.woocommerce !== "Active",
-      isAvailable: () => user.capabilities.hasEcomdash,
+      isAvailable: () => user?.capabilities.hasEcomdash,
     },
     actions: {
       buttonClick: (actionCompleted) => {

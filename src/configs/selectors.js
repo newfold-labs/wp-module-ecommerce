@@ -24,10 +24,10 @@ export const wcBookings = (products) =>
   products.filter((product) => product.type === "booking");
 
 export const wcPluginStatusParser = (slug, title) => (data) => {
-  const isInstalled = data.status?.[title] === "Active";
+  const isInstalled = data?.status?.[title] === "Active";
   const isInstalling = data?.status?.["queue-status"].some(
     (queue) => queue.slug === slug
   );
-  const isQueueEmpty = data.status?.["queue-status"].length === 0;
+  const isQueueEmpty = data?.status?.["queue-status"].length === 0;
   return { isInstalled, isInstalling, isQueueEmpty };
 };

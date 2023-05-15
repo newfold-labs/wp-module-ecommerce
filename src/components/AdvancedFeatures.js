@@ -1,6 +1,5 @@
-import { __ } from "@wordpress/i18n";
+import { Card, Title } from "@yoast/ui-library";
 import AdvancedFeaturesConfig from "../configs/AdvancedFeatures.config";
-import { SectionHeader } from "./SectionHeader";
 import { useCardManager } from "./useCardManager";
 
 export function AdvancedFeatures(props) {
@@ -9,30 +8,27 @@ export function AdvancedFeatures(props) {
     (cardConfig) => cardConfig.isLoading == false
   );
   let WCUnavailable = props.plugins?.status?.woocommerce !== "Active";
- 
-  if (isLoading && !WCUnavailable)
+  if (isLoading && !WCUnavailable) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
         <div className="nfd-ecommerce-loader" />
       </div>
     );
+  }
 
   return (
-    <>
-      <SectionHeader
-        title={__("Additional Features", "wp-module-ecommerce")}
-        subtitle={__(
-          "Enjoy the free add-ons included in your plan and improve your store.",
-          "wp-module-ecommerce"
-        )}
-      >
-        <div className="nfd-ecommerce-extended-actions-container">
-          {cards.map((cardConfig) => {
-            let { Card, title, ...props } = cardConfig;
-            return <Card key={title} {...props} />;
-          })}
-        </div>
-      </SectionHeader>
-    </>
+    <Card className="yst-p-0">
+      <Card.Header className="yst-bg-white yst-block yst-m-0 yst-py-8 yst-px-8 yst-h-auto">
+        <Title className="yst-text-2xl yst-text-[#0F172A]" size={2}>
+          Additional Features
+        </Title>
+      </Card.Header>
+      <Card.Content className="yst-m-0 yst-px-8 yst-pb-8 yst-grid yst-grid-cols-3 yst-auto-rows-fr yst-gap-6">
+        {cards.map((cardConfig) => {
+          let { Card, title, ...props } = cardConfig;
+          return <Card key={title} {...props} />;
+        })}
+      </Card.Content>
+    </Card>
   );
 }
