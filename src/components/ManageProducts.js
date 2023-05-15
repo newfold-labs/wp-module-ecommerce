@@ -2,7 +2,7 @@ import { __ } from "@wordpress/i18n";
 import ManageProductsConfig from "../configs/ManageProducts.config";
 import { ReactComponent as Help } from "../icons/help.svg";
 import { Card } from "./Card";
-import { DashboardContent } from "./DashboardContent";
+import { SectionHeader } from "./SectionHeader";
 import { useCardManager } from "./useCardManager";
 
 export function ManageProducts(props) {
@@ -21,7 +21,7 @@ export function ManageProducts(props) {
 
   return (
     <>
-      <DashboardContent
+      <SectionHeader
         title={__("Products and Services", "wp-module-ecommerce")}
         subtitle={__(
           "Come here to manage your products or add new ones to your store.",
@@ -34,9 +34,9 @@ export function ManageProducts(props) {
             return <Card key={title} {...props} />;
           })}
         </div>
-      </DashboardContent>
+      </SectionHeader>
       <div style={{ height: "40px" }} />
-      <DashboardContent
+      <SectionHeader
         title={__("First time adding a product?", "wp-module-ecommerce")}
         subtitle={__(
           "Read this helpful knowledge base article to understand how to add different products to your store.",
@@ -59,7 +59,7 @@ export function ManageProducts(props) {
             <Help />
           </Card>
         </div>
-      </DashboardContent>
+      </SectionHeader>
     </>
   );
 }

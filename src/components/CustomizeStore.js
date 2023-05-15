@@ -8,7 +8,7 @@ import { ReactComponent as Home } from "../icons/homepage.svg";
 import { ReactComponent as StoreLayout } from "../icons/storelayout.svg";
 import { Endpoints, syncPluginInstall } from "../services";
 import { Card } from "./Card";
-import { DashboardContent } from "./DashboardContent";
+import { SectionHeader } from "./SectionHeader";
 
 let CustomizeList = [
   { title: __("Home Page", "wp-module-ecommerce"), dcpage: "home", Icon: Home },
@@ -53,7 +53,7 @@ export function CustomizeStore({ plugins }) {
     );
   }
   return (
-    <DashboardContent
+    <SectionHeader
       title={__("Pages", "wp-module-ecommerce")}
       subtitle={__(
         "Setup your core store pages and add general website content to provide a complete shopping experience for your customers.",
@@ -114,6 +114,6 @@ export function CustomizeStore({ plugins }) {
           <Account />
         </Card>
       </div>
-    </DashboardContent>
+    </SectionHeader>
   );
 }

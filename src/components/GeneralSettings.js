@@ -1,7 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import GeneralSettingsConfig from "../configs/GeneralSettings.config";
 import { useCardManager } from "./useCardManager";
-import { DashboardContent } from "./DashboardContent";
+import { SectionHeader } from "./SectionHeader";
 
 export function GeneralSettings(props) {
   let { user, plugins } = props;
@@ -21,7 +21,7 @@ export function GeneralSettings(props) {
 
   return (
     <>
-      <DashboardContent
+      <SectionHeader
         title={__("Store Info", "wp-module-ecommerce")}
         subtitle={__(
           "Fill out the basic info and settings needed to run your store.",
@@ -41,7 +41,7 @@ export function GeneralSettings(props) {
             or contact our support team for more assistance.{" "}
           </div>
         )}
-      </DashboardContent>
+      </SectionHeader>
     </>
   );
 }

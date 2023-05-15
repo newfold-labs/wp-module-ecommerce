@@ -1,6 +1,6 @@
 import { __ } from "@wordpress/i18n";
 import AdvancedFeaturesConfig from "../configs/AdvancedFeatures.config";
-import { DashboardContent } from "./DashboardContent";
+import { SectionHeader } from "./SectionHeader";
 import { useCardManager } from "./useCardManager";
 
 export function AdvancedFeatures(props) {
@@ -19,7 +19,7 @@ export function AdvancedFeatures(props) {
 
   return (
     <>
-      <DashboardContent
+      <SectionHeader
         title={__("Additional Features", "wp-module-ecommerce")}
         subtitle={__(
           "Enjoy the free add-ons included in your plan and improve your store.",
@@ -32,7 +32,7 @@ export function AdvancedFeatures(props) {
             return <Card key={title} {...props} />;
           })}
         </div>
-      </DashboardContent>
+      </SectionHeader>
     </>
   );
 }
