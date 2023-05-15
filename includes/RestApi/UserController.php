@@ -4,7 +4,6 @@ namespace NewfoldLabs\WP\Module\ECommerce\RestApi;
 
 use NewfoldLabs\WP\Module\ECommerce\Permissions;
 use NewfoldLabs\WP\ModuleLoader\Container;
-use NewfoldLabs\WP\Module\Onboarding\Data\Data;
 use NewfoldLabs\WP\Module\ECommerce\Data\Brands;
 
 class UserController {
@@ -34,6 +33,11 @@ class UserController {
 		);
 	}
 
+	private function get_brand_name() {
+		$brand_raw_value  = $this->container->plugin()->brand;
+		return \sanitize_title( str_replace( '_', '-', $brand_raw_value ) );
+	}
+
 	/**
 	 * @return array
 	 */
@@ -46,31 +50,16 @@ class UserController {
 		);
 		$pages = \get_pages( $args );
 		$theme = \wp_get_theme();
-		$brand_raw_value  = $this->container->plugin()->brand;
-		$brand = \sanitize_title_with_dashes( strtolower( str_replace( '_', '-', $brand_raw_value ) ) );
-		$customer = array(
-			'plan_subtype' => 'unknown'
-		);
-		$brands = Brands::get_brands();
-		$currentBrandConfig = $brands[$brand];
-		if (class_exists('NewfoldLabs\WP\Module\Onboarding\Data\Data')) {
-			$customer_from_options = Data::customer_data();
-			if ($customer_from_options != false) {
-				$customer = $customer_from_options;
-			}
-		}
-		$capabilities = $this->container->get('capabilities')->all();
 		return array(
 			'site' => array (
 				'url' => \get_site_url()
 			),
-			'capabilities' => $capabilities,
-			'details' => $customer,
-			'currentBrandConfig' => $currentBrandConfig,
+			'capabilities' => $this->container->get('capabilities')->all(),
+			'currentBrandConfig' => Brands::get_config( $this->get_brand_name() ),
 			'theme' => array(
 				'manage'   => Permissions::rest_can_manage_themes(),
 				'template' => $theme->get_template(),
-				'name'     => $theme->get( 'Name' ),
+				'name'     => $theme->parent() ? trim( $theme->parent()->get('Name') ) : $theme->get( 'Name' ),
 			),
 			'pages' => $pages,
 		);
