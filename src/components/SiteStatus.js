@@ -6,11 +6,19 @@ import useSWRMutation from "swr/mutation";
 import { ReactComponent as StoreOnlineIllustration } from "../icons/launch-store.svg";
 import { ReactComponent as LaunchStore } from "../icons/launch.svg";
 
-export function SiteStatus(props) {
-  let { wp } = props.state;
+/**
+ * @typedef SiteStatusProps
+ * @property {boolean} comingSoon
+ * @property {string} siteUrl Used for inprogress currently
+ * @property {() => Promise<void>} toggleComingSoon
+ *
+ * @param {SiteStatusProps} props
+ * @returns {JSX.Element}
+ */
+export function SiteStatus({ comingSoon, siteUrl, toggleComingSoon }) {
   let [isOpen, setOpen] = useState(false);
-  let comingSoon = useSWRMutation("coming-soon", async () => {
-    await props.actions.toggleComingSoon();
+  let comingSoonAction = useSWRMutation("coming-soon", async () => {
+    await toggleComingSoon();
     let $statusText = document.getElementById("nfd-site-status-text");
     if ($statusText) {
       $statusText.textContent = __("Live", "wp-module-ecommerce");
@@ -52,7 +60,7 @@ export function SiteStatus(props) {
       </Modal>
     );
   }
-  if (!wp.comingSoon) {
+  if (!comingSoon) {
     return null;
   }
   return (
@@ -70,17 +78,19 @@ export function SiteStatus(props) {
       </div>
       <div className="yst-flex-none yst-flex">
         <Button
+          as="a"
           className="yst-border-primary-400 yst-bg-slate-100 yst-mr-4"
+          href={siteUrl}
+          target="_blank"
           variant="secondary"
-          onClick={() => window.open(props.user?.site.url, "_blank")}
         >
           {__("Preview your store", "wp-module-ecommerce")}
         </Button>
         <Button
           className="yst-flex yst-gap-2 yst-items-center"
           variant="upsell"
-          isLoading={comingSoon.isMutating}
-          onClick={comingSoon.trigger}
+          isLoading={comingSoonAction.isMutating}
+          onClick={comingSoonAction.trigger}
         >
           <Icon icon={LaunchStore} />
           {__("Launch your store", "wp-module-ecommerce")}
