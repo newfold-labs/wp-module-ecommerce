@@ -1,56 +1,38 @@
 import { __ } from "@wordpress/i18n";
+import { Button, Card, Link, Title } from "@yoast/ui-library";
+import { ReactComponent as GotoArrow } from "../icons/goto-arrow.svg";
 
 export function ExtendedCard(props) {
-  let { image: Icon } = props.assets(props.state);
-  const actionCompleted = props.state.actionCompleted;
-  const actionInProgress = props.state.actionInProgress;
-  const isActionQueueEmpty = props.state.isQueueEmpty;
-
-  let { title, description, actionName } = props.text(actionCompleted);
-
-  const buttonClickHandler = () => {
-    props.actions.buttonClick(actionCompleted);
-  };
+  let { image: Icon } = props.assets();
+  let { title, actionName, description } = props.text(props.state);
+  const disabled = props.state.isDisabled;
 
   return (
-    <button
-      className="nfd-ecommerce-card"
-      data-variant="extended"
-      type="button"
-      data-completed="false"
-      disabled={props.state.isDisabled}
-    >
-      <div className="nfd-ecommerce-card-image">
-        <div className="nfd-ecommerce-card-circle">
-          <Icon />
-        </div>
-      </div>
-      <span className="nfd-ecommerce-card-title">
-        {title}
-        <div className="nfd-ecommerce-card-subtitle">{description}</div>
-      </span>
-
-      <div className="nfd-ecommerce-card-action">
-        {actionCompleted || isActionQueueEmpty ? (
-          <button onClick={buttonClickHandler}>{actionName}</button>
-        ) : (
-          <>
-            {actionInProgress ? (
-              <div data-inqueue={true}>
-                {__(" installing...", "wp-module-ecommerce")}
-                <div className="nfd-ecommerce-loader nfd-ecommerce-loader-mini grey-loader" />
-              </div>
-            ) : (
-              <div data-inqueue={false}>
-                {__(
-                  "Please wait while other features are being installed",
-                  "wp-module-ecommerce"
-                )}
-              </div>
-            )}
-          </>
-        )}
-      </div>
-    </button>
+    <Card>
+      <Card.Content>
+        <Icon />
+        <Title size={4} className="yst-leading-normal yst-my-4">
+          {title}
+        </Title>
+        {description ? <span>{description}</span> : null}
+        <Link
+          className="yst-flex yst-mt-4 yst-items-center yst-text-primary-400 yst-no-underline yst-whitespace-pre-wrap"
+          href={props.learnMoreUrl}
+          target="_blank"
+        >
+          {__("Learn More", "wp-module-ecommerce")} <GotoArrow />
+        </Link>
+      </Card.Content>
+      <Card.Footer>
+        <Button
+          className="yst-w-full yst-h-9 yst-border yst-border-primary-400 yst-whitespace-pre-wrap"
+          variant="secondary"
+          onClick={props.actions.buttonClick}
+          disabled={disabled}
+        >
+          {actionName} <GotoArrow />
+        </Button>
+      </Card.Footer>
+    </Card>
   );
 }
