@@ -77,12 +77,12 @@ export function SiteStatus(props) {
           {__("Preview your store", "wp-module-ecommerce")}
         </Button>
         <Button
-          className="yst-flex yst-items-center"
+          className="yst-flex yst-gap-2 yst-items-center"
           variant="upsell"
           isLoading={comingSoon.isMutating}
           onClick={comingSoon.trigger}
         >
-          <Icon icon={LaunchStore} />{" "}
+          <Icon icon={LaunchStore} />
           {__("Launch your store", "wp-module-ecommerce")}
         </Button>
       </div>
