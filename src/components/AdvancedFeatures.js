@@ -1,4 +1,3 @@
-import { Card, Title } from "@yoast/ui-library";
 import AdvancedFeaturesConfig from "../configs/AdvancedFeatures.config";
 import { useCardManager } from "./useCardManager";
 
@@ -17,18 +16,11 @@ export function AdvancedFeatures(props) {
   }
 
   return (
-    <Card className="yst-p-0">
-      <Card.Header className="yst-bg-white yst-block yst-m-0 yst-py-8 yst-px-8 yst-h-auto">
-        <Title className="yst-text-2xl yst-text-[#0F172A]" size={2}>
-          Additional Features
-        </Title>
-      </Card.Header>
-      <Card.Content className="yst-m-0 yst-px-8 yst-pb-8 yst-grid yst-grid-cols-3 yst-auto-rows-fr yst-gap-6">
-        {cards.map((cardConfig) => {
-          let { Card, title, ...props } = cardConfig;
-          return <Card key={title} {...props} />;
-        })}
-      </Card.Content>
-    </Card>
+    <div className="yst-p-8 yst-grid yst-grid-cols-3 yst-gap-6">
+      {cards.map((cardConfig) => {
+        let { Card, title, ...props } = cardConfig;
+        return <Card key={title} {...props} />;
+      })}
+    </div>
   );
 }

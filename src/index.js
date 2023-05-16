@@ -2,11 +2,16 @@ import apiFetch from "@wordpress/api-fetch";
 import { Popover, SlotFillProvider } from "@wordpress/components";
 import useSWR, { SWRConfig } from "swr";
 import useSWRImmutable from "swr/immutable";
-import { SiteStatus } from "./components/SiteStatus";
-import { WooCommerceUnavailable } from "./components/WooCommerceUnavailable";
+import { Home } from "./components/Home";
 import { Endpoints } from "./services";
 
 const fetcher = (path) => apiFetch({ path });
+
+const pages = [
+  { key: "general", Page: Home },
+  { key: "products", Page: Home },
+  { key: "details", Page: Home },
+];
 
 window.NewfoldECommerce = function NewfoldECommerce(props) {
   let {
@@ -23,6 +28,9 @@ window.NewfoldECommerce = function NewfoldECommerce(props) {
     ...(data ?? {}),
     refresh: refreshPlugins,
   };
+  let section = props.state.params.section ?? "general";
+  let { Page } = pages.find((page) => page.key === section) ?? pages[0];
+
   return (
     <SWRConfig
       value={{
@@ -44,14 +52,7 @@ window.NewfoldECommerce = function NewfoldECommerce(props) {
               <div className="nfd-ecommerce-loader" />
             </div>
           ) : (
-            <>
-              <WooCommerceUnavailable
-                plugins={plugins}
-                user={user}
-                {...props}
-              />
-              <SiteStatus plugins={plugins} user={user} {...props} />
-            </>
+            <Page plugins={plugins} user={user} {...props} />
           )}
         </div>
         <Popover.Slot />
