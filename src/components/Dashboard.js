@@ -10,7 +10,6 @@ import { CustomizeStore } from "./CustomizeStore";
 import { GeneralSettings } from "./GeneralSettings";
 import { ManageProducts } from "./ManageProducts";
 import { useOnboardingCleanup } from "./useOnboardingCleanup";
-import { useSetupYITHWonderTheme } from "./useSetupYITHWonderTheme";
 
 function getStepName(stepKey) {
   switch (stepKey) {
@@ -39,9 +38,7 @@ export function Dashboard(props) {
   const isLargeViewport = useViewportMatch("mobile", ">=");
   let { key, StepContent } =
     guideSteps.find((step) => step.key === props.section) ?? guideSteps[0];
-  useSetupYITHWonderTheme(props.user);
   let isCleanUpInProgress = useOnboardingCleanup(props.plugins.token?.hash, props.user);
-  let addCurtain = props.plugins?.status?.woocommerce !== "Active";
   function onBackButtonClick() {
     navigate("/home/store");
   }
