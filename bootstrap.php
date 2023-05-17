@@ -5,6 +5,26 @@ use NewfoldLabs\WP\Module\ECommerce\ECommerce;
 
 use function NewfoldLabs\WP\ModuleLoader\register;
 
+function skip_woo_onboarding() {
+	$wc_option = 'woocommerce_onboarding_profile';
+	$skip_onboarding = array(
+		'skipped' => true,
+	);
+	$profile         = (array) get_option( $wc_option, array() );
+	update_option( $wc_option, array_merge( $profile, $skip_onboarding ) );
+}
+
+if ( function_exists( 'register_activation_hook' ) ) {
+
+	register_activation_hook(
+		'woocommerce/woocommerce.php',
+		function () {
+			skip_woo_onboarding();
+		}
+	);
+
+}
+
 if ( function_exists( 'add_action' ) ) {
 
 	add_action(
@@ -31,6 +51,13 @@ if ( function_exists( 'add_action' ) ) {
 if ( function_exists( 'add_filter' ) ) {
 
 	add_filter(
+		'woocommerce_prevent_automatic_wizard_redirect',
+		function() {
+			return true;
+		}
+	);
+
+	add_filter(
 		'http_request_args',
 		function ( $parsed_args, $url ) {
 
@@ -53,7 +80,7 @@ if ( function_exists( 'add_filter' ) ) {
 		10,
 		2
 	);
-	
+
 	add_filter(
 		'script_loader_tag',
 		function ( $tag, $handle, $source ) {
