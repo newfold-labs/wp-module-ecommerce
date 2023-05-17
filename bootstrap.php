@@ -20,6 +20,8 @@ if ( function_exists( 'register_activation_hook' ) ) {
 		'woocommerce/woocommerce.php',
 		function () {
 			skip_woo_onboarding();
+			$is_redirect_allowed = strpos($_SERVER['REQUEST_URI'], 'wp-admin/plugins.php') !== false;
+			update_option( 'nfd_show_dash_after_woo_activation', $is_redirect_allowed );
 		}
 	);
 
@@ -51,9 +53,9 @@ if ( function_exists( 'add_action' ) ) {
 if ( function_exists( 'add_filter' ) ) {
 
 	add_filter(
-		'woocommerce_prevent_automatic_wizard_redirect',
+		'woocommerce_enable_setup_wizard',
 		function() {
-			return true;
+			return false;
 		}
 	);
 

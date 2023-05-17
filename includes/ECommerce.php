@@ -65,6 +65,7 @@ class ECommerce {
 	public function __construct( Container $container ) {
 		$this->container = $container;
 		// Module functionality goes here
+		add_action( 'admin_init', array( $this, 'maybe_do_dash_redirect' ) );
 		add_action( 'admin_bar_menu', array( $this, 'newfold_site_status' ), 200 );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
 		add_action( 'load-toplevel_page_bluehost', array( $this, 'register_assets' ) );
@@ -81,6 +82,14 @@ class ECommerce {
 				'single'       => true,
 			)
 		);
+	}
+
+	public function maybe_do_dash_redirect() {
+		$show_dash = get_option( 'nfd_show_dash_after_woo_activation', false );
+		if ( $show_dash && !wp_doing_ajax() ) {
+			update_option( 'nfd_show_dash_after_woo_activation', false );
+			wp_safe_redirect( admin_url('admin.php?page=' . $this->container->plugin()->id . '#/home') );
+		}
 	}
 
 	/**
