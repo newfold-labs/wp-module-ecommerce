@@ -1,10 +1,9 @@
-import { Icon } from "@wordpress/components";
+import { RocketLaunchIcon } from "@heroicons/react/24/outline";
 import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import { Button, Modal, Title } from "@yoast/ui-library";
 import useSWRMutation from "swr/mutation";
 import { ReactComponent as StoreOnlineIllustration } from "../icons/launch-store.svg";
-import { ReactComponent as LaunchStore } from "../icons/launch.svg";
 
 /**
  * @typedef SiteStatusProps
@@ -64,7 +63,7 @@ export function SiteStatus({ comingSoon, siteUrl, toggleComingSoon }) {
     return null;
   }
   return (
-    <div className="yst-px-4 yst-py-2 yst-flex yst-rounded-lg yst-items-center yst-bg-slate-100">
+    <div className="yst-px-4 yst-py-2 yst-flex yst-rounded-lg yst-items-center yst-bg-canvas">
       <div className="yst-flex-1">
         <Title size={4} className="yst-leading-normal">
           {__("Ready to go live?", "wp-module-ecommerce")}
@@ -76,10 +75,10 @@ export function SiteStatus({ comingSoon, siteUrl, toggleComingSoon }) {
           )}
         </span>
       </div>
-      <div className="yst-flex-none yst-flex">
+      <div className="yst-flex-none yst-flex yst-gap-4">
         <Button
           as="a"
-          className="yst-border-primary-400 yst-bg-slate-100 yst-mr-4"
+          className="yst-bg-canvas"
           href={siteUrl}
           target="_blank"
           variant="secondary"
@@ -92,7 +91,7 @@ export function SiteStatus({ comingSoon, siteUrl, toggleComingSoon }) {
           isLoading={comingSoonAction.isMutating}
           onClick={comingSoonAction.trigger}
         >
-          <Icon icon={LaunchStore} />
+          <RocketLaunchIcon />
           {__("Launch your store", "wp-module-ecommerce")}
         </Button>
       </div>
