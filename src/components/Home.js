@@ -1,8 +1,8 @@
 import { __ } from "@wordpress/i18n";
-import { AdvancedFeatures } from "./AdvancedFeatures";
 import { Section } from "./Section";
 import { SiteStatus } from "./SiteStatus";
 import { WooCommerceUnavailable } from "./WooCommerceUnavailable";
+import { YITHPlugins } from "./YITHPlugins";
 
 export function Home(props) {
   return (
@@ -32,7 +32,7 @@ export function Home(props) {
           )}
         />
         <Section.Content>
-          <AdvancedFeatures {...props} />
+          <YITHPlugins {...props} />
         </Section.Content>
       </Section.Container>
     </>

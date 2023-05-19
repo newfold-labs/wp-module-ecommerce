@@ -1,8 +1,8 @@
-import AdvancedFeaturesConfig from "../configs/AdvancedFeatures.config";
+import YITHPluginsConfig from "../configs/YITHPlugins.config";
 import { useCardManager } from "./useCardManager";
 
-export function AdvancedFeatures(props) {
-  let cards = useCardManager(AdvancedFeaturesConfig(props));
+export function YITHPlugins(props) {
+  let cards = useCardManager(YITHPluginsConfig(props));
   const isLoading = !(cards ?? []).every(
     (cardConfig) => cardConfig.isLoading == false
   );
