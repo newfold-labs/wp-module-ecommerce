@@ -16,7 +16,7 @@ export function AdvancedFeatures(props) {
   }
 
   return (
-    <div className="yst-p-8 yst-grid yst-grid-cols-3 yst-gap-6">
+    <div className="yst-grid yst-grid-cols-3 yst-gap-6">
       {cards.map((cardConfig) => {
         let { Card, title, ...props } = cardConfig;
         return <Card key={title} {...props} />;

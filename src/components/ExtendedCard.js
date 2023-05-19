@@ -1,6 +1,6 @@
+import { ArrowLongRightIcon } from "@heroicons/react/20/solid";
 import { __ } from "@wordpress/i18n";
 import { Button, Card, Link, Title } from "@yoast/ui-library";
-import { ReactComponent as GotoArrow } from "../icons/goto-arrow.svg";
 
 export function ExtendedCard(props) {
   let { image: Icon } = props.assets();
@@ -16,21 +16,22 @@ export function ExtendedCard(props) {
         </Title>
         {description ? <span>{description}</span> : null}
         <Link
-          className="yst-flex yst-mt-4 yst-items-center yst-text-primary-400 yst-no-underline yst-whitespace-pre-wrap"
+          className="yst-flex yst-mt-4 yst-items-center yst-gap-2"
           href={props.learnMoreUrl}
           target="_blank"
         >
-          {__("Learn More", "wp-module-ecommerce")} <GotoArrow />
+          <span>{__("Learn More", "wp-module-ecommerce")}</span>
+          <ArrowLongRightIcon className="yst-h-5 yst-text-black" />
         </Link>
       </Card.Content>
       <Card.Footer>
         <Button
-          className="yst-w-full yst-h-9 yst-border yst-border-primary-400 yst-whitespace-pre-wrap"
+          className="yst-w-full yst-h-9 yst-border yst-flex yst-items-center yst-gap-2"
           variant="secondary"
           onClick={props.actions.buttonClick}
           disabled={disabled}
         >
-          {actionName} <GotoArrow />
+          <span>{actionName}</span> <ArrowLongRightIcon />
         </Button>
       </Card.Footer>
     </Card>
