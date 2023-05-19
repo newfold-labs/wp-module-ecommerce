@@ -30,6 +30,14 @@ window.NewfoldECommerce = function NewfoldECommerce(props) {
   let { Page } =
     pages.find((page) => page.key === props.state.location) ?? pages[0];
 
+  if (data === undefined) {
+    return (
+      <div className="yst-grid yst-place-content-center yst-h-full">
+        <div className="nfd-ecommerce-loader" />
+      </div>
+    );
+  }
+
   return (
     <SWRConfig
       value={{
@@ -38,19 +46,7 @@ window.NewfoldECommerce = function NewfoldECommerce(props) {
         isPaused: () => plugins.status?.woocommerce !== "Active",
       }}
     >
-      {data === undefined ? (
-        <div
-          style={{
-            height: "100%",
-            display: "grid",
-            placeContent: "center",
-          }}
-        >
-          <div className="nfd-ecommerce-loader" />
-        </div>
-      ) : (
-        <Page plugins={plugins} user={user} {...props} />
-      )}
+      <Page plugins={plugins} user={user} {...props} />
     </SWRConfig>
   );
 };
