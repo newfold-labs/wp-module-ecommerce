@@ -1,67 +1,42 @@
 import { __ } from "@wordpress/i18n";
-import { Button, Modal, Title } from "@yoast/ui-library";
+import { Button, Title } from "@yoast/ui-library";
 import useSWRMutation from "swr/mutation";
 import { queuePluginInstall, syncPluginInstall } from "../services";
 import { Section } from "./Section";
 
-export function WooCommerceUnavailable({ plugins, user }) {
+export function WooCommerceUnavailable({ plugins, user, wpModules }) {
+  let { notify } = wpModules;
   let isWooActive = plugins.status?.woocommerce === "Active";
   let needsSyncInstall = plugins.status?.woocommerce === "Not Installed";
   let isWCInQueue = plugins?.status?.["queue-status"]?.some(
     (queue) => queue.slug === "woocommerce"
   );
-
   let installWooCommerce = useSWRMutation("install-woo", async () => {
     let response = needsSyncInstall
       ? await syncPluginInstall("woocommerce", plugins.token)
       : await queuePluginInstall("woocommerce", plugins.token);
     if (response !== "failed") {
       await plugins.refresh();
+    } else {
+      notify.push("woo-failure", {
+        title: "WooCommerce failed to install",
+        description: (
+          <span>
+            {__("Please try again, or ", "wp-module-ecommerce")}
+            <a href={user?.currentBrandConfig?.support} target="_blank">
+              {__("contact support", "wp-module-ecommerce")}
+            </a>
+          </span>
+        ),
+        variant: "error",
+      });
     }
   });
   let isInstalling = needsSyncInstall
     ? installWooCommerce.isMutating
     : installWooCommerce.isMutating || installWooCommerce.data !== undefined;
-  let installationFailed = installWooCommerce.data === "failed";
   if (isWooActive) {
     return null;
-  }
-  if (installationFailed && !isInstalling) {
-    return (
-      <Modal isOpen onClose={installWooCommerce.reset}>
-        <Modal.Description className="yst-bg-white yst-w-[900px] yst-shadow-md yst-py-6">
-          <div className="yst-text-center yst-grid yst-grid-flow-row yst-auto-rows-min">
-            <Title size={1}>
-              {__("We hit a snag...", "wp-module-ecommerce")}
-            </Title>
-            <span className="yst-mt-3">
-              {__(
-                "We're sorry, but there was an error installing WooCommerce, please try again.",
-                "wp-module-ecommerce"
-              )}
-            </span>
-            <Button
-              type="submit"
-              disabled={plugins.token === undefined}
-              onClick={() => {
-                installWooCommerce.reset();
-                installWooCommerce.trigger();
-              }}
-              size="large"
-            >
-              {__("Try again", "wp-module-ecommerce")}
-            </Button>
-            <span className="yst-mt-2">
-              {__(" If the problem persists, please ", "wp-module-ecommerce")}
-              <a href={user?.currentBrandConfig?.support} target="_blank">
-                {__("contact", "wp-module-ecommerce")}
-              </a>
-              {__(" support team.", "wp-module-ecommerce")}
-            </span>
-          </div>
-        </Modal.Description>
-      </Modal>
-    );
   }
   let showInProgress = isInstalling || isWCInQueue;
   return (
