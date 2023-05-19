@@ -1,5 +1,4 @@
 import apiFetch from "@wordpress/api-fetch";
-import { Popover, SlotFillProvider } from "@wordpress/components";
 import useSWR, { SWRConfig } from "swr";
 import useSWRImmutable from "swr/immutable";
 import { Home } from "./components/Home";
@@ -8,9 +7,9 @@ import { Endpoints } from "./services";
 const fetcher = (path) => apiFetch({ path });
 
 const pages = [
-  { key: "general", Page: Home },
-  { key: "products", Page: Home },
-  { key: "details", Page: Home },
+  { key: "/store", Page: Home },
+  { key: "/store/products", Page: Home },
+  { key: "/store/details", Page: Home },
 ];
 
 window.NewfoldECommerce = function NewfoldECommerce(props) {
@@ -28,8 +27,8 @@ window.NewfoldECommerce = function NewfoldECommerce(props) {
     ...(data ?? {}),
     refresh: refreshPlugins,
   };
-  let section = props.state.params.section ?? "general";
-  let { Page } = pages.find((page) => page.key === section) ?? pages[0];
+  let { Page } =
+    pages.find((page) => page.key === props.state.location) ?? pages[0];
 
   return (
     <SWRConfig
@@ -39,24 +38,19 @@ window.NewfoldECommerce = function NewfoldECommerce(props) {
         isPaused: () => plugins.status?.woocommerce !== "Active",
       }}
     >
-      <SlotFillProvider>
-        <div>
-          {data === undefined ? (
-            <div
-              style={{
-                height: "100%",
-                display: "grid",
-                placeContent: "center",
-              }}
-            >
-              <div className="nfd-ecommerce-loader" />
-            </div>
-          ) : (
-            <Page plugins={plugins} user={user} {...props} />
-          )}
+      {data === undefined ? (
+        <div
+          style={{
+            height: "100%",
+            display: "grid",
+            placeContent: "center",
+          }}
+        >
+          <div className="nfd-ecommerce-loader" />
         </div>
-        <Popover.Slot />
-      </SlotFillProvider>
+      ) : (
+        <Page plugins={plugins} user={user} {...props} />
+      )}
     </SWRConfig>
   );
 };
