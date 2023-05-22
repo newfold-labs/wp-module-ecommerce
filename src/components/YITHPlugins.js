@@ -2,7 +2,7 @@ import YITHPluginsConfig from "../configs/YITHPlugins.config";
 import { useCardManager } from "./useCardManager";
 
 export function YITHPlugins(props) {
-  let cards = useCardManager(YITHPluginsConfig(props));
+  let [cards] = useCardManager(YITHPluginsConfig(props));
   let isWCUnavailable = props.plugins.details?.woocommerce.status !== "active";
   if (isWCUnavailable) {
     return (

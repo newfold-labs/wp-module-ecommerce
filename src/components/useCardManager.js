@@ -1,4 +1,3 @@
-import apiFetch from "@wordpress/api-fetch";
 import useSWR from "swr";
 
 function createDependencyTree(config) {
@@ -31,12 +30,13 @@ function useLoadDependencies(tree, { refreshInterval }) {
 
   async function onRefresh(dependency) {
     // TODO: Add Checks for if path is not found.
-    let [path] = Object.entries(tree).find(([, deps]) =>
-      deps.includes(dependency)
-    );
-    let updatedResponse = await apiFetch({ path });
+    if (tree.dataDependencies[dependency] === undefined) {
+      return;
+    }
+    let fetcher = tree.dataDependencies[dependency];
+    let updatedResponse = await fetcher();
     await mutate(
-      (realisedTree) => ({ ...realisedTree, [path]: updatedResponse }),
+      (realisedTree) => ({ ...realisedTree, [dependency]: updatedResponse }),
       { revalidate: false }
     );
   }
@@ -58,23 +58,26 @@ export const useCardManager = (config, fetchOptions = {}) => {
   const tree = createDependencyTree(config);
   let { realisedTree, onRefresh } = useLoadDependencies(tree, fetchOptions);
   if (!realisedTree) {
-    return [];
+    return [[], { onRefresh }];
   }
-  return config.cards
-    .map((cardConfig) => {
-      let { state: stateDefinition } = cardConfig;
-      let dependencies = extractDependencies(
-        tree,
-        realisedTree,
-        cardConfig.name
-      );
-      let state = Object.fromEntries(
-        Object.entries(stateDefinition).map(([key, selector]) => [
-          key,
-          selector(dependencies),
-        ])
-      );
-      return { ...cardConfig, state, onRefresh };
-    })
-    .filter((cardConfig) => cardConfig.shouldRender(cardConfig.state));
+  return [
+    config.cards
+      .map((cardConfig) => {
+        let { state: stateDefinition } = cardConfig;
+        let dependencies = extractDependencies(
+          tree,
+          realisedTree,
+          cardConfig.name
+        );
+        let state = Object.fromEntries(
+          Object.entries(stateDefinition).map(([key, selector]) => [
+            key,
+            selector(dependencies),
+          ])
+        );
+        return { ...cardConfig, state, onRefresh };
+      })
+      .filter((cardConfig) => cardConfig.shouldRender(cardConfig.state)),
+    { onRefresh },
+  ];
 };

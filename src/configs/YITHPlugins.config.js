@@ -44,13 +44,13 @@ function createYITHInstaller(yithId, priority, { wpModules, user }) {
   return async (state, props) => {
     let response = await queuePluginInstall(
       yithId,
-      user?.install_token,
+      user?.site.install_token,
       priority
     );
     if (response === "failed") {
       notifyPluginInstallError(wpModules.notify, user);
     } else {
-      await props.onRefresh();
+      await props.onRefresh("plugins");
     }
   };
 }
