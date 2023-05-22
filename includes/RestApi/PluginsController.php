@@ -61,9 +61,17 @@ class PluginsController {
 	 *
 	 * @return \WP_REST_Response
 	 */
-	public function get_plugins_status() {
+	public function get_plugins_status( \WP_REST_Request $request) {
+		$pluginFilter = $request->get_param('plugins');
+		$requestedPlugins = array( );
+		if ( isset( $pluginFilter ) ) {
+			$requestedPlugins = explode(',', $pluginFilter);
+		}
 		$details = array();
 		foreach ( Plugins::supported_plugins() as $plugin => $info ) {
+			if ( !in_array($plugin, $requestedPlugins) && !in_array('all', $requestedPlugins) ) {
+				continue;
+			}
 			$status = 'need_to_install';
 			if ( file_exists( WP_PLUGIN_DIR . '/' . $info['file'] ) ) {
 				$active = \is_plugin_active( $info['file'] );
@@ -81,8 +89,7 @@ class PluginsController {
 		return new \WP_REST_Response(
 			array(
 				'details' => $details,
-				'queue'   => \get_option( 'nfd_module_onboarding_plugin_install_queue', array() ),
-				'token'   => Permissions::rest_get_plugin_install_hash(),
+				'queue'   => \get_option( 'nfd_module_onboarding_plugin_install_queue', array() )
 			),
 			200
 		);

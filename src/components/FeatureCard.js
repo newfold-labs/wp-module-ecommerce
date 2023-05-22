@@ -4,8 +4,8 @@ import { Button, Card, Link, Title } from "@yoast/ui-library";
 
 /**
  * @typedef FeatureCardState
+ * @property {string} featureUrl
  * @property {boolean} isInstalling
- * @property {boolean} isActionExternal
  * @property {boolean} isDisabled
  * @property {boolean} isActive
  * @property {boolean} isQueueEmpty
@@ -17,27 +17,26 @@ import { Button, Card, Link, Title } from "@yoast/ui-library";
  * @typedef FeatureCardText
  * @property {string} actionName
  * @property {string} description
- * @property {string} slug
  * @property {string} title
  *
  * @param {{
  *  state: FeatureCardState;
  *  actions: FeatureCardActions;
  *  text: (state: FeatureCardState) => FeatureCardText;
- *  assets: (state: FeatureCardState) => { image: JSX.Element; learnMoreUrl: string; };
+ *  assets: (state: FeatureCardState) => { Image: JSX.Element; ActionIcon: JSX.Element; learnMoreUrl: string; };
  * }} props
  * @returns
  */
-export function FeatureCard({ state, actions, assets, text }) {
-  let { image: Icon, learnMoreUrl } = assets(state);
+export function FeatureCard({ state, actions, assets, text, ...props }) {
+  let { Image, ActionIcon, learnMoreUrl } = assets(state);
   let { title, actionName, description } = text(state);
-  const { isDisabled, isInstalling, isActionExternal } = state;
+  const { isDisabled, isInstalling, isUpsellNeeded } = state;
   const isInstallDisabled =
     !state.isActive && !state.isQueueEmpty && !isInstalling;
   return (
     <Card>
       <Card.Content>
-        <Icon />
+        <Image />
         <Title size={4} className="yst-leading-normal yst-my-4">
           {title}
         </Title>
@@ -60,23 +59,39 @@ export function FeatureCard({ state, actions, assets, text }) {
             )}
           </span>
         </Card.Footer>
+      ) : state.isActive ? (
+        <Card.Footer>
+          <Button
+            className="yst-w-full yst-h-9 yst-border yst-flex yst-items-center yst-gap-2"
+            variant="secondary"
+            as="a"
+            href={state.featureUrl}
+          >
+            <span>{actionName}</span>
+            {ActionIcon ? <ActionIcon /> : null}
+          </Button>
+        </Card.Footer>
       ) : (
         <Card.Footer>
           <Button
             className="yst-w-full yst-h-9 yst-border yst-flex yst-items-center yst-gap-2"
-            variant={state.isUpsellNeeded ? "upsell" : "secondary"}
-            onClick={() => actions.buttonClick(state)}
+            variant={isUpsellNeeded ? "upsell" : "secondary"}
+            onClick={() =>
+              isUpsellNeeded
+                ? actions.triggerUpsell(state, props)
+                : actions.installFeature(state, props)
+            }
             isLoading={isInstalling}
             disabled={isDisabled}
           >
             <span>
               {isInstalling
                 ? __("Installing...", "wp-module-ecommerce")
-                : state.isUpsellNeeded
+                : isUpsellNeeded
                 ? __("Purchase", "wp-module-ecommerce")
                 : actionName}
             </span>
-            {isActionExternal && !isInstalling ? <ArrowLongRightIcon /> : null}
+            {ActionIcon && !isInstalling ? <ArrowLongRightIcon /> : null}
           </Button>
         </Card.Footer>
       )}

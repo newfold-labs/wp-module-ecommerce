@@ -31,11 +31,28 @@ class UserController {
 				),
 			)
 		);
+		\register_rest_route(
+			$this->namespace,
+			$this->rest_base . '/capabilities',
+			array(
+				array(
+					'methods'             => \WP_REST_Server::READABLE,
+					'callback'            => array( $this, 'fetch_capabilities' ),
+					'permission_callback' => array( Permissions::class, 'rest_is_authorized_admin' ),
+				),
+			)
+		);
 	}
 
 	private function get_brand_name() {
 		$brand_raw_value  = $this->container->plugin()->brand;
 		return \sanitize_title( str_replace( '_', '-', $brand_raw_value ) );
+	}
+
+	public function fetch_capabilities() {
+		return array(
+			'capabilities' => $this->container->get('capabilities')->all()
+		);
 	}
 
 	/**
@@ -52,7 +69,8 @@ class UserController {
 		$theme = \wp_get_theme();
 		return array(
 			'site' => array (
-				'url' => \get_site_url()
+				'url' => \get_site_url(),
+				'install_token' => Permissions::rest_get_plugin_install_hash(),
 			),
 			'capabilities' => $this->container->get('capabilities')->all(),
 			'currentBrandConfig' => Brands::get_config( $this->get_brand_name() ),
