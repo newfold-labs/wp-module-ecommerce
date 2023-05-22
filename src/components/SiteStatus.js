@@ -27,13 +27,13 @@ export function SiteStatus({ comingSoon, siteUrl, toggleComingSoon }) {
   });
   if (isOpen) {
     return (
-      <Modal isOpen onClose={() => setOpen(false)}>
-        <Modal.Description className="yst-bg-white yst-w-[900px] yst-shadow-md yst-py-6">
+      <Modal isOpen onClose={() => setOpen(false)} className="no-overlay">
+        <Modal.Description className="yst-bg-white yst-w-[900px] yst-shadow-md yst-py-6 yst-border yst-border-line">
           <div className="yst-flex yst-flex-col yst-items-center yst-mb-12">
             <StoreOnlineIllustration />
             <Title
               size={1}
-              className="yst-text-primary-400 yst-text-3xl yst-mt-6"
+              className="yst-text-primary yst-text-3xl yst-mt-6"
             >
               {__(
                 "Your store is online and ready for business!",
