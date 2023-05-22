@@ -2,7 +2,7 @@ import apiFetch from "@wordpress/api-fetch";
 import useSWR, { SWRConfig } from "swr";
 import useSWRImmutable from "swr/immutable";
 import { Home } from "./components/Home";
-import { Endpoints } from "./services";
+import { Endpoints, fetchPluginStatus } from "./services";
 
 const fetcher = (path) => apiFetch({ path });
 
@@ -17,7 +17,7 @@ window.NewfoldECommerce = function NewfoldECommerce(props) {
     data,
     error,
     mutate: refreshPlugins,
-  } = useSWR(Endpoints.PLUGIN_STATUS, fetcher, {
+  } = useSWR("woo-status", () => fetchPluginStatus("woocommerce"), {
     revalidateOnReconnect: false,
     refreshInterval: 10 * 1000,
   });
@@ -43,10 +43,10 @@ window.NewfoldECommerce = function NewfoldECommerce(props) {
       value={{
         fetcher,
         revalidateOnReconnect: false,
-        isPaused: () => plugins.details?.woocommerce?.status === "active",
+        isPaused: () => plugins.details?.woocommerce?.status !== "active",
       }}
     >
       <Page plugins={plugins} user={user} {...props} />
     </SWRConfig>
   );
-};
+}

@@ -13,8 +13,8 @@ import { Button, Card, Link, Title } from "@yoast/ui-library";
  *
  * @typedef FeatureCardActions
  * @property {(state: FeatureCardState, props: any) => void} triggerUpsell
- * * @property {(state: FeatureCardState, props: any) => void} manageFeature
- * * @property {(state: FeatureCardState, props: any) => void} installFeature
+ * @property {(state: FeatureCardState, props: any) => void} manageFeature
+ * @property {(state: FeatureCardState, props: any) => void} installFeature
  *
  * @typedef FeatureCardText
  * @property {string} actionName

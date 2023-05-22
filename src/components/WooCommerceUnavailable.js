@@ -13,8 +13,8 @@ export function WooCommerceUnavailable({ plugins, user, wpModules }) {
   );
   let installWooCommerce = useSWRMutation("install-woo", async () => {
     let response = needsSyncInstall
-      ? await syncPluginInstall("woocommerce", user.install_token)
-      : await queuePluginInstall("woocommerce", user.install_token);
+      ? await syncPluginInstall("woocommerce", user.site.install_token)
+      : await queuePluginInstall("woocommerce", user.site.install_token);
     if (response !== "failed") {
       await plugins.refresh();
     } else {
