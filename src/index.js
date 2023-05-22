@@ -12,7 +12,7 @@ const pages = [
   { key: "/store/details", Page: Home },
 ];
 
-window.NewfoldECommerce = function NewfoldECommerce(props) {
+export function NewfoldECommerce(props) {
   let {
     data,
     error,
