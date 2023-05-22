@@ -6,9 +6,9 @@ import { Section } from "./Section";
 
 export function WooCommerceUnavailable({ plugins, user, wpModules }) {
   let { notify } = wpModules;
-  let isWooActive = plugins.status?.woocommerce === "Active";
-  let needsSyncInstall = plugins.status?.woocommerce === "Not Installed";
-  let isWCInQueue = plugins?.status?.["queue-status"]?.some(
+  let isWooActive = plugins.details?.woocommerce.status === "active";
+  let needsSyncInstall = plugins.details?.woocommerce.status === "need_to_install";
+  let isWCInQueue = plugins.queue?.some(
     (queue) => queue.slug === "woocommerce"
   );
   let installWooCommerce = useSWRMutation("install-woo", async () => {

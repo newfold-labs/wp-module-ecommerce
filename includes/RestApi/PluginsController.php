@@ -11,6 +11,7 @@ use NewfoldLabs\WP\Module\ECommerce\Data\Plugins;
  */
 class PluginsController {
 
+
 	/**
 	 * REST namespace
 	 *
@@ -27,7 +28,7 @@ class PluginsController {
 
 	/**
 	 * Container loaded from the brand plugin.
-	 * 
+	 *
 	 * @var Container
 	 */
 	protected $container;
@@ -61,24 +62,27 @@ class PluginsController {
 	 * @return \WP_REST_Response
 	 */
 	public function get_plugins_status() {
-		foreach ( Plugins::supported_plugins() as $plugin => $file ) {
-			if ( file_exists( WP_PLUGIN_DIR . '/' . $file ) ) {
-				$active = \is_plugin_active( $file );
+		$details = array();
+		foreach ( Plugins::supported_plugins() as $plugin => $info ) {
+			$status = 'need_to_install';
+			if ( file_exists( WP_PLUGIN_DIR . '/' . $info['file'] ) ) {
+				$active = \is_plugin_active( $info['file'] );
 				if ( $active ) {
-					$status[ $plugin ] = 'Active';
+					$status = 'active';
 				} else {
-					$status[ $plugin ] = 'Inactive';
+					$status = 'need_to_activate';
 				}
-			} else {
-				$status[ $plugin ] = 'Not Installed';
 			}
+			$details[ $plugin ] = array(
+				'status' => $status,
+				'url'    => \admin_url( $info['url'] ),
+			);
 		}
-		$status['queue-status'] = \get_option( 'nfd_module_onboarding_plugin_install_queue', array() );
-
 		return new \WP_REST_Response(
 			array(
-				'status' => $status,
-				'token'  => Permissions::rest_get_plugin_install_hash(),
+				'details' => $details,
+				'queue'   => \get_option( 'nfd_module_onboarding_plugin_install_queue', array() ),
+				'token'   => Permissions::rest_get_plugin_install_hash(),
 			),
 			200
 		);

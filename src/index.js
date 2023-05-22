@@ -43,7 +43,7 @@ window.NewfoldECommerce = function NewfoldECommerce(props) {
       value={{
         fetcher,
         revalidateOnReconnect: false,
-        isPaused: () => plugins.status?.woocommerce !== "Active",
+        isPaused: () => plugins.details?.woocommerce?.status === "active",
       }}
     >
       <Page plugins={plugins} user={user} {...props} />

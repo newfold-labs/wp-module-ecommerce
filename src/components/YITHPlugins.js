@@ -3,11 +3,8 @@ import { useCardManager } from "./useCardManager";
 
 export function YITHPlugins(props) {
   let cards = useCardManager(YITHPluginsConfig(props));
-  const isLoading = !(cards ?? []).every(
-    (cardConfig) => cardConfig.isLoading == false
-  );
-  let WCUnavailable = props.plugins?.status?.woocommerce !== "Active";
-  if (isLoading && !WCUnavailable) {
+  let WCUnavailable = props.plugins.details?.woocommerce.status !== "active";
+  if (!WCUnavailable) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
         <div className="nfd-ecommerce-loader" />
