@@ -12,7 +12,9 @@ import { Button, Card, Link, Title } from "@yoast/ui-library";
  * @property {boolean} isUpsellNeeded
  *
  * @typedef FeatureCardActions
- * @property {(state: FeatureCardState) => void} buttonClick
+ * @property {(state: FeatureCardState, props: any) => void} triggerUpsell
+ * * @property {(state: FeatureCardState, props: any) => void} manageFeature
+ * * @property {(state: FeatureCardState, props: any) => void} installFeature
  *
  * @typedef FeatureCardText
  * @property {string} actionName
@@ -59,7 +61,7 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
             )}
           </span>
         </Card.Footer>
-      ) : state.isActive ? (
+      ) : state.isActive && state.featureUrl !== null ? (
         <Card.Footer>
           <Button
             className="yst-w-full yst-h-9 yst-border yst-flex yst-items-center yst-gap-2"
@@ -78,8 +80,10 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
             variant={isUpsellNeeded ? "upsell" : "secondary"}
             onClick={() =>
               isUpsellNeeded
-                ? actions.triggerUpsell(state, props)
-                : actions.installFeature(state, props)
+                ? actions.triggerUpsell?.(state, props)
+                : state.isActive
+                ? actions.manageFeature?.(state, props)
+                : actions.installFeature?.(state, props)
             }
             isLoading={isInstalling}
             disabled={isDisabled}
