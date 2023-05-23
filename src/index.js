@@ -48,3 +48,6 @@ export function NewfoldECommerce(props) {
     </SWRConfig>
   );
 }
+
+export * from "./components/FreePlugins";
+export * from "./components/SiteStatus";

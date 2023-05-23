@@ -16,13 +16,16 @@ export const razorpaySelector = (response) => {
 };
 
 export const wcProductsParser = (type) => (products) => {
- return type === "all" ? products : products.filter((product) => product.type === type)
-}
+  return type === "all"
+    ? products
+    : products.filter((product) => product.type === type);
+};
 
 export const wcPluginStatusParser = (slug) => (data) => {
   const isInstalled = data?.details?.[slug].status === "active";
-  const isInstalling = data?.queue?.some((queue) => queue.slug === slug);
   const isQueueEmpty = data?.queue?.length === 0;
+  const isInstalling =
+    !isQueueEmpty && data?.queue?.some((queue) => queue.slug === slug);
   const isWCActive = data?.details?.woocommerce.status === "active";
   const pluginUrl = data?.details?.[slug].url;
   return { isInstalled, isInstalling, isQueueEmpty, isWCActive, pluginUrl };
