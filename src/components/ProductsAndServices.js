@@ -8,7 +8,6 @@ import { Section } from "./Section";
 
 export function Products(props) {
   let [cards] = useCardManager(ProductsConfig(props));
-  console.log(cards);
   let isWCUnavailable = props.plugins.details?.woocommerce.status !== "active";
   if (isWCUnavailable) {
     return (

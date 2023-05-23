@@ -3,6 +3,7 @@ import useSWR, { SWRConfig } from "swr";
 import useSWRImmutable from "swr/immutable";
 import { Home } from "./components/Home";
 import { Products } from "./components/ProductsAndServices";
+import { StoreDetails} from "./components/StoreDetails"
 import { Endpoints, fetchPluginStatus } from "./services";
 
 const fetcher = (path) => apiFetch({ path });
@@ -10,7 +11,7 @@ const fetcher = (path) => apiFetch({ path });
 const pages = [
   { key: "/store", Page: Home },
   { key: "/store/products", Page: Products },
-  { key: "/store/details", Page: Home },
+  { key: "/store/details", Page: StoreDetails },
 ];
 
 export function NewfoldECommerce(props) {

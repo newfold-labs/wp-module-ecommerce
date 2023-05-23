@@ -6,8 +6,11 @@ import { ReactComponent as Gift } from "../icons/gift.svg";
 import { ReactComponent as ImportProducts } from "../icons/import-products.svg";
 import { ReactComponent as ManageProducts } from "../icons/manage-products.svg";
 import {
-  createProduct, fetchPluginStatus, fetchProducts, fetchUserCapabilities,
-  queuePluginInstall
+  createProduct,
+  fetchPluginStatus,
+  fetchProducts,
+  fetchUserCapabilities,
+  queuePluginInstall,
 } from "../services";
 import { wcPluginStatusParser, wcProductsParser } from "./selectors";
 
@@ -162,10 +165,7 @@ const ProductsAndServices = (props) => ({
         isDisabled: (data) => data?.plugins?.isWCActive === false,
         isActive: (data) => data?.plugins?.isInstalled,
         isInstalling: (data) => data?.plugins?.isInstalling,
-        isQueueEmpty: (data) => {
-          console.log(data);
-          return data?.plugins?.isQueueEmpty;
-        },
+        isQueueEmpty: (data) => data?.plugins?.isQueueEmpty,
         hasUsedPlugin: (data) => data?.products.length > 0,
         featureUrl: (data) =>
           data?.products.length > 0 ? data.plugins?.pluginUrl : null,
@@ -219,10 +219,7 @@ const ProductsAndServices = (props) => ({
         isDisabled: (data) => data?.plugins?.isWCActive === false,
         isActive: (data) => data?.plugins?.isInstalled,
         isInstalling: (data) => data?.plugins?.isInstalling,
-        isQueueEmpty: (data) => {
-          console.log(data);
-          return data?.plugins?.isQueueEmpty;
-        },
+        isQueueEmpty: (data) => data?.plugins?.isQueueEmpty,
         hasUsedPlugin: (data) => data?.products.length > 0,
         featureUrl: (data) =>
           data?.products.length > 0 ? data.plugins?.pluginUrl : null,
