@@ -6,7 +6,6 @@ import { PluginsSdk } from "./sdk/plugins";
 import { Endpoints } from "./services";
 import { Products } from "./components/ProductsAndServices";
 import { StoreDetails} from "./components/StoreDetails"
-import { Endpoints, fetchPluginStatus } from "./services";
 
 const fetcher = (path) => apiFetch({ path });
 
