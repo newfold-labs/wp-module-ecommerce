@@ -55,17 +55,20 @@ class UserController {
 		);
 	}
 
-	/**
-	 * @return array
-	 */
-	public function fetch_bootstrap_info() {
+	public function get_nfd_pages() {
 		$args  = array(
 			'post_status' => array( 'pending', 'draft', 'future', 'publish', 'private' ),
 			'post_type'   => 'page',
 			'meta_key'    => 'nf_dc_page',
 			'meta_value'  => array( 'home', 'about', 'contact' ),
 		);
-		$pages = \get_pages( $args );
+		return \get_pages( $args );
+	}
+
+	/**
+	 * @return array
+	 */
+	public function fetch_bootstrap_info() {
 		$theme = \wp_get_theme();
 		return array(
 			'site' => array (
@@ -79,7 +82,6 @@ class UserController {
 				'template' => $theme->get_template(),
 				'name'     => $theme->parent() ? trim( $theme->parent()->get('Name') ) : $theme->get( 'Name' ),
 			),
-			'pages' => $pages,
 		);
 	}
 }
