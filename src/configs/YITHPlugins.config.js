@@ -7,12 +7,9 @@ import { ReactComponent as Gift } from "../icons/gift.svg";
 import { ReactComponent as Search } from "../icons/search.svg";
 import { ReactComponent as Store } from "../icons/store.svg";
 import { ReactComponent as WishList } from "../icons/wishlist.svg";
-import {
-  fetchPluginStatus,
-  fetchUserCapabilities,
-  queuePluginInstall,
-} from "../services";
+import { fetchUserCapabilities } from "../services";
 import { wcPluginStatusParser } from "./selectors";
+import { PluginsSdk } from "../sdk/plugins";
 
 function defineFeatureState() {
   return {
@@ -42,7 +39,7 @@ function notifyPluginInstallError(notify, user) {
 
 function createYITHInstaller(yithId, priority, { wpModules, user }) {
   return async (state, props) => {
-    let response = await queuePluginInstall(
+    let response = await PluginsSdk.queueInstall(
       yithId,
       user?.site.install_token,
       priority
@@ -57,7 +54,7 @@ function createYITHInstaller(yithId, priority, { wpModules, user }) {
 
 const YITHPlugins = (props) => ({
   dataDependencies: {
-    plugins: async () => fetchPluginStatus("all"),
+    plugins: async () => PluginsSdk.queryStatus("all"),
     user: fetchUserCapabilities,
   },
   cards: [

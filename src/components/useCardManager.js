@@ -43,12 +43,14 @@ function useLoadDependencies(tree, { refreshInterval }) {
   return { realisedTree: data, onRefresh };
 }
 
+const identity = (_) => _;
+
 function extractDependencies(tree, realisedTree, consumerName) {
   return Object.fromEntries(
     tree.consumers
       .filter((_) => _.name === consumerName)
       .map((consumer) => {
-        let { key, selector } = consumer;
+        let { key, selector = identity } = consumer;
         return [key, realisedTree?.[key] ? selector(realisedTree?.[key]) : {}];
       })
   );
