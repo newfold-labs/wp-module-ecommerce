@@ -4,9 +4,8 @@ export const Endpoints = {
   WP_SETTINGS: "/wp/v2/settings",
   WC_ONBOARDING: "/wc-admin/onboarding/profile",
   BOOTSTRAP: "/newfold-ecommerce/v1/experience/bootstrap",
-  PLUGIN_STATUS: "/newfold-ecommerce/v1/plugins/status",
-  PLUGIN_INSTALL: "/newfold-onboarding/v1/plugins/install",
   WC_PRODUCTS: "/wc/v3/products",
+  WC_CURRENCY: "/wc/v3/settings/general/woocommerce_currency",
 };
 export async function fetchWPSettings() {
   return apiFetch({ path: Endpoints.WP_SETTINGS });
@@ -26,34 +25,31 @@ export async function updateWCOnboarding(data) {
   }).catch((error) => {});
 }
 
+export async function fetchJetpackAnalytics(period) {
+  return await apiFetch({
+    path: `/jetpack/v4/module/stats/data?range=${period}`,
+  }).catch((error) => ({}));
+}
+
+export async function fetchReports(period) {
+  try {
+    let [reports] = await apiFetch({
+      path: `/wc/v3/reports/sales?period=${period}`,
+    });
+    return reports;
+  } catch {
+    return {};
+  }
+}
+
+export async function fetchStoreCurrency() {
+  return apiFetch({ path: Endpoints.WC_CURRENCY });
+}
+
 export async function fetchUserCapabilities() {
   return apiFetch({
     path: `/newfold-ecommerce/v1/experience/capabilities`,
   });
-}
-
-export async function fetchPluginStatus(...plugins) {
-  return apiFetch({
-    path: `${Endpoints.PLUGIN_STATUS}?plugins=${plugins.join()}`,
-  });
-}
-
-export async function syncPluginInstall(plugin, token) {
-  return apiFetch({
-    path: Endpoints.PLUGIN_INSTALL,
-    method: "POST",
-    headers: { "X-NFD-ONBOARDING": token.hash },
-    data: { plugin, activate: true, queue: false },
-  }).catch((error) => "failed");
-}
-
-export async function queuePluginInstall(plugin, token, priority = 10) {
-  return apiFetch({
-    path: Endpoints.PLUGIN_INSTALL,
-    method: "POST",
-    headers: { "X-NFD-ONBOARDING": token.hash },
-    data: { plugin, activate: true, queue: true, priority },
-  }).catch((error) => "failed");
 }
 
 export async function createProduct(data) {

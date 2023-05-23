@@ -1,46 +1,20 @@
 import { __ } from "@wordpress/i18n";
 import { Button, Title } from "@yoast/ui-library";
-import useSWRMutation from "swr/mutation";
-import { queuePluginInstall, syncPluginInstall } from "../services";
 import { Section } from "./Section";
+import { useInstallWoo } from "./useInstallWoo";
 
-export function WooCommerceUnavailable({ plugins, user, wpModules }) {
-  let { notify } = wpModules;
-  let isWooActive = plugins.details?.woocommerce.status === "active";
-  let needsSyncInstall = plugins.details?.woocommerce.status === "need_to_install";
-  let isWCInQueue = plugins.queue?.some(
+export function WooCommerceUnavailable(props) {
+  let isWooActive = props.plugins.details?.woocommerce.status === "active";
+  let isWCInQueue = props.plugins.queue?.some(
     (queue) => queue.slug === "woocommerce"
   );
-  let installWooCommerce = useSWRMutation("install-woo", async () => {
-    let response = needsSyncInstall
-      ? await syncPluginInstall("woocommerce", user.site.install_token)
-      : await queuePluginInstall("woocommerce", user.site.install_token);
-    if (response !== "failed") {
-      await plugins.refresh();
-    } else {
-      notify.push("woo-failure", {
-        title: "WooCommerce failed to install",
-        description: (
-          <span>
-            {__("Please try again, or ", "wp-module-ecommerce")}
-            <a href={user?.currentBrandConfig?.support} target="_blank">
-              {__("contact support", "wp-module-ecommerce")}
-            </a>
-          </span>
-        ),
-        variant: "error",
-      });
-    }
-  });
-  let isInstalling = needsSyncInstall
-    ? installWooCommerce.isMutating
-    : installWooCommerce.isMutating || installWooCommerce.data !== undefined;
+  let [installWoo, isInstalling] = useInstallWoo(props);
   if (isWooActive) {
     return null;
   }
   let showInProgress = isInstalling || isWCInQueue;
   return (
-    <Section.Content separator>
+    <Section.Content>
       <div className="yst-bg-canvas yst-rounded-lg yst-border yst-border-solid yst-border-line">
         <div className="yst-px-4 yst-py-2 yst-flex yst-items-center yst-rounded-lg">
           <div className="yst-flex-1">
@@ -59,7 +33,7 @@ export function WooCommerceUnavailable({ plugins, user, wpModules }) {
               type="button"
               variant="upsell"
               isLoading={showInProgress}
-              onClick={installWooCommerce.trigger}
+              onClick={installWoo}
             >
               {__("Install WooCommerce", "wp-module-ecommerce")}
             </Button>

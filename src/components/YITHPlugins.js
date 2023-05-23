@@ -1,23 +1,31 @@
 import YITHPluginsConfig from "../configs/YITHPlugins.config";
+import { Section } from "./Section";
 import { useCardManager } from "./useCardManager";
 
 export function YITHPlugins(props) {
   let [cards] = useCardManager(YITHPluginsConfig(props));
   let isWCUnavailable = props.plugins.details?.woocommerce.status !== "active";
   if (isWCUnavailable) {
-    return (
-      <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
-        <div className="nfd-ecommerce-loader" />
-      </div>
-    );
+    return null;
   }
 
   return (
-    <div className="yst-grid yst-grid-cols-3 yst-gap-6">
-      {cards.map((cardConfig) => {
-        let { Card, name, ...props } = cardConfig;
-        return <Card key={name} {...props} />;
-      })}
-    </div>
+    <Section.Container>
+      <Section.Header
+        title={__("Additional Features", "wp-module-ecommerce")}
+        subTitle={__(
+          "Improve your store with these powerful add-ons.",
+          "wp-module-ecommerce"
+        )}
+      />
+      <Section.Content>
+        <div className="yst-grid yst-grid-cols-3 yst-gap-6">
+          {cards.map((cardConfig) => {
+            let { Card, name, ...props } = cardConfig;
+            return <Card key={name} {...props} />;
+          })}
+        </div>
+      </Section.Content>
+    </Section.Container>
   );
 }
