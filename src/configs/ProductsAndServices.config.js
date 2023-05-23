@@ -7,12 +7,11 @@ import { ReactComponent as ImportProducts } from "../icons/import-products.svg";
 import { ReactComponent as ManageProducts } from "../icons/manage-products.svg";
 import {
   createProduct,
-  fetchPluginStatus,
   fetchProducts,
   fetchUserCapabilities,
-  queuePluginInstall,
 } from "../services";
 import { wcPluginStatusParser, wcProductsParser } from "./selectors";
+import { PluginsSdk } from "../sdk/plugins";
 
 const getUrl = (href) => {
   let [page, qs] = href.split("?");
@@ -38,7 +37,7 @@ function notifyPluginInstallError(notify, user) {
 
 function createYITHInstaller(yithId, priority, { wpModules, user }) {
   return async (state, props) => {
-    let response = await queuePluginInstall(
+    let response = await PluginsSdk.queueInstall(
       yithId,
       user?.site.install_token,
       priority
@@ -53,7 +52,7 @@ function createYITHInstaller(yithId, priority, { wpModules, user }) {
 
 const ProductsAndServices = (props) => ({
   dataDependencies: {
-    plugins: async () => fetchPluginStatus("all"),
+    plugins: async () => PluginsSdk.queryStatus("all"),
     user: fetchUserCapabilities,
     products: fetchProducts,
   },
