@@ -52,6 +52,12 @@ export async function fetchUserCapabilities() {
   });
 }
 
+export async function fetchProducts() {
+  return apiFetch({
+    path: Endpoints.WC_PRODUCTS,
+  });
+}
+
 export async function createProduct(data) {
   return apiFetch({
     path: Endpoints.WC_PRODUCTS,

@@ -4,12 +4,13 @@ import useSWRImmutable from "swr/immutable";
 import { Home } from "./components/Home";
 import { PluginsSdk } from "./sdk/plugins";
 import { Endpoints } from "./services";
+import { Products } from "./components/ProductsAndServices";
 
 const fetcher = (path) => apiFetch({ path });
 
 const pages = [
   { key: "/store", Page: Home },
-  { key: "/store/products", Page: Home },
+  { key: "/store/products", Page: Products },
   { key: "/store/details", Page: Home },
 ];
 
