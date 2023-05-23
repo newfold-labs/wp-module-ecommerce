@@ -38,6 +38,11 @@ export async function fetchPluginStatus(...plugins) {
   });
 }
 
+export async function fetchProducts() {
+  return apiFetch({
+    path: Endpoints.WC_PRODUCTS,
+  });
+}
 export async function syncPluginInstall(plugin, token) {
   return apiFetch({
     path: Endpoints.PLUGIN_INSTALL,

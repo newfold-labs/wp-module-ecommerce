@@ -15,13 +15,9 @@ export const razorpaySelector = (response) => {
   };
 };
 
-export const wcProductsSelector = (products) => products;
-
-export const wcGiftCardsSelector = (products) =>
-  products.filter((product) => product.type === "gift-card");
-
-export const wcBookings = (products) =>
-  products.filter((product) => product.type === "booking");
+export const wcProductsParser = (type) => (products) => {
+ return type === "all" ? products : products.filter((product) => product.type === type)
+}
 
 export const wcPluginStatusParser = (slug) => (data) => {
   const isInstalled = data?.details?.[slug].status === "active";
