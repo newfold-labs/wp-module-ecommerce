@@ -1,18 +1,19 @@
 import { __ } from "@wordpress/i18n";
 import { FeatureCard } from "../components/FeatureCard";
-import { ReactComponent as Booking } from "../icons/booking.svg";
-import { ReactComponent as CustomizeAccount } from "../icons/customize-account.svg";
-import { ReactComponent as Filter } from "../icons/filter.svg";
-import { ReactComponent as Gift } from "../icons/gift.svg";
-import { ReactComponent as Search } from "../icons/search.svg";
-import { ReactComponent as Store } from "../icons/store.svg";
-import { ReactComponent as WishList } from "../icons/wishlist.svg";
+import { ReactComponent as Ecomdash } from "../icons/ecomdash.svg";
+import { ReactComponent as Filter } from "../icons/yith-woocommerce-ajax-product-filter.svg";
+import { ReactComponent as Search } from "../icons/yith-woocommerce-ajax-search.svg";
+import { ReactComponent as Booking } from "../icons/yith-woocommerce-booking.svg";
+import { ReactComponent as CustomizeAccount } from "../icons/yith-woocommerce-customize-myaccount-page.svg";
+import { ReactComponent as Gift } from "../icons/yith-woocommerce-gift-card.svg";
+import { ReactComponent as WishList } from "../icons/yith-woocommerce-wishlist.svg";
+import { PluginsSdk } from "../sdk/plugins";
 import { fetchUserCapabilities } from "../services";
 import { wcPluginStatusParser } from "./selectors";
-import { PluginsSdk } from "../sdk/plugins";
 
 function defineFeatureState() {
   return {
+    user: (data) => data?.user,
     featureUrl: (data) =>
       data?.plugins?.isInstalled ? data.plugins?.pluginUrl : null,
     isActive: (data) => data?.plugins?.isInstalled,
@@ -22,8 +23,8 @@ function defineFeatureState() {
     isUpsellNeeded: (data) => data?.user?.capabilities?.isEcommerce === false,
   };
 }
-function notifyPluginInstallError(notify, user) {
-  notify.push("plugin-install-failure-nfd_slug_yith_woocommerce_booking", {
+function notifyPluginInstallError(notify, user, yithId) {
+  notify.push(`plugin-install-failure-${yithId}`, {
     title: "Plugin failed to install",
     description: (
       <span>
@@ -37,15 +38,15 @@ function notifyPluginInstallError(notify, user) {
   });
 }
 
-function createYITHInstaller(yithId, priority, { wpModules, user }) {
+function createYITHInstaller(yithId, priority, { notify }) {
   return async (state, props) => {
     let response = await PluginsSdk.queueInstall(
       yithId,
-      user?.site.install_token,
+      state.user?.site.install_token,
       priority
     );
     if (response === "failed") {
-      notifyPluginInstallError(wpModules.notify, user);
+      notifyPluginInstallError(notify, state.user, yithId);
     } else {
       await props.onRefresh("plugins");
     }
@@ -67,9 +68,12 @@ const YITHPlugins = (props) => ({
         ActionIcon: null,
       }),
       text: ({ isActive }) => ({
-        title: __("Manage bookable/rental products", "wp-module-ecommerce"),
+        title: __(
+          "YITH Booking and Appointment for WooCommerce",
+          "wp-module-ecommerce"
+        ),
         description: __(
-          "Enable a booking/appointment system to manage renting or booking of services, rooms, houses.",
+          "Enable a booking/appointment system to manage renting or booking of services, rooms, houses, cars, accommodation and more to make it easy for your customers to do business with you.",
           "wp-module-ecommerce"
         ),
         actionName: isActive ? __("Manage") : __("Enable"),
@@ -79,7 +83,7 @@ const YITHPlugins = (props) => ({
         installFeature: createYITHInstaller(
           "nfd_slug_yith_woocommerce_booking",
           10,
-          props
+          props.wpModules
         ),
       },
       queries: [
@@ -87,7 +91,7 @@ const YITHPlugins = (props) => ({
           key: "plugins",
           selector: wcPluginStatusParser("nfd_slug_yith_woocommerce_booking"),
         },
-        { key: "user", selector: (_) => _ },
+        { key: "user" },
       ],
     },
     {
@@ -98,12 +102,9 @@ const YITHPlugins = (props) => ({
         Image: Search,
       }),
       text: ({ isActive }) => ({
-        title: __(
-          "Add a powerful search tool to your store",
-          "wp-module-ecommerce"
-        ),
+        title: __("YITH WooCommerce AJAX Search", "wp-module-ecommerce"),
         description: __(
-          "Allow your users to search products in real time by title, description, tags, and more.",
+          "YITH WooCommerce AJAX Search is an effective and predictive real-time search engine on your store so users can quickly find products they want. Speed up your search and boost your sales.",
           "wp-module-ecommerce"
         ),
         actionName: isActive ? "Manage" : "Enable",
@@ -114,7 +115,7 @@ const YITHPlugins = (props) => ({
         installFeature: createYITHInstaller(
           "yith-woocommerce-ajax-search",
           11,
-          props
+          props.wpModules
         ),
       },
       queries: [
@@ -122,7 +123,7 @@ const YITHPlugins = (props) => ({
           key: "plugins",
           selector: wcPluginStatusParser("yith-woocommerce-ajax-search"),
         },
-        { key: "user", selector: (_) => _ },
+        { key: "user" },
       ],
     },
     {
@@ -133,12 +134,9 @@ const YITHPlugins = (props) => ({
         Image: WishList,
       }),
       text: ({ isActive }) => ({
-        title: __(
-          "Allow your customers to save products in their Wishlist",
-          "wp-module-ecommerce"
-        ),
+        title: __("YITH WooCommerce Wishlist", "wp-module-ecommerce"),
         description: __(
-          "Make it easy for your customers to create lists and add their favorite items to them.",
+          "Allow your customers to create lists of products they want and share them with family and friends.",
           "wp-module-ecommerce"
         ),
         actionName: isActive ? "Manage" : "Enable",
@@ -149,7 +147,7 @@ const YITHPlugins = (props) => ({
         installFeature: createYITHInstaller(
           "nfd_slug_yith_woocommerce_wishlist",
           12,
-          props
+          props.wpModules
         ),
       },
       queries: [
@@ -157,7 +155,7 @@ const YITHPlugins = (props) => ({
           key: "plugins",
           selector: wcPluginStatusParser("nfd_slug_yith_woocommerce_wishlist"),
         },
-        { key: "user", selector: (_) => _ },
+        { key: "user" },
       ],
     },
     {
@@ -169,11 +167,11 @@ const YITHPlugins = (props) => ({
       }),
       text: ({ isActive }) => ({
         title: __(
-          "Add a powerful product filter to your store",
+          "YITH WooCommerce AJAX Product Filter",
           "wp-module-ecommerce"
         ),
         description: __(
-          "If your store has lots of products, help your customers find what they're looking for fast.",
+          "YITH WooCommerce Ajax Product Filter is the perfect way to add an advanced filter to all products in your store by size, color, price, and more to find the right product or gift with ease.",
           "wp-module-ecommerce"
         ),
         actionName: isActive ? "Manage" : "Enable",
@@ -184,7 +182,7 @@ const YITHPlugins = (props) => ({
         installFeature: createYITHInstaller(
           "nfd_slug_yith_woocommerce_ajax_product_filter",
           13,
-          props
+          props.wpModules
         ),
       },
       queries: [
@@ -194,7 +192,7 @@ const YITHPlugins = (props) => ({
             "nfd_slug_yith_woocommerce_ajax_product_filter"
           ),
         },
-        { key: "user", selector: (_) => _ },
+        { key: "user" },
       ],
     },
     {
@@ -205,9 +203,9 @@ const YITHPlugins = (props) => ({
         Image: Gift,
       }),
       text: ({ isActive }) => ({
-        title: __("Sell Gift Cards in your store", "wp-module-ecommerce"),
+        title: __("YITH WooCommerce Gift Cards", "wp-module-ecommerce"),
         description: __(
-          "Use gift cards to increase your earnings and attract new customers.",
+          "Sell gift cards to increase your store's revenue and win new customers.",
           "wp-module-ecommerce"
         ),
         actionName: isActive ? "Manage" : "Enable",
@@ -218,7 +216,7 @@ const YITHPlugins = (props) => ({
         installFeature: createYITHInstaller(
           "nfd_slug_yith_woocommerce_gift_cards",
           14,
-          props
+          props.wpModules
         ),
       },
       queries: [
@@ -228,7 +226,7 @@ const YITHPlugins = (props) => ({
             "nfd_slug_yith_woocommerce_gift_cards"
           ),
         },
-        { key: "user", selector: (_) => _ },
+        { key: "user" },
       ],
     },
     {
@@ -240,11 +238,11 @@ const YITHPlugins = (props) => ({
       }),
       text: ({ isActive }) => ({
         title: __(
-          "Customize your customers' account page",
+          "YITH WooCommerce Customize My Account Page",
           "wp-module-ecommerce"
         ),
         description: __(
-          "Show any kind of custom content in your customers' account page.",
+          "Customize the My Account page of your customers by creating custom sections with promotions and ad-hoc content based on your needs.",
           "wp-module-ecommerce"
         ),
         actionName: isActive ? "Manage" : "Enable",
@@ -255,7 +253,7 @@ const YITHPlugins = (props) => ({
         installFeature: createYITHInstaller(
           "nfd_slug_yith_woocommerce_customize_myaccount_page",
           15,
-          props
+          props.wpModules
         ),
       },
       queries: [
@@ -265,21 +263,19 @@ const YITHPlugins = (props) => ({
             "nfd_slug_yith_woocommerce_customize_myaccount_page"
           ),
         },
-        { key: "user", selector: (_) => _ },
+        { key: "user" },
       ],
     },
     {
       Card: FeatureCard,
-      shouldRender: (state) => state?.isAvailable,
+      shouldRender: (state) => true,
+      // shouldRender: (state) => state?.isAvailable,
       name: "nfd_slug_ecomdash_wordpress_plugin",
-      assets: () => ({ Image: Store }),
+      assets: () => ({ Image: Ecomdash }),
       text: ({ isActive }) => ({
-        title: __(
-          "Sell your products across multiple marketplaces",
-          "wp-module-ecommerce"
-        ),
+        title: __("Ecomdash", "wp-module-ecommerce"),
         description: __(
-          "Ecomdash is a multi-channel inventory control, listing, dropshipping and shipping management system.",
+          "All your sales channels and products, managed in one place. See how this dashboard puts selling, updating, and inventory all at your fingertips. Perfect for selling on Amazon, Etsy, eBay and more.",
           "wp-module-ecommerce"
         ),
         actionName: isActive ? "Manage" : "Enable",
@@ -290,7 +286,7 @@ const YITHPlugins = (props) => ({
         installFeature: createYITHInstaller(
           "nfd_slug_ecomdash_wordpress_plugin",
           16,
-          props
+          props.wpModules
         ),
       },
       queries: [
@@ -298,7 +294,7 @@ const YITHPlugins = (props) => ({
           key: "plugins",
           selector: wcPluginStatusParser("nfd_slug_ecomdash_wordpress_plugin"),
         },
-        { key: "user", selector: (_) => _ },
+        { key: "user" },
       ],
     },
   ],
