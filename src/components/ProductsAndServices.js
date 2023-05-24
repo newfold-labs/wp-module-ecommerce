@@ -1,10 +1,10 @@
 import { Icon } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
-import { Button, Title } from "@yoast/ui-library";
+import { Button, Title, Spinner } from "@yoast/ui-library";
 import ProductsConfig from "../configs/ProductsAndServices.config";
 import { ReactComponent as Ideas } from "../icons/ideas.svg";
-import { useCardManager } from "./useCardManager";
 import { Section } from "./Section";
+import { useCardManager } from "./useCardManager";
 
 export function Products(props) {
   let [cards] = useCardManager(ProductsConfig(props));
@@ -54,6 +54,11 @@ export function Products(props) {
             </Button>
           </div>
         </div>
+        {cards?.length === 0 && (
+          <div className="yst-flex yst-items-center yst-text-center yst-justify-center yst-h-60">
+            <Spinner size={8} className="yst-text-primary" />
+          </div>
+        )}
         <div className="yst-grid yst-grid-cols-3 yst-gap-6 yst-pt-8">
           {cards.map((cardConfig) => {
             let { Card, name, ...props } = cardConfig;
@@ -63,5 +68,4 @@ export function Products(props) {
       </Section.Content>
     </Section.Container>
   );
-};
-
+}
