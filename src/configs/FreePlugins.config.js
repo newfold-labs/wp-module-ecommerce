@@ -3,6 +3,7 @@ import { FeatureCard } from "../components/FeatureCard";
 import { ReactComponent as CreativeMail } from "../icons/creativemail.svg";
 import { ReactComponent as Jetpack } from "../icons/jetpack.svg";
 import { ReactComponent as MonsterInsights } from "../icons/monsterinsights.svg";
+import { ReactComponent as OptinMonster } from "../icons/optinmonster.svg";
 import { ReactComponent as WPForms } from "../icons/wpforms.svg";
 import { ReactComponent as YoastSEO } from "../icons/yoast.svg";
 import { PluginsSdk } from "../sdk/plugins";
@@ -209,6 +210,33 @@ export const FreePluginsDefinition = ({ notify }) => ({
         {
           key: "plugins",
           selector: wcPluginStatusParser("creative-mail-by-constant-contact"),
+        },
+        { key: "user", selector: (_) => _ },
+      ],
+    },
+    {
+      Card: FeatureCard,
+      shouldRender: () => true,
+      name: "optinmonster",
+      assets: () => ({
+        Image: OptinMonster,
+      }),
+      text: ({ isActive }) => ({
+        title: __("OptinMonster - Lead Generation", "wp-module-ecommerce"),
+        description: __(
+          "OptinMonster is the best WordPress popup builder plugin that helps you grow your email newsletter list and sales with email popups, exit intent popups, floating bars and more!",
+          "wp-module-ecommerce"
+        ),
+        actionName: isActive ? "Manage" : "Enable",
+      }),
+      state: defineFeatureState(),
+      actions: {
+        installFeature: createYITHInstaller("optinmonster", 15, notify),
+      },
+      queries: [
+        {
+          key: "plugins",
+          selector: wcPluginStatusParser("optinmonster"),
         },
         { key: "user", selector: (_) => _ },
       ],
