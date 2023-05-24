@@ -4,12 +4,14 @@ import { Button } from "@yoast/ui-library";
 import useSWR from "swr";
 import { Section } from "./Section";
 import TaxSettings from "./TaxSettings";
+import StoreInfo from "./StoreInfo";
 import { updateWPSettings } from "../services";
 
 export function StoreDetails(props) {
   let { data } = useSWR("/wp/v2/settings");
   const [controls, setControls] = useState({
     woocommerce_calc_taxes: "",
+    country: "US"
   });
   const [isDirty, setIsDirty] = useState(false);
 
@@ -17,6 +19,7 @@ export function StoreDetails(props) {
     setControls({
       ...controls,
       woocommerce_calc_taxes: data?.woocommerce_calc_taxes,
+      country: data?.country
     });
   };
 
@@ -38,7 +41,7 @@ export function StoreDetails(props) {
           event.preventDefault();
           event.stopPropagation();
           await updateWPSettings({
-            ...controls
+            ...controls,
           });
         }}
         onChange={(event) => {
@@ -51,6 +54,9 @@ export function StoreDetails(props) {
           setIsDirty(true);
         }}
       >
+        <Section.Content>
+          <StoreInfo {...props} controls={controls} setControls={setControls} />
+        </Section.Content>
         <Section.Content>
           <TaxSettings {...props} controls={controls} />
         </Section.Content>
