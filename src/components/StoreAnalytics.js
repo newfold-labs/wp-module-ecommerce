@@ -1,5 +1,5 @@
 import { useState } from "@wordpress/element";
-import { FeatureUpsell, Select, Title } from "@yoast/ui-library";
+import { FeatureUpsell, Select, Spinner, Title } from "@yoast/ui-library";
 import Reports from "../configs/Reports.config";
 import { Section } from "./Section";
 import { SiteStatus } from "./SiteStatus";
@@ -46,6 +46,11 @@ function RecentActivity() {
         setFilter("week");
       }}
     >
+      {cards.length === 0 && (
+        <div className="yst-flex yst-items-center yst-text-center yst-justify-center yst-h-60">
+          <Spinner size={8} className="yst-text-primary" />
+        </div>
+      )}
       <div className="yst-grid yst-grid-cols-2 yst-gap-4">
         {cards.map((cardConfig) => {
           let { Card, name, ...props } = cardConfig;
