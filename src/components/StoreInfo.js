@@ -1,5 +1,5 @@
+import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
-import useSWR from "swr";
 import {
   Label,
   Select,
@@ -7,8 +7,7 @@ import {
   TextInput,
   Title,
 } from "@yoast/ui-library";
-import {  useState } from "@wordpress/element";
-
+import useSWR from "swr";
 
 const CountriesInOFAC = ["CU", "KP", "IR", "RU", "SY", "AF", "BY", "MM", "VN"];
 function useBasicProfile() {
@@ -24,8 +23,6 @@ function useBasicProfile() {
 const StoreInfo = ({ controls, setControls }) => {
   let [isLoading, countries, currencies] = useBasicProfile();
   const [states, setStates] = useState([]);
-
-
   return (
     <div className="yst-flex yst-gap-12">
       <div className="yst-w-[300px] yst-flex-initial">
@@ -42,7 +39,7 @@ const StoreInfo = ({ controls, setControls }) => {
       <div className="yst-flex-1">
         <div>
           <Label>{__("Where is your store based?")}</Label>
-          {countries && (
+          {controls.country && countries && (
             <>
               <Select
                 id="store-country-select"
@@ -58,9 +55,9 @@ const StoreInfo = ({ controls, setControls }) => {
                     countries.filter((_) => _.code == target)[0].states
                   );
                 }}
-                value={controls.country}
+                value={controls?.country ?? ""}
                 selectedLabel={
-                  countries?.find((_) => _.code === controls.country).name
+                  countries?.find((_) => _.code === controls?.country)?.name
                 }
               >
                 {countries?.map((country) => {
@@ -102,10 +99,10 @@ const StoreInfo = ({ controls, setControls }) => {
               className="yst-mt-2"
             />
           </div>
-          {states && states.length > 0 && (
+          {states?.length > 0 && (
             <div className="yst-flex-1 yst-ml-8">
               <Label>{__("State")}</Label>
-              {states && states.length > 0 && (
+              {states?.length > 0 && (
                 <Select
                   id="state-select"
                   className="yst-mt-2"
@@ -118,7 +115,7 @@ const StoreInfo = ({ controls, setControls }) => {
                   }}
                   value={controls.state}
                   selectedLabel={
-                    states.find((_) => _.code === controls.state).name
+                    states?.find((_) => _.code === controls.state)?.name
                   }
                 >
                   {states?.map((state) => {
@@ -170,10 +167,10 @@ const StoreInfo = ({ controls, setControls }) => {
               value={controls.woocommerce_currency}
               selectedLabel={
                 currencies.find((_) => _.code === controls.woocommerce_currency)
-                  .name
+                  ?.name
               }
             >
-              {currencies?.map((currency) => {
+              {currencies.map((currency) => {
                 return (
                   <SelectField.Option
                     label={currency.name}

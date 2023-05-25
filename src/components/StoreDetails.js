@@ -9,26 +9,27 @@ import TaxSettings from "./TaxSettings";
 
 export function StoreDetails(props) {
   let { data } = useSWR("/wp/v2/settings");
-  let defaultCurrency =
-    props?.user?.currentBrandConfig?.defaultContact?.woocommerce_currency ??
-    "USD";
   const [controls, setControls] = useState({});
   const [isDirty, setIsDirty] = useState(false);
 
   const setInitialFormData = () => {
-    let country = data?.woocommerce_default_country.split(":")?.[0];
-    let state = data?.woocommerce_default_country.split(":")?.[1];
+    let { defaultContact } = props.user.currentBrandConfig;
+    let [country, state] = (
+      data.woocommerce_default_country ??
+      defaultContact.woocommerce_default_country
+    ).split(":");
     setControls({
       ...controls,
-      woocommerce_calc_taxes: data?.woocommerce_calc_taxes,
-      country: country ?? "",
-      state: state ?? "",
-      woocommerce_email_from_address: data?.woocommerce_email_from_address,
-      woocommerce_store_address: data?.woocommerce_store_address,
-      woocommerce_store_address_2: data?.woocommerce_store_address_2,
-      woocommerce_store_city: data?.woocommerce_store_city,
-      woocommerce_store_postcode: data?.woocommerce_store_postcode,
-      woocommerce_currency: data?.woocommerce_currency ?? defaultCurrency,
+      woocommerce_calc_taxes: data.woocommerce_calc_taxes,
+      country,
+      state,
+      woocommerce_email_from_address: data.woocommerce_email_from_address,
+      woocommerce_store_address: data.woocommerce_store_address,
+      woocommerce_store_address_2: data.woocommerce_store_address_2,
+      woocommerce_store_city: data.woocommerce_store_city,
+      woocommerce_store_postcode: data.woocommerce_store_postcode,
+      woocommerce_currency:
+        data.woocommerce_currency ?? defaultContact.woocommerce_currency,
     });
   };
 
@@ -37,7 +38,6 @@ export function StoreDetails(props) {
       setInitialFormData();
     }
   }, [data, props.user]);
-
   return (
     <Section.Container>
       <Section.Header
@@ -48,6 +48,7 @@ export function StoreDetails(props) {
         )}
       />
       <form
+        id="store-details"
         onSubmit={async (event) => {
           event.preventDefault();
           event.stopPropagation();
