@@ -8,13 +8,13 @@ import {
   fetchJetpackAnalytics,
 } from "../services";
 
-function formatMoneyToTile() {
+function formatMoneyToTile(filter) {
   return {
     reportValue: (data) =>
       data?.pluginStatus === false
         ? "-"
         : formatMoney({
-            cost: Number(data?.reports),
+            cost: Number(data?.[`reports_for_${filter}`]),
             currency: data?.currency?.value,
             currencyDisplay: "symbol",
           }),
@@ -23,8 +23,8 @@ function formatMoneyToTile() {
 
 const Reports = (filter) => ({
   dataDependencies: {
-    analytics: () => fetchJetpackAnalytics(filter),
-    reports: () => fetchReports(filter),
+    [`analytics_for_${filter}`]: () => fetchJetpackAnalytics(filter),
+    [`reports_for_${filter}`]: () => fetchReports(filter),
     currency: fetchStoreCurrency,
     pluginStatus: () => PluginsSdk.queryStatus("woocommerce", "jetpack"),
   },
@@ -36,7 +36,7 @@ const Reports = (filter) => ({
       text: () => ({
         title: __("Total Sales", "wp-module-ecommerce"),
       }),
-      state: formatMoneyToTile(),
+      state: formatMoneyToTile(filter),
       queries: [
         { key: "currency" },
         {
@@ -44,7 +44,10 @@ const Reports = (filter) => ({
           selector: (plugins) =>
             PluginsSdk.isPlugin(plugins, ["woocommerce"], "active"),
         },
-        { key: "reports", selector: (reports) => reports.total_sales },
+        {
+          key: `reports_for_${filter}`,
+          selector: (reports) => reports.total_sales,
+        },
       ],
     },
     {
@@ -54,7 +57,7 @@ const Reports = (filter) => ({
       text: () => ({
         title: __("Net Sales", "wp-module-ecommerce"),
       }),
-      state: formatMoneyToTile(),
+      state: formatMoneyToTile(filter),
       queries: [
         { key: "currency" },
         {
@@ -62,7 +65,10 @@ const Reports = (filter) => ({
           selector: (plugins) =>
             PluginsSdk.isPlugin(plugins, ["woocommerce"], "active"),
         },
-        { key: "reports", selector: (reports) => reports.net_sales },
+        {
+          key: `reports_for_${filter}`,
+          selector: (reports) => reports.net_sales,
+        },
       ],
     },
     {
@@ -74,7 +80,7 @@ const Reports = (filter) => ({
       }),
       state: {
         reportValue: (data) =>
-          data?.pluginStatus ? Number(data?.reports) : "-",
+          data?.pluginStatus ? Number(data?.[`reports_for_${filter}`]) : "-",
       },
       queries: [
         {
@@ -82,7 +88,10 @@ const Reports = (filter) => ({
           selector: (plugins) =>
             PluginsSdk.isPlugin(plugins, ["woocommerce"], "active"),
         },
-        { key: "reports", selector: (reports) => reports.total_orders },
+        {
+          key: `reports_for_${filter}`,
+          selector: (reports) => reports.total_orders,
+        },
       ],
     },
     {
@@ -94,7 +103,7 @@ const Reports = (filter) => ({
       }),
       state: {
         reportValue: (data) =>
-          data?.pluginStatus ? Number(data?.reports) : "-",
+          data?.pluginStatus ? Number(data?.[`reports_for_${filter}`]) : "-",
       },
       queries: [
         {
@@ -102,7 +111,10 @@ const Reports = (filter) => ({
           selector: (plugins) =>
             PluginsSdk.isPlugin(plugins, ["woocommerce"], "active"),
         },
-        { key: "reports", selector: (reports) => reports.total_items },
+        {
+          key: `reports_for_${filter}`,
+          selector: (reports) => reports.total_items,
+        },
       ],
     },
     {
@@ -114,7 +126,7 @@ const Reports = (filter) => ({
       }),
       state: {
         reportValue: (data) =>
-          data?.pluginStatus ? Number(data?.reports) : "-",
+          data?.pluginStatus ? Number(data?.[`reports_for_${filter}`]) : "-",
       },
       queries: [
         {
@@ -133,7 +145,7 @@ const Reports = (filter) => ({
       }),
       state: {
         reportValue: (data) =>
-          data?.pluginStatus ? Number(data?.reports) : "-",
+          data?.pluginStatus ? Number(data?.[`reports_for_${filter}`]) : "-",
       },
       queries: [
         {
