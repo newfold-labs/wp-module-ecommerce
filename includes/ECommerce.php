@@ -68,6 +68,7 @@ class ECommerce {
 		add_action( 'admin_bar_menu', array( $this, 'newfold_site_status' ), 200 );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_assets' ) );
+		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_textdomains' ) );
 		CaptiveFlow::init();
 		WooCommerceBacklink::init( $container );
 		register_meta(
@@ -148,6 +149,18 @@ class ECommerce {
 		}
 	}
 
+	public function register_textdomains() {
+		\load_script_textdomain(
+			'nfd-ecommerce-dependency',
+			'wp-module-ecommerce',
+			$this->container->plugin()->dir . 'vendor/newfold-labs/wp-module-ecommerce/languages'
+		);
+		\load_textdomain(
+			'wp-module-ecommerce',
+			$this->container->plugin()->dir . 'vendor/newfold-labs/wp-module-ecommerce/languages'
+		);
+	}
+
 	/**
 	 * Load WP dependencies into the page.
 	 */
@@ -159,7 +172,7 @@ class ECommerce {
 				'nfd-ecommerce-dependency',
 				NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Partials/load-dependencies.js',
 				array_merge( $asset['dependencies'], array() ),
-				$asset_file
+				$asset['version']
 			);
 		}
 	}
