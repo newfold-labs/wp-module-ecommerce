@@ -102,12 +102,12 @@ function RecentOrders() {
           <Spinner size={8} className="yst-text-primary" />
         </div>
       )}
-      {true && (
-        <div className="yst-flex-1 yst-justify-center yst-h-full">
-          <NoOrdersFallback className="yst-h-[70%]" />
+      {!orders.isLoading && orders.data.length === 0 && (
+        <div className="yst-flex-1 yst-h-full">
+          <NoOrdersFallback />
         </div>
       )}
-      {false && (
+      {!orders.isLoading && (
         <>
           <ul className="yst-flex-1">
             {orders.data?.map((order) => (
