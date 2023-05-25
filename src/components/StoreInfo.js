@@ -1,15 +1,30 @@
 import { __ } from "@wordpress/i18n";
 import useSWR from "swr";
-//
-import { Label, Select, SelectField, TextInput, Title } from "@yoast/ui-library";
+import {
+  Label,
+  Select,
+  SelectField,
+  TextInput,
+  Title,
+} from "@yoast/ui-library";
+import {  useState } from "@wordpress/element";
+
 
 const CountriesInOFAC = ["CU", "KP", "IR", "RU", "SY", "AF", "BY", "MM", "VN"];
-
-const StoreInfo = ({ controls, setControls }) => {
+function useBasicProfile() {
   let { data: countries } = useSWR("/wc/v3/data/countries");
   let { data: currencies } = useSWR("/wc/v3/data/currencies");
+  return [
+    !countries || !currencies,
+    countries?.filter((_) => !CountriesInOFAC.includes(_.code)),
+    currencies,
+  ];
+}
 
-  countries = countries?.filter((_) => !CountriesInOFAC.includes(_.code));
+const StoreInfo = ({ controls, setControls }) => {
+  let [isLoading, countries, currencies] = useBasicProfile();
+  const [states, setStates] = useState([]);
+
 
   return (
     <div className="yst-flex yst-gap-12">
@@ -33,17 +48,19 @@ const StoreInfo = ({ controls, setControls }) => {
                 id="store-country-select"
                 className="yst-mt-2"
                 name="country"
+                disabled={isLoading}
                 onChange={(target) => {
                   setControls({
                     ...controls,
                     country: target,
                   });
+                  console.log(
+                    countries.filter((_) => _.code == target)[0].states
+                  );
                 }}
-                value={controls.country || "US"}
+                value={controls.country}
                 selectedLabel={
-                  controls.country
-                    ? countries.find((_) => _.code === controls.country).name
-                    : countries.find((_) => _.code === "US").name
+                  countries?.find((_) => _.code === controls.country).name
                 }
               >
                 {countries?.map((country) => {
@@ -52,6 +69,7 @@ const StoreInfo = ({ controls, setControls }) => {
                       label={country.name}
                       value={country.code}
                       key={country.code}
+                      name="country"
                     />
                   );
                 })}
@@ -84,37 +102,39 @@ const StoreInfo = ({ controls, setControls }) => {
               className="yst-mt-2"
             />
           </div>
-          {/* <div className="yst-flex-1 yst-ml-8">
-            <Label>{__("State")}</Label>
-            {states && states.length > 0 && (
-              <Select
-                id="state-select"
-                className="yst-mt-2"
-                onChange={(target) => {
-                  setControls({
-                    ...controls,
-                    state: target,
-                  });
-                }}
-                value={controls.state || "AZ"}
-                selectedLabel={
-                  controls.state
-                    ? states.find((_) => _.code === controls.state).name
-                    : states.find((_) => _.code === "AZ").name
-                }
-              >
-                {states?.map((state) => {
-                  return (
-                    <SelectField.Option
-                      label={state.name}
-                      value={state.code}
-                      key={state.code}
-                    />
-                  );
-                })}
-              </Select>
-            )}
-          </div> */}
+          {states && states.length > 0 && (
+            <div className="yst-flex-1 yst-ml-8">
+              <Label>{__("State")}</Label>
+              {states && states.length > 0 && (
+                <Select
+                  id="state-select"
+                  className="yst-mt-2"
+                  disabled={isLoading}
+                  onChange={(target) => {
+                    setControls({
+                      ...controls,
+                      state: target,
+                    });
+                  }}
+                  value={controls.state}
+                  selectedLabel={
+                    states.find((_) => _.code === controls.state).name
+                  }
+                >
+                  {states?.map((state) => {
+                    return (
+                      <SelectField.Option
+                        label={state.name}
+                        value={state.code}
+                        key={state.code}
+                      />
+                    );
+                  })}
+                </Select>
+              )}
+            </div>
+          )}
+
           <div className="yst-flex-1 yst-ml-8">
             <Label>{__("Postal Code")}</Label>
             <TextInput
@@ -140,19 +160,17 @@ const StoreInfo = ({ controls, setControls }) => {
             <Select
               id="select-currency"
               className="yst-mt-2"
+              disabled={isLoading}
               onChange={(target) => {
                 setControls({
                   ...controls,
                   woocommerce_currency: target,
                 });
               }}
-              value={controls.woocommerce_currency || "USD"}
+              value={controls.woocommerce_currency}
               selectedLabel={
-                controls.woocommerce_currency
-                  ? currencies.find(
-                      (_) => _.code === controls.woocommerce_currency
-                    ).name
-                  : currencies.find((_) => _.code === "USD").name
+                currencies.find((_) => _.code === controls.woocommerce_currency)
+                  .name
               }
             >
               {currencies?.map((currency) => {
