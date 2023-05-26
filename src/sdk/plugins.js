@@ -2,7 +2,7 @@ import apiFetch from "@wordpress/api-fetch";
 
 const Endpoints = {
   PLUGIN_STATUS: "/newfold-ecommerce/v1/plugins/status",
-  PLUGIN_INSTALL: "/newfold-onboarding/v1/plugins/install",
+  PLUGIN_INSTALL: "/newfold-installer/v1/plugins/install",
 };
 
 export const PluginsSdk = {
@@ -22,7 +22,7 @@ export const PluginsSdk = {
     return apiFetch({
       path: Endpoints.PLUGIN_INSTALL,
       method: "POST",
-      headers: { "X-NFD-ONBOARDING": token.hash },
+      headers: { "X-NFD-INSTALLER": token },
       data: { plugin, activate: true, queue: false },
     }).catch((error) => "failed");
   },
@@ -30,7 +30,7 @@ export const PluginsSdk = {
     return apiFetch({
       path: Endpoints.PLUGIN_INSTALL,
       method: "POST",
-      headers: { "X-NFD-ONBOARDING": token.hash },
+      headers: { "X-NFD-INSTALLER": token },
       data: { plugin, activate: true, queue: true, priority },
     }).catch((error) => "failed");
   },

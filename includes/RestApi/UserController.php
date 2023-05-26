@@ -2,6 +2,7 @@
 
 namespace NewfoldLabs\WP\Module\ECommerce\RestApi;
 
+use NewfoldLabs\WP\Module\Installer\Permissions as InstallerPermissions;
 use NewfoldLabs\WP\Module\ECommerce\Permissions;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\Module\ECommerce\Data\Brands;
@@ -73,7 +74,7 @@ class UserController {
 		return array(
 			'site' => array (
 				'url' => \get_site_url(),
-				'install_token' => Permissions::rest_get_plugin_install_hash(),
+				'install_token' => InstallerPermissions::rest_get_plugin_install_hash(),
 			),
 			'capabilities' => $this->container->get('capabilities')->all(),
 			'currentBrandConfig' => Brands::get_config( $this->get_brand_name() ),
