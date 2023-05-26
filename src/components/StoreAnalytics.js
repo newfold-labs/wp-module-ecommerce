@@ -20,9 +20,14 @@ import { SiteStatus } from "./SiteStatus";
 import { useCardManager } from "./useCardManager";
 import { useInstallWoo } from "./useInstallWoo";
 
-let storeAnalyticsLink = `admin.php?${new URLSearchParams({
+let recentActivityLink = `admin.php?${new URLSearchParams({
   page: "wc-admin",
-  path: "/analytics/overview",
+  path: "/analytics/revenue",
+  return_to_nfd: "/home/store/",
+})}`;
+
+let recentOrdersLink = `edit.php?${new URLSearchParams({
+  post_type: "shop_order",
   return_to_nfd: "/home/store/",
 })}`;
 
@@ -31,11 +36,12 @@ function RecentReport({ title, filter, onSelect, disabled, children }) {
     <Card className={`yst-flex-1`}>
       <Card.Content className={"yst-flex yst-flex-col yst-gap-4"}>
         <div className="yst-flex yst-items-baseline">
-          <Title className="yst-w-3/4" size={4}>
+          <Title className="yst-flex-1" size={4}>
             {title}
           </Title>
           <Select
             id={title}
+            className="lg:yst-w-1/4 sm:yst-w-1/2"
             disabled={disabled}
             onChange={(newFilter) => {
               if (newFilter !== filter) {
@@ -59,7 +65,9 @@ function RecentReport({ title, filter, onSelect, disabled, children }) {
 function RecentActivity() {
   let [filter, onSelect] = useState("week");
   let [cards] = useCardManager(Reports(filter), {
+    revalidateOnReconnect: false,
     revalidateOnFocus: false,
+    revalidateIfStale: false,
   });
   return (
     <RecentReport title="Recent Activity" filter={filter} onSelect={onSelect}>
@@ -77,8 +85,8 @@ function RecentActivity() {
             })}
           </div>
           <Link
-            className="yst-text-base"
-            href="admin.php?page=wc-admin&path=%2Fanalytics%2Frevenue"
+            className="yst-text-base yst-no-underline"
+            href={recentActivityLink}
           >
             view all
           </Link>
@@ -143,9 +151,8 @@ function RecentOrders() {
             ))}
           </ul>
           <Link
-            className="yst-text-base"
-            href="edit.php?post_type=shop_order"
-            target="_blank"
+            className="yst-text-base yst-no-underline"
+            href={recentOrdersLink}
           >
             view all
           </Link>
