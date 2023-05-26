@@ -1,0 +1,118 @@
+{
+  "translation-revision-date": "YEAR-MO-DA HO:MI+ZONE",
+  "generator": "WP-CLI/2.7.1",
+  "source": "build/index.js",
+  "domain": "messages",
+  "locale_data": {
+    "messages": {
+      "": {
+        "domain": "messages",
+        "lang": "en_US",
+        "plural-forms": "nplurals=2; plural=(n != 1);"
+      },
+      "Live": [""],
+      "Learn More": [""],
+      "please wait while other features are installed...": [""],
+      "Installing...": [""],
+      "Purchase": [""],
+      "Additional Features": [""],
+      "Improve your site with these free add-ons included in your plan.": [""],
+      "Store": [""],
+      "Products & Services": [""],
+      "Come here to manage products and services or add new ones to your store.": [
+        ""
+      ],
+      "Want help adding products?": [""],
+      "Read this helpful knowledge base article to understand how to\nadd different products to your store": [
+        ""
+      ],
+      " How to add products": [""],
+      "Your store is online and ready for business!": [""],
+      "Not ready? You can re-enable the \"Coming Soon\" mode if you need.": [
+        ""
+      ],
+      "Okay": [""],
+      "Ready to go live?": [""],
+      "Preview your store before setting it live to make sure everything is how you want it.\nOnce you're ready, set your store live!": [
+        ""
+      ],
+      "Preview your store": [""],
+      "Launch your store": [""],
+      "Store Details": [""],
+      "This is the place for all your general store details and setup.": [""],
+      "Add a store to your site": [""],
+      "Adding a store to your website is quick and easy!\nJust install WooCommerce and get ready to start making money!": [
+        ""
+      ],
+      "Install WooCommerce": [""],
+      "Improve your store with these powerful add-ons.": [""],
+      "Please try again, or ": [""],
+      "contact support": [""],
+      "Jetpack Boost - Website Speed, Performance and Critical CSS": [""],
+      "Speed up your WordPress site by optimizing page performance with Jetpack Boost.": [
+        ""
+      ],
+      "Contact Form by WPForms - Drag & Drop Form Builder for WordPress": [""],
+      "The best WordPress contact form plugin. Drag & Drop online form builder to create beautiful contact forms, payment forms, & other custom forms.": [
+        ""
+      ],
+      "MonsterInsights - Google Analytics Dashboard for WordPress (Website Stats Made Easy)": [
+        ""
+      ],
+      "The best free Google Analytics plugin for WordPress. See how visitors find and use your website, so you can grow your business.": [
+        ""
+      ],
+      "Yoast SEO": [""],
+      "Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the Yoast SEO plugin.": [
+        ""
+      ],
+      "Creative Mail - Easier WordPress & WooCommerce Email Marketing": [""],
+      "Creative Mail was designed specifically for WordPress and WooCommerce. Our intelligent (and super fun) email editor simplifies email marketing campaign.": [
+        ""
+      ],
+      "OptinMonster - Lead Generation": [""],
+      "OptinMonster is the best WordPress popup builder plugin that helps you grow your email newsletter list and sales with email popups, exit intent popups, floating bars and more!": [
+        ""
+      ],
+      "Add a Product": [""],
+      "Manage Your Products": [""],
+      "Import Products via CSV": [""],
+      "Bookings": [""],
+      "Gift Cards": [""],
+      "Total Sales": [""],
+      "Net Sales": [""],
+      "Orders": [""],
+      "Products Sold": [""],
+      "Visitors": [""],
+      "Views": [""],
+      "YITH Booking and Appointment for WooCommerce": [""],
+      "Enable a booking/appointment system to manage renting or booking of services, rooms, houses, cars, accommodation and more to make it easy for your customers to do business with you.": [
+        ""
+      ],
+      "YITH WooCommerce AJAX Search": [""],
+      "YITH WooCommerce AJAX Search is an effective and predictive real-time search engine on your store so users can quickly find products they want. Speed up your search and boost your sales.": [
+        ""
+      ],
+      "YITH WooCommerce Wishlist": [""],
+      "Allow your customers to create lists of products they want and share them with family and friends.": [
+        ""
+      ],
+      "YITH WooCommerce AJAX Product Filter": [""],
+      "YITH WooCommerce Ajax Product Filter is the perfect way to add an advanced filter to all products in your store by size, color, price, and more to find the right product or gift with ease.": [
+        ""
+      ],
+      "YITH WooCommerce Gift Cards": [""],
+      "Sell gift cards to increase your store's revenue and win new customers.": [
+        ""
+      ],
+      "YITH WooCommerce Customize My Account Page": [""],
+      "Customize the My Account page of your customers by creating custom sections with promotions and ad-hoc content based on your needs.": [
+        ""
+      ],
+      "Ecomdash": [""],
+      "All your sales channels and products, managed in one place. See how this dashboard puts selling, updating, and inventory all at your fingertips. Perfect for selling on Amazon, Etsy, eBay and more.": [
+        ""
+      ]
+    }
+  }
+}
