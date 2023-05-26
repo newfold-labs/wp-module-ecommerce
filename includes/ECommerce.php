@@ -169,7 +169,7 @@ class ECommerce {
 				'nfd-ecommerce-dependency',
 				NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Partials/load-dependencies.js',
 				array_merge( $asset['dependencies'], array() ),
-				$asset_file
+				$asset['version']
 			);
 		}
 	}
