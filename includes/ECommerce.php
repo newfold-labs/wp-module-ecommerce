@@ -31,6 +31,7 @@ class ECommerce {
 	 * @var array
 	 */
 	protected $controllers = array(
+		'NewfoldLabs\\WP\\Module\\ECommerce\\RestApi\\IntegrationsController',
 		'NewfoldLabs\\WP\\Module\\ECommerce\\RestApi\\PluginsController',
 		'NewfoldLabs\\WP\\Module\\ECommerce\\RestApi\\UserController',
 	);
