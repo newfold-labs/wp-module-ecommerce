@@ -8,6 +8,7 @@ import { ReactComponent as WPForms } from "../icons/wpforms.svg";
 import { ReactComponent as YoastSEO } from "../icons/yoast.svg";
 import { PluginsSdk } from "../sdk/plugins";
 import { fetchUserCapabilities } from "../services";
+import { createPluginInstallAction } from "./actions";
 import { wcPluginStatusParser } from "./selectors";
 
 function defineFeatureState() {
@@ -37,22 +38,7 @@ function notifyPluginInstallError(notify, user, yithId) {
   });
 }
 
-function createYITHInstaller(yithId, priority, notify) {
-  return async (state, props) => {
-    let response = await PluginsSdk.queueInstall(
-      yithId,
-      state.user.site.install_token,
-      priority
-    );
-    if (response === "failed") {
-      notifyPluginInstallError(notify, state.user, yithId);
-    } else {
-      await props.onRefresh("plugins");
-    }
-  };
-}
-
-export const FreePluginsDefinition = ({ notify }) => ({
+export const FreePluginsDefinition = (props) => ({
   dataDependencies: {
     plugins: async () => PluginsSdk.queryStatus("all"),
     user: fetchUserCapabilities,
@@ -79,7 +65,7 @@ export const FreePluginsDefinition = ({ notify }) => ({
       }),
       state: defineFeatureState(),
       actions: {
-        installFeature: createYITHInstaller("jetpack", 10, notify),
+        installFeature: createPluginInstallAction("jetpack", 10, props),
       },
       queries: [
         {
@@ -109,7 +95,7 @@ export const FreePluginsDefinition = ({ notify }) => ({
       }),
       state: defineFeatureState(),
       actions: {
-        installFeature: createYITHInstaller("wpforms-lite", 11, notify),
+        installFeature: createPluginInstallAction("wpforms-lite", 11, props),
       },
       queries: [
         {
@@ -139,10 +125,10 @@ export const FreePluginsDefinition = ({ notify }) => ({
       }),
       state: defineFeatureState(),
       actions: {
-        installFeature: createYITHInstaller(
+        installFeature: createPluginInstallAction(
           "google-analytics-for-wordpress",
           12,
-          notify
+          props
         ),
       },
       queries: [
@@ -170,7 +156,7 @@ export const FreePluginsDefinition = ({ notify }) => ({
       }),
       state: defineFeatureState(),
       actions: {
-        installFeature: createYITHInstaller("wordpress-seo", 13, notify),
+        installFeature: createPluginInstallAction("wordpress-seo", 13, props),
       },
       queries: [
         {
@@ -200,10 +186,10 @@ export const FreePluginsDefinition = ({ notify }) => ({
       }),
       state: defineFeatureState(),
       actions: {
-        installFeature: createYITHInstaller(
+        installFeature: createPluginInstallAction(
           "creative-mail-by-constant-contact",
           14,
-          notify
+          props
         ),
       },
       queries: [
@@ -211,7 +197,7 @@ export const FreePluginsDefinition = ({ notify }) => ({
           key: "plugins",
           selector: wcPluginStatusParser("creative-mail-by-constant-contact"),
         },
-        { key: "user", selector: (_) => _ },
+        { key: "user" },
       ],
     },
     {
@@ -231,14 +217,14 @@ export const FreePluginsDefinition = ({ notify }) => ({
       }),
       state: defineFeatureState(),
       actions: {
-        installFeature: createYITHInstaller("optinmonster", 15, notify),
+        installFeature: createPluginInstallAction("optinmonster", 15, props),
       },
       queries: [
         {
           key: "plugins",
           selector: wcPluginStatusParser("optinmonster"),
         },
-        { key: "user", selector: (_) => _ },
+        { key: "user" },
       ],
     },
   ],

@@ -11,7 +11,13 @@ function createDependencyTree(config) {
   return tree;
 }
 
-function useLoadDependencies(tree, { refreshInterval }) {
+/**
+ *
+ * @param {*} config
+ * @param {import('swr').SWRConfiguration} fetchOptions
+ * @returns
+ */
+function useLoadDependencies(tree, fetchOptions) {
   let endpoints = Object.keys(tree.dataDependencies);
   let { data, mutate } = useSWR(
     endpoints.length === 0 ? "no-dependencies" : endpoints.join(),
@@ -25,7 +31,7 @@ function useLoadDependencies(tree, { refreshInterval }) {
       }
       return realisedTree;
     },
-    { refreshInterval }
+    fetchOptions
   );
 
   async function onRefresh(dependency) {
@@ -56,6 +62,12 @@ function extractDependencies(tree, realisedTree, consumerName) {
   );
 }
 
+/**
+ *
+ * @param {*} config
+ * @param {import('swr').SWRConfiguration} fetchOptions
+ * @returns
+ */
 export const useCardManager = (config, fetchOptions = {}) => {
   const tree = createDependencyTree(config);
   let { realisedTree, onRefresh } = useLoadDependencies(tree, fetchOptions);
