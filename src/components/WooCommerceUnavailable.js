@@ -1,10 +1,15 @@
 import { __ } from "@wordpress/i18n";
 import { Button, Title } from "@yoast/ui-library";
+import { PluginsSdk } from "../sdk/plugins";
 import { Section } from "./Section";
 import { useInstallWoo } from "./useInstallWoo";
 
 export function WooCommerceUnavailable(props) {
-  let isWooActive = props.plugins.details?.woocommerce.status === "active";
+  let isWooActive = PluginsSdk.isPlugin(
+    props.plugins,
+    ["woocommerce"],
+    "active"
+  );
   let isWCInQueue = props.plugins.queue?.some(
     (queue) => queue.slug === "woocommerce"
   );

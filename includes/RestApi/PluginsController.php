@@ -88,11 +88,11 @@ class PluginsController {
 				'url'    => \admin_url( $info['url'] ),
 			);
 		}
-		$plugins_in_queue = InstallerOptions::get_option_name( PluginInstallTaskManager::get_queue_name() );
+		$plugins_queue = InstallerOptions::get_option_name( PluginInstallTaskManager::get_queue_name() );
 		return new \WP_REST_Response(
 			array(
 				'details' => $details,
-				'queue'   => false === $plugins_in_queue ? array() : $plugins_in_queue,
+				'queue'   => \get_option( $plugins_queue , array() ),
 			),
 			200
 		);

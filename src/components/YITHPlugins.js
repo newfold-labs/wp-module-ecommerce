@@ -5,15 +5,15 @@ import { useCardManager } from "./useCardManager";
 import { PluginsSdk } from "../sdk/plugins";
 
 export function YITHPlugins({ plugins, wpModules, user }) {
-  let isWCUnavailable = PluginsSdk.isPlugin(plugins, ["woocommerce"], "active");
+  let isWCActive = PluginsSdk.isPlugin(plugins, ["woocommerce"], "active");
   let [cards] = useCardManager(
     YITHPluginsDefinitions({
       notify: wpModules.notify,
       user,
     }),
-    { refreshInterval: 10 * 1000, isPaused: () => isWCUnavailable }
+    { refreshInterval: 10 * 1000, isPaused: () => !isWCActive }
   );
-  if (isWCUnavailable) {
+  if (!isWCActive) {
     return null;
   }
 
