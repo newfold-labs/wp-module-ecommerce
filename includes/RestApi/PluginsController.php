@@ -2,6 +2,7 @@
 
 namespace NewfoldLabs\WP\Module\ECommerce\RestApi;
 
+use NewfoldLabs\WP\Module\Installer\Permissions as InstallerPermissions;
 use NewfoldLabs\WP\Module\ECommerce\Permissions;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\Module\ECommerce\Data\Plugins;
@@ -89,7 +90,7 @@ class PluginsController {
 		return new \WP_REST_Response(
 			array(
 				'details' => $details,
-				'queue'   => \get_option( 'nfd_module_onboarding_plugin_install_queue', array() )
+				'queue'   => \get_option( 'nfd_module_onboarding_plugin_install_queue', array() ),
 			),
 			200
 		);
