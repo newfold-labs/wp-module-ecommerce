@@ -15,18 +15,8 @@ const Endpoints = {
  */
 
 export const IntegrationsSdk = {
-  status: {
-    /** @type {() => Promise<IntegrationStatus>} */
-    async paypal() {
-      return apiFetch({ path: Endpoints.INTEGRATIONS + "paypal" });
-    },
-    /** @type {() => Promise<IntegrationStatus>} */
-    async shippo() {
-      return apiFetch({ path: Endpoints.INTEGRATIONS + "shippo" });
-    },
-    /** @type {() => Promise<IntegrationStatus>} */
-    async razorpay() {
-      return apiFetch({ path: Endpoints.INTEGRATIONS + "razorpay" });
-    },
+  /** @type {(id: "paypal" | "shippo" | "razorpay") => Promise<IntegrationStatus>} */
+  async status(id) {
+    return apiFetch({ path: Endpoints.INTEGRATIONS + id });
   },
 };
