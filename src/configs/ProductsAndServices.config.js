@@ -5,13 +5,14 @@ import { ReactComponent as Booking } from "../icons/booking.svg";
 import { ReactComponent as Gift } from "../icons/gift.svg";
 import { ReactComponent as ImportProducts } from "../icons/import-products.svg";
 import { ReactComponent as ManageProducts } from "../icons/manage-products.svg";
+import { PluginsSdk } from "../sdk/plugins";
 import {
   createProduct,
   fetchProducts,
   fetchUserCapabilities,
 } from "../services";
+import { createPluginInstallAction } from "./actions";
 import { wcPluginStatusParser, wcProductsParser } from "./selectors";
-import { PluginsSdk } from "../sdk/plugins";
 
 const getUrl = (href) => {
   let [page, qs] = href.split("?");
@@ -19,36 +20,6 @@ const getUrl = (href) => {
   query.set("return_to_nfd", window.location.hash.replace("#", ""));
   return `${page}?${query}`;
 };
-
-function notifyPluginInstallError(notify, user) {
-  notify.push("plugin-install-failure-nfd_slug_yith_woocommerce_booking", {
-    title: "Plugin failed to install",
-    description: (
-      <span>
-        {__("Please try again, or ", "wp-module-ecommerce")}
-        <a href={user?.currentBrandConfig?.support} target="_blank">
-          {__("contact support", "wp-module-ecommerce")}
-        </a>
-      </span>
-    ),
-    variant: "error",
-  });
-}
-
-function createYITHInstaller(yithId, priority, { wpModules, user }) {
-  return async (state, props) => {
-    let response = await PluginsSdk.queueInstall(
-      yithId,
-      user?.site.install_token,
-      priority
-    );
-    if (response === "failed") {
-      notifyPluginInstallError(wpModules.notify, user);
-    } else {
-      await props.onRefresh("plugins");
-    }
-  };
-}
 
 const ProductsAndServices = (props) => ({
   dataDependencies: {
@@ -170,7 +141,7 @@ const ProductsAndServices = (props) => ({
           data?.products.length > 0 ? data.plugins?.pluginUrl : null,
       },
       actions: {
-        installFeature: createYITHInstaller(
+        installFeature: createPluginInstallAction(
           "nfd_slug_yith_woocommerce_booking",
           10,
           props
@@ -224,7 +195,7 @@ const ProductsAndServices = (props) => ({
           data?.products.length > 0 ? data.plugins?.pluginUrl : null,
       },
       actions: {
-        installFeature: createYITHInstaller(
+        installFeature: createPluginInstallAction(
           "nfd_slug_yith_woocommerce_gift_cards",
           10,
           props

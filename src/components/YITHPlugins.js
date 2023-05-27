@@ -1,11 +1,18 @@
 import { Spinner } from "@yoast/ui-library";
-import YITHPluginsConfig from "../configs/YITHPlugins.config";
+import { YITHPluginsDefinitions } from "../configs/YITHPlugins.config";
 import { Section } from "./Section";
 import { useCardManager } from "./useCardManager";
+import { PluginsSdk } from "../sdk/plugins";
 
-export function YITHPlugins(props) {
-  let [cards] = useCardManager(YITHPluginsConfig(props));
-  let isWCUnavailable = props.plugins.details?.woocommerce.status !== "active";
+export function YITHPlugins({ plugins, wpModules, user }) {
+  let isWCUnavailable = PluginsSdk.isPlugin(plugins, ["woocommerce"], "active");
+  let [cards] = useCardManager(
+    YITHPluginsDefinitions({
+      notify: wpModules.notify,
+      user,
+    }),
+    { refreshInterval: 10 * 1000, isPaused: () => isWCUnavailable }
+  );
   if (isWCUnavailable) {
     return null;
   }

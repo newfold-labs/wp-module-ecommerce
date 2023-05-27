@@ -23,37 +23,8 @@ function defineFeatureState() {
     isUpsellNeeded: (data) => data?.user?.capabilities?.isEcommerce === false,
   };
 }
-function notifyPluginInstallError(notify, user, yithId) {
-  notify.push(`plugin-install-failure-${yithId}`, {
-    title: "Plugin failed to install",
-    description: (
-      <span>
-        {__("Please try again, or ", "wp-module-ecommerce")}
-        <a href={user?.currentBrandConfig?.support} target="_blank">
-          {__("contact support", "wp-module-ecommerce")}
-        </a>
-      </span>
-    ),
-    variant: "error",
-  });
-}
 
-function createYITHInstaller(yithId, priority, { notify }) {
-  return async (state, props) => {
-    let response = await PluginsSdk.queueInstall(
-      yithId,
-      state.user?.site.install_token,
-      priority
-    );
-    if (response === "failed") {
-      notifyPluginInstallError(notify, state.user, yithId);
-    } else {
-      await props.onRefresh("plugins");
-    }
-  };
-}
-
-const YITHPlugins = (props) => ({
+export const YITHPluginsDefinitions = (props) => ({
   dataDependencies: {
     plugins: async () => PluginsSdk.queryStatus("all"),
     user: fetchUserCapabilities,
@@ -80,10 +51,10 @@ const YITHPlugins = (props) => ({
       }),
       state: defineFeatureState(),
       actions: {
-        installFeature: createYITHInstaller(
+        installFeature: createPluginInstallAction(
           "nfd_slug_yith_woocommerce_booking",
           10,
-          props.wpModules
+          props
         ),
       },
       queries: [
@@ -112,10 +83,10 @@ const YITHPlugins = (props) => ({
       }),
       state: defineFeatureState(),
       actions: {
-        installFeature: createYITHInstaller(
+        installFeature: createPluginInstallAction(
           "yith-woocommerce-ajax-search",
           11,
-          props.wpModules
+          props
         ),
       },
       queries: [
@@ -144,10 +115,10 @@ const YITHPlugins = (props) => ({
       }),
       state: defineFeatureState(),
       actions: {
-        installFeature: createYITHInstaller(
+        installFeature: createPluginInstallAction(
           "nfd_slug_yith_woocommerce_wishlist",
           12,
-          props.wpModules
+          props
         ),
       },
       queries: [
@@ -179,10 +150,10 @@ const YITHPlugins = (props) => ({
       }),
       state: defineFeatureState(),
       actions: {
-        installFeature: createYITHInstaller(
+        installFeature: createPluginInstallAction(
           "nfd_slug_yith_woocommerce_ajax_product_filter",
           13,
-          props.wpModules
+          props
         ),
       },
       queries: [
@@ -213,10 +184,10 @@ const YITHPlugins = (props) => ({
       }),
       state: defineFeatureState(),
       actions: {
-        installFeature: createYITHInstaller(
+        installFeature: createPluginInstallAction(
           "nfd_slug_yith_woocommerce_gift_cards",
           14,
-          props.wpModules
+          props
         ),
       },
       queries: [
@@ -250,10 +221,10 @@ const YITHPlugins = (props) => ({
       }),
       state: defineFeatureState(),
       actions: {
-        installFeature: createYITHInstaller(
+        installFeature: createPluginInstallAction(
           "nfd_slug_yith_woocommerce_customize_myaccount_page",
           15,
-          props.wpModules
+          props
         ),
       },
       queries: [
@@ -268,8 +239,7 @@ const YITHPlugins = (props) => ({
     },
     {
       Card: FeatureCard,
-      shouldRender: (state) => true,
-      // shouldRender: (state) => state?.isAvailable,
+      shouldRender: (state) => state?.isAvailable,
       name: "nfd_slug_ecomdash_wordpress_plugin",
       assets: () => ({ Image: Ecomdash }),
       text: ({ isActive }) => ({
@@ -281,12 +251,17 @@ const YITHPlugins = (props) => ({
         actionName: isActive ? "Manage" : "Enable",
         slug: "nfd_slug_ecomdash_wordpress_plugin",
       }),
-      state: defineFeatureState(),
+      state: {
+        ...defineFeatureState(),
+        isUpsellNeeded: () => false,
+        isAvailable: (queries) =>
+          queries?.user?.capabilities.hasEcomdash === true,
+      },
       actions: {
-        installFeature: createYITHInstaller(
+        installFeature: createPluginInstallAction(
           "nfd_slug_ecomdash_wordpress_plugin",
           16,
-          props.wpModules
+          props
         ),
       },
       queries: [
@@ -299,5 +274,3 @@ const YITHPlugins = (props) => ({
     },
   ],
 });
-
-export default YITHPlugins;

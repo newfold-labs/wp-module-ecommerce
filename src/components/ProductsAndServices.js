@@ -1,14 +1,17 @@
 import { Icon } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
-import { Button, Title, Spinner } from "@yoast/ui-library";
+import { Button, Spinner, Title } from "@yoast/ui-library";
 import ProductsConfig from "../configs/ProductsAndServices.config";
 import { ReactComponent as Ideas } from "../icons/ideas.svg";
 import { Section } from "./Section";
 import { useCardManager } from "./useCardManager";
+import { PluginsSdk } from "../sdk/plugins";
 
-export function Products(props) {
-  let [cards] = useCardManager(ProductsConfig(props));
-  let isWCUnavailable = props.plugins.details?.woocommerce.status !== "active";
+export function Products({ plugins, wpModules, user }) {
+  let [cards] = useCardManager(
+    ProductsConfig({ notify: wpModules.notify, user })
+  );
+  let isWCUnavailable = PluginsSdk.isPlugin(plugins, ["woocommerce"], "active");
   if (isWCUnavailable) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
