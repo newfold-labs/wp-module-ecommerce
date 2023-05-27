@@ -1,11 +1,12 @@
 import apiFetch from "@wordpress/api-fetch";
+import { Spinner } from "@yoast/ui-library";
 import useSWR, { SWRConfig } from "swr";
 import useSWRImmutable from "swr/immutable";
 import { Home } from "./components/Home";
+import { Products } from "./components/ProductsAndServices";
+import { StoreDetails } from "./components/StoreDetails";
 import { PluginsSdk } from "./sdk/plugins";
 import { Endpoints } from "./services";
-import { Products } from "./components/ProductsAndServices";
-import { StoreDetails} from "./components/StoreDetails"
 
 const fetcher = (path) => apiFetch({ path });
 
@@ -31,18 +32,21 @@ export function NewfoldECommerce(props) {
 
   if (data === undefined) {
     return (
-      <div className="yst-grid yst-place-content-center yst-h-full">
-        <div className="nfd-ecommerce-loader" />
+      <div className="yst-flex yst-items-center yst-text-center yst-justify-center yst-h-full">
+        <Spinner size={8} className="yst-text-primary" />
       </div>
     );
   }
-
+  const isWCActive = PluginsSdk.isPlugin(plugins, ["woocommerce"], "active");
+  if (!isWCActive) {
+    Page = Home;
+  }
   return (
     <SWRConfig
       value={{
         fetcher,
         revalidateOnReconnect: false,
-        revalidateOnFocus: plugins.details?.woocommerce?.status === "active",
+        revalidateOnFocus: isWCActive,
       }}
     >
       <Page plugins={plugins} user={user} {...props} />
