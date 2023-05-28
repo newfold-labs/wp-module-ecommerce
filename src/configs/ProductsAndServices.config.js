@@ -20,7 +20,12 @@ const getUrl = (href) => {
 
 const ProductsAndServices = (props) => ({
   dataDependencies: {
-    plugins: async () => PluginsSdk.queries.status("all"),
+    plugins: async () =>
+      PluginsSdk.queries.status(
+        "woocommerce",
+        "nfd_slug_yith_woocommerce_booking",
+        "nfd_slug_yith_woocommerce_gift_cards"
+      ),
     capabilities: fetchUserCapabilities,
     products: WooCommerceSdk.products.list,
   },

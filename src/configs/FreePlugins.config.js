@@ -24,7 +24,15 @@ function defineFeatureState() {
 
 export const FreePluginsDefinition = (props) => ({
   dataDependencies: {
-    plugins: async () => PluginsSdk.queries.status("all"),
+    plugins: async () =>
+      PluginsSdk.queries.status(
+        "jetpack",
+        "wpforms-lite",
+        "google-analytics-for-wordpress",
+        "wordpress-seo",
+        "creative-mail-by-constant-contact",
+        "optinmonster"
+      ),
   },
   cards: [
     {
