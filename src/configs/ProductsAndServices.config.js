@@ -24,7 +24,7 @@ const getUrl = (href) => {
 const ProductsAndServices = (props) => ({
   dataDependencies: {
     plugins: async () => PluginsSdk.queryStatus("all"),
-    user: fetchUserCapabilities,
+    capabilities: fetchUserCapabilities,
     products: fetchProducts,
   },
   cards: [
@@ -51,9 +51,14 @@ const ProductsAndServices = (props) => ({
       queries: [
         {
           key: "plugins",
-          selector: (_) => _,
+          selector: (plugins) => ({
+            isWCActive: PluginsSdk.isPlugin(
+              plugins ?? [],
+              ["woocommerce"],
+              "active"
+            ),
+          }),
         },
-        { key: "user", selector: (_) => _ },
       ],
     },
     {
@@ -80,9 +85,15 @@ const ProductsAndServices = (props) => ({
       queries: [
         {
           key: "plugins",
-          selector: (_) => _,
+          selector: (plugins) => ({
+            isWCActive: PluginsSdk.isPlugin(
+              plugins ?? {},
+              ["woocommerce"],
+              "active"
+            ),
+          }),
         },
-        { key: "products", selector: (_) => _ },
+        { key: "products" },
       ],
     },
     {
@@ -109,7 +120,13 @@ const ProductsAndServices = (props) => ({
       queries: [
         {
           key: "plugins",
-          selector: (_) => _,
+          selector: (plugins) => ({
+            isWCActive: PluginsSdk.isPlugin(
+              plugins ?? [],
+              ["woocommerce"],
+              "active"
+            ),
+          }),
         },
       ],
     },

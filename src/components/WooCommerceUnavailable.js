@@ -6,7 +6,7 @@ import { useInstallWoo } from "./useInstallWoo";
 
 export function WooCommerceUnavailable(props) {
   let isWooActive = PluginsSdk.isPlugin(
-    props.plugins,
+    props.plugins ?? {},
     ["woocommerce"],
     "active"
   );

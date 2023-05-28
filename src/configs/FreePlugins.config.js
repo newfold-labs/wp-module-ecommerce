@@ -7,13 +7,11 @@ import { ReactComponent as OptinMonster } from "../icons/optinmonster.svg";
 import { ReactComponent as WPForms } from "../icons/wpforms.svg";
 import { ReactComponent as YoastSEO } from "../icons/yoast.svg";
 import { PluginsSdk } from "../sdk/plugins";
-import { fetchUserCapabilities } from "../services";
 import { createPluginInstallAction } from "./actions";
 import { wcPluginStatusParser } from "./selectors";
 
 function defineFeatureState() {
   return {
-    user: (data) => data?.user,
     featureUrl: (data) =>
       data?.plugins?.isInstalled ? data.plugins?.pluginUrl : null,
     isActive: (data) => data?.plugins?.isInstalled,
@@ -23,25 +21,10 @@ function defineFeatureState() {
     isUpsellNeeded: (data) => false,
   };
 }
-function notifyPluginInstallError(notify, user, yithId) {
-  notify.push("plugin-install-failure-" + yithId, {
-    title: "Plugin failed to install",
-    description: (
-      <span>
-        {__("Please try again, or ", "wp-module-ecommerce")}
-        <a href={user?.currentBrandConfig?.support} target="_blank">
-          {__("contact support", "wp-module-ecommerce")}
-        </a>
-      </span>
-    ),
-    variant: "error",
-  });
-}
 
 export const FreePluginsDefinition = (props) => ({
   dataDependencies: {
     plugins: async () => PluginsSdk.queryStatus("all"),
-    user: fetchUserCapabilities,
   },
   cards: [
     {
@@ -72,7 +55,6 @@ export const FreePluginsDefinition = (props) => ({
           key: "plugins",
           selector: wcPluginStatusParser("jetpack"),
         },
-        { key: "user" },
       ],
     },
     {
@@ -102,7 +84,6 @@ export const FreePluginsDefinition = (props) => ({
           key: "plugins",
           selector: wcPluginStatusParser("wpforms-lite"),
         },
-        { key: "user" },
       ],
     },
     {
@@ -136,7 +117,6 @@ export const FreePluginsDefinition = (props) => ({
           key: "plugins",
           selector: wcPluginStatusParser("google-analytics-for-wordpress"),
         },
-        { key: "user" },
       ],
     },
     {
@@ -163,7 +143,6 @@ export const FreePluginsDefinition = (props) => ({
           key: "plugins",
           selector: wcPluginStatusParser("wordpress-seo"),
         },
-        { key: "user" },
       ],
     },
     {
@@ -197,7 +176,6 @@ export const FreePluginsDefinition = (props) => ({
           key: "plugins",
           selector: wcPluginStatusParser("creative-mail-by-constant-contact"),
         },
-        { key: "user" },
       ],
     },
     {
@@ -224,7 +202,6 @@ export const FreePluginsDefinition = (props) => ({
           key: "plugins",
           selector: wcPluginStatusParser("optinmonster"),
         },
-        { key: "user" },
       ],
     },
   ],

@@ -1,19 +1,24 @@
+import * as React from "@wordpress/element";
+import { __ } from "@wordpress/i18n";
 import { PluginsSdk } from "../sdk/plugins";
 
+/**
+ * @param {string} pluginId
+ * @param {number | undefined} priority
+ */
 export function createPluginInstallAction(
   pluginId,
   priority,
   { notify, user }
 ) {
-  return async (state, props) => {
-    let response = await PluginsSdk.queueInstall(
-      pluginId,
-      user?.site.install_token,
-      priority
-    );
+  return async (
+    /** @type {any} */ state,
+    /** @type {{ onRefresh: (plugin: string) => any; }} */ props
+  ) => {
+    let response = await PluginsSdk.queueInstall(pluginId, priority);
     if (response === "failed") {
-      notify.push(`plugin-install-failure-${yithId}`, {
-        title: "Plugin failed to install",
+      notify.push(`plugin-install-status-${pluginId}`, {
+        title: __("Plugin failed to install", "wp-module-ecommerce"),
         description: (
           <span>
             {__("Please try again, or ", "wp-module-ecommerce")}
@@ -26,13 +31,9 @@ export function createPluginInstallAction(
       });
     } else {
       await props.onRefresh("plugins");
-      notify.push(`plugin-install-success-${yithId}`, {
-        title: "Plugin installation is in progress",
-        description: (
-          <span>
-            {__("Please check back in sometime", "wp-module-ecommerce")}
-          </span>
-        ),
+      notify.push(`plugin-install-status-${pluginId}`, {
+        title: __("Plugin installation is in progress", "wp-module-ecommerce"),
+        description: __("We'll be done in sometime", "wp-module-ecommerce"),
         variant: "info",
       });
     }

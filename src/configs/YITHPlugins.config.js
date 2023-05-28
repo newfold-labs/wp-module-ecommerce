@@ -9,25 +9,25 @@ import { ReactComponent as Gift } from "../icons/yith-woocommerce-gift-card.svg"
 import { ReactComponent as WishList } from "../icons/yith-woocommerce-wishlist.svg";
 import { PluginsSdk } from "../sdk/plugins";
 import { fetchUserCapabilities } from "../services";
+import { createPluginInstallAction } from "./actions";
 import { wcPluginStatusParser } from "./selectors";
 
 function defineFeatureState() {
   return {
-    user: (data) => data?.user,
     featureUrl: (data) =>
       data?.plugins?.isInstalled ? data.plugins?.pluginUrl : null,
     isActive: (data) => data?.plugins?.isInstalled,
     isDisabled: (data) => data?.plugins?.isWCActive === false,
     isInstalling: (data) => data?.plugins?.isInstalling,
     isQueueEmpty: (data) => data?.plugins?.isQueueEmpty,
-    isUpsellNeeded: (data) => data?.user?.capabilities?.isEcommerce === false,
+    isUpsellNeeded: (data) => data?.capabilities?.hasYithExtended === false,
   };
 }
 
 export const YITHPluginsDefinitions = (props) => ({
   dataDependencies: {
     plugins: async () => PluginsSdk.queryStatus("all"),
-    user: fetchUserCapabilities,
+    capabilities: fetchUserCapabilities,
   },
   cards: [
     {
@@ -62,7 +62,7 @@ export const YITHPluginsDefinitions = (props) => ({
           key: "plugins",
           selector: wcPluginStatusParser("nfd_slug_yith_woocommerce_booking"),
         },
-        { key: "user" },
+        { key: "capabilities" },
       ],
     },
     {
@@ -94,7 +94,7 @@ export const YITHPluginsDefinitions = (props) => ({
           key: "plugins",
           selector: wcPluginStatusParser("yith-woocommerce-ajax-search"),
         },
-        { key: "user" },
+        { key: "capabilities" },
       ],
     },
     {
@@ -126,7 +126,7 @@ export const YITHPluginsDefinitions = (props) => ({
           key: "plugins",
           selector: wcPluginStatusParser("nfd_slug_yith_woocommerce_wishlist"),
         },
-        { key: "user" },
+        { key: "capabilities" },
       ],
     },
     {
@@ -163,7 +163,7 @@ export const YITHPluginsDefinitions = (props) => ({
             "nfd_slug_yith_woocommerce_ajax_product_filter"
           ),
         },
-        { key: "user" },
+        { key: "capabilities" },
       ],
     },
     {
@@ -197,7 +197,7 @@ export const YITHPluginsDefinitions = (props) => ({
             "nfd_slug_yith_woocommerce_gift_cards"
           ),
         },
-        { key: "user" },
+        { key: "capabilities" },
       ],
     },
     {
@@ -234,7 +234,7 @@ export const YITHPluginsDefinitions = (props) => ({
             "nfd_slug_yith_woocommerce_customize_myaccount_page"
           ),
         },
-        { key: "user" },
+        { key: "capabilities" },
       ],
     },
     {
@@ -254,8 +254,7 @@ export const YITHPluginsDefinitions = (props) => ({
       state: {
         ...defineFeatureState(),
         isUpsellNeeded: () => false,
-        isAvailable: (queries) =>
-          queries?.user?.capabilities.hasEcomdash === true,
+        isAvailable: (queries) => queries?.capabilities?.hasEcomdash === true,
       },
       actions: {
         installFeature: createPluginInstallAction(
@@ -269,7 +268,7 @@ export const YITHPluginsDefinitions = (props) => ({
           key: "plugins",
           selector: wcPluginStatusParser("nfd_slug_ecomdash_wordpress_plugin"),
         },
-        { key: "user" },
+        { key: "capabilities" },
       ],
     },
   ],
