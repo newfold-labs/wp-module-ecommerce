@@ -28,7 +28,7 @@ function defineFeatureState() {
 
 export const YITHPluginsDefinitions = (props) => ({
   dataDependencies: {
-    plugins: async () => PluginsSdk.queryStatus("all"),
+    plugins: async () => PluginsSdk.queries.status("all"),
     capabilities: fetchUserCapabilities,
     upsellOptions: MarketplaceSdk.eCommerceOptions,
   },

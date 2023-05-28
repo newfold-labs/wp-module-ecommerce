@@ -15,7 +15,7 @@ export function createPluginInstallAction(
     /** @type {any} */ state,
     /** @type {{ onRefresh: (plugin: string) => any; }} */ props
   ) => {
-    let response = await PluginsSdk.queueInstall(pluginId, priority);
+    let response = await PluginsSdk.actions.queueInstall(pluginId, priority);
     if (response === "failed") {
       notify.push(`plugin-install-status-${pluginId}`, {
         title: __("Plugin failed to install", "wp-module-ecommerce"),

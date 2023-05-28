@@ -11,7 +11,11 @@ export function Products({ plugins, wpModules, user }) {
   let [cards] = useCardManager(
     ProductsConfig({ notify: wpModules.notify, user })
   );
-  let isWCUnavailable = PluginsSdk.isPlugin(plugins, ["woocommerce"], "active");
+  let isWCUnavailable = PluginsSdk.queries.isPlugin(
+    plugins,
+    ["woocommerce"],
+    "active"
+  );
   if (isWCUnavailable) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>

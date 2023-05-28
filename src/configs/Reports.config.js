@@ -26,7 +26,8 @@ const Reports = (filter) => ({
     [`analytics_for_${filter}`]: () => fetchJetpackAnalytics(filter),
     [`reports_for_${filter}`]: () => fetchReports(filter),
     currency: fetchStoreCurrency,
-    pluginStatus: () => PluginsSdk.queryStatus("woocommerce", "jetpack"),
+    pluginStatus: () =>
+      PluginsSdk.queries.status("woocommerce", "jetpack"),
   },
   cards: [
     {
@@ -42,7 +43,7 @@ const Reports = (filter) => ({
         {
           key: "pluginStatus",
           selector: (plugins) =>
-            PluginsSdk.isPlugin(plugins, ["woocommerce"], "active"),
+            PluginsSdk.queries.isPlugin(plugins, ["woocommerce"], "active"),
         },
         {
           key: `reports_for_${filter}`,
@@ -63,7 +64,7 @@ const Reports = (filter) => ({
         {
           key: "pluginStatus",
           selector: (plugins) =>
-            PluginsSdk.isPlugin(plugins, ["woocommerce"], "active"),
+            PluginsSdk.queries.isPlugin(plugins, ["woocommerce"], "active"),
         },
         {
           key: `reports_for_${filter}`,
@@ -86,7 +87,7 @@ const Reports = (filter) => ({
         {
           key: "pluginStatus",
           selector: (plugins) =>
-            PluginsSdk.isPlugin(plugins, ["woocommerce"], "active"),
+            PluginsSdk.queries.isPlugin(plugins, ["woocommerce"], "active"),
         },
         {
           key: `reports_for_${filter}`,
@@ -109,7 +110,7 @@ const Reports = (filter) => ({
         {
           key: "pluginStatus",
           selector: (plugins) =>
-            PluginsSdk.isPlugin(plugins, ["woocommerce"], "active"),
+            PluginsSdk.queries.isPlugin(plugins, ["woocommerce"], "active"),
         },
         {
           key: `reports_for_${filter}`,
@@ -132,7 +133,11 @@ const Reports = (filter) => ({
         {
           key: "pluginStatus",
           selector: (plugins) =>
-            PluginsSdk.isPlugin(plugins, ["woocommerce", "jetpack"], "active"),
+            PluginsSdk.queries.isPlugin(
+              plugins,
+              ["woocommerce", "jetpack"],
+              "active"
+            ),
         },
       ],
     },
@@ -151,7 +156,11 @@ const Reports = (filter) => ({
         {
           key: "pluginStatus",
           selector: (plugins) =>
-            PluginsSdk.isPlugin(plugins, ["woocommerce", "jetpack"], "active"),
+            PluginsSdk.queries.isPlugin(
+              plugins,
+              ["woocommerce", "jetpack"],
+              "active"
+            ),
         },
       ],
     },

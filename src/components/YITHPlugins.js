@@ -5,7 +5,11 @@ import { useCardManager } from "./useCardManager";
 import { PluginsSdk } from "../sdk/plugins";
 
 export function YITHPlugins({ plugins, wpModules, user }) {
-  let isWCActive = PluginsSdk.isPlugin(plugins, ["woocommerce"], "active");
+  let isWCActive = PluginsSdk.queries.isPlugin(
+    plugins,
+    ["woocommerce"],
+    "active"
+  );
   let [cards] = useCardManager(
     YITHPluginsDefinitions({
       notify: wpModules.notify,

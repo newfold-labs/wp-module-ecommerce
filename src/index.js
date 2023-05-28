@@ -21,10 +21,14 @@ export function NewfoldECommerce(props) {
     data,
     error,
     mutate: refreshWooStatus,
-  } = useSWR("woo-status", () => PluginsSdk.queryStatus("woocommerce"), {
-    revalidateOnReconnect: false,
-    refreshInterval: 10 * 1000,
-  });
+  } = useSWR(
+    "woo-status",
+    () => PluginsSdk.queries.status("woocommerce"),
+    {
+      revalidateOnReconnect: false,
+      refreshInterval: 10 * 1000,
+    }
+  );
   let { data: user } = useSWRImmutable(Endpoints.BOOTSTRAP, fetcher);
   let plugins = { errors: error, ...(data ?? {}), refreshWooStatus };
   let { Page } =
@@ -37,7 +41,11 @@ export function NewfoldECommerce(props) {
       </div>
     );
   }
-  const isWCActive = PluginsSdk.isPlugin(plugins, ["woocommerce"], "active");
+  const isWCActive = PluginsSdk.queries.isPlugin(
+    plugins,
+    ["woocommerce"],
+    "active"
+  );
   if (!isWCActive) {
     Page = Home;
   }

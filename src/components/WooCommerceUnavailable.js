@@ -5,8 +5,8 @@ import { Section } from "./Section";
 import { useInstallWoo } from "./useInstallWoo";
 
 export function WooCommerceUnavailable(props) {
-  let isWooActive = PluginsSdk.isPlugin(
-    props.plugins ?? {},
+  let isWooActive = PluginsSdk.queries.isPlugin(
+    props.plugins,
     ["woocommerce"],
     "active"
   );
