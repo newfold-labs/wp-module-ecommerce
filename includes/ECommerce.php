@@ -2,6 +2,7 @@
 
 namespace NewfoldLabs\WP\Module\ECommerce;
 
+use NewfoldLabs\WP\Module\ECommerce\Data\Runtime;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\Module\ECommerce\Partials\CaptiveFlow;
 use NewfoldLabs\WP\Module\ECommerce\Partials\WooCommerceBacklink;
@@ -160,15 +161,9 @@ class ECommerce {
 	}
 
 	public function register_textdomains() {
-		\load_script_textdomain(
-			'nfd-ecommerce-dependency',
-			'wp-module-ecommerce',
-			$this->container->plugin()->dir . 'vendor/newfold-labs/wp-module-ecommerce/languages'
-		);
-		\load_textdomain(
-			'wp-module-ecommerce',
-			$this->container->plugin()->dir . 'vendor/newfold-labs/wp-module-ecommerce/languages'
-		);
+		$MODULE_LANG_DIR = $this->container->plugin()->dir . 'vendor/newfold-labs/wp-module-ecommerce/languages';
+		\load_script_textdomain( 'nfd-ecommerce-dependency', 'wp-module-ecommerce', $MODULE_LANG_DIR );
+		\load_textdomain( 'wp-module-ecommerce', $MODULE_LANG_DIR );
 	}
 
 	/**
@@ -178,12 +173,18 @@ class ECommerce {
 		$asset_file = NFD_ECOMMERCE_BUILD_DIR . 'index.asset.php';
 		if ( file_exists( $asset_file ) ) {
 			$asset = require $asset_file;
-			\wp_enqueue_script(
+			\wp_register_script(
 				'nfd-ecommerce-dependency',
 				NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Partials/load-dependencies.js',
 				array_merge( $asset['dependencies'], array() ),
 				$asset['version']
 			);
+			\wp_add_inline_script(
+				'nfd-ecommerce-dependency',
+				'window.NFDECOM =' . wp_json_encode( Runtime::prepareData( $this->container ) ) . ';',
+				'before'
+			);
+			\wp_enqueue_script( 'nfd-ecommerce-dependency' );
 		}
 	}
 

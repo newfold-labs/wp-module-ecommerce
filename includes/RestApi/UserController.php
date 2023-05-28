@@ -2,7 +2,6 @@
 
 namespace NewfoldLabs\WP\Module\ECommerce\RestApi;
 
-use NewfoldLabs\WP\Module\Installer\Permissions as InstallerPermissions;
 use NewfoldLabs\WP\Module\ECommerce\Permissions;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\Module\ECommerce\Data\Brands;
@@ -51,9 +50,7 @@ class UserController {
 	}
 
 	public function fetch_capabilities() {
-		return array(
-			'capabilities' => $this->container->get('capabilities')->all()
-		);
+		return $this->container->get('capabilities')->all();
 	}
 
 	public function get_nfd_pages() {
@@ -72,11 +69,7 @@ class UserController {
 	public function fetch_bootstrap_info() {
 		$theme = \wp_get_theme();
 		return array(
-			'site' => array (
-				'url' => \get_site_url(),
-				'install_token' => InstallerPermissions::rest_get_plugin_install_hash(),
-			),
-			'capabilities' => $this->container->get('capabilities')->all(),
+			'capabilities' => $this->fetch_capabilities(),
 			'currentBrandConfig' => Brands::get_config( $this->get_brand_name() ),
 			'theme' => array(
 				'manage'   => Permissions::rest_can_manage_themes(),
