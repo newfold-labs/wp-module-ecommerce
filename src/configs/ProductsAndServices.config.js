@@ -6,13 +6,10 @@ import { ReactComponent as Gift } from "../icons/gift.svg";
 import { ReactComponent as ImportProducts } from "../icons/import-products.svg";
 import { ReactComponent as ManageProducts } from "../icons/manage-products.svg";
 import { PluginsSdk } from "../sdk/plugins";
-import {
-  createProduct,
-  fetchProducts,
-  fetchUserCapabilities,
-} from "../services";
+import { fetchUserCapabilities } from "../services";
 import { createPluginInstallAction } from "./actions";
 import { wcPluginStatusParser, wcProductsParser } from "./selectors";
+import { WooCommerceSdk } from "../sdk/woocommerce";
 
 const getUrl = (href) => {
   let [page, qs] = href.split("?");
@@ -25,7 +22,7 @@ const ProductsAndServices = (props) => ({
   dataDependencies: {
     plugins: async () => PluginsSdk.queries.status("all"),
     capabilities: fetchUserCapabilities,
-    products: fetchProducts,
+    products: WooCommerceSdk.products.list,
   },
   cards: [
     {
@@ -164,7 +161,7 @@ const ProductsAndServices = (props) => ({
           props
         ),
         manageFeature: async () => {
-          let product = await createProduct({
+          let product = await WooCommerceSdk.products.add({
             type: "booking",
             status: "draft",
           });
@@ -218,7 +215,7 @@ const ProductsAndServices = (props) => ({
           props
         ),
         manageFeature: async () => {
-          let product = await createProduct({
+          let product = await WooCommerceSdk.products.add({
             type: "gift-card",
             status: "draft",
           });

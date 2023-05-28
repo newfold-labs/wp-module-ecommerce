@@ -100,7 +100,7 @@ function RecentOrders() {
   let [filter, onSelect] = useState("week");
   let orders = useSWR(
     `recent-orders-${filter}`,
-    () => WooCommerceSdk.orders(filter),
+    () => WooCommerceSdk.orders.list(filter),
     { revalidateOnFocus: false }
   );
   return (
