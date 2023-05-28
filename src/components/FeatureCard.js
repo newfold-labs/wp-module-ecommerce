@@ -73,15 +73,32 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
             {ActionIcon ? <ActionIcon /> : null}
           </Button>
         </Card.Footer>
+      ) : isUpsellNeeded ? (
+        <Card.Footer>
+          <Button
+            className="yst-w-full yst-h-9 yst-border yst-flex yst-items-center yst-gap-2"
+            variant="upsell"
+            as="a"
+            target="_blank"
+            {...(state.upsellOptions?.clickToBuyId
+              ? {
+                  "data-action": "load-nfd-ctb",
+                  "data-ctb-id": state.upsellOptions?.clickToBuyId,
+                }
+              : {})}
+            href={state.upsellOptions?.primaryUrl}
+          >
+            <span>{__("Purchase", "wp-module-ecommerce")}</span>
+            {ActionIcon && !isInstalling ? <ArrowLongRightIcon /> : null}
+          </Button>
+        </Card.Footer>
       ) : (
         <Card.Footer>
           <Button
             className="yst-w-full yst-h-9 yst-border yst-flex yst-items-center yst-gap-2"
-            variant={isUpsellNeeded ? "upsell" : "secondary"}
+            variant="secondary"
             onClick={() =>
-              isUpsellNeeded
-                ? actions.triggerUpsell?.(state, props)
-                : state.isActive
+              state.isActive
                 ? actions.manageFeature?.(state, props)
                 : actions.installFeature?.(state, props)
             }
@@ -91,8 +108,6 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
             <span>
               {isInstalling
                 ? __("Installing...", "wp-module-ecommerce")
-                : isUpsellNeeded
-                ? __("Purchase", "wp-module-ecommerce")
                 : actionName}
             </span>
             {ActionIcon && !isInstalling ? <ArrowLongRightIcon /> : null}
