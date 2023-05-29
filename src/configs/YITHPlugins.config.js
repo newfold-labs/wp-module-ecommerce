@@ -304,7 +304,7 @@ export const YITHPluginsDefinitions = (props) => ({
       }),
       text: ({ isActive }) => ({
         title: __(
-          "Complete Upsell, Crosssell & Promotions Solution",
+          "Complete Upsell, Crossell & Promotions Solution",
           "wp-module-ecommerce"
         ),
         description: __(
