@@ -1,6 +1,6 @@
 import { useEffect, useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
-import { Button } from "@yoast/ui-library";
+import { Button, Spinner } from "@yoast/ui-library";
 import useSWR from "swr";
 import { updateWPSettings } from "../services";
 import { Section } from "./Section";
@@ -8,7 +8,8 @@ import StoreInfo from "./StoreInfo";
 import TaxSettings from "./TaxSettings";
 
 export function StoreDetails(props) {
-  let { data } = useSWR("/wp/v2/settings");
+  let { notify } = props.wpModules;
+  let { data, isLoading } = useSWR("/wp/v2/settings");
   const [controls, setControls] = useState({});
   const [isDirty, setIsDirty] = useState(false);
 
@@ -38,6 +39,7 @@ export function StoreDetails(props) {
       setInitialFormData();
     }
   }, [data, props.user]);
+
   return (
     <Section.Container>
       <Section.Header
@@ -54,8 +56,17 @@ export function StoreDetails(props) {
           event.stopPropagation();
           await updateWPSettings({
             ...controls,
+            woocommerce_default_country: controls.state
+              ? `${controls.country}:${controls.state}`
+              : controls.country,
           });
+          notify.push(`store-details-save-success`, {
+            title: "Successfully saved the Store Details",
+            variant: "success",
+          });
+          setIsDirty(false);
         }}
+        
         onChange={(event) => {
           const name = event.target.name;
           const value = event.target.value;
@@ -66,27 +77,40 @@ export function StoreDetails(props) {
           setIsDirty(true);
         }}
       >
-        <Section.Content>
-          <StoreInfo {...props} controls={controls} setControls={setControls} />
-        </Section.Content>
-        <Section.Content>
-          <TaxSettings {...props} controls={controls} />
-        </Section.Content>
-        <div className="yst-p-8 yst-border-t yst-bg-[#F8FAFC] yst-border-line yst-flex yst-justify-end yst-items-baseline yst-gap-4">
-          <Button
-            variant="secondary"
-            disabled={!isDirty}
-            onClick={() => {
-              setInitialFormData();
-              setIsDirty(false);
-            }}
-          >
-            {__("Discard Changes", "wp-module-ecommerce")}
-          </Button>
-          <Button disabled={!isDirty} type="submit">
-            {__("Save Changes", "wp-module-ecommerce")}
-          </Button>
-        </div>
+        {isLoading ? (
+          <div className="yst-flex yst-items-center yst-text-center yst-justify-center yst-h-60">
+            <Spinner size={8} className="yst-text-primary" />
+          </div>
+        ) : (
+          <>
+            <Section.Content>
+              <StoreInfo
+                controls={controls}
+                setControls={setControls}
+                setIsDirty={setIsDirty}
+              />
+              <div className="yst-my-8">
+                <hr />
+              </div>
+              <TaxSettings controls={controls} />
+            </Section.Content>
+            <div className="yst-p-8 yst-border-t yst-bg-[#F8FAFC] yst-flex yst-justify-end yst-gap-4">
+              <Button
+                variant="secondary"
+                disabled={!isDirty}
+                onClick={() => {
+                  setInitialFormData();
+                  setIsDirty(false);
+                }}
+              >
+                {__("Discard Changes", "wp-module-ecommerce")}
+              </Button>
+              <Button disabled={!isDirty} type="submit">
+                {__("Save Changes", "wp-module-ecommerce")}
+              </Button>
+            </div>
+          </>
+        )}
       </form>
     </Section.Container>
   );
