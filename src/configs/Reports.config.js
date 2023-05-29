@@ -24,7 +24,7 @@ const getReportValue = (queryKey) => (queries) => {
     return "-";
   }
   let [stat] = queries?.[queryKey] ?? [];
-  return stat;
+  return stat ?? "-";
 };
 
 const calculateDelta = (queryKey) => (queries) => {
