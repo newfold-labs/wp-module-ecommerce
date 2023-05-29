@@ -312,6 +312,7 @@ export const YITHPluginsDefinitions = (props) => ({
           "wp-module-ecommerce"
         ),
         actionName: isActive ? "Manage" : "Enable",
+        slug: ""
       }),
       state: defineFeatureState(),
       actions: {
