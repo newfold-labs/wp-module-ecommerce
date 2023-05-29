@@ -39,7 +39,7 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
   return (
     <Card>
       <Card.Content>
-        <Image className="yst-w-12" />
+        <Image className="yst-w-12 yst-text-[#404040]" />
         <Title size={4} className="yst-leading-normal yst-my-4">
           {title}
         </Title>
@@ -71,7 +71,7 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
             href={state.featureUrl}
           >
             <span>{actionName}</span>
-            {ActionIcon ? <ActionIcon /> : null}
+            {ActionIcon ? <ArrowLongRightIcon /> : null}
           </Button>
         </Card.Footer>
       ) : isUpsellNeeded ? (
