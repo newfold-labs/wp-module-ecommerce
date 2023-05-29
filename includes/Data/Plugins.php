@@ -9,27 +9,27 @@ final class Plugins
 
 	public static $free_plugins = array(
 		'jetpack' => array(
-			'url' => '',
+			'url' => 'admin.php?page=jetpack#/dashboard',
 			'file' => 'jetpack/jetpack.php',
 		),
 		'wordpress-seo' => array(
-			'url' => '',
+			'url' => 'admin.php?page=wpseo_dashboard',
 			'file' => 'wordpress-seo/wp-seo.php',
 		),
 		'wpforms-lite' => array(
-			'url' => '',
+			'url' => 'admin.php?page=wpforms-overview',
 			'file' => 'wpforms-lite/wpforms.php',
 		),
 		'google-analytics-for-wordpress' => array(
-			'url' => '',
+			'url' => 'admin.php?page=monsterinsights_reports',
 			'file' => 'google-analytics-for-wordpress/googleanalytics.php',
 		),
 		'optinmonster' => array(
-			'url' => '',
+			'url' => 'admin.php?page=optin-monster-dashboard',
 			'file' => 'optinmonster/optin-monster-wp-api.php',
 		),
 		'creative-mail-by-constant-contact' => array(
-			'url' => '',
+			'url' => 'admin.php?page=creativemail',
 			'file' => 'creative-mail-by-constant-contact/creative-mail-plugin.php',
 		),
 	);
