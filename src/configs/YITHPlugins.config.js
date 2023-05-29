@@ -298,7 +298,7 @@ export const YITHPluginsDefinitions = (props) => ({
     {
       Card: FeatureCard,
       shouldRender: () => true,
-      name: "nfd_slug_yith_woocommerce_customize_myaccount_page",
+      name: "",
       assets: () => ({
         Image: InstallationUI,
       }),
@@ -312,29 +312,11 @@ export const YITHPluginsDefinitions = (props) => ({
           "wp-module-ecommerce"
         ),
         actionName: isActive ? "Manage" : "Enable",
-        slug: "yith_wcmap_panel",
       }),
       state: defineFeatureState(),
       actions: {
-        installFeature: createPluginInstallAction(
-          "nfd_slug_yith_woocommerce_customize_myaccount_page",
-          17,
-          props
-        ),
       },
       queries: [
-        {
-          key: "plugins",
-          selector: wcPluginStatusParser(
-            "nfd_slug_yith_woocommerce_customize_myaccount_page"
-          ),
-        },
-        {
-          key: "upsellOptions",
-          selector: findUpsellWithName(
-            "YITH WooCommerce Customize My Account Page"
-          ),
-        },
       ],
     },
   ],
