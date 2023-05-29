@@ -100,7 +100,7 @@ function RecentOrders() {
   let [filter, onSelect] = useState("week");
   let orders = useSWR(
     `recent-orders-${filter}`,
-    () => WooCommerceSdk.orders(filter),
+    () => WooCommerceSdk.orders.list(filter),
     { revalidateOnFocus: false }
   );
   return (
@@ -187,7 +187,7 @@ export function StoreAnalytics(props) {
           <div className="yst-h-4" />
           <SiteStatus
             comingSoon={props.state.wp.comingSoon}
-            siteUrl={props.user?.site.url}
+            siteUrl={window.NFDECOM?.site.url}
             toggleComingSoon={props.actions.toggleComingSoon}
           />
         </Section.Block>

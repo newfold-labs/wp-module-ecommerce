@@ -1,7 +1,9 @@
 import apiFetch from "@wordpress/api-fetch";
+import { createApiUrl } from "./createApiUrl";
 
 const Endpoints = {
-  INTEGRATIONS: "/newfold-ecommerce/v1/integrations/",
+  INTEGRATIONS: (id) =>
+    createApiUrl("/newfold-ecommerce/v1/integrations/" + id),
 };
 
 /**
@@ -15,18 +17,8 @@ const Endpoints = {
  */
 
 export const IntegrationsSdk = {
-  status: {
-    /** @type {() => Promise<IntegrationStatus>} */
-    async paypal() {
-      return apiFetch({ path: Endpoints.INTEGRATIONS + "paypal" });
-    },
-    /** @type {() => Promise<IntegrationStatus>} */
-    async shippo() {
-      return apiFetch({ path: Endpoints.INTEGRATIONS + "shippo" });
-    },
-    /** @type {() => Promise<IntegrationStatus>} */
-    async razorpay() {
-      return apiFetch({ path: Endpoints.INTEGRATIONS + "razorpay" });
-    },
+  /** @type {(id: "paypal" | "shippo" | "razorpay") => Promise<IntegrationStatus>} */
+  async status(id) {
+    return apiFetch({ url: Endpoints.INTEGRATIONS(id) });
   },
 };

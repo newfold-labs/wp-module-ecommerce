@@ -7,27 +7,29 @@ import { ReactComponent as Booking } from "../icons/yith-woocommerce-booking.svg
 import { ReactComponent as CustomizeAccount } from "../icons/yith-woocommerce-customize-myaccount-page.svg";
 import { ReactComponent as Gift } from "../icons/yith-woocommerce-gift-card.svg";
 import { ReactComponent as WishList } from "../icons/yith-woocommerce-wishlist.svg";
+import { MarketplaceSdk } from "../sdk/marketplace";
 import { PluginsSdk } from "../sdk/plugins";
-import { fetchUserCapabilities } from "../services";
-import { wcPluginStatusParser } from "./selectors";
+import { RuntimeSdk } from "../sdk/runtime";
+import { createPluginInstallAction } from "./actions";
+import { findUpsellWithName, wcPluginStatusParser } from "./selectors";
 
 function defineFeatureState() {
   return {
-    user: (data) => data?.user,
+    upsellOptions: (data) => data?.upsellOptions,
     featureUrl: (data) =>
       data?.plugins?.isInstalled ? data.plugins?.pluginUrl : null,
     isActive: (data) => data?.plugins?.isInstalled,
     isDisabled: (data) => data?.plugins?.isWCActive === false,
     isInstalling: (data) => data?.plugins?.isInstalling,
     isQueueEmpty: (data) => data?.plugins?.isQueueEmpty,
-    isUpsellNeeded: (data) => data?.user?.capabilities?.isEcommerce === false,
+    isUpsellNeeded: () => !RuntimeSdk.hasCapability("hasYithExtended"),
   };
 }
 
 export const YITHPluginsDefinitions = (props) => ({
   dataDependencies: {
-    plugins: async () => PluginsSdk.queryStatus("all"),
-    user: fetchUserCapabilities,
+    plugins: async () => PluginsSdk.queries.status("all"),
+    upsellOptions: MarketplaceSdk.eCommerceOptions,
   },
   cards: [
     {
@@ -62,7 +64,12 @@ export const YITHPluginsDefinitions = (props) => ({
           key: "plugins",
           selector: wcPluginStatusParser("nfd_slug_yith_woocommerce_booking"),
         },
-        { key: "user" },
+        {
+          key: "upsellOptions",
+          selector: findUpsellWithName(
+            "YITH Booking and Appointment for WooCommerce"
+          ),
+        },
       ],
     },
     {
@@ -94,7 +101,10 @@ export const YITHPluginsDefinitions = (props) => ({
           key: "plugins",
           selector: wcPluginStatusParser("yith-woocommerce-ajax-search"),
         },
-        { key: "user" },
+        {
+          key: "upsellOptions",
+          selector: findUpsellWithName("YITH WooCommerce AJAX Search"),
+        },
       ],
     },
     {
@@ -126,7 +136,10 @@ export const YITHPluginsDefinitions = (props) => ({
           key: "plugins",
           selector: wcPluginStatusParser("nfd_slug_yith_woocommerce_wishlist"),
         },
-        { key: "user" },
+        {
+          key: "upsellOptions",
+          selector: findUpsellWithName("YITH WooCommerce Wishlist"),
+        },
       ],
     },
     {
@@ -163,7 +176,10 @@ export const YITHPluginsDefinitions = (props) => ({
             "nfd_slug_yith_woocommerce_ajax_product_filter"
           ),
         },
-        { key: "user" },
+        {
+          key: "upsellOptions",
+          selector: findUpsellWithName("YITH WooCommerce Ajax Product Filter"),
+        },
       ],
     },
     {
@@ -197,7 +213,10 @@ export const YITHPluginsDefinitions = (props) => ({
             "nfd_slug_yith_woocommerce_gift_cards"
           ),
         },
-        { key: "user" },
+        {
+          key: "upsellOptions",
+          selector: findUpsellWithName("YITH WooCommerce Gift Cards"),
+        },
       ],
     },
     {
@@ -234,7 +253,12 @@ export const YITHPluginsDefinitions = (props) => ({
             "nfd_slug_yith_woocommerce_customize_myaccount_page"
           ),
         },
-        { key: "user" },
+        {
+          key: "upsellOptions",
+          selector: findUpsellWithName(
+            "YITH WooCommerce Customize My Account Page"
+          ),
+        },
       ],
     },
     {
@@ -254,8 +278,7 @@ export const YITHPluginsDefinitions = (props) => ({
       state: {
         ...defineFeatureState(),
         isUpsellNeeded: () => false,
-        isAvailable: (queries) =>
-          queries?.user?.capabilities.hasEcomdash === true,
+        isAvailable: () => RuntimeSdk.hasCapability("hasEcomdash"),
       },
       actions: {
         installFeature: createPluginInstallAction(
@@ -269,7 +292,6 @@ export const YITHPluginsDefinitions = (props) => ({
           key: "plugins",
           selector: wcPluginStatusParser("nfd_slug_ecomdash_wordpress_plugin"),
         },
-        { key: "user" },
       ],
     },
   ],

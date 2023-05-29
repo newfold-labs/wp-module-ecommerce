@@ -6,13 +6,9 @@ import { ReactComponent as Gift } from "../icons/gift.svg";
 import { ReactComponent as ImportProducts } from "../icons/import-products.svg";
 import { ReactComponent as ManageProducts } from "../icons/manage-products.svg";
 import { PluginsSdk } from "../sdk/plugins";
-import {
-  createProduct,
-  fetchProducts,
-  fetchUserCapabilities,
-} from "../services";
 import { createPluginInstallAction } from "./actions";
 import { wcPluginStatusParser, wcProductsParser } from "./selectors";
+import { WooCommerceSdk } from "../sdk/woocommerce";
 
 const getUrl = (href) => {
   let [page, qs] = href.split("?");
@@ -23,9 +19,13 @@ const getUrl = (href) => {
 
 const ProductsAndServices = (props) => ({
   dataDependencies: {
-    plugins: async () => PluginsSdk.queryStatus("all"),
-    user: fetchUserCapabilities,
-    products: fetchProducts,
+    plugins: async () =>
+      PluginsSdk.queries.status(
+        "woocommerce",
+        "nfd_slug_yith_woocommerce_booking",
+        "nfd_slug_yith_woocommerce_gift_cards"
+      ),
+    products: WooCommerceSdk.products.list,
   },
   cards: [
     {
@@ -51,9 +51,14 @@ const ProductsAndServices = (props) => ({
       queries: [
         {
           key: "plugins",
-          selector: (_) => _,
+          selector: (plugins) => ({
+            isWCActive: PluginsSdk.queries.isPlugin(
+              plugins,
+              ["woocommerce"],
+              "active"
+            ),
+          }),
         },
-        { key: "user", selector: (_) => _ },
       ],
     },
     {
@@ -80,9 +85,15 @@ const ProductsAndServices = (props) => ({
       queries: [
         {
           key: "plugins",
-          selector: (_) => _,
+          selector: (plugins) => ({
+            isWCActive: PluginsSdk.queries.isPlugin(
+              plugins,
+              ["woocommerce"],
+              "active"
+            ),
+          }),
         },
-        { key: "products", selector: (_) => _ },
+        { key: "products" },
       ],
     },
     {
@@ -109,7 +120,13 @@ const ProductsAndServices = (props) => ({
       queries: [
         {
           key: "plugins",
-          selector: (_) => _,
+          selector: (plugins) => ({
+            isWCActive: PluginsSdk.queries.isPlugin(
+              plugins,
+              ["woocommerce"],
+              "active"
+            ),
+          }),
         },
       ],
     },
@@ -147,7 +164,7 @@ const ProductsAndServices = (props) => ({
           props
         ),
         manageFeature: async () => {
-          let product = await createProduct({
+          let product = await WooCommerceSdk.products.add({
             type: "booking",
             status: "draft",
           });
@@ -201,7 +218,7 @@ const ProductsAndServices = (props) => ({
           props
         ),
         manageFeature: async () => {
-          let product = await createProduct({
+          let product = await WooCommerceSdk.products.add({
             type: "gift-card",
             status: "draft",
           });

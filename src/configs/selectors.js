@@ -30,3 +30,7 @@ export const wcPluginStatusParser = (slug) => (data) => {
   const pluginUrl = data?.details?.[slug].url;
   return { isInstalled, isInstalling, isQueueEmpty, isWCActive, pluginUrl };
 };
+
+export const findUpsellWithName = (name) => (upsellOptions) => {
+  return upsellOptions?.find((option) => option.name === name);
+};

@@ -7,11 +7,13 @@ import { Section } from "./Section";
 import { useCardManager } from "./useCardManager";
 import { PluginsSdk } from "../sdk/plugins";
 
-export function Products({ plugins, wpModules, user }) {
-  let [cards] = useCardManager(
-    ProductsConfig({ notify: wpModules.notify, user })
+export function Products({ plugins, wpModules }) {
+  let [cards] = useCardManager(ProductsConfig({ notify: wpModules.notify }));
+  let isWCUnavailable = PluginsSdk.queries.isPlugin(
+    plugins,
+    ["woocommerce"],
+    "active"
   );
-  let isWCUnavailable = PluginsSdk.isPlugin(plugins, ["woocommerce"], "active");
   if (isWCUnavailable) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
