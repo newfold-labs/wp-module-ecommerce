@@ -4,9 +4,10 @@ import useSWR, { SWRConfig } from "swr";
 import { Home } from "./components/Home";
 import { Products } from "./components/ProductsAndServices";
 import { StoreDetails } from "./components/StoreDetails";
+import { createApiUrl } from "./sdk/createApiUrl";
 import { PluginsSdk } from "./sdk/plugins";
 
-const fetcher = (path) => apiFetch({ path });
+const fetcher = (path) => apiFetch({ url: createApiUrl(path) });
 
 const pages = [
   { key: "/store", Page: Home },
