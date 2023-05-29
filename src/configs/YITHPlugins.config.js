@@ -8,7 +8,7 @@ import { ReactComponent as CustomizeAccount } from "../icons/yith-woocommerce-cu
 import { ReactComponent as Gift } from "../icons/yith-woocommerce-gift-card.svg";
 import { ReactComponent as WishList } from "../icons/yith-woocommerce-wishlist.svg";
 import { MarketplaceSdk } from "../sdk/marketplace";
-import { ReactComponent as InstallationUI } from '../icons/yith-woocommerce-installation.svg';
+import { ReactComponent as SalesFunnelLicense } from '../icons/yith-woocommerce-sales-funnel.svg';
 import { PluginsSdk } from "../sdk/plugins";
 import { RuntimeSdk } from "../sdk/runtime";
 import { createPluginInstallAction } from "./actions";
@@ -298,9 +298,9 @@ export const YITHPluginsDefinitions = (props) => ({
     {
       Card: FeatureCard,
       shouldRender: () => true,
-      name: "",
+      name: "sales_funnel_license",
       assets: () => ({
-        Image: InstallationUI,
+        Image: SalesFunnelLicense,
       }),
       text: ({ isActive }) => ({
         title: __(
