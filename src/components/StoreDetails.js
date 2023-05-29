@@ -2,6 +2,7 @@ import { useEffect, useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import { Button, Spinner } from "@yoast/ui-library";
 import useSWR from "swr";
+import { RuntimeSdk } from "../sdk/runtime";
 import { updateWPSettings } from "../services";
 import { Section } from "./Section";
 import StoreInfo from "./StoreInfo";
@@ -14,7 +15,7 @@ export function StoreDetails(props) {
   const [isDirty, setIsDirty] = useState(false);
 
   const setInitialFormData = () => {
-    let { defaultContact } = props.user.currentBrandConfig;
+    let { defaultContact } = RuntimeSdk.brandSettings;
     let [country, state] = (
       data.woocommerce_default_country ??
       defaultContact.woocommerce_default_country
@@ -35,7 +36,7 @@ export function StoreDetails(props) {
   };
 
   useEffect(() => {
-    if (data && props.user) {
+    if (data) {
       setInitialFormData();
     }
   }, [data, props.user]);
