@@ -8,6 +8,7 @@ import { ReactComponent as CustomizeAccount } from "../icons/yith-woocommerce-cu
 import { ReactComponent as Gift } from "../icons/yith-woocommerce-gift-card.svg";
 import { ReactComponent as WishList } from "../icons/yith-woocommerce-wishlist.svg";
 import { MarketplaceSdk } from "../sdk/marketplace";
+import { ReactComponent as InstallationUI } from '../icons/yith-woocommerce-installation.svg';
 import { PluginsSdk } from "../sdk/plugins";
 import { RuntimeSdk } from "../sdk/runtime";
 import { createPluginInstallAction } from "./actions";
@@ -291,6 +292,48 @@ export const YITHPluginsDefinitions = (props) => ({
         {
           key: "plugins",
           selector: wcPluginStatusParser("nfd_slug_ecomdash_wordpress_plugin"),
+        },
+      ],
+    },
+    {
+      Card: FeatureCard,
+      shouldRender: () => true,
+      name: "nfd_slug_yith_woocommerce_customize_myaccount_page",
+      assets: () => ({
+        Image: InstallationUI,
+      }),
+      text: ({ isActive }) => ({
+        title: __(
+          "Complete Upsell, Crosssell & Promotions Solution",
+          "wp-module-ecommerce"
+        ),
+        description: __(
+          "Create and manage deals, sales promotions and upsell campaigns in your shop.",
+          "wp-module-ecommerce"
+        ),
+        actionName: isActive ? "Manage" : "Enable",
+        slug: "yith_wcmap_panel",
+      }),
+      state: defineFeatureState(),
+      actions: {
+        installFeature: createPluginInstallAction(
+          "nfd_slug_yith_woocommerce_customize_myaccount_page",
+          17,
+          props
+        ),
+      },
+      queries: [
+        {
+          key: "plugins",
+          selector: wcPluginStatusParser(
+            "nfd_slug_yith_woocommerce_customize_myaccount_page"
+          ),
+        },
+        {
+          key: "upsellOptions",
+          selector: findUpsellWithName(
+            "YITH WooCommerce Customize My Account Page"
+          ),
         },
       ],
     },
