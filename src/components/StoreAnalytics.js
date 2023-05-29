@@ -213,6 +213,7 @@ export function StoreAnalytics(props) {
           <div className="yst-h-4" />
           <SiteStatus
             comingSoon={props.state.wp.comingSoon}
+            notify={props.wpModules.notify}
             siteUrl={window.NFDECOM?.site.url}
             toggleComingSoon={props.actions.toggleComingSoon}
           />

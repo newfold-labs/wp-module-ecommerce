@@ -56,10 +56,13 @@ export const WooCommerceSdk = {
       let stats = await safeFetch({
         url: Endpoints.Analytics.JETPACK(period),
       });
-      if (stats.error !== null) {
-        return { views: [null, null], visitors: [null, null] };
+      if (stats.error !== null || stats.data === undefined) {
+        return { views: [], visitors: [] };
       }
-      let { data, fields } = stats.data[period];
+      let { data, fields, errors } = stats.data[period];
+      if (errors) {
+        return { views: [], visitors: [] };
+      }
       let [this_period, prior_period] = [
         data[data.length - 1],
         data[data.length - 2],
