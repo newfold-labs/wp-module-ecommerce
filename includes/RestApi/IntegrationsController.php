@@ -2,7 +2,9 @@
 
 namespace NewfoldLabs\WP\Module\ECommerce\RestApi;
 
+use NewfoldLabs\WP\Module\ECommerce\Data\Plugins;
 use NewfoldLabs\WP\Module\ECommerce\Permissions;
+use NewfoldLabs\WP\Module\Installer\Services\PluginInstaller;
 use NewfoldLabs\WP\ModuleLoader\Container;
 
 class IntegrationsController {
@@ -53,8 +55,19 @@ class IntegrationsController {
 		);
 	}
 
+	private function get_plugin_details( $plugin ) {
+		return array(
+			'url'    => \admin_url( Plugins::$supported_plugins[ $plugin ]->url ),
+			'status' => PluginInstaller::exists( $plugin, true ),
+		);
+	}
+
 	public function get_paypal_status() {
 		$details = null;
+		$integration = array(
+			'captive' => \admin_url( 'admin.php?page=nfd-ecommerce-captive-flow-paypal' ),
+			'plugin' => $this->get_plugin_details( 'nfd_slug_yith_paypal_payments_for_woocommerce' ),
+		);
 		$is_captive_flow_complete = \get_option( 'nfd-ecommerce-captive-flow-paypal', 'false' );
 		if ($is_captive_flow_complete === 'true') {
 			$ppwc_options = \get_option( 'yith_ppwc_gateway_options', array() );
@@ -68,25 +81,32 @@ class IntegrationsController {
 		}
 		return new \WP_REST_Response(
 			array(
-				'complete' => $is_captive_flow_complete === 'true', 
-				'details' => $details
+				'complete'    => $is_captive_flow_complete === 'true', 
+				'details'     => $details,
+				'integration' => $integration,
 			),
 			200
 		);
 	}
 	public function get_shippo_status() {
 		$details = null;
+		$integration = array(
+			'captive' => \admin_url( 'admin.php?page=nfd-ecommerce-captive-flow-shippo' ),
+			'plugin' => $this->get_plugin_details( 'nfd_slug_yith_shippo_shippings_for_woocommerce' ),
+		);
 		$is_captive_flow_complete = \get_option( 'nfd-ecommerce-captive-flow-shippo', 'false' );
 		if ($is_captive_flow_complete === 'true') {
 			$shippo_environment = \get_option( 'yith_shippo_environment', '' );
 			$details = array(
+				'captive' => \admin_url( 'admin.php?page=nfd-ecommerce-captive-flow-shippo' ),
 				'environment' => $shippo_environment,
 			);
 		}
 		return new \WP_REST_Response(
 			array(
-				'complete' => $is_captive_flow_complete === 'true', 
-				'details' => $details
+				'complete'    => $is_captive_flow_complete === 'true', 
+				'details'     => $details,
+				'integration' => $integration,
 			),
 			200
 		);
@@ -94,6 +114,10 @@ class IntegrationsController {
 	
 	public function get_razorpay_status() {
 		$details = null;
+		$integration = array(
+			'captive' => null,
+			'plugin' => $this->get_plugin_details( 'nfd_slug_woo_razorpay' ),
+		);
 		$is_captive_flow_complete = \get_option( 'nfd-ecommerce-captive-flow-razorpay', 'false' );
 		if ($is_captive_flow_complete === 'true') {
 			$razorpay_settings = \get_option( 'woocommerce_razorpay_settings', array() );
@@ -109,8 +133,9 @@ class IntegrationsController {
 		}
 		return new \WP_REST_Response(
 			array(
-				'complete' => $is_captive_flow_complete === 'true', 
-				'details' => $details
+				'complete'    => $is_captive_flow_complete === 'true', 
+				'details'     => $details,
+				'integration' => $integration,
 			),
 			200
 		);
