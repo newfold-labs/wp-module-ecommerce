@@ -12,6 +12,7 @@ const Endpoints = {
     SALES: (period) => createApiUrl("/wc/v3/reports/sales", period),
   },
   Options: {
+    ONBOARDING: createApiUrl("/wc-admin/onboarding/profile"),
     CURRENCY: createApiUrl("/wc/v3/settings/general/woocommerce_currency"),
   },
 };
@@ -34,6 +35,13 @@ function getPriorPeriodForSales(period) {
 
 export const WooCommerceSdk = {
   options: {
+    async updateOnboarding(data) {
+      return safeFetch({
+        url: Endpoints.Options.ONBOARDING,
+        method: "POST",
+        data,
+      });
+    },
     async currency() {
       return apiFetch({ url: Endpoints.Options.CURRENCY });
     },
