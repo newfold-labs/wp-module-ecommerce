@@ -1,9 +1,20 @@
 import { RocketLaunchIcon } from "@heroicons/react/24/outline";
-import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
-import { Button, Modal, Title } from "@yoast/ui-library";
+import { Button, Title } from "@yoast/ui-library";
 import useSWRMutation from "swr/mutation";
-import { ReactComponent as StoreOnlineIllustration } from "../icons/launch-store.svg";
+
+const getTitle = (comingSoon) =>
+  comingSoon
+    ? __("Coming Soon activated", "wp-module-ecommerce")
+    : __("Your store is online and ready for business!", "wp-module-ecommerce");
+
+const getDescription = (comingSoon) =>
+  comingSoon
+    ? ""
+    : __(
+        `You can re-enable the 'Coming Soon' mode in “Settings”.`,
+        "wp-module-ecommerce"
+      );
 
 /**
  * @typedef SiteStatusProps
@@ -14,51 +25,22 @@ import { ReactComponent as StoreOnlineIllustration } from "../icons/launch-store
  * @param {SiteStatusProps} props
  * @returns {JSX.Element}
  */
-export function SiteStatus({ comingSoon, siteUrl, toggleComingSoon }) {
-  let [isOpen, setOpen] = useState(false);
+export function SiteStatus({ comingSoon, siteUrl, toggleComingSoon, notify }) {
   let comingSoonAction = useSWRMutation("coming-soon", async () => {
+    let newComingSoon = !comingSoon;
     await toggleComingSoon();
+    notify.push("coming-soon-toggle-notice", {
+      title: getTitle(newComingSoon),
+      description: <span>{getDescription(newComingSoon)}</span>,
+      variant: "success",
+      autoDismiss: 5000,
+    });
     let $statusText = document.getElementById("nfd-site-status-text");
     if ($statusText) {
       $statusText.textContent = __("Live", "wp-module-ecommerce");
       $statusText.style.setProperty("color", "#048200");
     }
-    setOpen(true);
   });
-  if (isOpen) {
-    return (
-      <Modal isOpen onClose={() => setOpen(false)} className="no-overlay">
-        <Modal.Description className="yst-bg-white yst-w-[900px] yst-shadow-md yst-py-6 yst-border yst-border-line">
-          <div className="yst-flex yst-flex-col yst-items-center yst-mb-12">
-            <StoreOnlineIllustration />
-            <Title
-              size={1}
-              className="yst-text-primary yst-text-3xl yst-mt-6"
-            >
-              {__(
-                "Your store is online and ready for business!",
-                "wp-module-ecommerce"
-              )}
-            </Title>
-            <span className="yst-leading-normal yst-text-[#425466] yst-mt-2 yst-mb-12">
-              {__(
-                `Not ready? You can re-enable the "Coming Soon" mode if you need.`,
-                "wp-module-ecommerce"
-              )}
-            </span>
-            <Button
-              className="yst-text-white"
-              variant="primary"
-              size="large"
-              onClick={() => setOpen(false)}
-            >
-              {__("Okay", "wp-module-ecommerce")}
-            </Button>
-          </div>
-        </Modal.Description>
-      </Modal>
-    );
-  }
   if (!comingSoon) {
     return null;
   }
