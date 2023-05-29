@@ -107,7 +107,7 @@ const Settings = ({ className, children, title, description }) => {
 
             <fieldset className="yst-min-w-0 yst-mt-8 2xl:yst-mt-0 2xl:yst-col-span-2">
                 <legend className="yst-sr-only">{title}</legend>
-                <div className="yst-space-y-8">
+                <div className="yst-space-y-4">
                     {children}
                 </div>
             </fieldset>
