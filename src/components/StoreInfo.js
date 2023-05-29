@@ -1,10 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import {
-  Label,
-  Select,
-  SelectField,
-  TextInput,
-} from "@yoast/ui-library";
+import { Label, Select, SelectField, TextInput } from "@yoast/ui-library";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 import { Section } from "./Section";
@@ -18,6 +13,12 @@ function useBasicProfile() {
     countries?.filter((_) => !CountriesInOFAC.includes(_.code)),
     currencies,
   ];
+}
+
+const textarea = document.createElement("textarea");
+function formatCurrency(currency) {
+  textarea.innerHTML = currency;
+  return textarea.value;
 }
 
 const StoreInfo = ({ controls, setControls, setIsDirty }) => {
@@ -179,15 +180,22 @@ const StoreInfo = ({ controls, setControls, setIsDirty }) => {
               setIsDirty(true);
             }}
             value={controls.woocommerce_currency}
-            selectedLabel={
-              currencies.find((_) => _.code === controls.woocommerce_currency)
-                ?.name
-            }
+            selectedLabel={formatCurrency(
+              `${
+                currencies.find((_) => _.code === controls.woocommerce_currency)
+                  ?.name
+              } (${
+                currencies.find((_) => _.code === controls.woocommerce_currency)
+                  ?.symbol
+              })`
+            )}
           >
             {currencies.map((currency) => {
               return (
                 <SelectField.Option
-                  label={currency.name}
+                  label={formatCurrency(
+                    `${currency.name} (${currency.symbol})`
+                  )}
                   value={currency.code}
                   key={currency.code}
                 />
