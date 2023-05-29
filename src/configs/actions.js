@@ -33,6 +33,7 @@ export function createPluginInstallAction(pluginId, priority, { notify }) {
         title: __("Plugin installation is in progress", "wp-module-ecommerce"),
         description: __("We'll be done in sometime", "wp-module-ecommerce"),
         variant: "info",
+        autoDismiss: 5000,
       });
     }
   };

@@ -3,7 +3,7 @@ import { __ } from "@wordpress/i18n";
 import { Button, Spinner } from "@yoast/ui-library";
 import useSWR from "swr";
 import { RuntimeSdk } from "../sdk/runtime";
-import { updateWPSettings } from "../services";
+import { WordPressSdk } from "../sdk/wordpress";
 import { Section } from "./Section";
 import Shipping from "./Shipping";
 import StoreInfo from "./StoreInfo";
@@ -13,7 +13,7 @@ import { Modal } from "@wordpress/components";
 
 export function StoreDetails(props) {
   let { notify } = props.wpModules;
-  let { data, isLoading } = useSWR("/wp/v2/settings");
+  let { data, isLoading } = useSWR("settings", WordPressSdk.settings.get);
   const [controls, setControls] = useState({});
   const [isDirty, setIsDirty] = useState(false);
 
@@ -58,7 +58,7 @@ export function StoreDetails(props) {
         onSubmit={async (event) => {
           event.preventDefault();
           event.stopPropagation();
-          await updateWPSettings({
+          await WordPressSdk.settings.put({
             ...controls,
             woocommerce_default_country: controls.state
               ? `${controls.country}:${controls.state}`
