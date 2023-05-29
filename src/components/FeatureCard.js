@@ -10,6 +10,7 @@ import { Button, Card, Link, Title } from "@yoast/ui-library";
  * @property {boolean} isActive
  * @property {boolean} isQueueEmpty
  * @property {boolean} isUpsellNeeded
+ * @property {{clickToBuyId: string; primaryUrl: string}?} upsellOptions
  *
  * @typedef FeatureCardActions
  * @property {(state: FeatureCardState, props: any) => void} triggerUpsell
@@ -38,7 +39,7 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
   return (
     <Card>
       <Card.Content>
-        <Image className="yst-w-12" />
+        <Image className="yst-w-12 yst-text-[#404040]" />
         <Title size={4} className="yst-leading-normal yst-my-4">
           {title}
         </Title>
@@ -70,7 +71,7 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
             href={state.featureUrl}
           >
             <span>{actionName}</span>
-            {ActionIcon ? <ActionIcon /> : null}
+            {ActionIcon ? <ArrowLongRightIcon /> : null}
           </Button>
         </Card.Footer>
       ) : isUpsellNeeded ? (
@@ -83,7 +84,7 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
             {...(state.upsellOptions?.clickToBuyId
               ? {
                   "data-action": "load-nfd-ctb",
-                  "data-ctb-id": state.upsellOptions?.clickToBuyId,
+                  "data-ctb-id": state.upsellOptions.clickToBuyId,
                 }
               : {})}
             href={state.upsellOptions?.primaryUrl}

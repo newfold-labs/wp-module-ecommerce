@@ -2,19 +2,13 @@ import { Spinner } from "@yoast/ui-library";
 import { YITHPluginsDefinitions } from "../configs/YITHPlugins.config";
 import { Section } from "./Section";
 import { useCardManager } from "./useCardManager";
-import { PluginsSdk } from "../sdk/plugins";
 
-export function YITHPlugins({ plugins, wpModules }) {
-  let isWCActive = PluginsSdk.queries.isPlugin(
-    plugins,
-    ["woocommerce"],
-    "active"
-  );
+export function YITHPlugins({ woo, wpModules }) {
   let [cards] = useCardManager(
     YITHPluginsDefinitions({ notify: wpModules.notify }),
-    { refreshInterval: 10 * 1000, isPaused: () => !isWCActive }
+    { refreshInterval: 10 * 1000, isPaused: () => !woo.isActive }
   );
-  if (!isWCActive) {
+  if (!woo.isActive) {
     return null;
   }
 

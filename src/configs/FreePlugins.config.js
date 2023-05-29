@@ -1,11 +1,11 @@
 import { __ } from "@wordpress/i18n";
 import { FeatureCard } from "../components/FeatureCard";
-import { ReactComponent as CreativeMail } from "../icons/creativemail.svg";
-import { ReactComponent as Jetpack } from "../icons/jetpack.svg";
-import { ReactComponent as MonsterInsights } from "../icons/monsterinsights.svg";
-import { ReactComponent as OptinMonster } from "../icons/optinmonster.svg";
-import { ReactComponent as WPForms } from "../icons/wpforms.svg";
-import { ReactComponent as YoastSEO } from "../icons/yoast.svg";
+import { ReactComponent as CreativeMail } from "../icons/brands/creativemail.svg";
+import { ReactComponent as Jetpack } from "../icons/brands/jetpack.svg";
+import { ReactComponent as MonsterInsights } from "../icons/brands/monsterinsights.svg";
+import { ReactComponent as OptinMonster } from "../icons/brands/optinmonster.svg";
+import { ReactComponent as WPForms } from "../icons/brands/wpforms.svg";
+import { ReactComponent as YoastSEO } from "../icons/brands/yoast.svg";
 import { PluginsSdk } from "../sdk/plugins";
 import { createPluginInstallAction } from "./actions";
 import { wcPluginStatusParser } from "./selectors";

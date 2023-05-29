@@ -1,23 +1,14 @@
 import { __ } from "@wordpress/i18n";
 import { Button, Title } from "@yoast/ui-library";
-import { PluginsSdk } from "../sdk/plugins";
 import { Section } from "./Section";
 import { useInstallWoo } from "./useInstallWoo";
 
 export function WooCommerceUnavailable(props) {
-  let isWooActive = PluginsSdk.queries.isPlugin(
-    props.plugins,
-    ["woocommerce"],
-    "active"
-  );
-  let isWCInQueue = props.plugins.queue?.some(
-    (queue) => queue.slug === "woocommerce"
-  );
   let [installWoo, isInstalling] = useInstallWoo(props);
-  if (isWooActive) {
+  if (props.woo.isActive) {
     return null;
   }
-  let showInProgress = isInstalling || isWCInQueue;
+  let showInProgress = isInstalling || props.woo.isInstalling;
   return (
     <Section.Content>
       <div className="yst-bg-canvas yst-rounded-lg yst-border yst-border-solid yst-border-line">
