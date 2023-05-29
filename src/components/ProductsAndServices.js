@@ -1,20 +1,13 @@
-import { Icon } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import { Button, Spinner, Title } from "@yoast/ui-library";
 import ProductsConfig from "../configs/ProductsAndServices.config";
 import { ReactComponent as Ideas } from "../icons/ideas.svg";
 import { Section } from "./Section";
 import { useCardManager } from "./useCardManager";
-import { PluginsSdk } from "../sdk/plugins";
 
-export function Products({ plugins, wpModules }) {
+export function Products({ woo, wpModules }) {
   let [cards] = useCardManager(ProductsConfig({ notify: wpModules.notify }));
-  let isWCUnavailable = PluginsSdk.queries.isPlugin(
-    plugins,
-    ["woocommerce"],
-    "active"
-  );
-  if (isWCUnavailable) {
+  if (!woo.isActive) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
         <div className="nfd-ecommerce-loader" />
@@ -54,7 +47,7 @@ export function Products({ plugins, wpModules }) {
                 )
               }
             >
-              <Icon icon={Ideas} />
+              <Ideas className="hst-w-6" />
               {__(" How to add products", "wp-module-ecommerce")}
             </Button>
           </div>

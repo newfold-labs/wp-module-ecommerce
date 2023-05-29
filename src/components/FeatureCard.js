@@ -10,6 +10,7 @@ import { Button, Card, Link, Title } from "@yoast/ui-library";
  * @property {boolean} isActive
  * @property {boolean} isQueueEmpty
  * @property {boolean} isUpsellNeeded
+ * @property {{clickToBuyId: string; primaryUrl: string}?} upsellOptions
  *
  * @typedef FeatureCardActions
  * @property {(state: FeatureCardState, props: any) => void} triggerUpsell
@@ -83,7 +84,7 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
             {...(state.upsellOptions?.clickToBuyId
               ? {
                   "data-action": "load-nfd-ctb",
-                  "data-ctb-id": state.upsellOptions?.clickToBuyId,
+                  "data-ctb-id": state.upsellOptions.clickToBuyId,
                 }
               : {})}
             href={state.upsellOptions?.primaryUrl}

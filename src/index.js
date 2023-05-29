@@ -14,32 +14,33 @@ const pages = [
   { key: "/store/details", Page: StoreDetails },
 ];
 
+function parseWCStatus(data) {
+  const status = data?.details?.woocommerce?.status;
+  const isActive = status === "active";
+  const needsInstall = status === "need_to_install";
+  const isInstalling = data?.queue?.some(
+    (queue) => queue.slug === "woocommerce"
+  );
+  return { isActive, needsInstall, isInstalling };
+}
+
 export function NewfoldECommerce(props) {
-  let {
-    data,
-    error,
-    mutate: refreshWooStatus,
-  } = useSWR("woo-status", () => PluginsSdk.queries.status("woocommerce"), {
-    revalidateOnReconnect: false,
-    refreshInterval: 10 * 1000,
-  });
-  let plugins = { errors: error, ...(data ?? {}), refreshWooStatus };
+  let { data: woo, mutate } = useSWR(
+    "woo-status",
+    () => PluginsSdk.queries.status("woocommerce").then(parseWCStatus),
+    { revalidateOnReconnect: false, refreshInterval: 30 * 1000 }
+  );
   let { Page } =
     pages.find((page) => page.key === props.state.location) ?? pages[0];
 
-  if (data === undefined) {
+  if (woo === undefined) {
     return (
       <div className="yst-flex yst-items-center yst-text-center yst-justify-center yst-h-full">
         <Spinner size={8} className="yst-text-primary" />
       </div>
     );
   }
-  const isWCActive = PluginsSdk.queries.isPlugin(
-    plugins,
-    ["woocommerce"],
-    "active"
-  );
-  if (!isWCActive) {
+  if (!woo.isActive) {
     Page = Home;
   }
   return (
@@ -47,10 +48,10 @@ export function NewfoldECommerce(props) {
       value={{
         fetcher,
         revalidateOnReconnect: false,
-        revalidateOnFocus: isWCActive,
+        revalidateOnFocus: woo.isActive,
       }}
     >
-      <Page plugins={plugins} {...props} />
+      <Page woo={{ ...woo, refreshStatus: mutate }} {...props} />
     </SWRConfig>
   );
 }

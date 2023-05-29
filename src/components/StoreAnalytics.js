@@ -189,7 +189,7 @@ function RecentOrders() {
 }
 
 export function StoreAnalytics(props) {
-  let shouldUpsell = props.plugins.details?.woocommerce.status !== "active";
+  let shouldUpsell = !props.woo.isActive;
   let [installWoo, isInstalling] = useInstallWoo(props);
   return (
     <FeatureUpsell

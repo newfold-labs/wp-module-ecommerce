@@ -2,13 +2,9 @@ import useSWRMutation from "swr/mutation";
 import { PluginsSdk } from "../sdk/plugins";
 import { RuntimeSdk } from "../sdk/runtime";
 
-export function useInstallWoo({ plugins, wpModules }) {
+export function useInstallWoo({ woo, wpModules }) {
   let { notify } = wpModules;
-  let needsSyncInstall = PluginsSdk.queries.isPlugin(
-    plugins,
-    ["woocommerce"],
-    "need_to_install"
-  );
+  let needsSyncInstall = woo.needsInstall;
   let installWooCommerce = useSWRMutation("install-woo", async () => {
     let response = needsSyncInstall
       ? await PluginsSdk.actions.installSync("woocommerce")
@@ -18,7 +14,7 @@ export function useInstallWoo({ plugins, wpModules }) {
         title: "WooCommerce has been installed successfully",
         variant: "success",
       });
-      await plugins.refreshWooStatus();
+      await woo.refreshStatus();
     } else {
       notify.push("woo-install-status", {
         title: "WooCommerce failed to install",
