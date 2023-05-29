@@ -5,17 +5,45 @@ import { PluginsSdk } from "../sdk/plugins";
 import { WooCommerceSdk } from "../sdk/woocommerce";
 
 function formatMoneyToTile(filter) {
+  let calculateSales = calculateDelta(`reports_for_${filter}`);
   return {
-    reportValue: (data) =>
-      data?.pluginStatus === false
+    change: calculateSales,
+    reportValue: (queries) =>
+      queries?.pluginStatus !== true
         ? "-"
         : formatMoney({
-            cost: Number(data?.[`reports_for_${filter}`]),
-            currency: data?.currency?.value,
+            cost: Number(queries?.[`reports_for_${filter}`]?.[0]),
+            currency: queries?.currency?.value,
             currencyDisplay: "symbol",
           }),
   };
 }
+
+const getReportValue = (queryKey) => (queries) => {
+  if (!queries?.pluginStatus) {
+    return "-";
+  }
+  let [stat] = queries?.[queryKey] ?? [];
+  return stat;
+};
+
+const calculateDelta = (queryKey) => (queries) => {
+  if (!queries?.pluginStatus) {
+    return { delta: 0, sign: null };
+  }
+  let [this_period, prior_period] = queries?.[queryKey] ?? [];
+  if (prior_period - this_period === 0) {
+    return { delta: 0, sign: null };
+  }
+  if (prior_period === 0 && this_period > 0) {
+    return { delta: 100, sign: 1 };
+  }
+  if (prior_period > 0 && this_period === 0) {
+    return { delta: 100, sign: -1 };
+  }
+  let delta = (1 - this_period / prior_period) * 100;
+  return { delta: Math.abs(delta), sign: Math.sign(delta) };
+};
 
 const Reports = (filter) => ({
   dataDependencies: {
@@ -75,8 +103,8 @@ const Reports = (filter) => ({
         title: __("Orders", "wp-module-ecommerce"),
       }),
       state: {
-        reportValue: (data) =>
-          data?.pluginStatus ? Number(data?.[`reports_for_${filter}`]) : "-",
+        reportValue: getReportValue(`reports_for_${filter}`),
+        change: calculateDelta(`reports_for_${filter}`),
       },
       queries: [
         {
@@ -98,8 +126,8 @@ const Reports = (filter) => ({
         title: __("Products Sold", "wp-module-ecommerce"),
       }),
       state: {
-        reportValue: (data) =>
-          data?.pluginStatus ? Number(data?.[`reports_for_${filter}`]) : "-",
+        reportValue: getReportValue(`reports_for_${filter}`),
+        change: calculateDelta(`reports_for_${filter}`),
       },
       queries: [
         {
@@ -121,8 +149,8 @@ const Reports = (filter) => ({
         title: __("Visitors", "wp-module-ecommerce"),
       }),
       state: {
-        reportValue: (data) =>
-          data?.pluginStatus ? Number(data?.[`reports_for_${filter}`]) : "-",
+        reportValue: getReportValue(`analytics_for_${filter}`),
+        change: calculateDelta(`analytics_for_${filter}`),
       },
       queries: [
         {
@@ -134,6 +162,10 @@ const Reports = (filter) => ({
               "active"
             ),
         },
+        {
+          key: `analytics_for_${filter}`,
+          selector: (stats) => stats.visitors,
+        },
       ],
     },
     {
@@ -144,8 +176,8 @@ const Reports = (filter) => ({
         title: __("Views", "wp-module-ecommerce"),
       }),
       state: {
-        reportValue: (data) =>
-          data?.pluginStatus ? Number(data?.[`reports_for_${filter}`]) : "-",
+        reportValue: getReportValue(`analytics_for_${filter}`),
+        change: calculateDelta(`analytics_for_${filter}`),
       },
       queries: [
         {
@@ -156,6 +188,10 @@ const Reports = (filter) => ({
               ["woocommerce", "jetpack"],
               "active"
             ),
+        },
+        {
+          key: `analytics_for_${filter}`,
+          selector: (stats) => stats.views,
         },
       ],
     },

@@ -26,6 +26,7 @@ export const FreePluginsDefinition = (props) => ({
   dataDependencies: {
     plugins: async () =>
       PluginsSdk.queries.status(
+        "woocommerce",
         "jetpack",
         "wpforms-lite",
         "google-analytics-for-wordpress",
