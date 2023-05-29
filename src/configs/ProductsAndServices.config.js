@@ -1,14 +1,16 @@
+import {
+  ArchiveBoxIcon,
+  ArrowUpTrayIcon,
+  CalendarIcon,
+  CubeIcon,
+  GiftIcon,
+} from "@heroicons/react/24/outline";
 import { __ } from "@wordpress/i18n";
 import { FeatureCard } from "../components/FeatureCard";
-import { ReactComponent as AddProducts } from "../icons/add-products.svg";
-import { ReactComponent as Booking } from "../icons/booking.svg";
-import { ReactComponent as Gift } from "../icons/gift.svg";
-import { ReactComponent as ImportProducts } from "../icons/import-products.svg";
-import { ReactComponent as ManageProducts } from "../icons/manage-products.svg";
 import { PluginsSdk } from "../sdk/plugins";
+import { WooCommerceSdk } from "../sdk/woocommerce";
 import { createPluginInstallAction } from "./actions";
 import { wcPluginStatusParser, wcProductsParser } from "./selectors";
-import { WooCommerceSdk } from "../sdk/woocommerce";
 
 const getUrl = (href) => {
   let [page, qs] = href.split("?");
@@ -17,7 +19,7 @@ const getUrl = (href) => {
   return `${page}?${query}`;
 };
 
-const ProductsAndServices = (props) => ({
+export const ProductsAndServicesDefinition = (props) => ({
   dataDependencies: {
     plugins: async () =>
       PluginsSdk.queries.status(
@@ -32,17 +34,13 @@ const ProductsAndServices = (props) => ({
       Card: FeatureCard,
       shouldRender: () => true,
       name: "add_products",
-      assets: () => ({
-        Image: AddProducts,
-        ActionIcon: null,
-      }),
+      assets: () => ({ Image: CubeIcon, ActionIcon: true }),
       text: () => ({
         title: __("Add a Product", "wp-module-ecommerce"),
-        actionName: __("Add a product"),
+        actionName: __("Add a product", "wp-module-ecommerce"),
       }),
 
       state: {
-        isActionExternal: () => false,
         isDisabled: (data) => data?.plugins?.isWCActive === false,
         isActive: () => true,
         featureUrl: () => getUrl("post-new.php?post_type=product"),
@@ -65,17 +63,12 @@ const ProductsAndServices = (props) => ({
       Card: FeatureCard,
       shouldRender: (state) => state.hasAddedProduct,
       name: "manage_products",
-      assets: () => ({
-        Image: ManageProducts,
-        ActionIcon: null,
-      }),
+      assets: () => ({ Image: ArchiveBoxIcon, ActionIcon: true }),
       text: () => ({
         title: __("Manage Your Products", "wp-module-ecommerce"),
-        actionName: __("Manage products"),
+        actionName: __("Manage products", "wp-module-ecommerce"),
       }),
-
       state: {
-        isActionExternal: () => false,
         isDisabled: (data) => data?.plugins?.isWCActive === false,
         isActive: () => true,
         hasAddedProduct: (data) => data?.products?.length > 0,
@@ -100,17 +93,13 @@ const ProductsAndServices = (props) => ({
       Card: FeatureCard,
       shouldRender: () => true,
       name: "import_product",
-      assets: () => ({
-        Image: ImportProducts,
-        ActionIcon: null,
-      }),
+      assets: () => ({ Image: ArrowUpTrayIcon, ActionIcon: true }),
       text: () => ({
         title: __("Import Products via CSV", "wp-module-ecommerce"),
-        actionName: __("Import products"),
+        actionName: __("Import products", "wp-module-ecommerce"),
       }),
 
       state: {
-        isActionExternal: () => false,
         isDisabled: (data) => data?.plugins?.isWCActive === false,
         isActive: () => true,
         featureUrl: () =>
@@ -134,21 +123,17 @@ const ProductsAndServices = (props) => ({
       Card: FeatureCard,
       shouldRender: () => true,
       name: "booking",
-      assets: () => ({
-        Image: Booking,
-        ActionIcon: null,
-      }),
+      assets: ({ isActive }) => ({ Image: CalendarIcon, ActionIcon: isActive }),
       text: (state) => ({
         title: __("Bookings", "wp-module-ecommerce"),
         actionName: !state.isActive
-          ? "Enable"
+          ? __("Enable", "wp-module-ecommerce")
           : state.hasUsedPlugin
-          ? "Manage bookings"
-          : "Create a booking",
+          ? __("Manage bookings", "wp-module-ecommerce")
+          : __("Create a booking", "wp-module-ecommerce"),
         slug: "yith_wcbk_panel",
       }),
       state: {
-        isActionExternal: () => false,
         isDisabled: (data) => data?.plugins?.isWCActive === false,
         isActive: (data) => data?.plugins?.isInstalled,
         isInstalling: (data) => data?.plugins?.isInstalling,
@@ -188,21 +173,17 @@ const ProductsAndServices = (props) => ({
       Card: FeatureCard,
       shouldRender: () => true,
       name: "gifts",
-      assets: () => ({
-        Image: Gift,
-        ActionIcon: null,
-      }),
+      assets: () => ({ Image: GiftIcon, ActionIcon: true }),
       text: (state) => ({
         title: __("Gift Cards", "wp-module-ecommerce"),
         actionName: !state.isActive
-          ? "Enable"
+          ? __("Enable", "wp-module-ecommerce")
           : state.hasUsedPlugin
-          ? "Manage gift cards"
-          : "Create a gift card",
+          ? __("Manage gift cards", "wp-module-ecommerce")
+          : __("Create a gift card", "wp-module-ecommerce"),
         slug: "yith_woocommerce_gift_cards_panel",
       }),
       state: {
-        isActionExternal: () => false,
         isDisabled: (data) => data?.plugins?.isWCActive === false,
         isActive: (data) => data?.plugins?.isInstalled,
         isInstalling: (data) => data?.plugins?.isInstalling,
@@ -242,5 +223,3 @@ const ProductsAndServices = (props) => ({
     },
   ],
 });
-
-export default ProductsAndServices;

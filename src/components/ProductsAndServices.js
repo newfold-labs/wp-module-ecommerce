@@ -1,20 +1,15 @@
-import { Icon } from "@wordpress/components";
+import { LightBulbIcon } from "@heroicons/react/24/outline";
 import { __ } from "@wordpress/i18n";
 import { Button, Spinner, Title } from "@yoast/ui-library";
-import ProductsConfig from "../configs/ProductsAndServices.config";
-import { ReactComponent as Ideas } from "../icons/ideas.svg";
+import { ProductsAndServicesDefinition } from "../configs/ProductsAndServices.config";
 import { Section } from "./Section";
 import { useCardManager } from "./useCardManager";
-import { PluginsSdk } from "../sdk/plugins";
 
-export function Products({ plugins, wpModules }) {
-  let [cards] = useCardManager(ProductsConfig({ notify: wpModules.notify }));
-  let isWCUnavailable = PluginsSdk.queries.isPlugin(
-    plugins,
-    ["woocommerce"],
-    "active"
+export function Products({ woo, wpModules }) {
+  let [cards] = useCardManager(
+    ProductsAndServicesDefinition({ notify: wpModules.notify })
   );
-  if (isWCUnavailable) {
+  if (!woo.isActive) {
     return (
       <div style={{ height: "100%", display: "grid", placeContent: "center" }}>
         <div className="nfd-ecommerce-loader" />
@@ -47,14 +42,11 @@ export function Products({ plugins, wpModules }) {
           <div className="yst-flex-none yst-flex">
             <Button
               className="yst-flex yst-gap-2 yst-items-center"
-              onClick={() =>
-                window.open(
-                  "https://woocommerce.com/document/managing-products/",
-                  "_blank"
-                )
-              }
+              as="a"
+              href="https://woocommerce.com/document/managing-products/"
+              target="_blank"
             >
-              <Icon icon={Ideas} />
+              <LightBulbIcon className="hst-w-4" />
               {__(" How to add products", "wp-module-ecommerce")}
             </Button>
           </div>

@@ -49,7 +49,7 @@ function RecentReport({ title, filter, onSelect, disabled, children }) {
               }
             }}
             options={[
-              { label: "Today", value: "today" },
+              { label: "Today", value: "day" },
               { label: "Week to date", value: "week" },
               { label: "Month to date", value: "month" },
             ]}
@@ -85,7 +85,7 @@ function RecentActivity() {
             })}
           </div>
           <Link
-            className="yst-text-base yst-no-underline"
+            className="yst-text-base yst-no-underline yst-w-fit"
             href={recentActivityLink}
           >
             view all
@@ -93,6 +93,31 @@ function RecentActivity() {
         </>
       )}
     </RecentReport>
+  );
+}
+
+const StatusToTextMapping = {
+  pending: { text: "Pending Payment", variant: "plain" },
+  processing: { text: "Processing", variant: "plain" },
+  "on-hold": { text: "On hold", variant: "upsell" },
+  completed: { text: "Completed", variant: "info" },
+  cancelled: {
+    text: "Cancelled",
+    className: "yst-bg-[#E01C1C] yst-text-white",
+  },
+  refunded: {
+    text: "Refunded",
+    className: "yst-bg-[#E01C1C] yst-text-white",
+  },
+  failed: { text: "Failed", className: "yst-bg-[#E01C1C] yst-text-white" },
+};
+
+function OrderStatus(props) {
+  const { variant, className, text } = StatusToTextMapping[props.status] ?? {};
+  return (
+    <Badge variant={variant} className={classNames("yst-w-fit", className)}>
+      {text ?? props.status}
+    </Badge>
   );
 }
 
@@ -130,7 +155,8 @@ function RecentOrders() {
                     size={4}
                     className="yst-leading-normal yst-text-[#495C77]"
                   >
-                    {order.billing.first_name} {order.billing.last_name}
+                    {order.billing.first_name || "Guest"}{" "}
+                    {order.billing.last_name}
                   </Title>
                   <p className="yst-text-base yst-justify-self-end">
                     {formatMoney({
@@ -145,13 +171,13 @@ function RecentOrders() {
                   <p className="yst-justify-self-end">
                     #{String(order.id).padStart(6, "0")}
                   </p>
-                  <Badge className="yst-w-fit">{order.status}</Badge>
+                  <OrderStatus status={order.status} />
                 </Card.Content>
               </Card>
             ))}
           </ul>
           <Link
-            className="yst-text-base yst-no-underline"
+            className="yst-text-base yst-no-underline yst-w-fit"
             href={recentOrdersLink}
           >
             view all
@@ -163,7 +189,7 @@ function RecentOrders() {
 }
 
 export function StoreAnalytics(props) {
-  let shouldUpsell = props.plugins.details?.woocommerce.status !== "active";
+  let shouldUpsell = !props.woo.isActive;
   let [installWoo, isInstalling] = useInstallWoo(props);
   return (
     <FeatureUpsell
