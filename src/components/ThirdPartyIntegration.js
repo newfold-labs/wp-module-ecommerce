@@ -16,7 +16,10 @@ const ThirdPartyIntegration = ({
     isLoading,
     mutate: refreshIntegrationStatus,
   } = useSWR(`/newfold-ecommerce/v1/integrations/${integrationId}`);
-  const [showThirdPartyContent, setShowThirdPartyContent] = useState(false);
+  const [isConnectionActive, setConnectionActive] = useState(false);
+  function onConnect() {
+    setConnectionActive(true);
+  }
   return (
     <Section.Settings
       title={__(`${integrationTitle}`, "wp-module-ecommerce")}
@@ -28,15 +31,22 @@ const ThirdPartyIntegration = ({
         </div>
       ) : (
         <div className="yst-flex-1">
-          {true ? (
-            <div className=" yst-h-[1180px]">
+          {isConnectionActive ? (
+            <div className="components-modal__frame yst-h-[500px]">
+              <button
+                type="button"
+                onClick={async () => {
+                  setConnectionActive(false);
+                  await refreshIntegrationStatus();
+                }}
+              />
               <iframe
-                style={{ width: "100%", height: "100%" }}
+                className="yst-h-full yst-w-full"
                 src={integrationSrcPath}
               />
             </div>
           ) : (
-            <>{children({ integrationStatus, setShowThirdPartyContent })}</>
+            children({ integrationStatus, onConnect })
           )}
         </div>
       )}

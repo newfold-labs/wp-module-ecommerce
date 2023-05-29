@@ -9,7 +9,6 @@ import Shipping from "./Shipping";
 import StoreInfo from "./StoreInfo";
 import TaxSettings from "./TaxSettings";
 import ThirdPartyIntegration from "./ThirdPartyIntegration";
-import { Modal } from "@wordpress/components";
 
 export function StoreDetails(props) {
   let { notify } = props.wpModules;
@@ -87,18 +86,6 @@ export function StoreDetails(props) {
         ) : (
           <>
             <Section.Content>
-              <Modal
-                overlayClassName="nfd-ecommerce-modal-overlay"
-                className="nfd-ecommerce-atoms nfd-ecommerce-modal"
-                shouldCloseOnEsc={false}
-                shouldCloseOnClickOutside={false}
-              >
-                <iframe
-                  style={{ width: "100%", height: "100%" }}
-                  src="admin.php?page=nfd-ecommerce-captive-flow-shippo"
-                />
-              </Modal>
-
               <StoreInfo
                 controls={controls}
                 setControls={setControls}
@@ -113,11 +100,11 @@ export function StoreDetails(props) {
                 integrationDescription="Setup a shipping account for delivering products to your customers"
                 integrationSrcPath="admin.php?page=nfd-ecommerce-captive-flow-shippo"
               >
-                {({ integrationStatus, setShowThirdPartyContent }) => {
+                {({ integrationStatus, onConnect }) => {
                   return (
                     <Shipping
                       integrationStatus={integrationStatus}
-                      setShowThirdPartyContent={setShowThirdPartyContent}
+                      onConnect={onConnect}
                     />
                   );
                 }}
