@@ -57,7 +57,7 @@ class IntegrationsController {
 
 	private function get_plugin_details( $plugin ) {
 		return array(
-			'url'    => \admin_url( Plugins::$supported_plugins[ $plugin ]->url ),
+			'url'    => \admin_url( Plugins::$supported_plugins[ $plugin ][ 'url' ] ),
 			'status' => PluginInstaller::exists( $plugin, true ),
 		);
 	}
@@ -98,7 +98,6 @@ class IntegrationsController {
 		if ($is_captive_flow_complete === 'true') {
 			$shippo_environment = \get_option( 'yith_shippo_environment', '' );
 			$details = array(
-				'captive' => \admin_url( 'admin.php?page=nfd-ecommerce-captive-flow-shippo' ),
 				'environment' => $shippo_environment,
 			);
 		}
