@@ -1,16 +1,10 @@
-import apiFetch from "@wordpress/api-fetch";
 import { Spinner } from "@yoast/ui-library";
-import useSWR from "swr/immutable";
 import { FreePluginsDefinition } from "../configs/FreePlugins.config";
-import { Endpoints } from "../services";
 import { Section } from "./Section";
 import { useCardManager } from "./useCardManager";
 
 export function FreePlugins({ notify }) {
-  let bootstrap = useSWR(Endpoints.BOOTSTRAP, (path) => apiFetch({ path }));
-  let [cards] = useCardManager(
-    FreePluginsDefinition({ notify, user: bootstrap.data ?? {} })
-  );
+  let [cards] = useCardManager(FreePluginsDefinition({ notify }));
   return (
     <Section.Container>
       <Section.Header

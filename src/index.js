@@ -1,12 +1,10 @@
 import apiFetch from "@wordpress/api-fetch";
 import { Spinner } from "@yoast/ui-library";
 import useSWR, { SWRConfig } from "swr";
-import useSWRImmutable from "swr/immutable";
 import { Home } from "./components/Home";
 import { Products } from "./components/ProductsAndServices";
 import { StoreDetails } from "./components/StoreDetails";
 import { PluginsSdk } from "./sdk/plugins";
-import { Endpoints } from "./services";
 
 const fetcher = (path) => apiFetch({ path });
 
@@ -21,15 +19,10 @@ export function NewfoldECommerce(props) {
     data,
     error,
     mutate: refreshWooStatus,
-  } = useSWR(
-    "woo-status",
-    () => PluginsSdk.queries.status("woocommerce"),
-    {
-      revalidateOnReconnect: false,
-      refreshInterval: 10 * 1000,
-    }
-  );
-  let { data: user } = useSWRImmutable(Endpoints.BOOTSTRAP, fetcher);
+  } = useSWR("woo-status", () => PluginsSdk.queries.status("woocommerce"), {
+    revalidateOnReconnect: false,
+    refreshInterval: 10 * 1000,
+  });
   let plugins = { errors: error, ...(data ?? {}), refreshWooStatus };
   let { Page } =
     pages.find((page) => page.key === props.state.location) ?? pages[0];
@@ -57,7 +50,7 @@ export function NewfoldECommerce(props) {
         revalidateOnFocus: isWCActive,
       }}
     >
-      <Page plugins={plugins} user={user} {...props} />
+      <Page plugins={plugins} {...props} />
     </SWRConfig>
   );
 }

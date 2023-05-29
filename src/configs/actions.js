@@ -1,16 +1,14 @@
 import * as React from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import { PluginsSdk } from "../sdk/plugins";
+import { RuntimeSdk } from "../sdk/runtime";
 
 /**
  * @param {string} pluginId
  * @param {number | undefined} priority
+ * @param {{ notify: {push: (id: string, message: any) => void} }} modules
  */
-export function createPluginInstallAction(
-  pluginId,
-  priority,
-  { notify, user }
-) {
+export function createPluginInstallAction(pluginId, priority, { notify }) {
   return async (
     /** @type {any} */ state,
     /** @type {{ onRefresh: (plugin: string) => any; }} */ props
@@ -22,7 +20,7 @@ export function createPluginInstallAction(
         description: (
           <span>
             {__("Please try again, or ", "wp-module-ecommerce")}
-            <a href={user?.currentBrandConfig?.support} target="_blank">
+            <a href={RuntimeSdk.brandSettings.support} target="_blank">
               {__("contact support", "wp-module-ecommerce")}
             </a>
           </span>

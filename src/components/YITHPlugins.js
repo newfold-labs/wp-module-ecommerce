@@ -4,17 +4,14 @@ import { Section } from "./Section";
 import { useCardManager } from "./useCardManager";
 import { PluginsSdk } from "../sdk/plugins";
 
-export function YITHPlugins({ plugins, wpModules, user }) {
+export function YITHPlugins({ plugins, wpModules }) {
   let isWCActive = PluginsSdk.queries.isPlugin(
     plugins,
     ["woocommerce"],
     "active"
   );
   let [cards] = useCardManager(
-    YITHPluginsDefinitions({
-      notify: wpModules.notify,
-      user,
-    }),
+    YITHPluginsDefinitions({ notify: wpModules.notify }),
     { refreshInterval: 10 * 1000, isPaused: () => !isWCActive }
   );
   if (!isWCActive) {
