@@ -9,7 +9,7 @@ import { ReactComponent as Gift } from "../icons/yith-woocommerce-gift-card.svg"
 import { ReactComponent as WishList } from "../icons/yith-woocommerce-wishlist.svg";
 import { MarketplaceSdk } from "../sdk/marketplace";
 import { PluginsSdk } from "../sdk/plugins";
-import { fetchUserCapabilities } from "../services";
+import { RuntimeSdk } from "../sdk/runtime";
 import { createPluginInstallAction } from "./actions";
 import { findUpsellWithName, wcPluginStatusParser } from "./selectors";
 
@@ -22,14 +22,13 @@ function defineFeatureState() {
     isDisabled: (data) => data?.plugins?.isWCActive === false,
     isInstalling: (data) => data?.plugins?.isInstalling,
     isQueueEmpty: (data) => data?.plugins?.isQueueEmpty,
-    isUpsellNeeded: (data) => data?.capabilities?.hasYithExtended === false,
+    isUpsellNeeded: () => !RuntimeSdk.hasCapability("hasYithExtended"),
   };
 }
 
 export const YITHPluginsDefinitions = (props) => ({
   dataDependencies: {
     plugins: async () => PluginsSdk.queries.status("all"),
-    capabilities: fetchUserCapabilities,
     upsellOptions: MarketplaceSdk.eCommerceOptions,
   },
   cards: [
@@ -65,7 +64,6 @@ export const YITHPluginsDefinitions = (props) => ({
           key: "plugins",
           selector: wcPluginStatusParser("nfd_slug_yith_woocommerce_booking"),
         },
-        { key: "capabilities" },
         {
           key: "upsellOptions",
           selector: findUpsellWithName(
@@ -103,7 +101,6 @@ export const YITHPluginsDefinitions = (props) => ({
           key: "plugins",
           selector: wcPluginStatusParser("yith-woocommerce-ajax-search"),
         },
-        { key: "capabilities" },
         {
           key: "upsellOptions",
           selector: findUpsellWithName("YITH WooCommerce AJAX Search"),
@@ -139,7 +136,6 @@ export const YITHPluginsDefinitions = (props) => ({
           key: "plugins",
           selector: wcPluginStatusParser("nfd_slug_yith_woocommerce_wishlist"),
         },
-        { key: "capabilities" },
         {
           key: "upsellOptions",
           selector: findUpsellWithName("YITH WooCommerce Wishlist"),
@@ -180,7 +176,6 @@ export const YITHPluginsDefinitions = (props) => ({
             "nfd_slug_yith_woocommerce_ajax_product_filter"
           ),
         },
-        { key: "capabilities" },
         {
           key: "upsellOptions",
           selector: findUpsellWithName("YITH WooCommerce Ajax Product Filter"),
@@ -218,7 +213,6 @@ export const YITHPluginsDefinitions = (props) => ({
             "nfd_slug_yith_woocommerce_gift_cards"
           ),
         },
-        { key: "capabilities" },
         {
           key: "upsellOptions",
           selector: findUpsellWithName("YITH WooCommerce Gift Cards"),
@@ -259,7 +253,6 @@ export const YITHPluginsDefinitions = (props) => ({
             "nfd_slug_yith_woocommerce_customize_myaccount_page"
           ),
         },
-        { key: "capabilities" },
         {
           key: "upsellOptions",
           selector: findUpsellWithName(
@@ -285,7 +278,7 @@ export const YITHPluginsDefinitions = (props) => ({
       state: {
         ...defineFeatureState(),
         isUpsellNeeded: () => false,
-        isAvailable: (queries) => queries?.capabilities?.hasEcomdash === true,
+        isAvailable: () => RuntimeSdk.hasCapability("hasEcomdash"),
       },
       actions: {
         installFeature: createPluginInstallAction(
@@ -299,7 +292,6 @@ export const YITHPluginsDefinitions = (props) => ({
           key: "plugins",
           selector: wcPluginStatusParser("nfd_slug_ecomdash_wordpress_plugin"),
         },
-        { key: "capabilities" },
       ],
     },
   ],

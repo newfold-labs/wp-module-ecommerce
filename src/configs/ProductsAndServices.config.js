@@ -6,7 +6,6 @@ import { ReactComponent as Gift } from "../icons/gift.svg";
 import { ReactComponent as ImportProducts } from "../icons/import-products.svg";
 import { ReactComponent as ManageProducts } from "../icons/manage-products.svg";
 import { PluginsSdk } from "../sdk/plugins";
-import { fetchUserCapabilities } from "../services";
 import { createPluginInstallAction } from "./actions";
 import { wcPluginStatusParser, wcProductsParser } from "./selectors";
 import { WooCommerceSdk } from "../sdk/woocommerce";
@@ -26,7 +25,6 @@ const ProductsAndServices = (props) => ({
         "nfd_slug_yith_woocommerce_booking",
         "nfd_slug_yith_woocommerce_gift_cards"
       ),
-    capabilities: fetchUserCapabilities,
     products: WooCommerceSdk.products.list,
   },
   cards: [

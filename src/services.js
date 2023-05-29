@@ -3,7 +3,6 @@ import apiFetch from "@wordpress/api-fetch";
 export const Endpoints = {
   WP_SETTINGS: "/wp/v2/settings",
   WC_ONBOARDING: "/wc-admin/onboarding/profile",
-  BOOTSTRAP: "/newfold-ecommerce/v1/experience/bootstrap",
 };
 export async function fetchWPSettings() {
   return apiFetch({ path: Endpoints.WP_SETTINGS });
@@ -21,10 +20,4 @@ export async function updateWCOnboarding(data) {
     method: "POST",
     data,
   }).catch((error) => {});
-}
-
-export async function fetchUserCapabilities() {
-  return apiFetch({
-    path: `/newfold-ecommerce/v1/experience/capabilities`,
-  });
 }
