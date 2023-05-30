@@ -19,13 +19,12 @@ const getDescription = (comingSoon) =>
 /**
  * @typedef SiteStatusProps
  * @property {boolean} comingSoon
- * @property {string} siteUrl Used for inprogress currently
  * @property {() => Promise<void>} toggleComingSoon
  *
  * @param {SiteStatusProps} props
  * @returns {JSX.Element}
  */
-export function SiteStatus({ comingSoon, siteUrl, toggleComingSoon, notify }) {
+export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
   let comingSoonAction = useSWRMutation("coming-soon", async () => {
     let newComingSoon = !comingSoon;
     await toggleComingSoon();
@@ -61,7 +60,7 @@ export function SiteStatus({ comingSoon, siteUrl, toggleComingSoon, notify }) {
         <Button
           as="a"
           className="yst-bg-canvas"
-          href={siteUrl}
+          href={window.NFDECOM?.site.url}
           target="_blank"
           variant="secondary"
         >
