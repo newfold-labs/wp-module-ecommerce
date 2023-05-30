@@ -9,6 +9,7 @@ const ThirdPartyIntegration = ({
   integrationDescription,
   integrationSrcPath,
   children,
+  notify,
   ...props
 }) => {
   let {
@@ -16,10 +17,12 @@ const ThirdPartyIntegration = ({
     isLoading,
     mutate: refreshIntegrationStatus,
   } = useSWR(`/newfold-ecommerce/v1/integrations/${integrationId}`);
-  const [isConnectionActive, setConnectionActive] = useState(false);
+  const [isConnectionActive, setConnectionActive] = useState(true);
+
   function onConnect() {
     setConnectionActive(true);
   }
+
   return (
     <Section.Settings
       title={__(`${integrationTitle}`, "wp-module-ecommerce")}
@@ -37,6 +40,10 @@ const ThirdPartyIntegration = ({
                 type="button"
                 onClick={async () => {
                   setConnectionActive(false);
+                  notify.push(`${integrationId}-account-connect-success`, {
+                    title: `Your ${integrationId} account have been connected`,
+                    variant: "success",
+                  });
                   await refreshIntegrationStatus();
                 }}
               />

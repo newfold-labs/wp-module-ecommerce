@@ -99,6 +99,7 @@ export function StoreDetails(props) {
                 integrationTitle="Shipping Options"
                 integrationDescription="Setup a shipping account for delivering products to your customers"
                 integrationSrcPath="admin.php?page=nfd-ecommerce-captive-flow-shippo"
+                notify={notify}
               >
                 {({ integrationStatus, onConnect }) => {
                   return (
