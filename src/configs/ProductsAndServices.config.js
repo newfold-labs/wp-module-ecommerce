@@ -8,9 +8,15 @@ import {
 import { __ } from "@wordpress/i18n";
 import { FeatureCard } from "../components/FeatureCard";
 import { PluginsSdk } from "../sdk/plugins";
+import { RuntimeSdk } from "../sdk/runtime";
+import { MarketplaceSdk } from "../sdk/marketplace";
 import { WooCommerceSdk } from "../sdk/woocommerce";
 import { createPluginInstallAction } from "./actions";
-import { wcPluginStatusParser, wcProductsParser } from "./selectors";
+import {
+  wcPluginStatusParser,
+  wcProductsParser,
+  findUpsellWithName,
+} from "./selectors";
 
 const getUrl = (href) => {
   let [page, qs] = href.split("?");
@@ -18,6 +24,20 @@ const getUrl = (href) => {
   query.set("return_to_nfd", window.location.hash.replace("#", ""));
   return `${page}?${query}`;
 };
+
+function defineFeatureState() {
+  return {
+    isDisabled: (data) => data?.plugins?.isWCActive === false,
+    isActive: (data) => data?.plugins?.isInstalled,
+    isInstalling: (data) => data?.plugins?.isInstalling,
+    isQueueEmpty: (data) => data?.plugins?.isQueueEmpty,
+    hasUsedPlugin: (data) => data?.products.length > 0,
+    isUpsellNeeded: () => !RuntimeSdk.hasCapability("hasYithExtended"),
+    featureUrl: (data) =>
+      data?.products.length > 0 ? data.plugins?.pluginUrl : null,
+    upsellOptions: (data) => data?.upsellOptions,
+  };
+}
 
 export const ProductsAndServicesDefinition = (props) => ({
   dataDependencies: {
@@ -28,6 +48,7 @@ export const ProductsAndServicesDefinition = (props) => ({
         "nfd_slug_yith_woocommerce_gift_cards"
       ),
     products: WooCommerceSdk.products.list,
+    upsellOptions: MarketplaceSdk.eCommerceOptions,
   },
   cards: [
     {
@@ -44,6 +65,8 @@ export const ProductsAndServicesDefinition = (props) => ({
         isDisabled: (data) => data?.plugins?.isWCActive === false,
         isActive: () => true,
         featureUrl: () => getUrl("post-new.php?post_type=product"),
+        learnMoreUrl: () =>
+          "https://woocommerce.com/document/managing-products/",
       },
       actions: {},
       queries: [
@@ -104,6 +127,8 @@ export const ProductsAndServicesDefinition = (props) => ({
         isActive: () => true,
         featureUrl: () =>
           getUrl("edit.php?post_type=product&page=product_importer"),
+        learnMoreUrl: () =>
+          "https://woocommerce.com/document/product-csv-importer-exporter/?quid=f04c4dae81536a91e5a305a7299d4399",
       },
       actions: {},
       queries: [
@@ -134,13 +159,9 @@ export const ProductsAndServicesDefinition = (props) => ({
         slug: "yith_wcbk_panel",
       }),
       state: {
-        isDisabled: (data) => data?.plugins?.isWCActive === false,
-        isActive: (data) => data?.plugins?.isInstalled,
-        isInstalling: (data) => data?.plugins?.isInstalling,
-        isQueueEmpty: (data) => data?.plugins?.isQueueEmpty,
-        hasUsedPlugin: (data) => data?.products.length > 0,
-        featureUrl: (data) =>
-          data?.products.length > 0 ? data.plugins?.pluginUrl : null,
+        ...defineFeatureState(),
+        learnMoreUrl: () =>
+          "https://www.bluehost.com/help/article/yith-booking-and-appointment-for-woocommerce",
       },
       actions: {
         installFeature: createPluginInstallAction(
@@ -167,13 +188,19 @@ export const ProductsAndServicesDefinition = (props) => ({
           key: "products",
           selector: wcProductsParser("booking"),
         },
+        {
+          key: "upsellOptions",
+          selector: findUpsellWithName(
+            "YITH Booking and Appointment for WooCommerce"
+          ),
+        },
       ],
     },
     {
       Card: FeatureCard,
       shouldRender: () => true,
       name: "gifts",
-      assets: () => ({ Image: GiftIcon, ActionIcon: true }),
+      assets: ({ isActive }) => ({ Image: GiftIcon, ActionIcon: isActive }),
       text: (state) => ({
         title: __("Gift Cards", "wp-module-ecommerce"),
         actionName: !state.isActive
@@ -184,13 +211,9 @@ export const ProductsAndServicesDefinition = (props) => ({
         slug: "yith_woocommerce_gift_cards_panel",
       }),
       state: {
-        isDisabled: (data) => data?.plugins?.isWCActive === false,
-        isActive: (data) => data?.plugins?.isInstalled,
-        isInstalling: (data) => data?.plugins?.isInstalling,
-        isQueueEmpty: (data) => data?.plugins?.isQueueEmpty,
-        hasUsedPlugin: (data) => data?.products.length > 0,
-        featureUrl: (data) =>
-          data?.products.length > 0 ? data.plugins?.pluginUrl : null,
+        ...defineFeatureState(),
+        learnMoreUrl: () =>
+          "https://www.bluehost.com/help/article/yith-woocommerce-gift-cards",
       },
       actions: {
         installFeature: createPluginInstallAction(
@@ -218,6 +241,10 @@ export const ProductsAndServicesDefinition = (props) => ({
         {
           key: "products",
           selector: wcProductsParser("gift-card"),
+        },
+        {
+          key: "upsellOptions",
+          selector: findUpsellWithName("YITH WooCommerce Gift Cards"),
         },
       ],
     },
