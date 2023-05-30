@@ -8,6 +8,7 @@ import { ReactComponent as CustomizeAccount } from "../icons/brands/yith-woocomm
 import { ReactComponent as Gift } from "../icons/brands/yith-woocommerce-gift-card.svg";
 import { ReactComponent as WishList } from "../icons/brands/yith-woocommerce-wishlist.svg";
 import { MarketplaceSdk } from "../sdk/marketplace";
+import { ReactComponent as SalesFunnelLicense } from '../icons/yith-woocommerce-sales-funnel.svg';
 import { PluginsSdk } from "../sdk/plugins";
 import { RuntimeSdk } from "../sdk/runtime";
 import { createPluginInstallAction } from "./actions";
@@ -292,6 +293,31 @@ export const YITHPluginsDefinitions = (props) => ({
           key: "plugins",
           selector: wcPluginStatusParser("nfd_slug_ecomdash_wordpress_plugin"),
         },
+      ],
+    },
+    {
+      Card: FeatureCard,
+      shouldRender: () => true,
+      name: "sales_funnel_license",
+      assets: () => ({
+        Image: SalesFunnelLicense,
+      }),
+      text: ({ isActive }) => ({
+        title: __(
+          "Complete Upsell, Crossell & Promotions Solution",
+          "wp-module-ecommerce"
+        ),
+        description: __(
+          "Create and manage deals, sales promotions and upsell campaigns in your shop.",
+          "wp-module-ecommerce"
+        ),
+        actionName: isActive ? "Manage" : "Enable",
+        slug: ""
+      }),
+      state: defineFeatureState(),
+      actions: {
+      },
+      queries: [
       ],
     },
   ],
