@@ -14,7 +14,7 @@ const Shipping = ({ integrationStatus, onConnect }) => {
           <Button
             variant="secondary"
             as="a"
-            href="admin.php?page=yith_shippo_shipping_for_woocommerce"
+            href={integrationStatus?.plugin?.url}
           >
             {__("Manage", "wp-module-ecommerce")}
           </Button>

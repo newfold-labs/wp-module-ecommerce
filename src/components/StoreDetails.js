@@ -95,9 +95,9 @@ export function StoreDetails(props) {
                 <hr />
               </div>
               <ThirdPartyIntegration
-                integrationId="shippo"
-                integrationTitle="Shipping Options"
-                integrationDescription="Setup a shipping account for delivering products to your customers"
+                id="shippo"
+                title={__("Shipping Options", "wp-module-ecommerce")} 
+                description={__("Setup a shipping account for delivering products to your customers","wp-module-ecommerce")} 
                 integrationSrcPath="admin.php?page=nfd-ecommerce-captive-flow-shippo"
                 notify={notify}
               >

@@ -4,9 +4,9 @@ import useSWR from "swr";
 import { Section } from "./Section";
 
 const ThirdPartyIntegration = ({
-  integrationId,
-  integrationTitle,
-  integrationDescription,
+  id,
+  title,
+  description,
   integrationSrcPath,
   children,
   notify,
@@ -16,8 +16,8 @@ const ThirdPartyIntegration = ({
     data: integrationStatus,
     isLoading,
     mutate: refreshIntegrationStatus,
-  } = useSWR(`/newfold-ecommerce/v1/integrations/${integrationId}`);
-  const [isConnectionActive, setConnectionActive] = useState(true);
+  } = useSWR(`/newfold-ecommerce/v1/integrations/${id}`); 
+  const [isConnectionActive, setConnectionActive] = useState(false);
 
   function onConnect() {
     setConnectionActive(true);
@@ -25,8 +25,8 @@ const ThirdPartyIntegration = ({
 
   return (
     <Section.Settings
-      title={__(`${integrationTitle}`, "wp-module-ecommerce")}
-      description={__(`${integrationDescription}`, "wp-module-ecommerce")}
+      title={title}
+      description={description}
     >
       {isLoading ? (
         <div className="yst-flex yst-items-center yst-text-center yst-justify-center yst-h-60">
@@ -40,8 +40,8 @@ const ThirdPartyIntegration = ({
                 type="button"
                 onClick={async () => {
                   setConnectionActive(false);
-                  notify.push(`${integrationId}-account-connect-success`, {
-                    title: `Your ${integrationId} account have been connected`,
+                  notify.push(`${id}-account-connect-success`, {
+                    title: `Your ${id} account have been connected`,
                     variant: "success",
                   });
                   await refreshIntegrationStatus();
@@ -49,7 +49,7 @@ const ThirdPartyIntegration = ({
               />
               <iframe
                 className="yst-h-full yst-w-full"
-                src={integrationSrcPath}
+                src={integrationStatus?.integration?.captive}
               />
             </div>
           ) : (
