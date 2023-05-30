@@ -31,9 +31,9 @@ import { Button, Card, Link, Title } from "@yoast/ui-library";
  * @returns
  */
 export function FeatureCard({ state, actions, assets, text, ...props }) {
-  let { Image, ActionIcon } = assets(state);
+  let { Image, ActionIcon,learnMoreUrl } = assets(state);
   let { title, actionName, description } = text(state);
-  const { isDisabled, isInstalling, isUpsellNeeded, learnMoreUrl } = state;
+  const { isDisabled, isInstalling, isUpsellNeeded } = state;
   const isInstallDisabled =
     !state.isActive && !state.isQueueEmpty && !isInstalling;
   return (

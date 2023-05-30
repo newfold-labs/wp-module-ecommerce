@@ -55,7 +55,11 @@ export const ProductsAndServicesDefinition = (props) => ({
       Card: FeatureCard,
       shouldRender: () => true,
       name: "add_products",
-      assets: () => ({ Image: CubeIcon, ActionIcon: true }),
+      assets: () => ({
+        Image: CubeIcon,
+        ActionIcon: true,
+        learnMoreUrl: "https://woocommerce.com/document/managing-products/",
+      }),
       text: () => ({
         title: __("Add a Product", "wp-module-ecommerce"),
         actionName: __("Add a product", "wp-module-ecommerce"),
@@ -65,8 +69,6 @@ export const ProductsAndServicesDefinition = (props) => ({
         isDisabled: (data) => data?.plugins?.isWCActive === false,
         isActive: () => true,
         featureUrl: () => getUrl("post-new.php?post_type=product"),
-        learnMoreUrl: () =>
-          "https://woocommerce.com/document/managing-products/",
       },
       actions: {},
       queries: [
@@ -116,7 +118,12 @@ export const ProductsAndServicesDefinition = (props) => ({
       Card: FeatureCard,
       shouldRender: () => true,
       name: "import_product",
-      assets: () => ({ Image: ArrowUpTrayIcon, ActionIcon: true }),
+      assets: () => ({
+        Image: ArrowUpTrayIcon,
+        ActionIcon: true,
+        learnMoreUrl:
+          "https://woocommerce.com/document/product-csv-importer-exporter/?quid=f04c4dae81536a91e5a305a7299d4399",
+      }),
       text: () => ({
         title: __("Import Products via CSV", "wp-module-ecommerce"),
         actionName: __("Import products", "wp-module-ecommerce"),
@@ -127,8 +134,6 @@ export const ProductsAndServicesDefinition = (props) => ({
         isActive: () => true,
         featureUrl: () =>
           getUrl("edit.php?post_type=product&page=product_importer"),
-        learnMoreUrl: () =>
-          "https://woocommerce.com/document/product-csv-importer-exporter/?quid=f04c4dae81536a91e5a305a7299d4399",
       },
       actions: {},
       queries: [
@@ -148,7 +153,12 @@ export const ProductsAndServicesDefinition = (props) => ({
       Card: FeatureCard,
       shouldRender: () => true,
       name: "booking",
-      assets: ({ isActive }) => ({ Image: CalendarIcon, ActionIcon: isActive }),
+      assets: ({ isActive }) => ({
+        Image: CalendarIcon,
+        ActionIcon: isActive,
+        learnMoreUrl:
+          "https://www.bluehost.com/help/article/yith-booking-and-appointment-for-woocommerce",
+      }),
       text: (state) => ({
         title: __("Bookings", "wp-module-ecommerce"),
         actionName: !state.isActive
@@ -158,11 +168,8 @@ export const ProductsAndServicesDefinition = (props) => ({
           : __("Create a booking", "wp-module-ecommerce"),
         slug: "yith_wcbk_panel",
       }),
-      state: {
-        ...defineFeatureState(),
-        learnMoreUrl: () =>
-          "https://www.bluehost.com/help/article/yith-booking-and-appointment-for-woocommerce",
-      },
+      state: defineFeatureState(),
+
       actions: {
         installFeature: createPluginInstallAction(
           "nfd_slug_yith_woocommerce_booking",
@@ -200,7 +207,12 @@ export const ProductsAndServicesDefinition = (props) => ({
       Card: FeatureCard,
       shouldRender: () => true,
       name: "gifts",
-      assets: ({ isActive }) => ({ Image: GiftIcon, ActionIcon: isActive }),
+      assets: ({ isActive }) => ({
+        Image: GiftIcon,
+        ActionIcon: isActive,
+        learnMoreUrl:
+          "https://www.bluehost.com/help/article/yith-woocommerce-gift-cards",
+      }),
       text: (state) => ({
         title: __("Gift Cards", "wp-module-ecommerce"),
         actionName: !state.isActive
@@ -210,11 +222,7 @@ export const ProductsAndServicesDefinition = (props) => ({
           : __("Create a gift card", "wp-module-ecommerce"),
         slug: "yith_woocommerce_gift_cards_panel",
       }),
-      state: {
-        ...defineFeatureState(),
-        learnMoreUrl: () =>
-          "https://www.bluehost.com/help/article/yith-woocommerce-gift-cards",
-      },
+      state: defineFeatureState(),
       actions: {
         installFeature: createPluginInstallAction(
           "nfd_slug_yith_woocommerce_gift_cards",
