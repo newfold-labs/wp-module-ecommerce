@@ -5,8 +5,10 @@ import useSWR from "swr";
 import { RuntimeSdk } from "../sdk/runtime";
 import { updateWPSettings } from "../services";
 import { Section } from "./Section";
+import Shipping from "./Shipping";
 import StoreInfo from "./StoreInfo";
 import TaxSettings from "./TaxSettings";
+import ThirdPartyIntegration from "./ThirdPartyIntegration";
 
 export function StoreDetails(props) {
   let { notify } = props.wpModules;
@@ -67,7 +69,6 @@ export function StoreDetails(props) {
           });
           setIsDirty(false);
         }}
-        
         onChange={(event) => {
           const name = event.target.name;
           const value = event.target.value;
@@ -90,6 +91,24 @@ export function StoreDetails(props) {
                 setControls={setControls}
                 setIsDirty={setIsDirty}
               />
+              <div className="yst-my-8">
+                <hr />
+              </div>
+              <ThirdPartyIntegration
+                integrationId="shippo"
+                integrationTitle="Shipping Options"
+                integrationDescription="Setup a shipping account for delivering products to your customers"
+                integrationSrcPath="admin.php?page=nfd-ecommerce-captive-flow-shippo"
+              >
+                {({ integrationStatus, setShowThirdPartyContent }) => {
+                  return (
+                    <Shipping
+                      integrationStatus={integrationStatus}
+                      setShowThirdPartyContent={setShowThirdPartyContent}
+                    />
+                  );
+                }}
+              </ThirdPartyIntegration>
               <div className="yst-my-8">
                 <hr />
               </div>

@@ -16,7 +16,7 @@ const ThirdPartyIntegration = ({
     isLoading,
     mutate: refreshIntegrationStatus,
   } = useSWR(`/newfold-ecommerce/v1/integrations/${integrationId}`);
-  const [showThirdPartyContent, serShowThirdPartyContent] = useState(false);
+  const [showThirdPartyContent, setShowThirdPartyContent] = useState(false);
   return (
     <Section.Settings
       title={__(`${integrationTitle}`, "wp-module-ecommerce")}
@@ -28,7 +28,7 @@ const ThirdPartyIntegration = ({
         </div>
       ) : (
         <div className="yst-flex-1">
-          {true ? (
+          {showThirdPartyContent ? (
             <div className=" yst-h-[1180px]">
               <iframe
                 style={{ width: "100%", height: "100%" }}
@@ -36,7 +36,7 @@ const ThirdPartyIntegration = ({
               />
             </div>
           ) : (
-            <>{children({ integrationStatus, serShowThirdPartyContent })}</>
+            <>{children({ integrationStatus, setShowThirdPartyContent })}</>
           )}
         </div>
       )}
