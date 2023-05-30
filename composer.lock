@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "993d46f5fab198a66b26511ea973bfde",
+    "content-hash": "680a1a7ca493acaee64cb6efa30d4b49",
     "packages": [
         {
             "name": "newfold-labs/wp-module-installer",
-            "version": "0.0.1",
+            "version": "0.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-installer.git",
-                "reference": "2ff43943adf270028ab00283307d9cc25d72449c"
+                "reference": "0c2998a51826efa3c0a7bbaf798b5ef18a6080f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/2ff43943adf270028ab00283307d9cc25d72449c",
-                "reference": "2ff43943adf270028ab00283307d9cc25d72449c",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/0c2998a51826efa3c0a7bbaf798b5ef18a6080f9",
+                "reference": "0c2998a51826efa3c0a7bbaf798b5ef18a6080f9",
                 "shasum": ""
             },
             "type": "library",
@@ -40,10 +40,10 @@
             ],
             "description": "An installer for WordPress plugins and themes.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-installer/tree/0.0.1",
+                "source": "https://github.com/newfold-labs/wp-module-installer/tree/0.0.2",
                 "issues": "https://github.com/newfold-labs/wp-module-installer/issues"
             },
-            "time": "2023-05-26T05:54:27+00:00"
+            "time": "2023-05-30T15:25:40+00:00"
         }
     ],
     "packages-dev": [
@@ -2588,16 +2588,16 @@
         },
         {
             "name": "wp-cli/entity-command",
-            "version": "v2.5.0",
+            "version": "v2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/entity-command.git",
-                "reference": "ca979c45ccb69c010bbbd6d4eee9df1ff4c839da"
+                "reference": "4c0b4846baf193d9a3992386b89a381496983eb1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/entity-command/zipball/ca979c45ccb69c010bbbd6d4eee9df1ff4c839da",
-                "reference": "ca979c45ccb69c010bbbd6d4eee9df1ff4c839da",
+                "url": "https://api.github.com/repos/wp-cli/entity-command/zipball/4c0b4846baf193d9a3992386b89a381496983eb1",
+                "reference": "4c0b4846baf193d9a3992386b89a381496983eb1",
                 "shasum": ""
             },
             "require": {
@@ -2793,9 +2793,9 @@
             "homepage": "https://github.com/wp-cli/entity-command",
             "support": {
                 "issues": "https://github.com/wp-cli/entity-command/issues",
-                "source": "https://github.com/wp-cli/entity-command/tree/v2.5.0"
+                "source": "https://github.com/wp-cli/entity-command/tree/v2.5.1"
             },
-            "time": "2023-05-18T10:23:46+00:00"
+            "time": "2023-05-30T13:42:30+00:00"
         },
         {
             "name": "wp-cli/eval-command",
