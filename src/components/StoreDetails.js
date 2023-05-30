@@ -5,8 +5,10 @@ import useSWR from "swr";
 import { RuntimeSdk } from "../sdk/runtime";
 import { WordPressSdk } from "../sdk/wordpress";
 import { Section } from "./Section";
+import Shipping from "./Shipping";
 import StoreInfo from "./StoreInfo";
 import TaxSettings from "./TaxSettings";
+import ThirdPartyIntegration from "./ThirdPartyIntegration";
 
 export function StoreDetails(props) {
   let { notify } = props.wpModules;
@@ -89,6 +91,25 @@ export function StoreDetails(props) {
                 setControls={setControls}
                 setIsDirty={setIsDirty}
               />
+              <div className="yst-my-8">
+                <hr />
+              </div>
+              <ThirdPartyIntegration
+                id="shippo"
+                title={__("Shipping Options", "wp-module-ecommerce")} 
+                description={__("Setup a shipping account for delivering products to your customers","wp-module-ecommerce")} 
+                integrationSrcPath="admin.php?page=nfd-ecommerce-captive-flow-shippo"
+                notify={notify}
+              >
+                {({ integrationStatus, onConnect }) => {
+                  return (
+                    <Shipping
+                      integrationStatus={integrationStatus}
+                      onConnect={onConnect}
+                    />
+                  );
+                }}
+              </ThirdPartyIntegration>
               <div className="yst-my-8">
                 <hr />
               </div>
