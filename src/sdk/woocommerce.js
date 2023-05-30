@@ -67,6 +67,9 @@ export const WooCommerceSdk = {
       if (stats.error !== null || stats.data === undefined) {
         return { views: [], visitors: [] };
       }
+      if (Array.isArray(stats.data[period]) && stats.data[period].length === 0) {
+        return { views: [], visitors: [] };
+      }
       let { data, fields, errors } = stats.data[period];
       if (errors) {
         return { views: [], visitors: [] };
