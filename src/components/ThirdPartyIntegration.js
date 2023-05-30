@@ -2,6 +2,7 @@ import { __ } from "@wordpress/i18n";
 import { Spinner } from "@yoast/ui-library";
 import useSWR from "swr";
 import { Section } from "./Section";
+import { IntegrationsSdk } from "../sdk/integrations";
 
 const ThirdPartyIntegration = ({
   id,
@@ -16,7 +17,8 @@ const ThirdPartyIntegration = ({
     data: integrationStatus,
     isLoading,
     mutate: refreshIntegrationStatus,
-  } = useSWR(`/newfold-ecommerce/v1/integrations/${id}`); 
+} = useSWR(id, IntegrationsSdk.status);
+
   const [isConnectionActive, setConnectionActive] = useState(false);
 
   function onConnect() {
@@ -24,10 +26,7 @@ const ThirdPartyIntegration = ({
   }
 
   return (
-    <Section.Settings
-      title={title}
-      description={description}
-    >
+    <Section.Settings title={title} description={description}>
       {isLoading ? (
         <div className="yst-flex yst-items-center yst-text-center yst-justify-center yst-h-60">
           <Spinner size={8} className="yst-text-primary" />
