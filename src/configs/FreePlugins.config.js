@@ -1,7 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import { FeatureCard } from "../components/FeatureCard";
 import { ReactComponent as CreativeMail } from "../icons/brands/creativemail.svg";
-import { ReactComponent as Jetpack } from "../icons/brands/jetpack.svg";
+import { ReactComponent as JetpackBoost } from "../icons/brands/jetpack-boost.svg";
 import { ReactComponent as MonsterInsights } from "../icons/brands/monsterinsights.svg";
 import { ReactComponent as OptinMonster } from "../icons/brands/optinmonster.svg";
 import { ReactComponent as WPForms } from "../icons/brands/wpforms.svg";
@@ -27,7 +27,7 @@ export const FreePluginsDefinition = (props) => ({
     plugins: async () =>
       PluginsSdk.queries.status(
         "woocommerce",
-        "jetpack",
+        "jetpack-boost",
         "wpforms-lite",
         "google-analytics-for-wordpress",
         "wordpress-seo",
@@ -39,9 +39,9 @@ export const FreePluginsDefinition = (props) => ({
     {
       Card: FeatureCard,
       shouldRender: () => true,
-      name: "jetpack",
+      name: "jetpack-boost",
       assets: () => ({
-        Image: Jetpack,
+        Image: JetpackBoost,
         ActionIcon: null,
       }),
       text: ({ isActive }) => ({
@@ -57,12 +57,12 @@ export const FreePluginsDefinition = (props) => ({
       }),
       state: defineFeatureState(),
       actions: {
-        installFeature: createPluginInstallAction("jetpack", 10, props),
+        installFeature: createPluginInstallAction("jetpack-boost", 10, props),
       },
       queries: [
         {
           key: "plugins",
-          selector: wcPluginStatusParser("jetpack"),
+          selector: wcPluginStatusParser("jetpack-boost"),
         },
       ],
     },
