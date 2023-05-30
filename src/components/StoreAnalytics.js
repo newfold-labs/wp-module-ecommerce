@@ -19,6 +19,7 @@ import { Section } from "./Section";
 import { SiteStatus } from "./SiteStatus";
 import { useCardManager } from "./useCardManager";
 import { useInstallWoo } from "./useInstallWoo";
+import { RuntimeSdk } from "../sdk/runtime";
 
 let recentActivityLink = `admin.php?${new URLSearchParams({
   page: "wc-admin",
@@ -86,7 +87,7 @@ function RecentActivity() {
           </div>
           <Link
             className="yst-text-base yst-no-underline yst-w-fit"
-            href={recentActivityLink}
+            href={RuntimeSdk.adminUrl(recentActivityLink)}
           >
             view all
           </Link>
@@ -178,7 +179,7 @@ function RecentOrders() {
           </ul>
           <Link
             className="yst-text-base yst-no-underline yst-w-fit"
-            href={recentOrdersLink}
+            href={RuntimeSdk.adminUrl(recentOrdersLink)}
           >
             view all
           </Link>

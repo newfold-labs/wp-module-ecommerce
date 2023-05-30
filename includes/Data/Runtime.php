@@ -17,12 +17,13 @@ final class Runtime {
 	 */
 	public static function prepareData(Container $container) {
 		return array(
-			'site' => array (
+			'site'           => array( 
 				'url' => \get_site_url(),
 				'install_token' => InstallerPermissions::rest_get_plugin_install_hash(),
 			),
-			'rest_url'   => \get_home_url() . '/index.php',
-			'capabilities' => $container->get('capabilities')->all(),
+			'admin_url'      => \admin_url(),
+			'rest_url'       => \get_home_url() . '/index.php',
+			'capabilities'   => $container->get('capabilities')->all(),
 			'brand_settings' => Brands::get_config( Runtime::get_brand_name( $container ) ),
 		);
 	}
