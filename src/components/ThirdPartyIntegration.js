@@ -28,7 +28,7 @@ const ThirdPartyIntegration = ({
         </div>
       ) : (
         <div className="yst-flex-1">
-          {showThirdPartyContent ? (
+          {true ? (
             <div className=" yst-h-[1180px]">
               <iframe
                 style={{ width: "100%", height: "100%" }}
