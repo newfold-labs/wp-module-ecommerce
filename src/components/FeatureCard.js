@@ -31,9 +31,9 @@ import { Button, Card, Link, Title } from "@yoast/ui-library";
  * @returns
  */
 export function FeatureCard({ state, actions, assets, text, ...props }) {
-  let { Image, ActionIcon, learnMoreUrl } = assets(state);
+  let { Image, ActionIcon } = assets(state);
   let { title, actionName, description } = text(state);
-  const { isDisabled, isInstalling, isUpsellNeeded } = state;
+  const { isDisabled, isInstalling, isUpsellNeeded, learnMoreUrl } = state;
   const isInstallDisabled =
     !state.isActive && !state.isQueueEmpty && !isInstalling;
   return (
@@ -44,14 +44,16 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
           {title}
         </Title>
         {description ? <span>{description}</span> : null}
-        <Link
-          className="yst-flex yst-mt-4 yst-items-center yst-gap-2 yst-no-underline"
-          href={learnMoreUrl}
-          target="_blank"
-        >
-          <span>{__("Learn More", "wp-module-ecommerce")}</span>
-          <ArrowLongRightIcon className="yst-h-5 yst-text-black" />
-        </Link>
+        {learnMoreUrl && (
+          <Link
+            className="yst-flex yst-mt-4 yst-items-center yst-gap-2 yst-no-underline"
+            href={learnMoreUrl}
+            target="_blank"
+          >
+            <span>{__("Learn More", "wp-module-ecommerce")}</span>
+            <ArrowLongRightIcon className="yst-h-5 yst-text-black" />
+          </Link>
+        )}
       </Card.Content>
       {isInstallDisabled ? (
         <Card.Footer>
