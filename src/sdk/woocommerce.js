@@ -11,8 +11,11 @@ const Endpoints = {
       createApiUrl("/jetpack/v4/module/stats/data", { range }),
     SALES: (period) => createApiUrl("/wc/v3/reports/sales", period),
   },
+  Onboarding: {
+    PROFILE: createApiUrl("/wc-admin/onboarding/profile"),
+    TASKS: createApiUrl("/wc-admin/onboarding/tasks", { ids: "setup" }),
+  },
   Options: {
-    ONBOARDING: createApiUrl("/wc-admin/onboarding/profile"),
     CURRENCY: createApiUrl("/wc/v3/settings/general/woocommerce_currency"),
   },
 };
@@ -34,14 +37,19 @@ function getPriorPeriodForSales(period) {
 }
 
 export const WooCommerceSdk = {
-  options: {
-    async updateOnboarding(data) {
+  onboarding: {
+    async updateProfile(data) {
       return safeFetch({
-        url: Endpoints.Options.ONBOARDING,
+        url: Endpoints.Onboarding.PROFILE,
         method: "POST",
         data,
       });
     },
+    async tasks() {
+      return apiFetch({ url: Endpoints.Onboarding.TASKS });
+    },
+  },
+  options: {
     async currency() {
       return apiFetch({ url: Endpoints.Options.CURRENCY });
     },
@@ -57,6 +65,9 @@ export const WooCommerceSdk = {
         url: Endpoints.Analytics.JETPACK(period),
       });
       if (stats.error !== null || stats.data === undefined) {
+        return { views: [], visitors: [] };
+      }
+      if (Array.isArray(stats.data[period]) && stats.data[period].length === 0) {
         return { views: [], visitors: [] };
       }
       let { data, fields, errors } = stats.data[period];

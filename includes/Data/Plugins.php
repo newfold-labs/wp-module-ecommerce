@@ -12,6 +12,10 @@ final class Plugins
 			'url' => 'admin.php?page=jetpack#/dashboard',
 			'file' => 'jetpack/jetpack.php',
 		),
+		'jetpack-boost' => array(
+			'url' => 'admin.php?page=jetpack#/dashboard',
+			'file' => 'jetpack-boost/jetpack-boost.php',
+		),
 		'wordpress-seo' => array(
 			'url' => 'admin.php?page=wpseo_dashboard',
 			'file' => 'wordpress-seo/wp-seo.php',

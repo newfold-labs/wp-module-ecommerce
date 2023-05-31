@@ -1,8 +1,8 @@
 import apiFetch from "@wordpress/api-fetch";
 import { Spinner } from "@yoast/ui-library";
 import useSWR, { SWRConfig } from "swr";
-import { Home } from "./components/Home";
 import { Products } from "./components/ProductsAndServices";
+import { Store } from "./components/Store";
 import { StoreDetails } from "./components/StoreDetails";
 import { createApiUrl } from "./sdk/createApiUrl";
 import { PluginsSdk } from "./sdk/plugins";
@@ -10,7 +10,7 @@ import { PluginsSdk } from "./sdk/plugins";
 const fetcher = (path) => apiFetch({ url: createApiUrl(path) });
 
 const pages = [
-  { key: "/store", Page: Home },
+  { key: "/store", Page: Store },
   { key: "/store/products", Page: Products },
   { key: "/store/details", Page: StoreDetails },
 ];
@@ -40,7 +40,7 @@ export function NewfoldECommerce(props) {
     );
   }
   if (!woo.isActive) {
-    Page = Home;
+    Page = Store;
   }
   return (
     <SWRConfig
@@ -56,4 +56,5 @@ export function NewfoldECommerce(props) {
 }
 
 export * from "./components/FreePlugins";
-export * from "./components/SiteStatus";
+export * from "./components/OnboardingScreen";
+

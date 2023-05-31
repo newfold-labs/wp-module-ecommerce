@@ -1,6 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import { FeatureCard } from "../components/FeatureCard";
 import { ReactComponent as Ecomdash } from "../icons/brands/ecomdash.svg";
+import { ReactComponent as SalesFunnelLicense } from "../icons/brands/yith-woocommerce-sales-funnel.svg";
 import { ReactComponent as Filter } from "../icons/brands/yith-woocommerce-ajax-product-filter.svg";
 import { ReactComponent as Search } from "../icons/brands/yith-woocommerce-ajax-search.svg";
 import { ReactComponent as Booking } from "../icons/brands/yith-woocommerce-booking.svg";
@@ -294,6 +295,37 @@ export const YITHPluginsDefinitions = (props) => ({
           props
         ),
       },
+      queries: [
+        {
+          key: "plugins",
+          selector: wcPluginStatusParser("nfd_slug_ecomdash_wordpress_plugin"),
+        },
+      ],
+    },
+    {
+      Card: FeatureCard,
+      shouldRender: () => true,
+      name: "sales_funnel_license",
+      assets: () => ({
+        Image: SalesFunnelLicense,
+      }),
+      text: ({ isActive }) => ({
+        title: __(
+          "Complete Upsell, Crossell & Promotions Solution",
+          "wp-module-ecommerce"
+        ),
+        description: __(
+          "Create and manage deals, sales promotions and upsell campaigns in your shop.",
+          "wp-module-ecommerce"
+        ),
+        actionName: isActive ? "Manage" : "Enable",
+      }),
+      state: {
+        ...defineFeatureState(),
+        isUpsellNeeded: () => false,
+        isAvailable: () => RuntimeSdk.hasCapability("isEcommerce"),
+      },
+      actions: {},
       queries: [
         {
           key: "plugins",

@@ -3,9 +3,10 @@ import { Spinner } from "@yoast/ui-library";
 import useSWR from "swr";
 import { Section } from "./Section";
 import { IntegrationsSdk } from "../sdk/integrations";
-import { CaptiveRazorpay } from "./CaptiveRazorpay";
+import { PluginsSdk } from "../sdk/plugins";
+import useSWRMutation from "swr/mutation";
 
-const ThirdPartyIntegration = ({
+export const ThirdPartyIntegration = ({
   id,
   title,
   description,
@@ -18,12 +19,25 @@ const ThirdPartyIntegration = ({
     data: integrationStatus,
     isLoading,
     mutate: refreshIntegrationStatus,
-} = useSWR(id, IntegrationsSdk.status);
+  } = useSWR(id, IntegrationsSdk.status);
 
   const [isConnectionActive, setConnectionActive] = useState(false);
 
-  function onConnect() {
+  let installPlugin = useSWRMutation("install-plugin", async () => {
+    await PluginsSdk.actions.installSync(
+      integrationStatus?.integration?.plugin?.slug
+    );
+    await refreshIntegrationStatus();
     setConnectionActive(true);
+  });
+
+  function onConnect() {
+    const isPluginActive = integrationStatus?.integration?.plugin?.status;
+    if (!isPluginActive) {
+      installPlugin.trigger();
+    } else {
+      setConnectionActive(true);
+    }
   }
 
   return (
@@ -35,34 +49,35 @@ const ThirdPartyIntegration = ({
       ) : (
         <div className="yst-flex-1">
           {isConnectionActive ? (
-            id !== "razorpay" ?
-            (<div className="components-modal__frame yst-h-[500px]">
+            <div className="components-modal__frame yst-h-[500px]">
               <button
                 type="button"
                 onClick={async () => {
                   setConnectionActive(false);
-                  notify.push(`${id}-account-connect-success`, {
-                    title: `Your ${id} account have been connected`,
-                    variant: "success",
-                  });
-                  await refreshIntegrationStatus();
+                  const integrationStatusResponse =
+                    await refreshIntegrationStatus();
+                  if (integrationStatusResponse.complete) {
+                    notify.push(`${id}-account-connect-success`, {
+                      title: `Your ${id} account have been connected`,
+                      variant: "success",
+                    });
+                  }
                 }}
               />
               <iframe
                 className="yst-h-full yst-w-full"
                 src={integrationStatus?.integration?.captive}
               />
-            </div> ) : (
-              <CaptiveRazorpay />
-            )
-
+            </div>
           ) : (
-            children({ integrationStatus, onConnect })
+            children({
+              integrationStatus,
+              onConnect,
+              isInstalling: installPlugin.isMutating,
+            })
           )}
         </div>
       )}
     </Section.Settings>
   );
 };
-
-export default ThirdPartyIntegration;

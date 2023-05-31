@@ -23,9 +23,14 @@ export function StoreDetails(props) {
       data.woocommerce_default_country ??
       defaultContact.woocommerce_default_country
     ).split(":");
+
     setControls({
       ...controls,
-      woocommerce_calc_taxes: data.woocommerce_calc_taxes,
+      woocommerce_calc_taxes:
+        data.woocommerce_calc_taxes === undefined ||
+        data.woocommerce_calc_taxes === null
+          ? "no"
+          : data.woocommerce_calc_taxes,
       country,
       state,
       woocommerce_email_from_address: data.woocommerce_email_from_address,
@@ -86,52 +91,13 @@ export function StoreDetails(props) {
           </div>
         ) : (
           <>
-            <Section.Content>
-              <StoreInfo
-                controls={controls}
-                setControls={setControls}
-                setIsDirty={setIsDirty}
-              />
-              <div className="yst-my-8">
-                <hr />
-              </div>
-              <ThirdPartyIntegration
-                id="shippo"
-                title={__("Shipping Options", "wp-module-ecommerce")} 
-                description={__("Setup a shipping account for delivering products to your customers","wp-module-ecommerce")} 
-                integrationSrcPath="admin.php?page=nfd-ecommerce-captive-flow-shippo"
-                notify={notify}
-              >
-                {({ integrationStatus, onConnect }) => {
-                  return (
-                    <Shipping
-                      integrationStatus={integrationStatus}
-                      onConnect={onConnect}
-                    />
-                  );
-                }}
-              </ThirdPartyIntegration>
-              <div className="yst-my-8">
-                <hr />
-              </div>
-              <ThirdPartyIntegration
-                id="razorpay"
-                title={__("Payment Processors", "wp-module-ecommerce")} 
-                description={__("Choose a service that your customers will use to process their payments in return for your products and services.","wp-module-ecommerce")} 
-                integrationSrcPath="admin.php?page=nfd-ecommerce-captive-flow-shippo"
-                notify={notify}
-              >
-                {({ integrationStatus, onConnect }) => {
-                  return (
-                <Razorpay
-                  integrationStatus={integrationStatus}
-                  onConnect={onConnect}
-                />
-                );
-              }}
-              </ThirdPartyIntegration>
-              <TaxSettings controls={controls} />
-            </Section.Content>
+            <StoreInfo
+              controls={controls}
+              setControls={setControls}
+              setIsDirty={setIsDirty}
+            />
+            <Shipping notify={notify} />
+            <TaxSettings controls={controls} />
             <div className="yst-p-8 yst-border-t yst-bg-[#F8FAFC] yst-flex yst-justify-end yst-gap-4">
               <Button
                 variant="secondary"

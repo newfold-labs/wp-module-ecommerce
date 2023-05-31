@@ -59,6 +59,7 @@ class IntegrationsController {
 		return array(
 			'url'    => \admin_url( Plugins::$supported_plugins[ $plugin ][ 'url' ] ),
 			'status' => PluginInstaller::exists( $plugin, true ),
+			'slug'   => $plugin
 		);
 	}
 
