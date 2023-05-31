@@ -135,11 +135,23 @@ function RecentOrders() {
         </div>
       )}
       {!orders.isLoading && orders.data.length === 0 && (
-        <div className="yst-flex-1 yst-h-full">
-          <NoOrdersFallback />
+        <div
+          className={classNames(
+            "yst-flex-1 yst-h-full",
+            "yst-flex yst-flex-col yst-flex-wrap yst-items-center yst-gap-4",
+            "yst-p-4 yst-pb-0"
+          )}
+        >
+          <NoOrdersFallback className="yst-flex-2" />
+          <p className="yst-flex-1" >
+            {__(
+              "Add some products so you can start getting orders!",
+              "wp-module-ecommerce"
+            )}
+          </p>
         </div>
       )}
-      {!orders.isLoading && (
+      {!orders.isLoading && orders.data?.length > 0 && (
         <>
           <ul className="yst-flex-1">
             {orders.data?.map((order) => (
