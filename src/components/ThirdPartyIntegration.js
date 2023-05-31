@@ -54,7 +54,7 @@ const ThirdPartyIntegration = ({
               />
             </div>
           ) : (
-            children({ integrationStatus, onConnect })
+            children({ integrationStatus, onConnect ,refreshIntegrationStatus})
           )}
         </div>
       )}
