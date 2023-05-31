@@ -84,22 +84,24 @@ export function StoreDetails(props) {
           </div>
         ) : (
           <>
-            <Section.Content>
-              <div className="yst-flex yst-flex-col yst-gap-y-8">
-                <StoreInfo
-                  controls={controls}
-                  setControls={setControls}
-                  setIsDirty={setIsDirty}
-                />
-                <hr />
-               <Shipping notify={notify}/>
-                <hr />
-                <TaxSettings
-                  controls={controls}
-                  setIsDirty={setIsDirty}
-                  setControls={setControls}
-                />
-              </div>
+            <Section.Content separator={true}>
+              <StoreInfo
+                controls={controls}
+                setControls={setControls}
+                setIsDirty={setIsDirty}
+              />
+            </Section.Content>
+
+            <Section.Content separator={true}>
+              <Shipping notify={notify} />
+            </Section.Content>
+
+            <Section.Content separator={true}>
+              <TaxSettings
+                controls={controls}
+                setIsDirty={setIsDirty}
+                setControls={setControls}
+              />
             </Section.Content>
             <div className="yst-p-8 yst-border-t yst-bg-[#F8FAFC] yst-flex yst-justify-end yst-gap-4">
               <Button
