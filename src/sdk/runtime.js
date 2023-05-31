@@ -37,4 +37,7 @@ export const RuntimeSdk = {
     query.set("return_to_nfd", window.location.hash.replace("#", ""));
     return `${page}?${query}`;
   },
+  nonce(name) {
+    return window.NFDECOM?.sdk?.nonces?.[name];
+  },
 };
