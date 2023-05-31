@@ -57,7 +57,21 @@ const rzrPaySettings = {
   enable_1cc_debug_mode: "yes",
 };
 
-export function CaptiveRazorpay({ onComplete, settings, hireExpertsUrl }) {
+export function CaptiveRazorpay() {
+
+  let settings = {
+    "enabled": "yes",
+    "title": "Credit Card/Debit Card/NetBanking",
+    "description": "Pay securely by Credit or Debit card or Internet Banking through Razorpay.",
+    "payment_action": "capture",
+    "order_success_message": "Thank you for shopping with us. Your account has been charged and your transaction is successful. We will be processing your order soon.",
+    "enable_1cc_debug_mode": "yes",
+    "key_id": "rzp_test_qn0AnShxeczQr4",
+    "key_secret": "Jk2gmPYNcuxHNja8fUdA8Qvz"
+}
+
+let hireExpertsUrl = `admin.php?page=bluehost#/marketplace/services/blue-sky`;
+  
   let [isTestMode, setTestMode] = useState(() => false);
   let [rzrKeys, updateKeys] = useState({
     key_id: "",
@@ -84,7 +98,7 @@ export function CaptiveRazorpay({ onComplete, settings, hireExpertsUrl }) {
           "nfd-ecommerce-captive-flow-razorpay": "true",
           woocommerce_razorpay_settings: { ...rzrPaySettings, ...rzrKeys },
         });
-        await onComplete();
+       // await onComplete();
       }}
     >
       <h1 style={{ justifySelf: "center" }}>
@@ -186,7 +200,7 @@ export function CaptiveRazorpay({ onComplete, settings, hireExpertsUrl }) {
           className="nfd-ecommerce-button"
           variant="secondary"
           type="button"
-          onClick={onComplete}
+          onClick={() => {}}
         >
           {__("Cancel", "wp-module-ecommerce")}
         </Button>

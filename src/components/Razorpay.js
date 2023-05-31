@@ -2,20 +2,31 @@ import { __ } from "@wordpress/i18n";
 import { Button, Badge } from "@yoast/ui-library";
 import { ReactComponent as RazorPayBrand } from "../icons/razorpay-brand.svg";
 
-const Razorpay = (props) => {
+const Razorpay = ({ integrationStatus, onConnect }) => {
+  const isSetupComplete = integrationStatus?.complete;
+  const environment = integrationStatus?.details?.environment;
 
   return (
     <div className="yst-h-[174px] yst-border yst-h-174px yst-p-6">
       <div className="yst-flex yst-justify-between yst-mb-8">
         <RazorPayBrand />
-        <Button onClick={onConnect}>
-        {__("Connect", "wp-module-ecommerce")}
-        </Button>
+        {isSetupComplete ? (
+          <Button
+            variant="secondary"
+            as="a"
+            href={integrationStatus?.plugin?.url}
+          >
+            {__("Manage", "wp-module-ecommerce")}
+          </Button>
+        ) : (
+          <Button onClick={onConnect}>
+            {__("Connect", "wp-module-ecommerce")}
+          </Button>
+        )}
       </div>
       <span>
         {__(
-          "The best multi-carrier shipping software for e-commerce businesses.",
-          "wp-module-ecommerce"
+          "Online payments built for success. We help you do business across different markets and 100+ currencies—even if your customers don’t have Razorpay."
         )}
       </span>
       {environment && (

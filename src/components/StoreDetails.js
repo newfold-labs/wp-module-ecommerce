@@ -8,6 +8,7 @@ import { Section } from "./Section";
 import Shipping from "./Shipping";
 import StoreInfo from "./StoreInfo";
 import TaxSettings from "./TaxSettings";
+import Razorpay from "./Razorpay";
 import ThirdPartyIntegration from "./ThirdPartyIntegration";
 
 export function StoreDetails(props) {
@@ -113,6 +114,22 @@ export function StoreDetails(props) {
               <div className="yst-my-8">
                 <hr />
               </div>
+              <ThirdPartyIntegration
+                id="razorpay"
+                title={__("Payment Processors", "wp-module-ecommerce")} 
+                description={__("Choose a service that your customers will use to process their payments in return for your products and services.","wp-module-ecommerce")} 
+                integrationSrcPath="admin.php?page=nfd-ecommerce-captive-flow-shippo"
+                notify={notify}
+              >
+                {({ integrationStatus, onConnect }) => {
+                  return (
+                <Razorpay
+                  integrationStatus={integrationStatus}
+                  onConnect={onConnect}
+                />
+                );
+              }}
+              </ThirdPartyIntegration>
               <TaxSettings controls={controls} />
             </Section.Content>
             <div className="yst-p-8 yst-border-t yst-bg-[#F8FAFC] yst-flex yst-justify-end yst-gap-4">

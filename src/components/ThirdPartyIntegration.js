@@ -3,6 +3,7 @@ import { Spinner } from "@yoast/ui-library";
 import useSWR from "swr";
 import { Section } from "./Section";
 import { IntegrationsSdk } from "../sdk/integrations";
+import { CaptiveRazorpay } from "./CaptiveRazorpay";
 
 const ThirdPartyIntegration = ({
   id,
@@ -34,7 +35,8 @@ const ThirdPartyIntegration = ({
       ) : (
         <div className="yst-flex-1">
           {isConnectionActive ? (
-            <div className="components-modal__frame yst-h-[500px]">
+            id !== "razorpay" ?
+            (<div className="components-modal__frame yst-h-[500px]">
               <button
                 type="button"
                 onClick={async () => {
@@ -50,7 +52,10 @@ const ThirdPartyIntegration = ({
                 className="yst-h-full yst-w-full"
                 src={integrationStatus?.integration?.captive}
               />
-            </div>
+            </div> ) : (
+              <CaptiveRazorpay />
+            )
+
           ) : (
             children({ integrationStatus, onConnect })
           )}
