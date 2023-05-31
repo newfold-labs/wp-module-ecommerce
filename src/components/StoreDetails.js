@@ -1,6 +1,6 @@
 import { useEffect, useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
-import { Button, Spinner } from "@yoast/ui-library";
+import { Button } from "@yoast/ui-library";
 import useSWR from "swr";
 import { RuntimeSdk } from "../sdk/runtime";
 import { WordPressSdk } from "../sdk/wordpress";
@@ -12,9 +12,25 @@ import TaxSettings from "./TaxSettings";
 export function StoreDetails(props) {
   let { notify } = props.wpModules;
   let { data, isLoading } = useSWR("settings", WordPressSdk.settings.get);
-  const [controls, setControls] = useState({});
+  const [formdata, setFormData] = useState({});
   const [isDirty, setIsDirty] = useState(false);
+  const [isFormDirty, setIsFormDirty] = useState({
+    details: false,
+    shipping: false,
+    tax: false,
+  });
 
+  const controls = {
+    details: {
+      isLoading,
+    },
+    shipping: {
+      isLoading: false,
+    },
+    tax: {
+      isLoading,
+    },
+  };
   const setInitialFormData = () => {
     let { defaultContact } = RuntimeSdk.brandSettings;
     let [country, state] = (
@@ -22,8 +38,8 @@ export function StoreDetails(props) {
       defaultContact.woocommerce_default_country
     ).split(":");
 
-    setControls({
-      ...controls,
+    setFormData({
+      ...formdata,
       woocommerce_calc_taxes:
         data.woocommerce_calc_taxes === undefined ||
         data.woocommerce_calc_taxes === null
@@ -62,10 +78,10 @@ export function StoreDetails(props) {
           event.preventDefault();
           event.stopPropagation();
           await WordPressSdk.settings.put({
-            ...controls,
-            woocommerce_default_country: controls.state
-              ? `${controls.country}:${controls.state}`
-              : controls.country,
+            ...formdata,
+            woocommerce_default_country: formdata.state
+              ? `${formdata.country}:${formdata.state}`
+              : formdata.country,
           });
           notify.push(`store-details-save-success`, {
             title: "Successfully saved the Store Details",
@@ -76,43 +92,36 @@ export function StoreDetails(props) {
         onChange={(event) => {
           const name = event.target.name;
           const value = event.target.value;
-          setControls({
-            ...controls,
+          setFormData({
+            ...formdata,
             [name]: value,
           });
           setIsDirty(true);
         }}
       >
-        {isLoading ? (
-          <div className="yst-flex yst-items-center yst-text-center yst-justify-center yst-h-60">
-            <Spinner size={8} className="yst-text-primary" />
-          </div>
-        ) : (
-          <>
-            <StoreInfo
-              controls={controls}
-              setControls={setControls}
-              setIsDirty={setIsDirty}
-            />
-            <Shipping notify={notify} />
-            <TaxSettings controls={controls} />
-            <div className="yst-p-8 yst-border-t yst-bg-[#F8FAFC] yst-flex yst-justify-end yst-gap-4">
-              <Button
-                variant="secondary"
-                disabled={!isDirty}
-                onClick={() => {
-                  setInitialFormData();
-                  setIsDirty(false);
-                }}
-              >
-                {__("Discard Changes", "wp-module-ecommerce")}
-              </Button>
-              <Button disabled={!isDirty} type="submit">
-                {__("Save Changes", "wp-module-ecommerce")}
-              </Button>
-            </div>
-          </>
-        )}
+        <StoreInfo
+          formdata={formdata}
+          setFormData={setFormData}
+          setIsDirty={setIsDirty}
+          controls={controls.details}
+        />
+        <Shipping notify={notify} />
+        {/* <TaxSettings formdata={formdata} /> */}
+        <div className="yst-p-8 yst-border-t yst-bg-[#F8FAFC] yst-flex yst-justify-end yst-gap-4">
+          <Button
+            variant="secondary"
+            disabled={!isDirty}
+            onClick={() => {
+              setInitialFormData();
+              setIsDirty(false);
+            }}
+          >
+            {__("Discard Changes", "wp-module-ecommerce")}
+          </Button>
+          <Button disabled={!isDirty} type="submit">
+            {__("Save Changes", "wp-module-ecommerce")}
+          </Button>
+        </div>
       </form>
     </Section.Container>
   );
