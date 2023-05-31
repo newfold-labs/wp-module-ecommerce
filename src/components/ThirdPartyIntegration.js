@@ -6,7 +6,7 @@ import { IntegrationsSdk } from "../sdk/integrations";
 import { PluginsSdk } from "../sdk/plugins";
 import useSWRMutation from "swr/mutation";
 
-const ThirdPartyIntegration = ({
+export const ThirdPartyIntegration = ({
   id,
   title,
   description,
@@ -81,5 +81,3 @@ const ThirdPartyIntegration = ({
     </Section.Settings>
   );
 };
-
-export default ThirdPartyIntegration;

@@ -1,16 +1,17 @@
 import { __ } from "@wordpress/i18n";
 import { Badge, Button } from "@yoast/ui-library";
+import classNames from "classnames";
 import { ReactComponent as Shippo } from "../icons/brands/shippo.svg";
-import ThirdPartyIntegration from "./ThirdPartyIntegration";
 import { RuntimeSdk } from "../sdk/runtime";
 import { Section } from "./Section";
+import { ThirdPartyIntegration } from "./ThirdPartyIntegration";
 
 const Shipping = ({ notify }) => {
   if (!RuntimeSdk.brandSettings.setup.shipping.includes("Shippo")) {
     return null;
   }
   return (
-    <Section.Content separator={true}>
+    <Section.Content separator>
       <ThirdPartyIntegration
         id="shippo"
         title={__("Shipping Options", "wp-module-ecommerce")}
@@ -57,14 +58,15 @@ const Shipping = ({ notify }) => {
               </span>
               {environment && (
                 <div className="yst-flex yst-gap-4 yst-mt-4">
-                  <span>Environment :</span>
+                  <span>{__("Environment:", "wp-module-ecommerce")}</span>
                   <Badge
                     size="large"
-                    className={`yst-text-sm yst-capitalize ${
-                      environment == "sandbox"
-                        ? "yst-bg-[#178113] yst-text-black"
-                        : "yst-bg-[#F89C24] yst-text-white"
-                    }`}
+                    variant={environment === "sandbox" ? "upsell" : "plain"}
+                    className={classNames(
+                      "yst-text-sm yst-capitalize",
+                      environment === "live" &&
+                        "yst-bg-[#178113] yst-text-white"
+                    )}
                   >
                     {environment}
                   </Badge>
