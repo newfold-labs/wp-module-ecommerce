@@ -323,7 +323,7 @@ export const YITHPluginsDefinitions = (props) => ({
       state: {
         ...defineFeatureState(),
         isUpsellNeeded: () => false,
-        isAvailable: () => RuntimeSdk.hasCapability("isJarvis"),
+        isAvailable: () => RuntimeSdk.hasCapability("isEcommerce"),
       },
       actions: {},
       queries: [
