@@ -2,7 +2,7 @@ import {
   ButtonGroup,
   TextControl,
 } from "@wordpress/components";
-import { Label, Toggle, Button } from "@yoast/ui-library";
+import { ToggleField,Button } from "@yoast/ui-library";
 import { useEffect, useState } from "@wordpress/element";
 import { sprintf, __ } from "@wordpress/i18n";
 import { ReactComponent as RazorPayBrand } from "../icons/razorpay-brand.svg";
@@ -127,16 +127,13 @@ let hireExpertsUrl = `admin.php?page=bluehost#/marketplace/services/blue-sky`;
         disabled={isFormDisabled}
         style={{ paddingTop: "0", display: "grid", gap: "1.5em" }}
       >
-        
-        <div className="yst-flex yst-justify-start">
-          <Label label={__("Enable test mode", "wp-module-ecommerce")} />
-          <Toggle
-            id="rzpTestModeToggle"
-            checked={isTestMode}
-            onChange={setTestMode}
-            screenReaderLabel="Enable test mode"
-          />
-        </div>
+        <ToggleField
+          id="rzpTestModeToggle"
+          label={__("Enable test mode", "wp-module-ecommerce")}
+          checked={isTestMode}
+          onChange={setTestMode}
+        />
+
         <TextControl
           className="text-control"
           name="key_id"
