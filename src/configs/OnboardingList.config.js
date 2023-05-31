@@ -141,11 +141,21 @@ export function OnboardingListDefinition(props) {
           "wp-module-ecommerce"
         ),
         state: {
+          isCompleted: () =>
+            pandora.get("nfd_ecommerce_onboarding_checklist", {})
+              .connect_socials === "completed",
           isActive: (queries) => queries?.plugins?.isJetpackActive,
           url: () => RuntimeSdk.adminUrl("admin.php?page=jetpack#/sharing"),
         },
         shouldRender: (state) => state.isActive,
-        actions: {},
+        actions: {
+          manage: () => {
+            pandora.set("nfd_ecommerce_onboarding_checklist", {
+              ...pandora.get("nfd_ecommerce_onboarding_checklist", {}),
+              connect_socials: "completed",
+            });
+          },
+        },
         queries: [{ key: "plugins", selector: parsePluginStatus }],
       },
       {

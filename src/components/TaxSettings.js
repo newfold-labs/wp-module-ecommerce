@@ -12,9 +12,9 @@ const taxManagementOptions = [
   },
 ];
 
-const TaxSettings = ({ controls }) => {
+const TaxSettings = ({ values }) => {
   return (
-    <Section.Content separator={true}>
+    <Section.Content separator>
       <Section.Settings
         title={__("Tax Settings", "wp-module-ecommerce")}
         description={__(
@@ -29,7 +29,7 @@ const TaxSettings = ({ controls }) => {
           {taxManagementOptions.map((option, i) => {
             return (
               <RadioGroup.Radio
-                checked={option.value === controls.woocommerce_calc_taxes}
+                checked={option.value === values.woocommerce_calc_taxes}
                 id={"tax-" + option.value}
                 label={option.label}
                 value={option.value}
