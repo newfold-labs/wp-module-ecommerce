@@ -17,7 +17,7 @@ const ThirdPartyIntegration = ({
     data: integrationStatus,
     isLoading,
     mutate: refreshIntegrationStatus,
-} = useSWR(id, IntegrationsSdk.status);
+  } = useSWR(id, IntegrationsSdk.status);
 
   const [isConnectionActive, setConnectionActive] = useState(false);
 
@@ -39,11 +39,13 @@ const ThirdPartyIntegration = ({
                 type="button"
                 onClick={async () => {
                   setConnectionActive(false);
-                  notify.push(`${id}-account-connect-success`, {
-                    title: `Your ${id} account have been connected`,
-                    variant: "success",
-                  });
-                  await refreshIntegrationStatus();
+                  const integrationStatusResponse = await refreshIntegrationStatus();
+                  if (integrationStatusResponse.complete) {
+                    notify.push(`${id}-account-connect-success`, {
+                      title: `Your ${id} account have been connected`,
+                      variant: "success",
+                    });
+                  }
                 }}
               />
               <iframe
