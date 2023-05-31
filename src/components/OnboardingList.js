@@ -4,10 +4,16 @@ import {
 } from "@heroicons/react/24/outline";
 import { useState } from "@wordpress/element";
 import { Card, Link, Spinner, Title } from "@yoast/ui-library";
+import useSWRMutation from "swr/mutation";
 import { OnboardingListDefinition } from "../configs/OnboardingList.config";
 import { useCardManager } from "./useCardManager";
 
-function OnboardingCheckListItem({ children, isComplete, href }) {
+function OnboardingCheckListItem({ children, actions, state, ...props }) {
+  let manageAction = useSWRMutation(props.name, async () => {
+    if (actions.manage) {
+      await actions.manage(state, props);
+    }
+  });
   return (
     <li
       className={classNames(
@@ -19,30 +25,35 @@ function OnboardingCheckListItem({ children, isComplete, href }) {
       <Link
         className={classNames(
           "yst-rounded-t-md",
-          "focus:yst-shadow-none focus:yst-ring-none focus:yst-border-none",
-          "yst-flex yst-gap-3",
+          "yst-flex yst-items-center yst-gap-3",
           "yst-py-4 yst-px-5",
-          "yst-no-underline",
-          "yst-text-sm yst-cursor-pointer"
+          "yst-text-sm yst-no-underline"
         )}
-        href={href}
+        href={state.url}
+        {...(actions.manage && !manageAction.isMutating
+          ? { onClick: manageAction.trigger }
+          : {})}
       >
         <CheckCircleIcon
           className={classNames(
             "yst-w-[1.125rem]",
-            isComplete ? "yst-text-[#17B212]" : "yst-text-[#AAAFB8]"
+            state.isCompleted ? "yst-text-[#17B212]" : "yst-text-[#AAAFB8]"
           )}
         />
-        <span className="yst-flex-1 yst-text-black">{children}</span>
-        <ArrowLongRightIcon className="yst-text-black yst-w-[1.125rem]" />
+        <span className="yst-flex-1 yst-text-black">{props.text}</span>
+        {manageAction.isMutating ? (
+          <Spinner size={4} className="yst-text-primary" />
+        ) : (
+          <ArrowLongRightIcon className="yst-text-black yst-w-[1.125rem]" />
+        )}
       </Link>
     </li>
   );
 }
 
-export function OnboardingList() {
+export function OnboardingList(props) {
   let [view, setView] = useState("incomplete");
-  let [items] = useCardManager(OnboardingListDefinition());
+  let [items] = useCardManager(OnboardingListDefinition(props));
   if (items.length === 0) {
     return (
       <div className="yst-flex-1 yst-flex yst-items-center yst-text-center yst-justify-center">
@@ -76,13 +87,7 @@ export function OnboardingList() {
       {itemsToDisplay.length > 0 && (
         <Card as="ul" className="yst-p-0">
           {itemsToDisplay.slice(0, 5).map((item) => (
-            <OnboardingCheckListItem
-              key={item.name}
-              isComplete={item.state.isCompleted}
-              href={item.state.url}
-            >
-              {item.text}
-            </OnboardingCheckListItem>
+            <OnboardingCheckListItem key={item.name} {...item} />
           ))}
         </Card>
       )}

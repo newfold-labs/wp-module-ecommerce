@@ -42,7 +42,7 @@ export function OnboardingScreen({ comingSoon, toggleComingSoon, notify }) {
               </span>
               <Illustration className="yst-m-auto" />
             </div>
-            <OnboardingList />
+            <OnboardingList notify={notify} />
           </div>
           <SiteStatus
             comingSoon={comingSoon}
