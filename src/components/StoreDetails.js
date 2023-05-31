@@ -9,7 +9,6 @@ import Shipping from "./Shipping";
 import StoreInfo from "./StoreInfo";
 import TaxSettings from "./TaxSettings";
 import Razorpay from "./Razorpay";
-import ThirdPartyIntegration from "./ThirdPartyIntegration";
 
 export function StoreDetails(props) {
   let { notify } = props.wpModules;
@@ -97,6 +96,7 @@ export function StoreDetails(props) {
               setIsDirty={setIsDirty}
             />
             <Shipping notify={notify} />
+            <Razorpay notify={notify} />
             <TaxSettings controls={controls} />
             <div className="yst-p-8 yst-border-t yst-bg-[#F8FAFC] yst-flex yst-justify-end yst-gap-4">
               <Button

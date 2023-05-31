@@ -1,9 +1,8 @@
 import {
-  Button,
   ButtonGroup,
   TextControl,
-  ToggleControl,
 } from "@wordpress/components";
+import { Label, Toggle, Button } from "@yoast/ui-library";
 import { useEffect, useState } from "@wordpress/element";
 import { sprintf, __ } from "@wordpress/i18n";
 import { ReactComponent as RazorPayBrand } from "../icons/razorpay-brand.svg";
@@ -89,9 +88,7 @@ let hireExpertsUrl = `admin.php?page=bluehost#/marketplace/services/blue-sky`;
   );
   let isKeyValid = isTestMode ? isTestKeyValid : isProductionKeyValid;
   return (
-    <form
-      className="nfd-ecommerce-modal-razorpay"
-      onSubmit={async (event) => {
+    <form onSubmit={async (event) => {
         event.preventDefault();
         event.stopPropagation();
         await updateWPSettings({
@@ -101,22 +98,17 @@ let hireExpertsUrl = `admin.php?page=bluehost#/marketplace/services/blue-sky`;
        // await onComplete();
       }}
     >
-      <h1 style={{ justifySelf: "center" }}>
-        {__("Connect your Razorpay Account", "wp-module-ecommerce")}
-      </h1>
-      <RazorPayBrand className="razorpay-logo" />
-      <section
-        style={{ padding: "0 0 1.5em", borderBottom: "solid 1px #cccccc" }}
-      >
+      <div className="yst-flex yst-justify-between yst-mb-6">
+        <RazorPayBrand className="razorpay-logo" />
         <Button
-          className="nfd-ecommerce-button"
-          variant="secondary"
           target="_blank"
           href="https://rzp.io/i/egoPZR2rbu"
         >
-          {__("Create a RazorPay Account", "wp-module-ecommerce")}
+          {__("Create an Account", "wp-module-ecommerce")}
         </Button>
-        <p>
+      </div>
+
+        <p className="yst-mb-4">
           {__("Already have an account? ", "wp-module-ecommerce")}
           <a
             href="https://dashboard.razorpay.com/?screen=sign_in&source=bluehost&next=app%2Fwebsite-app-settings%2Fapi-keys"
@@ -125,24 +117,26 @@ let hireExpertsUrl = `admin.php?page=bluehost#/marketplace/services/blue-sky`;
             {__("Login", "wp-module-ecommerce")}
           </a>
         </p>
-        <p style={{ color: "var(--nfd-ecommerce-text-tertiary)" }}>
+        <p className="yst-mb-6 yst-pb-6 yst-border-b yst-font-medium" style={{ color: "var(--nfd-ecommerce-text-tertiary)" }}>
           {__(
-            "After you successfully login and generate your key ID and key secret codes, you will then need to switch back to this tab in your browser and paste your codes into the fields below.",
+            "After you login to Razorpay, you will need to generate your key ID and key secret codes, you will then need to switch back to this tab in your browser and paste your codes into the fields below.",
             "wp-module-ecommerce"
           )}
         </p>
-      </section>
       <fieldset
         disabled={isFormDisabled}
         style={{ paddingTop: "0", display: "grid", gap: "1.5em" }}
       >
-        <ToggleControl
-          label={__("Enable test mode", "wp-module-ecommerce")}
-          className="toggle-control"
-          checked={isTestMode}
-          onChange={setTestMode}
-        />
-
+        
+        <div className="yst-flex yst-justify-start">
+          <Label label={__("Enable test mode", "wp-module-ecommerce")} />
+          <Toggle
+            id="rzpTestModeToggle"
+            checked={isTestMode}
+            onChange={setTestMode}
+            screenReaderLabel="Enable test mode"
+          />
+        </div>
         <TextControl
           className="text-control"
           name="key_id"
