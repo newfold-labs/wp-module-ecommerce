@@ -25,6 +25,11 @@ final class Runtime {
 			'rest_url'       => \get_home_url() . '/index.php',
 			'capabilities'   => $container->get('capabilities')->all(),
 			'brand_settings' => Brands::get_config( Runtime::get_brand_name( $container ) ),
+			'sdk' => array(
+				'nonces' => array(
+					'gateway_toggle' => \wp_create_nonce( 'woocommerce-toggle-payment-gateway-enabled' )
+				)
+			)
 		);
 	}
 
