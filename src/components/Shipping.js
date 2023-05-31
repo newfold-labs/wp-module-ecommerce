@@ -34,7 +34,8 @@ const Shipping = ({ integrationStatus, onConnect }) => {
         <div className="yst-flex yst-gap-4 yst-mt-4">
           <span>Environment :</span>
           <Badge
-            className={`yst-w-78 yst-h-26 yst-rounded ${
+            size="large"
+            className={`yst-text-sm ${
               environment == "sandbox"
                 ? "yst-bg-[#178113] yst-text-black"
                 : "yst-bg-[#F89C24] yst-text-white"
