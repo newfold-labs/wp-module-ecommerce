@@ -86,33 +86,38 @@ export function StoreDetails(props) {
         ) : (
           <>
             <Section.Content>
-              <StoreInfo
-                controls={controls}
-                setControls={setControls}
-                setIsDirty={setIsDirty}
-              />
-              <div className="yst-my-8">
+              <div className="yst-flex yst-flex-col yst-gap-y-8">
+                <StoreInfo
+                  controls={controls}
+                  setControls={setControls}
+                  setIsDirty={setIsDirty}
+                />
                 <hr />
-              </div>
-              <ThirdPartyIntegration
-                id="shippo"
-                title={__("Shipping Options", "wp-module-ecommerce")} 
-                description={__("Setup a shipping account for delivering products to your customers","wp-module-ecommerce")} 
-                notify={notify}
-              >
-                {({ integrationStatus, onConnect }) => {
-                  return (
-                    <Shipping
-                      integrationStatus={integrationStatus}
-                      onConnect={onConnect}
-                    />
-                  );
-                }}
-              </ThirdPartyIntegration>
-              <div className="yst-my-8">
+                <ThirdPartyIntegration
+                  id="shippo"
+                  title={__("Shipping Options", "wp-module-ecommerce")}
+                  description={__(
+                    "Setup a shipping account for delivering products to your customers",
+                    "wp-module-ecommerce"
+                  )}
+                  notify={notify}
+                >
+                  {({ integrationStatus, onConnect }) => {
+                    return (
+                      <Shipping
+                        integrationStatus={integrationStatus}
+                        onConnect={onConnect}
+                      />
+                    );
+                  }}
+                </ThirdPartyIntegration>
                 <hr />
+                <TaxSettings
+                  controls={controls}
+                  setIsDirty={setIsDirty}
+                  setControls={setControls}
+                />
               </div>
-              <TaxSettings controls={controls} setIsDirty={setIsDirty} setControls={setControls}/>
             </Section.Content>
             <div className="yst-p-8 yst-border-t yst-bg-[#F8FAFC] yst-flex yst-justify-end yst-gap-4">
               <Button
