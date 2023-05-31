@@ -199,7 +199,7 @@ function RecentOrders() {
   );
 }
 
-export function StoreAnalytics(props) {
+export function QuickLook(props) {
   let shouldUpsell = !props.woo.isActive;
   let [installWoo, isInstalling] = useInstallWoo(props);
   return (
