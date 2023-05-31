@@ -13,7 +13,7 @@ const Text = {
       "You're just a few steps away from sharing your site with the world!",
       "wp-module-ecommerce"
     ),
-    Icon: StorePendingIllustration,
+    Illustration: StorePendingIllustration,
   },
   Live: {
     title: __("Ready to go to the next level?", "wp-module-ecommerce"),
@@ -21,16 +21,18 @@ const Text = {
       "Increase your store's performance by helping people find your store and engaging more with them once they have.",
       "wp-module-ecommerce"
     ),
-    Icon: WelcomeIllustration,
+    Illustration: WelcomeIllustration,
   },
 };
 
 export function OnboardingScreen({ comingSoon, toggleComingSoon, notify }) {
-  const { title, description, Icon } = comingSoon ? Text.Pending : Text.Live;
+  const { title, description, Illustration } = comingSoon
+    ? Text.Pending
+    : Text.Live;
   return (
-    <Section.Container>
+    <Section.Container className="wppbh-welcome-section">
       <Section.Header title="Home" />
-      <Section.Content>
+      <Section.Content className="wppbh-app-section-home">
         <div className="yst-flex yst-flex-col yst-gap-6">
           <div className="yst-grid yst-grid-cols-2 yst-gap-6 yst-min-h-[350px]">
             <div className="yst-flex yst-flex-col yst-gap-4">
@@ -38,9 +40,9 @@ export function OnboardingScreen({ comingSoon, toggleComingSoon, notify }) {
               <span className="yst-text-[#495C77] yst-text-sm">
                 {description}
               </span>
-              <Icon className="yst-m-auto" />
+              <Illustration className="yst-m-auto" />
             </div>
-            <OnboardingList />
+            <OnboardingList notify={notify} />
           </div>
           <SiteStatus
             comingSoon={comingSoon}

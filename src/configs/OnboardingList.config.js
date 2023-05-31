@@ -1,8 +1,10 @@
+import pandora from "@faizaanceg/pandora";
 import { __ } from "@wordpress/i18n";
 import { PluginsSdk } from "../sdk/plugins";
 import { RuntimeSdk } from "../sdk/runtime";
 import { WooCommerceSdk } from "../sdk/woocommerce";
 import { WordPressSdk } from "../sdk/wordpress";
+import { createPluginInstallAction } from "./actions";
 import { wcTasksParser, yithOnboardingParser } from "./selectors";
 
 const parsePluginStatus = (plugins) => ({
@@ -16,7 +18,8 @@ const CaptiveFlows = {
   razorpay: "nfd-ecommerce-captive-flow-razorpay",
 };
 
-export function OnboardingListDefinition() {
+export function OnboardingListDefinition(props) {
+  const installJetpack = createPluginInstallAction("jetpack", 20, props);
   return {
     dataDependencies: {
       plugins: async () => PluginsSdk.queries.status("woocommerce", "jetpack"),
@@ -101,9 +104,11 @@ export function OnboardingListDefinition() {
         state: {
           isActive: (queries) => queries?.plugins?.isWCActive,
           isCompleted: (queries) => queries?.products?.length > 0,
-          url: () => RuntimeSdk.adminUrl("post-new.php?post_type=product"),
+          url: () =>
+            RuntimeSdk.adminUrl("post-new.php?post_type=product", true),
         },
         shouldRender: (state) => state.isActive,
+        actions: {},
         queries: [
           { key: "plugins", selector: parsePluginStatus },
           { key: "products" },
@@ -113,10 +118,20 @@ export function OnboardingListDefinition() {
         name: "Add a new page to your site",
         text: __("Add a new page to your site", "wp-module-ecommerce"),
         state: {
-          url: () => RuntimeSdk.adminUrl("post-new.php?post_type=page"),
+          isCompleted: () =>
+            pandora.get("nfd_ecommerce_onboarding_checklist", {})
+              .add_new_page === "completed",
+          url: () => RuntimeSdk.adminUrl("post-new.php?post_type=page", true),
         },
         shouldRender: () => true,
-        actions: {},
+        actions: {
+          manage: () => {
+            pandora.set("nfd_ecommerce_onboarding_checklist", {
+              ...pandora.get("nfd_ecommerce_onboarding_checklist", {}),
+              add_new_page: "completed",
+            });
+          },
+        },
         queries: [],
       },
       {
@@ -131,6 +146,21 @@ export function OnboardingListDefinition() {
         },
         shouldRender: (state) => state.isActive,
         actions: {},
+        queries: [{ key: "plugins", selector: parsePluginStatus }],
+      },
+      {
+        name: "Enable Jetpack to connect to your social media accounts",
+        text: __(
+          "Enable Jetpack to connect to your social media accounts",
+          "wp-module-ecommerce"
+        ),
+        state: {
+          isCompleted: (queries) => queries?.plugins?.isJetpackActive,
+        },
+        shouldRender: (state) => !state.isCompleted,
+        actions: {
+          manage: installJetpack,
+        },
         queries: [{ key: "plugins", selector: parsePluginStatus }],
       },
     ],
