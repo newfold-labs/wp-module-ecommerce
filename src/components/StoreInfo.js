@@ -27,19 +27,16 @@ function formatCurrency(currency) {
   return textarea.value;
 }
 
-const StoreInfo = ({ formdata, setFormData, setIsDirty, controls }) => {
-  // TODO : Avoid passing state update function
+const StoreInfo = ({ values, pushChanges, controls }) => {
   let [isLoading, countries, currencies] = useBasicProfile();
   const [states, setStates] = useState([]);
   useEffect(() => {
-    if (countries && formdata.country) {
-      setStates(
-        countries.find((_) => _.code == formdata.country)?.states ?? []
-      );
+    if (countries && values.country) {
+      setStates(countries.find((_) => _.code == values.country)?.states ?? []);
     }
-  }, [formdata.country, countries]);
+  }, [values.country, countries]);
   return (
-    <Section.Content separator={true}>
+    <Section.Content separator>
       <Section.Settings
         title={__("Store Info", "wp-module-ecommerce")}
         description={__(
@@ -52,10 +49,10 @@ const StoreInfo = ({ formdata, setFormData, setIsDirty, controls }) => {
             <Spinner size={8} className="yst-text-primary" />
           </div>
         ) : (
-          <fieldset name="details">
+          <div>
             <div>
               <Label>{__("Where is your store based? *")}</Label>
-              {isLoading || !formdata.country ? (
+              {isLoading || !values.country ? (
                 <TextInput name="country" className="yst-mt-2" disabled />
               ) : (
                 <Select
@@ -66,17 +63,15 @@ const StoreInfo = ({ formdata, setFormData, setIsDirty, controls }) => {
                   onChange={(target) => {
                     const statesList =
                       countries?.find((_) => _.code == target)?.states ?? [];
-                    setFormData({
-                      ...formdata,
+                    pushChanges({
                       country: target,
                       state: statesList.length == 0 ? "" : statesList[0].name,
                     });
                     setStates(statesList);
-                    setIsDirty(true);
                   }}
-                  value={formdata.country}
+                  value={values.country}
                   selectedLabel={
-                    countries?.find((_) => _.code === formdata.country)?.name
+                    countries?.find((_) => _.code === values.country)?.name
                   }
                 >
                   {countries?.map((country) => {
@@ -95,8 +90,9 @@ const StoreInfo = ({ formdata, setFormData, setIsDirty, controls }) => {
             <div className="yst-mt-6">
               <Label>{__("Address Line 1 *")}</Label>
               <TextInput
+                data-section="details"
                 name="woocommerce_store_address"
-                value={formdata.woocommerce_store_address}
+                value={values.woocommerce_store_address}
                 className="yst-mt-2"
                 required
               />
@@ -104,8 +100,9 @@ const StoreInfo = ({ formdata, setFormData, setIsDirty, controls }) => {
             <div className="yst-mt-6">
               <Label>{__("Address Line 2 (optional)")}</Label>
               <TextInput
+                data-section="details"
                 name="woocommerce_store_address_2"
-                value={formdata.woocommerce_store_address_2}
+                value={values.woocommerce_store_address_2}
                 className="yst-mt-2"
               />
             </div>
@@ -113,8 +110,9 @@ const StoreInfo = ({ formdata, setFormData, setIsDirty, controls }) => {
               <div className="yst-flex-1">
                 <Label>{__("City *")}</Label>
                 <TextInput
+                  data-section="details"
                   name="woocommerce_store_city"
-                  value={formdata.woocommerce_store_city}
+                  value={values.woocommerce_store_city}
                   className="yst-mt-2"
                   required
                 />
@@ -127,15 +125,11 @@ const StoreInfo = ({ formdata, setFormData, setIsDirty, controls }) => {
                     className="yst-mt-2"
                     required
                     onChange={(target) => {
-                      setFormData({
-                        ...formdata,
-                        state: target,
-                      });
-                      setIsDirty(true);
+                      pushChanges({ state: target });
                     }}
-                    value={formdata.state}
+                    value={values.state}
                     selectedLabel={
-                      states?.find((_) => _.code === formdata.state)?.name ??
+                      states?.find((_) => _.code === values.state)?.name ??
                       states[0].name
                     }
                   >
@@ -156,7 +150,7 @@ const StoreInfo = ({ formdata, setFormData, setIsDirty, controls }) => {
                 <Label>{__("Postal Code *")}</Label>
                 <TextInput
                   name="woocommerce_store_postcode"
-                  value={formdata.woocommerce_store_postcode}
+                  value={values.woocommerce_store_postcode}
                   className="yst-mt-2"
                   required
                 />
@@ -165,8 +159,9 @@ const StoreInfo = ({ formdata, setFormData, setIsDirty, controls }) => {
             <div className="yst-mt-6">
               <Label>{__("Email")}</Label>
               <TextInput
+                data-section="details"
                 name="woocommerce_email_from_address"
-                value={formdata.woocommerce_email_from_address}
+                value={values.woocommerce_email_from_address}
                 className="yst-mt-2"
               />
             </div>
@@ -186,21 +181,17 @@ const StoreInfo = ({ formdata, setFormData, setIsDirty, controls }) => {
                   className="yst-mt-2 yst-mb-4"
                   name="woocommerce_currency"
                   onChange={(target) => {
-                    setFormData({
-                      ...formdata,
-                      woocommerce_currency: target,
-                    });
-                    setIsDirty(true);
+                    pushChanges({ woocommerce_currency: target });
                   }}
-                  value={formdata.woocommerce_currency}
+                  value={values.woocommerce_currency}
                   selectedLabel={formatCurrency(
                     `${
                       currencies.find(
-                        (_) => _.code === formdata.woocommerce_currency
+                        (_) => _.code === values.woocommerce_currency
                       )?.name
                     } (${
                       currencies.find(
-                        (_) => _.code === formdata.woocommerce_currency
+                        (_) => _.code === values.woocommerce_currency
                       )?.symbol
                     })`
                   )}
@@ -220,7 +211,7 @@ const StoreInfo = ({ formdata, setFormData, setIsDirty, controls }) => {
               )}
             </div>
             <span>* indicates a required field</span>
-          </fieldset>
+          </div>
         )}
       </Section.Settings>
     </Section.Content>
