@@ -27,4 +27,7 @@ export const RuntimeSdk = {
   hasCapability(name) {
     return window.NFDECOM?.capabilities[name] === true;
   },
+  adminUrl(path) {
+    return window.NFDECOM?.admin_url + path;
+  },
 };
