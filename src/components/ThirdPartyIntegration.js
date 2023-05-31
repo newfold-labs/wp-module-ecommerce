@@ -3,6 +3,8 @@ import { Spinner } from "@yoast/ui-library";
 import useSWR from "swr";
 import { Section } from "./Section";
 import { IntegrationsSdk } from "../sdk/integrations";
+import { PluginsSdk } from "../sdk/plugins";
+import useSWRMutation from "swr/mutation";
 
 const ThirdPartyIntegration = ({
   id,
@@ -21,8 +23,21 @@ const ThirdPartyIntegration = ({
 
   const [isConnectionActive, setConnectionActive] = useState(false);
 
-  function onConnect() {
+  let installPlugin = useSWRMutation("install-plugin", async () => {
+    await PluginsSdk.actions.installSync(
+      integrationStatus?.integration?.plugin?.slug
+    );
+    await refreshIntegrationStatus();
     setConnectionActive(true);
+  });
+
+  function onConnect() {
+    const isPluginActive = integrationStatus?.integration?.plugin?.status;
+    if (!isPluginActive) {
+      installPlugin.trigger();
+    } else {
+      setConnectionActive(true);
+    }
   }
 
   return (
@@ -39,7 +54,8 @@ const ThirdPartyIntegration = ({
                 type="button"
                 onClick={async () => {
                   setConnectionActive(false);
-                  const integrationStatusResponse = await refreshIntegrationStatus();
+                  const integrationStatusResponse =
+                    await refreshIntegrationStatus();
                   if (integrationStatusResponse.complete) {
                     notify.push(`${id}-account-connect-success`, {
                       title: `Your ${id} account have been connected`,
@@ -54,7 +70,11 @@ const ThirdPartyIntegration = ({
               />
             </div>
           ) : (
-            children({ integrationStatus, onConnect ,refreshIntegrationStatus})
+            children({
+              integrationStatus,
+              onConnect,
+              isInstalling: installPlugin.isMutating,
+            })
           )}
         </div>
       )}

@@ -3,7 +3,6 @@ import { Badge, Button } from "@yoast/ui-library";
 import { ReactComponent as Shippo } from "../icons/brands/shippo.svg";
 import ThirdPartyIntegration from "./ThirdPartyIntegration";
 import { RuntimeSdk } from "../sdk/runtime";
-import { PluginsSdk } from "../sdk/plugins";
 
 const Shipping = ({ notify }) => {
   if (!RuntimeSdk.brandSettings.setup.shipping.includes("Shippo")) {
@@ -19,26 +18,14 @@ const Shipping = ({ notify }) => {
       )}
       notify={notify}
     >
-      {({ integrationStatus, onConnect, refreshIntegrationStatus }) => {
-        const installShippingPlugin = async () => {
-          await PluginsSdk.actions.installSync(
-            "nfd_slug_yith_shippo_shippings_for_woocommerce",
-            "12"
-          );
-          refreshIntegrationStatus();
-        };
-
+      {({ integrationStatus, onConnect, isInstalling }) => {
         const isSetupComplete = integrationStatus?.complete;
         const environment = integrationStatus?.details?.environment;
-        const isPluginActive = integrationStatus?.integration?.plugin?.status;
-        if (!isPluginActive) {
-          installShippingPlugin();
-        }
         return (
           <div className="yst-h-[174px] yst-border yst-h-174px yst-p-6">
             <div className="yst-flex yst-justify-between yst-mb-8">
               <Shippo />
-              {isPluginActive ? (
+              {!isInstalling ? (
                 <>
                   {isSetupComplete ? (
                     <Button
@@ -55,7 +42,7 @@ const Shipping = ({ notify }) => {
                   )}
                 </>
               ) : (
-                <Button variant="secondary" isLoading={!isPluginActive}>
+                <Button variant="secondary" isLoading={isInstalling}>
                   {__("Installing...", "wp-module-ecommerce")}
                 </Button>
               )}
@@ -71,7 +58,7 @@ const Shipping = ({ notify }) => {
                 <span>Environment :</span>
                 <Badge
                   size="large"
-                  className={`yst-text-sm ${
+                  className={`yst-text-sm yst-capitalize ${
                     environment == "sandbox"
                       ? "yst-bg-[#178113] yst-text-black"
                       : "yst-bg-[#F89C24] yst-text-white"
