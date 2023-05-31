@@ -25,7 +25,7 @@ const Shipping = ({ notify }) => {
                 <Button
                   variant="secondary"
                   as="a"
-                  href={integrationStatus?.plugin?.url}
+                  href={integrationStatus?.integration?.plugin?.url}
                 >
                   {__("Manage", "wp-module-ecommerce")}
                 </Button>
