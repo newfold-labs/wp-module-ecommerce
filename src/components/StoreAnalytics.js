@@ -24,12 +24,10 @@ import { RuntimeSdk } from "../sdk/runtime";
 let recentActivityLink = `admin.php?${new URLSearchParams({
   page: "wc-admin",
   path: "/analytics/revenue",
-  return_to_nfd: "/home/store/",
 })}`;
 
 let recentOrdersLink = `edit.php?${new URLSearchParams({
   post_type: "shop_order",
-  return_to_nfd: "/home/store/",
 })}`;
 
 function RecentReport({ title, filter, onSelect, disabled, children }) {
@@ -87,7 +85,7 @@ function RecentActivity() {
           </div>
           <Link
             className="yst-text-base yst-no-underline yst-w-fit"
-            href={RuntimeSdk.adminUrl(recentActivityLink)}
+            href={RuntimeSdk.adminUrl(recentActivityLink, true)}
           >
             view all
           </Link>
