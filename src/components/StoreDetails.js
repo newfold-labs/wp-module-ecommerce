@@ -98,7 +98,6 @@ export function StoreDetails(props) {
                 id="shippo"
                 title={__("Shipping Options", "wp-module-ecommerce")} 
                 description={__("Setup a shipping account for delivering products to your customers","wp-module-ecommerce")} 
-                integrationSrcPath="admin.php?page=nfd-ecommerce-captive-flow-shippo"
                 notify={notify}
               >
                 {({ integrationStatus, onConnect }) => {
