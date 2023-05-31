@@ -12,42 +12,34 @@ const taxManagementOptions = [
   },
 ];
 
-const TaxSettings = ({ controls, setControls, setIsDirty }) => {
-  if (
-    controls.woocommerce_calc_taxes === undefined ||
-    controls.woocommerce_calc_taxes === null
-  ) {
-    setControls({
-      ...controls,
-      woocommerce_calc_taxes: "no",
-    });
-    setIsDirty(true);
-  }
+const TaxSettings = ({ controls }) => {
   return (
-    <Section.Settings
-      title={__("Tax Settings", "wp-module-ecommerce")}
-      description={__(
-        "Decide whether you want to collect sales tax on items you sell. You can change this setting at anytime",
-        "wp-module-ecommerce"
-      )}
-    >
-      <Label>
-        {__("Would you like to enable sales tax?", "wp-module-ecommerce")}
-      </Label>
-      <RadioGroup className="yst-my-0" id="tax" name="woocommerce_calc_taxes">
-        {taxManagementOptions.map((option, i) => {
-          return (
-            <RadioGroup.Radio
-              checked={option.value === controls.woocommerce_calc_taxes}
-              id={"tax-" + option.value}
-              label={option.label}
-              value={option.value}
-              name="woocommerce_calc_taxes"
-            />
-          );
-        })}
-      </RadioGroup>
-    </Section.Settings>
+    <Section.Content separator={true}>
+      <Section.Settings
+        title={__("Tax Settings", "wp-module-ecommerce")}
+        description={__(
+          "Decide whether you want to collect sales tax on items you sell. You can change this setting at anytime",
+          "wp-module-ecommerce"
+        )}
+      >
+        <Label>
+          {__("Would you like to enable sales tax?", "wp-module-ecommerce")}
+        </Label>
+        <RadioGroup className="yst-my-0" id="tax" name="woocommerce_calc_taxes">
+          {taxManagementOptions.map((option, i) => {
+            return (
+              <RadioGroup.Radio
+                checked={option.value === controls.woocommerce_calc_taxes}
+                id={"tax-" + option.value}
+                label={option.label}
+                value={option.value}
+                name="woocommerce_calc_taxes"
+              />
+            );
+          })}
+        </RadioGroup>
+      </Section.Settings>
+    </Section.Content>
   );
 };
 

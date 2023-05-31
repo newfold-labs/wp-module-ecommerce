@@ -21,9 +21,14 @@ export function StoreDetails(props) {
       data.woocommerce_default_country ??
       defaultContact.woocommerce_default_country
     ).split(":");
+
     setControls({
       ...controls,
-      woocommerce_calc_taxes: data.woocommerce_calc_taxes,
+      woocommerce_calc_taxes:
+        data.woocommerce_calc_taxes === undefined ||
+        data.woocommerce_calc_taxes === null
+          ? "no"
+          : data.woocommerce_calc_taxes,
       country,
       state,
       woocommerce_email_from_address: data.woocommerce_email_from_address,
@@ -84,25 +89,13 @@ export function StoreDetails(props) {
           </div>
         ) : (
           <>
-            <Section.Content separator={true}>
-              <StoreInfo
-                controls={controls}
-                setControls={setControls}
-                setIsDirty={setIsDirty}
-              />
-            </Section.Content>
-
-            <Section.Content separator={true}>
-              <Shipping notify={notify} />
-            </Section.Content>
-
-            <Section.Content separator={true}>
-              <TaxSettings
-                controls={controls}
-                setIsDirty={setIsDirty}
-                setControls={setControls}
-              />
-            </Section.Content>
+            <StoreInfo
+              controls={controls}
+              setControls={setControls}
+              setIsDirty={setIsDirty}
+            />
+            <Shipping notify={notify} />
+            <TaxSettings controls={controls} />
             <div className="yst-p-8 yst-border-t yst-bg-[#F8FAFC] yst-flex yst-justify-end yst-gap-4">
               <Button
                 variant="secondary"
