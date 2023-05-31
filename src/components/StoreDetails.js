@@ -5,6 +5,7 @@ import useSWR from "swr";
 import { RuntimeSdk } from "../sdk/runtime";
 import { WordPressSdk } from "../sdk/wordpress";
 import { Section } from "./Section";
+import Shipping from "./Shipping";
 import StoreInfo from "./StoreInfo";
 import TaxSettings from "./TaxSettings";
 
@@ -20,9 +21,14 @@ export function StoreDetails(props) {
       data.woocommerce_default_country ??
       defaultContact.woocommerce_default_country
     ).split(":");
+
     setControls({
       ...controls,
-      woocommerce_calc_taxes: data.woocommerce_calc_taxes,
+      woocommerce_calc_taxes:
+        data.woocommerce_calc_taxes === undefined ||
+        data.woocommerce_calc_taxes === null
+          ? "no"
+          : data.woocommerce_calc_taxes,
       country,
       state,
       woocommerce_email_from_address: data.woocommerce_email_from_address,
@@ -83,17 +89,13 @@ export function StoreDetails(props) {
           </div>
         ) : (
           <>
-            <Section.Content>
-              <StoreInfo
-                controls={controls}
-                setControls={setControls}
-                setIsDirty={setIsDirty}
-              />
-              <div className="yst-my-8">
-                <hr />
-              </div>
-              <TaxSettings controls={controls} />
-            </Section.Content>
+            <StoreInfo
+              controls={controls}
+              setControls={setControls}
+              setIsDirty={setIsDirty}
+            />
+            <Shipping notify={notify} />
+            <TaxSettings controls={controls} />
             <div className="yst-p-8 yst-border-t yst-bg-[#F8FAFC] yst-flex yst-justify-end yst-gap-4">
               <Button
                 variant="secondary"

@@ -44,14 +44,16 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
           {title}
         </Title>
         {description ? <span>{description}</span> : null}
-        <Link
-          className="yst-flex yst-mt-4 yst-items-center yst-gap-2 yst-no-underline"
-          href={learnMoreUrl}
-          target="_blank"
-        >
-          <span>{__("Learn More", "wp-module-ecommerce")}</span>
-          <ArrowLongRightIcon className="yst-h-5 yst-text-black" />
-        </Link>
+        {learnMoreUrl && (
+          <Link
+            className="yst-flex yst-mt-4 yst-items-center yst-gap-2 yst-no-underline"
+            href={learnMoreUrl}
+            target="_blank"
+          >
+            <span>{__("Learn More", "wp-module-ecommerce")}</span>
+            <ArrowLongRightIcon className="yst-h-5 yst-text-black" />
+          </Link>
+        )}
       </Card.Content>
       {isInstallDisabled ? (
         <Card.Footer>

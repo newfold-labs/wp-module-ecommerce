@@ -43,6 +43,7 @@ export const FreePluginsDefinition = (props) => ({
       assets: () => ({
         Image: JetpackBoost,
         ActionIcon: null,
+        learnMoreUrl:"https://jetpack.com/boost/"
       }),
       text: ({ isActive }) => ({
         title: __(
