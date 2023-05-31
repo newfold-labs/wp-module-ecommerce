@@ -8,7 +8,6 @@ import { Section } from "./Section";
 import Shipping from "./Shipping";
 import StoreInfo from "./StoreInfo";
 import TaxSettings from "./TaxSettings";
-import ThirdPartyIntegration from "./ThirdPartyIntegration";
 
 export function StoreDetails(props) {
   let { notify } = props.wpModules;
@@ -93,24 +92,7 @@ export function StoreDetails(props) {
                   setIsDirty={setIsDirty}
                 />
                 <hr />
-                <ThirdPartyIntegration
-                  id="shippo"
-                  title={__("Shipping Options", "wp-module-ecommerce")}
-                  description={__(
-                    "Setup a shipping account for delivering products to your customers",
-                    "wp-module-ecommerce"
-                  )}
-                  notify={notify}
-                >
-                  {({ integrationStatus, onConnect }) => {
-                    return (
-                      <Shipping
-                        integrationStatus={integrationStatus}
-                        onConnect={onConnect}
-                      />
-                    );
-                  }}
-                </ThirdPartyIntegration>
+               <Shipping notify={notify}/>
                 <hr />
                 <TaxSettings
                   controls={controls}
