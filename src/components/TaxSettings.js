@@ -12,7 +12,17 @@ const taxManagementOptions = [
   },
 ];
 
-const TaxSettings = ({ controls }) => {
+const TaxSettings = ({ controls, setControls, setIsDirty }) => {
+  if (
+    controls.woocommerce_calc_taxes === undefined ||
+    controls.woocommerce_calc_taxes === null
+  ) {
+    setControls({
+      ...controls,
+      woocommerce_calc_taxes: "no",
+    });
+    setIsDirty(true);
+  }
   return (
     <Section.Settings
       title={__("Tax Settings", "wp-module-ecommerce")}

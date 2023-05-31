@@ -112,7 +112,7 @@ export function StoreDetails(props) {
               <div className="yst-my-8">
                 <hr />
               </div>
-              <TaxSettings controls={controls} />
+              <TaxSettings controls={controls} setIsDirty={setIsDirty} setControls={setControls}/>
             </Section.Content>
             <div className="yst-p-8 yst-border-t yst-bg-[#F8FAFC] yst-flex yst-justify-end yst-gap-4">
               <Button
