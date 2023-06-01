@@ -17,7 +17,7 @@ const CaptivePaypal = ({ notify }) => {
   if (!RuntimeSdk.brandSettings.setup.payment.includes("Paypal")) {
     return null;
   }
-  return (    
+  return (
     <Section.Content separator>
       <ThirdPartyIntegration
         id="paypal"
@@ -31,89 +31,104 @@ const CaptivePaypal = ({ notify }) => {
         {({ integrationStatus, onConnect, isInstalling }) => {
           const isSetupComplete = integrationStatus?.complete;
           const environment = integrationStatus?.details?.environment;
-            const paypalSettingsWrapper = {
-                color: "#5B5B5B", 
-                fontSize: "13px", 
-                lineHeight: "15.5px"                
-            }
-            const paypalSettingSubtitles = {
-                lineHeight: "19px"
-            }
-            const paypalSettingList = {
-                "listStyle": "disc", 
-                "paddingLeft": "1.25rem"
-            }    
-          return (            
+          const paypalSettingsWrapper = {
+            color: "#5B5B5B",
+            fontSize: "13px",
+            lineHeight: "15.5px",
+          };
+          const paypalSettingSubtitles = {
+            lineHeight: "19px",
+          };
+          const paypalSettingList = {
+            listStyle: "disc",
+            paddingLeft: "1.25rem",
+          };
+          return (
             <div className="yst-border yst-p-6">
-              <div className="yst-flex yst-justify-between yst-mb-8">                                
-                  <>
-                    {isSetupComplete ? (
+              <div className="yst-flex yst-justify-between yst-mb-8">
+                <>
+                  {isSetupComplete ? (
                     <div className="yst-flex yst-justify-between">
-                        <PaypalBrand />             
-                        <Button
-                            variant="secondary"
-                            as="a"
-                            href={integrationStatus?.integration?.plugin?.url}
-                        >
-                            {__("Manage", "wp-module-ecommerce")}
-                        </Button>
-                        {environment && (
-                                <div className="yst-flex yst-gap-4 yst-mt-4">
-                                <span>{__("Environment:", "wp-module-ecommerce")}</span>
-                                <Badge
-                                    size="large"
-                                    variant={environment === "sandbox" ? "upsell" : "plain"}
-                                    className={classNames(
-                                    "yst-text-sm yst-capitalize",
-                                    environment === "live" &&
-                                        "yst-bg-[#178113] yst-text-white"
-                                    )}
-                                >
-                                    {environment}
-                                </Badge>
-                                </div>
+                      <PaypalBrand />
+                      <Button
+                        variant="secondary"
+                        as="a"
+                        href={integrationStatus?.integration?.plugin?.url}
+                      >
+                        {__("Manage", "wp-module-ecommerce")}
+                      </Button>
+                      {environment && (
+                        <div className="yst-flex yst-gap-4 yst-mt-4">
+                          <span>
+                            {__("Environment:", "wp-module-ecommerce")}
+                          </span>
+                          <Badge
+                            size="large"
+                            variant={
+                              environment === "sandbox" ? "upsell" : "plain"
+                            }
+                            className={classNames(
+                              "yst-text-sm yst-capitalize",
+                              environment === "live" &&
+                                "yst-bg-[#178113] yst-text-white"
+                            )}
+                          >
+                            {environment}
+                          </Badge>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div
+                      className="yst-space-y-4"
+                      style={paypalSettingsWrapper}
+                    >
+                      <div className="yst-flex yst-justify-between">
+                        <PaypalBrand />
+                        {!isInstalling ? (
+                          <Button onClick={onConnect}>
+                            {__("Connect", "wp-module-ecommerce")}
+                          </Button>
+                        ) : (
+                          <Button variant="secondary" isLoading={isInstalling}>
+                            {__("Installing...", "wp-module-ecommerce")}
+                          </Button>
                         )}
-                    </div>   
-                    ) : (                      
-                            <div className="yst-space-y-4" style={paypalSettingsWrapper}>    
-                                <div className="yst-flex yst-justify-between">
-                                    <PaypalBrand /> 
-                                    {!isInstalling ? (
-                                        <Button onClick={onConnect}>
-                                            {__("Connect", "wp-module-ecommerce")}
-                                        </Button>
-                                        ):(
-                                        <Button variant="secondary" isLoading={isInstalling}>
-                                            {__("Installing...", "wp-module-ecommerce")}
-                                        </Button>
-                                    )}
-                                </div>            
-                                <br />
-                                <p>Online payments built for success. We help you do business in 200+ markets and 100+ currencies—even if your customers don't have PayPal.</p>
-                                
-                                <Title size="3" style={paypalSettingSubtitles}>Provides flexible checkout options</Title>
-                                <ul style={paypalSettingList}>
-                                    <li>PayPal Pay Later</li>
-                                    <li>White-Labeling</li>
-                                    <li>Country-specific payment methods</li>
-                                </ul>
-                                
-                                <Title size="3" style={paypalSettingSubtitles}>Uses many popular payment methods</Title>        
-                                <div className="yst-flex yst-items-end yst-gap-2">
-                                    <VisaBrand />
-                                    <MasterCardBrand />
-                                    <AmexBrand />
-                                    <DiscoverBrand />
-                                    <VenmoBrand />
-                                    <IdealBrand />
-                                    <GiroPayBrand />
-                                    <SofortBrand />
-                                </div>                                    
-                            </div>  
-                    )}
-                  </>
-                
-              </div>                            
+                      </div>
+                      <br />
+                      <p>
+                        {__(
+                          "Online payments built for success. We help you do business in 200+ markets and 100+ currencies—even if your customers don't have PayPal.",
+                          "wp-module-ecommerce"
+                        )}
+                      </p>
+
+                      <Title size="3" style={paypalSettingSubtitles}>
+                      {__("Provides flexible checkout options")}
+                      </Title>
+                      <ul style={paypalSettingList}>
+                        <li>{__("PayPal Pay Later")}</li>
+                        <li>{__("White-Labeling", "wp-module-ecommerce")}</li>
+                        <li>{__("Country-specific payment methods", "wp-module-ecommerce")}</li>
+                      </ul>
+
+                      <Title size="3" style={paypalSettingSubtitles}>
+                      {__(" Uses many popular payment methods", "wp-module-ecommerce")}
+                      </Title>
+                      <div className="yst-flex yst-items-end yst-gap-2">
+                        <VisaBrand />
+                        <MasterCardBrand />
+                        <AmexBrand />
+                        <DiscoverBrand />
+                        <VenmoBrand />
+                        <IdealBrand />
+                        <GiroPayBrand />
+                        <SofortBrand />
+                      </div>
+                    </div>
+                  )}
+                </>
+              </div>
             </div>
           );
         }}
