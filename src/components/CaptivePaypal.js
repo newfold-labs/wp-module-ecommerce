@@ -8,7 +8,7 @@ import { ReactComponent as MasterCardBrand } from "../icons/brands/mastercard.sv
 import { ReactComponent as PaypalBrand } from "../icons/brands/paypal.svg";
 import { ReactComponent as SofortBrand } from "../icons/brands/sofort.svg";
 import { ReactComponent as VenmoBrand } from "../icons/brands/venmo.svg";
-import { ReactComponent as VisaBrand } from "../icons/visa.svg";
+import { ReactComponent as VisaBrand } from "../icons/brands/visa.svg";
 import { RuntimeSdk } from "../sdk/runtime";
 import { Section } from "./Section";
 import { ThirdPartyIntegration } from "./ThirdPartyIntegration";
