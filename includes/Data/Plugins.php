@@ -13,7 +13,7 @@ final class Plugins
 			'file' => 'jetpack/jetpack.php',
 		),
 		'jetpack-boost' => array(
-			'url' => 'admin.php?page=jetpack#/dashboard',
+			'url' => 'admin.php?page=jetpack-boost',
 			'file' => 'jetpack-boost/jetpack-boost.php',
 		),
 		'wordpress-seo' => array(
