@@ -71,7 +71,6 @@ export function StoreDetails(props) {
       setInitialFormData();
     }
   }, [data, props.user]);
-  console.log(values, formChanges);
 
   const resetForm = (e) => {
     e.preventDefault();
@@ -97,7 +96,14 @@ export function StoreDetails(props) {
             ...formChanges,
           };
           await WordPressSdk.settings.put({
-            ...payload,
+            woocommerce_calc_taxes: payload.woocommerce_calc_taxes,
+            woocommerce_email_from_address:
+              payload.woocommerce_email_from_address,
+            woocommerce_store_address: payload.woocommerce_store_address,
+            woocommerce_store_address_2: payload.woocommerce_store_address_2,
+            woocommerce_store_city: payload.woocommerce_store_city,
+            woocommerce_store_postcode: payload.woocommerce_store_postcode,
+            woocommerce_currency: payload.woocommerce_currency,
             woocommerce_default_country: payload.state
               ? `${payload.country}:${payload.state}`
               : payload.country,
