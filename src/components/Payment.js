@@ -13,7 +13,7 @@ import { RuntimeSdk } from "../sdk/runtime";
 import { Section } from "./Section";
 import { ThirdPartyIntegration } from "./ThirdPartyIntegration";
 
-const CaptivePaypal = ({ notify }) => {
+const Payment = ({ notify }) => {
   if (!RuntimeSdk.brandSettings.setup.payment.includes("Paypal")) {
     return null;
   }
@@ -104,16 +104,24 @@ const CaptivePaypal = ({ notify }) => {
                       </p>
 
                       <Title size="3" style={paypalSettingSubtitles}>
-                      {__("Provides flexible checkout options")}
+                        {__("Provides flexible checkout options")}
                       </Title>
                       <ul style={paypalSettingList}>
                         <li>{__("PayPal Pay Later")}</li>
                         <li>{__("White-Labeling", "wp-module-ecommerce")}</li>
-                        <li>{__("Country-specific payment methods", "wp-module-ecommerce")}</li>
+                        <li>
+                          {__(
+                            "Country-specific payment methods",
+                            "wp-module-ecommerce"
+                          )}
+                        </li>
                       </ul>
 
                       <Title size="3" style={paypalSettingSubtitles}>
-                      {__(" Uses many popular payment methods", "wp-module-ecommerce")}
+                        {__(
+                          " Uses many popular payment methods",
+                          "wp-module-ecommerce"
+                        )}
                       </Title>
                       <div className="yst-flex yst-items-end yst-gap-2">
                         <VisaBrand />
@@ -137,4 +145,4 @@ const CaptivePaypal = ({ notify }) => {
   );
 };
 
-export default CaptivePaypal;
+export default Payment;

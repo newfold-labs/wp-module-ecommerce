@@ -4,7 +4,7 @@ import { Button, Spinner } from "@yoast/ui-library";
 import useSWR from "swr";
 import { RuntimeSdk } from "../sdk/runtime";
 import { WordPressSdk } from "../sdk/wordpress";
-import CaptivePaypal from "./CaptivePaypal";
+import Payment from "./Payment";
 import { Section } from "./Section";
 import Shipping from "./Shipping";
 import StoreInfo from "./StoreInfo";
@@ -95,7 +95,7 @@ export function StoreDetails(props) {
               setControls={setControls}
               setIsDirty={setIsDirty}
             />
-            <CaptivePaypal notify={notify} />
+            <Payment notify={notify} />
             <Shipping notify={notify} />
             <TaxSettings controls={controls} />
             <div className="yst-p-8 yst-border-t yst-bg-[#F8FAFC] yst-flex yst-justify-end yst-gap-4">
