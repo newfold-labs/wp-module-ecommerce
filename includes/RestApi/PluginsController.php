@@ -2,7 +2,7 @@
 
 namespace NewfoldLabs\WP\Module\ECommerce\RestApi;
 
-use NewfoldLabs\WP\Module\Installer\Permissions as InstallerPermissions;
+use NewfoldLabs\WP\Module\Installer\Services\PluginInstaller;
 use NewfoldLabs\WP\Module\ECommerce\Permissions;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\Module\ECommerce\Data\Plugins;
@@ -28,11 +28,16 @@ class PluginsController {
 
 	/**
 	 * Container loaded from the brand plugin.
-	 * 
+	 *
 	 * @var Container
 	 */
 	protected $container;
 
+	/**
+	 * Constructor for the PluginsController class.
+	 *
+	 * @param Container $container Module loader container.
+	 */
 	public function __construct( Container $container ) {
 		$this->container = $container;
 	}
@@ -74,13 +79,13 @@ class PluginsController {
 				$status[ $plugin ] = 'Not Installed';
 			}
 		}
-		$status['queue-status'] = \get_option( 'nfd_module_onboarding_plugin_install_queue', array() );
+		$status['queue-status'] = \get_option( 'nfd_module_installer_plugin_install_queue', array() );
 
 		return new \WP_REST_Response(
 			array(
 				'status' => $status,
 				'token'  => array(
-					'hash' => InstallerPermissions::rest_get_plugin_install_hash()
+					'hash' => PluginInstaller::rest_get_plugin_install_hash(),
 				),
 			),
 			200
