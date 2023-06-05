@@ -145,11 +145,12 @@ export const WooCommerceSdk = {
   },
   orders: {
     async list(filter) {
-      return apiFetch({
+      let orders = await safeFetch({
         url: Endpoints.ORDERS({
           after: moment().subtract(1, filter).toISOString(),
         }),
       });
+      return orders.data ?? [];
     },
   },
   products: {

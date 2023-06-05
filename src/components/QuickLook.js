@@ -225,7 +225,6 @@ export function QuickLook(props) {
           <SiteStatus
             comingSoon={props.state.wp.comingSoon}
             notify={props.wpModules.notify}
-            siteUrl={window.NFDECOM?.site.url}
             toggleComingSoon={props.actions.toggleComingSoon}
           />
         </Section.Block>
