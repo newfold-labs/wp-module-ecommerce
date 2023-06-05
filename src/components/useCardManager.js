@@ -35,6 +35,9 @@ function useLoadDependencies(tree, fetchOptions) {
   );
 
   async function onRefresh(dependency) {
+    if (!dependency) {
+      await mutate();
+    }
     // TODO: Add Checks for if path is not found.
     if (tree.dataDependencies[dependency] === undefined) {
       return;
