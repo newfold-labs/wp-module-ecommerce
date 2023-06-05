@@ -23,6 +23,7 @@ function parseWCStatus(data) {
   return { isActive, needsInstall, isInstalling };
 }
 
+/** @type {import("..").NewfoldEcommerce}  */
 export function NewfoldECommerce(props) {
   let { data: woo, mutate } = useSWR(
     "woo-status",

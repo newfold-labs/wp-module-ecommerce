@@ -32,126 +32,114 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
         {({ integrationStatus, onConnect, isInstalling }) => {
           const isSetupComplete = integrationStatus?.complete;
           const environment = integrationStatus?.details?.environment;
-          const paypalSettingsWrapper = {
-            color: "#5B5B5B",
-            fontSize: "13px",
-            lineHeight: "15.5px",
-          };
-          const paypalSettingSubtitles = {
-            lineHeight: "19px",
-          };
-          const paypalSettingList = {
-            listStyle: "disc",
-            paddingLeft: "1.25rem",
-          };
           return (
-            <>
-              <div className="yst-border yst-p-6">
-                <div className="yst-flex yst-justify-between yst-mb-8">
-                  <PaypalBrand />
-                  {isInstalling ? (
-                    <Button variant="secondary" isLoading>
-                      {__("Installing...", "wp-module-ecommerce")}
-                    </Button>
-                  ) : isSetupComplete ? (
-                    <Button
-                      variant="secondary"
-                      as="a"
-                      href={integrationStatus?.integration?.plugin?.url}
-                    >
-                      {__("Manage", "wp-module-ecommerce")}
-                    </Button>
-                  ) : (
-                    <Button onClick={onConnect}>
-                      {__("Connect", "wp-module-ecommerce")}
-                    </Button>
-                  )}
-                </div>
-                {isSetupComplete && environment && (
-                  <div className="yst-flex yst-gap-4 yst-mt-4">
-                    <span>{__("Environment:", "wp-module-ecommerce")}</span>
-                    <Badge
-                      size="large"
-                      variant={environment === "sandbox" ? "upsell" : "plain"}
-                      className={classNames(
-                        "yst-text-sm yst-capitalize",
-                        environment === "live" &&
-                          "yst-bg-[#178113] yst-text-white"
-                      )}
-                    >
-                      {environment}
-                    </Badge>
-                  </div>
-                )}
-                {!isSetupComplete && (
-                  <p>
-                    {__(
-                      "Online payments built for success. We help you do business in 200+ markets and 100+ currencies—even if your customers don't have PayPal.",
-                      "wp-module-ecommerce"
-                    )}
-                  </p>
-                )}
-                {!isSetupComplete && (
-                  <div className="yst-space-y-4" style={paypalSettingsWrapper}>
-                    <Title size="3" style={paypalSettingSubtitles}>
-                      {__("Provides flexible checkout options")}
-                    </Title>
-                    <ul style={paypalSettingList}>
-                      <li>{__("PayPal Pay Later")}</li>
-                      <li>{__("White-Labeling", "wp-module-ecommerce")}</li>
-                      <li>
-                        {__(
-                          "Country-specific payment methods",
-                          "wp-module-ecommerce"
-                        )}
-                      </li>
-                    </ul>
-                    <Title size="3" style={paypalSettingSubtitles}>
-                      {__(
-                        " Uses many popular payment methods",
-                        "wp-module-ecommerce"
-                      )}
-                    </Title>
-                    <div className="yst-flex yst-items-end yst-gap-2">
-                      <VisaBrand />
-                      <MasterCardBrand />
-                      <AmexBrand />
-                      <DiscoverBrand />
-                      <VenmoBrand />
-                      <IdealBrand />
-                      <GiroPayBrand />
-                      <SofortBrand />
-                    </div>
-                  </div>
+            <div className="yst-border yst-p-6">
+              <div className="yst-flex yst-justify-between yst-mb-8">
+                <PaypalBrand />
+                {isInstalling ? (
+                  <Button variant="secondary" isLoading>
+                    {__("Installing...", "wp-module-ecommerce")}
+                  </Button>
+                ) : isSetupComplete ? (
+                  <Button
+                    variant="secondary"
+                    as="a"
+                    href={integrationStatus?.integration?.plugin?.url}
+                  >
+                    {__("Manage", "wp-module-ecommerce")}
+                  </Button>
+                ) : (
+                  <Button onClick={onConnect}>
+                    {__("Connect", "wp-module-ecommerce")}
+                  </Button>
                 )}
               </div>
-              <CheckboxGroup
-                id="woocommerce_toggle_gateway_enabled"
-                label="Offline payment methods"
-                className={"yst-mt-4"}
-                name="woocommerce_toggle_gateway_enabled"
-                disabled={controls.isLoading}
-                onChange={pushChanges}
-                options={[
-                  {
-                    label: "Cheque payments",
-                    value: "woocommerce_cheque_settings",
-                  },
-                  {
-                    label: "Bank transfer payments",
-                    value: "woocommerce_bacs_settings",
-                  },
-                  {
-                    label: "Cash on delivery",
-                    value: "woocommerce_cod_settings",
-                  },
-                ]}
-                values={values}
-              />
-            </>
+              {isSetupComplete && environment && (
+                <div className="yst-flex yst-gap-4 yst-mt-4">
+                  <span>{__("Environment:", "wp-module-ecommerce")}</span>
+                  <Badge
+                    size="large"
+                    variant={environment === "sandbox" ? "upsell" : "plain"}
+                    className={classNames(
+                      "yst-text-sm yst-capitalize",
+                      environment === "live" &&
+                        "yst-bg-[#178113] yst-text-white"
+                    )}
+                  >
+                    {environment}
+                  </Badge>
+                </div>
+              )}
+              {!isSetupComplete && (
+                <p>
+                  {__(
+                    "Online payments built for success. We help you do business in 200+ markets and 100+ currencies—even if your customers don't have PayPal.",
+                    "wp-module-ecommerce"
+                  )}
+                </p>
+              )}
+              {!isSetupComplete && (
+                <div className="yst-space-y-4 yst-text-[#5B5B5B]">
+                  <Title size="3">
+                    {__("Provides flexible checkout options")}
+                  </Title>
+                  <ul className="yst-pl-5 yst-list-disc">
+                    <li>{__("PayPal Pay Later")}</li>
+                    <li>{__("White-Labeling", "wp-module-ecommerce")}</li>
+                    <li>
+                      {__(
+                        "Country-specific payment methods",
+                        "wp-module-ecommerce"
+                      )}
+                    </li>
+                  </ul>
+                  <Title size="3">
+                    {__(
+                      " Uses many popular payment methods",
+                      "wp-module-ecommerce"
+                    )}
+                  </Title>
+                  <div className="yst-flex yst-items-end yst-gap-2">
+                    <VisaBrand />
+                    <MasterCardBrand />
+                    <AmexBrand />
+                    <DiscoverBrand />
+                    <VenmoBrand />
+                    <IdealBrand />
+                    <GiroPayBrand />
+                    <SofortBrand />
+                  </div>
+                </div>
+              )}
+            </div>
           );
         }}
       </ThirdPartyIntegration>
+      <Section.Settings>
+        <CheckboxGroup
+          id="woocommerce_toggle_gateway_enabled"
+          label="Offline payment methods"
+          className="yst-mt-4"
+          name="woocommerce_toggle_gateway_enabled"
+          disabled={controls.isLoading}
+          onChange={pushChanges}
+          options={[
+            {
+              label: "Cheque payments",
+              value: "woocommerce_cheque_settings",
+            },
+            {
+              label: "Bank transfer payments",
+              value: "woocommerce_bacs_settings",
+            },
+            {
+              label: "Cash on delivery",
+              value: "woocommerce_cod_settings",
+            },
+          ]}
+          values={values}
+        />
+      </Section.Settings>
     </Section.Content>
   );
 };
