@@ -79,6 +79,11 @@ export function StoreDetails(props) {
   let isFormBusy = [settings.isMutating, updatePaymentMethods.isMutating].some(
     (_) => _ === true
   );
+  async function fetchRazorpaySettings() {
+    const response = await WordPressSdk.settings.get();
+    return response?.woocommerce_razorpay_settings;
+  }
+  const { data: razorpaySettings, error } = useSWR('razorpaySettings', fetchRazorpaySettings);
   const [formChanges, setFormChanges] = useState({});
   const [isFormDirty, setIsFormDirty] = useState(CLEAN_FORM);
   let isDirty = Object.values(isFormDirty).some((section) => section === true);
@@ -222,6 +227,9 @@ export function StoreDetails(props) {
           />
         )}
         {controls.payments.isActive && (
+          RuntimeSdk.brandSettings.brand === 'bluehost-india' ?
+          <Razorpay notify={notify} razorpaySettings={razorpaySettings} />
+          :
           <Payment
             controls={controls.payments}
             notify={notify}

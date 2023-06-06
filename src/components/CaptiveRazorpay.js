@@ -125,7 +125,6 @@ export function CaptiveRazorpay({razorpaySettings}) {
           checked={isTestMode}
           onChange={() => { toggleValue() }}
         />
-
         <TextField
           name="key_id"
           value={rzrKeys.key_id && rzrKeys.key_id}

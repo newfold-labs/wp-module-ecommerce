@@ -7,9 +7,6 @@ import { Section } from "./Section";
 import { ThirdPartyIntegration } from "./ThirdPartyIntegration";
 
 const Razorpay = ({ notify, razorpaySettings }) => {
-  if (!RuntimeSdk.brandSettings.setup.payment.includes("Razorpay")) {
-    return null;
-  }
   return (
     <Section.Content separator>
       <ThirdPartyIntegration
