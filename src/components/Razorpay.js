@@ -1,7 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import { Badge, Button } from "@yoast/ui-library";
 import classNames from "classnames";
-import { ReactComponent as RazorpayLogo } from "../icons/razorpay-brand.svg";
+import { ReactComponent as RazorPayBrand } from "../icons/brands/razorpay.svg";
 import { RuntimeSdk } from "../sdk/runtime";
 import { Section } from "./Section";
 import { ThirdPartyIntegration } from "./ThirdPartyIntegration";
@@ -25,7 +25,7 @@ const Razorpay = ({ notify, razorpaySettings }) => {
           return (
             <div className="yst-h-[174px] yst-border yst-h-174px yst-p-6">
               <div className="yst-flex yst-justify-between yst-mb-8">
-                <RazorpayLogo />
+                <RazorPayBrand />
                 {!isInstalling ? (
                   <>
                     {isSetupComplete ? (
