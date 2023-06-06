@@ -27,6 +27,7 @@ const CLEAN_FORM = {
   payment: false,
   shipping: false,
   tax: false,
+  razorpay: false,
 };
 
 async function parseForm() {
@@ -71,13 +72,13 @@ export function StoreDetails(props) {
       }
     }
   );
-  let settings = useSWRMutation(
-    "settings",
-    (_, ({ arg }) => WordPressSdk.settings.put(arg))
+  let settings = useSWRMutation("settings", (_, { arg }) =>
+    WordPressSdk.settings.put(arg)
   );
   let isFormBusy = [settings.isMutating, updatePaymentMethods.isMutating].some(
     (_) => _ === true
   );
+
   const [formChanges, setFormChanges] = useState({});
   const [isFormDirty, setIsFormDirty] = useState(CLEAN_FORM);
   let isDirty = Object.values(isFormDirty).some((section) => section === true);
@@ -185,6 +186,23 @@ export function StoreDetails(props) {
               addedGateways,
               removedGateways,
             ]);
+          }
+          if (isFormDirty.razorpay) {
+            await settings.trigger({
+              "nfd-ecommerce-captive-flow-razorpay": "true",
+              woocommerce_razorpay_settings: {
+                enabled: "yes",
+                title: "Credit Card/Debit Card/NetBanking",
+                description:
+                  "Pay securely by Credit or Debit card or Internet Banking through Razorpay.",
+                payment_action: "capture",
+                order_success_message:
+                  "Thank you for shopping with us. Your account has been charged and your transaction is successful. We will be processing your order soon.",
+                enable_1cc_debug_mode: "yes",
+                key_id: payload.key_id,
+                key_secret: payload.key_secret,
+              },
+            });
           }
           notify.push(`store-details-save-success`, {
             title: "Successfully saved the Store Details",

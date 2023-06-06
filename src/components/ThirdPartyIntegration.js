@@ -5,6 +5,7 @@ import { Section } from "./Section";
 import { IntegrationsSdk } from "../sdk/integrations";
 import { PluginsSdk } from "../sdk/plugins";
 import useSWRMutation from "swr/mutation";
+import { CaptiveRazorpay } from "./CaptiveRazorpay";
 
 export const ThirdPartyIntegration = ({
   id,
@@ -49,26 +50,32 @@ export const ThirdPartyIntegration = ({
       ) : (
         <div className="yst-flex-1">
           {isConnectionActive ? (
-            <div className="components-modal__frame yst-h-[500px]">
-              <button
-                type="button"
-                onClick={async () => {
-                  setConnectionActive(false);
-                  const integrationStatusResponse =
-                    await refreshIntegrationStatus();
-                  if (integrationStatusResponse.complete) {
-                    notify.push(`${id}-account-connect-success`, {
-                      title: `Your ${id} account have been connected`,
-                      variant: "success",
-                    });
-                  }
-                }}
+            id !== "razorpay" ? (
+              <div className="components-modal__frame yst-h-[500px]">
+                <button
+                  type="button"
+                  onClick={async () => {
+                    setConnectionActive(false);
+                    const integrationStatusResponse =
+                      await refreshIntegrationStatus();
+                    if (integrationStatusResponse.complete) {
+                      notify.push(`${id}-account-connect-success`, {
+                        title: `Your ${id} account have been connected`,
+                        variant: "success",
+                      });
+                    }
+                  }}
+                />
+                <iframe
+                  className="yst-h-full yst-w-full"
+                  src={integrationStatus?.integration?.captive}
+                />
+              </div>
+            ) : (
+              <CaptiveRazorpay
+                razorpaySettings={integrationStatus?.details?.settings}
               />
-              <iframe
-                className="yst-h-full yst-w-full"
-                src={integrationStatus?.integration?.captive}
-              />
-            </div>
+            )
           ) : (
             children({
               integrationStatus,
