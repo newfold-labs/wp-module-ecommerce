@@ -1,8 +1,8 @@
-import { ToggleField, TextField, Button } from "@yoast/ui-library";
 import { useEffect, useState } from "@wordpress/element";
-import { sprintf, __ } from "@wordpress/i18n";
+import { __, sprintf } from "@wordpress/i18n";
+import { Button, TextField, ToggleField } from "@yoast/ui-library";
+import { ReactComponent as RazorPayBrand } from "../icons/brands/razorpay.svg";
 import { WordPressSdk } from "../sdk/wordpress";
-import { ReactComponent as RazorPayBrand } from "../icons/razorpay-brand.svg";
 
 /** @type {((key: string) => boolean)[]} */
 const KeyChecks = [
@@ -11,10 +11,10 @@ const KeyChecks = [
 ];
 
 const Content = {
-  keyIdLabel: __("Key ID", "wp-module-ecommerce"),
-  keyTestIdLabel: __("Test Key ID", "wp-module-ecommerce"),
-  keySecretLabel: __("Key Secret", "wp-module-ecommerce"),
-  keyTestSecretLabel: __("Test Key Secret", "wp-module-ecommerce"),
+  keyIdLabel: __("Key ID *", "wp-module-ecommerce"),
+  keyTestIdLabel: __("Test Key ID *", "wp-module-ecommerce"),
+  keySecretLabel: __("Key Secret *", "wp-module-ecommerce"),
+  keyTestSecretLabel: __("Test Key Secret *", "wp-module-ecommerce"),
   keyId: sprintf(
     __(
       `The key ID can be found in the "%1$sAPI Keys%2$s" section of your Razorpay dashboard.`,
@@ -52,8 +52,7 @@ const rzrPaySettings = {
   enable_1cc_debug_mode: "yes",
 };
 
-export function CaptiveRazorpay({razorpaySettings}) {
-
+export function CaptiveRazorpay({ razorpaySettings }) {
   let hireExpertsUrl = `admin.php?page=bluehost#/marketplace/services/blue-sky`;
 
   let [isTestMode, setTestMode] = useState(() => false);
@@ -70,12 +69,11 @@ export function CaptiveRazorpay({razorpaySettings}) {
   const toggleValue = () => {
     if (isTestMode) {
       setTestMode(false);
-    }
-    else {
+    } else {
       setTestMode(true);
       updateKeys(razorpaySettings);
     }
-  }
+  };
   let isFormDisabled = razorpaySettings === undefined;
   let [isTestKeyValid, isProductionKeyValid] = KeyChecks.map(
     (check) => rzrKeys.key_id === "" || check(rzrKeys.key_id)
@@ -89,13 +87,10 @@ export function CaptiveRazorpay({razorpaySettings}) {
     });
   };
   return (
-    <form>
+    <fieldset>
       <div className="yst-flex yst-justify-between yst-mb-6">
         <RazorPayBrand className="razorpay-logo" />
-        <Button
-          target="_blank"
-          href="https://rzp.io/i/egoPZR2rbu"
-        >
+        <Button target="_blank" href="https://rzp.io/i/egoPZR2rbu">
           {__("Create an Account", "wp-module-ecommerce")}
         </Button>
       </div>
@@ -109,25 +104,28 @@ export function CaptiveRazorpay({razorpaySettings}) {
           {__("Login", "wp-module-ecommerce")}
         </a>
       </p>
-      <p className="yst-mb-6 yst-pb-6 yst-border-b yst-font-medium" style={{ color: "var(--nfd-ecommerce-text-tertiary)" }}>
+      <p className="yst-mb-6 yst-pb-6 yst-border-b yst-font-medium">
         {__(
           "After you login to Razorpay, you will need to generate your key ID and key secret codes, you will then need to switch back to this tab in your browser and paste your codes into the fields below.",
           "wp-module-ecommerce"
         )}
       </p>
-      <fieldset
+      <div
         disabled={isFormDisabled}
-        className="yst-mb-4"
+        className="yst-flex yst-flex-col yst-gap-4 yst-mb-4"
       >
         <ToggleField
           id="rzpTestModeToggle"
-          label={__("Enable test mode", "wp-module-ecommerce")}
+          label={__("Enable Test Mode", "wp-module-ecommerce")}
           checked={isTestMode}
-          onChange={() => { toggleValue() }}
+          onChange={() => {
+            toggleValue();
+          }}
         />
         <TextField
+          data-section="razorpay"
           name="key_id"
-          value={rzrKeys.key_id && rzrKeys.key_id}
+          value={rzrKeys.key_id}
           label={isTestMode ? Content.keyTestIdLabel : Content.keyIdLabel}
           placeholder={__(
             `enter your ${isTestMode ? "test" : "production"} key ID here.`,
@@ -145,15 +143,16 @@ export function CaptiveRazorpay({razorpaySettings}) {
                 __html: isKeyValid
                   ? Content.keyId
                   : isTestMode
-                    ? Content.invalidTestKeyId
-                    : Content.invalidProductionKeyId,
+                  ? Content.invalidTestKeyId
+                  : Content.invalidProductionKeyId,
               }}
             />
           }
         />
         <TextField
+          data-section="razorpay"
           name="key_secret"
-          value={rzrKeys.key_secret && rzrKeys.key_secret}
+          value={rzrKeys.key_secret}
           onChange={(event) => {
             const { value } = event.target;
             updateKeys((keys) => ({ ...keys, key_secret: value }));
@@ -170,27 +169,10 @@ export function CaptiveRazorpay({razorpaySettings}) {
             <span dangerouslySetInnerHTML={{ __html: Content.keySecret }} />
           }
         />
-      </fieldset>
-      <p className="yst-mb-4">
-        <em>* required</em>
-      </p>
-      <div className="yst-mb-4 yst-flex yst-justify-end">
-        <Button
-          variant="primary"
-          onClick={handleSubmit}
-          disabled={!isKeyValid}
-        >
-          {__("Save", "wp-module-ecommerce")}
-        </Button>
       </div>
-      <p className="yst-justify-self-end">
-        <em>
-          {__("Need help?", "wp-module-ecommerce")}{" "}
-          <a href={hireExpertsUrl}>
-            {__("Hire our experts", "wp-module-ecommerce")}
-          </a>
-        </em>
+      <p className="yst-mb-4">
+        <span>* indicates a required field</span>
       </p>
-    </form>
+    </fieldset>
   );
 }
