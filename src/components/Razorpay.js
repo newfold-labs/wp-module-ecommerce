@@ -1,7 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import { Badge, Button } from "@yoast/ui-library";
 import classNames from "classnames";
-import { ReactComponent as RazorPayBrand } from "../icons/brands/razorpay.svg";
+import { ReactComponent as RazorpayLogo } from "../icons/brands/razorpay.svg";
 import { RuntimeSdk } from "../sdk/runtime";
 import { Section } from "./Section";
 import { ThirdPartyIntegration } from "./ThirdPartyIntegration";

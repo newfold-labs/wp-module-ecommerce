@@ -11,7 +11,6 @@ import { Section } from "./Section";
 import Shipping from "./Shipping";
 import StoreInfo from "./StoreInfo";
 import TaxSettings from "./TaxSettings";
-import Razorpay from "./Razorpay";
 
 /**
  *
@@ -227,9 +226,6 @@ export function StoreDetails(props) {
           />
         )}
         {controls.payments.isActive && (
-          RuntimeSdk.brandSettings.brand === 'bluehost-india' ?
-          <Razorpay notify={notify} razorpaySettings={razorpaySettings} />
-          :
           <Payment
             controls={controls.payments}
             notify={notify}

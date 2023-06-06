@@ -13,6 +13,7 @@ import { ReactComponent as VisaBrand } from "../icons/brands/visa.svg";
 import { RuntimeSdk } from "../sdk/runtime";
 import { Section } from "./Section";
 import { ThirdPartyIntegration } from "./ThirdPartyIntegration";
+import Razorpay from "./Razorpay";
 
 const Payment = ({ notify, pushChanges, values, controls }) => {
   if (!RuntimeSdk.brandSettings.setup.payment.includes("Paypal")) {
@@ -115,6 +116,7 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
           );
         }}
       </ThirdPartyIntegration>
+      <Razorpay />
       <Section.Settings>
         <CheckboxGroup
           id="woocommerce_toggle_gateway_enabled"
