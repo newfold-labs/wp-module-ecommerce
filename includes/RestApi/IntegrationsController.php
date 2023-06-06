@@ -113,23 +113,21 @@ class IntegrationsController {
 	}
 	
 	public function get_razorpay_status() {
-		$details = null;
 		$integration = array(
 			'captive' => null,
 			'plugin' => $this->get_plugin_details( 'nfd_slug_woo_razorpay' ),
 		);
 		$is_captive_flow_complete = \get_option( 'nfd-ecommerce-captive-flow-razorpay', 'false' );
+		$razorpay_settings = \get_option( 'woocommerce_razorpay_settings', null );
+		$details = array (
+			'settings' => $razorpay_settings
+		);
 		if ($is_captive_flow_complete === 'true') {
-			$razorpay_settings = \get_option( 'woocommerce_razorpay_settings', array() );
-			$environment = null;
-			if (isset( $razorpay_settings['key_id'] )) {
+			$environment = '';
+			if ( $razorpay_settings !== null && isset( $razorpay_settings['key_id'] ) ) {
 				$environment = str_starts_with( $razorpay_settings['key_id'], 'rzp_test_' ) ? 'sandbox' : 'live';
-			} else {
-				$environment = '';
 			}
-			$details = array(
-				'environment' => $environment,
-			);
+			$details['environment'] = $environment;
 		}
 		return new \WP_REST_Response(
 			array(
