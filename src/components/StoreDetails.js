@@ -188,21 +188,24 @@ export function StoreDetails(props) {
           }}
           controls={controls.details}
         />
-        <Payment
-          controls={controls.payments}
-          notify={notify}
-          values={
-            formChanges.woocommerce_toggle_gateway_enabled ??
-            paymentMethods.data
-          }
-          pushChanges={(gateways) => {
-            setFormChanges((formChanges) => ({
-              ...formChanges,
-              woocommerce_toggle_gateway_enabled: gateways,
-            }));
-          }}
-        />
-        <Razorpay notify={notify} />
+        {RuntimeSdk.brandSettings.brand === 'bluehost-india' ?
+          <Razorpay notify={notify} razorpaySettings={data && data.woocommerce_razorpay_settings} />
+          :
+          <Payment
+            controls={controls.payments}
+            notify={notify}
+            values={
+              formChanges.woocommerce_toggle_gateway_enabled ??
+              paymentMethods.data
+            }
+            pushChanges={(gateways) => {
+              setFormChanges((formChanges) => ({
+                ...formChanges,
+                woocommerce_toggle_gateway_enabled: gateways,
+              }));
+            }}
+          />
+        }
         <Shipping notify={notify} />
         <TaxSettings values={{ ...values, ...formChanges }} />
         <div className="yst-p-8 yst-border-t yst-bg-[#F8FAFC] yst-flex yst-justify-end yst-gap-4">

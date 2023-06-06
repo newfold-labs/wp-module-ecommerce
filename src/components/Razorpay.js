@@ -6,8 +6,8 @@ import { RuntimeSdk } from "../sdk/runtime";
 import { Section } from "./Section";
 import { ThirdPartyIntegration } from "./ThirdPartyIntegration";
 
-const Razorpay = ({ notify }) => {
-  if (!RuntimeSdk.brandSettings.setup.shipping.includes("Shippo")) {
+const Razorpay = ({ notify, razorpaySettings }) => {
+  if (!RuntimeSdk.brandSettings.setup.payment.includes("Razorpay")) {
     return null;
   }
   return (
@@ -20,6 +20,7 @@ const Razorpay = ({ notify }) => {
           "wp-module-ecommerce"
         )}
         notify={notify}
+        razorpaySettings={razorpaySettings}
       >
         {({ integrationStatus, onConnect, isInstalling }) => {
           const isSetupComplete = integrationStatus?.complete;

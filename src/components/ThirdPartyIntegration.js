@@ -14,6 +14,7 @@ export const ThirdPartyIntegration = ({
   integrationSrcPath,
   children,
   notify,
+  razorpaySettings,
   ...props
 }) => {
   let {
@@ -21,7 +22,6 @@ export const ThirdPartyIntegration = ({
     isLoading,
     mutate: refreshIntegrationStatus,
   } = useSWR(id, IntegrationsSdk.status);
-  console.log("data", data);
 
   const [isConnectionActive, setConnectionActive] = useState(false);
 
@@ -72,7 +72,7 @@ export const ThirdPartyIntegration = ({
                 src={integrationStatus?.integration?.captive}
               />
             </div> : 
-            <CaptiveRazorpay />
+            <CaptiveRazorpay razorpaySettings={razorpaySettings} />
           ) 
           : (
             children({

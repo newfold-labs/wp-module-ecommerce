@@ -1,12 +1,8 @@
-import {
-  ButtonGroup,
-  TextControl,
-} from "@wordpress/components";
-import { ToggleField,Button } from "@yoast/ui-library";
+import { ToggleField, TextField, Button } from "@yoast/ui-library";
 import { useEffect, useState } from "@wordpress/element";
 import { sprintf, __ } from "@wordpress/i18n";
+import { WordPressSdk } from "../sdk/wordpress";
 import { ReactComponent as RazorPayBrand } from "../icons/razorpay-brand.svg";
-import { updateWPSettings } from "../services";
 
 /** @type {((key: string) => boolean)[]} */
 const KeyChecks = [
@@ -56,48 +52,44 @@ const rzrPaySettings = {
   enable_1cc_debug_mode: "yes",
 };
 
-export function CaptiveRazorpay() {
+export function CaptiveRazorpay({razorpaySettings}) {
 
-  let settings = {
-    "enabled": "yes",
-    "title": "Credit Card/Debit Card/NetBanking",
-    "description": "Pay securely by Credit or Debit card or Internet Banking through Razorpay.",
-    "payment_action": "capture",
-    "order_success_message": "Thank you for shopping with us. Your account has been charged and your transaction is successful. We will be processing your order soon.",
-    "enable_1cc_debug_mode": "yes",
-    "key_id": "rzp_test_qn0AnShxeczQr4",
-    "key_secret": "Jk2gmPYNcuxHNja8fUdA8Qvz"
-}
+  let hireExpertsUrl = `admin.php?page=bluehost#/marketplace/services/blue-sky`;
 
-let hireExpertsUrl = `admin.php?page=bluehost#/marketplace/services/blue-sky`;
-  
   let [isTestMode, setTestMode] = useState(() => false);
   let [rzrKeys, updateKeys] = useState({
     key_id: "",
     key_secret: "",
   });
   useEffect(() => {
-    if (settings) {
-      setTestMode(settings?.key_id?.startsWith("rzp_test_"));
-      updateKeys(settings);
+    if (razorpaySettings) {
+      setTestMode(razorpaySettings?.key_id?.startsWith("rzp_test_"));
+      updateKeys(razorpaySettings);
     }
-  }, [settings]);
-  let isFormDisabled = settings === undefined;
+  }, [razorpaySettings]);
+  const toggleValue = () => {
+    if (isTestMode) {
+      setTestMode(false);
+    }
+    else {
+      setTestMode(true);
+      updateKeys(razorpaySettings);
+    }
+  }
+  let isFormDisabled = razorpaySettings === undefined;
   let [isTestKeyValid, isProductionKeyValid] = KeyChecks.map(
     (check) => rzrKeys.key_id === "" || check(rzrKeys.key_id)
   );
   let isKeyValid = isTestMode ? isTestKeyValid : isProductionKeyValid;
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    await WordPressSdk.settings.put({
+      "nfd-ecommerce-captive-flow-razorpay": "true",
+      woocommerce_razorpay_settings: { ...rzrPaySettings, ...rzrKeys },
+    });
+  };
   return (
-    <form onSubmit={async (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        await updateWPSettings({
-          "nfd-ecommerce-captive-flow-razorpay": "true",
-          woocommerce_razorpay_settings: { ...rzrPaySettings, ...rzrKeys },
-        });
-       // await onComplete();
-      }}
-    >
+    <form>
       <div className="yst-flex yst-justify-between yst-mb-6">
         <RazorPayBrand className="razorpay-logo" />
         <Button
@@ -108,67 +100,66 @@ let hireExpertsUrl = `admin.php?page=bluehost#/marketplace/services/blue-sky`;
         </Button>
       </div>
 
-        <p className="yst-mb-4">
-          {__("Already have an account? ", "wp-module-ecommerce")}
-          <a
-            href="https://dashboard.razorpay.com/?screen=sign_in&source=bluehost&next=app%2Fwebsite-app-settings%2Fapi-keys"
-            target="_blank"
-          >
-            {__("Login", "wp-module-ecommerce")}
-          </a>
-        </p>
-        <p className="yst-mb-6 yst-pb-6 yst-border-b yst-font-medium" style={{ color: "var(--nfd-ecommerce-text-tertiary)" }}>
-          {__(
-            "After you login to Razorpay, you will need to generate your key ID and key secret codes, you will then need to switch back to this tab in your browser and paste your codes into the fields below.",
-            "wp-module-ecommerce"
-          )}
-        </p>
+      <p className="yst-mb-4">
+        {__("Already have an account? ", "wp-module-ecommerce")}
+        <a
+          href="https://dashboard.razorpay.com/?screen=sign_in&source=bluehost&next=app%2Fwebsite-app-settings%2Fapi-keys"
+          target="_blank"
+        >
+          {__("Login", "wp-module-ecommerce")}
+        </a>
+      </p>
+      <p className="yst-mb-6 yst-pb-6 yst-border-b yst-font-medium" style={{ color: "var(--nfd-ecommerce-text-tertiary)" }}>
+        {__(
+          "After you login to Razorpay, you will need to generate your key ID and key secret codes, you will then need to switch back to this tab in your browser and paste your codes into the fields below.",
+          "wp-module-ecommerce"
+        )}
+      </p>
       <fieldset
         disabled={isFormDisabled}
-        style={{ paddingTop: "0", display: "grid", gap: "1.5em" }}
+        className="yst-mb-4"
       >
         <ToggleField
           id="rzpTestModeToggle"
           label={__("Enable test mode", "wp-module-ecommerce")}
           checked={isTestMode}
-          onChange={setTestMode}
+          onChange={() => { toggleValue() }}
         />
 
-        <TextControl
-          className="text-control"
+        <TextField
           name="key_id"
-          value={rzrKeys.key_id}
-          onChange={(key_id) => updateKeys((keys) => ({ ...keys, key_id }))}
-          required
-          __nextHasNoMarginBottom
+          value={rzrKeys.key_id && rzrKeys.key_id}
           label={isTestMode ? Content.keyTestIdLabel : Content.keyIdLabel}
           placeholder={__(
             `enter your ${isTestMode ? "test" : "production"} key ID here.`,
             "wp-module-ecommerce"
           )}
-          help={
+          required
+          onChange={(event) => {
+            const { value } = event.target;
+            updateKeys((keys) => ({ ...keys, key_id: value }));
+          }}
+          description={
             <span
               style={{ color: isKeyValid ? "inherit" : "#F72F26" }}
               dangerouslySetInnerHTML={{
                 __html: isKeyValid
                   ? Content.keyId
                   : isTestMode
-                  ? Content.invalidTestKeyId
-                  : Content.invalidProductionKeyId,
+                    ? Content.invalidTestKeyId
+                    : Content.invalidProductionKeyId,
               }}
             />
           }
         />
-
-        <TextControl
-          className="text-control"
+        <TextField
           name="key_secret"
-          value={rzrKeys.key_secret}
-          onChange={(key_secret) =>
-            updateKeys((keys) => ({ ...keys, key_secret }))
-          }
+          value={rzrKeys.key_secret && rzrKeys.key_secret}
+          onChange={(event) => {
+            const { value } = event.target;
+            updateKeys((keys) => ({ ...keys, key_secret: value }));
+          }}
           required
-          __nextHasNoMarginBottom
           label={
             isTestMode ? Content.keyTestSecretLabel : Content.keySecretLabel
           }
@@ -176,35 +167,24 @@ let hireExpertsUrl = `admin.php?page=bluehost#/marketplace/services/blue-sky`;
             `enter your ${isTestMode ? "test" : "production"} key secret here.`,
             "wp-module-ecommerce"
           )}
-          help={
+          description={
             <span dangerouslySetInnerHTML={{ __html: Content.keySecret }} />
           }
         />
       </fieldset>
-      <p>
+      <p className="yst-mb-4">
         <em>* required</em>
       </p>
-      <ButtonGroup
-        style={{ justifySelf: "end", display: "inline-flex", gap: "1em" }}
-      >
+      <div className="yst-mb-4 yst-flex yst-justify-end">
         <Button
-          className="nfd-ecommerce-button"
-          variant="secondary"
-          type="button"
-          onClick={() => {}}
-        >
-          {__("Cancel", "wp-module-ecommerce")}
-        </Button>
-        <Button
-          className="nfd-ecommerce-button"
           variant="primary"
-          type="submit"
+          onClick={handleSubmit}
           disabled={!isKeyValid}
         >
           {__("Save", "wp-module-ecommerce")}
         </Button>
-      </ButtonGroup>
-      <p style={{ justifySelf: "end" }}>
+      </div>
+      <p className="yst-justify-self-end">
         <em>
           {__("Need help?", "wp-module-ecommerce")}{" "}
           <a href={hireExpertsUrl}>
