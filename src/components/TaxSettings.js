@@ -13,8 +13,9 @@ const taxManagementOptions = [
 ];
 
 const TaxSettings = ({ values }) => {
+  let taxSelected = values.woocommerce_calc_taxes ?? "no";
   return (
-    <Section.Content separator>
+    <Section.Content>
       <Section.Settings
         title={__("Tax Settings", "wp-module-ecommerce")}
         description={__(
@@ -26,17 +27,15 @@ const TaxSettings = ({ values }) => {
           {__("Would you like to enable sales tax?", "wp-module-ecommerce")}
         </Label>
         <RadioGroup className="yst-my-0" id="tax" name="woocommerce_calc_taxes">
-          {taxManagementOptions.map((option, i) => {
-            return (
-              <RadioGroup.Radio
-                checked={option.value === values.woocommerce_calc_taxes}
-                id={"tax-" + option.value}
-                label={option.label}
-                value={option.value}
-                name="woocommerce_calc_taxes"
-              />
-            );
-          })}
+          {taxManagementOptions.map((option, i) => (
+            <RadioGroup.Radio
+              checked={option.value === taxSelected}
+              id={"tax-" + option.value}
+              label={option.label}
+              value={option.value}
+              name="woocommerce_calc_taxes"
+            />
+          ))}
         </RadioGroup>
       </Section.Settings>
     </Section.Content>

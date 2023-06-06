@@ -1,7 +1,7 @@
 <?php
 namespace NewfoldLabs\WP\Module\ECommerce\Data;
 
-use NewfoldLabs\WP\Module\Installer\Permissions as InstallerPermissions;
+use NewfoldLabs\WP\Module\Installer\Services\PluginInstaller;
 use NewfoldLabs\WP\Module\ECommerce\Data\Brands;
 use NewfoldLabs\WP\ModuleLoader\Container;
 
@@ -19,7 +19,7 @@ final class Runtime {
 		return array(
 			'site'           => array( 
 				'url' => \get_site_url(),
-				'install_token' => InstallerPermissions::rest_get_plugin_install_hash(),
+				'install_token' => PluginInstaller::rest_get_plugin_install_hash(),
 			),
 			'admin_url'      => \admin_url(),
 			'rest_url'       => \get_home_url() . '/index.php',

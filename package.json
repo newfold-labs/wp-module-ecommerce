@@ -7,9 +7,10 @@
   "main": "build/index.js",
   "files": [
     "build/",
-    "**/*.scss",
+    "*.d.ts",
     "*.css"
   ],
+  "types": "index.d.ts",
   "scripts": {
     "prepare": "npm run build",
     "build": "wp-scripts build ./src/index.js --config ./scripts/webpack.config.js",
@@ -27,7 +28,6 @@
     "@wordpress/date": "^4.34.0",
     "@wordpress/element": "^2.8.2",
     "@wordpress/i18n": "^4.29.0",
-    "@wordpress/icons": "^9.11.0",
     "@yoast/ui-library": "3.1.0",
     "classnames": "2.3.2",
     "moment": "^2.29.4",

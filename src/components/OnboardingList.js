@@ -67,7 +67,7 @@ export function OnboardingList(props) {
   return (
     <div className="yst-grid yst-grid-rows-[repeat(3,_min-content)] yst-gap-4">
       <Title size={2}>Next steps for your site</Title>
-      {view === "incomplete" && incompleteItems.length === 0 && (
+      {view === "incomplete" && itemsToDisplay.length === 0 && (
         <div>
           <p>
             {__(
@@ -78,7 +78,7 @@ export function OnboardingList(props) {
           <br />
           <p>
             {__(
-              `If you want to edit any of the info from the steps you've completed, simpy click on the "View completed tasks" link below.`,
+              `If you want to edit any of the info from the steps you've completed, simply click on the "View completed tasks" link below.`,
               "wp-module-ecommerce"
             )}
           </p>

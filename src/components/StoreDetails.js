@@ -2,6 +2,7 @@ import { useEffect, useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import { Button } from "@yoast/ui-library";
 import useSWR from "swr";
+import useSWRMutation from "swr/mutation";
 import { RuntimeSdk } from "../sdk/runtime";
 import { WooCommerceSdk } from "../sdk/woocommerce";
 import { WordPressSdk } from "../sdk/wordpress";
@@ -12,78 +13,112 @@ import StoreInfo from "./StoreInfo";
 import TaxSettings from "./TaxSettings";
 import Razorpay from "./Razorpay";
 
+/**
+ *
+ * @param {URLSearchParams} params
+ * @param {string} section
+ * @returns {boolean}
+ */
+function isSectionActive(params, section) {
+  return params.has("highlight") ? params.get("highlight") === section : true;
+}
+
+const CLEAN_FORM = {
+  details: false,
+  payment: false,
+  shipping: false,
+  tax: false,
+};
+
+async function parseForm() {
+  let settings = await WordPressSdk.settings.get();
+  let { defaultContact } = RuntimeSdk.brandSettings;
+  let [country, state] = (
+    settings.woocommerce_default_country ??
+    defaultContact.woocommerce_default_country
+  ).split(":");
+
+  return {
+    country,
+    state,
+    woocommerce_calc_taxes: settings.woocommerce_calc_taxes,
+    woocommerce_email_from_address: settings.woocommerce_email_from_address,
+    woocommerce_store_address: settings.woocommerce_store_address,
+    woocommerce_store_address_2: settings.woocommerce_store_address_2,
+    woocommerce_store_city: settings.woocommerce_store_city,
+    woocommerce_store_postcode: settings.woocommerce_store_postcode,
+    woocommerce_currency:
+      settings.woocommerce_currency ?? defaultContact.woocommerce_currency,
+  };
+}
+
 export function StoreDetails(props) {
+  let { params } = props.state;
   let { notify } = props.wpModules;
-  let { data, isLoading } = useSWR("settings", WordPressSdk.settings.get);
+  let { data: values, isLoading } = useSWR("settings", parseForm);
   let paymentMethods = useSWR(
     "payment-methods",
     WooCommerceSdk.options.paymentMethods
   );
+  let updatePaymentMethods = useSWRMutation(
+    "payment-methods",
+    async (_, { arg }) => {
+      let [addedGateways, removedGateways] = arg;
+      for (let gateway of addedGateways) {
+        await WooCommerceSdk.options.toggleGateway(gateway);
+      }
+      for (let gateway of removedGateways) {
+        await WooCommerceSdk.options.toggleGateway(gateway);
+      }
+    }
+  );
+  let settings = useSWRMutation(
+    "settings",
+    (_, ({ arg }) => WordPressSdk.settings.put(arg))
+  );
+  let isFormBusy = [settings.isMutating, updatePaymentMethods.isMutating].some(
+    (_) => _ === true
+  );
   const [formChanges, setFormChanges] = useState({});
-  const [values, setValues] = useState({});
-  const [isFormDirty, setIsFormDirty] = useState({
-    details: false,
-    payment: false,
-    shipping: false,
-    tax: false,
-  });
+  const [isFormDirty, setIsFormDirty] = useState(CLEAN_FORM);
   let isDirty = Object.values(isFormDirty).some((section) => section === true);
   function trackChanges(section) {
     setIsFormDirty((changes) => ({ ...changes, [section]: true }));
   }
-
   const controls = {
-    details: { isLoading },
-    payments: { isLoading: paymentMethods.isLoading },
-    shipping: { isLoading: false },
-    tax: { isLoading },
-  };
-  const setInitialFormData = () => {
-    let { defaultContact } = RuntimeSdk.brandSettings;
-    let [country, state] = (
-      data.woocommerce_default_country ??
-      defaultContact.woocommerce_default_country
-    ).split(":");
-
-    setValues({
-      woocommerce_calc_taxes:
-        data.woocommerce_calc_taxes === undefined ||
-        data.woocommerce_calc_taxes === null
-          ? "no"
-          : data.woocommerce_calc_taxes,
-      country,
-      state,
-      woocommerce_email_from_address: data.woocommerce_email_from_address,
-      woocommerce_store_address: data.woocommerce_store_address,
-      woocommerce_store_address_2: data.woocommerce_store_address_2,
-      woocommerce_store_city: data.woocommerce_store_city,
-      woocommerce_store_postcode: data.woocommerce_store_postcode,
-      woocommerce_currency:
-        data.woocommerce_currency ?? defaultContact.woocommerce_currency,
-    });
-    if (
-      data.woocommerce_calc_taxes === undefined ||
-      data.woocommerce_calc_taxes === null
-    ) {
-      trackChanges("tax");
-    }
+    details: {
+      isLoading,
+      isActive: isSectionActive(params, "details"),
+    },
+    payments: {
+      isLoading: paymentMethods.isLoading,
+      isActive: isSectionActive(params, "payments"),
+    },
+    shipping: {
+      isLoading: false,
+      isActive: isSectionActive(params, "shipping"),
+    },
+    tax: {
+      isLoading,
+      isActive: isSectionActive(params, "tax"),
+    },
   };
 
   useEffect(() => {
-    if (data) {
-      setInitialFormData();
+    if (values) {
+      if (
+        values.woocommerce_calc_taxes === undefined ||
+        values.woocommerce_calc_taxes === null
+      ) {
+        trackChanges("tax");
+      }
     }
-  }, [data, props.user]);
+  }, [values]);
 
   const resetForm = (e) => {
     e.preventDefault();
     setFormChanges({});
-    setIsFormDirty({
-      details: false,
-      payment: false,
-      shipping: false,
-      tax: false,
-    });
+    setIsFormDirty(CLEAN_FORM);
   };
   return (
     <Section.Container>
@@ -103,9 +138,13 @@ export function StoreDetails(props) {
             ...Object.fromEntries(new FormData(event.target).entries()),
             ...formChanges,
           };
-          if (isFormDirty.details || isFormDirty.tax) {
-            await WordPressSdk.settings.put({
+          if (isFormDirty.tax) {
+            await settings.trigger({
               woocommerce_calc_taxes: payload.woocommerce_calc_taxes,
+            });
+          }
+          if (isFormDirty.details) {
+            await settings.trigger({
               woocommerce_email_from_address:
                 payload.woocommerce_email_from_address,
               woocommerce_store_address: payload.woocommerce_store_address,
@@ -143,25 +182,17 @@ export function StoreDetails(props) {
                 }
               }
             }
-            for (let gateway of addedGateways) {
-              await WooCommerceSdk.options.toggleGateway(gateway);
-            }
-            for (let gateway of removedGateways) {
-              await WooCommerceSdk.options.toggleGateway(gateway);
-            }
-            await paymentMethods.mutate();
+            await updatePaymentMethods.trigger([
+              addedGateways,
+              removedGateways,
+            ]);
           }
           notify.push(`store-details-save-success`, {
             title: "Successfully saved the Store Details",
             variant: "success",
             autoDismiss: 5000,
           });
-          setIsFormDirty({
-            details: false,
-            shipping: false,
-            payment: false,
-            tax: false,
-          });
+          setIsFormDirty(CLEAN_FORM);
         }}
         onReset={resetForm}
         onChange={(event) => {
@@ -180,17 +211,17 @@ export function StoreDetails(props) {
           }
         }}
       >
-        <StoreInfo
-          values={{ ...values, ...formChanges }}
-          pushChanges={(data) => {
-            setFormChanges({ ...formChanges, ...data });
-            trackChanges("details");
-          }}
-          controls={controls.details}
-        />
-        {RuntimeSdk.brandSettings.brand === 'bluehost-india' ?
-          <Razorpay notify={notify} razorpaySettings={data && data.woocommerce_razorpay_settings} />
-          :
+        {controls.details.isActive && (
+          <StoreInfo
+            values={{ ...values, ...formChanges }}
+            pushChanges={(data) => {
+              setFormChanges({ ...formChanges, ...data });
+              trackChanges("details");
+            }}
+            controls={controls.details}
+          />
+        )}
+        {controls.payments.isActive && (
           <Payment
             controls={controls.payments}
             notify={notify}
@@ -205,14 +236,21 @@ export function StoreDetails(props) {
               }));
             }}
           />
-        }
-        <Shipping notify={notify} />
-        <TaxSettings values={{ ...values, ...formChanges }} />
+        )}
+        {controls.shipping.isActive && <Shipping notify={notify} />}
+        {controls.tax.isActive && (
+          <TaxSettings values={{ ...values, ...formChanges }} />
+        )}
         <div className="yst-p-8 yst-border-t yst-bg-[#F8FAFC] yst-flex yst-justify-end yst-gap-4">
-          <Button type="reset" variant="secondary" disabled={!isDirty}>
+          <Button
+            type="reset"
+            variant="secondary"
+            disabled={!isDirty}
+            isLoading={isFormBusy}
+          >
             {__("Discard Changes", "wp-module-ecommerce")}
           </Button>
-          <Button disabled={!isDirty} type="submit">
+          <Button disabled={!isDirty} isLoading={isFormBusy} type="submit">
             {__("Save Changes", "wp-module-ecommerce")}
           </Button>
         </div>
