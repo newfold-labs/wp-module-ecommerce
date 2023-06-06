@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: https://github.com/newfold-labs/wp-module-ecommerce/issues\n"
+"Report-Msgid-Bugs-To: https://github.com/aulisius/bluehost-wordpress-plugin/issues\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -9,537 +9,376 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.6.0\n"
+"X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: wp-module-ecommerce\n"
 
 #: bootstrap.php:16
 msgid "eCommerce"
 msgstr ""
 
-#: includes/ECommerce.php:75
-#: includes/ECommerce.php:86
+#: includes/ECommerce.php:108
+#: includes/ECommerce.php:119
 msgid "NFD eCommerce Options"
 msgstr ""
 
-#: includes/ECommerce.php:100
-#: build/index.js:1
-#: src/components/SiteStatus.js:31
+#: includes/ECommerce.php:133
 msgid "Coming Soon"
 msgstr ""
 
-#: includes/ECommerce.php:101
-#: build/index.js:1
-#: src/components/SiteStatus.js:18
+#: includes/ECommerce.php:134
+#: build/index.js:3233
+#: build/index.js:2460
 msgid "Live"
 msgstr ""
 
-#: includes/ECommerce.php:106
+#: includes/ECommerce.php:139
 msgid "Site Status: "
 msgstr ""
 
-#: includes/ECommerce.php:108
+#: includes/ECommerce.php:141
 msgid "Launch Your Site"
 msgstr ""
 
-#: build/index.js:1
-#: src/components/Banner.js:14
-msgid "Congrats on your new store! Let's get it ready to launch!"
+#: includes/Partials/CaptiveFlow.php:59
+msgid "NFD eCommerce RazorPay Options"
 msgstr ""
 
-#: build/index.js:1
-#: src/components/Banner.js:20
-msgid "Your site is currently displaying a \"Coming Soon\" page. Once you are ready, launch your site."
-msgstr ""
-
-#: build/index.js:1
-#: src/components/AdvancedFeatures.js:16
-msgid "Manage bookable/rental products"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/AdvancedFeatures.js:17
-msgid "Enable a booking/appointment system to manage renting or booking of services, rooms, houses."
-msgstr ""
-
-#: build/index.js:1
-#: src/components/AdvancedFeatures.js:26
-msgid "Add a powerful search tool to your store"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/AdvancedFeatures.js:27
-msgid "Allow your users to search products in real time by title, description, tags, and more."
-msgstr ""
-
-#: build/index.js:1
-#: src/components/AdvancedFeatures.js:36
-msgid "Allow your customers to save products in their Wishlist"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/AdvancedFeatures.js:40
-msgid "Make it easy for your customers to create lists and add their favorite items to them."
-msgstr ""
-
-#: build/index.js:1
-#: src/components/AdvancedFeatures.js:49
-msgid "Add a powerful product filter to your store"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/AdvancedFeatures.js:53
-msgid "If your store has lots of products, help your customers find what they're looking for fast."
-msgstr ""
-
-#: build/index.js:1
-#: src/components/AdvancedFeatures.js:62
-msgid "Sell Gift Cards in your store"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/AdvancedFeatures.js:63
-msgid "Use gift cards to increase your earnings and attract new customers."
-msgstr ""
-
-#: build/index.js:1
-#: src/components/AdvancedFeatures.js:72
-msgid "Customize your customers' account page"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/AdvancedFeatures.js:73
-msgid "Show any kind of custom content in your customers' account page."
-msgstr ""
-
-#: build/index.js:1
-#: src/components/CustomizeStore.js:14
-msgid "Home Page"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/CustomizeStore.js:16
-msgid "About Page"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/CustomizeStore.js:21
-msgid "Contact Page"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/StoreAddress.js:81
-msgid "Address line 1"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/StoreAddress.js:91
-msgid "Address line 2"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/StoreAddress.js:100
-msgid "City"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/StoreAddress.js:110
-msgid "State"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/StoreAddress.js:130
-msgid "Postcode/ZIP"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/StoreAddress.js:140
-msgid "Country"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/SiteStatus.js:107
-#: src/components/StoreAddress.js:163
-#: src/components/Tax.js:99
-msgid "Continue"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/StoreAddress.js:167
-#: src/components/Tax.js:103
-msgid "Need help?"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/StoreAddress.js:169
-#: src/components/Tax.js:105
-msgid "Hire our experts"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/Tax.js:8
-msgid "Yes, enable tax rates and calculations"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/Tax.js:15
-msgid "I will configure my own tax info later"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/Tax.js:22
-msgid "I don't charge sales tax"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/Tax.js:71
-msgid "Do you want to enable tax rates and calculations?"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/GeneralSettings.js:25
-msgid "Store Info"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/GeneralSettings.js:26
-#: src/components/GeneralSettings.js:47
-msgid "Add Info"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/GeneralSettings.js:27
-#: src/components/GeneralSettings.js:48
-msgid "Edit Info"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/GeneralSettings.js:32
-msgid "Payments"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/CustomizeStore.js:66
-#: src/components/CustomizeStore.js:76
-#: src/components/CustomizeStore.js:95
-#: src/components/GeneralSettings.js:33
-#: src/components/GeneralSettings.js:40
-msgid "Setup"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/GeneralSettings.js:34
-#: src/components/GeneralSettings.js:41
-msgid "Edit Settings"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/GeneralSettings.js:39
-msgid "Shipping"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/GeneralSettings.js:46
-msgid "Tax Info"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/ManageProducts.js:11
-msgid "Add a product"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/ManageProducts.js:12
-msgid "Add new"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/ManageProducts.js:16
-msgid "Manage products"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/ManageProducts.js:17
-msgid "View all"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/ManageProducts.js:21
-msgid "Categories"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/AdvancedFeatures.js:170
-#: src/components/ManageProducts.js:22
-#: src/components/ManageProducts.js:27
-msgid "Manage"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/ManageProducts.js:26
-msgid "Tags"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/SiteStatus.js:10
-msgid "Launch Your Store!"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/SiteStatus.js:11
-msgid "Once you're ready, click the button below to make your store live to the world!"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/SiteStatus.js:16
-msgid "Launch your store"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/SiteStatus.js:23
-msgid "Change your site status"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/SiteStatus.js:24
-msgid "Your site is currently \"Live\", but you can disable your site and put back the \"Coming Soon\" page if needed."
-msgstr ""
-
-#: build/index.js:1
-#: src/components/SiteStatus.js:29
-msgid "Switch back to \"Coming Soon\" mode"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/Dashboard.js:13
-msgid "General Settings"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/Dashboard.js:15
-msgid "Add products"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/Dashboard.js:17
-msgid "Customize your store"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/Dashboard.js:19
-msgid "Advanced features"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/Dashboard.js:22
-msgid "Launch Your Store"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/Dashboard.js:23
-msgid "Site Status"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/AdvancedFeatures.js:92
-#: src/components/CustomizeStore.js:39
-#: src/components/GeneralSettings.js:93
-#: src/components/ManageProducts.js:40
-msgid "There was an error while loading this information"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/GeneralSettings.js:117
-msgid "Get Started!"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/GeneralSettings.js:118
-msgid "Here you can find the essential steps we recommend you complete so you can launch your store."
-msgstr ""
-
-#: build/index.js:1
-#: src/components/GeneralSettings.js:147
-msgid "You've got the basics covered!"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/GeneralSettings.js:148
-msgid "These steps are done, nice job!"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/GeneralSettings.js:150
-msgid "Feel free to come back at any time and update any of the information in the steps you've already completed."
-msgstr ""
-
-#: build/index.js:1
-#: src/components/ManageProducts.js:56
-#: src/components/ManageProducts.js:65
-msgid "Add Products"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/ManageProducts.js:57
-#: src/components/ManageProducts.js:84
-msgid "Come here to manage your products or add new ones to your store."
-msgstr ""
-
-#: build/index.js:1
-#: src/components/ManageProducts.js:73
-msgid "Import Products"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/ManageProducts.js:83
-msgid "Your Products"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/ManageProducts.js:104
-msgid "First time adding a product?"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/ManageProducts.js:105
-msgid "Read this helpful knowledge base article to understand how to add different products to your store."
-msgstr ""
-
-#: build/index.js:1
-#: src/components/ManageProducts.js:113
-msgid "How to add products"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/ManageProducts.js:114
+#: build/index.js:2814
+#: build/index.js:2113
 msgid "Learn More"
 msgstr ""
 
-#: build/index.js:1
-#: src/components/CustomizeStore.js:52
-msgid "Customize Your Store"
+#: build/index.js:2816
+#: build/index.js:2120
+msgid "please wait while other features are installed..."
 msgstr ""
 
-#: build/index.js:1
-#: src/components/CustomizeStore.js:53
-msgid "Setup your core store pages and add general website content to provide a complete shopping experience for your customers."
+#: build/index.js:2831
+#: build/index.js:2155
+msgid "Installing..."
 msgstr ""
 
-#: build/index.js:1
-#: src/components/CustomizeStore.js:75
-msgid "Add a Page"
+#: build/index.js:2831
+#: build/index.js:2157
+msgid "Purchase"
 msgstr ""
 
-#: build/index.js:1
-#: src/components/CustomizeStore.js:84
-msgid "Store Layout"
+#: build/index.js:2864
+#: build/index.js:3539
+#: build/index.js:2178
+#: build/index.js:2716
+msgid "Additional Features"
 msgstr ""
 
-#: build/index.js:1
-#: src/components/CustomizeStore.js:85
-msgid "Configure"
+#: build/index.js:2865
+#: build/index.js:2179
+msgid "Improve your site with these free add-ons included in your plan."
 msgstr ""
 
-#: build/index.js:1
-#: src/components/CustomizeStore.js:94
-msgid "Customer Account Page"
+#: build/index.js:2909
+#: build/index.js:2206
+msgid "Store"
 msgstr ""
 
-#: build/index.js:1
-#: src/components/AdvancedFeatures.js:114
-msgid "Advanced Features"
+#: build/index.js:2968
+#: build/index.js:2237
+msgid "Products & Services"
 msgstr ""
 
-#: build/index.js:1
-#: src/components/AdvancedFeatures.js:115
-msgid "Enjoy the free add-ons included in your plan and improve your store."
+#: build/index.js:2969
+#: build/index.js:2238
+msgid "Come here to manage products and services or add new ones to your store."
 msgstr ""
 
-#: build/index.js:1
-#: src/components/AdvancedFeatures.js:132
-msgid "Enable"
+#: build/index.js:2977
+#: build/index.js:2247
+msgid "Want help adding products?"
 msgstr ""
 
-#: build/index.js:1
-#: src/components/AdvancedFeatures.js:155
-msgid "Already Installed Features"
+#: build/index.js:2979
+#: build/index.js:2250
+msgid ""
+"Read this helpful knowledge base article to understand how to\n"
+"add different products to your store"
 msgstr ""
 
-#: build/index.js:1
-#: src/components/AdvancedFeatures.js:156
-msgid "These tools are already installed and activated and ready for use."
+#: build/index.js:2986
+#: build/index.js:2267
+msgid " How to add products"
 msgstr ""
 
-#: build/index.js:1
-#: src/components/SiteStatus.js:60
-msgid "Go to your site!"
-msgstr ""
-
-#: build/index.js:1
-#: src/components/SiteStatus.js:93
+#: build/index.js:3252
+#: build/index.js:2475
 msgid "Your store is online and ready for business!"
 msgstr ""
 
-#: build/index.js:1
-#: src/components/SiteStatus.js:99
-msgid "Not ready? You can re-enable the 'Coming Soon' mode if you need."
+#: build/index.js:3254
+#: build/index.js:2481
+msgid "Not ready? You can re-enable the \"Coming Soon\" mode if you need."
 msgstr ""
 
-#: build/index.js:1
-#: src/components/Dashboard.js:47
-msgid "Setup Guide"
+#: build/index.js:3259
+#: build/index.js:2492
+msgid "Okay"
 msgstr ""
 
-#: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:40
-msgid " We hit a snag..."
+#: build/index.js:3273
+#: build/index.js:2506
+msgid "Ready to go live?"
 msgstr ""
 
-#: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:42
-msgid "We're sorry, but there was an error installing WooCommerce, please try again."
+#: build/index.js:3275
+#: build/index.js:2509
+msgid ""
+"Preview your store before setting it live to make sure everything is how you want it.\n"
+"Once you're ready, set your store live!"
 msgstr ""
 
-#: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:51
-msgid "Try again"
+#: build/index.js:3283
+#: build/index.js:2523
+msgid "Preview your store"
 msgstr ""
 
-#: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:54
-msgid " If the problem persists, please "
+#: build/index.js:3288
+#: build/index.js:2532
+msgid "Launch your store"
 msgstr ""
 
-#: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:56
-msgid "contact"
+#: build/index.js:3437
+#: build/index.js:2642
+msgid "Store Details"
 msgstr ""
 
-#: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:58
-msgid " support team."
+#: build/index.js:3438
+#: build/index.js:2643
+msgid "This is the place for all your general store details and setup."
 msgstr ""
 
-#: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:70
-msgid "Uh-Oh! WooCommerce is not installed!"
+#: build/index.js:3490
+#: build/index.js:2676
+msgid "Add a store to your site"
 msgstr ""
 
-#: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:74
-msgid "We are currently installing WooCommerce which is required for this dashboard to work."
+#: build/index.js:3492
+#: build/index.js:2679
+msgid ""
+"Adding a store to your website is quick and easy!\n"
+"Just install WooCommerce and get ready to start making money!"
 msgstr ""
 
-#: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:78
-msgid "WooCommerce is required for this dashboard to work, install it now or contact our support team for more assistance."
-msgstr ""
-
-#: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:93
+#: build/index.js:3499
+#: build/index.js:2692
 msgid "Install WooCommerce"
 msgstr ""
 
-#: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:100
-msgid "Contact Support"
+#: build/index.js:3540
+#: build/index.js:2717
+msgid "Improve your store with these powerful add-ons."
+msgstr ""
+
+#: build/index.js:3727
+#: build/index.js:3812
+#: build/index.js:4060
+#: build/index.js:4535
+#: build/index.js:2843
+#: build/index.js:2888
+#: build/index.js:3132
+#: build/index.js:3544
+msgid "Please try again, or "
+msgstr ""
+
+#: build/index.js:3730
+#: build/index.js:3815
+#: build/index.js:4063
+#: build/index.js:4538
+#: build/index.js:2845
+#: build/index.js:2890
+#: build/index.js:3134
+#: build/index.js:3546
+msgid "contact support"
+msgstr ""
+
+#: build/index.js:3854
+#: build/index.js:2928
+msgid "Jetpack Boost - Website Speed, Performance and Critical CSS"
+msgstr ""
+
+#: build/index.js:3855
+#: build/index.js:2932
+msgid "Speed up your WordPress site by optimizing page performance with Jetpack Boost."
+msgstr ""
+
+#: build/index.js:3881
+#: build/index.js:2958
+msgid "Contact Form by WPForms - Drag & Drop Form Builder for WordPress"
+msgstr ""
+
+#: build/index.js:3882
+#: build/index.js:2962
+msgid "The best WordPress contact form plugin. Drag & Drop online form builder to create beautiful contact forms, payment forms, & other custom forms."
+msgstr ""
+
+#: build/index.js:3908
+#: build/index.js:2988
+msgid "MonsterInsights - Google Analytics Dashboard for WordPress (Website Stats Made Easy)"
+msgstr ""
+
+#: build/index.js:3909
+#: build/index.js:2992
+msgid "The best free Google Analytics plugin for WordPress. See how visitors find and use your website, so you can grow your business."
+msgstr ""
+
+#: build/index.js:3935
+#: build/index.js:3022
+msgid "Yoast SEO"
+msgstr ""
+
+#: build/index.js:3936
+#: build/index.js:3023
+msgid "Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the Yoast SEO plugin."
+msgstr ""
+
+#: build/index.js:3962
+#: build/index.js:3049
+msgid "Creative Mail - Easier WordPress & WooCommerce Email Marketing"
+msgstr ""
+
+#: build/index.js:3963
+#: build/index.js:3053
+msgid "Creative Mail was designed specifically for WordPress and WooCommerce. Our intelligent (and super fun) email editor simplifies email marketing campaign."
+msgstr ""
+
+#: build/index.js:3990
+#: build/index.js:3083
+msgid "OptinMonster - Lead Generation"
+msgstr ""
+
+#: build/index.js:3991
+#: build/index.js:3084
+msgid "OptinMonster is the best WordPress popup builder plugin that helps you grow your email newsletter list and sales with email popups, exit intent popups, floating bars and more!"
+msgstr ""
+
+#: build/index.js:4099
+#: build/index.js:3173
+msgid "Add a Product"
+msgstr ""
+
+#: build/index.js:4129
+#: build/index.js:3201
+msgid "Manage Your Products"
+msgstr ""
+
+#: build/index.js:4164
+#: build/index.js:3230
+msgid "Import Products via CSV"
+msgstr ""
+
+#: build/index.js:4191
+#: build/index.js:3258
+msgid "Bookings"
+msgstr ""
+
+#: build/index.js:4250
+#: build/index.js:3312
+msgid "Gift Cards"
+msgstr ""
+
+#: build/index.js:4356
+#: build/index.js:3400
+msgid "Total Sales"
+msgstr ""
+
+#: build/index.js:4373
+#: build/index.js:3418
+msgid "Net Sales"
+msgstr ""
+
+#: build/index.js:4390
+#: build/index.js:3436
+msgid "Orders"
+msgstr ""
+
+#: build/index.js:4407
+#: build/index.js:3456
+msgid "Products Sold"
+msgstr ""
+
+#: build/index.js:4424
+#: build/index.js:3476
+msgid "Visitors"
+msgstr ""
+
+#: build/index.js:4438
+#: build/index.js:3495
+msgid "Views"
+msgstr ""
+
+#: build/index.js:4578
+#: build/index.js:3584
+msgid "YITH Booking and Appointment for WooCommerce"
+msgstr ""
+
+#: build/index.js:4579
+#: build/index.js:3588
+msgid "Enable a booking/appointment system to manage renting or booking of services, rooms, houses, cars, accommodation and more to make it easy for your customers to do business with you."
+msgstr ""
+
+#: build/index.js:4605
+#: build/index.js:3618
+msgid "YITH WooCommerce AJAX Search"
+msgstr ""
+
+#: build/index.js:4606
+#: build/index.js:3619
+msgid "YITH WooCommerce AJAX Search is an effective and predictive real-time search engine on your store so users can quickly find products they want. Speed up your search and boost your sales."
+msgstr ""
+
+#: build/index.js:4633
+#: build/index.js:3650
+msgid "YITH WooCommerce Wishlist"
+msgstr ""
+
+#: build/index.js:4634
+#: build/index.js:3651
+msgid "Allow your customers to create lists of products they want and share them with family and friends."
+msgstr ""
+
+#: build/index.js:4661
+#: build/index.js:3682
+msgid "YITH WooCommerce AJAX Product Filter"
+msgstr ""
+
+#: build/index.js:4662
+#: build/index.js:3686
+msgid "YITH WooCommerce Ajax Product Filter is the perfect way to add an advanced filter to all products in your store by size, color, price, and more to find the right product or gift with ease."
+msgstr ""
+
+#: build/index.js:4689
+#: build/index.js:3719
+msgid "YITH WooCommerce Gift Cards"
+msgstr ""
+
+#: build/index.js:4690
+#: build/index.js:3720
+msgid "Sell gift cards to increase your store's revenue and win new customers."
+msgstr ""
+
+#: build/index.js:4717
+#: build/index.js:3753
+msgid "YITH WooCommerce Customize My Account Page"
+msgstr ""
+
+#: build/index.js:4718
+#: build/index.js:3757
+msgid "Customize the My Account page of your customers by creating custom sections with promotions and ad-hoc content based on your needs."
+msgstr ""
+
+#: build/index.js:4746
+#: build/index.js:3789
+msgid "Ecomdash"
+msgstr ""
+
+#: build/index.js:4747
+#: build/index.js:3790
+msgid "All your sales channels and products, managed in one place. See how this dashboard puts selling, updating, and inventory all at your fingertips. Perfect for selling on Amazon, Etsy, eBay and more."
 msgstr ""

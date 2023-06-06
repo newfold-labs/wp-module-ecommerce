@@ -15,19 +15,21 @@ export const razorpaySelector = (response) => {
   };
 };
 
-export const wcProductsSelector = (products) => products;
+export const wcProductsParser = (type) => (products) => {
+  return type === "all"
+    ? products
+    : products.filter((product) => product.type === type);
+};
 
-export const wcGiftCardsSelector = (products) =>
-  products.filter((product) => product.type === "gift-card");
+export const wcPluginStatusParser = (slug) => (data) => {
+  const isInstalled = data?.details?.[slug].status === "active";
+  const isQueueEmpty = data?.queue?.length === 0;
+  const isInstalling = data?.queue?.includes(slug);
+  const isWCActive = data?.details?.woocommerce.status === "active";
+  const pluginUrl = data?.details?.[slug].url;
+  return { isInstalled, isInstalling, isQueueEmpty, isWCActive, pluginUrl };
+};
 
-export const wcBookings = (products) =>
-  products.filter((product) => product.type === "booking");
-
-export const wcPluginStatusParser = (slug, title) => (data) => {
-  const isInstalled = data.status?.[title] === "Active";
-  const isInstalling = data?.status?.["queue-status"].some(
-    (queue) => queue.slug === slug
-  );
-  const isQueueEmpty = data.status?.["queue-status"].length === 0;
-  return { isInstalled, isInstalling, isQueueEmpty };
+export const findUpsellWithName = (name) => (upsellOptions) => {
+  return upsellOptions?.find((option) => option.name === name);
 };

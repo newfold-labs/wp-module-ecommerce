@@ -1,64 +1,61 @@
 import apiFetch from "@wordpress/api-fetch";
-import { Popover, SlotFillProvider } from "@wordpress/components";
+import { Spinner } from "@yoast/ui-library";
 import useSWR, { SWRConfig } from "swr";
-import useSWRImmutable from "swr/immutable";
-import { Banner } from "./components/Banner";
-import { Dashboard } from "./components/Dashboard";
-import { SiteStatus } from "./components/SiteStatus";
-import { StoreAnalytics } from "./components/StoreAnalytics";
-import { WooCommerceUnavailable } from "./components/WooCommerceUnavailable";
-import { Endpoints } from "./services";
+import { Products } from "./components/ProductsAndServices";
+import { Store } from "./components/Store";
+import { StoreDetails } from "./components/StoreDetails";
+import { createApiUrl } from "./sdk/createApiUrl";
+import { PluginsSdk } from "./sdk/plugins";
 
-const fetcher = (path) => apiFetch({ path });
+const fetcher = (path) => apiFetch({ url: createApiUrl(path) });
 
-window.NewfoldECommerce = function NewfoldECommerce(props) {
-  let {
-    data,
-    error,
-    mutate: refreshPlugins,
-  } = useSWR(Endpoints.PLUGIN_STATUS, fetcher, {
-    revalidateOnReconnect: false,
-    refreshInterval: 10 * 1000,
-  });
-  let { data: user } = useSWRImmutable(Endpoints.PAGE_STATUS, fetcher);
-  let plugins = {
-    errors: error,
-    ...(data ?? {}),
-    refresh: refreshPlugins,
-  };
-  let Hero =
-    plugins.status?.woocommerce === "Active" ? Banner : WooCommerceUnavailable;
+const pages = [
+  { key: "/store", Page: Store },
+  { key: "/store/products", Page: Products },
+  { key: "/store/details", Page: StoreDetails },
+];
+
+function parseWCStatus(data) {
+  const status = data?.details?.woocommerce?.status;
+  const isActive = status === "active";
+  const needsInstall = status === "need_to_install";
+  const isInstalling = data?.queue?.includes("woocommerce");
+  return { isActive, needsInstall, isInstalling };
+}
+
+/** @type {import("..").NewfoldEcommerce}  */
+export function NewfoldECommerce(props) {
+  let { data: woo, mutate } = useSWR(
+    "woo-status",
+    () => PluginsSdk.queries.status("woocommerce").then(parseWCStatus),
+    { revalidateOnReconnect: false, refreshInterval: 30 * 1000 }
+  );
+  let { Page } =
+    pages.find((page) => page.key === props.state.location) ?? pages[0];
+
+  if (woo === undefined) {
+    return (
+      <div className="yst-flex yst-items-center yst-text-center yst-justify-center yst-h-full">
+        <Spinner size={8} className="yst-text-primary" />
+      </div>
+    );
+  }
+  if (!woo.isActive) {
+    Page = Store;
+  }
   return (
     <SWRConfig
       value={{
         fetcher,
         revalidateOnReconnect: false,
-        isPaused: () => plugins.status?.woocommerce !== "Active",
+        revalidateOnFocus: woo.isActive,
       }}
     >
-      <SlotFillProvider>
-        <div className="nfd-ecommerce-atoms nfd-ecommerce-setup">
-          {data === undefined ? (
-            <div
-              style={{
-                height: "100%",
-                display: "grid",
-                placeContent: "center",
-              }}
-            >
-              <div className="nfd-ecommerce-loader" />
-            </div>
-          ) : (
-            <>
-              <Hero plugins={plugins} user={user} {...props} />
-              <StoreAnalytics plugins={plugins} user={user} {...props} />
-              <Dashboard plugins={plugins} user={user} {...props} />
-              <SiteStatus plugins={plugins} user={user} {...props} />
-            </>
-          )}
-        </div>
-        <Popover.Slot />
-      </SlotFillProvider>
+      <Page woo={{ ...woo, refreshStatus: mutate }} {...props} />
     </SWRConfig>
   );
-};
+}
+
+export * from "./components/FreePlugins";
+export * from "./components/OnboardingScreen";
+

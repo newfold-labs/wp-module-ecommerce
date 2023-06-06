@@ -2,6 +2,7 @@
 
 namespace NewfoldLabs\WP\Module\ECommerce;
 
+use NewfoldLabs\WP\Module\ECommerce\Data\Runtime;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\Module\ECommerce\Partials\CaptiveFlow;
 use NewfoldLabs\WP\Module\ECommerce\Partials\WooCommerceBacklink;
@@ -31,8 +32,8 @@ class ECommerce {
 	 * @var array
 	 */
 	protected $controllers = array(
+		'NewfoldLabs\\WP\\Module\\ECommerce\\RestApi\\IntegrationsController',
 		'NewfoldLabs\\WP\\Module\\ECommerce\\RestApi\\PluginsController',
-		'NewfoldLabs\\WP\\Module\\ECommerce\\RestApi\\UserController',
 	);
 
 	/**
@@ -68,8 +69,8 @@ class ECommerce {
 		add_action( 'admin_init', array( $this, 'maybe_do_dash_redirect' ) );
 		add_action( 'admin_bar_menu', array( $this, 'newfold_site_status' ), 200 );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
-		add_action( 'load-toplevel_page_bluehost', array( $this, 'register_assets' ) );
-		add_action( 'load-toplevel_page_crazy-domains', array( $this, 'register_assets' ) );
+		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_assets' ) );
+		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_textdomains' ) );
 		CaptiveFlow::init();
 		WooCommerceBacklink::init( $container );
 		register_meta(
@@ -158,6 +159,12 @@ class ECommerce {
 		}
 	}
 
+	public function register_textdomains() {
+		$MODULE_LANG_DIR = $this->container->plugin()->dir . 'vendor/newfold-labs/wp-module-ecommerce/languages';
+		\load_script_textdomain( 'nfd-ecommerce-dependency', 'wp-module-ecommerce', $MODULE_LANG_DIR );
+		\load_textdomain( 'wp-module-ecommerce', $MODULE_LANG_DIR );
+	}
+
 	/**
 	 * Load WP dependencies into the page.
 	 */
@@ -165,12 +172,18 @@ class ECommerce {
 		$asset_file = NFD_ECOMMERCE_BUILD_DIR . 'index.asset.php';
 		if ( file_exists( $asset_file ) ) {
 			$asset = require $asset_file;
-			\wp_enqueue_script(
+			\wp_register_script(
 				'nfd-ecommerce-dependency',
 				NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Partials/load-dependencies.js',
 				array_merge( $asset['dependencies'], array() ),
 				$asset['version']
 			);
+			\wp_add_inline_script(
+				'nfd-ecommerce-dependency',
+				'window.NFDECOM =' . wp_json_encode( Runtime::prepareData( $this->container ) ) . ';',
+				'before'
+			);
+			\wp_enqueue_script( 'nfd-ecommerce-dependency' );
 		}
 	}
 
