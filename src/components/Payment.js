@@ -16,7 +16,7 @@ import { Section } from "./Section";
 import { ThirdPartyIntegration } from "./ThirdPartyIntegration";
 
 const Payment = ({ notify, pushChanges, values, controls }) => {
-  if (!RuntimeSdk.brandSettings.setup.payment.length === 0) {
+  if (RuntimeSdk.brandSettings.setup.payment.length === 0) {
     return null;
   }
   return (
