@@ -14,7 +14,6 @@ export const ThirdPartyIntegration = ({
   integrationSrcPath,
   children,
   notify,
-  razorpaySettings,
   ...props
 }) => {
   let {
@@ -50,31 +49,34 @@ export const ThirdPartyIntegration = ({
         </div>
       ) : (
         <div className="yst-flex-1">
-
           {isConnectionActive ? (
-            id !== "razorpay" ?
-            <div className="components-modal__frame yst-h-[500px]">
-              <button
-                type="button"
-                onClick={async () => {
-                  setConnectionActive(false);
-                  const integrationStatusResponse =  await refreshIntegrationStatus();
-                  if (integrationStatusResponse.complete) {
-                    notify.push(`${id}-account-connect-success`, {
-                      title: `Your ${id} account have been connected`,
-                      variant: "success",
-                    });
-                  }
-                }}
+            id !== "razorpay" ? (
+              <div className="components-modal__frame yst-h-[500px]">
+                <button
+                  type="button"
+                  onClick={async () => {
+                    setConnectionActive(false);
+                    const integrationStatusResponse =
+                      await refreshIntegrationStatus();
+                    if (integrationStatusResponse.complete) {
+                      notify.push(`${id}-account-connect-success`, {
+                        title: `Your ${id} account have been connected`,
+                        variant: "success",
+                      });
+                    }
+                  }}
+                />
+                <iframe
+                  className="yst-h-full yst-w-full"
+                  src={integrationStatus?.integration?.captive}
+                />
+              </div>
+            ) : (
+              <CaptiveRazorpay
+                razorpaySettings={integrationStatus?.details?.settings}
               />
-              <iframe
-                className="yst-h-full yst-w-full"
-                src={integrationStatus?.integration?.captive}
-              />
-            </div> : 
-            <CaptiveRazorpay razorpaySettings={razorpaySettings} />
-          ) 
-          : (
+            )
+          ) : (
             children({
               integrationStatus,
               onConnect,

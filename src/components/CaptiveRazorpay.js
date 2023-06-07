@@ -1,9 +1,7 @@
 import { useEffect, useState } from "@wordpress/element";
 import { __, sprintf } from "@wordpress/i18n";
-import { Button, TextField, ToggleField } from "@yoast/ui-library";
+import { Button, TextField, ToggleField, usePrevious } from "@yoast/ui-library";
 import { ReactComponent as RazorPayBrand } from "../icons/brands/razorpay.svg";
-import { WordPressSdk } from "../sdk/wordpress";
-
 /** @type {((key: string) => boolean)[]} */
 const KeyChecks = [
   (key) => key?.startsWith("rzp_test_"),
@@ -41,20 +39,7 @@ const Content = {
   ),
 };
 
-const rzrPaySettings = {
-  enabled: "yes",
-  title: "Credit Card/Debit Card/NetBanking",
-  description:
-    "Pay securely by Credit or Debit card or Internet Banking through Razorpay.",
-  payment_action: "capture",
-  order_success_message:
-    "Thank you for shopping with us. Your account has been charged and your transaction is successful. We will be processing your order soon.",
-  enable_1cc_debug_mode: "yes",
-};
-
 export function CaptiveRazorpay({ razorpaySettings }) {
-  let hireExpertsUrl = `admin.php?page=bluehost#/marketplace/services/blue-sky`;
-
   let [isTestMode, setTestMode] = useState(() => false);
   let [rzrKeys, updateKeys] = useState({
     key_id: "",
@@ -66,26 +51,21 @@ export function CaptiveRazorpay({ razorpaySettings }) {
       updateKeys(razorpaySettings);
     }
   }, [razorpaySettings]);
+
   const toggleValue = () => {
-    if (isTestMode) {
-      setTestMode(false);
-    } else {
-      setTestMode(true);
-      updateKeys(razorpaySettings);
-    }
+    setTestMode(!isTestMode);
+    updateKeys({
+      key_id: razorpaySettings?.key_id ?? "",
+      key_secret: razorpaySettings?.key_secret ?? "",
+    });
   };
+  
   let isFormDisabled = razorpaySettings === undefined;
   let [isTestKeyValid, isProductionKeyValid] = KeyChecks.map(
     (check) => rzrKeys.key_id === "" || check(rzrKeys.key_id)
   );
   let isKeyValid = isTestMode ? isTestKeyValid : isProductionKeyValid;
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    await WordPressSdk.settings.put({
-      "nfd-ecommerce-captive-flow-razorpay": "true",
-      woocommerce_razorpay_settings: { ...rzrPaySettings, ...rzrKeys },
-    });
-  };
+
   return (
     <fieldset>
       <div className="yst-flex yst-justify-between yst-mb-6">
