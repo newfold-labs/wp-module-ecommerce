@@ -5,6 +5,7 @@ import {
   SelectField,
   TextInput,
   Spinner,
+  TextField,
 } from "@yoast/ui-library";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
@@ -88,32 +89,29 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
               )}
             </div>
             <div className="yst-mt-6">
-              <Label>{__("Address Line 1 *")}</Label>
-              <TextInput
+              <TextField
                 data-section="details"
                 name="woocommerce_store_address"
                 value={values.woocommerce_store_address}
-                className="yst-mt-2"
                 required
+                label={__("Address Line 1 *")}
               />
             </div>
             <div className="yst-mt-6">
-              <Label>{__("Address Line 2 (optional)")}</Label>
-              <TextInput
+              <TextField
                 data-section="details"
                 name="woocommerce_store_address_2"
                 value={values.woocommerce_store_address_2}
-                className="yst-mt-2"
+                label={__("Address Line 2 (optional)")}
               />
             </div>
             <div className="yst-mt-6 yst-flex">
               <div className="yst-flex-1">
-                <Label>{__("City *")}</Label>
-                <TextInput
+                <TextField
                   data-section="details"
                   name="woocommerce_store_city"
                   value={values.woocommerce_store_city}
-                  className="yst-mt-2"
+                  label={__("City *")}
                   required
                 />
               </div>
@@ -145,24 +143,23 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                   </Select>
                 </div>
               )}
-
               <div className="yst-flex-1 yst-ml-8">
-                <Label>{__("Postal Code *")}</Label>
-                <TextInput
+                <TextField
+                  data-section="details"
                   name="woocommerce_store_postcode"
                   value={values.woocommerce_store_postcode}
-                  className="yst-mt-2"
+                  label={__("Postal Code *")}
                   required
                 />
               </div>
             </div>
             <div className="yst-mt-6">
-              <Label>{__("Email")}</Label>
-              <TextInput
+              <TextField
                 data-section="details"
                 name="woocommerce_email_from_address"
                 value={values.woocommerce_email_from_address}
-                className="yst-mt-2"
+                label={__("Email")}
+                required
               />
             </div>
             <div className="yst-mt-6">
