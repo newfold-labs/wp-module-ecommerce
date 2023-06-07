@@ -19,7 +19,7 @@ const Razorpay = ({ notify }) => {
         const isSetupComplete = integrationStatus?.complete;
         const environment = integrationStatus?.details?.environment;
         return (
-          <div className="yst-h-[174px] yst-border yst-h-174px yst-p-6">
+          <div className="yst-h-[174px] yst-border yst-rounded-md yst-h-174px yst-p-6">
             <div className="yst-flex yst-justify-between yst-mb-8">
               <RazorPayBrand />
               {!isInstalling ? (

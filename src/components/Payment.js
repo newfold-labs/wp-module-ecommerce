@@ -35,7 +35,7 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
             const isSetupComplete = integrationStatus?.complete;
             const environment = integrationStatus?.details?.environment;
             return (
-              <div className="yst-border yst-p-6">
+              <div className="yst-border yst-rounded-md yst-p-6">
                 <div className="yst-flex yst-justify-between yst-mb-8">
                   <PaypalBrand />
                   {isInstalling ? (
