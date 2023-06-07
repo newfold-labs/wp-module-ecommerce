@@ -1,6 +1,6 @@
 import { useEffect, useState } from "@wordpress/element";
 import { __, sprintf } from "@wordpress/i18n";
-import { Button, TextField, ToggleField, usePrevious } from "@yoast/ui-library";
+import { Button, TextField, ToggleField } from "@yoast/ui-library";
 import { ReactComponent as RazorPayBrand } from "../icons/brands/razorpay.svg";
 /** @type {((key: string) => boolean)[]} */
 const KeyChecks = [

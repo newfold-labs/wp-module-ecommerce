@@ -35,7 +35,7 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
             const isSetupComplete = integrationStatus?.complete;
             const environment = integrationStatus?.details?.environment;
             return (
-              <div className="yst-border yst-p-6">
+              <div className="yst-border yst-rounded-md yst-p-6">
                 <div className="yst-flex yst-justify-between yst-mb-8">
                   <PaypalBrand />
                   {isInstalling ? (
@@ -101,7 +101,7 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
                         "wp-module-ecommerce"
                       )}
                     </Title>
-                    <div className="yst-flex yst-items-end yst-gap-2">
+                    <div className="yst-flex yst-items-end yst-gap-2 yst-flex-wrap">
                       <VisaBrand />
                       <MasterCardBrand />
                       <AmexBrand />
