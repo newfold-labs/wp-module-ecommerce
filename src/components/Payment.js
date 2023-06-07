@@ -101,7 +101,7 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
                         "wp-module-ecommerce"
                       )}
                     </Title>
-                    <div className="yst-flex yst-items-end yst-gap-2">
+                    <div className="yst-flex yst-items-end yst-gap-2 yst-flex-wrap">
                       <VisaBrand />
                       <MasterCardBrand />
                       <AmexBrand />
