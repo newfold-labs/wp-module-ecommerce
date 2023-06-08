@@ -157,6 +157,7 @@ export function StoreDetails(props) {
                 ? `${payload.country}:${payload.state}`
                 : payload.country,
             });
+            await WooCommerceSdk.onboarding.updateProfile({ completed: true })
           }
           if (isFormDirty.payment) {
             let existingGateways = paymentMethods.data;
