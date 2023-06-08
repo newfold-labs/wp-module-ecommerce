@@ -141,6 +141,7 @@ export function StoreDetails(props) {
           if (isFormDirty.tax) {
             await settings.trigger({
               woocommerce_calc_taxes: payload.woocommerce_calc_taxes,
+              wc_connect_taxes_enabled: payload.woocommerce_calc_taxes,
             });
           }
           if (isFormDirty.details) {
