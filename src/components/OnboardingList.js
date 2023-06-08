@@ -63,7 +63,8 @@ export function OnboardingList(props) {
   }
   let completedItems = items.filter((item) => item.state.isCompleted);
   let incompleteItems = items.filter((item) => !item.state.isCompleted);
-  let itemsToDisplay = view === "incomplete" ? incompleteItems : completedItems;
+  let itemsToDisplay =
+    view === "incomplete" ? incompleteItems.slice(0, 5) : completedItems;
   return (
     <div className="yst-grid yst-grid-rows-[repeat(3,_min-content)] yst-gap-4">
       <Title size={2}>Next steps for your site</Title>
@@ -86,7 +87,7 @@ export function OnboardingList(props) {
       )}
       {itemsToDisplay.length > 0 && (
         <Card as="ul" className="yst-p-0">
-          {itemsToDisplay.slice(0, 5).map((item) => (
+          {itemsToDisplay.map((item) => (
             <OnboardingCheckListItem key={item.name} {...item} />
           ))}
         </Card>
