@@ -2,6 +2,7 @@ import { RocketLaunchIcon } from "@heroicons/react/24/outline";
 import { __ } from "@wordpress/i18n";
 import { Button, Title } from "@yoast/ui-library";
 import useSWRMutation from "swr/mutation";
+import { RuntimeSdk } from "../sdk/runtime";
 
 const getTitle = (comingSoon) =>
   comingSoon
@@ -64,7 +65,9 @@ export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
           target="_blank"
           variant="secondary"
         >
-          {__("Preview your store", "wp-module-ecommerce")}
+          {RuntimeSdk.hasCapability("isEcommerce")
+            ? __("Preview your store", "wp-module-ecommerce")
+            : __("Preview your site", "wp-module-ecommerce")}
         </Button>
         <Button
           className="yst-flex yst-gap-2 yst-items-center"
@@ -73,7 +76,9 @@ export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
           onClick={comingSoonAction.trigger}
         >
           <RocketLaunchIcon />
-          {__("Launch your store", "wp-module-ecommerce")}
+          {RuntimeSdk.hasCapability("isEcommerce")
+            ? __("Launch your store", "wp-module-ecommerce")
+            : __("Launch your site", "wp-module-ecommerce")}
         </Button>
       </div>
     </div>
