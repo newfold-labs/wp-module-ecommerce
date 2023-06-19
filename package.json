@@ -3,7 +3,6 @@
   "description": "Brand Agnostic eCommerce Experience",
   "license": "GPL-2.0-or-later",
   "version": "1.0.3",
-  "private": true,
   "main": "build/index.js",
   "files": [
     "build/",
