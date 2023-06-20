@@ -1,16 +1,22 @@
 <?php
 namespace NewfoldLabs\WP\Module\ECommerce\Data;
 
+use NewfoldLabs\WP\ModuleLoader\Container;
 /**
  * Contains Brand information.
  */
 final class Brands {
+	private static function get_brand_name( Container $container ) {
+		$brand_raw_value  = $container->plugin()->brand;
+		return \sanitize_title( str_replace( '_', '-', $brand_raw_value ) );
+	}
 	/**
 	 * Brand specific data
 	 *
 	 * @return array
 	 */
-	public static function get_config( string $brand ) {
+	public static function get_config( Container $container ) {
+		$brand = Brands::get_brand_name( $container );
 		switch ($brand) {
 			case 'crazy-domains':
 				return array(
