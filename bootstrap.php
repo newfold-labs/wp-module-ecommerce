@@ -103,7 +103,7 @@ if ( function_exists( 'add_filter' ) ) {
 	add_filter(
 		'yith_wcbk_is_request',
 		function ( $is_request, $type ) {
-		   return 'rest' === $type && wp_is_json_request() ? true : $is_request;
+		   return 'rest' === $type ? wp_is_json_request() : $is_request;
 		},
 		10,
 		2
