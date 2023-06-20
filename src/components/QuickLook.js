@@ -145,7 +145,7 @@ function RecentOrders() {
           <NoOrdersFallback className="yst-flex-2" />
           <p className="yst-flex-1" >
             {__(
-              "Add some products so you can start getting orders!",
+              "No orders yet. When you start getting orders, they will show up here.",
               "wp-module-ecommerce"
             )}
           </p>
