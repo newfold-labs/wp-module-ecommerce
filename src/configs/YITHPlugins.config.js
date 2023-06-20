@@ -1,16 +1,16 @@
+import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
 import { __ } from "@wordpress/i18n";
 import { FeatureCard } from "../components/FeatureCard";
 import { ReactComponent as Ecomdash } from "../icons/brands/ecomdash.svg";
-import { ReactComponent as SalesFunnelLicense } from "../icons/brands/yith-woocommerce-sales-funnel.svg";
 import { ReactComponent as Filter } from "../icons/brands/yith-woocommerce-ajax-product-filter.svg";
 import { ReactComponent as Search } from "../icons/brands/yith-woocommerce-ajax-search.svg";
 import { ReactComponent as Booking } from "../icons/brands/yith-woocommerce-booking.svg";
 import { ReactComponent as CustomizeAccount } from "../icons/brands/yith-woocommerce-customize-myaccount-page.svg";
 import { ReactComponent as Gift } from "../icons/brands/yith-woocommerce-gift-card.svg";
+import { ReactComponent as SalesFunnelLicense } from "../icons/brands/yith-woocommerce-sales-funnel.svg";
 import { ReactComponent as WishList } from "../icons/brands/yith-woocommerce-wishlist.svg";
 import { MarketplaceSdk } from "../sdk/marketplace";
 import { PluginsSdk } from "../sdk/plugins";
-import { RuntimeSdk } from "../sdk/runtime";
 import { createPluginInstallAction } from "./actions";
 import { findUpsellWithName, wcPluginStatusParser } from "./selectors";
 
@@ -23,7 +23,7 @@ function defineFeatureState() {
     isDisabled: (data) => data?.plugins?.isWCActive === false,
     isInstalling: (data) => data?.plugins?.isInstalling,
     isQueueEmpty: (data) => data?.plugins?.isQueueEmpty,
-    isUpsellNeeded: () => !RuntimeSdk.hasCapability("hasYithExtended"),
+    isUpsellNeeded: () => !NewfoldRuntime.hasCapability("hasYithExtended"),
   };
 }
 
@@ -289,7 +289,7 @@ export const YITHPluginsDefinitions = (props) => ({
       state: {
         ...defineFeatureState(),
         isUpsellNeeded: () => false,
-        isAvailable: () => RuntimeSdk.hasCapability("hasEcomdash"),
+        isAvailable: () => NewfoldRuntime.hasCapability("hasEcomdash"),
       },
       actions: {
         installFeature: createPluginInstallAction(
@@ -326,7 +326,7 @@ export const YITHPluginsDefinitions = (props) => ({
       state: {
         ...defineFeatureState(),
         isUpsellNeeded: () => false,
-        isAvailable: () => RuntimeSdk.hasCapability("isEcommerce"),
+        isAvailable: () => NewfoldRuntime.hasCapability("isEcommerce"),
       },
       actions: {},
       queries: [

@@ -1,13 +1,6 @@
-/**
- *
- * @param {string} url API Endpoint
- * @param {Record<string, any>} qs Query parameters
- *
- * @returns {string}
- */
+import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
+
+/** @deprecated Use NewfoldRuntime.createApiUrl */
 export function createApiUrl(url, qs = {}) {
-  return `${window.NFDECOM?.rest_url}?${new URLSearchParams({
-    rest_route: url,
-    ...qs,
-  })}`;
+  return NewfoldRuntime.createApiUrl(url, qs);
 }
