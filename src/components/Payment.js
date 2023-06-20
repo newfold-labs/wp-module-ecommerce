@@ -131,7 +131,7 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
           onChange={pushChanges}
           options={[
             {
-              label: "Cheque payments",
+              label: "Check payments",
               value: "woocommerce_cheque_settings",
             },
             {
