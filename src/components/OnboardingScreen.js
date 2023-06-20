@@ -5,10 +5,13 @@ import { ReactComponent as StorePendingIllustration } from "../icons/store-pendi
 import { OnboardingList } from "./OnboardingList";
 import { Section } from "./Section";
 import { SiteStatus } from "./SiteStatus";
+import { RuntimeSdk } from "../sdk/runtime";
 
 const Text = {
   Pending: {
-    title: __("Congrats on your new store!", "wp-module-ecommerce"),
+    title: RuntimeSdk.hasCapability("isEcommerce")
+      ? __("Congrats on your new store!", "wp-module-ecommerce")
+      : __("Congrats on your new site!", "wp-module-ecommerce"),
     description: __(
       "You're just a few steps away from sharing your site with the world!",
       "wp-module-ecommerce"
