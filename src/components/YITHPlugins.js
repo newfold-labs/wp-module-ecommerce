@@ -1,3 +1,4 @@
+import { __ } from "@wordpress/i18n";
 import { Spinner } from "@yoast/ui-library";
 import { YITHPluginsDefinitions } from "../configs/YITHPlugins.config";
 import { Section } from "./Section";
