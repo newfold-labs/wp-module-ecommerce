@@ -116,7 +116,9 @@ export function OnboardingListDefinition(props) {
       },
       {
         name: "Add a new page to your site",
-        text: __("Add a new page to your site", "wp-module-ecommerce"),
+        text: RuntimeSdk.hasCapability("isEcommerce")
+          ? __("Add a new page to your store", "wp-module-ecommerce")
+          : __("Add a new page to your site", "wp-module-ecommerce"),
         state: {
           isCompleted: () =>
             pandora.get("nfd_ecommerce_onboarding_checklist", {})

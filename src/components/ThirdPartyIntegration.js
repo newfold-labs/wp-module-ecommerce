@@ -1,11 +1,10 @@
-import { __ } from "@wordpress/i18n";
 import { Spinner } from "@yoast/ui-library";
 import useSWR from "swr";
-import { Section } from "./Section";
+import useSWRMutation from "swr/mutation";
 import { IntegrationsSdk } from "../sdk/integrations";
 import { PluginsSdk } from "../sdk/plugins";
-import useSWRMutation from "swr/mutation";
 import { CaptiveRazorpay } from "./CaptiveRazorpay";
+import { Section } from "./Section";
 
 export const ThirdPartyIntegration = ({
   id,

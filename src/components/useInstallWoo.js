@@ -1,3 +1,4 @@
+import { __ } from "@wordpress/i18n";
 import useSWRMutation from "swr/mutation";
 import { PluginsSdk } from "../sdk/plugins";
 import { RuntimeSdk } from "../sdk/runtime";
