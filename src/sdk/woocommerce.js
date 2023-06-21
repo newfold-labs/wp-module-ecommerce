@@ -1,30 +1,35 @@
+import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
 import apiFetch from "@wordpress/api-fetch";
 import moment from "moment"; //@TODO add to package.json
-import { createApiUrl } from "./createApiUrl";
-import { safeFetch } from "./safeFetch";
 import { RuntimeSdk } from "./runtime";
+import { safeFetch } from "./safeFetch";
 
 const Endpoints = {
-  ORDERS: (period) => createApiUrl("/wc/v3/orders", period),
-  PRODUCTS: createApiUrl("/wc/v3/products"),
+  ORDERS: (period) => NewfoldRuntime.createApiUrl("/wc/v3/orders", period),
+  PRODUCTS: NewfoldRuntime.createApiUrl("/wc/v3/products"),
   Analytics: {
     JETPACK: (range) =>
-      createApiUrl("/jetpack/v4/module/stats/data", { range }),
-    SALES: (period) => createApiUrl("/wc/v3/reports/sales", period),
+      NewfoldRuntime.createApiUrl("/jetpack/v4/module/stats/data", { range }),
+    SALES: (period) =>
+      NewfoldRuntime.createApiUrl("/wc/v3/reports/sales", period),
   },
   Onboarding: {
-    PROFILE: createApiUrl("/wc-admin/onboarding/profile"),
-    TASKS: createApiUrl("/wc-admin/onboarding/tasks", { ids: "setup" }),
+    PROFILE: NewfoldRuntime.createApiUrl("/wc-admin/onboarding/profile"),
+    TASKS: NewfoldRuntime.createApiUrl("/wc-admin/onboarding/tasks", {
+      ids: "setup",
+    }),
   },
   Options: {
-    PAYMENTS: createApiUrl("/wc-admin/options", {
+    PAYMENTS: NewfoldRuntime.createApiUrl("/wc-admin/options", {
       options: [
         "woocommerce_bacs_settings",
         "woocommerce_cod_settings",
         "woocommerce_cheque_settings",
       ].join(),
     }),
-    CURRENCY: createApiUrl("/wc/v3/settings/general/woocommerce_currency"),
+    CURRENCY: NewfoldRuntime.createApiUrl(
+      "/wc/v3/settings/general/woocommerce_currency"
+    ),
   },
 };
 

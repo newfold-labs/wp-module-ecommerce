@@ -1,15 +1,15 @@
+import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
 import apiFetch from "@wordpress/api-fetch";
-import { createApiUrl } from "./createApiUrl";
 import { safeFetch } from "./safeFetch";
 
 export const Endpoints = {
-  SETTINGS: createApiUrl("/wp/v2/settings"),
+  SETTINGS: NewfoldRuntime.createApiUrl("/wp/v2/settings"),
 };
 
 export const WordPressSdk = {
   settings: {
     async get() {
-      return apiFetch({ path: Endpoints.SETTINGS });
+      return apiFetch({ url: Endpoints.SETTINGS });
     },
     async put(settings) {
       return safeFetch({
