@@ -6,6 +6,23 @@ import { Store } from "./components/Store";
 import { StoreDetails } from "./components/StoreDetails";
 import { createApiUrl } from "./sdk/createApiUrl";
 import { PluginsSdk } from "./sdk/plugins";
+import domReady from '@wordpress/dom-ready';
+
+// I'll be tagging a 1.2.0 release that supports namespacing so this does not clash with other modules using analytics.
+domReady(() => {
+  HiiveAnalytics.initialize( {
+    namespace: 'commerce',
+    urls: {
+      single: createApiUrl( '/newfold-data/v1/events' ),
+      batch: createApiUrl( '/newfold-data/v1/events/batch' ),
+    },
+    settings: {
+      debounce: {
+        time: 3000,
+      },
+    },
+  } );
+})
 
 const fetcher = (path) => apiFetch({ url: createApiUrl(path) });
 

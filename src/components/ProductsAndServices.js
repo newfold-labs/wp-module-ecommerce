@@ -4,6 +4,7 @@ import { Button, Spinner, Title } from "@yoast/ui-library";
 import { ProductsAndServicesDefinition } from "../configs/ProductsAndServices.config";
 import { Section } from "./Section";
 import { useCardManager } from "./useCardManager";
+import { trackHiiveEvent } from "../sdk/trackHiiveEvent";
 
 export function Products({ woo, wpModules }) {
   let [cards] = useCardManager(
@@ -45,6 +46,9 @@ export function Products({ woo, wpModules }) {
               as="a"
               href="https://woocommerce.com/document/managing-products/"
               target="_blank"
+              onClick={() => {
+                trackHiiveEvent('click', 'testing')
+              }}
             >
               <LightBulbIcon className="hst-w-4" />
               {__(" How to add products", "wp-module-ecommerce")}
