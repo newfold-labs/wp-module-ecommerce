@@ -1,5 +1,6 @@
 import { dateI18n } from "@wordpress/date";
 import { useState } from "@wordpress/element";
+import { __ } from "@wordpress/i18n";
 import {
   Badge,
   Card,
@@ -14,12 +15,12 @@ import useSWR from "swr";
 import Reports from "../configs/Reports.config";
 import { ReactComponent as NoOrdersFallback } from "../icons/no-orders-fallback.svg";
 import { formatMoney } from "../sdk/formatMoney";
+import { RuntimeSdk } from "../sdk/runtime";
 import { WooCommerceSdk } from "../sdk/woocommerce";
 import { Section } from "./Section";
 import { SiteStatus } from "./SiteStatus";
 import { useCardManager } from "./useCardManager";
 import { useInstallWoo } from "./useInstallWoo";
-import { RuntimeSdk } from "../sdk/runtime";
 
 let recentActivityLink = `admin.php?${new URLSearchParams({
   page: "wc-admin",
@@ -145,7 +146,7 @@ function RecentOrders() {
           <NoOrdersFallback className="yst-flex-2" />
           <p className="yst-flex-1" >
             {__(
-              "Add some products so you can start getting orders!",
+              "No orders yet. When you start getting orders, they will show up here.",
               "wp-module-ecommerce"
             )}
           </p>

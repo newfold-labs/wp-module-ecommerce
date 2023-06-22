@@ -2,25 +2,38 @@ import { __ } from "@wordpress/i18n";
 import { Title } from "@yoast/ui-library";
 import { ReactComponent as WelcomeIllustration } from "../icons/store-live.svg";
 import { ReactComponent as StorePendingIllustration } from "../icons/store-pending.svg";
+import { RuntimeSdk } from "../sdk/runtime";
 import { OnboardingList } from "./OnboardingList";
 import { Section } from "./Section";
 import { SiteStatus } from "./SiteStatus";
 
 const Text = {
   Pending: {
-    title: __("Congrats on your new store!", "wp-module-ecommerce"),
-    description: __(
-      "You're just a few steps away from sharing your site with the world!",
-      "wp-module-ecommerce"
-    ),
+    title: RuntimeSdk.hasCapability("isEcommerce")
+      ? __("Congrats on your new store!", "wp-module-ecommerce")
+      : __("Congrats on your new site!", "wp-module-ecommerce"),
+    description: RuntimeSdk.hasCapability("isEcommerce")
+      ? __(
+          "You're just a few steps away from sharing your store with the world!",
+          "wp-module-ecommerce"
+        )
+      : __(
+          "You're just a few steps away from sharing your site with the world!",
+          "wp-module-ecommerce"
+        ),
     Illustration: StorePendingIllustration,
   },
   Live: {
     title: __("Ready to go to the next level?", "wp-module-ecommerce"),
-    description: __(
-      "Increase your store's performance by helping people find your store and engaging more with them once they have.",
-      "wp-module-ecommerce"
-    ),
+    description: RuntimeSdk.hasCapability("isEcommerce")
+      ? __(
+          "Increase your store's performance by helping people find your store and engaging more with them once they have.",
+          "wp-module-ecommerce"
+        )
+      : __(
+          "Increase your site's performance by helping people find your site and engaging more with them once they have.",
+          "wp-module-ecommerce"
+        ),
     Illustration: WelcomeIllustration,
   },
 };
