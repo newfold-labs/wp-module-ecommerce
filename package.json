@@ -12,15 +12,16 @@
   "types": "index.d.ts",
   "scripts": {
     "prepare": "npm run build",
-    "build": "wp-scripts build ./src/index.js --config ./scripts/webpack.config.js",
+    "build": "wp-scripts build ./src/index.js --config ./scripts/webpack.config.js ./src/load-dependencies.js",
     "lint": "wp-scripts lint-js ./src/index.js",
-    "start": "wp-scripts start ./src/index.js --config ./scripts/webpack.config.js",
+    "start": "wp-scripts start ./src/index.js --config ./scripts/webpack.config.js ./src/load-dependencies.js",
     "test:unit": "echo \"No tests implemented\"",
     "test:e2e": "echo \"No tests implemented\""
   },
   "dependencies": {
     "@faizaanceg/pandora": "^1.1.1",
     "@heroicons/react": "2.0.18",
+    "@newfold-labs/js-utility-ui-analytics": "^1.0.0",
     "@reduxjs/toolkit": "1.9.5",
     "@wordpress/api-fetch": "^3.6.2",
     "@wordpress/components": "^8.3.2",

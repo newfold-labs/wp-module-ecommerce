@@ -39,6 +39,7 @@ if ( function_exists( 'add_action' ) ) {
 					'callback' => function ( Container $container ) {
 						define( 'NFD_ECOMMERCE_BUILD_DIR', __DIR__ . '/build/' );
 						define( 'NFD_ECOMMERCE_PLUGIN_URL', $container->plugin()->url );
+						define( 'NFD_ECOMMERCE_BUILD_URL', $container->plugin()->url . '/vendor/newfold-labs/wp-module-ecommerce/build/');
 						new ECommerce( $container );
 					},
 					'isActive' => true,
