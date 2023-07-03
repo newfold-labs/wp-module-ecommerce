@@ -4,6 +4,6 @@ export const trackHiiveEvent = ( action, value ) => {
 	const hiiveEvent = new HiiveEvent( 'wp-module-ecommerce', action, {
 		value,
 		timestamp: Date.now(),
-	}, 'commerce' );
-     HiiveAnalytics.send( hiiveEvent );
+	}, 'wp-module-ecommerce' );
+    HiiveAnalytics.send( hiiveEvent );
 };
