@@ -174,7 +174,7 @@ class ECommerce {
 			$asset = require $asset_file;
 			\wp_register_script(
 				'nfd-ecommerce-dependency',
-				NFD_ECOMMERCE_BUILD_URL . 'index.js',
+				NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Partials/load-dependencies.js',
 				array_merge( $asset['dependencies'], array() ),
 				$asset['version']
 			);
