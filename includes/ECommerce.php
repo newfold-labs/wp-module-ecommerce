@@ -174,7 +174,7 @@ class ECommerce {
 			$asset = require $asset_file;
 			\wp_register_script(
 				'nfd-ecommerce-dependency',
-				NFD_ECOMMERCE_BUILD_URL . 'load-dependencies.js',
+				NFD_ECOMMERCE_BUILD_URL . 'index.js',
 				array_merge( $asset['dependencies'], array() ),
 				$asset['version']
 			);

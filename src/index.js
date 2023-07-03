@@ -6,6 +6,24 @@ import { Store } from "./components/Store";
 import { StoreDetails } from "./components/StoreDetails";
 import { createApiUrl } from "./sdk/createApiUrl";
 import { PluginsSdk } from "./sdk/plugins";
+import { HiiveAnalytics } from '@newfold-labs/js-utility-ui-analytics';
+
+import domReady from '@wordpress/dom-ready';
+
+domReady(() => {
+  HiiveAnalytics.initialize( {
+    namespace: 'wp-module-ecommerce',
+    urls: {
+      single: createApiUrl( '/newfold-data/v1/events' ),
+      batch: createApiUrl( '/newfold-data/v1/events/batch' ),
+    },
+    settings: {
+      debounce: {
+        time: 3000,
+      },
+    },
+  } );
+})
 
 const fetcher = (path) => apiFetch({ url: createApiUrl(path) });
 
