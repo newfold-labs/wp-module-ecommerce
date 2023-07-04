@@ -7,7 +7,9 @@ import { RuntimeSdk } from "../sdk/runtime";
 const getTitle = (comingSoon) =>
   comingSoon
     ? __("Coming Soon activated", "wp-module-ecommerce")
-    : __("Your store is online and ready for business!", "wp-module-ecommerce");
+    : RuntimeSdk.hasCapability("isEcommerce")
+    ? __("Your store is online and ready for business!", "wp-module-ecommerce")
+    : __("Your site is online now!", "wp-module-ecommerce");
 
 const getDescription = (comingSoon) =>
   comingSoon
