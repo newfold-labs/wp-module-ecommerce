@@ -325,6 +325,8 @@ export const YITHPluginsDefinitions = (props) => ({
       }),
       state: {
         ...defineFeatureState(),
+        featureUrl: (data) =>
+          data?.plugins?.isInstalled ? `#/store/sales_discounts` : null,
       },
       actions: {
         installFeature: createPluginInstallAction(
