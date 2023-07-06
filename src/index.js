@@ -4,6 +4,7 @@ import useSWR, { SWRConfig } from "swr";
 import { Products } from "./components/ProductsAndServices";
 import { Store } from "./components/Store";
 import { StoreDetails } from "./components/StoreDetails";
+import { WonderCart } from "./components/WonderCart";
 import { createApiUrl } from "./sdk/createApiUrl";
 import { PluginsSdk } from "./sdk/plugins";
 
@@ -13,6 +14,7 @@ const pages = [
   { key: "/store", Page: Store },
   { key: "/store/products", Page: Products },
   { key: "/store/details", Page: StoreDetails },
+  { key: "/store/sales_discounts", Page: WonderCart },
 ];
 
 function parseWCStatus(data) {
