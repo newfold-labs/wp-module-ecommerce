@@ -307,7 +307,7 @@ export const YITHPluginsDefinitions = (props) => ({
     },
     {
       Card: FeatureCard,
-      shouldRender: (state) => state.isUpsellNeeded === false,
+      shouldRender: () => false,
       name: "nfd_slug_wonder_cart",
       assets: () => ({
         Image: SalesFunnelLicense,
@@ -331,7 +331,7 @@ export const YITHPluginsDefinitions = (props) => ({
       actions: {
         installFeature: createPluginInstallAction(
           "nfd_slug_wonder_cart",
-          16,
+          17,
           props
         ),
       },
