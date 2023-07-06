@@ -307,7 +307,7 @@ export const YITHPluginsDefinitions = (props) => ({
     },
     {
       Card: FeatureCard,
-      shouldRender: () => true,
+      shouldRender: (state) => state.isUpsellNeeded === false,
       name: "nfd_slug_wonder_cart",
       assets: () => ({
         Image: SalesFunnelLicense,
