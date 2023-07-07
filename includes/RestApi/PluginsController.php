@@ -2,7 +2,7 @@
 
 namespace NewfoldLabs\WP\Module\ECommerce\RestApi;
 
-use NewfoldLabs\WP\Module\Installer\Permissions as InstallerPermissions;
+use NewfoldLabs\WP\Module\Installer\Services\PluginInstaller;
 use NewfoldLabs\WP\Module\ECommerce\Permissions;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\Module\ECommerce\Data\Plugins;
@@ -80,7 +80,7 @@ class PluginsController {
 			array(
 				'status' => $status,
 				'token'  => array(
-					'hash' => InstallerPermissions::rest_get_plugin_install_hash()
+					'hash' => PluginInstaller::rest_get_plugin_install_hash()
 				),
 			),
 			200
