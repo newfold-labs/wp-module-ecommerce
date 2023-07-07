@@ -14,6 +14,7 @@ export function useInstallWoo({ woo, wpModules }) {
       notify.push("woo-install-status", {
         title: "WooCommerce has been installed successfully",
         variant: "success",
+        autoDismiss: "5000"
       });
       await woo.refreshStatus();
     } else {
