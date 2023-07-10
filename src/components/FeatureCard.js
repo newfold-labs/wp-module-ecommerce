@@ -1,7 +1,7 @@
 import { ArrowLongRightIcon } from "@heroicons/react/20/solid";
 import { __ } from "@wordpress/i18n";
 import { Button, Card, Link, Title } from "@yoast/ui-library";
-import { trackHiiveEvent } from "../utils/analytics";
+import { AnalyticsSdk } from "../sdk/analytics";
 
 /**
  * @typedef FeatureCardState
@@ -50,7 +50,7 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
             className="yst-flex yst-mt-4 yst-items-center yst-gap-2 yst-no-underline"
             href={learnMoreUrl}
             target="_blank"
-            onClick={() => trackHiiveEvent( title, 'clicked on the learn more url' )}
+            onClick={() => AnalyticsSdk.track( title, 'clicked on the learn more url' )}
           >
             <span>{__("Learn More", "wp-module-ecommerce")}</span>
             <ArrowLongRightIcon className="yst-h-5 yst-text-black" />

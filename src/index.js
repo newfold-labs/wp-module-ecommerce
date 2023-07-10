@@ -7,8 +7,8 @@ import { StoreDetails } from "./components/StoreDetails";
 import { WonderCart } from "./components/WonderCart";
 import { createApiUrl } from "./sdk/createApiUrl";
 import { PluginsSdk } from "./sdk/plugins";
-import { HiiveAnalytics } from '@newfold-labs/js-utility-ui-analytics';
-import domReady from '@wordpress/dom-ready';
+import domReady from "@wordpress/dom-ready";
+import { HiiveAnalytics } from "@newfold-labs/js-utility-ui-analytics";
 
 domReady(() => {
   HiiveAnalytics.initialize({
@@ -77,4 +77,3 @@ export function NewfoldECommerce(props) {
 
 export * from "./components/FreePlugins";
 export * from "./components/OnboardingScreen";
-
