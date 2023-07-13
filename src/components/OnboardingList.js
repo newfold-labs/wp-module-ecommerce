@@ -9,6 +9,7 @@ import useSWRMutation from "swr/mutation";
 import { OnboardingListDefinition } from "../configs/OnboardingList.config";
 import { RuntimeSdk } from "../sdk/runtime";
 import { useCardManager } from "./useCardManager";
+import { AnalyticsSdk } from "../sdk/analytics";
 
 function OnboardingCheckListItem({ children, actions, state, ...props }) {
   let manageAction = useSWRMutation(props.name, async () => {
@@ -35,6 +36,7 @@ function OnboardingCheckListItem({ children, actions, state, ...props }) {
         {...(actions.manage && !manageAction.isMutating
           ? { onClick: manageAction.trigger }
           : {})}
+        onClick={() => AnalyticsSdk.track( props.name, `clicked on the ${props.name} button` )}
       >
         <CheckCircleIcon
           className={classNames(

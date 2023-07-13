@@ -18,4 +18,19 @@ export const AnalyticsSdk = {
   },
 };
 
+export const AnalyticsBatchSdk = {
+  track(action, value) {
+    const hiiveEvent = new HiiveEvent(
+      "wp-module-ecommerce",
+      action,
+      {
+        value,
+        timestamp: Date.now(),
+      },
+      "wp-module-ecommerce"
+    );
+    HiiveAnalytics.track(hiiveEvent);
+  },
+};
+
 
