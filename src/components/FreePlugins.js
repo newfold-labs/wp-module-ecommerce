@@ -29,7 +29,7 @@ export function FreePlugins({ notify }) {
             <Spinner size={8} className="yst-text-primary" />
           </div>
         )}
-        <div className="yst-grid yst-grid-cols-3 yst-gap-6">
+        <div className="yst-grid yst-gap-6 sm:yst-grid-cols-1 md:yst-grid-cols-2 lg:yst-grid-cols-3">
           {cards.map((cardConfig) => {
             let { Card, name, ...props } = cardConfig;
             return <Card key={name} {...props} />;

@@ -27,7 +27,7 @@ export function Products({ woo, wpModules }) {
         )}
       />
       <Section.Content>
-        <div className="yst-px-4 yst-py-2 yst-flex yst-rounded-lg yst-items-center yst-bg-slate-100">
+        <div className="yst-px-4 yst-py-2 yst-rounded-lg yst-bg-slate-100 yst-flex yst-flex-col sm:yst-justify-start md:yst-flex-row md:yst-justify-between md:yst-items-center">
           <div className="yst-flex-1">
             <Title size={4} className="yst-leading-normal">
               {__("Want help adding products?", "wp-module-ecommerce")}
@@ -56,7 +56,7 @@ export function Products({ woo, wpModules }) {
             <Spinner size={8} className="yst-text-primary" />
           </div>
         )}
-        <div className="yst-grid yst-grid-cols-3 yst-gap-6 yst-pt-8">
+        <div className="yst-grid yst-gap-6 yst-pt-8 sm:yst-grid-cols-1 md:yst-grid-cols-2 lg:yst-grid-cols-3">
           {cards.map((cardConfig) => {
             let { Card, name, ...props } = cardConfig;
             return <Card key={name} {...props} />;
