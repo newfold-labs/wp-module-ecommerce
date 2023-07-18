@@ -2,6 +2,7 @@ import {
   HiiveAnalytics,
   HiiveEvent,
 } from "@newfold-labs/js-utility-ui-analytics";
+import { createApiUrl } from "./createApiUrl";
 
 export const AnalyticsSdk = {
   track(action, value) {
@@ -11,26 +12,24 @@ export const AnalyticsSdk = {
       {
         value,
         timestamp: Date.now(),
+        location: window.location.href,
       },
       "wp-module-ecommerce"
     );
     HiiveAnalytics.send(hiiveEvent);
   },
-};
-
-export const AnalyticsBatchSdk = {
-  track(action, value) {
-    const hiiveEvent = new HiiveEvent(
-      "wp-module-ecommerce",
-      action,
-      {
-        value,
-        timestamp: Date.now(),
+  initialize() {
+    HiiveAnalytics.initialize({
+      namespace: "wp-module-ecommerce",
+      urls: {
+        single: createApiUrl("/newfold-data/v1/events"),
+        batch: createApiUrl("/newfold-data/v1/events/batch"),
       },
-      "wp-module-ecommerce"
-    );
-    HiiveAnalytics.track(hiiveEvent);
+      settings: {
+        debounce: {
+          time: 3000,
+        },
+      },
+    });
   },
 };
-
-

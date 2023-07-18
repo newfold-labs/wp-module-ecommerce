@@ -8,21 +8,10 @@ import { WonderCart } from "./components/WonderCart";
 import { createApiUrl } from "./sdk/createApiUrl";
 import { PluginsSdk } from "./sdk/plugins";
 import domReady from "@wordpress/dom-ready";
-import { HiiveAnalytics } from "@newfold-labs/js-utility-ui-analytics";
+import { AnalyticsSdk } from "./sdk/analytics";
 
 domReady(() => {
-  HiiveAnalytics.initialize({
-    namespace: "wp-module-ecommerce",
-    urls: {
-      single: createApiUrl("/newfold-data/v1/events"),
-      batch: createApiUrl("/newfold-data/v1/events/batch"),
-    },
-    settings: {
-      debounce: {
-        time: 3000,
-      },
-    },
-  });
+  AnalyticsSdk.initialize();
 });
 
 const fetcher = (path) => apiFetch({ url: createApiUrl(path) });
