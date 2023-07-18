@@ -105,7 +105,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                 label={__("Address Line 2 (optional)")}
               />
             </div>
-            <div className="yst-mt-6 yst-flex">
+            <div className="yst-mt-6 yst-flex yst-flex-col sm:yst-justify-between md:yst-flex-row">
               <div className="yst-flex-1">
                 <TextField
                   data-section="details"
@@ -116,7 +116,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                 />
               </div>
               {states?.length > 0 && (
-                <div className="yst-flex-1 yst-ml-8">
+                <div className="yst-flex-1 md:yst-ml-8">
                   <Label>{__("State *")}</Label>
                   <Select
                     id="state-select"
@@ -143,7 +143,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                   </Select>
                 </div>
               )}
-              <div className="yst-flex-1 yst-ml-8">
+              <div className="yst-flex-1 md:yst-ml-8">
                 <TextField
                   data-section="details"
                   name="woocommerce_store_postcode"
