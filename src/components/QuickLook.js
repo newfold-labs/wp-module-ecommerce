@@ -78,7 +78,7 @@ function RecentActivity() {
       )}
       {cards.length > 0 && (
         <>
-          <div className="yst-flex-1 yst-grid yst-grid-cols-2 yst-gap-4">
+          <div className="yst-flex-1 yst-grid yst-gap-4 sm:yst-grid-cols-1 md:yst-grid-cols-2">
             {cards.map((cardConfig) => {
               let { Card, name, ...props } = cardConfig;
               return <Card key={name} {...props} />;
@@ -218,7 +218,7 @@ export function QuickLook(props) {
           title="Quick Look"
           subtitle="Once you launch your store, you'll see a snapshot of recent purchases and other customer activity."
         >
-          <div className="yst-flex yst-mt-10 yst-gap-6">
+          <div className="yst-mt-10 yst-gap-6 yst-flex yst-flex-col md:yst-flex-row">
             <RecentActivity />
             <RecentOrders />
           </div>
