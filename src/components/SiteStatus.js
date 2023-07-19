@@ -47,7 +47,7 @@ export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
     return null;
   }
   return (
-    <div className="yst-px-4 yst-py-2 yst-flex yst-rounded-lg yst-items-center yst-bg-canvas">
+    <div className="yst-px-4 yst-py-2 yst-rounded-lg yst-bg-canvas yst-flex yst-flex-col md:yst-flex-row md:yst-items-center ">
       <div className="yst-flex-1">
         <Title size={4} className="yst-leading-normal">
           {__("Ready to go live?", "wp-module-ecommerce")}
@@ -59,7 +59,7 @@ export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
           )}
         </span>
       </div>
-      <div className="yst-flex-none yst-flex yst-gap-4">
+      <div className="yst-flex-none yst-gap-4 yst-flex yst-flex-col md:yst-flex-row">
         <Button
           as="a"
           className="yst-bg-canvas"
