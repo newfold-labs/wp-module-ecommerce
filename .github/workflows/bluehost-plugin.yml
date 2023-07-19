@@ -23,8 +23,8 @@ jobs:
       - name: Checkout plugin
         uses: actions/checkout@v3
         with:
-          repository: aulisius/bluehost-wordpress-plugin
-          ref: 'integrations/wonder-cart'
+          repository: bluehost/bluehost-wordpress-plugin
+          ref: 'main'
 
       - name: Use Node.js 16.x
         uses: actions/setup-node@v3
