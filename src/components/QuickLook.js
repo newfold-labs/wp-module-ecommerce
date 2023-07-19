@@ -218,7 +218,7 @@ export function QuickLook(props) {
           title="Quick Look"
           subtitle="Once you launch your store, you'll see a snapshot of recent purchases and other customer activity."
         >
-          <div className="yst-mt-10 yst-gap-6 yst-flex yst-flex-col md:yst-flex-row">
+          <div className="yst-mt-10 yst-gap-6 yst-flex yst-flex-col xl:yst-flex-row">
             <RecentActivity />
             <RecentOrders />
           </div>
