@@ -23,7 +23,7 @@ export function ReportTile(props) {
             <span
               className={sign > 0 ? "yst-text-green-600" : "yst-text-red-600"}
             >
-              <Icon className="yst-inline-block yst-h-3" /> {delta}%
+              <Icon className="yst-inline-block yst-h-3" /> {Math.round(delta)}%
             </span>
             {__(" vs prior period", "wp-module-ecommerce")}
           </div>
