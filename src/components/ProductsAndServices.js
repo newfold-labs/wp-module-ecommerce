@@ -27,7 +27,7 @@ export function Products({ woo, wpModules }) {
         )}
       />
       <Section.Content>
-        <div className="yst-px-4 yst-py-2 yst-rounded-lg yst-bg-slate-100 yst-flex yst-flex-col lg:yst-flex-row lg:yst-justify-between lg:yst-items-center">
+        <div className="yst-px-4 yst-py-2 yst-rounded-lg yst-bg-slate-100 yst-flex yst-flex-col xl:yst-flex-row xl:yst-justify-between xl:yst-items-center">
           <div className="yst-flex-1">
             <Title size={4} className="yst-leading-normal">
               {__("Want help adding products?", "wp-module-ecommerce")}
