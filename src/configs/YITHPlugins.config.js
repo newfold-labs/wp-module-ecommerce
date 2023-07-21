@@ -308,17 +308,17 @@ export const YITHPluginsDefinitions = (props) => ({
     {
       Card: FeatureCard,
       shouldRender: () => false,
-      name: "sales_funnel_license",
+      name: "nfd_slug_wonder_cart",
       assets: () => ({
         Image: SalesFunnelLicense,
       }),
       text: ({ isActive }) => ({
         title: __(
-          "Complete Upsell, Crossell & Promotions Solution",
+          "Complete Upsell, Cross sell & Promotions Solution",
           "wp-module-ecommerce"
         ),
         description: __(
-          "Create and manage deals, sales promotions and upsell campaigns in your shop.",
+          "Create and manage deals, sales promotions and upsell campaigns like Buy-One-Get-One and more.",
           "wp-module-ecommerce"
         ),
         actionName: isActive ? "Manage" : "Enable",
@@ -326,13 +326,21 @@ export const YITHPluginsDefinitions = (props) => ({
       state: {
         ...defineFeatureState(),
         isUpsellNeeded: () => false,
-        isAvailable: () => NewfoldRuntime.hasCapability("isEcommerce"),
+        isAvailable: () => NewfoldRuntime.hasCapability("hasYithExtended"),
+        featureUrl: (data) =>
+          data?.plugins?.isInstalled ? `#/store/sales_discounts` : null,
       },
-      actions: {},
+      actions: {
+        installFeature: createPluginInstallAction(
+          "nfd_slug_wonder_cart",
+          17,
+          props
+        ),
+      },
       queries: [
         {
           key: "plugins",
-          selector: wcPluginStatusParser("nfd_slug_ecomdash_wordpress_plugin"),
+          selector: wcPluginStatusParser("nfd_slug_wonder_cart"),
         },
       ],
     },
