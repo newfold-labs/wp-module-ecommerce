@@ -1,3 +1,4 @@
+import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
 import apiFetch from "@wordpress/api-fetch";
 import { Spinner } from "@yoast/ui-library";
 import useSWR, { SWRConfig } from "swr";
@@ -5,7 +6,6 @@ import { Products } from "./components/ProductsAndServices";
 import { Store } from "./components/Store";
 import { StoreDetails } from "./components/StoreDetails";
 import { WonderCart } from "./components/WonderCart";
-import { createApiUrl } from "./sdk/createApiUrl";
 import { PluginsSdk } from "./sdk/plugins";
 import domReady from "@wordpress/dom-ready";
 import { AnalyticsSdk } from "./sdk/analytics";
@@ -14,7 +14,7 @@ domReady(() => {
   AnalyticsSdk.initialize();
 });
 
-const fetcher = (path) => apiFetch({ url: createApiUrl(path) });
+const fetcher = (path) => apiFetch({ url: NewfoldRuntime.createApiUrl(path) });
 
 const pages = [
   { key: "/store", Page: Store },

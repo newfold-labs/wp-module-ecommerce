@@ -5,17 +5,17 @@ import {
   CubeIcon,
   GiftIcon,
 } from "@heroicons/react/24/outline";
+import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
 import { __ } from "@wordpress/i18n";
 import { FeatureCard } from "../components/FeatureCard";
-import { PluginsSdk } from "../sdk/plugins";
-import { RuntimeSdk } from "../sdk/runtime";
 import { MarketplaceSdk } from "../sdk/marketplace";
+import { PluginsSdk } from "../sdk/plugins";
 import { WooCommerceSdk } from "../sdk/woocommerce";
 import { createPluginInstallAction } from "./actions";
 import {
+  findUpsellWithName,
   wcPluginStatusParser,
   wcProductsParser,
-  findUpsellWithName,
 } from "./selectors";
 
 const getUrl = (href) => {
@@ -32,7 +32,7 @@ function defineFeatureState() {
     isInstalling: (data) => data?.plugins?.isInstalling,
     isQueueEmpty: (data) => data?.plugins?.isQueueEmpty,
     hasUsedPlugin: (data) => data?.products.length > 0,
-    isUpsellNeeded: () => !RuntimeSdk.hasCapability("hasYithExtended"),
+    isUpsellNeeded: () => !NewfoldRuntime.hasCapability("hasYithExtended"),
     featureUrl: (data) =>
       data?.products.length > 0 ? data.plugins?.pluginUrl : null,
     upsellOptions: (data) => data?.upsellOptions,
