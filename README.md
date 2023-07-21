@@ -21,10 +21,14 @@ Next-generation WordPress eCommerce Experience for WordPress sites at Newfold Di
  composer require newfold-labs/wp-module-ecommerce
  ```
 
-### 3. Install the `@newfold-labs/wp-module-ecommerce` npm package.
+### 3. Setup GitHub registry
+
+Follow instructions at [GH Packages Setup](https://gist.github.com/aulisius/1a6e4961f17039d82275a6941331b021).
+
+### 4. Install the `@newfold-labs/wp-module-ecommerce` npm package.
 
  ```bash
- npm install @newfold-labs/wp-module-ecommerce#v1.0.0
+ npm install @newfold-labs/wp-module-ecommerce
  ```
  
 ## Usage

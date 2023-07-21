@@ -2,10 +2,11 @@
 
 namespace NewfoldLabs\WP\Module\ECommerce;
 
-use NewfoldLabs\WP\Module\ECommerce\Data\Runtime;
-use NewfoldLabs\WP\ModuleLoader\Container;
+use NewfoldLabs\WP\Module\ECommerce\Data\Brands;
 use NewfoldLabs\WP\Module\ECommerce\Partials\CaptiveFlow;
 use NewfoldLabs\WP\Module\ECommerce\Partials\WooCommerceBacklink;
+use NewfoldLabs\WP\Module\Installer\Services\PluginInstaller;
+use NewfoldLabs\WP\ModuleLoader\Container;
 
 /**
  * Class ECommerce
@@ -83,6 +84,18 @@ class ECommerce {
 				'single'       => true,
 			)
 		);
+		add_filter( 'newfold-runtime', array( $this, 'add_to_runtime' ) );
+	}
+
+	public function add_to_runtime( $sdk ) {
+		$values = array(
+			'brand_settings' => Brands::get_config( $this->container ),
+			'nonces' => array(
+				'gateway_toggle' => \wp_create_nonce( 'woocommerce-toggle-payment-gateway-enabled' )
+			),
+			'install_token' => PluginInstaller::rest_get_plugin_install_hash()
+		);
+		return array_merge( $sdk, array( 'ecommerce' => $values ) );
 	}
 
 	public function maybe_do_dash_redirect() {
@@ -177,11 +190,6 @@ class ECommerce {
 				NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Partials/load-dependencies.js',
 				array_merge( $asset['dependencies'], array() ),
 				$asset['version']
-			);
-			\wp_add_inline_script(
-				'nfd-ecommerce-dependency',
-				'window.NFDECOM =' . wp_json_encode( Runtime::prepareData( $this->container ) ) . ';',
-				'before'
 			);
 			\wp_enqueue_script( 'nfd-ecommerce-dependency' );
 		}
