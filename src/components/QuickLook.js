@@ -35,13 +35,13 @@ function RecentReport({ title, filter, onSelect, disabled, children }) {
   return (
     <Card className={`yst-flex-1`}>
       <Card.Content className={"yst-flex yst-flex-col yst-gap-4"}>
-        <div className="yst-flex yst-items-baseline">
+        <div className="max-[360px]:yst-flex-col max-[360px]:yst-items-stretch sm:yst-flex sm:yst-flex-row sm:yst-items-baseline">
           <Title className="yst-flex-1" size={4}>
             {title}
           </Title>
           <Select
             id={title}
-            className="lg:yst-w-1/4 sm:yst-w-1/2"
+            className="lg:yst-w-1/4 sm:yst-w-2/5"
             disabled={disabled}
             onChange={(newFilter) => {
               if (newFilter !== filter) {

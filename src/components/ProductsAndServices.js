@@ -39,7 +39,7 @@ export function Products({ woo, wpModules }) {
               )}
             </span>
           </div>
-          <div className="yst-flex-none yst-flex sm:yst-my-2 lg:yst-m-0">
+          <div className="yst-flex-none yst-flex max-[1024px]:yst-my-2 min-[1025px]:yst-m-0">
             <Button
               className="yst-flex yst-gap-2 yst-items-center"
               as="a"

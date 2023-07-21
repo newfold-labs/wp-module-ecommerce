@@ -260,7 +260,7 @@ export function StoreDetails(props) {
         {controls.tax.isActive && (
           <TaxSettings values={{ ...values, ...formChanges }} />
         )}
-        <div className="yst-p-8 yst-border-t yst-bg-[#F8FAFC] yst-flex yst-justify-end yst-gap-4">
+        <div className="yst-p-8 yst-border-t yst-bg-[#F8FAFC] max-[375px]:yst-flex-col yst-flex yst-justify-end yst-gap-4">
           <Button
             type="reset"
             variant="secondary"
