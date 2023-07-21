@@ -31,6 +31,11 @@ let recentOrdersLink = `edit.php?${new URLSearchParams({
   post_type: "shop_order",
 })}`;
 
+const individualOrderLink = (postId) => `post.php?${new URLSearchParams({
+  post: postId,
+  action: "edit"
+})}`;
+
 function RecentReport({ title, filter, onSelect, disabled, children }) {
   return (
     <Card className={`yst-flex-1`}>
@@ -156,7 +161,7 @@ function RecentOrders() {
         <>
           <ul className="yst-flex-1">
             {orders.data?.map((order) => (
-              <Card as="li" key={order.id}>
+              <Card as="a" key={order.id} href={RuntimeSdk.adminUrl(individualOrderLink(order.id))}>
                 <Card.Content
                   className={classNames(
                     "yst-grid yst-grid-cols-2 yst-gap-y-2 yst-items-center",
