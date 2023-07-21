@@ -1,8 +1,6 @@
 <?php
 namespace NewfoldLabs\WP\Module\ECommerce\Partials;
 
-use NewfoldLabs\WP\Module\ECommerce\Permissions;
-use NewfoldLabs\WP\Module\ECommerce\Data\Data;
 use NewfoldLabs\WP\ModuleLoader\Container;
 
 class WooCommerceBacklink {
@@ -30,11 +28,12 @@ class WooCommerceBacklink {
 	}
 
 	public static function add_back_link() {
+		$runtime = array( 'pluginId' => WooCommerceBacklink::$container->plugin()->id );
 		\wp_enqueue_script( 'nfd-ecommerce-woocommerce-captive', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Partials/woocommerce.js', array(), '1', true );
 		\wp_enqueue_style( 'nfd-ecommerce-woocommerce-captive', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Partials/woocommerce.css', null, '1', 'screen' );
 		\wp_add_inline_script(
 			'nfd-ecommerce-woocommerce-captive',
-			'nfdEcommerce =' . wp_json_encode( Data::runtime(WooCommerceBacklink::$container) ) . ';',
+			'nfdEcommerce =' . wp_json_encode( $runtime ) . ';',
 			'before'
 		);
 	}
