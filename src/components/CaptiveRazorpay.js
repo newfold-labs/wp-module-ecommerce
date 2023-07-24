@@ -118,7 +118,7 @@ export function CaptiveRazorpay({ razorpaySettings }) {
           }}
           description={
             <span
-              style={{ color: isKeyValid ? "inherit" : "var(--nfd-ecommerce-text-light-danger)" }}
+              style={{ color: isKeyValid ? "inherit" : "var(--nfd-ecommerce-text-danger)" }}
               dangerouslySetInnerHTML={{
                 __html: isKeyValid
                   ? Content.keyId
