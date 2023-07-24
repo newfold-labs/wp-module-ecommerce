@@ -7,8 +7,14 @@ import { Store } from "./components/Store";
 import { StoreDetails } from "./components/StoreDetails";
 import { WonderCart } from "./components/WonderCart";
 import { PluginsSdk } from "./sdk/plugins";
+import domReady from "@wordpress/dom-ready";
+import { AnalyticsSdk } from "./sdk/analytics";
 
 const fetcher = (path) => apiFetch({ url: NewfoldRuntime.createApiUrl(path) });
+
+domReady(() => {
+  AnalyticsSdk.initialize();
+});
 
 const pages = [
   { key: "/store", Page: Store },

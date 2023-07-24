@@ -21,11 +21,13 @@
   "dependencies": {
     "@faizaanceg/pandora": "^1.1.1",
     "@heroicons/react": "2.0.18",
+    "@newfold-labs/js-utility-ui-analytics": "^1.2.0",
     "@newfold-labs/wp-module-runtime": "^1.0.0",
     "@reduxjs/toolkit": "1.9.5",
     "@wordpress/api-fetch": "^3.6.2",
     "@wordpress/components": "^8.3.2",
     "@wordpress/date": "^4.34.0",
+    "@wordpress/dom-ready": "^3.38.0",
     "@wordpress/element": "^2.8.2",
     "@wordpress/i18n": "^4.29.0",
     "@yoast/ui-library": "3.1.0",
