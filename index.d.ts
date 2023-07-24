@@ -31,3 +31,29 @@ type NewfoldECommerceProps = {
 };
 
 export type NewfoldECommerce = (props: NewfoldECommerceProps) => JSX.Element;
+
+type BrandSettings = {
+  brand: string;
+  name: string;
+  url: string;
+  hireExpertsInfo: string;
+  support: string;
+  adminPage: string;
+  setup: { payment: string[]; shipping: string[] };
+  defaultContact: {
+    woocommerce_default_country: string;
+    woocommerce_currency: string;
+  };
+};
+
+declare module "@newfold-labs/wp-module-runtime" {
+  export interface DefaultSdk {
+    ecommerce: {
+      brand_settings: BrandSettings;
+      install_token: string;
+      nonces: {
+        gateway_toggle: string;
+      };
+    };
+  }
+}

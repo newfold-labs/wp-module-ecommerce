@@ -2,12 +2,12 @@ import {
   ArrowLongRightIcon,
   CheckCircleIcon,
 } from "@heroicons/react/24/outline";
+import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
 import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import { Card, Link, Spinner, Title } from "@yoast/ui-library";
 import useSWRMutation from "swr/mutation";
 import { OnboardingListDefinition } from "../configs/OnboardingList.config";
-import { RuntimeSdk } from "../sdk/runtime";
 import { useCardManager } from "./useCardManager";
 
 function OnboardingCheckListItem({ children, actions, state, ...props }) {
@@ -70,14 +70,14 @@ export function OnboardingList(props) {
   return (
     <div className="yst-grid yst-grid-rows-[repeat(3,_min-content)] yst-gap-4">
       <Title size={2}>
-        {RuntimeSdk.hasCapability("isEcommerce")
+        {NewfoldRuntime.hasCapability("isEcommerce")
           ? __("Next steps for your store", "wp-module-ecommerce")
           : __("Next steps for your site", "wp-module-ecommerce")}
       </Title>
       {view === "incomplete" && itemsToDisplay.length === 0 && (
         <div>
           <p>
-            {RuntimeSdk.hasCapability("isEcommerce")
+            {NewfoldRuntime.hasCapability("isEcommerce")
               ? __(
                   "Great job! You've completed all the current tasks to get your store up and running successfully!",
                   "wp-module-ecommerce"

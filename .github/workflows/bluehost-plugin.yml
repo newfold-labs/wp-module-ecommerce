@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: bluehost/bluehost-wordpress-plugin
-          ref: 'main'
+          ref: 'develop'
 
       - name: Use Node.js 16.x
         uses: actions/setup-node@v3
@@ -69,8 +69,15 @@ jobs:
       - name: Install PHP Dependencies
         run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
 
+      - name: Setup Registry on Plugin
+        run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
+
       - name: NPM Install
         run: npm ci --legacy-peer-deps
+
+      - name: Setup Registry on Module
+        working-directory: ./modules/${{ github.repository }}
+        run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
 
       - name: Setup module
         working-directory: ./modules/${{ github.repository }}

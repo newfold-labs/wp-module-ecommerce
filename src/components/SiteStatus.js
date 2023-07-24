@@ -1,8 +1,8 @@
 import { RocketLaunchIcon } from "@heroicons/react/24/outline";
+import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
 import { __ } from "@wordpress/i18n";
 import { Button, Title } from "@yoast/ui-library";
 import useSWRMutation from "swr/mutation";
-import { RuntimeSdk } from "../sdk/runtime";
 
 const getTitle = (comingSoon) =>
   comingSoon
@@ -63,11 +63,11 @@ export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
         <Button
           as="a"
           className="yst-bg-canvas"
-          href={window.NFDECOM?.site.url}
+          href={NewfoldRuntime.siteDetails.url}
           target="_blank"
           variant="secondary"
         >
-          {RuntimeSdk.hasCapability("isEcommerce")
+          {NewfoldRuntime.hasCapability("isEcommerce")
             ? __("Preview your store", "wp-module-ecommerce")
             : __("Preview your site", "wp-module-ecommerce")}
         </Button>
@@ -78,7 +78,7 @@ export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
           onClick={comingSoonAction.trigger}
         >
           <RocketLaunchIcon />
-          {RuntimeSdk.hasCapability("isEcommerce")
+          {NewfoldRuntime.hasCapability("isEcommerce")
             ? __("Launch your store", "wp-module-ecommerce")
             : __("Launch your site", "wp-module-ecommerce")}
         </Button>
