@@ -65,7 +65,7 @@ const Shipping = ({ notify }) => {
                     className={classNames(
                       "yst-text-sm yst-capitalize",
                       environment === "live" &&
-                        "yst-bg-[#178113] yst-text-white"
+                        "yst-bg-[--nfd-ecomemerce-bg-success] yst-text-white"
                     )}
                   >
                     {environment}

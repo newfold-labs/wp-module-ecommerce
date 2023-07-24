@@ -39,7 +39,7 @@ function OnboardingCheckListItem({ children, actions, state, ...props }) {
         <CheckCircleIcon
           className={classNames(
             "yst-w-[1.125rem]",
-            state.isCompleted ? "yst-text-[#17B212]" : "yst-text-[#AAAFB8]"
+            state.isCompleted ? "yst-text-[--nfd-ecomemerce-text-success]" : "yst-text-[--nfd-ecommerce-text-light]"
           )}
         />
         <span className="yst-flex-1 yst-text-black">{props.text}</span>
