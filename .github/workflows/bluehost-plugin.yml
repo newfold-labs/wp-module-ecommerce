@@ -71,14 +71,14 @@ jobs:
 
       - name: NPM Install
         run: npm ci --legacy-peer-deps
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Registry
+        working-directory: ./modules/${{ github.repository }}
+        run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
 
       - name: Setup module
         working-directory: ./modules/${{ github.repository }}
         run: npm ci --legacy-peer-deps
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: NPM Install module
         run: npm install ./modules/newfold-labs/wp-module-ecommerce --legacy-peer-deps --force
