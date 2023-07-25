@@ -1,0 +1,385 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/aulisius/bluehost-wordpress-plugin/issues\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Language: en_US\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: wp-module-ecommerce\n"
+
+#: bootstrap.php:16
+msgid "eCommerce"
+msgstr ""
+
+#: includes/ECommerce.php:108
+#: includes/ECommerce.php:119
+msgid "NFD eCommerce Options"
+msgstr ""
+
+#: includes/ECommerce.php:133
+msgid "Coming Soon"
+msgstr ""
+
+#: includes/ECommerce.php:134
+#: build/index.js:3233
+#: build/index.js:2460
+msgid "Live"
+msgstr ""
+
+#: includes/ECommerce.php:139
+msgid "Site Status: "
+msgstr ""
+
+#: includes/ECommerce.php:141
+msgid "Launch Your Site"
+msgstr ""
+
+#: includes/Partials/CaptiveFlow.php:59
+msgid "NFD eCommerce RazorPay Options"
+msgstr ""
+
+#: build/index.js:2814
+#: build/index.js:2113
+msgid "Learn More"
+msgstr ""
+
+#: build/index.js:2816
+#: build/index.js:2120
+msgid "please wait while other features are installed..."
+msgstr ""
+
+#: build/index.js:2831
+#: build/index.js:2155
+msgid "Installing..."
+msgstr ""
+
+#: build/index.js:2831
+#: build/index.js:2157
+msgid "Purchase"
+msgstr ""
+
+#: build/index.js:2864
+#: build/index.js:3539
+#: build/index.js:2178
+#: build/index.js:2716
+msgid "Additional Features"
+msgstr ""
+
+#: build/index.js:2865
+#: build/index.js:2179
+msgid "Improve your site with these free add-ons included in your plan."
+msgstr ""
+
+#: build/index.js:2909
+#: build/index.js:2206
+msgid "Store"
+msgstr ""
+
+#: build/index.js:2968
+#: build/index.js:2237
+msgid "Products & Services"
+msgstr ""
+
+#: build/index.js:2969
+#: build/index.js:2238
+msgid "Come here to manage products and services or add new ones to your store."
+msgstr ""
+
+#: build/index.js:2977
+#: build/index.js:2247
+msgid "Want help adding products?"
+msgstr ""
+
+#: build/index.js:2979
+#: build/index.js:2250
+msgid ""
+"Read this helpful knowledge base article to understand how to\n"
+"add different products to your store"
+msgstr ""
+
+#: build/index.js:2986
+#: build/index.js:2267
+msgid " How to add products"
+msgstr ""
+
+#: build/index.js:3252
+#: build/index.js:2475
+msgid "Your store is online and ready for business!"
+msgstr ""
+
+#: build/index.js:3254
+#: build/index.js:2481
+msgid "Not ready? You can re-enable the \"Coming Soon\" mode if you need."
+msgstr ""
+
+#: build/index.js:3259
+#: build/index.js:2492
+msgid "Okay"
+msgstr ""
+
+#: build/index.js:3273
+#: build/index.js:2506
+msgid "Ready to go live?"
+msgstr ""
+
+#: build/index.js:3275
+#: build/index.js:2509
+msgid ""
+"Preview your store before setting it live to make sure everything is how you want it.\n"
+"Once you're ready, set your store live!"
+msgstr ""
+
+#: build/index.js:3283
+#: build/index.js:2523
+msgid "Preview your store"
+msgstr ""
+
+#: build/index.js:3288
+#: build/index.js:2532
+msgid "Launch your store"
+msgstr ""
+
+#: build/index.js:3437
+#: build/index.js:2642
+msgid "Store Details"
+msgstr ""
+
+#: build/index.js:3438
+#: build/index.js:2643
+msgid "This is the place for all your general store details and setup."
+msgstr ""
+
+#: build/index.js:3490
+#: build/index.js:2676
+msgid "Add a store to your site"
+msgstr ""
+
+#: build/index.js:3492
+#: build/index.js:2679
+msgid ""
+"Adding a store to your website is quick and easy!\n"
+"Just install WooCommerce and get ready to start making money!"
+msgstr ""
+
+#: build/index.js:3499
+#: build/index.js:2692
+msgid "Install WooCommerce"
+msgstr ""
+
+#: build/index.js:3540
+#: build/index.js:2717
+msgid "Improve your store with these powerful add-ons."
+msgstr ""
+
+#: build/index.js:3727
+#: build/index.js:3812
+#: build/index.js:4060
+#: build/index.js:4535
+#: build/index.js:2843
+#: build/index.js:2888
+#: build/index.js:3132
+#: build/index.js:3544
+msgid "Please try again, or "
+msgstr ""
+
+#: build/index.js:3730
+#: build/index.js:3815
+#: build/index.js:4063
+#: build/index.js:4538
+#: build/index.js:2845
+#: build/index.js:2890
+#: build/index.js:3134
+#: build/index.js:3546
+msgid "contact support"
+msgstr ""
+
+#: build/index.js:3854
+#: build/index.js:2928
+msgid "Jetpack Boost - Website Speed, Performance and Critical CSS"
+msgstr ""
+
+#: build/index.js:3855
+#: build/index.js:2932
+msgid "Speed up your WordPress site by optimizing page performance with Jetpack Boost."
+msgstr ""
+
+#: build/index.js:3881
+#: build/index.js:2958
+msgid "Contact Form by WPForms - Drag & Drop Form Builder for WordPress"
+msgstr ""
+
+#: build/index.js:3882
+#: build/index.js:2962
+msgid "The best WordPress contact form plugin. Drag & Drop online form builder to create beautiful contact forms, payment forms, & other custom forms."
+msgstr ""
+
+#: build/index.js:3908
+#: build/index.js:2988
+msgid "MonsterInsights - Google Analytics Dashboard for WordPress (Website Stats Made Easy)"
+msgstr ""
+
+#: build/index.js:3909
+#: build/index.js:2992
+msgid "The best free Google Analytics plugin for WordPress. See how visitors find and use your website, so you can grow your business."
+msgstr ""
+
+#: build/index.js:3935
+#: build/index.js:3022
+msgid "Yoast SEO"
+msgstr ""
+
+#: build/index.js:3936
+#: build/index.js:3023
+msgid "Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the Yoast SEO plugin."
+msgstr ""
+
+#: build/index.js:3962
+#: build/index.js:3049
+msgid "Creative Mail - Easier WordPress & WooCommerce Email Marketing"
+msgstr ""
+
+#: build/index.js:3963
+#: build/index.js:3053
+msgid "Creative Mail was designed specifically for WordPress and WooCommerce. Our intelligent (and super fun) email editor simplifies email marketing campaign."
+msgstr ""
+
+#: build/index.js:3990
+#: build/index.js:3083
+msgid "OptinMonster - Lead Generation"
+msgstr ""
+
+#: build/index.js:3991
+#: build/index.js:3084
+msgid "OptinMonster is the best WordPress popup builder plugin that helps you grow your email newsletter list and sales with email popups, exit intent popups, floating bars and more!"
+msgstr ""
+
+#: build/index.js:4099
+#: build/index.js:3173
+msgid "Add a Product"
+msgstr ""
+
+#: build/index.js:4129
+#: build/index.js:3201
+msgid "Manage Your Products"
+msgstr ""
+
+#: build/index.js:4164
+#: build/index.js:3230
+msgid "Import Products via CSV"
+msgstr ""
+
+#: build/index.js:4191
+#: build/index.js:3258
+msgid "Bookings"
+msgstr ""
+
+#: build/index.js:4250
+#: build/index.js:3312
+msgid "Gift Cards"
+msgstr ""
+
+#: build/index.js:4356
+#: build/index.js:3400
+msgid "Total Sales"
+msgstr ""
+
+#: build/index.js:4373
+#: build/index.js:3418
+msgid "Net Sales"
+msgstr ""
+
+#: build/index.js:4390
+#: build/index.js:3436
+msgid "Orders"
+msgstr ""
+
+#: build/index.js:4407
+#: build/index.js:3456
+msgid "Products Sold"
+msgstr ""
+
+#: build/index.js:4424
+#: build/index.js:3476
+msgid "Visitors"
+msgstr ""
+
+#: build/index.js:4438
+#: build/index.js:3495
+msgid "Views"
+msgstr ""
+
+#: build/index.js:4578
+#: build/index.js:3584
+msgid "YITH Booking and Appointment for WooCommerce"
+msgstr ""
+
+#: build/index.js:4579
+#: build/index.js:3588
+msgid "Enable a booking/appointment system to manage renting or booking of services, rooms, houses, cars, accommodation and more to make it easy for your customers to do business with you."
+msgstr ""
+
+#: build/index.js:4605
+#: build/index.js:3618
+msgid "YITH WooCommerce AJAX Search"
+msgstr ""
+
+#: build/index.js:4606
+#: build/index.js:3619
+msgid "YITH WooCommerce AJAX Search is an effective and predictive real-time search engine on your store so users can quickly find products they want. Speed up your search and boost your sales."
+msgstr ""
+
+#: build/index.js:4633
+#: build/index.js:3650
+msgid "YITH WooCommerce Wishlist"
+msgstr ""
+
+#: build/index.js:4634
+#: build/index.js:3651
+msgid "Allow your customers to create lists of products they want and share them with family and friends."
+msgstr ""
+
+#: build/index.js:4661
+#: build/index.js:3682
+msgid "YITH WooCommerce AJAX Product Filter"
+msgstr ""
+
+#: build/index.js:4662
+#: build/index.js:3686
+msgid "YITH WooCommerce Ajax Product Filter is the perfect way to add an advanced filter to all products in your store by size, color, price, and more to find the right product or gift with ease."
+msgstr ""
+
+#: build/index.js:4689
+#: build/index.js:3719
+msgid "YITH WooCommerce Gift Cards"
+msgstr ""
+
+#: build/index.js:4690
+#: build/index.js:3720
+msgid "Sell gift cards to increase your store's revenue and win new customers."
+msgstr ""
+
+#: build/index.js:4717
+#: build/index.js:3753
+msgid "YITH WooCommerce Customize My Account Page"
+msgstr ""
+
+#: build/index.js:4718
+#: build/index.js:3757
+msgid "Customize the My Account page of your customers by creating custom sections with promotions and ad-hoc content based on your needs."
+msgstr ""
+
+#: build/index.js:4746
+#: build/index.js:3789
+msgid "Ecomdash"
+msgstr ""
+
+#: build/index.js:4747
+#: build/index.js:3790
+msgid "All your sales channels and products, managed in one place. See how this dashboard puts selling, updating, and inventory all at your fingertips. Perfect for selling on Amazon, Etsy, eBay and more."
+msgstr ""

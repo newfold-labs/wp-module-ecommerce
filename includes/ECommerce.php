@@ -2,9 +2,11 @@
 
 namespace NewfoldLabs\WP\Module\ECommerce;
 
-use NewfoldLabs\WP\ModuleLoader\Container;
+use NewfoldLabs\WP\Module\ECommerce\Data\Brands;
 use NewfoldLabs\WP\Module\ECommerce\Partials\CaptiveFlow;
 use NewfoldLabs\WP\Module\ECommerce\Partials\WooCommerceBacklink;
+use NewfoldLabs\WP\Module\Installer\Services\PluginInstaller;
+use NewfoldLabs\WP\ModuleLoader\Container;
 
 /**
  * Class ECommerce
@@ -31,8 +33,8 @@ class ECommerce {
 	 * @var array
 	 */
 	protected $controllers = array(
+		'NewfoldLabs\\WP\\Module\\ECommerce\\RestApi\\IntegrationsController',
 		'NewfoldLabs\\WP\\Module\\ECommerce\\RestApi\\PluginsController',
-		'NewfoldLabs\\WP\\Module\\ECommerce\\RestApi\\UserController',
 	);
 
 	/**
@@ -65,11 +67,11 @@ class ECommerce {
 	public function __construct( Container $container ) {
 		$this->container = $container;
 		// Module functionality goes here
+		add_action( 'admin_init', array( $this, 'maybe_do_dash_redirect' ) );
 		add_action( 'admin_bar_menu', array( $this, 'newfold_site_status' ), 200 );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
-		add_action( 'load-toplevel_page_bluehost', array( $this, 'register_assets' ) );
-		add_action( 'load-toplevel_page_crazy-domains', array( $this, 'register_assets' ) );
-		add_filter( 'http_request_args', array( $this, 'replace_retired_bn_codes' ), 10, 2 );
+		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_assets' ) );
+		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_textdomains' ) );
 		CaptiveFlow::init();
 		WooCommerceBacklink::init( $container );
 		register_meta(
@@ -82,6 +84,26 @@ class ECommerce {
 				'single'       => true,
 			)
 		);
+		add_filter( 'newfold-runtime', array( $this, 'add_to_runtime' ) );
+	}
+
+	public function add_to_runtime( $sdk ) {
+		$values = array(
+			'brand_settings' => Brands::get_config( $this->container ),
+			'nonces' => array(
+				'gateway_toggle' => \wp_create_nonce( 'woocommerce-toggle-payment-gateway-enabled' )
+			),
+			'install_token' => PluginInstaller::rest_get_plugin_install_hash()
+		);
+		return array_merge( $sdk, array( 'ecommerce' => $values ) );
+	}
+
+	public function maybe_do_dash_redirect() {
+		$show_dash = get_option( 'nfd_show_dash_after_woo_activation', false );
+		if ( $show_dash && !wp_doing_ajax() ) {
+			update_option( 'nfd_show_dash_after_woo_activation', false );
+			wp_safe_redirect( admin_url('admin.php?page=' . $this->container->plugin()->id . '#/home') );
+		}
 	}
 
 	/**
@@ -137,7 +159,7 @@ class ECommerce {
 			$site_status_menu = array(
 				'id'     => 'site-status',
 				'parent' => 'top-secondary',
-				'href'   => admin_url( 'admin.php?page=bluehost#/home' ),
+				'href'   => admin_url('admin.php?page=' . $this->container->plugin()->id . '#/home'),
 				'title'  => '<div style="background-color: #F8F8F8; padding: 0 16px;color:#333333;">' . esc_html__( 'Site Status: ', 'wp-module-ecommerce' ) . $status . '</div>',
 				'meta'   => array(
 					'title' => esc_attr__( 'Launch Your Site', 'wp-module-ecommerce' ),
@@ -150,46 +172,27 @@ class ECommerce {
 		}
 	}
 
+	public function register_textdomains() {
+		$MODULE_LANG_DIR = $this->container->plugin()->dir . 'vendor/newfold-labs/wp-module-ecommerce/languages';
+		\load_script_textdomain( 'nfd-ecommerce-dependency', 'wp-module-ecommerce', $MODULE_LANG_DIR );
+		\load_textdomain( 'wp-module-ecommerce', $MODULE_LANG_DIR );
+	}
+
 	/**
 	 * Load WP dependencies into the page.
 	 */
 	public function register_assets() {
 		$asset_file = NFD_ECOMMERCE_BUILD_DIR . 'index.asset.php';
 		if ( file_exists( $asset_file ) ) {
-			$asset = require_once $asset_file;
-			\wp_enqueue_script(
+			$asset = require $asset_file;
+			\wp_register_script(
 				'nfd-ecommerce-dependency',
 				NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Partials/load-dependencies.js',
 				array_merge( $asset['dependencies'], array() ),
-				$asset_file
+				$asset['version']
 			);
+			\wp_enqueue_script( 'nfd-ecommerce-dependency' );
 		}
 	}
 
-	/**
-	 * Ensure that any retired BN codes are not sent with outbound requests to Paypal
-	 *
-	 * @param array  $parsed_args An array of HTTP request arguments
-	 * @param string $url         The request URL
-	 *
-	 * @return array Array of modified HTTP request arguments
-	 */
-	public function replace_retired_bn_codes( $parsed_args, $url ) {
-		// Bail early if the request is not to paypal's v2 checkout API
-		if ( false === stripos( wp_parse_url( $url, PHP_URL_HOST ), 'paypal.com' )
-			&& false === stripos( wp_parse_url( $url, PHP_URL_PATH ), 'v2/checkout' ) ) {
-			return $parsed_args;
-		}
-
-		// Check for an existing bn_code
-		$bn_code = isset( $parsed_args['headers']['PayPal-Partner-Attribution-Id'] ) ? $parsed_args['headers']['PayPal-Partner-Attribution-Id'] : null;
-
-		// Ensure we only set when blank, or when using one of our stale codes
-		if ( is_null( $bn_code ) || false !== stripos( $bn_code, 'yith' ) || false !== stripos( $bn_code, 'newfold' ) ) {
-			// The correct code is case sensitive. YITH brand is uppercase, but the code is not.
-			$parsed_args['headers']['PayPal-Partner-Attribution-Id'] = 'Yith_PCP';
-		}
-
-		return $parsed_args;
-	}
 }

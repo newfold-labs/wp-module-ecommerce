@@ -1,77 +1,100 @@
-import apiFetch from "@wordpress/api-fetch";
 import useSWR from "swr";
 
 function createDependencyTree(config) {
-  return config
-    .map((_) => _.dataDependencies)
-    .flat()
-    .reduce(
-      (tree, { endpoint, refresh }) => ({
-        ...tree,
-        [endpoint]: tree[endpoint] ? [...tree[endpoint], refresh] : [refresh],
-      }),
-      {}
-    );
+  let dataDependencies = config.dataDependencies ?? {};
+  let tree = { dataDependencies, consumers: [] };
+  for (const _ of config.cards) {
+    for (const dependency of _.queries) {
+      tree.consumers.push({ name: _.name, ...dependency });
+    }
+  }
+  return tree;
 }
 
-function useLoadDependencies(tree, { refreshInterval }) {
-  let endpoints = Object.keys(tree);
+/**
+ *
+ * @param {*} config
+ * @param {import('swr').SWRConfiguration} fetchOptions
+ * @returns
+ */
+function useLoadDependencies(tree, fetchOptions) {
+  let endpoints = Object.keys(tree.dataDependencies);
   let { data, mutate } = useSWR(
-    endpoints,
+    endpoints.length === 0 ? "no-dependencies" : endpoints.join(),
     async () => {
       let realisedTree = {};
-      for (let path of endpoints) {
+      for (let [key, fetcher] of Object.entries(tree.dataDependencies)) {
         try {
-          let response = await apiFetch({ path });
-          realisedTree[path] = response;
-        } catch (error) {
-          //
-        }
+          let response = await fetcher();
+          realisedTree[key] = response;
+        } catch (error) {}
       }
       return realisedTree;
     },
-    { refreshInterval }
+    fetchOptions
   );
 
   async function onRefresh(dependency) {
+    if (!dependency) {
+      await mutate();
+    }
     // TODO: Add Checks for if path is not found.
-    let [path] = Object.entries(tree).find(([, deps]) =>
-      deps.includes(dependency)
-    );
-    let updatedResponse = await apiFetch({ path });
+    if (tree.dataDependencies[dependency] === undefined) {
+      return;
+    }
+    let fetcher = tree.dataDependencies[dependency];
+    let updatedResponse = await fetcher();
     await mutate(
-      (realisedTree) => ({ ...realisedTree, [path]: updatedResponse }),
+      (realisedTree) => ({ ...realisedTree, [dependency]: updatedResponse }),
       { revalidate: false }
     );
   }
   return { realisedTree: data, onRefresh };
 }
 
-function extractDependencies(realisedTree, cardConfig) {
+const identity = (_) => _;
+
+function extractDependencies(tree, realisedTree, consumerName) {
   return Object.fromEntries(
-    cardConfig.dataDependencies.map((dependency) => [
-      dependency.refresh,
-      realisedTree?.[dependency.endpoint]
-        ? dependency.selector(realisedTree[dependency.endpoint])
-        : {},
-    ])
+    tree.consumers
+      .filter((_) => _.name === consumerName)
+      .map((consumer) => {
+        let { key, selector = identity } = consumer;
+        return [key, realisedTree?.[key] ? selector(realisedTree?.[key]) : {}];
+      })
   );
 }
 
+/**
+ *
+ * @param {*} config
+ * @param {import('swr').SWRConfiguration} fetchOptions
+ * @returns
+ */
 export const useCardManager = (config, fetchOptions = {}) => {
   const tree = createDependencyTree(config);
   let { realisedTree, onRefresh } = useLoadDependencies(tree, fetchOptions);
-  return config
-    .map((cardConfig) => {
-      let { state: stateDefinition } = cardConfig;
-      let dependencies = extractDependencies(realisedTree, cardConfig);
-      let state = Object.fromEntries(
-        Object.entries(stateDefinition).map(([key, selector]) => [
-          key,
-          selector(dependencies),
-        ])
-      );
-      return { ...cardConfig, state, onRefresh, isLoading: !realisedTree };
-    })
-    .filter((cardConfig) => cardConfig.shouldRender(cardConfig.state));
+  if (!realisedTree) {
+    return [[], { onRefresh }];
+  }
+  return [
+    config.cards
+      .map((cardConfig) => {
+        let { state: stateDefinition } = cardConfig;
+        let dependencies = extractDependencies(
+          tree,
+          realisedTree,
+          cardConfig.name
+        );
+        let state = Object.fromEntries(
+          Object.entries(stateDefinition).map(([key, selector]) => [
+            key,
+            selector(dependencies),
+          ])
+        );
+        return { ...cardConfig, state, onRefresh };
+      })
+      .filter((cardConfig) => cardConfig.shouldRender(cardConfig.state)),
+    { onRefresh },
+  ];
 };
