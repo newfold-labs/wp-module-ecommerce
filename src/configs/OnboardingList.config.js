@@ -1,4 +1,5 @@
 import pandora from "@faizaanceg/pandora";
+import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
 import { __ } from "@wordpress/i18n";
 import { PluginsSdk } from "../sdk/plugins";
 import { RuntimeSdk } from "../sdk/runtime";
@@ -116,7 +117,7 @@ export function OnboardingListDefinition(props) {
       },
       {
         name: "Add a new page to your site",
-        text: RuntimeSdk.hasCapability("isEcommerce")
+        text: NewfoldRuntime.hasCapability("isEcommerce")
           ? __("Add a new page to your store", "wp-module-ecommerce")
           : __("Add a new page to your site", "wp-module-ecommerce"),
         state: {

@@ -1,15 +1,15 @@
+import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
 import apiFetch from "@wordpress/api-fetch";
-import { createApiUrl } from "./createApiUrl";
 
 const Endpoints = {
   PLUGIN_STATUS: (plugins) =>
-    createApiUrl("/newfold-ecommerce/v1/plugins/status", {
+    NewfoldRuntime.createApiUrl("/newfold-ecommerce/v1/plugins/status", {
       plugins: plugins.join(),
     }),
-  PLUGIN_INSTALL: createApiUrl("/newfold-installer/v1/plugins/install"),
+  PLUGIN_INSTALL: NewfoldRuntime.createApiUrl("/newfold-installer/v1/plugins/install"),
 };
 
-const INSTALL_TOKEN = window.NFDECOM?.site.install_token;
+const INSTALL_TOKEN = NewfoldRuntime.sdk.ecommerce.install_token;
 
 export const PluginsSdk = {
   queries: {
