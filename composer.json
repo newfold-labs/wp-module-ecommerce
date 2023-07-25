@@ -26,19 +26,13 @@
       "only": [
         "newfold-labs/*"
       ]
-    },
-    {
-      "type": "composer",
-      "url": "https://bluehost.github.io/satis/",
-      "only": [
-        "bluehost/*",
-        "endurance/*"
-      ]
     }
   ],
-  "require": {},
+  "require": {
+    "newfold-labs/wp-module-installer": "1.0.1"
+  },
   "require-dev": {
-    "bluehost/wp-php-standards": "@stable",
+    "newfold-labs/wp-php-standards": "@stable",
     "wp-cli/wp-cli-bundle": "@stable",
     "wp-cli/i18n-command": "@stable"
   },
@@ -59,12 +53,13 @@
     "lint": "Check files against coding standards."
   },
   "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true,
     "platform": {
       "php": "7.0.0"
     },
     "preferred-install": {
-      "bluehost/*": "source",
-      "endurance/*": "source",
+      "newfold-labs/*": "source",
       "*": "dist"
     },
     "allow-plugins": {

@@ -2,6 +2,8 @@
 
 namespace NewfoldLabs\WP\Module\ECommerce\RestApi;
 
+use NewfoldLabs\WP\Module\Installer\Data\Options as InstallerOptions;
+use NewfoldLabs\WP\Module\Installer\TaskManagers\PluginInstallTaskManager;
 use NewfoldLabs\WP\Module\ECommerce\Permissions;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\Module\ECommerce\Data\Plugins;
@@ -10,6 +12,7 @@ use NewfoldLabs\WP\Module\ECommerce\Data\Plugins;
  * Class PluginsController
  */
 class PluginsController {
+
 
 	/**
 	 * REST namespace
@@ -27,7 +30,7 @@ class PluginsController {
 
 	/**
 	 * Container loaded from the brand plugin.
-	 * 
+	 *
 	 * @var Container
 	 */
 	protected $container;
@@ -55,30 +58,50 @@ class PluginsController {
 		);
 	}
 
+	private function get_plugin_queue() {
+		$queue_name = PluginInstallTaskManager::get_queue_name();
+		return \get_option( InstallerOptions::get_option_name( $queue_name ), array());
+	}
+
 	/**
 	 * Get status of supported plugins.
 	 *
 	 * @return \WP_REST_Response
 	 */
-	public function get_plugins_status() {
-		foreach ( Plugins::supported_plugins() as $plugin => $file ) {
-			if ( file_exists( WP_PLUGIN_DIR . '/' . $file ) ) {
-				$active = \is_plugin_active( $file );
-				if ( $active ) {
-					$status[ $plugin ] = 'Active';
-				} else {
-					$status[ $plugin ] = 'Inactive';
-				}
-			} else {
-				$status[ $plugin ] = 'Not Installed';
-			}
+	public function get_plugins_status( \WP_REST_Request $request) {
+		$pluginFilter = $request->get_param('plugins');
+		$requestedPlugins = array( );
+		if ( isset( $pluginFilter ) ) {
+			$requestedPlugins = explode(',', $pluginFilter);
 		}
-		$status['queue-status'] = \get_option( 'nfd_module_onboarding_plugin_install_queue', array() );
-
+		$details = array();
+		foreach ( Plugins::supported_plugins() as $plugin => $info ) {
+			if ( !in_array($plugin, $requestedPlugins) && !in_array('all', $requestedPlugins) ) {
+				continue;
+			}
+			$status = 'need_to_install';
+			if ( file_exists( WP_PLUGIN_DIR . '/' . $info['file'] ) ) {
+				$active = \is_plugin_active( $info['file'] );
+				if ( $active ) {
+					$status = 'active';
+				} else {
+					$status = 'need_to_activate';
+				}
+			}
+			$details[ $plugin ] = array(
+				'status' => $status,
+				'url'    => \admin_url( $info['url'] ),
+			);
+		}
+		$plugins_queue = array_column( $this->get_plugin_queue(), 'slug' );
+		$plugin_being_installed = \get_option( InstallerOptions::get_option_name( 'plugins_init_status' ), false);
+		if ($plugin_being_installed !== false && $plugin_being_installed !== 'completed') {
+			$plugins_queue[] = $plugin_being_installed;
+		}
 		return new \WP_REST_Response(
 			array(
-				'status' => $status,
-				'token'  => Permissions::rest_get_plugin_install_hash(),
+				'details' => $details,
+				'queue'   => $plugins_queue,
 			),
 			200
 		);
