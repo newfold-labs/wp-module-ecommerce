@@ -161,7 +161,7 @@ function RecentOrders() {
         <>
           <ul className="yst-flex-1">
             {orders.data?.map((order) => (
-              <Card as="a" key={order.id} href={RuntimeSdk.adminUrl(individualOrderLink(order.id))}>
+              <Card as="a" key={order.id} href={RuntimeSdk.adminUrl(individualOrderLink(order.id))} className="focus:yst-mb-[2px]">
                 <Card.Content
                   className={classNames(
                     "yst-grid yst-grid-cols-2 yst-gap-y-2 yst-items-center",
