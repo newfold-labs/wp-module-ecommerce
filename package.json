@@ -2,7 +2,7 @@
   "name": "@newfold-labs/wp-module-ecommerce",
   "description": "Brand Agnostic eCommerce Experience",
   "license": "GPL-2.0-or-later",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "main": "build/index.js",
   "files": [
     "build/",
@@ -11,7 +11,7 @@
   ],
   "types": "index.d.ts",
   "scripts": {
-    "prepare": "npm run build",
+    "prepublishOnly": "npm run build",
     "build": "wp-scripts build ./src/index.js --config ./scripts/webpack.config.js",
     "lint": "wp-scripts lint-js ./src/index.js",
     "start": "wp-scripts start ./src/index.js --config ./scripts/webpack.config.js",
