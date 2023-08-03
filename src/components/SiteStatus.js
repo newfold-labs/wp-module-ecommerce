@@ -40,7 +40,7 @@ export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
     let $statusText = document.getElementById("nfd-site-status-text");
     if ($statusText) {
       $statusText.textContent = __("Live", "wp-module-ecommerce");
-      $statusText.style.setProperty("color", "#048200");
+      $statusText.style.setProperty("color", "var(--nfd-ecommerce-text-dark-success)");
     }
   });
   if (!comingSoon) {

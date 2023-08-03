@@ -108,13 +108,13 @@ const StatusToTextMapping = {
   completed: { text: "Completed", variant: "info" },
   cancelled: {
     text: "Cancelled",
-    className: "yst-bg-[#E01C1C] yst-text-white",
+    className: "yst-bg-[--nfd-ecommerce-bg-danger] yst-text-white",
   },
   refunded: {
     text: "Refunded",
-    className: "yst-bg-[#E01C1C] yst-text-white",
+    className: "yst-bg-[--nfd-ecommerce-bg-danger] yst-text-white",
   },
-  failed: { text: "Failed", className: "yst-bg-[#E01C1C] yst-text-white" },
+  failed: { text: "Failed", className: "yst-bg-[--nfd-ecommerce-bg-danger] yst-text-white" },
 };
 
 function OrderStatus(props) {
@@ -165,12 +165,12 @@ function RecentOrders() {
                 <Card.Content
                   className={classNames(
                     "yst-grid yst-grid-cols-2 yst-gap-y-2 yst-items-center",
-                    "yst-text-sm yst-text-[#495C77]"
+                    "yst-text-sm yst-text-[--nfd-ecommerce-text-info]"
                   )}
                 >
                   <Title
                     size={4}
-                    className="yst-leading-normal yst-text-[#495C77]"
+                    className="yst-leading-normal yst-text-[--nfd-ecommerce-text-info]"
                   >
                     {order.billing.first_name || "Guest"}{" "}
                     {order.billing.last_name}
