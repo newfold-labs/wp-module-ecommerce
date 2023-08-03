@@ -1,4 +1,4 @@
-import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { __ } from "@wordpress/i18n";
 import { FeatureCard } from "../components/FeatureCard";
 import { ReactComponent as Ecomdash } from "../icons/brands/ecomdash.svg";

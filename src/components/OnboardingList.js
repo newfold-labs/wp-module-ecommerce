@@ -2,7 +2,7 @@ import {
   ArrowLongRightIcon,
   CheckCircleIcon,
 } from "@heroicons/react/24/outline";
-import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import { Card, Link, Spinner, Title } from "@yoast/ui-library";

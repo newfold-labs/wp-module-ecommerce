@@ -5,7 +5,7 @@ import {
   CubeIcon,
   GiftIcon,
 } from "@heroicons/react/24/outline";
-import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { __ } from "@wordpress/i18n";
 import { FeatureCard } from "../components/FeatureCard";
 import { MarketplaceSdk } from "../sdk/marketplace";

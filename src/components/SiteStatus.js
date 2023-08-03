@@ -1,5 +1,5 @@
 import { RocketLaunchIcon } from "@heroicons/react/24/outline";
-import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { __ } from "@wordpress/i18n";
 import { Button, Title } from "@yoast/ui-library";
 import useSWRMutation from "swr/mutation";

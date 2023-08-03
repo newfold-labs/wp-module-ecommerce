@@ -1,4 +1,4 @@
-import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { __ } from "@wordpress/i18n";
 import { Title } from "@yoast/ui-library";
 import { ReactComponent as WelcomeIllustration } from "../icons/store-live.svg";
