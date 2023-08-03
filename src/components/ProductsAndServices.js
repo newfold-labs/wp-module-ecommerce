@@ -4,6 +4,7 @@ import { Button, Spinner, Title } from "@yoast/ui-library";
 import { ProductsAndServicesDefinition } from "../configs/ProductsAndServices.config";
 import { Section } from "./Section";
 import { useCardManager } from "./useCardManager";
+import classNames from "classnames";
 
 export function Products({ woo, wpModules }) {
   let [cards] = useCardManager(
@@ -27,7 +28,13 @@ export function Products({ woo, wpModules }) {
         )}
       />
       <Section.Content>
-        <div className="yst-px-4 yst-py-2 yst-rounded-lg yst-bg-slate-100 yst-flex yst-flex-col xl:yst-flex-row xl:yst-justify-between xl:yst-items-center">
+        <div
+          className={classNames(
+            "yst-px-4 yst-py-2 yst-rounded-lg yst-bg-slate-100",
+            "yst-flex yst-flex-col",
+            "xl:yst-flex-row xl:yst-justify-between xl:yst-items-center"
+          )}
+        >
           <div className="yst-flex-1">
             <Title size={4} className="yst-leading-normal">
               {__("Want help adding products?", "wp-module-ecommerce")}
@@ -39,7 +46,13 @@ export function Products({ woo, wpModules }) {
               )}
             </span>
           </div>
-          <div className="yst-flex-none yst-flex max-[1024px]:yst-my-2 min-[1025px]:yst-m-0">
+          <div
+            className={classNames(
+              "yst-flex-none yst-flex",
+              "max-[1024px]:yst-my-2",
+              "min-[1025px]:yst-m-0"
+            )}
+          >
             <Button
               className="yst-flex yst-gap-2 yst-items-center"
               as="a"
@@ -56,7 +69,14 @@ export function Products({ woo, wpModules }) {
             <Spinner size={8} className="yst-text-primary" />
           </div>
         )}
-        <div className="yst-grid yst-gap-6 yst-pt-8 sm:yst-grid-cols-1 md:yst-grid-cols-2 lg:yst-grid-cols-3">
+        <div
+          className={classNames(
+            "yst-grid yst-gap-6 yst-pt-8",
+            "sm:yst-grid-cols-1",
+            "md:yst-grid-cols-2",
+            "lg:yst-grid-cols-3"
+          )}
+        >
           {cards.map((cardConfig) => {
             let { Card, name, ...props } = cardConfig;
             return <Card key={name} {...props} />;

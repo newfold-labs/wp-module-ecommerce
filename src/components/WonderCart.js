@@ -6,6 +6,7 @@ import { ReactComponent as WonderCartUpsell } from "../icons/wonder-cart-upsell.
 import { PluginsSdk } from "../sdk/plugins";
 import { Section } from "./Section";
 import { useInstallWonderCart } from "./useInstallWonderCart";
+import classNames from "classnames";
 
 let wonderCartParser = wcPluginStatusParser("nfd_slug_wonder_cart");
 
@@ -31,7 +32,13 @@ export function WonderCart(props) {
       <Section.Header title={__("Sales & Discounts", "wp-module-ecommerce")} />
       <Section.Content>
         <div className="yst-bg-canvas yst-rounded-lg yst-border yst-border-solid yst-border-line">
-          <div className="yst-px-4 yst-py-2 yst-flex yst-items-center yst-rounded-lg">
+          <div
+            className={classNames(
+              "yst-px-4 yst-py-2 yst-rounded-lg",
+              "max-[425px]:yst-flex max-[425px]:yst-flex-col",
+              "min-[426px]:yst-flex min-[426px]:yst-items-center"
+            )}
+          >
             <div className="yst-flex-1">
               <Title size={4} className="yst-leading-normal">
                 {__(

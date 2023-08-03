@@ -11,6 +11,7 @@ import { Section } from "./Section";
 import Shipping from "./Shipping";
 import StoreInfo from "./StoreInfo";
 import TaxSettings from "./TaxSettings";
+import classNames from "classnames";
 
 /**
  *
@@ -157,7 +158,7 @@ export function StoreDetails(props) {
                 ? `${payload.country}:${payload.state}`
                 : payload.country,
             });
-            await WooCommerceSdk.onboarding.updateProfile({ completed: true })
+            await WooCommerceSdk.onboarding.updateProfile({ completed: true });
           }
           if (isFormDirty.payment) {
             let existingGateways = paymentMethods.data;
@@ -260,7 +261,12 @@ export function StoreDetails(props) {
         {controls.tax.isActive && (
           <TaxSettings values={{ ...values, ...formChanges }} />
         )}
-        <div className="yst-p-8 yst-border-t yst-bg-[#F8FAFC] max-[375px]:yst-flex-col yst-flex yst-justify-end yst-gap-4">
+        <div
+          className={classNames(
+            "yst-p-8 yst-border-t yst-bg-[#F8FAFC]",
+            "max-[375px]:yst-flex-col yst-flex yst-justify-end yst-gap-4"
+          )}
+        >
           <Button
             type="reset"
             variant="secondary"

@@ -4,6 +4,7 @@ import { Spinner } from "@yoast/ui-library";
 import { FreePluginsDefinition } from "../configs/FreePlugins.config";
 import { Section } from "./Section";
 import { useCardManager } from "./useCardManager";
+import classNames from "classnames";
 
 const Text = NewfoldRuntime.hasCapability("isEcommerce")
   ? __(
@@ -29,7 +30,7 @@ export function FreePlugins({ notify }) {
             <Spinner size={8} className="yst-text-primary" />
           </div>
         )}
-        <div className="yst-grid yst-gap-6 sm:yst-grid-cols-1 md:yst-grid-cols-2 lg:yst-grid-cols-3">
+        <div className={classNames("yst-grid yst-gap-6", "sm:yst-grid-cols-1", "md:yst-grid-cols-2", "lg:yst-grid-cols-3")}>
           {cards.map((cardConfig) => {
             let { Card, name, ...props } = cardConfig;
             return <Card key={name} {...props} />;

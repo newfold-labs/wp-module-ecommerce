@@ -31,22 +31,28 @@ let recentOrdersLink = `edit.php?${new URLSearchParams({
   post_type: "shop_order",
 })}`;
 
-const individualOrderLink = (postId) => `post.php?${new URLSearchParams({
-  post: postId,
-  action: "edit"
-})}`;
+const individualOrderLink = (postId) =>
+  `post.php?${new URLSearchParams({
+    post: postId,
+    action: "edit",
+  })}`;
 
 function RecentReport({ title, filter, onSelect, disabled, children }) {
   return (
     <Card className={`yst-flex-1`}>
       <Card.Content className={"yst-flex yst-flex-col yst-gap-4"}>
-        <div className="max-[360px]:yst-flex-col max-[360px]:yst-items-stretch sm:yst-flex sm:yst-flex-row sm:yst-items-baseline">
+        <div
+          className={classNames(
+            "max-[360px]:yst-flex-col max-[360px]:yst-items-stretch",
+            "sm:yst-flex sm:yst-flex-row sm:yst-items-baseline"
+          )}
+        >
           <Title className="yst-flex-1" size={4}>
             {title}
           </Title>
           <Select
             id={title}
-            className="lg:yst-w-1/4 sm:yst-w-2/5"
+            className={classNames("lg:yst-w-1/4", "sm:yst-w-2/5")}
             disabled={disabled}
             onChange={(newFilter) => {
               if (newFilter !== filter) {
@@ -83,7 +89,13 @@ function RecentActivity() {
       )}
       {cards.length > 0 && (
         <>
-          <div className="yst-flex-1 yst-grid yst-gap-4 sm:yst-grid-cols-1 md:yst-grid-cols-2">
+          <div
+            className={classNames(
+              "yst-flex-1 yst-grid yst-gap-4",
+              "sm:yst-grid-cols-1",
+              "md:yst-grid-cols-2"
+            )}
+          >
             {cards.map((cardConfig) => {
               let { Card, name, ...props } = cardConfig;
               return <Card key={name} {...props} />;
@@ -149,7 +161,7 @@ function RecentOrders() {
           )}
         >
           <NoOrdersFallback className="yst-flex-2" />
-          <p className="yst-flex-1" >
+          <p className="yst-flex-1">
             {__(
               "No orders yet. When you start getting orders, they will show up here.",
               "wp-module-ecommerce"
@@ -161,7 +173,12 @@ function RecentOrders() {
         <>
           <ul className="yst-flex-1">
             {orders.data?.map((order) => (
-              <Card as="a" key={order.id} href={RuntimeSdk.adminUrl(individualOrderLink(order.id))} className="focus:yst-mb-[2px]">
+              <Card
+                as="a"
+                key={order.id}
+                href={RuntimeSdk.adminUrl(individualOrderLink(order.id))}
+                className="focus:yst-mb-[2px]"
+              >
                 <Card.Content
                   className={classNames(
                     "yst-grid yst-grid-cols-2 yst-gap-y-2 yst-items-center",
@@ -223,7 +240,13 @@ export function QuickLook(props) {
           title="Quick Look"
           subtitle="Once you launch your store, you'll see a snapshot of recent purchases and other customer activity."
         >
-          <div className="yst-mt-10 yst-gap-6 yst-flex yst-flex-col xl:yst-flex-row">
+          <div
+            className={classNames(
+              "yst-mt-10 yst-gap-6",
+              "yst-flex yst-flex-col",
+              "xl:yst-flex-row"
+            )}
+          >
             <RecentActivity />
             <RecentOrders />
           </div>

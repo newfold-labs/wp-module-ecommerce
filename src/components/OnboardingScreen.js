@@ -6,6 +6,7 @@ import { ReactComponent as StorePendingIllustration } from "../icons/store-pendi
 import { OnboardingList } from "./OnboardingList";
 import { Section } from "./Section";
 import { SiteStatus } from "./SiteStatus";
+import classNames from "classnames";
 
 const Text = {
   Pending: {
@@ -47,7 +48,13 @@ export function OnboardingScreen({ comingSoon, toggleComingSoon, notify }) {
       <Section.Header title="Home" />
       <Section.Content className="wppbh-app-section-home">
         <div className="yst-flex yst-flex-col yst-gap-6">
-          <div className="yst-grid yst-gap-6 yst-min-h-[350px] sm:yst-grid-cols-1 lg:yst-grid-cols-2">
+          <div
+            className={classNames(
+              "yst-grid yst-gap-6 yst-min-h-[350px]",
+              "sm:yst-grid-cols-1",
+              "lg:yst-grid-cols-2"
+            )}
+          >
             <div className="yst-flex yst-flex-col yst-gap-4">
               <Title size={2}>{title}</Title>
               <span className="yst-text-[#495C77] yst-text-sm">
