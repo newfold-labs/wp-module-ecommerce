@@ -53,10 +53,15 @@ export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
           {__("Ready to go live?", "wp-module-ecommerce")}
         </Title>
         <span className="yst-whitespace-pre-wrap yst-leading-tight">
-          {__(
-            "Preview your store before setting it live to make sure everything is how you want it.\nOnce you're ready, set your store live!",
-            "wp-module-ecommerce"
-          )}
+          {NewfoldRuntime.hasCapability("isEcommerce")
+            ? __(
+                "Preview your store before setting it live to make sure everything is how you want it.\nOnce you're ready, set your store live!",
+                "wp-module-ecommerce"
+              )
+            : __(
+                "Preview your Site before setting it live to make sure everything is how you want it.\nOnce you're ready, set your site live!",
+                "wp-module-ecommerce"
+              )}
         </span>
       </div>
       <div className="yst-flex-none yst-flex yst-gap-4">
