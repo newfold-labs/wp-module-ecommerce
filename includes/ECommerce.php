@@ -46,6 +46,7 @@ class ECommerce {
 		'nfd-ecommerce-captive-flow-paypal',
 		'nfd-ecommerce-captive-flow-shippo',
 		'nfd-ecommerce-captive-flow-razorpay',
+		'nfd-ecommerce-captive-flow-stripe',
 		'nfd-ecommerce-onboarding-check',
 		'nfd-ecommerce-counter',
 		'woocommerce_store_address',

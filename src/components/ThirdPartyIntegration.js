@@ -49,7 +49,7 @@ export const ThirdPartyIntegration = ({
       ) : (
         <div className="yst-flex-1">
           {isConnectionActive ? (
-            id !== "razorpay" ? (
+            (id !== "razorpay" && id !== "stripe") ? (
               <div className="components-modal__frame yst-h-[500px]">
                 <button
                   type="button"
@@ -70,11 +70,13 @@ export const ThirdPartyIntegration = ({
                   src={integrationStatus?.integration?.captive}
                 />
               </div>
-            ) : (
+            ) : id == "razorpay" ? (
               <CaptiveRazorpay
                 razorpaySettings={integrationStatus?.details?.settings}
               />
-            )
+            ) : <div>
+              <h1>This is stripe payment flow </h1>
+            </div>
           ) : (
             children({
               integrationStatus,

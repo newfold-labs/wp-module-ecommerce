@@ -17,6 +17,7 @@ const CaptiveFlows = {
   paypal: "nfd-ecommerce-captive-flow-paypal",
   shippo: "nfd-ecommerce-captive-flow-shippo",
   razorpay: "nfd-ecommerce-captive-flow-razorpay",
+  stripe: "nfd-ecommerce-captive-flow-stripe"
 };
 
 export function OnboardingListDefinition(props) {

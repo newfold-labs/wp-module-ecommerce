@@ -8,9 +8,9 @@ const Razorpay = ({ notify }) => {
   return (
     <ThirdPartyIntegration
       id="razorpay"
-      title={__("Payment Processors", "wp-module-ecommerce")}
+      title={__("Razorpay", "wp-module-ecommerce")}
       description={__(
-        "Choose a service that your customers will use to process their payments in return for your products and services.",
+        "Built specifically for companies based in India, manage all your payments and financial operations from consolidated dashboard.",
         "wp-module-ecommerce"
       )}
       notify={notify}

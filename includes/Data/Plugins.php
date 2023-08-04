@@ -88,6 +88,10 @@ final class Plugins
 			'file' => 'wonder-cart/init.php',
 			'url' => 'admin.php?page=wonder-cart',
 		),
+		'nfd_slug_yith_stripe_payments_for_woocommerce' => array(
+            'file' => 'yith-stripe-payments-for-woocommerce-extended/init.php',
+            'url' => 'admin.php?page=yith_stripe_payments_panel',
+        )
 	);
 
 	public static function supported_plugins()
