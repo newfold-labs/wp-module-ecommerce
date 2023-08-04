@@ -1,4 +1,4 @@
-import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
+import { NewfoldRuntime } from "./sdk/NewfoldRuntime";
 import apiFetch from "@wordpress/api-fetch";
 import { Spinner } from "@yoast/ui-library";
 import useSWR, { SWRConfig } from "swr";

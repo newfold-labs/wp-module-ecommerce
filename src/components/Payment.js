@@ -87,7 +87,7 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
                       className={classNames(
                         "yst-text-sm yst-capitalize",
                         environment === "live" &&
-                          "yst-bg-[#178113] yst-text-white"
+                          "yst-bg-[--nfd-ecomemerce-bg-success] yst-text-white"
                       )}
                     >
                       {environment}
@@ -103,7 +103,7 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
                   </p>
                 )}
                 {!isSetupComplete && (
-                  <div className="yst-space-y-4 yst-text-[#5B5B5B]">
+                  <div className="yst-space-y-4 yst-text-[--nfd-ecommerce-text-secondary]">
                     <Title size="3">
                       {__("Provides flexible checkout options")}
                     </Title>

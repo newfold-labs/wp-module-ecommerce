@@ -80,7 +80,7 @@ const Razorpay = ({ notify }) => {
                   variant={environment === "sandbox" ? "upsell" : "plain"}
                   className={classNames(
                     "yst-text-sm yst-capitalize",
-                    environment === "live" && "yst-bg-[#178113] yst-text-white"
+                    environment === "live" && "yst-bg-[--nfd-ecomemerce-bg-success] yst-text-white"
                   )}
                 >
                   {environment}

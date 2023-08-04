@@ -1,5 +1,5 @@
 import pandora from "@faizaanceg/pandora";
-import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { __ } from "@wordpress/i18n";
 import { PluginsSdk } from "../sdk/plugins";
 import { RuntimeSdk } from "../sdk/runtime";

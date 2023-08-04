@@ -1,5 +1,5 @@
 import { RocketLaunchIcon } from "@heroicons/react/24/outline";
-import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { __ } from "@wordpress/i18n";
 import { Button, Title } from "@yoast/ui-library";
 import classNames from "classnames";
@@ -41,7 +41,7 @@ export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
     let $statusText = document.getElementById("nfd-site-status-text");
     if ($statusText) {
       $statusText.textContent = __("Live", "wp-module-ecommerce");
-      $statusText.style.setProperty("color", "#048200");
+      $statusText.style.setProperty("color", "var(--nfd-ecommerce-text-dark-success)");
     }
   });
   if (!comingSoon) {

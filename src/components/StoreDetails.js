@@ -263,7 +263,7 @@ export function StoreDetails(props) {
         )}
         <div
           className={classNames(
-            "yst-p-8 yst-border-t yst-bg-[#F8FAFC]",
+            "yst-p-8 yst-border-t yst-bg-[--nfd-ecommerce-bg-light]",
             "max-[375px]:yst-flex-col yst-flex yst-justify-end yst-gap-4"
           )}
         >
