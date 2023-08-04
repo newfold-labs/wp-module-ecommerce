@@ -1,4 +1,4 @@
-import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
+import { NewfoldRuntime } from "./NewfoldRuntime";
 import apiFetch from "@wordpress/api-fetch";
 
 /**

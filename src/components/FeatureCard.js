@@ -40,7 +40,7 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
   return (
     <Card>
       <Card.Content>
-        <Image className="yst-w-12 yst-text-[#404040]" />
+        <Image className="yst-w-12 yst-text-[--nfd-ecommerce-text-dark]" />
         <Title size={4} className="yst-leading-normal yst-my-4">
           {title}
         </Title>

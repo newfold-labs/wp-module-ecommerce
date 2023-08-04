@@ -2,7 +2,7 @@ import {
   ArrowLongRightIcon,
   CheckCircleIcon,
 } from "@heroicons/react/24/outline";
-import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import { Card, Link, Spinner, Title } from "@yoast/ui-library";
@@ -39,7 +39,7 @@ function OnboardingCheckListItem({ children, actions, state, ...props }) {
         <CheckCircleIcon
           className={classNames(
             "yst-w-[1.125rem]",
-            state.isCompleted ? "yst-text-[#17B212]" : "yst-text-[#AAAFB8]"
+            state.isCompleted ? "yst-text-[--nfd-ecomemerce-text-success]" : "yst-text-[--nfd-ecommerce-text-light]"
           )}
         />
         <span className="yst-flex-1 yst-text-black">{props.text}</span>

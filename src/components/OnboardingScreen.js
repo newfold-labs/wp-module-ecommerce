@@ -1,4 +1,4 @@
-import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { __ } from "@wordpress/i18n";
 import { Title } from "@yoast/ui-library";
 import { ReactComponent as WelcomeIllustration } from "../icons/store-live.svg";
@@ -50,7 +50,7 @@ export function OnboardingScreen({ comingSoon, toggleComingSoon, notify }) {
           <div className="yst-grid yst-gap-6 yst-min-h-[350px] sm:yst-grid-cols-1 md:yst-grid-cols-2">
             <div className="yst-flex yst-flex-col yst-gap-4">
               <Title size={2}>{title}</Title>
-              <span className="yst-text-[#495C77] yst-text-sm">
+              <span className="yst-text-[--nfd-ecommerce-text-info] yst-text-sm">
                 {description}
               </span>
               <Illustration className="yst-m-auto" />

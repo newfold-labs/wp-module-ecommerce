@@ -10,12 +10,12 @@ export function ReportTile(props) {
     <Card>
       <Card.Content className="yst-flex yst-flex-col yst-gap-4">
         <Title
-          className="yst-text-[#495C77] yst-leading-normal yst-text-base"
+          className="yst-text-[--nfd-ecommerce-text-info] yst-leading-normal yst-text-base"
           size={5}
         >
           {title}
         </Title>
-        <p className="yst-text-2xl yst-text-[#495C77] yst-font-semibold">
+        <p className="yst-text-2xl yst-text-[--nfd-ecommerce-text-info] yst-font-semibold">
           {props.state.reportValue}
         </p>
         {delta > 0 && (
