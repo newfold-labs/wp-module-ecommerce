@@ -67,10 +67,10 @@ export function CaptiveRazorpay({ razorpaySettings }) {
   let isKeyValid = isTestMode ? isTestKeyValid : isProductionKeyValid;
 
   return (
-    <fieldset>
+    <fieldset className="yst-border yst-p-6 yst-rounded-md">
       <div className="yst-flex yst-justify-between yst-mb-6">
         <RazorPayBrand className="razorpay-logo" />
-        <Button target="_blank" href="https://rzp.io/i/egoPZR2rbu">
+        <Button as="a" target="_blank" href="https://rzp.io/i/egoPZR2rbu">
           {__("Create an Account", "wp-module-ecommerce")}
         </Button>
       </div>
