@@ -10,6 +10,7 @@ import {
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 import { Section } from "./Section";
+import classNames from "classnames";
 
 const CountriesInOFAC = ["CU", "KP", "IR", "RU", "SY", "AF", "BY", "MM", "VN"];
 function useBasicProfile() {
@@ -105,7 +106,13 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                 label={__("Address Line 2 (optional)")}
               />
             </div>
-            <div className="yst-mt-6 yst-flex yst-flex-col sm:yst-justify-between md:yst-flex-row">
+            <div
+              className={classNames(
+                "yst-mt-6 yst-flex yst-flex-col",
+                "sm:yst-justify-between",
+                "md:yst-flex-row"
+              )}
+            >
               <div className="yst-flex-1">
                 <TextField
                   data-section="details"

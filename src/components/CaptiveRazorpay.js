@@ -2,6 +2,8 @@ import { useEffect, useState } from "@wordpress/element";
 import { __, sprintf } from "@wordpress/i18n";
 import { Button, TextField, ToggleField } from "@yoast/ui-library";
 import { ReactComponent as RazorPayBrand } from "../icons/brands/razorpay.svg";
+import classNames from "classnames";
+
 /** @type {((key: string) => boolean)[]} */
 const KeyChecks = [
   (key) => key?.startsWith("rzp_test_"),
@@ -59,7 +61,7 @@ export function CaptiveRazorpay({ razorpaySettings }) {
       key_secret: razorpaySettings?.key_secret ?? "",
     });
   };
-  
+
   let isFormDisabled = razorpaySettings === undefined;
   let [isTestKeyValid, isProductionKeyValid] = KeyChecks.map(
     (check) => rzrKeys.key_id === "" || check(rzrKeys.key_id)
@@ -68,9 +70,19 @@ export function CaptiveRazorpay({ razorpaySettings }) {
 
   return (
     <fieldset className="yst-border yst-p-6 yst-rounded-md">
-      <div className="yst-flex yst-justify-between yst-mb-6">
+      <div
+        className={classNames(
+          "max-[375px]:yst-flex-col",
+          "min-[376px]:yst-flex yst-justify-between min-[376px]:yst-mb-8"
+        )}
+      >
         <RazorPayBrand className="razorpay-logo" />
-        <Button as="a" target="_blank" href="https://rzp.io/i/egoPZR2rbu">
+        <Button
+          as="a"
+          target="_blank"
+          href="https://rzp.io/i/egoPZR2rbu"
+          className={classNames("max-[375px]:yst-my-2", "min-[376px]:yst-m-0")}
+        >
           {__("Create an Account", "wp-module-ecommerce")}
         </Button>
       </div>
