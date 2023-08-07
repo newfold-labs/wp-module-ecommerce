@@ -12,100 +12,124 @@ import { ReactComponent as VenmoBrand } from "../icons/brands/venmo.svg";
 import { ReactComponent as VisaBrand } from "../icons/brands/visa.svg";
 import { ThirdPartyIntegration } from "./ThirdPartyIntegration";
 
-const Paypal = ({notify})=>{
-    return <ThirdPartyIntegration
-    id="paypal"
-    title={__("Paypal", "wp-module-ecommerce")}
-    description={__("Online payments built for success. We help you do business in 200+ markets and 100+ currencies—even if your customers don't have PayPal.",
-      "wp-module-ecommerce"
-    )}
-    notify={notify}
-  >
-    {({ integrationStatus, onConnect, isInstalling }) => {
-      const isSetupComplete = integrationStatus?.complete;
-      const environment = integrationStatus?.details?.environment;
-      return (
-        <div className="yst-border yst-rounded-md yst-p-6">
-          <div className="yst-flex yst-justify-between yst-mb-8">
-            <PaypalBrand />
-            {isInstalling ? (
-              <Button variant="secondary" isLoading>
-                {__("Installing...", "wp-module-ecommerce")}
-              </Button>
-            ) : isSetupComplete ? (
-              <Button
-                variant="secondary"
-                as="a"
-                href={integrationStatus?.integration?.plugin?.url}
-              >
-                {__("Manage", "wp-module-ecommerce")}
-              </Button>
-            ) : (
-              <Button onClick={onConnect}>
-                {__("Connect", "wp-module-ecommerce")}
-              </Button>
-            )}
-          </div>
-          {isSetupComplete && environment && (
-            <div className="yst-flex yst-gap-4 yst-mt-4">
-              <span>{__("Environment:", "wp-module-ecommerce")}</span>
-              <Badge
-                size="large"
-                variant={environment === "sandbox" ? "upsell" : "plain"}
-                className={classNames(
-                  "yst-text-sm yst-capitalize",
-                  environment === "live" &&
-                    "yst-bg-[#178113] yst-text-white"
-                )}
-              >
-                {environment}
-              </Badge>
-            </div>
-          )}
-          {!isSetupComplete && (
-            <p>
-              {__(
-                "Online payments built for success. We help you do business in 200+ markets and 100+ currencies—even if your customers don't have PayPal.",
-                "wp-module-ecommerce"
+const Paypal = ({ notify }) => {
+  return (
+    <ThirdPartyIntegration
+      id="paypal"
+      title={__("Paypal", "wp-module-ecommerce")}
+      description={__(
+        "Online payments built for success. We help you do business in 200+ markets and 100+ currencies—even if your customers don't have PayPal.",
+        "wp-module-ecommerce"
+      )}
+      notify={notify}
+    >
+      {({ integrationStatus, onConnect, isInstalling }) => {
+        const isSetupComplete = integrationStatus?.complete;
+        const environment = integrationStatus?.details?.environment;
+        return (
+          <div className="yst-border yst-rounded-md yst-p-6">
+            <div
+              className={classNames(
+                "max-[359px]:yst-flex-col",
+                "min-[360px]:yst-flex yst-justify-between min-[360px]:yst-mb-8"
               )}
-            </p>
-          )}
-          {!isSetupComplete && (
-            <div className="yst-space-y-4 yst-text-[#5B5B5B]">
-              <Title size="3">
-                {__("Provides flexible checkout options")}
-              </Title>
-              <ul className="yst-pl-5 yst-list-disc">
-                <li>{__("PayPal Pay Later")}</li>
-                <li>{__("White-Labeling", "wp-module-ecommerce")}</li>
-                <li>
-                  {__(
-                    "Country-specific payment methods",
-                    "wp-module-ecommerce"
+            >
+              <PaypalBrand />
+              {isInstalling ? (
+                <Button
+                  variant="secondary"
+                  isLoading
+                  className={classNames(
+                    "max-[359px]:yst-my-2",
+                    "min-[360px]:yst-m-0"
                   )}
-                </li>
-              </ul>
-              <Title size="3">
+                >
+                  {__("Installing...", "wp-module-ecommerce")}
+                </Button>
+              ) : isSetupComplete ? (
+                <Button
+                  variant="secondary"
+                  as="a"
+                  href={integrationStatus?.integration?.plugin?.url}
+                  className={classNames(
+                    "max-[359px]:yst-my-2",
+                    "min-[360px]:yst-m-0"
+                  )}
+                >
+                  {__("Manage", "wp-module-ecommerce")}
+                </Button>
+              ) : (
+                <Button
+                  onClick={onConnect}
+                  className={classNames(
+                    "max-[359px]:yst-my-2",
+                    "min-[360px]:yst-m-0"
+                  )}
+                >
+                  {__("Connect", "wp-module-ecommerce")}
+                </Button>
+              )}
+            </div>
+            {isSetupComplete && environment && (
+              <div className="yst-flex yst-gap-4 yst-mt-4">
+                <span>{__("Environment:", "wp-module-ecommerce")}</span>
+                <Badge
+                  size="large"
+                  variant={environment === "sandbox" ? "upsell" : "plain"}
+                  className={classNames(
+                    "yst-text-sm yst-capitalize",
+                    environment === "live" && "yst-bg-[#178113] yst-text-white"
+                  )}
+                >
+                  {environment}
+                </Badge>
+              </div>
+            )}
+            {!isSetupComplete && (
+              <p>
                 {__(
-                  " Uses many popular payment methods",
+                  "Online payments built for success. We help you do business in 200+ markets and 100+ currencies—even if your customers don't have PayPal.",
                   "wp-module-ecommerce"
                 )}
-              </Title>
-              <div className="yst-flex yst-items-end yst-gap-2 yst-flex-wrap">
-                <VisaBrand />
-                <MasterCardBrand />
-                <AmexBrand />
-                <DiscoverBrand />
-                <VenmoBrand />
-                <IdealBrand />
-                <GiroPayBrand />
-                <SofortBrand />
+              </p>
+            )}
+            {!isSetupComplete && (
+              <div className="yst-space-y-4 yst-text-[#5B5B5B]">
+                <Title size="3">
+                  {__("Provides flexible checkout options")}
+                </Title>
+                <ul className="yst-pl-5 yst-list-disc">
+                  <li>{__("PayPal Pay Later")}</li>
+                  <li>{__("White-Labeling", "wp-module-ecommerce")}</li>
+                  <li>
+                    {__(
+                      "Country-specific payment methods",
+                      "wp-module-ecommerce"
+                    )}
+                  </li>
+                </ul>
+                <Title size="3">
+                  {__(
+                    " Uses many popular payment methods",
+                    "wp-module-ecommerce"
+                  )}
+                </Title>
+                <div className="yst-flex yst-items-end yst-gap-2 yst-flex-wrap">
+                  <VisaBrand />
+                  <MasterCardBrand />
+                  <AmexBrand />
+                  <DiscoverBrand />
+                  <VenmoBrand />
+                  <IdealBrand />
+                  <GiroPayBrand />
+                  <SofortBrand />
+                </div>
               </div>
-            </div>
-          )}
-        </div>
-      );
-    }}
-  </ThirdPartyIntegration>
-}
+            )}
+          </div>
+        );
+      }}
+    </ThirdPartyIntegration>
+  );
+};
 export default Paypal;
