@@ -5,9 +5,9 @@ import {
 import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
 
 export const AnalyticsSdk = {
-  track(action, value) {
+  track(category, action, value) {
     const hiiveEvent = new HiiveEvent(
-      "wp-module-ecommerce",
+      category,
       action,
       {
         value,
