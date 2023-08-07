@@ -26,7 +26,12 @@ const Shipping = ({ notify }) => {
           const environment = integrationStatus?.details?.environment;
           return (
             <div className="yst-h-[174px] yst-border yst-rounded-md yst-p-6">
-              <div className="yst-flex yst-justify-between yst-mb-8">
+              <div
+                className={classNames(
+                  "max-[359px]:yst-flex-col",
+                  "min-[360px]:yst-flex min-[360px]:yst-justify-between min-[360px]:yst-mb-8"
+                )}
+              >
                 <Shippo />
                 {!isInstalling ? (
                   <>
@@ -35,17 +40,34 @@ const Shipping = ({ notify }) => {
                         variant="secondary"
                         as="a"
                         href={integrationStatus?.integration?.plugin?.url}
+                        className={classNames(
+                          "max-[359px]:yst-my-2",
+                          "min-[360px]:yst-m-0"
+                        )}
                       >
                         {__("Manage", "wp-module-ecommerce")}
                       </Button>
                     ) : (
-                      <Button onClick={onConnect}>
+                      <Button
+                        onClick={onConnect}
+                        className={classNames(
+                          "max-[359px]:yst-my-2",
+                          "min-[360px]:yst-m-0"
+                        )}
+                      >
                         {__("Connect", "wp-module-ecommerce")}
                       </Button>
                     )}
                   </>
                 ) : (
-                  <Button variant="secondary" isLoading={isInstalling}>
+                  <Button
+                    variant="secondary"
+                    isLoading={isInstalling}
+                    className={classNames(
+                      "max-[359px]:yst-my-2",
+                      "min-[360px]:yst-m-0"
+                    )}
+                  >
                     {__("Installing...", "wp-module-ecommerce")}
                   </Button>
                 )}
