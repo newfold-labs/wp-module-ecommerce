@@ -11,7 +11,7 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
     return null;
   }
   return (
-    <Section.Content separator>
+    <Section.Container>
       {RuntimeSdk.brandSettings.setup.payment.includes("Paypal") && (
         <Section.Content separator>
           <Paypal notify={notify} />
@@ -60,7 +60,7 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
           </div>
         </Section.Settings>
       </Section.Content>
-    </Section.Content>
+    </Section.Container>
   );
 };
 
