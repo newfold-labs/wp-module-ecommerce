@@ -20,7 +20,6 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
     return null;
   }
   return (
-    <>
     <Section.Content separator>
       {RuntimeSdk.brandSettings.setup.payment.includes("Paypal") && (
         <ThirdPartyIntegration
@@ -141,8 +140,6 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
           }}
         </ThirdPartyIntegration>
       )}
-      </Section.Content>
-      <Section.Content separator>
       {RuntimeSdk.brandSettings.setup.payment.includes("Razorpay") && (
         <Razorpay notify={notify} />
       )}
@@ -172,7 +169,6 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
         />
       </Section.Settings>
     </Section.Content>
-    </>
   );
 };
 
