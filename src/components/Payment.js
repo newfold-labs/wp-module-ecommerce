@@ -3,7 +3,6 @@ import { CheckboxGroup } from "@yoast/ui-library";
 import { RuntimeSdk } from "../sdk/runtime";
 import Razorpay from "./Razorpay";
 import { Section } from "./Section";
-import Stripe from "./stripe";
 import Paypal from "./Paypal";
 
 const Payment = ({ notify, pushChanges, values, controls }) => {
@@ -21,12 +20,6 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
       {RuntimeSdk.brandSettings.setup.payment.includes("Razorpay") && (
         <Section.Content separator>
           <Razorpay notify={notify} />
-        </Section.Content>
-      )}
-
-      {RuntimeSdk.brandSettings.setup.payment.includes("Stripe") && (
-        <Section.Content separator>
-          <Stripe notify={notify} />
         </Section.Content>
       )}
 
