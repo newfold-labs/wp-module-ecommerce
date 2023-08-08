@@ -63,7 +63,7 @@ final class Brands {
 					'support' => 'https://www.bluehost.com/contact',
 					'adminPage' => 'admin.php?page=bluehost',
 					'setup' => array(
-						'payment' => array('Paypal', 'Stripe'),
+						'payment' => array('Paypal'),
 						'shipping' => array('Shippo'),
 					),
 					'defaultContact' => array(
