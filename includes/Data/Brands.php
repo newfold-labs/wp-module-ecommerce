@@ -45,7 +45,7 @@ final class Brands {
 					'support' => 'https://helpchat.bluehost.in',
 					'adminPage' => 'admin.php?page=bluehost',
 					'setup' => array(
-						'payment' => array('Razorpay', 'Paypal'),
+						'payment' => array('Paypal', 'Razorpay'),
 						'shipping' => array(),
 					),
 					'defaultContact' => array(
