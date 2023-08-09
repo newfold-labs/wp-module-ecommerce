@@ -4,15 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b2ab8e35907c6cff7b859fa2d849459c",
+    "content-hash": "b048f68a275931fa58190025b8d3bcde",
     "packages": [
         {
             "name": "newfold-labs/wp-module-installer",
-            "version": "dev-main",
-            "dist": {
-                "type": "path",
-                "url": "/Users/sumathi.nadakuditi/Desktop/projects/wp-module-installer",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newfold-labs/wp-module-installer.git",
                 "reference": "77de0aedcb41231b018a6e900748c7ed2663775a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/77de0aedcb41231b018a6e900748c7ed2663775a",
+                "reference": "77de0aedcb41231b018a6e900748c7ed2663775a",
+                "shasum": ""
             },
             "require-dev": {
                 "newfold-labs/wp-php-standards": "^1.2"
@@ -36,10 +42,11 @@
                 }
             ],
             "description": "An installer for WordPress plugins and themes.",
-            "transport-options": {
-                "symlink": true,
-                "relative": false
-            }
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-installer/tree/1.0.1",
+                "issues": "https://github.com/newfold-labs/wp-module-installer/issues"
+            },
+            "time": "2023-07-06T15:05:49+00:00"
         }
     ],
     "packages-dev": [
@@ -4199,7 +4206,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "newfold-labs/wp-module-installer": 20,
         "newfold-labs/wp-php-standards": 0,
         "wp-cli/wp-cli-bundle": 0,
         "wp-cli/i18n-command": 0

@@ -23,20 +23,13 @@
     {
       "type": "composer",
       "url": "https://newfold-labs.github.io/satis/",
-      "exclude": [
-        "newfold-labs/wp-module-installer"
+      "only": [
+        "newfold-labs/*"
       ]
-    },
-    {
-      "type": "path",
-      "url": "/Users/sumathi.nadakuditi/Desktop/projects/wp-module-installer",
-      "options": {
-        "symlink": true
-      }
     }
   ],
   "require": {
-    "newfold-labs/wp-module-installer": "@dev"
+    "newfold-labs/wp-module-installer": "1.0.1"
   },
   "require-dev": {
     "newfold-labs/wp-php-standards": "@stable",
