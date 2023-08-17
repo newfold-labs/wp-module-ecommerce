@@ -1,11 +1,11 @@
 import { Button, Title } from "@yoast/ui-library";
 import classNames from "classnames";
 
-const Container = ({ className, children }) => {
+const Container = ({ className, children, showShadowBox = true }) => {
   return (
     <div
-      className={classNames(
-        "wppb-app-section-container yst-bg-white yst-w-full yst-rounded-lg yst-shadow",
+      className={classNames({"yst-shadow": showShadowBox},
+        "wppb-app-section-container yst-bg-white yst-w-full yst-rounded-lg ",
         className
       )}
     >
