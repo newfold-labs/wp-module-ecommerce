@@ -1,4 +1,4 @@
-import { useEffect, useState } from "@wordpress/element";
+import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import { Button } from "@yoast/ui-library";
 import useSWR from "swr";
