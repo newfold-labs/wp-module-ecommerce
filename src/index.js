@@ -1,6 +1,6 @@
 import { NewfoldRuntime } from "./sdk/NewfoldRuntime";
 import apiFetch from "@wordpress/api-fetch";
-import { Spinner } from "@yoast/ui-library";
+import { Spinner } from "@newfold/ui-component-library";
 import useSWR, { SWRConfig } from "swr";
 import { Products } from "./components/ProductsAndServices";
 import { Store } from "./components/Store";
@@ -43,8 +43,8 @@ export function NewfoldECommerce(props) {
 
   if (woo === undefined) {
     return (
-      <div className="yst-flex yst-items-center yst-text-center yst-justify-center yst-h-full">
-        <Spinner size={8} className="yst-text-primary" />
+      <div className="nfd-flex nfd-items-center nfd-text-center nfd-justify-center nfd-h-full">
+        <Spinner size={8} className="nfd-text-primary" />
       </div>
     );
   }

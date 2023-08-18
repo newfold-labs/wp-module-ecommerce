@@ -1,6 +1,6 @@
 import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { __ } from "@wordpress/i18n";
-import { Title } from "@yoast/ui-library";
+import { Title } from "@newfold/ui-component-library";
 import { ReactComponent as WelcomeIllustration } from "../icons/store-live.svg";
 import { ReactComponent as StorePendingIllustration } from "../icons/store-pending.svg";
 import { OnboardingList } from "./OnboardingList";
@@ -47,20 +47,20 @@ export function OnboardingScreen({ comingSoon, toggleComingSoon, notify }) {
     <Section.Container className="wppbh-welcome-section">
       <Section.Header title="Home" />
       <Section.Content className="wppbh-app-section-home">
-        <div className="yst-flex yst-flex-col yst-gap-6">
+        <div className="nfd-flex nfd-flex-col nfd-gap-6">
           <div
             className={classNames(
-              "yst-grid yst-gap-6 yst-min-h-[350px]",
-              "sm:yst-grid-cols-1",
-              "lg:yst-grid-cols-2"
+              "nfd-grid nfd-gap-6 nfd-min-h-[350px]",
+              "sm:nfd-grid-cols-1",
+              "lg:nfd-grid-cols-2"
             )}
           >
-            <div className="yst-flex yst-flex-col yst-gap-4">
+            <div className="nfd-flex nfd-flex-col nfd-gap-4">
               <Title size={2}>{title}</Title>
-              <span className="yst-text-[--nfd-ecommerce-text-info] yst-text-sm">
+              <span className="nfd-text-[--nfd-ecommerce-text-info] nfd-text-sm">
                 {description}
               </span>
-              <Illustration className="yst-m-auto" />
+              <Illustration className="nfd-m-auto" />
             </div>
             <OnboardingList notify={notify} />
           </div>

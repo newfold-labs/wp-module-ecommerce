@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { Badge, Button, CheckboxGroup, Title } from "@yoast/ui-library";
+import { Badge, Button, CheckboxGroup, Title } from "@newfold/ui-component-library";
 import classNames from "classnames";
 import { ReactComponent as AmexBrand } from "../icons/brands/amex.svg";
 import { ReactComponent as DiscoverBrand } from "../icons/brands/discover.svg";
@@ -35,11 +35,11 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
             const isSetupComplete = integrationStatus?.complete;
             const environment = integrationStatus?.details?.environment;
             return (
-              <div className="yst-border yst-rounded-md yst-p-6">
+              <div className="nfd-border nfd-rounded-md nfd-p-6">
                 <div
                   className={classNames(
-                    "max-[359px]:yst-flex-col",
-                    "min-[360px]:yst-flex yst-justify-between min-[360px]:yst-mb-8"
+                    "max-[359px]:nfd-flex-col",
+                    "min-[360px]:nfd-flex nfd-justify-between min-[360px]:nfd-mb-8"
                   )}
                 >
                   <PaypalBrand />
@@ -48,8 +48,8 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
                       variant="secondary"
                       isLoading
                       className={classNames(
-                        "max-[359px]:yst-my-2",
-                        "min-[360px]:yst-m-0"
+                        "max-[359px]:nfd-my-2",
+                        "min-[360px]:nfd-m-0"
                       )}
                     >
                       {__("Installing...", "wp-module-ecommerce")}
@@ -60,8 +60,8 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
                       as="a"
                       href={integrationStatus?.integration?.plugin?.url}
                       className={classNames(
-                        "max-[359px]:yst-my-2",
-                        "min-[360px]:yst-m-0"
+                        "max-[359px]:nfd-my-2",
+                        "min-[360px]:nfd-m-0"
                       )}
                     >
                       {__("Manage", "wp-module-ecommerce")}
@@ -70,8 +70,8 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
                     <Button
                       onClick={onConnect}
                       className={classNames(
-                        "max-[359px]:yst-my-2",
-                        "min-[360px]:yst-m-0"
+                        "max-[359px]:nfd-my-2",
+                        "min-[360px]:nfd-m-0"
                       )}
                     >
                       {__("Connect", "wp-module-ecommerce")}
@@ -79,15 +79,15 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
                   )}
                 </div>
                 {isSetupComplete && environment && (
-                  <div className="yst-flex yst-gap-4 yst-mt-4">
+                  <div className="nfd-flex nfd-gap-4 nfd-mt-4">
                     <span>{__("Environment:", "wp-module-ecommerce")}</span>
                     <Badge
                       size="large"
                       variant={environment === "sandbox" ? "upsell" : "plain"}
                       className={classNames(
-                        "yst-text-sm yst-capitalize",
+                        "nfd-text-sm nfd-capitalize",
                         environment === "live" &&
-                          "yst-bg-[--nfd-ecomemerce-bg-success] yst-text-white"
+                          "nfd-bg-[--nfd-ecomemerce-bg-success] nfd-text-white"
                       )}
                     >
                       {environment}
@@ -103,11 +103,11 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
                   </p>
                 )}
                 {!isSetupComplete && (
-                  <div className="yst-space-y-4 yst-text-[--nfd-ecommerce-text-secondary]">
+                  <div className="nfd-space-y-4 nfd-text-[--nfd-ecommerce-text-secondary]">
                     <Title size="3">
                       {__("Provides flexible checkout options")}
                     </Title>
-                    <ul className="yst-pl-5 yst-list-disc">
+                    <ul className="nfd-pl-5 nfd-list-disc">
                       <li>{__("PayPal Pay Later")}</li>
                       <li>{__("White-Labeling", "wp-module-ecommerce")}</li>
                       <li>
@@ -123,7 +123,7 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
                         "wp-module-ecommerce"
                       )}
                     </Title>
-                    <div className="yst-flex yst-items-end yst-gap-2 yst-flex-wrap">
+                    <div className="nfd-flex nfd-items-end nfd-gap-2 nfd-flex-wrap">
                       <VisaBrand />
                       <MasterCardBrand />
                       <AmexBrand />
@@ -147,7 +147,7 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
         <CheckboxGroup
           id="woocommerce_toggle_gateway_enabled"
           label="Offline payment methods"
-          className="yst-mt-4"
+          className="nfd-mt-4"
           name="woocommerce_toggle_gateway_enabled"
           disabled={controls.isLoading}
           onChange={pushChanges}

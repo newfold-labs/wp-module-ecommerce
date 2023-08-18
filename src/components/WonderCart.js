@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { Button, FeatureUpsell, Title } from "@yoast/ui-library";
+import { Button, FeatureUpsell, Title } from "@newfold/ui-component-library";
 import useSWR from "swr";
 import { wcPluginStatusParser } from "../configs/selectors";
 import { ReactComponent as WonderCartUpsell } from "../icons/wonder-cart-upsell.svg";
@@ -31,29 +31,29 @@ export function WonderCart(props) {
     <Section.Container>
       <Section.Header title={__("Sales & Discounts", "wp-module-ecommerce")} />
       <Section.Content>
-        <div className="yst-bg-canvas yst-rounded-lg yst-border yst-border-solid yst-border-line">
+        <div className="nfd-bg-canvas nfd-rounded-lg nfd-border nfd-border-solid nfd-border-line">
           <div
             className={classNames(
-              "yst-px-4 yst-py-2 yst-rounded-lg",
-              "max-[425px]:yst-flex max-[425px]:yst-flex-col",
-              "min-[426px]:yst-flex min-[426px]:yst-items-center"
+              "nfd-px-4 nfd-py-2 nfd-rounded-lg",
+              "max-[425px]:nfd-flex max-[425px]:nfd-flex-col",
+              "min-[426px]:nfd-flex min-[426px]:nfd-items-center"
             )}
           >
-            <div className="yst-flex-1">
-              <Title size={4} className="yst-leading-normal">
+            <div className="nfd-flex-1">
+              <Title size={4} className="nfd-leading-normal">
                 {__(
                   "Add Upsells, Cross-sells, and other Promotions to your store",
                   "wp-module-ecommerce"
                 )}
               </Title>
-              <span className="yst-whitespace-pre-wrap">
+              <span className="nfd-whitespace-pre-wrap">
                 {__(
                   "Create and manage deals, sales promotions and upsell campaigns like Buy-One-Get-One and more.",
                   "wp-module-ecommerce"
                 )}
               </span>
             </div>
-            <div className="yst-flex-none">
+            <div className="nfd-flex-none">
               <Button
                 type="button"
                 variant="upsell"
