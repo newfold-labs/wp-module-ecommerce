@@ -28,9 +28,9 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
           <div className="yst-border yst-rounded-md yst-p-6">
             <CheckboxGroup
               id="woocommerce_toggle_gateway_enabled"
-              label="Manual Payment methods"
+              label={__("Manual Payment methods", "wp-module-ecommerce")}
               className="yst-mt-4"
-              description="When a customer selects a manual payment method, you'll need to approve their order before it can be fulfilled."
+              description={__("When a customer selects a manual payment method, you'll need to approve their order before it can be fulfilled.", "wp-module-ecommerce")}
               name="woocommerce_toggle_gateway_enabled"
               disabled={controls.isLoading}
               onChange={pushChanges}

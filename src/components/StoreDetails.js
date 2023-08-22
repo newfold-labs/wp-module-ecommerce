@@ -6,7 +6,6 @@ import useSWRMutation from "swr/mutation";
 import { RuntimeSdk } from "../sdk/runtime";
 import { WooCommerceSdk } from "../sdk/woocommerce";
 import { WordPressSdk } from "../sdk/wordpress";
-import Payment from "./Payment";
 import { Section } from "./Section";
 import Shipping from "./Shipping";
 import StoreInfo from "./StoreInfo";
