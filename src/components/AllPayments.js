@@ -148,6 +148,7 @@ export function AllPayments(props) {
           if (event.target.name === "woocommerce_toggle_gateway_enabled") {
             trackChanges("payment");
           } else {
+            trackChanges("razorpay"),
             setFormChanges((formChanges) => ({
               ...formChanges,
               [event.target.name]: event.target.value,
