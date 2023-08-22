@@ -135,7 +135,7 @@ export function AllPayments(props) {
           }
           notify.push(`store-details-save-success`, {
             title: __(
-              "Successfully saved the Store Details",
+              "Successfully saved the Payment Details",
               "wp-module-ecommerce"
             ),
             variant: "success",
