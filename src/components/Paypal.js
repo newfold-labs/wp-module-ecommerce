@@ -86,14 +86,6 @@ const Paypal = ({ notify }) => {
               </div>
             )}
             {!isSetupComplete && (
-              <p>
-                {__(
-                  "Online payments built for success. We help you do business in 200+ markets and 100+ currencies—even if your customers don't have PayPal.",
-                  "wp-module-ecommerce"
-                )}
-              </p>
-            )}
-            {!isSetupComplete && (
               <div className="yst-space-y-4 yst-text-[#5B5B5B]">
                 <Title size="3">
                   {__("Provides flexible checkout options")}

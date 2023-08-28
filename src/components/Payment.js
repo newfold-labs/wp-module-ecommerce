@@ -24,7 +24,7 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
       )}
 
       <Section.Content>
-        <Section.Settings title={__("Offline Payments", "wp-module-ecommerce")}>
+        <Section.Settings title={__("Offline Payments", "wp-module-ecommerce")} description={__("Accept payments (money orders, bank transfers or C.O.D.) that are made outside your online store. ", "wp-module-ecommerce")} >
           <div className="yst-border yst-rounded-md yst-p-6">
             <CheckboxGroup
               id="woocommerce_toggle_gateway_enabled"
@@ -44,13 +44,15 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
                   value: "woocommerce_bacs_settings",
                 },
                 {
-                  label: "Cash on delivery",
+                  label: "Cash on delivery (C.O.D.)",
                   value: "woocommerce_cod_settings",
                 },
               ]}
               values={values}
             />
           </div>
+          <p >Not sure? Learn more about which payment method's best for your store.</p>
+
         </Section.Settings>
       </Section.Content>
     </Section.Container>

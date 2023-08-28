@@ -17,6 +17,7 @@ const Razorpay = ({ notify }) => {
     >
       {({ integrationStatus, onConnect, isInstalling }) => {
         const isSetupComplete = integrationStatus?.complete;
+        const isInstalled = integrationStatus?.integration?.plugin?.status;
         const environment = integrationStatus?.details?.environment;
         return (
           <div className="yst-h-[174px] yst-border yst-rounded-md yst-h-174px yst-p-6">
@@ -49,7 +50,7 @@ const Razorpay = ({ notify }) => {
                         "min-[360px]:yst-m-0"
                       )}
                     >
-                      {__("Connect", "wp-module-ecommerce")}
+                       {__(!isInstalled ? "Install" : "Connect", "wp-module-ecommerce")}
                     </Button>
                   )}
                 </>
