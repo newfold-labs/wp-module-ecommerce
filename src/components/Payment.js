@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { CheckboxGroup } from "@yoast/ui-library";
+import { CheckboxGroup, Link } from "@yoast/ui-library";
 import { RuntimeSdk } from "../sdk/runtime";
 import Razorpay from "./Razorpay";
 import { Section } from "./Section";
@@ -51,7 +51,7 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
               values={values}
             />
           </div>
-          <p >Not sure? Learn more about which payment method's best for your store.</p>
+          <p >Not sure?   <Link href="#">Learn more </Link>  about which payment method's best for your store.</p>
 
         </Section.Settings>
       </Section.Content>
