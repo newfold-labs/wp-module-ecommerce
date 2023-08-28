@@ -7,6 +7,7 @@ import { Store } from "./components/Store";
 import { StoreDetails } from "./components/StoreDetails";
 import { WonderCart } from "./components/WonderCart";
 import { PluginsSdk } from "./sdk/plugins";
+import { AllPayments } from "./components/AllPayments";
 import domReady from "@wordpress/dom-ready";
 import { AnalyticsSdk } from "./sdk/analytics";
 
@@ -21,6 +22,7 @@ const pages = [
   { key: "/store/products", Page: Products },
   { key: "/store/details", Page: StoreDetails },
   { key: "/store/sales_discounts", Page: WonderCart },
+  { key: "/store/payments", Page: AllPayments },
 ];
 
 function parseWCStatus(data) {
