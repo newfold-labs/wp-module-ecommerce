@@ -39,12 +39,12 @@ const Text = {
   },
 };
 
-export function OnboardingScreen({ comingSoon, toggleComingSoon, notify }) {
+export function OnboardingScreen({ comingSoon, toggleComingSoon, notify, showShadowBox }) {
   const { title, description, Illustration } = comingSoon
     ? Text.Pending
     : Text.Live;
   return (
-    <Section.Container className="wppbh-welcome-section">
+    <Section.Container className="wppbh-welcome-section" showShadowBox={showShadowBox}>
       <Section.Header title="Home" />
       <Section.Content className="wppbh-app-section-home">
         <div className="yst-flex yst-flex-col yst-gap-6">
