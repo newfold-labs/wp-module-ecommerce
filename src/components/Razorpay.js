@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { Badge, Button, Title } from "@yoast/ui-library";
+import { Badge, Button, Title } from "@newfold/ui-component-library";
 import classNames from "classnames";
 import { ReactComponent as RazorPayBrand } from "../icons/brands/razorpay.svg";
 import { ThirdPartyIntegration } from "./ThirdPartyIntegration";
@@ -20,7 +20,7 @@ const Razorpay = ({ notify }) => {
         const isInstalled = integrationStatus?.integration?.plugin?.status;
         const environment = integrationStatus?.details?.environment;
         return (
-          <div className="yst-border yst-rounded-md yst-p-6">
+          <div className="nfd-border nfd-rounded-md nfd-p-6">
             <div
               className={classNames(
                 "max-[359px]:nfd-flex-col",
@@ -71,14 +71,14 @@ const Razorpay = ({ notify }) => {
               )}
             </div>
             {!isSetupComplete && (
-              <div className="yst-space-y-4 yst-text-[#5B5B5B]">
+              <div className="nfd-space-y-4 nfd-text-[#5B5B5B]">
                 <Title size="3">
                   {__(
                     "Complete control over the receiving and managing payments",
                     "wp-module-ecommerce"
                   )}
                 </Title>
-                <ul className="yst-pl-5 yst-list-disc">
+                <ul className="nfd-pl-5 nfd-list-disc">
                   <li>
                     {__("Immediate capture of funds", "wp-module-ecommerce")}
                   </li>
@@ -102,9 +102,9 @@ const Razorpay = ({ notify }) => {
                   size="large"
                   variant={environment === "sandbox" ? "upsell" : "plain"}
                   className={classNames(
-                    "yst-text-sm yst-capitalize",
+                    "nfd-text-sm nfd-capitalize",
                     environment === "live" &&
-                      "yst-bg-[--nfd-ecomemerce-bg-success] yst-text-white"
+                      "nfd-bg-[--nfd-ecomemerce-bg-success] nfd-text-white"
                   )}
                 >
                   {environment}

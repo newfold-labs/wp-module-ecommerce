@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { CheckboxGroup, Link } from "@yoast/ui-library";
+import { CheckboxGroup, Link } from "@newfold/ui-component-library";
 import { RuntimeSdk } from "../sdk/runtime";
 import Razorpay from "./Razorpay";
 import { Section } from "./Section";
@@ -25,11 +25,11 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
 
       <Section.Content>
         <Section.Settings title={__("Offline Payments", "wp-module-ecommerce")} description={__("Accept payments (money orders, bank transfers or C.O.D.) that are made outside your online store. ", "wp-module-ecommerce")} >
-          <div className="yst-border yst-rounded-md yst-p-6">
+          <div className="nfd-border nfd-rounded-md nfd-p-6">
             <CheckboxGroup
               id="woocommerce_toggle_gateway_enabled"
               label={__("Manual Payment methods", "wp-module-ecommerce")}
-              className="yst-mt-4"
+              className="nfd-mt-4"
               description={__("When a customer selects a manual payment method, you'll need to approve their order before it can be fulfilled.", "wp-module-ecommerce")}
               name="woocommerce_toggle_gateway_enabled"
               disabled={controls.isLoading}

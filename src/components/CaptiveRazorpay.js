@@ -69,7 +69,7 @@ export function CaptiveRazorpay({ razorpaySettings }) {
   let isKeyValid = isTestMode ? isTestKeyValid : isProductionKeyValid;
 
   return (
-    <fieldset className="yst-border yst-p-6 yst-rounded-md">
+    <fieldset className="nfd-border nfd-p-6 nfd-rounded-md">
       <div
         className={classNames(
           "max-[375px]:nfd-flex-col",

@@ -1,6 +1,6 @@
 import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
-import { Button } from "@yoast/ui-library";
+import { Button } from "@newfold/ui-component-library";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 import { WooCommerceSdk } from "../sdk/woocommerce";
@@ -172,7 +172,7 @@ export function AllPayments(props) {
             }}
           />
         )}
-        <div className="yst-p-8 yst-border-t yst-bg-[#F8FAFC] yst-flex yst-justify-end yst-gap-4">
+        <div className="nfd-p-8 nfd-border-t nfd-bg-[#F8FAFC] nfd-flex nfd-justify-end nfd-gap-4">
           <Button
             type="reset"
             variant="secondary"
