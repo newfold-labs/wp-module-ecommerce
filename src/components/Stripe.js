@@ -72,7 +72,7 @@ const Stripe = ({ notify })=>{
                 {!isSetupComplete && (
                   <div className="yst-space-y-4 yst-text-[#5B5B5B]">
                     <Title size="3">
-                      {__("Complete control over the receiving and managing payments")}
+                      {__("Complete control over the receiving and managing payments", "wp-module-ecommerce")}
                     </Title>
                     <ul className="yst-pl-5 yst-list-disc">
                       <li>{__("Immediate capture or authorize and capture later")}</li>
