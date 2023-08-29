@@ -23,8 +23,8 @@ const Razorpay = ({ notify }) => {
           <div className="yst-border yst-rounded-md yst-p-6">
             <div
               className={classNames(
-                "max-[359px]:yst-flex-col",
-                "min-[360px]:yst-flex yst-justify-between min-[360px]:yst-mb-8"
+                "max-[359px]:nfd-flex-col",
+                "min-[360px]:nfd-flex nfd-justify-between min-[360px]:nfd-mb-8"
               )}
             >
               <RazorPayBrand />
@@ -36,8 +36,8 @@ const Razorpay = ({ notify }) => {
                       as="a"
                       href={integrationStatus?.integration?.plugin?.url}
                       className={classNames(
-                        "max-[359px]:yst-my-2",
-                        "min-[360px]:yst-m-0"
+                        "max-[359px]:nfd-my-2",
+                        "min-[360px]:nfd-m-0"
                       )}
                     >
                       {__("Manage", "wp-module-ecommerce")}
@@ -46,8 +46,8 @@ const Razorpay = ({ notify }) => {
                     <Button
                       onClick={onConnect}
                       className={classNames(
-                        "max-[359px]:yst-my-2",
-                        "min-[360px]:yst-m-0"
+                        "max-[359px]:nfd-my-2",
+                        "min-[360px]:nfd-m-0"
                       )}
                     >
                       {__(
@@ -62,8 +62,8 @@ const Razorpay = ({ notify }) => {
                   variant="secondary"
                   isLoading={isInstalling}
                   className={classNames(
-                    "max-[359px]:yst-my-2",
-                    "min-[360px]:yst-m-0"
+                    "max-[359px]:nfd-my-2",
+                    "min-[360px]:nfd-m-0"
                   )}
                 >
                   {__("Installing...", "wp-module-ecommerce")}
@@ -96,7 +96,7 @@ const Razorpay = ({ notify }) => {
               </div>
             )}
             {environment && (
-              <div className="yst-flex yst-gap-4 yst-mt-4">
+              <div className="nfd-flex nfd-gap-4 nfd-mt-4">
                 <span>{__("Environment:", "wp-module-ecommerce")}</span>
                 <Badge
                   size="large"

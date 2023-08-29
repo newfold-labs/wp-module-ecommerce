@@ -6,7 +6,7 @@ import {
   TextInput,
   Spinner,
   TextField,
-} from "@yoast/ui-library";
+} from "@newfold/ui-component-library";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 import { Section } from "./Section";
@@ -47,19 +47,19 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
         )}
       >
         {controls.isLoading ? (
-          <div className="yst-flex yst-items-center yst-text-center yst-justify-center yst-h-60">
-            <Spinner size={8} className="yst-text-primary" />
+          <div className="nfd-flex nfd-items-center nfd-text-center nfd-justify-center nfd-h-60">
+            <Spinner size={8} className="nfd-text-primary" />
           </div>
         ) : (
           <div>
             <div>
               <Label>{__("Where is your store based? *")}</Label>
               {isLoading || !values.country ? (
-                <TextInput name="country" className="yst-mt-2" disabled />
+                <TextInput name="country" className="nfd-mt-2" disabled />
               ) : (
                 <Select
                   id="store-country-select"
-                  className="yst-mt-2"
+                  className="nfd-mt-2"
                   name="country"
                   required
                   onChange={(target) => {
@@ -89,7 +89,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                 </Select>
               )}
             </div>
-            <div className="yst-mt-6">
+            <div className="nfd-mt-6">
               <TextField
                 data-section="details"
                 name="woocommerce_store_address"
@@ -98,7 +98,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                 label={__("Address Line 1 *")}
               />
             </div>
-            <div className="yst-mt-6">
+            <div className="nfd-mt-6">
               <TextField
                 data-section="details"
                 name="woocommerce_store_address_2"
@@ -108,12 +108,12 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
             </div>
             <div
               className={classNames(
-                "yst-mt-6 yst-flex yst-flex-col",
-                "sm:yst-justify-between",
-                "md:yst-flex-row"
+                "nfd-mt-6 nfd-flex nfd-flex-col",
+                "sm:nfd-justify-between",
+                "md:nfd-flex-row"
               )}
             >
-              <div className="yst-flex-1">
+              <div className="nfd-flex-1">
                 <TextField
                   data-section="details"
                   name="woocommerce_store_city"
@@ -123,11 +123,11 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                 />
               </div>
               {states?.length > 0 && (
-                <div className="yst-flex-1 md:yst-ml-8">
+                <div className="nfd-flex-1 md:nfd-ml-8">
                   <Label>{__("State *")}</Label>
                   <Select
                     id="state-select"
-                    className="yst-mt-2"
+                    className="nfd-mt-2"
                     required
                     onChange={(target) => {
                       pushChanges({ state: target });
@@ -150,7 +150,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                   </Select>
                 </div>
               )}
-              <div className="yst-flex-1 md:yst-ml-8">
+              <div className="nfd-flex-1 md:nfd-ml-8">
                 <TextField
                   data-section="details"
                   name="woocommerce_store_postcode"
@@ -160,7 +160,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                 />
               </div>
             </div>
-            <div className="yst-mt-6">
+            <div className="nfd-mt-6">
               <TextField
                 data-section="details"
                 name="woocommerce_email_from_address"
@@ -169,20 +169,20 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                 required
               />
             </div>
-            <div className="yst-mt-6">
+            <div className="nfd-mt-6">
               <Label>
                 {__("What currency do you want to display in your store?")}
               </Label>
               {isLoading ? (
                 <TextInput
                   name="woocommerce_currency"
-                  className="yst-mt-2"
+                  className="nfd-mt-2"
                   disabled
                 />
               ) : (
                 <Select
                   id="currency"
-                  className="yst-mt-2 yst-mb-4"
+                  className="nfd-mt-2 nfd-mb-4"
                   name="woocommerce_currency"
                   onChange={(target) => {
                     pushChanges({ woocommerce_currency: target });

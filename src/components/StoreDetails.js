@@ -1,6 +1,6 @@
 import { useEffect, useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
-import { Button } from "@yoast/ui-library";
+import { Button } from "@newfold/ui-component-library";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 import { RuntimeSdk } from "../sdk/runtime";
@@ -178,8 +178,8 @@ export function StoreDetails(props) {
         )}
         <div
           className={classNames(
-            "yst-p-8 yst-border-t yst-bg-[--nfd-ecommerce-bg-light]",
-            "max-[375px]:yst-flex-col yst-flex yst-justify-end yst-gap-4"
+            "nfd-p-8 nfd-border-t nfd-bg-[--nfd-ecommerce-bg-light]",
+            "max-[375px]:nfd-flex-col nfd-flex nfd-justify-end nfd-gap-4"
           )}
         >
           <Button
