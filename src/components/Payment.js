@@ -51,8 +51,6 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
               values={values}
             />
           </div>
-          <p>Not sure? <Link href="#" className="yst-no-underline">Learn more</Link>  about which payment method's best for your store.</p>
-
         </Section.Settings>
       </Section.Content>
     </Section.Container>

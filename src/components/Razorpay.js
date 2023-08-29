@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { Badge, Button } from "@yoast/ui-library";
+import { Badge, Button, Title } from "@yoast/ui-library";
 import classNames from "classnames";
 import { ReactComponent as RazorPayBrand } from "../icons/brands/razorpay.svg";
 import { ThirdPartyIntegration } from "./ThirdPartyIntegration";
@@ -20,7 +20,7 @@ const Razorpay = ({ notify }) => {
         const isInstalled = integrationStatus?.integration?.plugin?.status;
         const environment = integrationStatus?.details?.environment;
         return (
-          <div className="yst-h-[174px] yst-border yst-rounded-md yst-h-174px yst-p-6">
+          <div className="yst-border yst-rounded-md yst-p-6">
             <div
               className={classNames(
                 "max-[359px]:yst-flex-col",
@@ -50,7 +50,10 @@ const Razorpay = ({ notify }) => {
                         "min-[360px]:yst-m-0"
                       )}
                     >
-                       {__(!isInstalled ? "Install" : "Connect", "wp-module-ecommerce")}
+                      {__(
+                        !isInstalled ? "Install" : "Connect",
+                        "wp-module-ecommerce"
+                      )}
                     </Button>
                   )}
                 </>
@@ -67,12 +70,31 @@ const Razorpay = ({ notify }) => {
                 </Button>
               )}
             </div>
-            <span>
-              {__(
-                "Online payments built for success. We help you do business across markets — even if your customers don’t have Razorpay.",
-                "wp-module-ecommerce"
-              )}
-            </span>
+            {!isSetupComplete && (
+              <div className="yst-space-y-4 yst-text-[#5B5B5B]">
+                <Title size="3">
+                  {__(
+                    "Complete control over the receiving and managing payments",
+                    "wp-module-ecommerce"
+                  )}
+                </Title>
+                <ul className="yst-pl-5 yst-list-disc">
+                  <li>
+                    {__("Immediate capture of funds", "wp-module-ecommerce")}
+                  </li>
+                  <li>
+                    {__(
+                      "Instant refunds and settlements",
+                      "wp-module-ecommerce"
+                    )}
+                  </li>
+                  <li>
+                    {__("Fight fraud with Thirdwatch", "wp-module-ecommerce")}
+                  </li>
+                  <li>{__("Intuitive reporting", "wp-module-ecommerce")}</li>
+                </ul>
+              </div>
+            )}
             {environment && (
               <div className="yst-flex yst-gap-4 yst-mt-4">
                 <span>{__("Environment:", "wp-module-ecommerce")}</span>
@@ -81,7 +103,8 @@ const Razorpay = ({ notify }) => {
                   variant={environment === "sandbox" ? "upsell" : "plain"}
                   className={classNames(
                     "yst-text-sm yst-capitalize",
-                    environment === "live" && "yst-bg-[--nfd-ecomemerce-bg-success] yst-text-white"
+                    environment === "live" &&
+                      "yst-bg-[--nfd-ecomemerce-bg-success] yst-text-white"
                   )}
                 >
                   {environment}
