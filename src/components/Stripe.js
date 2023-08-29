@@ -48,12 +48,6 @@ const Stripe = ({ notify })=>{
                     </Button>
                   )}
                 </div>
-                <span>
-                  {__(
-                    "Millions of companies of all sizes—from startups to Fortune 500s—use Stripe to accept payments and manage their business online.",
-                    "wp-module-ecommerce"
-                  )}
-                </span>
                 {environment && (
                   <div className="yst-flex yst-gap-4 yst-mt-4">
                     <span>{__("Environment:", "wp-module-ecommerce")}</span>
