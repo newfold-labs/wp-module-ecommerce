@@ -69,7 +69,7 @@ export function CaptiveRazorpay({ razorpaySettings }) {
   let isKeyValid = isTestMode ? isTestKeyValid : isProductionKeyValid;
 
   return (
-    <fieldset>
+    <fieldset className="nfd-border nfd-p-6 nfd-rounded-md">
       <div
         className={classNames(
           "max-[375px]:nfd-flex-col",
@@ -78,6 +78,7 @@ export function CaptiveRazorpay({ razorpaySettings }) {
       >
         <RazorPayBrand className="razorpay-logo" />
         <Button
+          as="a"
           target="_blank"
           href="https://rzp.io/i/egoPZR2rbu"
           className={classNames("max-[375px]:nfd-my-2", "min-[376px]:nfd-m-0")}

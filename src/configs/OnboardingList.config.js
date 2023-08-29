@@ -52,7 +52,7 @@ export function OnboardingListDefinition(props) {
             queries?.plugins?.isWCActive &&
             RuntimeSdk.brandSettings.setup.payment.length > 0,
           isCompleted: (queries) => queries?.settings?.isCompleted,
-          url: () => "#/store/details?highlight=payments",
+          url: () => "#/store/payments",
         },
         shouldRender: (state) => state.isAvailable,
         actions: {},

@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { Badge, Button } from "@newfold/ui-component-library";
+import { Badge, Button, Title } from "@newfold/ui-component-library";
 import classNames from "classnames";
 import { ReactComponent as RazorPayBrand } from "../icons/brands/razorpay.svg";
 import { ThirdPartyIntegration } from "./ThirdPartyIntegration";
@@ -8,18 +8,19 @@ const Razorpay = ({ notify }) => {
   return (
     <ThirdPartyIntegration
       id="razorpay"
-      title={__("Payment Processors", "wp-module-ecommerce")}
+      title={__("Razorpay", "wp-module-ecommerce")}
       description={__(
-        "Choose a service that your customers will use to process their payments in return for your products and services.",
+        "Build specifically for companies based in India, manage all your payments and financial operations from a consolidated dashboard",
         "wp-module-ecommerce"
       )}
       notify={notify}
     >
       {({ integrationStatus, onConnect, isInstalling }) => {
         const isSetupComplete = integrationStatus?.complete;
+        const isInstalled = integrationStatus?.integration?.plugin?.status;
         const environment = integrationStatus?.details?.environment;
         return (
-          <div className="nfd-h-[174px] nfd-border nfd-rounded-md nfd-h-174px nfd-p-6">
+          <div className="nfd-border nfd-rounded-md nfd-p-6">
             <div
               className={classNames(
                 "max-[359px]:nfd-flex-col",
@@ -49,7 +50,10 @@ const Razorpay = ({ notify }) => {
                         "min-[360px]:nfd-m-0"
                       )}
                     >
-                      {__("Connect", "wp-module-ecommerce")}
+                      {__(
+                        !isInstalled ? "Install" : "Connect",
+                        "wp-module-ecommerce"
+                      )}
                     </Button>
                   )}
                 </>
@@ -66,12 +70,31 @@ const Razorpay = ({ notify }) => {
                 </Button>
               )}
             </div>
-            <span>
-              {__(
-                "Online payments built for success. We help you do business across markets — even if your customers don’t have Razorpay.",
-                "wp-module-ecommerce"
-              )}
-            </span>
+            {!isSetupComplete && (
+              <div className="nfd-space-y-4 nfd-text-[#5B5B5B]">
+                <Title size="3">
+                  {__(
+                    "Complete control over the receiving and managing payments",
+                    "wp-module-ecommerce"
+                  )}
+                </Title>
+                <ul className="nfd-pl-5 nfd-list-disc">
+                  <li>
+                    {__("Immediate capture of funds", "wp-module-ecommerce")}
+                  </li>
+                  <li>
+                    {__(
+                      "Instant refunds and settlements",
+                      "wp-module-ecommerce"
+                    )}
+                  </li>
+                  <li>
+                    {__("Fight fraud with Thirdwatch", "wp-module-ecommerce")}
+                  </li>
+                  <li>{__("Intuitive reporting", "wp-module-ecommerce")}</li>
+                </ul>
+              </div>
+            )}
             {environment && (
               <div className="nfd-flex nfd-gap-4 nfd-mt-4">
                 <span>{__("Environment:", "wp-module-ecommerce")}</span>
@@ -80,7 +103,8 @@ const Razorpay = ({ notify }) => {
                   variant={environment === "sandbox" ? "upsell" : "plain"}
                   className={classNames(
                     "nfd-text-sm nfd-capitalize",
-                    environment === "live" && "nfd-bg-[--nfd-ecomemerce-bg-success] nfd-text-white"
+                    environment === "live" &&
+                      "nfd-bg-[--nfd-ecomemerce-bg-success] nfd-text-white"
                   )}
                 >
                   {environment}
