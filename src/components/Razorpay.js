@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { Badge, Button } from "@yoast/ui-library";
+import { Badge, Button } from "@newfold/ui-component-library";
 import classNames from "classnames";
 import { ReactComponent as RazorPayBrand } from "../icons/brands/razorpay.svg";
 import { ThirdPartyIntegration } from "./ThirdPartyIntegration";
@@ -19,11 +19,11 @@ const Razorpay = ({ notify }) => {
         const isSetupComplete = integrationStatus?.complete;
         const environment = integrationStatus?.details?.environment;
         return (
-          <div className="yst-h-[174px] yst-border yst-rounded-md yst-h-174px yst-p-6">
+          <div className="nfd-h-[174px] nfd-border nfd-rounded-md nfd-h-174px nfd-p-6">
             <div
               className={classNames(
-                "max-[359px]:yst-flex-col",
-                "min-[360px]:yst-flex yst-justify-between min-[360px]:yst-mb-8"
+                "max-[359px]:nfd-flex-col",
+                "min-[360px]:nfd-flex nfd-justify-between min-[360px]:nfd-mb-8"
               )}
             >
               <RazorPayBrand />
@@ -35,8 +35,8 @@ const Razorpay = ({ notify }) => {
                       as="a"
                       href={integrationStatus?.integration?.plugin?.url}
                       className={classNames(
-                        "max-[359px]:yst-my-2",
-                        "min-[360px]:yst-m-0"
+                        "max-[359px]:nfd-my-2",
+                        "min-[360px]:nfd-m-0"
                       )}
                     >
                       {__("Manage", "wp-module-ecommerce")}
@@ -45,8 +45,8 @@ const Razorpay = ({ notify }) => {
                     <Button
                       onClick={onConnect}
                       className={classNames(
-                        "max-[359px]:yst-my-2",
-                        "min-[360px]:yst-m-0"
+                        "max-[359px]:nfd-my-2",
+                        "min-[360px]:nfd-m-0"
                       )}
                     >
                       {__("Connect", "wp-module-ecommerce")}
@@ -58,8 +58,8 @@ const Razorpay = ({ notify }) => {
                   variant="secondary"
                   isLoading={isInstalling}
                   className={classNames(
-                    "max-[359px]:yst-my-2",
-                    "min-[360px]:yst-m-0"
+                    "max-[359px]:nfd-my-2",
+                    "min-[360px]:nfd-m-0"
                   )}
                 >
                   {__("Installing...", "wp-module-ecommerce")}
@@ -73,14 +73,14 @@ const Razorpay = ({ notify }) => {
               )}
             </span>
             {environment && (
-              <div className="yst-flex yst-gap-4 yst-mt-4">
+              <div className="nfd-flex nfd-gap-4 nfd-mt-4">
                 <span>{__("Environment:", "wp-module-ecommerce")}</span>
                 <Badge
                   size="large"
                   variant={environment === "sandbox" ? "upsell" : "plain"}
                   className={classNames(
-                    "yst-text-sm yst-capitalize",
-                    environment === "live" && "yst-bg-[--nfd-ecomemerce-bg-success] yst-text-white"
+                    "nfd-text-sm nfd-capitalize",
+                    environment === "live" && "nfd-bg-[--nfd-ecomemerce-bg-success] nfd-text-white"
                   )}
                 >
                   {environment}
