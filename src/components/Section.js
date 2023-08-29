@@ -1,11 +1,11 @@
 import { Button, Title } from "@newfold/ui-component-library";
 import classNames from "classnames";
 
-const Container = ({ className, children }) => {
+const Container = ({ className, children, showShadowBox = true }) => {
   return (
     <div
       className={classNames(
-        "wppb-app-section-container nfd-bg-white nfd-w-full nfd-rounded-lg nfd-shadow",
+        "wppb-app-section-container nfd-bg-white nfd-w-full nfd-rounded-lg",
         className
       )}
     >
