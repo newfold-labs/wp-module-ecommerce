@@ -16,10 +16,10 @@ const Text = NewfoldRuntime.hasCapability("isEcommerce")
       "wp-module-ecommerce"
     );
 
-export function FreePlugins({ notify }) {
+export function FreePlugins({ notify, showShadowBox }) {
   let [cards] = useCardManager(FreePluginsDefinition({ notify }));
   return (
-    <Section.Container>
+    <Section.Container showShadowBox={showShadowBox}>
       <Section.Header
         title={__("Additional Features", "wp-module-ecommerce")}
         subTitle={Text}
