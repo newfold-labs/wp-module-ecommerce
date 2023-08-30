@@ -155,11 +155,12 @@ class IntegrationsController {
 			'captive' => null,
 			'plugin' => $this->get_plugin_details( 'nfd_slug_yith_stripe_payments_for_woocommerce' ),
 		);
+		$is_captive_flow_complete = \get_option( 'nfd-ecommerce-captive-flow-stripe', 'false' ); 
 		$stripewc_options = \get_option( 'yith_stripe_payments_enabled', array() );
 		if ( $stripewc_options === 'yes' ) {
 			$stripewc_email = \get_option( 'yith_stripe_payments_email', '' );
 			$details = array(
-				'environment' => \get_option( 'yith_stripe_payments_environment', '' ) === 'production' ? 'live' : 'sandbox' ,
+				'environment' => \get_option( 'yith_stripe_payments_environment', '' ) === 'live' ? 'live' : 'sandbox' ,
 				'email' => $stripewc_email
 			);
 		}

@@ -10,8 +10,20 @@ import { ReactComponent as ApplePay } from "../icons/brands/applepay.svg";
 import { ReactComponent as GooglePay } from "../icons/brands/googlepay.svg";
 import { ReactComponent as Klarna } from "../icons/brands/klarna.svg";
 import { ThirdPartyIntegration } from "./ThirdPartyIntegration";
+import {useEffect, useRef} from "@wordpress/element";
 
 const Stripe = ({ notify })=>{
+    const buttonRef = useRef();
+
+	useEffect(() => {
+		let button = false;
+		if ( window?.yithStripePayments?.connectOnboarding ) {
+			button = window.yithStripePayments.connectOnboarding( buttonRef.current, { reloadOnClose: false } );
+		}
+
+		return () => button && button.destroy();
+    });
+
     return (
         <ThirdPartyIntegration
           id="stripe"
@@ -21,8 +33,12 @@ const Stripe = ({ notify })=>{
         >
           {({ integrationStatus, onConnect, isInstalling }) => {
             const isSetupComplete = integrationStatus?.complete;
-            const isInstalled = integrationStatus?.integration?.plugin?.status;
             const environment = integrationStatus?.details?.environment;
+
+			  if ( window?.yithStripePayments ) {
+				  window.yithStripePayments.env = environment;
+			  }
+
             return (
               <div className="nfd-border nfd-rounded-md nfd-p-6">
                 <div className="nfd-flex nfd-justify-between nfd-mb-8">
@@ -37,11 +53,22 @@ const Stripe = ({ notify })=>{
                         >
                           {__("Manage", "wp-module-ecommerce")}
                         </Button>
-                      ) : (
-                        <Button onClick={onConnect}>
-                          {__(!isInstalled ? "Install" : "Connect", "wp-module-ecommerce")}
-                        </Button>
-                      )}
+					  ) : (
+						  <>
+							  {
+								  !integrationStatus?.integration?.plugin?.status?
+									  (
+										  <Button onClick={onConnect} ref={buttonRef}>
+											  {__("Connect", "wp-module-ecommerce")}
+										  </Button>
+									  ) : (
+										  <Button ref={buttonRef}>
+											  {__("Connect", "wp-module-ecommerce")}
+										  </Button>
+									  )
+							  }
+						  </>
+					  )}
                     </>
                   ) : (
                     <Button variant="secondary" isLoading={isInstalling}>
