@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { Badge, Button, Title } from "@yoast/ui-library";
+import { Badge, Button, Title } from "@newfold/ui-component-library";
 import classNames from "classnames";
 import { ReactComponent as VisaBrand } from "../icons/brands/visa.svg";
 import { ReactComponent as MasterCardBrand } from "../icons/brands/mastercard.svg";
@@ -23,8 +23,8 @@ const Stripe = ({ notify })=>{
             const isSetupComplete = integrationStatus?.complete;
             const environment = integrationStatus?.details?.environment;
             return (
-              <div className="yst-border yst-rounded-md yst-p-6">
-                <div className="yst-flex yst-justify-between yst-mb-8">
+              <div className="nfd-border nfd-rounded-md nfd-p-6">
+                <div className="nfd-flex nfd-justify-between nfd-mb-8">
                   <StripeBrand/>
                   {!isInstalling ? (
                     <>
@@ -49,14 +49,14 @@ const Stripe = ({ notify })=>{
                   )}
                 </div>
                 {environment && (
-                  <div className="yst-flex yst-gap-4 yst-mt-4">
+                  <div className="nfd-flex nfd-gap-4 nfd-mt-4">
                     <span>{__("Environment:", "wp-module-ecommerce")}</span>
                     <Badge
                       size="large"
                       variant={environment === "sandbox" ? "upsell" : "plain"}
                       className={classNames(
-                        "yst-text-sm yst-capitalize",
-                        environment === "live" && "yst-bg-[#178113] yst-text-white"
+                        "nfd-text-sm nfd-capitalize",
+                        environment === "live" && "nfd-bg-[#178113] nfd-text-white"
                       )}
                     >
                       {environment}
@@ -64,11 +64,11 @@ const Stripe = ({ notify })=>{
                   </div>
                 )}
                 {!isSetupComplete && (
-                  <div className="yst-space-y-4 yst-text-[#5B5B5B]">
+                  <div className="nfd-space-y-4 nfd-text-[#5B5B5B]">
                     <Title size="3">
                       {__("Complete control over the receiving and managing payments", "wp-module-ecommerce")}
                     </Title>
-                    <ul className="yst-pl-5 yst-list-disc">
+                    <ul className="nfd-pl-5 nfd-list-disc">
                       <li>{__("Immediate capture or authorize and capture later")}</li>
                       <li>{__("One-click refunds", "wp-module-ecommerce")}</li>
                       <li>
@@ -90,7 +90,7 @@ const Stripe = ({ notify })=>{
                         "wp-module-ecommerce"
                       )}
                     </Title>
-                    <div className="yst-flex yst-items-end yst-gap-2 yst-flex-wrap">
+                    <div className="nfd-flex nfd-items-end nfd-gap-2 nfd-flex-wrap">
                       <VisaBrand />
                       <MasterCardBrand />
                       <AmexBrand />

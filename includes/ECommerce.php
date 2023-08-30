@@ -45,6 +45,7 @@ class ECommerce {
 	protected $options = array(
 		'nfd-ecommerce-captive-flow-paypal',
 		'nfd-ecommerce-captive-flow-shippo',
+		'nfd-ecommerce-captive-flow-stripe',
 		'nfd-ecommerce-captive-flow-razorpay',
 		'nfd-ecommerce-onboarding-check',
 		'nfd-ecommerce-counter',
