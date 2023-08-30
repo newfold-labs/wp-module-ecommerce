@@ -21,6 +21,7 @@ const Stripe = ({ notify })=>{
         >
           {({ integrationStatus, onConnect, isInstalling }) => {
             const isSetupComplete = integrationStatus?.complete;
+            const isInstalled = integrationStatus?.integration?.plugin?.status;
             const environment = integrationStatus?.details?.environment;
             return (
               <div className="nfd-border nfd-rounded-md nfd-p-6">
@@ -38,7 +39,7 @@ const Stripe = ({ notify })=>{
                         </Button>
                       ) : (
                         <Button onClick={onConnect}>
-                          {__("Connect", "wp-module-ecommerce")}
+                          {__(!isInstalled ? "Install" : "Connect", "wp-module-ecommerce")}
                         </Button>
                       )}
                     </>
