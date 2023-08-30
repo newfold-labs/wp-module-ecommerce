@@ -1,9 +1,8 @@
-import { useEffect, useState } from "@wordpress/element";
+import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
-import { Button } from "@yoast/ui-library";
+import { Button } from "@newfold/ui-component-library";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
-import { RuntimeSdk } from "../sdk/runtime";
 import { WooCommerceSdk } from "../sdk/woocommerce";
 import { WordPressSdk } from "../sdk/wordpress";
 import Payment from "./Payment";
@@ -23,7 +22,6 @@ const CLEAN_FORM = {
   payment: false,
   razorpay: false,
 };
-
 
 export function AllPayments(props) {
   let { params } = props.state;
@@ -61,9 +59,8 @@ export function AllPayments(props) {
     payments: {
       isLoading: paymentMethods.isLoading,
       isActive: isSectionActive(params, "payments"),
-    }
+    },
   };
-
 
   const resetForm = (e) => {
     e.preventDefault();
@@ -72,9 +69,7 @@ export function AllPayments(props) {
   };
   return (
     <Section.Container>
-      <Section.Header
-        title={__("Payments", "wp-module-ecommerce")}
-      />
+      <Section.Header title={__("Payments", "wp-module-ecommerce")} />
       <form
         id="payment-details"
         onSubmit={async (event) => {
@@ -84,8 +79,6 @@ export function AllPayments(props) {
             ...Object.fromEntries(new FormData(event.target).entries()),
             ...formChanges,
           };
-          console.log(payload);
-          
           if (isFormDirty.payment) {
             let existingGateways = paymentMethods.data;
             let selectedGateways =
@@ -120,13 +113,20 @@ export function AllPayments(props) {
             await settings.trigger({
               "nfd-ecommerce-captive-flow-razorpay": "true",
               woocommerce_razorpay_settings: {
-                enabled: "yes",
-                title: "Credit Card/Debit Card/NetBanking",
-                description:
+                enabled: __("yes", "wp-module-ecommerce"),
+                title: __(
+                  "Credit Card/Debit Card/NetBanking",
+                  "wp-module-ecommerce"
+                ),
+                description: __(
                   "Pay securely by Credit or Debit card or Internet Banking through Razorpay.",
-                payment_action: "capture",
-                order_success_message:
+                  "wp-module-ecommerce"
+                ),
+                payment_action: __("capture", "wp-module-ecommerce"),
+                order_success_message: __(
                   "Thank you for shopping with us. Your account has been charged and your transaction is successful. We will be processing your order soon.",
+                  "wp-module-ecommerce"
+                ),
                 enable_1cc_debug_mode: "yes",
                 key_id: payload.key_id,
                 key_secret: payload.key_secret,
@@ -134,7 +134,10 @@ export function AllPayments(props) {
             });
           }
           notify.push(`store-details-save-success`, {
-            title: "Successfully saved the Store Details",
+            title: __(
+              "Successfully saved the Payment Details",
+              "wp-module-ecommerce"
+            ),
             variant: "success",
             autoDismiss: 5000,
           });
@@ -145,6 +148,7 @@ export function AllPayments(props) {
           if (event.target.name === "woocommerce_toggle_gateway_enabled") {
             trackChanges("payment");
           } else {
+            trackChanges("razorpay"),
             setFormChanges((formChanges) => ({
               ...formChanges,
               [event.target.name]: event.target.value,
@@ -168,7 +172,7 @@ export function AllPayments(props) {
             }}
           />
         )}
-        <div className="yst-p-8 yst-border-t yst-bg-[#F8FAFC] yst-flex yst-justify-end yst-gap-4">
+        <div className="nfd-p-8 nfd-border-t nfd-bg-[#F8FAFC] nfd-flex nfd-justify-end nfd-gap-4">
           <Button
             type="reset"
             variant="secondary"

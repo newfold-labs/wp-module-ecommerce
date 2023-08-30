@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { Badge, Button, Title } from "@yoast/ui-library";
+import { Badge, Button, Title } from "@newfold/ui-component-library";
 import classNames from "classnames";
 import { ReactComponent as AmexBrand } from "../icons/brands/amex.svg";
 import { ReactComponent as DiscoverBrand } from "../icons/brands/discover.svg";
@@ -27,11 +27,11 @@ const Paypal = ({ notify }) => {
         const isSetupComplete = integrationStatus?.complete;
         const environment = integrationStatus?.details?.environment;
         return (
-          <div className="yst-border yst-rounded-md yst-p-6">
+          <div className="nfd-border nfd-rounded-md nfd-p-6">
             <div
               className={classNames(
-                "max-[359px]:yst-flex-col",
-                "min-[360px]:yst-flex yst-justify-between min-[360px]:yst-mb-8"
+                "max-[359px]:nfd-flex-col",
+                "min-[360px]:nfd-flex nfd-justify-between min-[360px]:nfd-mb-8"
               )}
             >
               <PaypalBrand />
@@ -40,8 +40,8 @@ const Paypal = ({ notify }) => {
                   variant="secondary"
                   isLoading
                   className={classNames(
-                    "max-[359px]:yst-my-2",
-                    "min-[360px]:yst-m-0"
+                    "max-[359px]:nfd-my-2",
+                    "min-[360px]:nfd-m-0"
                   )}
                 >
                   {__("Installing...", "wp-module-ecommerce")}
@@ -52,8 +52,8 @@ const Paypal = ({ notify }) => {
                   as="a"
                   href={integrationStatus?.integration?.plugin?.url}
                   className={classNames(
-                    "max-[359px]:yst-my-2",
-                    "min-[360px]:yst-m-0"
+                    "max-[359px]:nfd-my-2",
+                    "min-[360px]:nfd-m-0"
                   )}
                 >
                   {__("Manage", "wp-module-ecommerce")}
@@ -62,8 +62,8 @@ const Paypal = ({ notify }) => {
                 <Button
                   onClick={onConnect}
                   className={classNames(
-                    "max-[359px]:yst-my-2",
-                    "min-[360px]:yst-m-0"
+                    "max-[359px]:nfd-my-2",
+                    "min-[360px]:nfd-m-0"
                   )}
                 >
                   {__("Connect", "wp-module-ecommerce")}
@@ -71,14 +71,14 @@ const Paypal = ({ notify }) => {
               )}
             </div>
             {isSetupComplete && environment && (
-              <div className="yst-flex yst-gap-4 yst-mt-4">
+              <div className="nfd-flex nfd-gap-4 nfd-mt-4">
                 <span>{__("Environment:", "wp-module-ecommerce")}</span>
                 <Badge
                   size="large"
                   variant={environment === "sandbox" ? "upsell" : "plain"}
                   className={classNames(
-                    "yst-text-sm yst-capitalize",
-                    environment === "live" && "yst-bg-[#178113] yst-text-white"
+                    "nfd-text-sm nfd-capitalize",
+                    environment === "live" && "nfd-bg-[#178113] nfd-text-white"
                   )}
                 >
                   {environment}
@@ -86,19 +86,11 @@ const Paypal = ({ notify }) => {
               </div>
             )}
             {!isSetupComplete && (
-              <p>
-                {__(
-                  "Online payments built for success. We help you do business in 200+ markets and 100+ currencies—even if your customers don't have PayPal.",
-                  "wp-module-ecommerce"
-                )}
-              </p>
-            )}
-            {!isSetupComplete && (
-              <div className="yst-space-y-4 yst-text-[#5B5B5B]">
+              <div className="nfd-space-y-4 nfd-text-[#5B5B5B]">
                 <Title size="3">
                   {__("Provides flexible checkout options")}
                 </Title>
-                <ul className="yst-pl-5 yst-list-disc">
+                <ul className="nfd-pl-5 nfd-list-disc">
                   <li>{__("PayPal Pay Later")}</li>
                   <li>{__("White-Labeling", "wp-module-ecommerce")}</li>
                   <li>
@@ -114,7 +106,7 @@ const Paypal = ({ notify }) => {
                     "wp-module-ecommerce"
                   )}
                 </Title>
-                <div className="yst-flex yst-items-end yst-gap-2 yst-flex-wrap">
+                <div className="nfd-flex nfd-items-end nfd-gap-2 nfd-flex-wrap">
                   <VisaBrand />
                   <MasterCardBrand />
                   <AmexBrand />

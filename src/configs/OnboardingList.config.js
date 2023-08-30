@@ -17,7 +17,6 @@ const CaptiveFlows = {
   paypal: "nfd-ecommerce-captive-flow-paypal",
   shippo: "nfd-ecommerce-captive-flow-shippo",
   razorpay: "nfd-ecommerce-captive-flow-razorpay",
-  stripe: "nfd-ecommerce-captive-flow-stripe"
 };
 
 export function OnboardingListDefinition(props) {
@@ -53,7 +52,7 @@ export function OnboardingListDefinition(props) {
             queries?.plugins?.isWCActive &&
             RuntimeSdk.brandSettings.setup.payment.length > 0,
           isCompleted: (queries) => queries?.settings?.isCompleted,
-          url: () => "#/store/details?highlight=payments",
+          url: () => "#/store/payments",
         },
         shouldRender: (state) => state.isAvailable,
         actions: {},

@@ -1,9 +1,8 @@
 import { __ } from "@wordpress/i18n";
-import { CheckboxGroup } from "@yoast/ui-library";
+import { CheckboxGroup, Link } from "@newfold/ui-component-library";
 import { RuntimeSdk } from "../sdk/runtime";
 import Razorpay from "./Razorpay";
 import { Section } from "./Section";
-import Stripe from "./stripe";
 import Paypal from "./Paypal";
 
 const Payment = ({ notify, pushChanges, values, controls }) => {
@@ -24,20 +23,14 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
         </Section.Content>
       )}
 
-      {RuntimeSdk.brandSettings.setup.payment.includes("Stripe") && (
-        <Section.Content separator>
-          <Stripe notify={notify} />
-        </Section.Content>
-      )}
-
       <Section.Content>
-        <Section.Settings title={__("Offline Payments", "wp-module-ecommerce")}>
-          <div className="yst-border yst-rounded-md yst-p-6">
+        <Section.Settings title={__("Offline Payments", "wp-module-ecommerce")} description={__("Accept payments (money orders, bank transfers or C.O.D.) that are made outside your online store. ", "wp-module-ecommerce")} >
+          <div className="nfd-border nfd-rounded-md nfd-p-6">
             <CheckboxGroup
               id="woocommerce_toggle_gateway_enabled"
-              label="Manual Payment methods"
-              className="yst-mt-4"
-              description="When a customer selects a manual payment method, you'll need to approve their order before it can be fulfilled."
+              label={__("Manual Payment methods", "wp-module-ecommerce")}
+              className="nfd-mt-4"
+              description={__("When a customer selects a manual payment method, you'll need to approve their order before it can be fulfilled.", "wp-module-ecommerce")}
               name="woocommerce_toggle_gateway_enabled"
               disabled={controls.isLoading}
               onChange={pushChanges}
@@ -51,7 +44,7 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
                   value: "woocommerce_bacs_settings",
                 },
                 {
-                  label: "Cash on delivery",
+                  label: "Cash on delivery (C.O.D.)",
                   value: "woocommerce_cod_settings",
                 },
               ]}

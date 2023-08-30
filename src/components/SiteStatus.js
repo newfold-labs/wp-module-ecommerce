@@ -1,7 +1,7 @@
 import { RocketLaunchIcon } from "@heroicons/react/24/outline";
 import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { __ } from "@wordpress/i18n";
-import { Button, Title } from "@yoast/ui-library";
+import { Button, Title } from "@newfold/ui-component-library";
 import classNames from "classnames";
 import useSWRMutation from "swr/mutation";
 
@@ -50,16 +50,16 @@ export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
   return (
     <div
       className={classNames(
-        "yst-px-4 yst-py-2 yst-rounded-lg yst-bg-canvas",
-        "max-[1027px]:yst-flex max-[1027px]:yst-flex-col",
-        "min-[1028px]:yst-flex min-[1028px]:yst-flex-row min-[1028px]:yst-justify-between min-[1028px]:yst-items-center"
+        "nfd-px-4 nfd-py-2 nfd-rounded-lg nfd-bg-canvas",
+        "max-[1027px]:nfd-flex max-[1027px]:nfd-flex-col",
+        "min-[1028px]:nfd-flex min-[1028px]:nfd-flex-row min-[1028px]:nfd-justify-between min-[1028px]:nfd-items-center"
       )}
     >
-      <div className="yst-flex-1">
-        <Title size={4} className="yst-leading-normal">
+      <div className="nfd-flex-1">
+        <Title size={4} className="nfd-leading-normal">
           {__("Ready to go live?", "wp-module-ecommerce")}
         </Title>
-        <span className="yst-whitespace-pre-wrap yst-leading-tight">
+        <span className="nfd-whitespace-pre-wrap nfd-leading-tight">
           {NewfoldRuntime.hasCapability("isEcommerce")
             ? __(
                 "Preview your store before setting it live to make sure everything is how you want it.\nOnce you're ready, set your store live!",
@@ -73,15 +73,15 @@ export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
       </div>
       <div
         className={classNames(
-          "yst-flex-none yst-gap-4",
-          "yst-flex yst-flex-col",
-          "md:yst-flex-row",
-          "max-[1025px]:yst-my-2 min-[1025px]:yst-m-0"
+          "nfd-flex-none nfd-gap-4",
+          "nfd-flex nfd-flex-col",
+          "md:nfd-flex-row",
+          "max-[1025px]:nfd-my-2 min-[1025px]:nfd-m-0"
         )}
       >
         <Button
           as="a"
-          className="yst-bg-canvas"
+          className="nfd-bg-canvas"
           href={NewfoldRuntime.siteDetails.url}
           target="_blank"
           variant="secondary"
@@ -91,7 +91,7 @@ export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
             : __("Preview your site", "wp-module-ecommerce")}
         </Button>
         <Button
-          className="yst-flex yst-gap-2 yst-items-center"
+          className="nfd-flex nfd-gap-2 nfd-items-center"
           variant="upsell"
           isLoading={comingSoonAction.isMutating}
           onClick={comingSoonAction.trigger}

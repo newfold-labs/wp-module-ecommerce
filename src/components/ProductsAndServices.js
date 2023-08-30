@@ -1,6 +1,6 @@
 import { LightBulbIcon } from "@heroicons/react/24/outline";
 import { __ } from "@wordpress/i18n";
-import { Button, Spinner, Title } from "@yoast/ui-library";
+import { Button, Spinner, Title } from "@newfold/ui-component-library";
 import { ProductsAndServicesDefinition } from "../configs/ProductsAndServices.config";
 import { Section } from "./Section";
 import { useCardManager } from "./useCardManager";
@@ -30,16 +30,16 @@ export function Products({ woo, wpModules }) {
       <Section.Content>
         <div
           className={classNames(
-            "yst-px-4 yst-py-2 yst-rounded-lg yst-bg-slate-100",
-            "yst-flex yst-flex-col",
-            "xl:yst-flex-row xl:yst-justify-between xl:yst-items-center"
+            "nfd-px-4 nfd-py-2 nfd-rounded-lg nfd-bg-slate-100",
+            "nfd-flex nfd-flex-col",
+            "xl:nfd-flex-row xl:nfd-justify-between xl:nfd-items-center"
           )}
         >
-          <div className="yst-flex-1">
-            <Title size={4} className="yst-leading-normal">
+          <div className="nfd-flex-1">
+            <Title size={4} className="nfd-leading-normal">
               {__("Want help adding products?", "wp-module-ecommerce")}
             </Title>
-            <span className="lg:yst-whitespace-pre-wrap yst-leading-tight">
+            <span className="lg:nfd-whitespace-pre-wrap nfd-leading-tight">
               {__(
                 "Read this helpful knowledge base article to understand how to\nadd different products to your store",
                 "wp-module-ecommerce"
@@ -48,13 +48,13 @@ export function Products({ woo, wpModules }) {
           </div>
           <div
             className={classNames(
-              "yst-flex-none yst-flex",
-              "max-[1024px]:yst-my-2",
-              "min-[1025px]:yst-m-0"
+              "nfd-flex-none nfd-flex",
+              "max-[1024px]:nfd-my-2",
+              "min-[1025px]:nfd-m-0"
             )}
           >
             <Button
-              className="yst-flex yst-gap-2 yst-items-center"
+              className="nfd-flex nfd-gap-2 nfd-items-center"
               as="a"
               href="https://woocommerce.com/document/managing-products/"
               target="_blank"
@@ -65,16 +65,16 @@ export function Products({ woo, wpModules }) {
           </div>
         </div>
         {cards?.length === 0 && (
-          <div className="yst-flex yst-items-center yst-text-center yst-justify-center yst-h-60">
-            <Spinner size={8} className="yst-text-primary" />
+          <div className="nfd-flex nfd-items-center nfd-text-center nfd-justify-center nfd-h-60">
+            <Spinner size={8} className="nfd-text-primary" />
           </div>
         )}
         <div
           className={classNames(
-            "yst-grid yst-gap-6 yst-pt-8",
-            "sm:yst-grid-cols-1",
-            "md:yst-grid-cols-2",
-            "lg:yst-grid-cols-3"
+            "nfd-grid nfd-gap-6 nfd-pt-8",
+            "sm:nfd-grid-cols-1",
+            "md:nfd-grid-cols-2",
+            "lg:nfd-grid-cols-3"
           )}
         >
           {cards.map((cardConfig) => {
