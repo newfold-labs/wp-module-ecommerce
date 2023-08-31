@@ -53,6 +53,18 @@ class IntegrationsController {
 				),
 			)
 		);
+
+		\register_rest_route(
+			$this->namespace,
+			$this->rest_base . '/options',
+			array(
+				array(
+					'methods'             => \WP_REST_Server::READABLE,
+					'callback'            => array( $this, 'get_woocommerce_properties' ),
+					'permission_callback' => array( Permissions::class, 'rest_is_authorized_admin' ),
+				),
+			)
+		);
 	}
 
 	private function get_plugin_details( $plugin ) {
@@ -135,6 +147,20 @@ class IntegrationsController {
 				'details'     => $details,
 				'integration' => $integration,
 			),
+			200
+		);
+	}
+
+	public function get_woocommerce_properties(\WP_REST_Request $request) {
+		$param_options = $request['options'];
+		$params_options_array = isset($param_options) ? explode(',', $param_options) : [];
+		$option_response = [];
+		foreach($params_options_array as $option){
+
+			$option_response = array_merge($option_response, array($option => \get_option( $option, null )));
+		};
+		return new \WP_REST_Response(
+			$option_response,
 			200
 		);
 	}
