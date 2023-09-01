@@ -4,7 +4,7 @@ import { RuntimeSdk } from "../sdk/runtime";
 import Razorpay from "./Razorpay";
 import { Section } from "./Section";
 import Paypal from "./Paypal";
-import Stripe from "./stripe";
+import Stripe from "./Stripe";
 
 const Payment = ({ notify, pushChanges, values, controls }) => {
   if (RuntimeSdk.brandSettings.setup.payment.length === 0) {

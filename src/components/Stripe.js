@@ -35,9 +35,9 @@ const Stripe = ({ notify })=>{
             const isSetupComplete = integrationStatus?.complete;
             const environment = integrationStatus?.details?.environment;
 
-			  if ( window?.yithStripePayments ) {
-				  window.yithStripePayments.env = environment;
-			  }
+            if ( window?.yithStripePayments ) {
+              window.yithStripePayments.env = 'live' === environment ? 'live' : 'test';
+            }
 
             return (
               <div className="nfd-border nfd-rounded-md nfd-p-6">

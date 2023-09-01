@@ -157,10 +157,10 @@ class IntegrationsController {
 		);
 		$is_captive_flow_complete = \get_option( 'nfd-ecommerce-captive-flow-stripe', 'false' ); 
 		$stripewc_options = \get_option( 'yith_stripe_payments_enabled', array() );
-		if ( $stripewc_options === 'yes' ) {
+		if ( $is_captive_flow_complete === 'true' ) {
 			$stripewc_email = \get_option( 'yith_stripe_payments_email', '' );
 			$details = array(
-				'environment' => \get_option( 'yith_stripe_payments_environment', '' ) === 'live' ? 'live' : 'sandbox' ,
+				'environment' => \get_option( 'yith_stripe_payments_environment', 'live' ) === 'live' ? 'live' : 'sandbox' ,
 				'email' => $stripewc_email
 			);
 		}
