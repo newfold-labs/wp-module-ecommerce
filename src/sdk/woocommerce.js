@@ -20,7 +20,7 @@ const Endpoints = {
     }),
   },
   Options: {
-    PAYMENTS: NewfoldRuntime.createApiUrl("/newfold-ecommerce/v1/integrations/options", {
+    PAYMENTS: NewfoldRuntime.createApiUrl("/wc-admin/options", {
       options: [
         "woocommerce_bacs_settings",
         "woocommerce_cod_settings",
