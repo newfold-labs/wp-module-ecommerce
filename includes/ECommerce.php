@@ -57,6 +57,9 @@ class ECommerce {
 		'woocommerce_calc_taxes',
 		'woocommerce_currency',
 		'woocommerce_email_from_address',
+		'woocommerce_bacs_settings',
+        'woocommerce_cod_settings',
+        'woocommerce_cheque_settings',
 	);
 
 	/**

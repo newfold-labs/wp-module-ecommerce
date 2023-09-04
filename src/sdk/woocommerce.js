@@ -3,6 +3,7 @@ import apiFetch from "@wordpress/api-fetch";
 import moment from "moment"; //@TODO add to package.json
 import { RuntimeSdk } from "./runtime";
 import { safeFetch } from "./safeFetch";
+import { WordPressSdk } from "./wordpress";
 
 const Endpoints = {
   ORDERS: (period) => NewfoldRuntime.createApiUrl("/wc/v3/orders", period),
@@ -20,13 +21,7 @@ const Endpoints = {
     }),
   },
   Options: {
-    PAYMENTS: NewfoldRuntime.createApiUrl("/wc-admin/options", {
-      options: [
-        "woocommerce_bacs_settings",
-        "woocommerce_cod_settings",
-        "woocommerce_cheque_settings",
-      ].join(),
-    }),
+    PAYMENTS: NewfoldRuntime.createApiUrl("/wp/v2/settings"),
     CURRENCY: NewfoldRuntime.createApiUrl(
       "/wc/v3/settings/general/woocommerce_currency"
     ),
@@ -67,7 +62,7 @@ export const WooCommerceSdk = {
      * @returns {Promise<string[]>}
      */
     async paymentMethods() {
-      let paymentSettings = await apiFetch({ url: Endpoints.Options.PAYMENTS });
+      let paymentSettings = await WordPressSdk.settings.get();
       return [
         "woocommerce_bacs_settings",
         "woocommerce_cod_settings",
@@ -84,9 +79,8 @@ export const WooCommerceSdk = {
       data.append("gateway_id", mapGatewayToId[gateway]);
       data.append("action", "woocommerce_toggle_gateway_enabled");
       data.append("security", RuntimeSdk.nonce("gateway_toggle"));
-      await fetch(RuntimeSdk.adminUrl("admin-ajax.php"), {
+      await fetch(NewfoldRuntime.createApiUrl("/wp/v2/settings"), {
         method: "POST",
-        credentials: "include",
         body: data,
       }).then(
         (res) => res.json(),
