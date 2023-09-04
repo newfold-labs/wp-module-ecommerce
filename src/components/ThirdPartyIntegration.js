@@ -49,7 +49,7 @@ export const ThirdPartyIntegration = ({
       ) : (
         <div className="nfd-flex-1">
           {isConnectionActive ? (
-            (id !== "razorpay" && id !== "stripe") ? (
+            id !== "razorpay" && id !== "stripe" ? (
               <div className="components-modal__frame nfd-h-[500px]">
                 <button
                   type="button"
@@ -74,7 +74,9 @@ export const ThirdPartyIntegration = ({
               <CaptiveRazorpay
                 razorpaySettings={integrationStatus?.details?.settings}
               />
-            ) : id == "stripe" && window.location.reload()
+            ) : (
+              id == "stripe" && window.location.reload()
+            )
           ) : (
             children({
               integrationStatus,
