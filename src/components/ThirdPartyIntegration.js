@@ -70,11 +70,11 @@ export const ThirdPartyIntegration = ({
                   src={integrationStatus?.integration?.captive}
                 />
               </div>
-            ) : id == "razorpay" && (
+            ) : id == "razorpay" ? (
               <CaptiveRazorpay
                 razorpaySettings={integrationStatus?.details?.settings}
               />
-            )
+            ) : id == "stripe" && window.location.reload()
           ) : (
             children({
               integrationStatus,

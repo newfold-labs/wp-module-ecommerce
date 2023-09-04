@@ -58,8 +58,8 @@ const Stripe = ({ notify })=>{
 							  {
 								  !integrationStatus?.integration?.plugin?.status?
 									  (
-										  <Button onClick={onConnect} ref={buttonRef}>
-											  {__("Connect", "wp-module-ecommerce")}
+										  <Button onClick={onConnect}>
+											  {__("Install", "wp-module-ecommerce")}
 										  </Button>
 									  ) : (
 										  <Button ref={buttonRef}>
