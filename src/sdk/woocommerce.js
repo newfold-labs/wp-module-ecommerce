@@ -67,7 +67,7 @@ export const WooCommerceSdk = {
         "woocommerce_bacs_settings",
         "woocommerce_cod_settings",
         "woocommerce_cheque_settings",
-      ].filter((gateway) => paymentSettings[gateway] === "yes");
+      ].filter((gateway) => paymentSettings[gateway]?.enabled === "yes");
     },
     async toggleGateway(gateway) {
       let mapGatewayToId = {
