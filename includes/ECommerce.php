@@ -146,6 +146,87 @@ class ECommerce {
 				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
 			)
 		);
+		\register_setting(
+			'general',
+			'woocommerce_bacs_settings',
+			array(
+				'show_in_rest' => array(
+					'schema' => array(
+						'type'       => 'object',
+						'properties' => array(
+							'gateway_id' => array(
+								'type' => 'string',
+							),
+							'enabled' => array(
+								'type' => 'string',
+							),
+							'action' => array(
+								'type' => 'string',
+							),
+							'security' => array(
+								'type' => 'string',
+							),
+						),
+					),
+				),
+				'type'         => 'object',
+				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
+			)
+		);
+		\register_setting(
+			'general',
+			'woocommerce_cod_settings',
+			array(
+				'show_in_rest' => array(
+					'schema' => array(
+						'type'       => 'object',
+						'properties' => array(
+							'gateway_id' => array(
+								'type' => 'string',
+							),
+							'enabled' => array(
+								'type' => 'string',
+							),
+							'action' => array(
+								'type' => 'string',
+							),
+							'security' => array(
+								'type' => 'string',
+							),
+						),
+					),
+				),
+				'type'         => 'object',
+				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
+			)
+		);
+		\register_setting(
+			'general',
+			'woocommerce_cheque_settings',
+			array(
+				'show_in_rest' => array(
+					'schema' => array(
+						'type'       => 'object',
+						'properties' => array(
+							'gateway_id' => array(
+								'type' => 'string',
+							),
+							'enabled' => array(
+								'type' => 'string',
+							),
+							'action' => array(
+								'type' => 'string',
+							),
+							'security' => array(
+								'type' => 'string',
+							),
+						),
+					),
+				),
+				'type'         => 'object',
+				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
+			)
+		);
 	}
 
 	/**

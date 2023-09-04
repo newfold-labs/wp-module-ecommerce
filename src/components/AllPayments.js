@@ -63,6 +63,7 @@ export function AllPayments(props) {
         gateWayObj[gateway] = {}
         console.log("GAteWay" , gateWayObj)
         gateWayObj[gateway]["gateway_id"] = gatewayId;
+        gateWayObj[gateway]["enabled"] = "yes";
         gateWayObj[gateway]["action"] = "woocommerce_toggle_gateway_enabled";
         gateWayObj[gateway]["security"] = RuntimeSdk?.nonce("gateway_toggle");
         if(gateway){
@@ -81,6 +82,7 @@ export function AllPayments(props) {
         gateWayObj[gateway] = {}
         console.log("GAteWay" , gateWayObj)
         gateWayObj[gateway]["gateway_id"] = gatewayId;
+        gateWayObj[gateway]["enabled"] = "yes";
         gateWayObj[gateway]["action"] = "woocommerce_toggle_gateway_enabled";
         gateWayObj[gateway]["security"] = RuntimeSdk?.nonce("gateway_toggle");
         if(gateway){
