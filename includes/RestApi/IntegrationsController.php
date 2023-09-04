@@ -53,7 +53,6 @@ class IntegrationsController {
 				),
 			)
 		);
-
 	}
 
 	private function get_plugin_details( $plugin ) {
@@ -139,5 +138,4 @@ class IntegrationsController {
 			200
 		);
 	}
-
 }
