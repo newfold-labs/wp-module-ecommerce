@@ -24,69 +24,47 @@ const CLEAN_FORM = {
   razorpay: false,
 };
 
-// async function parseForm() {
-//   let settings = await WordPressSdk.settings.get();
-
-//   return [
-//     settings.woocommerce_bacs_settings,
-//     settings.woocommerce_cod_settings,
-//     settings.woocommerce_cheque_settings,
-//   ];
-// }
+function getGateway(gateway, gatewayType) {
+  let mapGatewayToId = {
+    woocommerce_bacs_settings: "bacs",
+    woocommerce_cod_settings: "cod",
+    woocommerce_cheque_settings: "cheque",
+  };
+  let gatewayId = mapGatewayToId[gateway];
+  const gateWayObj = {}
+  gateWayObj[gateway] = {}
+  gateWayObj[gateway]["gateway_id"] = gatewayId;
+  gateWayObj[gateway]["enabled"] = gatewayType === 'added-gateways' ? "yes": "no";
+  gateWayObj[gateway]["action"] = "woocommerce_toggle_gateway_enabled";
+  gateWayObj[gateway]["security"] = RuntimeSdk?.nonce("gateway_toggle");
+  return gateWayObj;
+}
 
 export function AllPayments(props) {
   let { params } = props.state;
   let { notify } = props.wpModules;
-  // let { data: values, isLoading } = useSWR("settings", parseForm);
   
   let paymentMethods = useSWR(
     "payment-methods",
     WooCommerceSdk.options.paymentMethods
   );
-  console.log('payment methods',paymentMethods.data);
+
   let updatePaymentMethods = useSWRMutation(
     "payment-methods",
     async (_, { arg }) => {
       let [addedGateways, removedGateways] = arg;
-      console.log("Added Gatways: ",addedGateways)
-      console.log("Removed Gatways: ",removedGateways)
-      
       for (let gateway of addedGateways) {
-        let mapGatewayToId = {
-          woocommerce_bacs_settings: "bacs",
-          woocommerce_cod_settings: "cod",
-          woocommerce_cheque_settings: "cheque",
-        };
-
-        let gatewayId = mapGatewayToId[gateway];
-        const gateWayObj = {}
-        gateWayObj[gateway] = {}
-        console.log("GAteWay" , gateWayObj)
-        gateWayObj[gateway]["gateway_id"] = gatewayId;
-        gateWayObj[gateway]["enabled"] = "yes";
-        gateWayObj[gateway]["action"] = "woocommerce_toggle_gateway_enabled";
-        gateWayObj[gateway]["security"] = RuntimeSdk?.nonce("gateway_toggle");
-        if(gateway){
-        await WordPressSdk.settings.put(gateWayObj);
+        const gatewayType = 'added-gateways';
+        const gatewayObj = getGateway(gateway, gatewayType);
+        if(gatewayObj){
+        await WordPressSdk.settings.put(gatewayObj);
         }
       }
       for (let gateway of removedGateways) {
-        let mapGatewayToId = {
-          woocommerce_bacs_settings: "bacs",
-          woocommerce_cod_settings: "cod",
-          woocommerce_cheque_settings: "cheque",
-        };
-
-        let gatewayId = mapGatewayToId[gateway];
-        const gateWayObj = {}
-        gateWayObj[gateway] = {}
-        console.log("GAteWay" , gateWayObj)
-        gateWayObj[gateway]["gateway_id"] = gatewayId;
-        gateWayObj[gateway]["enabled"] = "no";
-        gateWayObj[gateway]["action"] = "woocommerce_toggle_gateway_enabled";
-        gateWayObj[gateway]["security"] = RuntimeSdk?.nonce("gateway_toggle");
-        if(gateway){
-        await WordPressSdk.settings.put(gateWayObj);
+        const gatewayType = 'removed-gateways';
+        const gatewayObj = getGateway(gateway, gatewayType);
+        if(gatewayObj){
+        await WordPressSdk.settings.put(gatewayObj);
         }
       }
     }
@@ -128,7 +106,6 @@ export function AllPayments(props) {
             ...Object.fromEntries(new FormData(event.target).entries()),
             ...formChanges,
           };
-          console.log(payload);
           if (isFormDirty.payment) {
             let existingGateways = paymentMethods.data;
             let selectedGateways =
@@ -195,7 +172,6 @@ export function AllPayments(props) {
         }}
         onReset={resetForm}
         onChange={(event) => {
-          console.log(event.target.name);
           if (event.target.name === "woocommerce_toggle_gateway_enabled") {
             trackChanges("payment");
           } else {
@@ -216,7 +192,6 @@ export function AllPayments(props) {
               paymentMethods.data
             }
             pushChanges={(gateways) => {
-              console.log("Gateways : ", gateways)
               setFormChanges((formChanges) => {
                 return ({
                   ...formChanges,

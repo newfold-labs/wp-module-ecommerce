@@ -69,24 +69,6 @@ export const WooCommerceSdk = {
         "woocommerce_cheque_settings",
       ].filter((gateway) => paymentSettings[gateway]?.enabled === "yes");
     },
-    async toggleGateway(gateway) {
-      let mapGatewayToId = {
-        woocommerce_bacs_settings: "bacs",
-        woocommerce_cod_settings: "cod",
-        woocommerce_cheque_settings: "cheque",
-      };
-      let data = new FormData();
-      data.append("gateway_id", mapGatewayToId[gateway]);
-      data.append("action", "woocommerce_toggle_gateway_enabled");
-      data.append("security", RuntimeSdk.nonce("gateway_toggle"));
-      await fetch(NewfoldRuntime.createApiUrl("/wp/v2/settings"), {
-        method: "POST",
-        body: data,
-      }).then(
-        (res) => res.json(),
-        (error) => console.error(error)
-      );
-    },
     async currency() {
       return apiFetch({ url: Endpoints.Options.CURRENCY });
     },

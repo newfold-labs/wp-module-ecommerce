@@ -12,7 +12,6 @@ export const WordPressSdk = {
       return apiFetch({ url: Endpoints.SETTINGS });
     },
     async put(settings) {
-      console.log(settings);
       return safeFetch({
         url: Endpoints.SETTINGS,
         method: "POST",
