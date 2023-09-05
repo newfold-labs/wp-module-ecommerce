@@ -1,7 +1,6 @@
-import { NewfoldRuntime } from "./NewfoldRuntime";
 import apiFetch from "@wordpress/api-fetch";
 import moment from "moment"; //@TODO add to package.json
-import { RuntimeSdk } from "./runtime";
+import { NewfoldRuntime } from "./NewfoldRuntime";
 import { safeFetch } from "./safeFetch";
 import { WordPressSdk } from "./wordpress";
 
@@ -21,7 +20,6 @@ const Endpoints = {
     }),
   },
   Options: {
-    PAYMENTS: NewfoldRuntime.createApiUrl("/wp/v2/settings"),
     CURRENCY: NewfoldRuntime.createApiUrl(
       "/wc/v3/settings/general/woocommerce_currency"
     ),
