@@ -1,5 +1,6 @@
 import { RocketLaunchIcon } from "@heroicons/react/24/outline";
 import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
+import { RuntimeSdk } from "../sdk/runtime";
 import { __ } from "@wordpress/i18n";
 import { Button, Title } from "@newfold/ui-component-library";
 import classNames from "classnames";
