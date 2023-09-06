@@ -5,7 +5,7 @@ const Container = ({ className, children, showShadowBox = true }) => {
   return (
     <div
       className={classNames(
-        "wppb-app-section-container nfd-bg-white nfd-w-full nfd-rounded-lg",
+        "nfd-app-section-container nfd-bg-white nfd-w-full nfd-rounded-lg",
         className
       )}
     >
@@ -24,7 +24,7 @@ const Header = ({
   return (
     <div
       className={classNames(
-        "wppb-app-section-header nfd-p-8 nfd-border-b nfd-border-line",
+        "nfd-app-section-header nfd-p-8 nfd-border-b nfd-border-line",
         "nfd-flex nfd-flex-col xl:nfd-flex-row nfd-items-baseline nfd-gap-4",
         className
       )}
@@ -75,7 +75,7 @@ const Content = ({ separator = false, className, children }) => {
   return (
     <div
       className={classNames(
-        "wppb-app-section-content nfd-p-8 nfd-pb-0",
+        "nfd-app-section-content nfd-p-8 nfd-pb-0",
         className
       )}
     >
