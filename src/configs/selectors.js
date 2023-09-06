@@ -10,16 +10,12 @@ export const yithOnboardingParser = (title) => (data) => {
 };
 
 export const yithOnboardingPaymentParser = (titles) => (data) => {
-  let isCompleted = false;
-  titles.forEach(val => {
-    if(data?.[val] == "true")  isCompleted = true;
-  });
+  let isCompleted = titles.some(key => data?.[key] === "true");
   return { isCompleted: isCompleted };
 };
 
 export const yithOnboardingStoreParser = () => (data) => {
-  if(data["woocommerce_store_address"] && data["woocommerce_store_city"] && data["woocommerce_store_postcode"]) return true;
-  return false
+  return data.woocommerce_store_address && data.woocommerce_store_city && data.woocommerce_store_postcode
 }
 
 export const razorpaySelector = (response) => {
