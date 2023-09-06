@@ -8,7 +8,7 @@ import useSWRMutation from "swr/mutation";
 const getTitle = (comingSoon) =>
   comingSoon
     ? __("Coming Soon activated", "wp-module-ecommerce")
-    : RuntimeSdk.hasCapability("isEcommerce")
+    : NewfoldRuntime.hasCapability("isEcommerce")
     ? __("Your store is online and ready for business!", "wp-module-ecommerce")
     : __("Your site is online now!", "wp-module-ecommerce");
 
@@ -82,7 +82,7 @@ export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
         <Button
           as="a"
           className="nfd-bg-canvas"
-          href={NewfoldRuntime.siteDetails.url}
+          href={NewfoldRuntime.hasCapability("isEcommerce") ? `${NewfoldRuntime.siteDetails.url}/shop` : NewfoldRuntime.siteDetails.url}
           target="_blank"
           variant="secondary"
         >
