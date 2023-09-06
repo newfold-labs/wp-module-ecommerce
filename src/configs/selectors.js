@@ -9,6 +9,19 @@ export const yithOnboardingParser = (title) => (data) => {
   return { isCompleted: data?.[title] == "true" };
 };
 
+export const yithOnboardingPaymentParser = (titles) => (data) => {
+  let isCompleted = false;
+  titles.forEach(val => {
+    if(data?.[val] == "true")  isCompleted = true;
+  });
+  return { isCompleted: isCompleted };
+};
+
+export const yithOnboardingStoreParser = () => (data) => {
+  if(data["woocommerce_store_address"] && data["woocommerce_store_city"] && data["woocommerce_store_postcode"]) return true;
+  return false
+}
+
 export const razorpaySelector = (response) => {
   return {
     settings: response?.woocommerce_razorpay_settings,
