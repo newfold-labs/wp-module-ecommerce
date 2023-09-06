@@ -5,9 +5,9 @@ namespace NewfoldLabs\WP\Module\ECommerce;
 use NewfoldLabs\WP\Module\ECommerce\Data\Brands;
 use NewfoldLabs\WP\Module\ECommerce\Partials\CaptiveFlow;
 use NewfoldLabs\WP\Module\ECommerce\Partials\WooCommerceBacklink;
+use NewfoldLabs\WP\Module\ECommerce\I18nService;
 use NewfoldLabs\WP\Module\Installer\Services\PluginInstaller;
 use NewfoldLabs\WP\ModuleLoader\Container;
-use NewfoldLabs\WP\Module\ECommerce\I18nService;
 
 /**
  * Class ECommerce
@@ -74,7 +74,7 @@ class ECommerce {
 	 */
 	public function __construct( Container $container ) {
 		$this->container = $container;
-		// Module functionality goes here
+		// Module functionality goes here		
 		add_action( 'init', array( $this, 'load_php_textdomain' ) );
 		add_action( 'admin_init', array( $this, 'maybe_do_dash_redirect' ) );
 		add_action( 'admin_bar_menu', array( $this, 'newfold_site_status' ), 200 );
