@@ -66,8 +66,8 @@ final class Brands {
 						'shipping' => array('Shippo'),
 					),
 					'defaultContact' => array(
-						'woocommerce_default_country' => 'US:AZ',
-						'woocommerce_currency' => 'USD',
+						'woocommerce_default_country' => 'BR:AL',
+						'woocommerce_currency' => 'BRL',
 					),
 				);
 			case 'bluehost':
