@@ -44,9 +44,9 @@ export function OnboardingScreen({ comingSoon, toggleComingSoon, notify, showSha
     ? Text.Pending
     : Text.Live;
   return (
-    <Section.Container className="wppbh-welcome-section" showShadowBox={showShadowBox}>
+    <Section.Container className="nfd-welcome-section" showShadowBox={showShadowBox}>
       <Section.Header title="Home" />
-      <Section.Content className="wppbh-app-section-home">
+      <Section.Content className="nfd-app-section-home">
         <div className="nfd-flex nfd-flex-col nfd-gap-6">
           <div
             className={classNames(

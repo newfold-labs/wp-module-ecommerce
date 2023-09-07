@@ -61,6 +61,7 @@ export const ThirdPartyIntegration = ({
                       notify.push(`${id}-account-connect-success`, {
                         title: `Your ${id} account have been connected`,
                         variant: "success",
+                        autoDismiss: 5000
                       });
                     }
                   }}
