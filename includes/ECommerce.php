@@ -5,6 +5,7 @@ namespace NewfoldLabs\WP\Module\ECommerce;
 use NewfoldLabs\WP\Module\ECommerce\Data\Brands;
 use NewfoldLabs\WP\Module\ECommerce\Partials\CaptiveFlow;
 use NewfoldLabs\WP\Module\ECommerce\Partials\WooCommerceBacklink;
+use NewfoldLabs\WP\Module\ECommerce\I18nService;
 use NewfoldLabs\WP\Module\Installer\Services\PluginInstaller;
 use NewfoldLabs\WP\ModuleLoader\Container;
 
@@ -66,7 +67,8 @@ class ECommerce {
 	 */
 	public function __construct( Container $container ) {
 		$this->container = $container;
-		// Module functionality goes here
+		// Module functionality goes here		
+		add_action( 'init', array( $this, 'load_php_textdomain' ) );
 		add_action( 'admin_init', array( $this, 'maybe_do_dash_redirect' ) );
 		add_action( 'admin_bar_menu', array( $this, 'newfold_site_status' ), 200 );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
@@ -85,6 +87,18 @@ class ECommerce {
 			)
 		);
 		add_filter( 'newfold-runtime', array( $this, 'add_to_runtime' ) );
+	}
+
+	/**
+	 * Loads the textdomain for the module. This applies only to PHP strings.
+	 *
+	 * @return boolean
+	 */
+	public static function load_php_textdomain() {
+		return I18nService::load_php_translations(
+			'wp-module-ecommerce',
+			NFD_ECOMMERCE_PLUGIN_DIRNAME . '/vendor/newfold-labs/wp-module-ecommerce/languages'
+		);
 	}
 
 	public function add_to_runtime( $sdk ) {
@@ -190,6 +204,11 @@ class ECommerce {
 				NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Partials/load-dependencies.js',
 				array_merge( $asset['dependencies'], array() ),
 				$asset['version']
+			);
+			I18nService::load_js_translations(
+				'wp-module-ecommerce',
+				'nfd-ecommerce-dependency',
+				NFD_ECOMMERCE_DIR . '/languages'
 			);
 			\wp_enqueue_script( 'nfd-ecommerce-dependency' );
 		}
