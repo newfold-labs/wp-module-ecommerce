@@ -61,13 +61,6 @@ class ECommerce {
 	);
 
 	/**
-	 * Identifier for page and assets.
-	 *
-	 * @var string
-	 */
-	public static $slug = 'nfd-ecommerce';
-
-	/**
 	 * ECommerce constructor.
 	 *
 	 * @param Container $container Container loaded from the brand plugin.
@@ -214,7 +207,7 @@ class ECommerce {
 			);
 			I18nService::load_js_translations(
 				'wp-module-ecommerce',
-				self::$slug,
+				'nfd-ecommerce-dependency',
 				NFD_ECOMMERCE_DIR . '/languages'
 			);
 			\wp_enqueue_script( 'nfd-ecommerce-dependency' );
