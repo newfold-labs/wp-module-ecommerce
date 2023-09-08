@@ -13,6 +13,7 @@ import { MarketplaceSdk } from "../sdk/marketplace";
 import { PluginsSdk } from "../sdk/plugins";
 import { createPluginInstallAction } from "./actions";
 import { findUpsellWithName, wcPluginStatusParser } from "./selectors";
+import { RuntimeSdk } from "../sdk/runtime";
 
 function defineFeatureState() {
   return {
@@ -27,6 +28,8 @@ function defineFeatureState() {
   };
 }
 
+const isHostgator = RuntimeSdk?.brandSettings?.brand?.includes("hostgator");
+
 export const YITHPluginsDefinitions = (props) => ({
   dataDependencies: {
     plugins: async () => PluginsSdk.queries.status("all"),
@@ -40,7 +43,7 @@ export const YITHPluginsDefinitions = (props) => ({
       assets: () => ({
         Image: Booking,
         ActionIcon: null,
-        learnMoreUrl:
+        learnMoreUrl: isHostgator ? null :
           "https://www.bluehost.com/help/article/yith-booking-and-appointment-for-woocommerce",
       }),
       text: ({ isActive }) => ({
@@ -116,7 +119,7 @@ export const YITHPluginsDefinitions = (props) => ({
       name: "nfd_slug_yith_woocommerce_wishlist",
       assets: () => ({
         Image: WishList,
-        learnMoreUrl:
+        learnMoreUrl: isHostgator ? null :
           "https://www.bluehost.com/help/article/yith-woocommerce-wishlist",
       }),
       text: ({ isActive }) => ({
@@ -153,7 +156,7 @@ export const YITHPluginsDefinitions = (props) => ({
       name: "nfd_slug_yith_woocommerce_ajax_product_filter",
       assets: () => ({
         Image: Filter,
-        learnMoreUrl:
+        learnMoreUrl: isHostgator ? null :
           "https://www.bluehost.com/help/article/yith-woocommerce-ajax-product-filter",
       }),
       text: ({ isActive }) => ({
@@ -195,7 +198,7 @@ export const YITHPluginsDefinitions = (props) => ({
       name: "nfd_slug_yith_woocommerce_gift_cards",
       assets: () => ({
         Image: Gift,
-        learnMoreUrl:
+        learnMoreUrl: isHostgator ? null :
           "https://www.bluehost.com/help/article/yith-woocommerce-gift-cards",
       }),
       text: ({ isActive }) => ({
@@ -234,7 +237,7 @@ export const YITHPluginsDefinitions = (props) => ({
       name: "nfd_slug_yith_woocommerce_customize_myaccount_page",
       assets: () => ({
         Image: CustomizeAccount,
-        learnMoreUrl:
+        learnMoreUrl: isHostgator ? null :
           "https://www.bluehost.com/help/article/yith-woocommerce-customize-my-account-page",
       }),
       text: ({ isActive }) => ({

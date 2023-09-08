@@ -6,7 +6,7 @@ import { RuntimeSdk } from "../sdk/runtime";
 import { WooCommerceSdk } from "../sdk/woocommerce";
 import { WordPressSdk } from "../sdk/wordpress";
 import { createPluginInstallAction } from "./actions";
-import { wcTasksParser, yithOnboardingParser } from "./selectors";
+import { wcTasksParser, yithOnboardingParser, yithOnboardingPaymentParser, yithOnboardingStoreParser } from "./selectors";
 
 const parsePluginStatus = (plugins) => ({
   isWCActive: PluginsSdk.queries.isPlugin(plugins, ["woocommerce"], "active"),
@@ -34,13 +34,13 @@ export function OnboardingListDefinition(props) {
         text: __("Add your store info", "wp-module-ecommerce"),
         state: {
           isAvailable: (queries) => queries?.plugins?.isWCActive,
-          isCompleted: (queries) => queries?.onboarding?.isCompleted,
+          isCompleted: (queries) => queries?.settings,
           url: () => "#/store/details?highlight=details",
         },
         shouldRender: (state) => state.isAvailable,
         actions: {},
         queries: [
-          { key: "onboarding", selector: wcTasksParser("store_details") },
+          { key: "settings", selector: yithOnboardingStoreParser() },
           { key: "plugins", selector: parsePluginStatus },
         ],
       },
@@ -60,7 +60,7 @@ export function OnboardingListDefinition(props) {
           { key: "plugins", selector: parsePluginStatus },
           {
             key: "settings",
-            selector: yithOnboardingParser(CaptiveFlows.paypal),
+            selector: yithOnboardingPaymentParser([CaptiveFlows.paypal, CaptiveFlows.razorpay]),
           },
         ],
       },

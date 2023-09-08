@@ -9,6 +9,15 @@ export const yithOnboardingParser = (title) => (data) => {
   return { isCompleted: data?.[title] == "true" };
 };
 
+export const yithOnboardingPaymentParser = (titles) => (data) => {
+  let isCompleted = titles.some(key => data?.[key] === "true");
+  return { isCompleted: isCompleted };
+};
+
+export const yithOnboardingStoreParser = () => (data) => {
+  return data.woocommerce_store_address && data.woocommerce_store_city && data.woocommerce_store_postcode
+}
+
 export const razorpaySelector = (response) => {
   return {
     settings: response?.woocommerce_razorpay_settings,
