@@ -146,87 +146,37 @@ class ECommerce {
 				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
 			)
 		);
-		\register_setting(
-			'general',
+		$payments = array(
 			'woocommerce_bacs_settings',
-			array(
-				'show_in_rest' => array(
-					'schema' => array(
-						'type'       => 'object',
-						'properties' => array(
-							'gateway_id' => array(
-								'type' => 'string',
-							),
-							'enabled' => array(
-								'type' => 'string',
-							),
-							'action' => array(
-								'type' => 'string',
-							),
-							'security' => array(
-								'type' => 'string',
-							),
-						),
-					),
-				),
-				'type'         => 'object',
-				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
-			)
-		);
-		\register_setting(
-			'general',
 			'woocommerce_cod_settings',
-			array(
-				'show_in_rest' => array(
-					'schema' => array(
-						'type'       => 'object',
-						'properties' => array(
-							'gateway_id' => array(
-								'type' => 'string',
-							),
-							'enabled' => array(
-								'type' => 'string',
-							),
-							'action' => array(
-								'type' => 'string',
-							),
-							'security' => array(
-								'type' => 'string',
-							),
+			'woocommerce_cheque_settings'
+		);
+		$schema_for_offline_payments = array(
+			'show_in_rest' => array(
+				'schema' => array(
+					'type'       => 'object',
+					'properties' => array(
+						'gateway_id' => array(
+							'type' => 'string',
+						),
+						'enabled' => array(
+							'type' => 'string',
+						),
+						'action' => array(
+							'type' => 'string',
+						),
+						'security' => array(
+							'type' => 'string',
 						),
 					),
 				),
-				'type'         => 'object',
-				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
-			)
+			),
+			'type'         => 'object',
+			'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
 		);
-		\register_setting(
-			'general',
-			'woocommerce_cheque_settings',
-			array(
-				'show_in_rest' => array(
-					'schema' => array(
-						'type'       => 'object',
-						'properties' => array(
-							'gateway_id' => array(
-								'type' => 'string',
-							),
-							'enabled' => array(
-								'type' => 'string',
-							),
-							'action' => array(
-								'type' => 'string',
-							),
-							'security' => array(
-								'type' => 'string',
-							),
-						),
-					),
-				),
-				'type'         => 'object',
-				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
-			)
-		);
+		foreach ( $payments as $payment ) {
+			\register_setting( 'general', $payment, $schema_for_offline_payments);
+		}
 	}
 
 	/**
