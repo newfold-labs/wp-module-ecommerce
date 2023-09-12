@@ -1,8 +1,9 @@
+import { Button } from "@newfold/ui-component-library";
 import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
-import { Button } from "@newfold/ui-component-library";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
+import { RuntimeSdk } from "../sdk/runtime";
 import { WooCommerceSdk } from "../sdk/woocommerce";
 import { WordPressSdk } from "../sdk/wordpress";
 import Payment from "./Payment";
@@ -23,22 +24,49 @@ const CLEAN_FORM = {
   razorpay: false,
 };
 
+function getGateway(gateway, gatewayType) {
+  let mapGatewayToId = {
+    woocommerce_bacs_settings: "bacs",
+    woocommerce_cod_settings: "cod",
+    woocommerce_cheque_settings: "cheque",
+  };
+  let gatewayId = mapGatewayToId[gateway];
+  const gateWayObj = {};
+  gateWayObj[gateway] = {};
+  gateWayObj[gateway]["gateway_id"] = gatewayId;
+  gateWayObj[gateway]["enabled"] =
+    gatewayType === "added-gateways" ? "yes" : "no";
+  gateWayObj[gateway]["action"] = "woocommerce_toggle_gateway_enabled";
+  gateWayObj[gateway]["security"] = RuntimeSdk?.nonce("gateway_toggle");
+  return gateWayObj;
+}
+
 export function AllPayments(props) {
   let { params } = props.state;
   let { notify } = props.wpModules;
+
   let paymentMethods = useSWR(
     "payment-methods",
     WooCommerceSdk.options.paymentMethods
   );
+
   let updatePaymentMethods = useSWRMutation(
     "payment-methods",
     async (_, { arg }) => {
       let [addedGateways, removedGateways] = arg;
       for (let gateway of addedGateways) {
-        await WooCommerceSdk.options.toggleGateway(gateway);
+        const gatewayType = "added-gateways";
+        const gatewayObj = getGateway(gateway, gatewayType);
+        if (gatewayObj) {
+          await WordPressSdk.settings.put(gatewayObj);
+        }
       }
       for (let gateway of removedGateways) {
-        await WooCommerceSdk.options.toggleGateway(gateway);
+        const gatewayType = "removed-gateways";
+        const gatewayObj = getGateway(gateway, gatewayType);
+        if (gatewayObj) {
+          await WordPressSdk.settings.put(gatewayObj);
+        }
       }
     }
   );
@@ -149,10 +177,10 @@ export function AllPayments(props) {
             trackChanges("payment");
           } else {
             trackChanges("razorpay"),
-            setFormChanges((formChanges) => ({
-              ...formChanges,
-              [event.target.name]: event.target.value,
-            }));
+              setFormChanges((formChanges) => ({
+                ...formChanges,
+                [event.target.name]: event.target.value,
+              }));
           }
         }}
       >
