@@ -58,6 +58,9 @@ class ECommerce {
 		'woocommerce_calc_taxes',
 		'woocommerce_currency',
 		'woocommerce_email_from_address',
+		'woocommerce_bacs_settings',
+        'woocommerce_cod_settings',
+        'woocommerce_cheque_settings',
 	);
 
 	/**
@@ -157,6 +160,37 @@ class ECommerce {
 				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
 			)
 		);
+		$payments = array(
+			'woocommerce_bacs_settings',
+			'woocommerce_cod_settings',
+			'woocommerce_cheque_settings'
+		);
+		$schema_for_offline_payments = array(
+			'show_in_rest' => array(
+				'schema' => array(
+					'type'       => 'object',
+					'properties' => array(
+						'gateway_id' => array(
+							'type' => 'string',
+						),
+						'enabled' => array(
+							'type' => 'string',
+						),
+						'action' => array(
+							'type' => 'string',
+						),
+						'security' => array(
+							'type' => 'string',
+						),
+					),
+				),
+			),
+			'type'         => 'object',
+			'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
+		);
+		foreach ( $payments as $payment ) {
+			\register_setting( 'general', $payment, $schema_for_offline_payments);
+		}
 	}
 
 	/**
