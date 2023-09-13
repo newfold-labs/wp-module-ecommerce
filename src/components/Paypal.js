@@ -1,5 +1,6 @@
-import { __ } from "@wordpress/i18n";
 import { Badge, Button, Title } from "@newfold/ui-component-library";
+import { useEffect } from "@wordpress/element";
+import { __ } from "@wordpress/i18n";
 import classNames from "classnames";
 import { ReactComponent as AmexBrand } from "../icons/brands/amex.svg";
 import { ReactComponent as DiscoverBrand } from "../icons/brands/discover.svg";
@@ -13,6 +14,13 @@ import { ReactComponent as VisaBrand } from "../icons/brands/visa.svg";
 import { ThirdPartyIntegration } from "./ThirdPartyIntegration";
 
 const Paypal = ({ notify }) => {
+  useEffect(() => {
+    const ppButton = document.querySelector(".yith-btn-paypal");
+    if (ppButton?.dataset?.securewindowmsg) {
+      return;
+    }
+    window?.PAYPAL?.apps?.Signup?.loadScripts(document, "script");
+  },[]);
   return (
     <ThirdPartyIntegration
       id="paypal"
@@ -58,6 +66,19 @@ const Paypal = ({ notify }) => {
                 >
                   {__("Manage", "wp-module-ecommerce")}
                 </Button>
+              ) : typeof yith_ppwc_login !== "undefined" &&
+                !parseInt(yith_ppwc_login?.liveConnected) ? (
+                <Link
+                  href={yith_ppwc_login.loginURL}
+                  variant="primary"
+                  style={{ color: "#fff" }}
+                  className="nfd-button nfd-button--primary yith-btn-paypal"
+                  target="_blank"
+                  data-paypal-onboard-complete="onboardedCallback"
+                  data-paypal-button="PPLtBlue"
+                >
+                  Connect
+                </Link>
               ) : (
                 <Button
                   onClick={onConnect}

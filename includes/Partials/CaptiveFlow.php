@@ -12,8 +12,8 @@ class CaptiveFlow {
 	public static function init() {
 		add_action( 'admin_menu', array( __CLASS__, 'register_page' ) );
 		add_action( 'rest_api_init', array( __CLASS__, 'register_options' ) );
-		add_action( 'load-admin_page_' . self::$PAYPAL_CAPTIVE_FLOW, array( __CLASS__, 'enqueue_styles' ), 100 );
-		add_action( 'load-admin_page_' . self::$SHIPPO_CAPTIVE_FLOW, array( __CLASS__, 'enqueue_styles' ), 100 );
+		// add_action( 'load-admin_page_' . self::$PAYPAL_CAPTIVE_FLOW, array( __CLASS__, 'enqueue_styles' ), 100 );
+		// add_action( 'load-admin_page_' . self::$SHIPPO_CAPTIVE_FLOW, array( __CLASS__, 'enqueue_styles' ), 100 );
 	}
 
 	public static function register_options() {
@@ -72,39 +72,39 @@ class CaptiveFlow {
 	}
 
 	public static function register_page() {
-		\add_submenu_page(
-			null,
-			null,
-			null,
-			Permissions::ADMIN,
-			self::$PAYPAL_CAPTIVE_FLOW,
-			array( __CLASS__, 'render_paypal' ),
-			100
-		);
-		\add_submenu_page(
-			null,
-			null,
-			null,
-			Permissions::ADMIN,
-			self::$SHIPPO_CAPTIVE_FLOW,
-			array( __CLASS__, 'render_shippo' ),
-			100
-		);
+		// \add_submenu_page(
+		// 	null,
+		// 	null,
+		// 	null,
+		// 	Permissions::ADMIN,
+		// 	self::$PAYPAL_CAPTIVE_FLOW,
+		// 	array( __CLASS__, 'render_paypal' ),
+		// 	100
+		// );
+		// \add_submenu_page(
+		// 	null,
+		// 	null,
+		// 	null,
+		// 	Permissions::ADMIN,
+		// 	self::$SHIPPO_CAPTIVE_FLOW,
+		// 	array( __CLASS__, 'render_shippo' ),
+		// 	100
+		// );
 	}
 
-	public static function render_paypal() {
-		echo PHP_EOL;
-		echo '<div id="nfd-ecommerce" class="nfd-ecommerce-captive-flow">';
-		echo do_action( self::$PAYPAL_CAPTIVE_FLOW );
-		echo '</div>';
-		echo PHP_EOL;
-	}
+	// public static function render_paypal() {
+	// 	echo PHP_EOL;
+	// 	echo '<div id="nfd-ecommerce" class="nfd-ecommerce-captive-flow">';
+	// 	echo do_action( self::$PAYPAL_CAPTIVE_FLOW );
+	// 	echo '</div>';
+	// 	echo PHP_EOL;
+	// }
 
-	public static function render_shippo() {
-		echo PHP_EOL;
-		echo '<div id="nfd-ecommerce" class="nfd-ecommerce-captive-flow">';
-		echo do_action( self::$SHIPPO_CAPTIVE_FLOW );
-		echo '</div>';
-		echo PHP_EOL;
-	}
+	// public static function render_shippo() {
+	// 	echo PHP_EOL;
+	// 	echo '<div id="nfd-ecommerce" class="nfd-ecommerce-captive-flow">';
+	// 	echo do_action( self::$SHIPPO_CAPTIVE_FLOW );
+	// 	echo '</div>';
+	// 	echo PHP_EOL;
+	// }
 }
