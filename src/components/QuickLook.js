@@ -81,7 +81,7 @@ function RecentActivity() {
     revalidateIfStale: false,
   });
   return (
-    <RecentReport title="Recent Activity" filter={filter} onSelect={onSelect}>
+    <RecentReport title={__("Recent Activity", "wp-module-ecommerce")} filter={filter} onSelect={onSelect}>
       {cards.length === 0 && (
         <div className="nfd-flex-1 nfd-flex nfd-items-center nfd-text-center nfd-justify-center">
           <Spinner size={8} className="nfd-text-primary" />
@@ -105,7 +105,7 @@ function RecentActivity() {
             className="nfd-text-base nfd-no-underline nfd-w-fit"
             href={RuntimeSdk.adminUrl(recentActivityLink, true)}
           >
-            view all
+            {__("view all", "wp-module-ecommerce")}
           </Link>
         </>
       )}
@@ -146,7 +146,7 @@ function RecentOrders() {
     { revalidateOnFocus: false }
   );
   return (
-    <RecentReport title="Recent Orders" filter={filter} onSelect={onSelect}>
+    <RecentReport title={__("Recent Orders", "wp-module-ecommerce")} filter={filter} onSelect={onSelect}>
       {orders.isLoading && (
         <div className="nfd-flex-1 nfd-items-center nfd-text-center nfd-justify-center">
           <Spinner size={8} className="nfd-text-primary" />
@@ -214,7 +214,7 @@ function RecentOrders() {
             className="nfd-text-base nfd-no-underline nfd-w-fit"
             href={RuntimeSdk.adminUrl(recentOrdersLink)}
           >
-            view all
+            {__("view all", "wp-module-ecommerce")}
           </Link>
         </>
       )}
@@ -230,15 +230,15 @@ export function QuickLook(props) {
       className={"nfd-p-0 hide-html"}
       shouldUpsell={shouldUpsell}
       variant="card"
-      cardText="Install WooCommerce to unlock"
+      cardText={__("Install WooCommerce to unlock", "wp-module-ecommerce")}
       as="button"
       disabled={isInstalling}
       onClick={installWoo}
     >
       <Section.Content>
         <Section.Block
-          title="Quick Look"
-          subtitle="Once you launch your store, you'll see a snapshot of recent purchases and other customer activity."
+          title={__("Quick Look", "wp-module-ecommerce")}
+          subtitle={__("Once you launch your store, you'll see a snapshot of recent purchases and other customer activity.", "wp-module-ecommerce")}
         >
           <div
             className={classNames(

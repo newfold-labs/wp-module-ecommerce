@@ -163,7 +163,7 @@ export function CaptiveRazorpay({ razorpaySettings }) {
         />
       </div>
       <p className="nfd-mb-4">
-        <span>* indicates a required field</span>
+        <span>{__("* indicates a required field", "wp-module-ecommerce")}</span>
       </p>
     </fieldset>
   );

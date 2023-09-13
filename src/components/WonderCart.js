@@ -70,7 +70,7 @@ export function WonderCart(props) {
         className="hide-html"
         shouldUpsell
         variant="card"
-        cardText="Install now"
+        cardText={__("Install now", "wp-module-ecommerce")}
         as="button"
         disabled={showInProgress}
         onClick={installWonderCart}
