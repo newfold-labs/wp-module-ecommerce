@@ -584,10 +584,34 @@
                 "Verifique pagamentos"
             ],
             "Bank transfer payments": [
-                "Pagamentos por transferência bancária"
+                "Pagamentos por transfer\u00eancia banc\u00e1ria"
             ],
             "Cash on delivery (C.O.D.)": [
                 "Pagamento na entrega (C.O.D.)"
+            ],
+            "Where is your store based? *": [
+                "Onde fica sua loja? *"
+            ],
+            "Address Line 1 *": [
+                "Endere\u00e7o Linha 1 *"
+            ],
+            "Address Line 2 (optional)": [
+                "Endere\u00e7o linha 2 (opcional)"
+            ],
+            "City *": [
+                "Cidade *"
+            ],
+            "State *": [
+                "Estado *"
+            ],
+            "Postal Code *": [
+                "C\u00f3digo postal *"
+            ],
+            "Email": [
+                "E-mail"
+            ],
+            "What currency do you want to display in your store?": [
+                "Qual moeda voc\u00ea deseja exibir em sua loja?"
             ]
         }
     }

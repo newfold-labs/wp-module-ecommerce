@@ -1082,3 +1082,43 @@ msgstr ""
 #: build/index.js:5318
 msgid "Cash on delivery (C.O.D.)"
 msgstr ""
+
+#: build/index.js:7643
+#: build/index.js:6592
+msgid "Where is your store based? *"
+msgstr ""
+
+#: build/index.js:7677
+#: build/index.js:6634
+msgid "Address Line 1 *"
+msgstr ""
+
+#: build/index.js:7684
+#: build/index.js:6642
+msgid "Address Line 2 (optional)"
+msgstr ""
+
+#: build/index.js:7693
+#: build/index.js:6657
+msgid "City *"
+msgstr ""
+
+#: build/index.js:7697
+#: build/index.js:6663
+msgid "State *"
+msgstr ""
+
+#: build/index.js:7720
+#: build/index.js:6694
+msgid "Postal Code *"
+msgstr ""
+
+#: build/index.js:7728
+#: build/index.js:6704
+msgid "Email"
+msgstr ""
+
+#: build/index.js:7732
+#: build/index.js:6710
+msgid "What currency do you want to display in your store?"
+msgstr ""

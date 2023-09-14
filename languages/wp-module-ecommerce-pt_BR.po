@@ -1085,3 +1085,43 @@ msgstr "Pagamentos por transferência bancária"
 #: build/index.js:5318
 msgid "Cash on delivery (C.O.D.)"
 msgstr "Pagamento na entrega (C.O.D.)"
+
+#: build/index.js:7643
+#: build/index.js:6592
+msgid "Where is your store based? *"
+msgstr "Onde fica sua loja? *"
+
+#: build/index.js:7677
+#: build/index.js:6634
+msgid "Address Line 1 *"
+msgstr "Endereço Linha 1 *"
+
+#: build/index.js:7684
+#: build/index.js:6642
+msgid "Address Line 2 (optional)"
+msgstr "Endereço linha 2 (opcional)"
+
+#: build/index.js:7693
+#: build/index.js:6657
+msgid "City *"
+msgstr "Cidade *"
+
+#: build/index.js:7697
+#: build/index.js:6663
+msgid "State *"
+msgstr "Estado *"
+
+#: build/index.js:7720
+#: build/index.js:6694
+msgid "Postal Code *"
+msgstr "Código postal *"
+
+#: build/index.js:7728
+#: build/index.js:6704
+msgid "Email"
+msgstr "E-mail"
+
+#: build/index.js:7732
+#: build/index.js:6710
+msgid "What currency do you want to display in your store?"
+msgstr "Qual moeda você deseja exibir em sua loja?"

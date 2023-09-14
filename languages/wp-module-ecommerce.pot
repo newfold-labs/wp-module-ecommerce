@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-09-14T11:41:46+00:00\n"
+"POT-Creation-Date: 2023-09-14T12:16:17+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: wp-module-ecommerce\n"
@@ -675,6 +675,46 @@ msgstr ""
 #: build/index.js:7637
 #: build/index.js:6580
 msgid "We'll use this information to help you setup your online store"
+msgstr ""
+
+#: build/index.js:7643
+#: build/index.js:6592
+msgid "Where is your store based? *"
+msgstr ""
+
+#: build/index.js:7677
+#: build/index.js:6634
+msgid "Address Line 1 *"
+msgstr ""
+
+#: build/index.js:7684
+#: build/index.js:6642
+msgid "Address Line 2 (optional)"
+msgstr ""
+
+#: build/index.js:7693
+#: build/index.js:6657
+msgid "City *"
+msgstr ""
+
+#: build/index.js:7697
+#: build/index.js:6663
+msgid "State *"
+msgstr ""
+
+#: build/index.js:7720
+#: build/index.js:6694
+msgid "Postal Code *"
+msgstr ""
+
+#: build/index.js:7728
+#: build/index.js:6704
+msgid "Email"
+msgstr ""
+
+#: build/index.js:7732
+#: build/index.js:6710
+msgid "What currency do you want to display in your store?"
 msgstr ""
 
 #: build/index.js:7779
