@@ -119,10 +119,13 @@ export function CaptiveRazorpay({ razorpaySettings }) {
           name="key_id"
           value={rzrKeys.key_id}
           label={isTestMode ? Content.keyTestIdLabel : Content.keyIdLabel}
-          placeholder={__(
-            `enter your ${isTestMode ? "test" : "production"} key ID here.`,
-            "wp-module-ecommerce"
-          )}
+          placeholder={sprintf(
+            __(
+              `enter your "%1$s" key ID here.`,
+              "wp-module-ecommerce"
+            ),            
+            isTestMode ? __("test", "wp-module-ecommerce") : __("production", "wp-module-ecommerce")
+          )}          
           required
           onChange={(event) => {
             const { value } = event.target;
@@ -153,10 +156,13 @@ export function CaptiveRazorpay({ razorpaySettings }) {
           label={
             isTestMode ? Content.keyTestSecretLabel : Content.keySecretLabel
           }
-          placeholder={__(
-            `enter your ${isTestMode ? "test" : "production"} key secret here.`,
-            "wp-module-ecommerce"
-          )}
+          placeholder={sprintf(
+            __(
+              `enter your "%1$s" key secret here.`,
+              "wp-module-ecommerce"
+            ),            
+            isTestMode ? __("test", "wp-module-ecommerce") : __("production", "wp-module-ecommerce")
+          )}                              
           description={
             <span dangerouslySetInnerHTML={{ __html: Content.keySecret }} />
           }

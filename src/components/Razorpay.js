@@ -50,7 +50,7 @@ const Razorpay = ({ notify }) => {
                         "min-[360px]:nfd-m-0"
                       )}
                     >
-                      !isInstalled ? {__("Install", "wp-module-ecommerce")} : {__("Connect", "wp-module-ecommerce")}                      
+                      { !isInstalled ? (__("Install", "wp-module-ecommerce")) : (__("Connect", "wp-module-ecommerce"))}                      
                     </Button>
                   )}
                 </>
