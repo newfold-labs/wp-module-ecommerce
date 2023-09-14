@@ -63,7 +63,7 @@ final class Brands {
 					'adminPage' => 'admin.php?page=hostgator',
 					'setup' => array(
 						'payment' => array('Paypal', 'Razorpay'),
-						'shipping' => array('Shippo'),
+						'shipping' => array(),
 					),
 					'defaultContact' => array(
 						'woocommerce_default_country' => 'BR:AL',
