@@ -501,6 +501,66 @@
             ],
             "Once you launch your store, you'll see a snapshot of recent purchases and other customer activity.": [
                 "Quando publicar sua loja, voc\u00ea ter\u00e1 acesso as compras recentes e atividades de seus clientes "
+            ],
+            "* indicates a required field": [
+                "*campo obrigat\u00f3rio"
+            ],
+            "Provides flexible checkout options": [
+                "Oferece op\u00e7\u00f5es de checkout flex\u00edveis"
+            ],
+            "PayPal Pay Later": [
+                "Parcelamento PayPal"
+            ],
+            "Today": [
+                "Hoje"
+            ],
+            "Week to date": [
+                "Semana at\u00e9 agora"
+            ],
+            "Month to date": [
+                "Do m\u00eas at\u00e9 a data"
+            ],
+            "Recent Activity": [
+                "Atividade Recente"
+            ],
+            "view all": [
+                "ver tudo"
+            ],
+            "Pending Payment": [
+                "Pagamento Pendente"
+            ],
+            "Processing": [
+                "Processando"
+            ],
+            "On hold": [
+                "Em espera"
+            ],
+            "Completed": [
+                "Conclu\u00eddo"
+            ],
+            "Cancelled": [
+                "Cancelado"
+            ],
+            "Refunded": [
+                "Devolveu"
+            ],
+            "Failed": [
+                "Fracassado"
+            ],
+            "Recent Orders": [
+                "Pedidos Recentes"
+            ],
+            "Install WooCommerce to unlock": [
+                "Instalar WooCommerce para desbloquear"
+            ],
+            "Install": [
+                "Instalar"
+            ],
+            "WooCommerce has been installed successfully": [
+                "WooCommerce foi instalado com sucesso"
+            ],
+            "WooCommerce failed to install": [
+                "WooCommerce falhou ao instalar"
             ]
         }
     }

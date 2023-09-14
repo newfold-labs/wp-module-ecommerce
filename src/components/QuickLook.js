@@ -60,9 +60,9 @@ function RecentReport({ title, filter, onSelect, disabled, children }) {
               }
             }}
             options={[
-              { label: "Today", value: "day" },
-              { label: "Week to date", value: "week" },
-              { label: "Month to date", value: "month" },
+              { label: __("Today", "wp-module-ecommerce"), value: "day" },
+              { label: __("Week to date", "wp-module-ecommerce"), value: "week" },
+              { label: __("Month to date", "wp-module-ecommerce"), value: "month" },
             ]}
             value={filter}
           />
@@ -114,19 +114,19 @@ function RecentActivity() {
 }
 
 const StatusToTextMapping = {
-  pending: { text: "Pending Payment", variant: "plain" },
-  processing: { text: "Processing", variant: "plain" },
-  "on-hold": { text: "On hold", variant: "upsell" },
-  completed: { text: "Completed", variant: "info" },
+  pending: { text: __("Pending Payment", "wp-module-ecommerce"), variant: "plain" },
+  processing: { text: __("Processing", "wp-module-ecommerce"), variant: "plain" },
+  "on-hold": { text: __("On hold", "wp-module-ecommerce"), variant: "upsell" },
+  completed: { text: __("Completed", "wp-module-ecommerce"), variant: "info" },
   cancelled: {
-    text: "Cancelled",
+    text: __("Cancelled", "wp-module-ecommerce"),
     className: "nfd-bg-[--nfd-ecommerce-bg-danger] nfd-text-white",
   },
   refunded: {
-    text: "Refunded",
+    text: __("Refunded", "wp-module-ecommerce"),
     className: "nfd-bg-[--nfd-ecommerce-bg-danger] nfd-text-white",
   },
-  failed: { text: "Failed", className: "nfd-bg-[--nfd-ecommerce-bg-danger] nfd-text-white" },
+  failed: { text: __("Failed", "wp-module-ecommerce"), className: "nfd-bg-[--nfd-ecommerce-bg-danger] nfd-text-white" },
 };
 
 function OrderStatus(props) {
