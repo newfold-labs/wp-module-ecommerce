@@ -214,7 +214,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                 </Select>
               )}
             </div>
-            <span>* indicates a required field</span>
+            <span>{__("* indicates a required field", "wp-module-ecommerce")}</span>
           </div>
         )}
       </Section.Settings>

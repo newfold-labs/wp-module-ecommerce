@@ -933,7 +933,9 @@ msgid "Once you launch your store, you'll see a snapshot of recent purchases and
 msgstr ""
 
 #: build/index.js:6017
+#: build/index.js:7753
 #: build/index.js:4898
+#: build/index.js:6753
 msgid "* indicates a required field"
 msgstr ""
 
