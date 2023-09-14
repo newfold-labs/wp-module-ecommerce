@@ -1033,3 +1033,8 @@ msgstr ""
 #: build/index.js:7227
 msgid "WooCommerce failed to install"
 msgstr ""
+
+#: build/index.js:7514
+#: build/index.js:6471
+msgid "Successfully saved the Store Details"
+msgstr ""

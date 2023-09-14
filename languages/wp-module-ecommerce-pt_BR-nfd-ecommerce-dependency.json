@@ -561,6 +561,9 @@
             ],
             "WooCommerce failed to install": [
                 "WooCommerce falhou ao instalar"
+            ],
+            "Successfully saved the Store Details": [
+                "Os detalhes da loja foram salvos com sucesso"
             ]
         }
     }
