@@ -73,7 +73,7 @@ const Paypal = ({ notify }) => {
                   variant="primary"
                   style={{ color: "#fff" }}
                   className="nfd-button nfd-button--primary yith-btn-paypal"
-                  target="_self"
+                  target="_blank"
                   data-paypal-onboard-complete="onboardedCallback"
                   data-paypal-button="PPLtBlue"
                 >
