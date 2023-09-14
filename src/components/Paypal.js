@@ -1,4 +1,4 @@
-import { Badge, Button, Title } from "@newfold/ui-component-library";
+import { Badge, Button, Title, Link } from "@newfold/ui-component-library";
 import { useEffect } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import classNames from "classnames";
@@ -73,7 +73,7 @@ const Paypal = ({ notify }) => {
                   variant="primary"
                   style={{ color: "#fff" }}
                   className="nfd-button nfd-button--primary yith-btn-paypal"
-                  target="_blank"
+                  target="_self"
                   data-paypal-onboard-complete="onboardedCallback"
                   data-paypal-button="PPLtBlue"
                 >
