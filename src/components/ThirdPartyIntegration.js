@@ -53,7 +53,7 @@ export const ThirdPartyIntegration = ({
         setOpenSection(false);
       }
     }
-  },[]);
+  });
 
 
   let installPlugin = useSWRMutation("install-plugin", async () => {

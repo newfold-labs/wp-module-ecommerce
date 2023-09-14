@@ -20,7 +20,7 @@ const Paypal = ({ notify }) => {
       return;
     }
     window?.PAYPAL?.apps?.Signup?.loadScripts(document, "script");
-  },[]);
+  });
   return (
     <ThirdPartyIntegration
       id="paypal"
