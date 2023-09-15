@@ -53,7 +53,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
         ) : (
           <div>
             <div>
-              <Label>{__("Where is your store based? *")}</Label>
+              <Label>{__("Where is your store based? *", "wp-module-ecommerce")}</Label>
               {isLoading || !values.country ? (
                 <TextInput name="country" className="nfd-mt-2" disabled />
               ) : (
@@ -95,7 +95,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                 name="woocommerce_store_address"
                 value={values.woocommerce_store_address}
                 required
-                label={__("Address Line 1 *")}
+                label={__("Address Line 1 *", "wp-module-ecommerce")}
               />
             </div>
             <div className="nfd-mt-6">
@@ -103,7 +103,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                 data-section="details"
                 name="woocommerce_store_address_2"
                 value={values.woocommerce_store_address_2}
-                label={__("Address Line 2 (optional)")}
+                label={__("Address Line 2 (optional)", "wp-module-ecommerce")}
               />
             </div>
             <div
@@ -118,13 +118,13 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                   data-section="details"
                   name="woocommerce_store_city"
                   value={values.woocommerce_store_city}
-                  label={__("City *")}
+                  label={__("City *", "wp-module-ecommerce")}
                   required
                 />
               </div>
               {states?.length > 0 && (
                 <div className="nfd-flex-1 md:nfd-ml-8">
-                  <Label>{__("State *")}</Label>
+                  <Label>{__("State *", "wp-module-ecommerce")}</Label>
                   <Select
                     id="state-select"
                     className="nfd-mt-2"
@@ -155,7 +155,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                   data-section="details"
                   name="woocommerce_store_postcode"
                   value={values.woocommerce_store_postcode}
-                  label={__("Postal Code *")}
+                  label={__("Postal Code *", "wp-module-ecommerce")}
                   required
                 />
               </div>
@@ -165,13 +165,13 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                 data-section="details"
                 name="woocommerce_email_from_address"
                 value={values.woocommerce_email_from_address}
-                label={__("Email")}
+                label={__("Email", "wp-module-ecommerce")}
                 required
               />
             </div>
             <div className="nfd-mt-6">
               <Label>
-                {__("What currency do you want to display in your store?")}
+                {__("What currency do you want to display in your store?", "wp-module-ecommerce")}
               </Label>
               {isLoading ? (
                 <TextInput
@@ -214,7 +214,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                 </Select>
               )}
             </div>
-            <span>* indicates a required field</span>
+            <span>{__("* indicates a required field", "wp-module-ecommerce")}</span>
           </div>
         )}
       </Section.Settings>
