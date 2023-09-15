@@ -88,10 +88,10 @@ const Paypal = ({ notify }) => {
             {!isSetupComplete && (
               <div className="nfd-space-y-4 nfd-text-[#5B5B5B]">
                 <Title size="3">
-                  {__("Provides flexible checkout options")}
+                  {__("Provides flexible checkout options", "wp-module-ecommerce")}
                 </Title>
                 <ul className="nfd-pl-5 nfd-list-disc">
-                  <li>{__("PayPal Pay Later")}</li>
+                  <li>{__("PayPal Pay Later", "wp-module-ecommerce")}</li>
                   <li>{__("White-Labeling", "wp-module-ecommerce")}</li>
                   <li>
                     {__(
