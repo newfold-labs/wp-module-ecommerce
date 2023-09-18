@@ -68,7 +68,9 @@ export const WooCommerceSdk = {
       ].filter((gateway) => paymentSettings[gateway]?.enabled === "yes");
     },
     async currency() {
+      if(NewfoldRuntime.isWoo){
       return apiFetch({ url: Endpoints.Options.CURRENCY });
+      }
     },
   },
   analytics: {
@@ -78,6 +80,8 @@ export const WooCommerceSdk = {
      * @returns {{views:[number, number]; visitors:[number, number]}}
      */
     async jetpack(period) {
+      if(NewfoldRuntime.isJet){
+      console.log("hio",NewfoldRuntime.isJet);
       let stats = await safeFetch({
         url: Endpoints.Analytics.JETPACK(period),
       });
@@ -103,9 +107,11 @@ export const WooCommerceSdk = {
       return {
         views: [this_period[viewsIndex], prior_period[viewsIndex]],
         visitors: [this_period[visitorsIndex], prior_period[visitorsIndex]],
-      };
+      };}
     },
     async sales(period) {
+      if(NewfoldRuntime.isWoo){
+      console.log("hio",NewfoldRuntime.isWoo);
       let currentPeriodResponse = await safeFetch({
         url: Endpoints.Analytics.SALES(period === "day" ? {} : { period }),
       });
@@ -119,7 +125,7 @@ export const WooCommerceSdk = {
         ["total_sales", "net_sales", "total_orders", "total_items"].map(
           (key) => [key, [current[key], prior[key]].map(Number)]
         )
-      );
+      );}
     },
   },
   orders: {
