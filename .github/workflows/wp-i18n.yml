@@ -79,6 +79,9 @@ jobs:
       - name: Add text domains
         run: npx node-wp-i18n addtextdomain
 
+      - name: Setup Registry
+        run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.NEWFOLD_ACCESS_TOKEN }}" >> .npmrc
+
       - name: Run NPM Install
         run: npm install
 
