@@ -120,7 +120,13 @@ export const ThirdPartyIntegration = ({
                       await refreshIntegrationStatus();
                     if (integrationStatusResponse.complete) {
                       notify.push(`${id}-account-connect-success`, {
-                        title: `Your ${id} account have been connected`,
+                        title: sprintf(
+                          __(
+                            `Your "%1$s" account have been connected`,
+                            "wp-module-ecommerce"
+                          ),            
+                          `${id}`
+                        ),
                         variant: "success",
                         autoDismiss: 5000
                       });

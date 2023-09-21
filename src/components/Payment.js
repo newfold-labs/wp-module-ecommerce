@@ -36,15 +36,15 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
               onChange={pushChanges}
               options={[
                 {
-                  label: "Check payments",
+                  label: __("Check payments", "wp-module-ecommerce"),
                   value: "woocommerce_cheque_settings",
                 },
                 {
-                  label: "Bank transfer payments",
+                  label: __("Bank transfer payments", "wp-module-ecommerce"),
                   value: "woocommerce_bacs_settings",
                 },
                 {
-                  label: "Cash on delivery (C.O.D.)",
+                  label: __("Cash on delivery (C.O.D.)", "wp-module-ecommerce"),
                   value: "woocommerce_cod_settings",
                 },
               ]}
