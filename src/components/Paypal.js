@@ -38,8 +38,8 @@ const Paypal = ({ notify }) => {
           <div className="nfd-border nfd-rounded-md nfd-p-6">
             <div
               className={classNames(
-                "max-[400px]:nfd-flex-col",
-                "min-[400px]:nfd-flex nfd-justify-between nfd-items-center min-[360px]:nfd-mb-8"
+                "max-[359px]:nfd-flex-col",
+                "min-[360px]:nfd-flex nfd-justify-between nfd-items-center min-[360px]:nfd-mb-8"
               )}
             >
               <PaypalBrand />
@@ -72,7 +72,7 @@ const Paypal = ({ notify }) => {
                   href={yith_ppwc_login.loginURL}
                   variant="primary"
                   style={{ color: "#fff" }}
-                  className="nfd-button nfd-button--primary yith-btn-paypal max-[400px]:nfd-mt-2"
+                  className="nfd-button nfd-button--primary yith-btn-paypal"
                   target="_blank"
                   data-paypal-onboard-complete="onboardedCallback"
                   data-paypal-button="PPLtBlue"
