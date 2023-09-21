@@ -81,7 +81,6 @@ export const WooCommerceSdk = {
      */
     async jetpack(period) {
       if(NewfoldRuntime.isJet){
-      console.log("hio",NewfoldRuntime.isJet);
       let stats = await safeFetch({
         url: Endpoints.Analytics.JETPACK(period),
       });
@@ -111,7 +110,6 @@ export const WooCommerceSdk = {
     },
     async sales(period) {
       if(NewfoldRuntime.isWoo){
-      console.log("hio",NewfoldRuntime.isWoo);
       let currentPeriodResponse = await safeFetch({
         url: Endpoints.Analytics.SALES(period === "day" ? {} : { period }),
       });
