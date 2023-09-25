@@ -52,7 +52,9 @@ export const WooCommerceSdk = {
       });
     },
     async tasks() {
-      return apiFetch({ url: Endpoints.Onboarding.TASKS });
+      if (NewfoldRuntime.isWoo) {
+        return apiFetch({ url: Endpoints.Onboarding.TASKS });
+      }
     },
   },
   options: {
@@ -139,7 +141,9 @@ export const WooCommerceSdk = {
   },
   products: {
     async list() {
-      return apiFetch({ url: Endpoints.PRODUCTS });
+      if (NewfoldRuntime.isWoo) {
+        return apiFetch({ url: Endpoints.PRODUCTS });
+      }
     },
     async add(data) {
       return apiFetch({ url: Endpoints.PRODUCTS, method: "POST", data }).catch(
