@@ -91,7 +91,7 @@ const Paypal = ({ notify }) => {
                   {__("Provides flexible checkout options", "wp-module-ecommerce")}
                 </Title>
                 <ul className="nfd-pl-5 nfd-list-disc">
-                  <li>{__("Buy Now Pay Later or PayPal Buy Now Pay Later", "wp-module-ecommerce")}</li>
+                  <li>{__("PayPal Buy Now Pay Later", "wp-module-ecommerce")}</li>
                   <li>{__("White-Labeling", "wp-module-ecommerce")}</li>
                   <li>
                     {__(
