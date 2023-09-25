@@ -117,7 +117,6 @@ export const WooCommerceSdk = {
         let priorPeriodResponse = await safeFetch({
           url: Endpoints.Analytics.SALES(getPriorPeriodForSales(period)),
         });
-        // @TODO Handle error state
         let [current] = currentPeriodResponse.data;
         let [prior] = priorPeriodResponse.data;
         return Object.fromEntries(
