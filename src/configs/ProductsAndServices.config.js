@@ -26,7 +26,7 @@ const getUrl = (href) => {
   return `${page}?${query}`;
 };
 
-const isHostgator = RuntimeSdk?.brandSettings?.brand?.includes("hostgator");
+const isBluehost = RuntimeSdk?.brandSettings?.brand?.includes("bluehost");
 
 function defineFeatureState() {
   return {
@@ -159,7 +159,7 @@ export const ProductsAndServicesDefinition = (props) => ({
       assets: ({ isActive }) => ({
         Image: CalendarIcon,
         ActionIcon: isActive,
-        learnMoreUrl: isHostgator ? null :
+        learnMoreUrl: isBluehost &&
           "https://www.bluehost.com/help/article/yith-booking-and-appointment-for-woocommerce",
       }),
       text: (state) => ({
@@ -213,7 +213,7 @@ export const ProductsAndServicesDefinition = (props) => ({
       assets: ({ isActive }) => ({
         Image: GiftIcon,
         ActionIcon: isActive,
-        learnMoreUrl: isHostgator ? null :
+        learnMoreUrl: isBluehost &&
           "https://www.bluehost.com/help/article/yith-woocommerce-gift-cards",
       }),
       text: (state) => ({
