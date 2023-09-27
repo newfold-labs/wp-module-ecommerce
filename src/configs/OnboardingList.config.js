@@ -6,7 +6,7 @@ import { RuntimeSdk } from "../sdk/runtime";
 import { WooCommerceSdk } from "../sdk/woocommerce";
 import { WordPressSdk } from "../sdk/wordpress";
 import { createPluginInstallAction } from "./actions";
-import { wcTasksParser, yithOnboardingParser, yithOnboardingPaymentParser, yithOnboardingStoreParser } from "./selectors";
+import { wcTasksParser, yithOnboardingParser, yithOnboardingPaymentParser, yithOnboardingStoreParser, mediaUploadedSelector } from "./selectors";
 
 const parsePluginStatus = (plugins) => ({
   isWCActive: PluginsSdk.queries.isPlugin(plugins, ["woocommerce"], "active"),
@@ -27,6 +27,7 @@ export function OnboardingListDefinition(props) {
       products: WooCommerceSdk.products.list,
       onboarding: WooCommerceSdk.onboarding.tasks,
       settings: WordPressSdk.settings.get,
+      media: WordPressSdk.media.get,
     },
     cards: [
       {
@@ -175,6 +176,19 @@ export function OnboardingListDefinition(props) {
           manage: installJetpack,
         },
         queries: [{ key: "plugins", selector: parsePluginStatus }],
+      },
+      {
+        name: "Upload media to your site",
+        text: __("Upload media to your site", "wp-module-ecommerce"),
+        state: {
+          isCompleted: (queries) => queries?.media,
+          url: () => "media-new.php",
+        },
+        shouldRender: () => true,
+        actions: {},
+        queries: [
+          { key: "media", selector: mediaUploadedSelector() },
+        ],
       },
     ],
   };

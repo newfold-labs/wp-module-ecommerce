@@ -42,3 +42,7 @@ export const wcPluginStatusParser = (slug) => (data) => {
 export const findUpsellWithName = (name) => (upsellOptions) => {
   return upsellOptions?.find((option) => option.name === name);
 };
+
+export const mediaUploadedSelector = () => (mediaData) => {
+  return mediaData.filter(media => media?.media_details?.file?.includes("/")).length > 0
+};
