@@ -67,7 +67,7 @@ In rare scenarios, like UI redesign where the change is bigger or a major refact
 
 5. Go to https://github.com/newfold-labs/wp-module-ecommerce/releases 
 
-6. Click on Draft a new release button 
+6. Click on Draft a new release button (Note: Saving as draft, pipeline is not running.)
 
 7. By default, you'll always create a release from target: trunk branch. In case we are making changes to crazydomains then we must switch to the legacy branch do the fixes there and create a release from target: legacy branch as it currently runs older version 
 
