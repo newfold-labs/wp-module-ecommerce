@@ -16,10 +16,14 @@ import { ThirdPartyIntegration } from "./ThirdPartyIntegration";
 const Paypal = ({ notify }) => {
   useEffect(() => {
     const ppButton = document.querySelector(".yith-btn-paypal");
-    if (ppButton?.dataset?.securewindowmsg) {
-      return;
-    }
     window?.PAYPAL?.apps?.Signup?.loadScripts(document, "script");
+    window?.PAYPAL?.apps?.Signup?.render();
+    return ()=>{
+      const panel = document.querySelector('#payment-details');
+      if( !panel && ppButton ){
+        ppButton.remove();
+      }
+    };
   });
   return (
     <ThirdPartyIntegration
