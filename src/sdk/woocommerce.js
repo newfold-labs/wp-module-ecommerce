@@ -110,6 +110,7 @@ export const WooCommerceSdk = {
           visitors: [this_period[visitorsIndex], prior_period[visitorsIndex]],
         };
       }
+        return { views: [], visitors: [] };
     },
     async sales(period) {
       if (NewfoldRuntime.isWoo) {
