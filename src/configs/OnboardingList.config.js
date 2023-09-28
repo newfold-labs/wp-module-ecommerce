@@ -7,6 +7,7 @@ import { WooCommerceSdk } from "../sdk/woocommerce";
 import { WordPressSdk } from "../sdk/wordpress";
 import { createPluginInstallAction } from "./actions";
 import { wcTasksParser, yithOnboardingParser, yithOnboardingPaymentParser, yithOnboardingStoreParser, mediaUploadedSelector } from "./selectors";
+import { AnalyticsSdk } from "../sdk/analytics";
 
 const parsePluginStatus = (plugins) => ({
   isWCActive: PluginsSdk.queries.isPlugin(plugins, ["woocommerce"], "active"),
@@ -18,6 +19,10 @@ const CaptiveFlows = {
   shippo: "nfd-ecommerce-captive-flow-shippo",
   razorpay: "nfd-ecommerce-captive-flow-razorpay",
 };
+
+const data = {
+  page: window.location.href
+}
 
 export function OnboardingListDefinition(props) {
   const installJetpack = createPluginInstallAction("jetpack", 20, props);
@@ -139,6 +144,21 @@ export function OnboardingListDefinition(props) {
         queries: [],
       },
       {
+        name: "Upload media to your site",
+        text: __("Upload media to your site", "wp-module-ecommerce"),
+        state: {
+          isCompleted: (queries) => queries?.media,
+          url: () => "media-new.php",
+        },
+        shouldRender: () => true,
+        actions: {
+          manage: () => AnalyticsSdk.track("next_step", "next_step_add_media_clicked", data)
+        },
+        queries: [
+          { key: "media", selector: mediaUploadedSelector() },
+        ],
+      },
+      {
         name: "Connect to your social media accounts",
         text: __(
           "Connect to your social media accounts",
@@ -176,19 +196,6 @@ export function OnboardingListDefinition(props) {
           manage: installJetpack,
         },
         queries: [{ key: "plugins", selector: parsePluginStatus }],
-      },
-      {
-        name: "Upload media to your site",
-        text: __("Upload media to your site", "wp-module-ecommerce"),
-        state: {
-          isCompleted: (queries) => queries?.media,
-          url: () => "media-new.php",
-        },
-        shouldRender: () => true,
-        actions: {},
-        queries: [
-          { key: "media", selector: mediaUploadedSelector() },
-        ],
       },
     ],
   };
