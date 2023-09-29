@@ -52,7 +52,9 @@ export const WooCommerceSdk = {
       });
     },
     async tasks() {
-      return apiFetch({ url: Endpoints.Onboarding.TASKS });
+      if (NewfoldRuntime.isWoo) {
+        return apiFetch({ url: Endpoints.Onboarding.TASKS });
+      }
     },
   },
   options: {
@@ -68,7 +70,9 @@ export const WooCommerceSdk = {
       ].filter((gateway) => paymentSettings[gateway]?.enabled === "yes");
     },
     async currency() {
-      return apiFetch({ url: Endpoints.Options.CURRENCY });
+      if (NewfoldRuntime.isWoo) {
+        return apiFetch({ url: Endpoints.Options.CURRENCY });
+      }
     },
   },
   analytics: {
@@ -78,48 +82,52 @@ export const WooCommerceSdk = {
      * @returns {{views:[number, number]; visitors:[number, number]}}
      */
     async jetpack(period) {
-      let stats = await safeFetch({
-        url: Endpoints.Analytics.JETPACK(period),
-      });
-      if (stats.error !== null || stats.data === undefined) {
-        return { views: [], visitors: [] };
+      if (NewfoldRuntime.isJet) {
+        let stats = await safeFetch({
+          url: Endpoints.Analytics.JETPACK(period),
+        });
+        if (stats.error !== null || stats.data === undefined) {
+          return { views: [], visitors: [] };
+        }
+        if (
+          Array.isArray(stats.data[period]) &&
+          stats.data[period].length === 0
+        ) {
+          return { views: [], visitors: [] };
+        }
+        let { data, fields, errors } = stats.data[period];
+        if (errors) {
+          return { views: [], visitors: [] };
+        }
+        let [this_period, prior_period] = [
+          data[data.length - 1],
+          data[data.length - 2],
+        ];
+        let viewsIndex = fields.findIndex((field) => field === "view");
+        let visitorsIndex = fields.findIndex((field) => field === "visitors");
+        return {
+          views: [this_period[viewsIndex], prior_period[viewsIndex]],
+          visitors: [this_period[visitorsIndex], prior_period[visitorsIndex]],
+        };
       }
-      if (
-        Array.isArray(stats.data[period]) &&
-        stats.data[period].length === 0
-      ) {
         return { views: [], visitors: [] };
-      }
-      let { data, fields, errors } = stats.data[period];
-      if (errors) {
-        return { views: [], visitors: [] };
-      }
-      let [this_period, prior_period] = [
-        data[data.length - 1],
-        data[data.length - 2],
-      ];
-      let viewsIndex = fields.findIndex((field) => field === "view");
-      let visitorsIndex = fields.findIndex((field) => field === "visitors");
-      return {
-        views: [this_period[viewsIndex], prior_period[viewsIndex]],
-        visitors: [this_period[visitorsIndex], prior_period[visitorsIndex]],
-      };
     },
     async sales(period) {
-      let currentPeriodResponse = await safeFetch({
-        url: Endpoints.Analytics.SALES(period === "day" ? {} : { period }),
-      });
-      let priorPeriodResponse = await safeFetch({
-        url: Endpoints.Analytics.SALES(getPriorPeriodForSales(period)),
-      });
-      // @TODO Handle error state
-      let [current] = currentPeriodResponse.data;
-      let [prior] = priorPeriodResponse.data;
-      return Object.fromEntries(
-        ["total_sales", "net_sales", "total_orders", "total_items"].map(
-          (key) => [key, [current[key], prior[key]].map(Number)]
-        )
-      );
+      if (NewfoldRuntime.isWoo) {
+        let currentPeriodResponse = await safeFetch({
+          url: Endpoints.Analytics.SALES(period === "day" ? {} : { period }),
+        });
+        let priorPeriodResponse = await safeFetch({
+          url: Endpoints.Analytics.SALES(getPriorPeriodForSales(period)),
+        });
+        let [current] = currentPeriodResponse.data;
+        let [prior] = priorPeriodResponse.data;
+        return Object.fromEntries(
+          ["total_sales", "net_sales", "total_orders", "total_items"].map(
+            (key) => [key, [current[key], prior[key]].map(Number)]
+          )
+        );
+      }
     },
   },
   orders: {
@@ -134,7 +142,9 @@ export const WooCommerceSdk = {
   },
   products: {
     async list() {
-      return apiFetch({ url: Endpoints.PRODUCTS });
+      if (NewfoldRuntime.isWoo) {
+        return apiFetch({ url: Endpoints.PRODUCTS });
+      }
     },
     async add(data) {
       return apiFetch({ url: Endpoints.PRODUCTS, method: "POST", data }).catch(

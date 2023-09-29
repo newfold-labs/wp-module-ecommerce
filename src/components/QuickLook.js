@@ -15,6 +15,7 @@ import useSWR from "swr";
 import Reports from "../configs/Reports.config";
 import { ReactComponent as NoOrdersFallback } from "../icons/no-orders-fallback.svg";
 import { formatMoney } from "../sdk/formatMoney";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { RuntimeSdk } from "../sdk/runtime";
 import { WooCommerceSdk } from "../sdk/woocommerce";
 import { Section } from "./Section";
@@ -248,7 +249,7 @@ export function QuickLook(props) {
             )}
           >
             <RecentActivity />
-            <RecentOrders />
+            {NewfoldRuntime.isWoo && <RecentOrders />}
           </div>
           <div className="nfd-h-4" />
           <SiteStatus

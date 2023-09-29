@@ -22,5 +22,8 @@ export const NewfoldRuntime = {
   },
   get isWoo(){
     return window.NewfoldRuntime?.isWoocommerceActive
+  },
+  get isJet(){
+    return window.NewfoldRuntime?.isJetpackBoostActive
   }
 };
