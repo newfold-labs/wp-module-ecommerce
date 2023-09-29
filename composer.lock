@@ -4,8 +4,57 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "68aac907f72921997452d8dfc8fa25d4",
+    "content-hash": "24b445f7b242dff867d7e25974f849bf",
     "packages": [
+        {
+            "name": "newfold-labs/wp-module-data",
+            "version": "2.4.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newfold-labs/wp-module-data.git",
+                "reference": "c8b20f346302221c3ac18125a651fce66ebe2516"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/c8b20f346302221c3ac18125a651fce66ebe2516",
+                "reference": "c8b20f346302221c3ac18125a651fce66ebe2516",
+                "shasum": ""
+            },
+            "require": {
+                "wp-forge/wp-query-builder": "^1.0",
+                "wp-forge/wp-upgrade-handler": "^1.0",
+                "wpscholar/url": "^1.2"
+            },
+            "require-dev": {
+                "newfold-labs/wp-php-standards": "^1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NewfoldLabs\\WP\\Module\\Data\\": "includes/"
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "scripts": {
+                "fix": [
+                    "vendor/bin/phpcbf . --standard=phpcs.xml"
+                ],
+                "lint": [
+                    "vendor/bin/phpcs . --standard=phpcs.xml -s"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Newfold Data Module",
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.4.7",
+                "issues": "https://github.com/newfold-labs/wp-module-data/issues"
+            },
+            "time": "2023-09-28T17:34:55+00:00"
+        },
         {
             "name": "newfold-labs/wp-module-installer",
             "version": "1.1.2",
@@ -47,6 +96,167 @@
                 "issues": "https://github.com/newfold-labs/wp-module-installer/issues"
             },
             "time": "2023-09-18T06:42:43+00:00"
+        },
+        {
+            "name": "newfold-labs/wp-module-onboarding-data",
+            "version": "0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newfold-labs/wp-module-onboarding-data.git",
+                "reference": "d0c6c03d24c6b15e8516007146ac226a4af14449"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding-data/zipball/d0c6c03d24c6b15e8516007146ac226a4af14449",
+                "reference": "d0c6c03d24c6b15e8516007146ac226a4af14449",
+                "shasum": ""
+            },
+            "require": {
+                "newfold-labs/wp-module-data": "^2.4.3",
+                "newfold-labs/wp-module-installer": "^1.1",
+                "wp-forge/wp-upgrade-handler": "^1.0"
+            },
+            "require-dev": {
+                "newfold-labs/wp-php-standards": "^1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NewfoldLabs\\WP\\Module\\Onboarding\\Data\\": "includes/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "arunshenoy99",
+                    "email": "devarunshenoy99@gmail.com"
+                }
+            ],
+            "description": "A non-toggleable module containing a standardized interface for interacting with Onboarding data.",
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-onboarding-data/tree/0.0.2",
+                "issues": "https://github.com/newfold-labs/wp-module-onboarding-data/issues"
+            },
+            "time": "2023-09-28T08:43:53+00:00"
+        },
+        {
+            "name": "wp-forge/wp-query-builder",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wp-forge/wp-query-builder.git",
+                "reference": "34959e5618969afd8350a8206744a7810d9f253b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wp-forge/wp-query-builder/zipball/34959e5618969afd8350a8206744a7810d9f253b",
+                "reference": "34959e5618969afd8350a8206744a7810d9f253b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WP_Forge\\QueryBuilder\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Micah Wood",
+                    "email": "micah@wpscholar.com"
+                }
+            ],
+            "description": "A lightweight and efficient SQL query builder for WordPress.",
+            "keywords": [
+                "database",
+                "query builder",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/wp-forge/wp-query-builder/issues",
+                "source": "https://github.com/wp-forge/wp-query-builder/tree/1.0.3"
+            },
+            "time": "2023-04-29T19:26:54+00:00"
+        },
+        {
+            "name": "wp-forge/wp-upgrade-handler",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wp-forge/wp-upgrade-handler.git",
+                "reference": "b0a7f4c66710f95b4c5702fea3af505ea72fb215"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wp-forge/wp-upgrade-handler/zipball/b0a7f4c66710f95b4c5702fea3af505ea72fb215",
+                "reference": "b0a7f4c66710f95b4c5702fea3af505ea72fb215",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WP_Forge\\UpgradeHandler\\": "includes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Micah Wood",
+                    "email": "micah@wpscholar.com"
+                }
+            ],
+            "description": "A drop-in library for handling upgrade routines in WordPress plugins and themes.",
+            "support": {
+                "issues": "https://github.com/wp-forge/wp-upgrade-handler/issues",
+                "source": "https://github.com/wp-forge/wp-upgrade-handler/tree/1.0"
+            },
+            "time": "2020-05-21T00:04:44+00:00"
+        },
+        {
+            "name": "wpscholar/url",
+            "version": "1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wpscholar/url.git",
+                "reference": "c339972ed8e6876f1cfacbc512c6205db63645d0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wpscholar/url/zipball/c339972ed8e6876f1cfacbc512c6205db63645d0",
+                "reference": "c339972ed8e6876f1cfacbc512c6205db63645d0",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "wpscholar\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Micah Wood",
+                    "email": "micah@wpscholar.com",
+                    "homepage": "http://wpscholar.com"
+                }
+            ],
+            "description": "A PHP class for parsing and manipulating URLs.",
+            "support": {
+                "issues": "https://github.com/wpscholar/url/issues",
+                "source": "https://github.com/wpscholar/url/tree/1.2.2"
+            },
+            "time": "2020-10-27T20:10:04+00:00"
         }
     ],
     "packages-dev": [
@@ -885,16 +1095,16 @@
         },
         {
             "name": "justinrainbow/json-schema",
-            "version": "5.2.12",
+            "version": "v5.2.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/justinrainbow/json-schema.git",
-                "reference": "ad87d5a5ca981228e0e205c2bc7dfb8e24559b60"
+                "reference": "fbbe7e5d79f618997bc3332a6f49246036c45793"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/ad87d5a5ca981228e0e205c2bc7dfb8e24559b60",
-                "reference": "ad87d5a5ca981228e0e205c2bc7dfb8e24559b60",
+                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/fbbe7e5d79f618997bc3332a6f49246036c45793",
+                "reference": "fbbe7e5d79f618997bc3332a6f49246036c45793",
                 "shasum": ""
             },
             "require": {
@@ -949,9 +1159,9 @@
             ],
             "support": {
                 "issues": "https://github.com/justinrainbow/json-schema/issues",
-                "source": "https://github.com/justinrainbow/json-schema/tree/5.2.12"
+                "source": "https://github.com/justinrainbow/json-schema/tree/v5.2.13"
             },
-            "time": "2022-04-13T08:02:27+00:00"
+            "time": "2023-09-26T02:20:38+00:00"
         },
         {
             "name": "mck89/peast",

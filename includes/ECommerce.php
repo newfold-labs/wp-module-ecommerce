@@ -8,6 +8,7 @@ use NewfoldLabs\WP\Module\ECommerce\Partials\WooCommerceBacklink;
 use NewfoldLabs\WP\Module\ECommerce\I18nService;
 use NewfoldLabs\WP\Module\Installer\Services\PluginInstaller;
 use NewfoldLabs\WP\ModuleLoader\Container;
+use NewfoldLabs\WP\Module\Onboarding\Data\Services\FlowService;
 
 /**
  * Class ECommerce
@@ -61,6 +62,7 @@ class ECommerce {
 		'woocommerce_bacs_settings',
         'woocommerce_cod_settings',
         'woocommerce_cheque_settings',
+		'onboarding_experience_level'
 	);
 
 	/**
@@ -72,6 +74,7 @@ class ECommerce {
 		$this->container = $container;
 		// Module functionality goes here		
 		add_action( 'init', array( $this, 'load_php_textdomain' ) );
+		add_action( 'init', array( $this, 'load_experience_level' ) );
 		add_action( 'admin_init', array( $this, 'maybe_do_dash_redirect' ) );
 		add_action( 'admin_bar_menu', array( $this, 'newfold_site_status' ), 200 );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
@@ -102,6 +105,10 @@ class ECommerce {
 			'wp-module-ecommerce',
 			NFD_ECOMMERCE_PLUGIN_DIRNAME . '/vendor/newfold-labs/wp-module-ecommerce/languages'
 		);
+	}
+
+	public static function load_experience_level() {
+		update_option( 'onboarding_experience_level', FlowService::get_experience_level() );
 	}
 
 	public function add_to_runtime( $sdk ) {
