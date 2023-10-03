@@ -8,7 +8,7 @@ import { WordPressSdk } from "../sdk/wordpress";
 import { createPluginInstallAction } from "./actions";
 import { 
   wcTasksParser, yithOnboardingParser, yithOnboardingPaymentParser, 
-  yithOnboardingStoreParser, mediaUploadedSelector, getExperienceLevel 
+  yithOnboardingStoreParser, mediaUploadedSelector 
 } from "./selectors";
 import { AnalyticsSdk } from "../sdk/analytics";
 
@@ -38,23 +38,6 @@ export function OnboardingListDefinition(props) {
       media: WordPressSdk.media.get,
     },
     cards: [
-      // {
-      //   name: "Sign up for Bluehost WordPress Academy",
-      //   text: __("Sign up for Bluehost WordPress Academy", "wp-module-ecommerce"),
-      //   state: {
-      //     isAvailable: (queries) => queries?.settings && RuntimeSdk?.brandSettings?.brand?.includes("bluehost"),
-      //     isCompleted: () => false,
-      //     url: () => "https://academy.bluehost.com/?utm_source=wp-home&utm_medium=brand-plugin",
-      //     target: () => "_blank"
-      //   },
-      //   shouldRender: (state) => state.isAvailable,
-      //   actions: {
-      //     manage: () => AnalyticsSdk.track("next_step", "next_step_bh_wp_academy_clicked", data),
-      //   },
-      //   queries: [
-      //     { key: "settings", selector: getExperienceLevel() },
-      //   ],
-      // },
       {
         name: "Add your store info",
         text: __("Add your store info", "wp-module-ecommerce"),

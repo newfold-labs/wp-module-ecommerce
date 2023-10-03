@@ -47,6 +47,6 @@ export const mediaUploadedSelector = () => (mediaData) => {
   return mediaData.filter(media => media?.media_details?.file?.includes("/")).length > 0
 };
 
-export const getExperienceLevel = () => (data) => {
+export const isNoviceExperienceLevel = () => (data) => {
   return data.onboarding_experience_level == "1"
 }
