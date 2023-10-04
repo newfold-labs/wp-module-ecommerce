@@ -1,6 +1,7 @@
 import { ArrowLongRightIcon } from "@heroicons/react/20/solid";
 import { __ } from "@wordpress/i18n";
-import { Button, Card, Link, Title } from "@yoast/ui-library";
+import { Button, Card, Link, Title } from "@newfold/ui-component-library";
+import { AnalyticsSdk } from "../sdk/analytics";
 
 /**
  * @typedef FeatureCardState
@@ -39,19 +40,20 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
   return (
     <Card>
       <Card.Content>
-        <Image className="yst-w-12 yst-text-[#404040]" />
-        <Title size={4} className="yst-leading-normal yst-my-4">
+        <Image className="nfd-w-12 nfd-text-[--nfd-ecommerce-text-dark]" />
+        <Title size={4} className="nfd-leading-normal nfd-my-4">
           {title}
         </Title>
         {description ? <span>{description}</span> : null}
         {learnMoreUrl && (
           <Link
-            className="yst-flex yst-mt-4 yst-items-center yst-gap-2 yst-no-underline"
+            className="nfd-flex nfd-mt-4 nfd-items-center nfd-gap-2 nfd-no-underline"
             href={learnMoreUrl}
             target="_blank"
+            onClick={() => AnalyticsSdk.track( "commerce", title, 'clicked on the learn more url' )}
           >
             <span>{__("Learn More", "wp-module-ecommerce")}</span>
-            <ArrowLongRightIcon className="yst-h-5 yst-text-black" />
+            <ArrowLongRightIcon className="nfd-h-5 nfd-text-black" />
           </Link>
         )}
       </Card.Content>
@@ -67,7 +69,7 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
       ) : state.isActive && state.featureUrl !== null ? (
         <Card.Footer>
           <Button
-            className="yst-w-full yst-h-9 yst-border yst-flex yst-items-center yst-gap-2"
+            className="nfd-w-full nfd-h-9 nfd-border nfd-flex nfd-items-center nfd-gap-2"
             variant="secondary"
             as="a"
             href={state.featureUrl}
@@ -79,7 +81,7 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
       ) : isUpsellNeeded ? (
         <Card.Footer>
           <Button
-            className="yst-w-full yst-h-9 yst-border yst-flex yst-items-center yst-gap-2"
+            className="nfd-w-full nfd-h-9 nfd-border nfd-flex nfd-items-center nfd-gap-2"
             variant="upsell"
             as="a"
             target="_blank"
@@ -98,7 +100,7 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
       ) : (
         <Card.Footer>
           <Button
-            className="yst-w-full yst-h-9 yst-border yst-flex yst-items-center yst-gap-2"
+            className="nfd-w-full nfd-h-9 nfd-border nfd-flex nfd-items-center nfd-gap-2"
             variant="secondary"
             onClick={() =>
               state.isActive

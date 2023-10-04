@@ -1,5 +1,5 @@
+import { NewfoldRuntime } from "./NewfoldRuntime";
 import apiFetch from "@wordpress/api-fetch";
-import { createApiUrl } from "./createApiUrl";
 
 /**
  * @typedef MarketplaceProducts
@@ -10,7 +10,7 @@ import { createApiUrl } from "./createApiUrl";
  */
 
 const Endpoints = {
-  PRODUCTS: createApiUrl("/newfold-marketplace/v1/marketplace"),
+  PRODUCTS: NewfoldRuntime.createApiUrl("/newfold-marketplace/v1/marketplace"),
 };
 
 export const MarketplaceSdk = {

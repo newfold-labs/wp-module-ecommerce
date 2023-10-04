@@ -1,3 +1,4 @@
+import { __ } from "@wordpress/i18n";
 import useSWRMutation from "swr/mutation";
 import { PluginsSdk } from "../sdk/plugins";
 import { RuntimeSdk } from "../sdk/runtime";
@@ -11,13 +12,14 @@ export function useInstallWoo({ woo, wpModules }) {
       : await PluginsSdk.actions.queueInstall("woocommerce");
     if (response !== "failed") {
       notify.push("woo-install-status", {
-        title: "WooCommerce has been installed successfully",
+        title: __("WooCommerce has been installed successfully", "wp-module-ecommerce"),
         variant: "success",
+        autoDismiss: 5000
       });
       await woo.refreshStatus();
     } else {
       notify.push("woo-install-status", {
-        title: "WooCommerce failed to install",
+        title: __("WooCommerce failed to install", "wp-module-ecommerce"),
         description: (
           <span>
             {__("Please try again, or ", "wp-module-ecommerce")}

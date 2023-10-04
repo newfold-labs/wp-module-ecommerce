@@ -1,18 +1,19 @@
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { __ } from "@wordpress/i18n";
 import { FeatureCard } from "../components/FeatureCard";
 import { ReactComponent as Ecomdash } from "../icons/brands/ecomdash.svg";
-import { ReactComponent as SalesFunnelLicense } from "../icons/brands/yith-woocommerce-sales-funnel.svg";
 import { ReactComponent as Filter } from "../icons/brands/yith-woocommerce-ajax-product-filter.svg";
 import { ReactComponent as Search } from "../icons/brands/yith-woocommerce-ajax-search.svg";
 import { ReactComponent as Booking } from "../icons/brands/yith-woocommerce-booking.svg";
 import { ReactComponent as CustomizeAccount } from "../icons/brands/yith-woocommerce-customize-myaccount-page.svg";
 import { ReactComponent as Gift } from "../icons/brands/yith-woocommerce-gift-card.svg";
+import { ReactComponent as SalesFunnelLicense } from "../icons/brands/yith-woocommerce-sales-funnel.svg";
 import { ReactComponent as WishList } from "../icons/brands/yith-woocommerce-wishlist.svg";
 import { MarketplaceSdk } from "../sdk/marketplace";
 import { PluginsSdk } from "../sdk/plugins";
-import { RuntimeSdk } from "../sdk/runtime";
 import { createPluginInstallAction } from "./actions";
 import { findUpsellWithName, wcPluginStatusParser } from "./selectors";
+import { RuntimeSdk } from "../sdk/runtime";
 
 function defineFeatureState() {
   return {
@@ -23,9 +24,11 @@ function defineFeatureState() {
     isDisabled: (data) => data?.plugins?.isWCActive === false,
     isInstalling: (data) => data?.plugins?.isInstalling,
     isQueueEmpty: (data) => data?.plugins?.isQueueEmpty,
-    isUpsellNeeded: () => !RuntimeSdk.hasCapability("hasYithExtended"),
+    isUpsellNeeded: () => !NewfoldRuntime.hasCapability("hasYithExtended"),
   };
 }
+
+const isBluehost = RuntimeSdk?.brandSettings?.brand?.includes("bluehost");
 
 export const YITHPluginsDefinitions = (props) => ({
   dataDependencies: {
@@ -40,7 +43,7 @@ export const YITHPluginsDefinitions = (props) => ({
       assets: () => ({
         Image: Booking,
         ActionIcon: null,
-        learnMoreUrl:
+        learnMoreUrl: isBluehost &&
           "https://www.bluehost.com/help/article/yith-booking-and-appointment-for-woocommerce",
       }),
       text: ({ isActive }) => ({
@@ -116,7 +119,7 @@ export const YITHPluginsDefinitions = (props) => ({
       name: "nfd_slug_yith_woocommerce_wishlist",
       assets: () => ({
         Image: WishList,
-        learnMoreUrl:
+        learnMoreUrl: isBluehost &&
           "https://www.bluehost.com/help/article/yith-woocommerce-wishlist",
       }),
       text: ({ isActive }) => ({
@@ -153,7 +156,7 @@ export const YITHPluginsDefinitions = (props) => ({
       name: "nfd_slug_yith_woocommerce_ajax_product_filter",
       assets: () => ({
         Image: Filter,
-        learnMoreUrl:
+        learnMoreUrl: isBluehost &&
           "https://www.bluehost.com/help/article/yith-woocommerce-ajax-product-filter",
       }),
       text: ({ isActive }) => ({
@@ -195,7 +198,7 @@ export const YITHPluginsDefinitions = (props) => ({
       name: "nfd_slug_yith_woocommerce_gift_cards",
       assets: () => ({
         Image: Gift,
-        learnMoreUrl:
+        learnMoreUrl: isBluehost &&
           "https://www.bluehost.com/help/article/yith-woocommerce-gift-cards",
       }),
       text: ({ isActive }) => ({
@@ -234,7 +237,7 @@ export const YITHPluginsDefinitions = (props) => ({
       name: "nfd_slug_yith_woocommerce_customize_myaccount_page",
       assets: () => ({
         Image: CustomizeAccount,
-        learnMoreUrl:
+        learnMoreUrl: isBluehost &&
           "https://www.bluehost.com/help/article/yith-woocommerce-customize-my-account-page",
       }),
       text: ({ isActive }) => ({
@@ -289,7 +292,7 @@ export const YITHPluginsDefinitions = (props) => ({
       state: {
         ...defineFeatureState(),
         isUpsellNeeded: () => false,
-        isAvailable: () => RuntimeSdk.hasCapability("hasEcomdash"),
+        isAvailable: () => NewfoldRuntime.hasCapability("hasEcomdash"),
       },
       actions: {
         installFeature: createPluginInstallAction(
@@ -308,17 +311,17 @@ export const YITHPluginsDefinitions = (props) => ({
     {
       Card: FeatureCard,
       shouldRender: () => false,
-      name: "sales_funnel_license",
+      name: "nfd_slug_wonder_cart",
       assets: () => ({
         Image: SalesFunnelLicense,
       }),
       text: ({ isActive }) => ({
         title: __(
-          "Complete Upsell, Crossell & Promotions Solution",
+          "Complete Upsell, Cross sell & Promotions Solution",
           "wp-module-ecommerce"
         ),
         description: __(
-          "Create and manage deals, sales promotions and upsell campaigns in your shop.",
+          "Create and manage deals, sales promotions and upsell campaigns like Buy-One-Get-One and more.",
           "wp-module-ecommerce"
         ),
         actionName: isActive ? "Manage" : "Enable",
@@ -326,13 +329,21 @@ export const YITHPluginsDefinitions = (props) => ({
       state: {
         ...defineFeatureState(),
         isUpsellNeeded: () => false,
-        isAvailable: () => RuntimeSdk.hasCapability("isEcommerce"),
+        isAvailable: () => NewfoldRuntime.hasCapability("hasYithExtended"),
+        featureUrl: (data) =>
+          data?.plugins?.isInstalled ? `#/store/sales_discounts` : null,
       },
-      actions: {},
+      actions: {
+        installFeature: createPluginInstallAction(
+          "nfd_slug_wonder_cart",
+          17,
+          props
+        ),
+      },
       queries: [
         {
           key: "plugins",
-          selector: wcPluginStatusParser("nfd_slug_ecomdash_wordpress_plugin"),
+          selector: wcPluginStatusParser("nfd_slug_wonder_cart"),
         },
       ],
     },

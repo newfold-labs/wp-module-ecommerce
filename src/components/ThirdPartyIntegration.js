@@ -1,11 +1,10 @@
-import { __ } from "@wordpress/i18n";
-import { Spinner } from "@yoast/ui-library";
+import { Spinner } from "@newfold/ui-component-library";
 import useSWR from "swr";
-import { Section } from "./Section";
+import useSWRMutation from "swr/mutation";
 import { IntegrationsSdk } from "../sdk/integrations";
 import { PluginsSdk } from "../sdk/plugins";
-import useSWRMutation from "swr/mutation";
 import { CaptiveRazorpay } from "./CaptiveRazorpay";
+import { Section } from "./Section";
 
 export const ThirdPartyIntegration = ({
   id,
@@ -44,14 +43,14 @@ export const ThirdPartyIntegration = ({
   return (
     <Section.Settings title={title} description={description}>
       {isLoading ? (
-        <div className="yst-flex yst-items-center yst-text-center yst-justify-center yst-h-60">
-          <Spinner size={8} className="yst-text-primary" />
+        <div className="nfd-flex nfd-items-center nfd-text-center nfd-justify-center nfd-h-60">
+          <Spinner size={8} className="nfd-text-primary" />
         </div>
       ) : (
-        <div className="yst-flex-1">
+        <div className="nfd-flex-1">
           {isConnectionActive ? (
             id !== "razorpay" ? (
-              <div className="components-modal__frame yst-h-[500px]">
+              <div className="components-modal__frame nfd-h-[500px]">
                 <button
                   type="button"
                   onClick={async () => {
@@ -60,14 +59,21 @@ export const ThirdPartyIntegration = ({
                       await refreshIntegrationStatus();
                     if (integrationStatusResponse.complete) {
                       notify.push(`${id}-account-connect-success`, {
-                        title: `Your ${id} account have been connected`,
+                        title: sprintf(
+                          __(
+                            `Your "%1$s" account have been connected`,
+                            "wp-module-ecommerce"
+                          ),            
+                          `${id}`
+                        ),
                         variant: "success",
+                        autoDismiss: 5000
                       });
                     }
                   }}
                 />
                 <iframe
-                  className="yst-h-full yst-w-full"
+                  className="nfd-h-full nfd-w-full"
                   src={integrationStatus?.integration?.captive}
                 />
               </div>

@@ -1,7 +1,9 @@
 import { useEffect, useState } from "@wordpress/element";
 import { __, sprintf } from "@wordpress/i18n";
-import { Button, TextField, ToggleField } from "@yoast/ui-library";
+import { Button, TextField, ToggleField } from "@newfold/ui-component-library";
 import { ReactComponent as RazorPayBrand } from "../icons/brands/razorpay.svg";
+import classNames from "classnames";
+
 /** @type {((key: string) => boolean)[]} */
 const KeyChecks = [
   (key) => key?.startsWith("rzp_test_"),
@@ -59,7 +61,7 @@ export function CaptiveRazorpay({ razorpaySettings }) {
       key_secret: razorpaySettings?.key_secret ?? "",
     });
   };
-  
+
   let isFormDisabled = razorpaySettings === undefined;
   let [isTestKeyValid, isProductionKeyValid] = KeyChecks.map(
     (check) => rzrKeys.key_id === "" || check(rzrKeys.key_id)
@@ -67,15 +69,25 @@ export function CaptiveRazorpay({ razorpaySettings }) {
   let isKeyValid = isTestMode ? isTestKeyValid : isProductionKeyValid;
 
   return (
-    <fieldset>
-      <div className="yst-flex yst-justify-between yst-mb-6">
+    <fieldset className="nfd-border nfd-p-6 nfd-rounded-md">
+      <div
+        className={classNames(
+          "max-[375px]:nfd-flex-col",
+          "min-[376px]:nfd-flex nfd-justify-between min-[376px]:nfd-mb-8"
+        )}
+      >
         <RazorPayBrand className="razorpay-logo" />
-        <Button target="_blank" href="https://rzp.io/i/egoPZR2rbu">
+        <Button
+          as="a"
+          target="_blank"
+          href="https://rzp.io/i/egoPZR2rbu"
+          className={classNames("max-[375px]:nfd-my-2", "min-[376px]:nfd-m-0")}
+        >
           {__("Create an Account", "wp-module-ecommerce")}
         </Button>
       </div>
 
-      <p className="yst-mb-4">
+      <p className="nfd-mb-4">
         {__("Already have an account? ", "wp-module-ecommerce")}
         <a
           href="https://dashboard.razorpay.com/?screen=sign_in&source=bluehost&next=app%2Fwebsite-app-settings%2Fapi-keys"
@@ -84,7 +96,7 @@ export function CaptiveRazorpay({ razorpaySettings }) {
           {__("Login", "wp-module-ecommerce")}
         </a>
       </p>
-      <p className="yst-mb-6 yst-pb-6 yst-border-b yst-font-medium">
+      <p className="nfd-mb-6 nfd-pb-6 nfd-border-b nfd-font-medium">
         {__(
           "After you login to Razorpay, you will need to generate your key ID and key secret codes, you will then need to switch back to this tab in your browser and paste your codes into the fields below.",
           "wp-module-ecommerce"
@@ -92,7 +104,7 @@ export function CaptiveRazorpay({ razorpaySettings }) {
       </p>
       <div
         disabled={isFormDisabled}
-        className="yst-flex yst-flex-col yst-gap-4 yst-mb-4"
+        className="nfd-flex nfd-flex-col nfd-gap-4 nfd-mb-4"
       >
         <ToggleField
           id="rzpTestModeToggle"
@@ -107,10 +119,13 @@ export function CaptiveRazorpay({ razorpaySettings }) {
           name="key_id"
           value={rzrKeys.key_id}
           label={isTestMode ? Content.keyTestIdLabel : Content.keyIdLabel}
-          placeholder={__(
-            `enter your ${isTestMode ? "test" : "production"} key ID here.`,
-            "wp-module-ecommerce"
-          )}
+          placeholder={sprintf(
+            __(
+              `enter your "%1$s" key ID here.`,
+              "wp-module-ecommerce"
+            ),            
+            isTestMode ? __("test", "wp-module-ecommerce") : __("production", "wp-module-ecommerce")
+          )}          
           required
           onChange={(event) => {
             const { value } = event.target;
@@ -118,7 +133,7 @@ export function CaptiveRazorpay({ razorpaySettings }) {
           }}
           description={
             <span
-              style={{ color: isKeyValid ? "inherit" : "#F72F26" }}
+              style={{ color: isKeyValid ? "inherit" : "var(--nfd-ecommerce-text-danger)" }}
               dangerouslySetInnerHTML={{
                 __html: isKeyValid
                   ? Content.keyId
@@ -141,17 +156,20 @@ export function CaptiveRazorpay({ razorpaySettings }) {
           label={
             isTestMode ? Content.keyTestSecretLabel : Content.keySecretLabel
           }
-          placeholder={__(
-            `enter your ${isTestMode ? "test" : "production"} key secret here.`,
-            "wp-module-ecommerce"
-          )}
+          placeholder={sprintf(
+            __(
+              `enter your "%1$s" key secret here.`,
+              "wp-module-ecommerce"
+            ),            
+            isTestMode ? __("test", "wp-module-ecommerce") : __("production", "wp-module-ecommerce")
+          )}                              
           description={
             <span dangerouslySetInnerHTML={{ __html: Content.keySecret }} />
           }
         />
       </div>
-      <p className="yst-mb-4">
-        <span>* indicates a required field</span>
+      <p className="nfd-mb-4">
+        <span>{__("* indicates a required field", "wp-module-ecommerce")}</span>
       </p>
     </fieldset>
   );

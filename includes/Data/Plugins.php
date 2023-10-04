@@ -84,6 +84,10 @@ final class Plugins
 			'file' => 'woo-razorpay/woo-razorpay.php',
 			'url' => 'admin.php?page=wc-settings&tab=checkout&section=razorpay',
 		),
+		'nfd_slug_wonder_cart' => array(
+			'file' => 'wonder-cart/init.php',
+			'url' => 'admin.php?page=wonder-cart',
+		),
 	);
 
 	public static function supported_plugins()

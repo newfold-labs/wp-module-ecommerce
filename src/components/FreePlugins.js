@@ -1,26 +1,36 @@
-import { Spinner } from "@yoast/ui-library";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
+import { __ } from "@wordpress/i18n";
+import { Spinner } from "@newfold/ui-component-library";
 import { FreePluginsDefinition } from "../configs/FreePlugins.config";
 import { Section } from "./Section";
 import { useCardManager } from "./useCardManager";
+import classNames from "classnames";
 
-export function FreePlugins({ notify }) {
+const Text = NewfoldRuntime.hasCapability("isEcommerce")
+  ? __(
+      "Improve your store with these free add-ons included in your plan.",
+      "wp-module-ecommerce"
+    )
+  : __(
+      "Improve your site with these free add-ons included in your plan.",
+      "wp-module-ecommerce"
+    );
+
+export function FreePlugins({ notify, showShadowBox }) {
   let [cards] = useCardManager(FreePluginsDefinition({ notify }));
   return (
-    <Section.Container>
+    <Section.Container showShadowBox={showShadowBox}>
       <Section.Header
         title={__("Additional Features", "wp-module-ecommerce")}
-        subTitle={__(
-          "Improve your site with these free add-ons included in your plan.",
-          "wp-module-ecommerce"
-        )}
+        subTitle={Text}
       />
       <Section.Content>
         {cards.length === 0 && (
-          <div className="yst-flex-1 yst-flex yst-items-center yst-text-center yst-justify-center">
-            <Spinner size={8} className="yst-text-primary" />
+          <div className="nfd-flex-1 nfd-flex nfd-items-center nfd-text-center nfd-justify-center">
+            <Spinner size={8} className="nfd-text-primary" />
           </div>
         )}
-        <div className="yst-grid yst-grid-cols-3 yst-gap-6">
+        <div className={classNames("nfd-grid nfd-gap-6", "sm:nfd-grid-cols-1", "md:nfd-grid-cols-2", "lg:nfd-grid-cols-3")}>
           {cards.map((cardConfig) => {
             let { Card, name, ...props } = cardConfig;
             return <Card key={name} {...props} />;

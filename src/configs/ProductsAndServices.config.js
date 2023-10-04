@@ -5,18 +5,19 @@ import {
   CubeIcon,
   GiftIcon,
 } from "@heroicons/react/24/outline";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { __ } from "@wordpress/i18n";
 import { FeatureCard } from "../components/FeatureCard";
-import { PluginsSdk } from "../sdk/plugins";
-import { RuntimeSdk } from "../sdk/runtime";
 import { MarketplaceSdk } from "../sdk/marketplace";
+import { PluginsSdk } from "../sdk/plugins";
 import { WooCommerceSdk } from "../sdk/woocommerce";
 import { createPluginInstallAction } from "./actions";
 import {
+  findUpsellWithName,
   wcPluginStatusParser,
   wcProductsParser,
-  findUpsellWithName,
 } from "./selectors";
+import { RuntimeSdk } from "../sdk/runtime";
 
 const getUrl = (href) => {
   let [page, qs] = href.split("?");
@@ -25,6 +26,8 @@ const getUrl = (href) => {
   return `${page}?${query}`;
 };
 
+const isBluehost = RuntimeSdk?.brandSettings?.brand?.includes("bluehost");
+
 function defineFeatureState() {
   return {
     isDisabled: (data) => data?.plugins?.isWCActive === false,
@@ -32,7 +35,7 @@ function defineFeatureState() {
     isInstalling: (data) => data?.plugins?.isInstalling,
     isQueueEmpty: (data) => data?.plugins?.isQueueEmpty,
     hasUsedPlugin: (data) => data?.products.length > 0,
-    isUpsellNeeded: () => !RuntimeSdk.hasCapability("hasYithExtended"),
+    isUpsellNeeded: () => !NewfoldRuntime.hasCapability("hasYithExtended"),
     featureUrl: (data) =>
       data?.products.length > 0 ? data.plugins?.pluginUrl : null,
     upsellOptions: (data) => data?.upsellOptions,
@@ -156,7 +159,7 @@ export const ProductsAndServicesDefinition = (props) => ({
       assets: ({ isActive }) => ({
         Image: CalendarIcon,
         ActionIcon: isActive,
-        learnMoreUrl:
+        learnMoreUrl: isBluehost &&
           "https://www.bluehost.com/help/article/yith-booking-and-appointment-for-woocommerce",
       }),
       text: (state) => ({
@@ -210,7 +213,7 @@ export const ProductsAndServicesDefinition = (props) => ({
       assets: ({ isActive }) => ({
         Image: GiftIcon,
         ActionIcon: isActive,
-        learnMoreUrl:
+        learnMoreUrl: isBluehost &&
           "https://www.bluehost.com/help/article/yith-woocommerce-gift-cards",
       }),
       text: (state) => ({

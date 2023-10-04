@@ -1,34 +1,9 @@
-/**
- * @typedef BrandSettings
- * @property {string} brand
- * @property {string} name
- * @property {string} url
- * @property {string} hireExpertsInfo
- * @property {string} support
- * @property {string} adminPage
- * @property {{ payment: string[]; shipping: string[] }} setup
- * @property {{ woocommerce_default_country: string; woocommerce_currency: string }} defaultContact
- *
- */
+import { NewfoldRuntime } from "./NewfoldRuntime";
 
 export const RuntimeSdk = {
-  /**
-   *
-   * @returns {BrandSettings}
-   */
-  get brandSettings() {
-    return window.NFDECOM?.brand_settings;
-  },
-  /**
-   *
-   * @param {"hasEcomdash" | "hasYithExtended" | "isEcommerce" | "isJarvis"} name Capability to check
-   * @returns {boolean}
-   */
-  hasCapability(name) {
-    return window.NFDECOM?.capabilities[name] === true;
-  },
+  brandSettings: NewfoldRuntime.sdk.ecommerce?.brand_settings,
   adminUrl(path, backToNfd = false) {
-    let href = window.NFDECOM?.admin_url + path;
+    let href = NewfoldRuntime.adminUrl(path);
     if (backToNfd === false) {
       return href;
     }
@@ -38,6 +13,6 @@ export const RuntimeSdk = {
     return `${page}?${query}`;
   },
   nonce(name) {
-    return window.NFDECOM?.sdk?.nonces?.[name];
+    return NewfoldRuntime.sdk.ecommerce.nonces?.[name];
   },
 };

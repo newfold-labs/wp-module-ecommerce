@@ -1,11 +1,12 @@
 import pandora from "@faizaanceg/pandora";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { __ } from "@wordpress/i18n";
 import { PluginsSdk } from "../sdk/plugins";
 import { RuntimeSdk } from "../sdk/runtime";
 import { WooCommerceSdk } from "../sdk/woocommerce";
 import { WordPressSdk } from "../sdk/wordpress";
 import { createPluginInstallAction } from "./actions";
-import { wcTasksParser, yithOnboardingParser } from "./selectors";
+import { wcTasksParser, yithOnboardingParser, yithOnboardingPaymentParser, yithOnboardingStoreParser } from "./selectors";
 
 const parsePluginStatus = (plugins) => ({
   isWCActive: PluginsSdk.queries.isPlugin(plugins, ["woocommerce"], "active"),
@@ -33,13 +34,13 @@ export function OnboardingListDefinition(props) {
         text: __("Add your store info", "wp-module-ecommerce"),
         state: {
           isAvailable: (queries) => queries?.plugins?.isWCActive,
-          isCompleted: (queries) => queries?.onboarding?.isCompleted,
+          isCompleted: (queries) => queries?.settings,
           url: () => "#/store/details?highlight=details",
         },
         shouldRender: (state) => state.isAvailable,
         actions: {},
         queries: [
-          { key: "onboarding", selector: wcTasksParser("store_details") },
+          { key: "settings", selector: yithOnboardingStoreParser() },
           { key: "plugins", selector: parsePluginStatus },
         ],
       },
@@ -51,7 +52,7 @@ export function OnboardingListDefinition(props) {
             queries?.plugins?.isWCActive &&
             RuntimeSdk.brandSettings.setup.payment.length > 0,
           isCompleted: (queries) => queries?.settings?.isCompleted,
-          url: () => "#/store/details?highlight=payments",
+          url: () => "#/store/payments",
         },
         shouldRender: (state) => state.isAvailable,
         actions: {},
@@ -59,7 +60,7 @@ export function OnboardingListDefinition(props) {
           { key: "plugins", selector: parsePluginStatus },
           {
             key: "settings",
-            selector: yithOnboardingParser(CaptiveFlows.paypal),
+            selector: yithOnboardingPaymentParser([CaptiveFlows.paypal, CaptiveFlows.razorpay]),
           },
         ],
       },
@@ -116,7 +117,9 @@ export function OnboardingListDefinition(props) {
       },
       {
         name: "Add a new page to your site",
-        text: __("Add a new page to your site", "wp-module-ecommerce"),
+        text: NewfoldRuntime.hasCapability("isEcommerce")
+          ? __("Add a new page to your store", "wp-module-ecommerce")
+          : __("Add a new page to your site", "wp-module-ecommerce"),
         state: {
           isCompleted: () =>
             pandora.get("nfd_ecommerce_onboarding_checklist", {})

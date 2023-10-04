@@ -1,5 +1,6 @@
 import { dateI18n } from "@wordpress/date";
 import { useState } from "@wordpress/element";
+import { __ } from "@wordpress/i18n";
 import {
   Badge,
   Card,
@@ -8,18 +9,19 @@ import {
   Select,
   Spinner,
   Title,
-} from "@yoast/ui-library";
+} from "@newfold/ui-component-library";
 import classNames from "classnames";
 import useSWR from "swr";
 import Reports from "../configs/Reports.config";
 import { ReactComponent as NoOrdersFallback } from "../icons/no-orders-fallback.svg";
 import { formatMoney } from "../sdk/formatMoney";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
+import { RuntimeSdk } from "../sdk/runtime";
 import { WooCommerceSdk } from "../sdk/woocommerce";
 import { Section } from "./Section";
 import { SiteStatus } from "./SiteStatus";
 import { useCardManager } from "./useCardManager";
 import { useInstallWoo } from "./useInstallWoo";
-import { RuntimeSdk } from "../sdk/runtime";
 
 let recentActivityLink = `admin.php?${new URLSearchParams({
   page: "wc-admin",
@@ -30,17 +32,28 @@ let recentOrdersLink = `edit.php?${new URLSearchParams({
   post_type: "shop_order",
 })}`;
 
+const individualOrderLink = (postId) =>
+  `post.php?${new URLSearchParams({
+    post: postId,
+    action: "edit",
+  })}`;
+
 function RecentReport({ title, filter, onSelect, disabled, children }) {
   return (
-    <Card className={`yst-flex-1`}>
-      <Card.Content className={"yst-flex yst-flex-col yst-gap-4"}>
-        <div className="yst-flex yst-items-baseline">
-          <Title className="yst-flex-1" size={4}>
+    <Card className={`nfd-flex-1`}>
+      <Card.Content className={"nfd-flex nfd-flex-col nfd-gap-4"}>
+        <div
+          className={classNames(
+            "max-[360px]:nfd-flex-col max-[360px]:nfd-items-stretch",
+            "sm:nfd-flex sm:nfd-flex-row sm:nfd-items-baseline"
+          )}
+        >
+          <Title className="nfd-flex-1" size={4}>
             {title}
           </Title>
           <Select
             id={title}
-            className="lg:yst-w-1/4 sm:yst-w-1/2"
+            className={classNames("lg:nfd-w-1/4", "sm:nfd-w-2/5")}
             disabled={disabled}
             onChange={(newFilter) => {
               if (newFilter !== filter) {
@@ -48,9 +61,9 @@ function RecentReport({ title, filter, onSelect, disabled, children }) {
               }
             }}
             options={[
-              { label: "Today", value: "day" },
-              { label: "Week to date", value: "week" },
-              { label: "Month to date", value: "month" },
+              { label: __("Today", "wp-module-ecommerce"), value: "day" },
+              { label: __("Week to date", "wp-module-ecommerce"), value: "week" },
+              { label: __("Month to date", "wp-module-ecommerce"), value: "month" },
             ]}
             value={filter}
           />
@@ -69,25 +82,31 @@ function RecentActivity() {
     revalidateIfStale: false,
   });
   return (
-    <RecentReport title="Recent Activity" filter={filter} onSelect={onSelect}>
+    <RecentReport title={__("Recent Activity", "wp-module-ecommerce")} filter={filter} onSelect={onSelect}>
       {cards.length === 0 && (
-        <div className="yst-flex-1 yst-flex yst-items-center yst-text-center yst-justify-center">
-          <Spinner size={8} className="yst-text-primary" />
+        <div className="nfd-flex-1 nfd-flex nfd-items-center nfd-text-center nfd-justify-center">
+          <Spinner size={8} className="nfd-text-primary" />
         </div>
       )}
       {cards.length > 0 && (
         <>
-          <div className="yst-flex-1 yst-grid yst-grid-cols-2 yst-gap-4">
+          <div
+            className={classNames(
+              "nfd-flex-1 nfd-grid nfd-gap-4",
+              "sm:nfd-grid-cols-1",
+              "md:nfd-grid-cols-2"
+            )}
+          >
             {cards.map((cardConfig) => {
               let { Card, name, ...props } = cardConfig;
               return <Card key={name} {...props} />;
             })}
           </div>
           <Link
-            className="yst-text-base yst-no-underline yst-w-fit"
+            className="nfd-text-base nfd-no-underline nfd-w-fit"
             href={RuntimeSdk.adminUrl(recentActivityLink, true)}
           >
-            view all
+            {__("view all", "wp-module-ecommerce")}
           </Link>
         </>
       )}
@@ -96,25 +115,25 @@ function RecentActivity() {
 }
 
 const StatusToTextMapping = {
-  pending: { text: "Pending Payment", variant: "plain" },
-  processing: { text: "Processing", variant: "plain" },
-  "on-hold": { text: "On hold", variant: "upsell" },
-  completed: { text: "Completed", variant: "info" },
+  pending: { text: __("Pending Payment", "wp-module-ecommerce"), variant: "plain" },
+  processing: { text: __("Processing", "wp-module-ecommerce"), variant: "plain" },
+  "on-hold": { text: __("On hold", "wp-module-ecommerce"), variant: "upsell" },
+  completed: { text: __("Completed", "wp-module-ecommerce"), variant: "info" },
   cancelled: {
-    text: "Cancelled",
-    className: "yst-bg-[#E01C1C] yst-text-white",
+    text: __("Cancelled", "wp-module-ecommerce"),
+    className: "nfd-bg-[--nfd-ecommerce-bg-danger] nfd-text-white",
   },
   refunded: {
-    text: "Refunded",
-    className: "yst-bg-[#E01C1C] yst-text-white",
+    text: __("Refunded", "wp-module-ecommerce"),
+    className: "nfd-bg-[--nfd-ecommerce-bg-danger] nfd-text-white",
   },
-  failed: { text: "Failed", className: "yst-bg-[#E01C1C] yst-text-white" },
+  failed: { text: __("Failed", "wp-module-ecommerce"), className: "nfd-bg-[--nfd-ecommerce-bg-danger] nfd-text-white" },
 };
 
 function OrderStatus(props) {
   const { variant, className, text } = StatusToTextMapping[props.status] ?? {};
   return (
-    <Badge variant={variant} className={classNames("yst-w-fit", className)}>
+    <Badge variant={variant} className={classNames("nfd-w-fit", className)}>
       {text ?? props.status}
     </Badge>
   );
@@ -128,22 +147,22 @@ function RecentOrders() {
     { revalidateOnFocus: false }
   );
   return (
-    <RecentReport title="Recent Orders" filter={filter} onSelect={onSelect}>
+    <RecentReport title={__("Recent Orders", "wp-module-ecommerce")} filter={filter} onSelect={onSelect}>
       {orders.isLoading && (
-        <div className="yst-flex-1 yst-items-center yst-text-center yst-justify-center">
-          <Spinner size={8} className="yst-text-primary" />
+        <div className="nfd-flex-1 nfd-items-center nfd-text-center nfd-justify-center">
+          <Spinner size={8} className="nfd-text-primary" />
         </div>
       )}
       {!orders.isLoading && orders.data.length === 0 && (
         <div
           className={classNames(
-            "yst-flex-1 yst-h-full",
-            "yst-flex yst-flex-col yst-flex-wrap yst-items-center yst-gap-4",
-            "yst-p-4 yst-pb-0"
+            "nfd-flex-1 nfd-h-full",
+            "nfd-flex nfd-flex-col nfd-flex-wrap nfd-items-center nfd-gap-4",
+            "nfd-p-4 nfd-pb-0"
           )}
         >
-          <NoOrdersFallback className="yst-flex-2" />
-          <p className="yst-flex-1" >
+          <NoOrdersFallback className="nfd-flex-2" />
+          <p className="nfd-flex-1">
             {__(
               "No orders yet. When you start getting orders, they will show up here.",
               "wp-module-ecommerce"
@@ -153,23 +172,28 @@ function RecentOrders() {
       )}
       {!orders.isLoading && orders.data?.length > 0 && (
         <>
-          <ul className="yst-flex-1">
+          <ul className="nfd-flex-1">
             {orders.data?.map((order) => (
-              <Card as="li" key={order.id}>
+              <Card
+                as="a"
+                key={order.id}
+                href={RuntimeSdk.adminUrl(individualOrderLink(order.id))}
+                className="focus:nfd-mb-[2px]"
+              >
                 <Card.Content
                   className={classNames(
-                    "yst-grid yst-grid-cols-2 yst-gap-y-2 yst-items-center",
-                    "yst-text-sm yst-text-[#495C77]"
+                    "nfd-grid nfd-grid-cols-2 nfd-gap-y-2 nfd-items-center",
+                    "nfd-text-sm nfd-text-[--nfd-ecommerce-text-info]"
                   )}
                 >
                   <Title
                     size={4}
-                    className="yst-leading-normal yst-text-[#495C77]"
+                    className="nfd-leading-normal nfd-text-[--nfd-ecommerce-text-info]"
                   >
                     {order.billing.first_name || "Guest"}{" "}
                     {order.billing.last_name}
                   </Title>
-                  <p className="yst-text-base yst-justify-self-end">
+                  <p className="nfd-text-base nfd-justify-self-end">
                     {formatMoney({
                       cost: Number(order.total),
                       currency: order.currency,
@@ -179,7 +203,7 @@ function RecentOrders() {
                   <p>
                     {dateI18n("F j, Y, g:i a", new Date(order.date_created))}
                   </p>
-                  <p className="yst-justify-self-end">
+                  <p className="nfd-justify-self-end">
                     #{String(order.id).padStart(6, "0")}
                   </p>
                   <OrderStatus status={order.status} />
@@ -188,10 +212,10 @@ function RecentOrders() {
             ))}
           </ul>
           <Link
-            className="yst-text-base yst-no-underline yst-w-fit"
+            className="nfd-text-base nfd-no-underline nfd-w-fit"
             href={RuntimeSdk.adminUrl(recentOrdersLink)}
           >
-            view all
+            {__("view all", "wp-module-ecommerce")}
           </Link>
         </>
       )}
@@ -204,24 +228,30 @@ export function QuickLook(props) {
   let [installWoo, isInstalling] = useInstallWoo(props);
   return (
     <FeatureUpsell
-      className={"yst-p-0 hide-html"}
+      className={"nfd-p-0 hide-html"}
       shouldUpsell={shouldUpsell}
       variant="card"
-      cardText="Install WooCommerce to unlock"
+      cardText={__("Install WooCommerce to unlock", "wp-module-ecommerce")}
       as="button"
       disabled={isInstalling}
       onClick={installWoo}
     >
       <Section.Content>
         <Section.Block
-          title="Quick Look"
-          subtitle="Once you launch your store, you'll see a snapshot of recent purchases and other customer activity."
+          title={__("Quick Look", "wp-module-ecommerce")}
+          subtitle={__("Once you launch your store, you'll see a snapshot of recent purchases and other customer activity.", "wp-module-ecommerce")}
         >
-          <div className="yst-flex yst-mt-10 yst-gap-6">
+          <div
+            className={classNames(
+              "nfd-mt-10 nfd-gap-6",
+              "nfd-flex nfd-flex-col",
+              "xl:nfd-flex-row"
+            )}
+          >
             <RecentActivity />
-            <RecentOrders />
+            {NewfoldRuntime.isWoo && <RecentOrders />}
           </div>
-          <div className="yst-h-4" />
+          <div className="nfd-h-4" />
           <SiteStatus
             comingSoon={props.state.wp.comingSoon}
             notify={props.wpModules.notify}

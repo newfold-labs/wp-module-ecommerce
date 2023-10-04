@@ -6,10 +6,11 @@ import {
   TextInput,
   Spinner,
   TextField,
-} from "@yoast/ui-library";
+} from "@newfold/ui-component-library";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 import { Section } from "./Section";
+import classNames from "classnames";
 
 const CountriesInOFAC = ["CU", "KP", "IR", "RU", "SY", "AF", "BY", "MM", "VN"];
 function useBasicProfile() {
@@ -46,19 +47,19 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
         )}
       >
         {controls.isLoading ? (
-          <div className="yst-flex yst-items-center yst-text-center yst-justify-center yst-h-60">
-            <Spinner size={8} className="yst-text-primary" />
+          <div className="nfd-flex nfd-items-center nfd-text-center nfd-justify-center nfd-h-60">
+            <Spinner size={8} className="nfd-text-primary" />
           </div>
         ) : (
           <div>
             <div>
-              <Label>{__("Where is your store based? *")}</Label>
+              <Label>{__("Where is your store based? *", "wp-module-ecommerce")}</Label>
               {isLoading || !values.country ? (
-                <TextInput name="country" className="yst-mt-2" disabled />
+                <TextInput name="country" className="nfd-mt-2" disabled />
               ) : (
                 <Select
                   id="store-country-select"
-                  className="yst-mt-2"
+                  className="nfd-mt-2"
                   name="country"
                   required
                   onChange={(target) => {
@@ -88,39 +89,45 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                 </Select>
               )}
             </div>
-            <div className="yst-mt-6">
+            <div className="nfd-mt-6">
               <TextField
                 data-section="details"
                 name="woocommerce_store_address"
                 value={values.woocommerce_store_address}
                 required
-                label={__("Address Line 1 *")}
+                label={__("Address Line 1 *", "wp-module-ecommerce")}
               />
             </div>
-            <div className="yst-mt-6">
+            <div className="nfd-mt-6">
               <TextField
                 data-section="details"
                 name="woocommerce_store_address_2"
                 value={values.woocommerce_store_address_2}
-                label={__("Address Line 2 (optional)")}
+                label={__("Address Line 2 (optional)", "wp-module-ecommerce")}
               />
             </div>
-            <div className="yst-mt-6 yst-flex">
-              <div className="yst-flex-1">
+            <div
+              className={classNames(
+                "nfd-mt-6 nfd-flex nfd-flex-col",
+                "sm:nfd-justify-between",
+                "md:nfd-flex-row"
+              )}
+            >
+              <div className="nfd-flex-1">
                 <TextField
                   data-section="details"
                   name="woocommerce_store_city"
                   value={values.woocommerce_store_city}
-                  label={__("City *")}
+                  label={__("City *", "wp-module-ecommerce")}
                   required
                 />
               </div>
               {states?.length > 0 && (
-                <div className="yst-flex-1 yst-ml-8">
-                  <Label>{__("State *")}</Label>
+                <div className="nfd-flex-1 md:nfd-ml-8">
+                  <Label>{__("State *", "wp-module-ecommerce")}</Label>
                   <Select
                     id="state-select"
-                    className="yst-mt-2"
+                    className="nfd-mt-2"
                     required
                     onChange={(target) => {
                       pushChanges({ state: target });
@@ -143,39 +150,39 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                   </Select>
                 </div>
               )}
-              <div className="yst-flex-1 yst-ml-8">
+              <div className="nfd-flex-1 md:nfd-ml-8">
                 <TextField
                   data-section="details"
                   name="woocommerce_store_postcode"
                   value={values.woocommerce_store_postcode}
-                  label={__("Postal Code *")}
+                  label={__("Postal Code *", "wp-module-ecommerce")}
                   required
                 />
               </div>
             </div>
-            <div className="yst-mt-6">
+            <div className="nfd-mt-6">
               <TextField
                 data-section="details"
                 name="woocommerce_email_from_address"
                 value={values.woocommerce_email_from_address}
-                label={__("Email")}
+                label={__("Email", "wp-module-ecommerce")}
                 required
               />
             </div>
-            <div className="yst-mt-6">
+            <div className="nfd-mt-6">
               <Label>
-                {__("What currency do you want to display in your store?")}
+                {__("What currency do you want to display in your store?", "wp-module-ecommerce")}
               </Label>
               {isLoading ? (
                 <TextInput
                   name="woocommerce_currency"
-                  className="yst-mt-2"
+                  className="nfd-mt-2"
                   disabled
                 />
               ) : (
                 <Select
                   id="currency"
-                  className="yst-mt-2 yst-mb-4"
+                  className="nfd-mt-2 nfd-mb-4"
                   name="woocommerce_currency"
                   onChange={(target) => {
                     pushChanges({ woocommerce_currency: target });
@@ -207,7 +214,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                 </Select>
               )}
             </div>
-            <span>* indicates a required field</span>
+            <span>{__("* indicates a required field", "wp-module-ecommerce")}</span>
           </div>
         )}
       </Section.Settings>

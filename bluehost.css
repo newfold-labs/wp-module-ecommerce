@@ -1,15 +1,16 @@
 :root {
-  --nfd-ecommerce-accent-primary: #196bde;
-  --nfd-ecommerce-accent-secondary: #84c0fc;
-  --nfd-ecommerce-accent-tertiary: #006dc7;
-  --nfd-ecommerce-border-primary: #dbdbdb;
-  --nfd-ecommerce-border-secondary: #dce2ea;
-  --nfd-ecommerce-bg-primary: #e5f6ff;
+  --nfd-ecommerce-text-info: #495C77;
+  --nfd-ecommerce-text-secondary: #5B5B5B;
+  --nfd-ecommerce-text-light: #AAAFB8;
+  --nfd-ecomemerce-text-success: #17B212;
+  --nfd-ecommerce-text-dark-success: #048200;
+  --nfd-ecommerce-text-danger: #F72F26;
+  --nfd-ecommerce-text-dark: #404040;
+  
+  --nfd-ecommerce-bg-light: #F8FAFC;
+  --nfd-ecomemerce-bg-success: #178113;
   --nfd-ecommerce-bg-secondary: #eff6fc;
-  --nfd-ecommerce-bg-tertiary: #f5f5f5;
-  --nfd-ecommerce-text-primary: #333333;
-  --nfd-ecommerce-text-secondary: #425466;
-  --nfd-ecommerce-text-tertiary: #5b5b5b;
-  --nfd-ecommerce-font-primary: var(--bh-font);
-  --nfd-ecommerce-font-secondary: var(--bh-font);
+  --nfd-ecommerce-bg-danger: #E01C1C;
+
+
 }

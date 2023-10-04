@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { Label, RadioGroup } from "@yoast/ui-library";
+import { Label, RadioGroup } from "@newfold/ui-component-library";
 import { Section } from "./Section";
 const taxManagementOptions = [
   {
@@ -26,7 +26,7 @@ const TaxSettings = ({ values }) => {
         <Label>
           {__("Would you like to enable sales tax?", "wp-module-ecommerce")}
         </Label>
-        <RadioGroup className="yst-my-0" id="tax" name="woocommerce_calc_taxes">
+        <RadioGroup className="nfd-my-0" id="tax" name="woocommerce_calc_taxes">
           {taxManagementOptions.map((option, i) => (
             <RadioGroup.Radio
               checked={option.value === taxSelected}

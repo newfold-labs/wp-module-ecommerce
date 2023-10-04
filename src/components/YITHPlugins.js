@@ -1,7 +1,9 @@
-import { Spinner } from "@yoast/ui-library";
+import { __ } from "@wordpress/i18n";
+import { Spinner } from "@newfold/ui-component-library";
 import { YITHPluginsDefinitions } from "../configs/YITHPlugins.config";
 import { Section } from "./Section";
 import { useCardManager } from "./useCardManager";
+import classNames from "classnames";
 
 export function YITHPlugins({ woo, wpModules }) {
   let [cards] = useCardManager(
@@ -23,11 +25,18 @@ export function YITHPlugins({ woo, wpModules }) {
       />
       <Section.Content>
         {cards.length === 0 && (
-          <div className="yst-flex yst-items-center yst-text-center yst-justify-center yst-h-60">
-            <Spinner size={8} className="yst-text-primary" />
+          <div className="nfd-flex nfd-items-center nfd-text-center nfd-justify-center nfd-h-60">
+            <Spinner size={8} className="nfd-text-primary" />
           </div>
         )}
-        <div className="yst-grid yst-grid-cols-3 yst-gap-6">
+        <div
+          className={classNames(
+            "nfd-grid nfd-gap-6",
+            "sm:nfd-grid-cols-1",
+            "md:nfd-grid-cols-2",
+            "lg:nfd-grid-cols-3"
+          )}
+        >
           {cards.map((cardConfig) => {
             let { Card, name, ...props } = cardConfig;
             return <Card key={name} {...props} />;

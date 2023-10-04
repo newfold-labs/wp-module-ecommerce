@@ -2,10 +2,12 @@
 
 namespace NewfoldLabs\WP\Module\ECommerce;
 
-use NewfoldLabs\WP\Module\ECommerce\Data\Runtime;
-use NewfoldLabs\WP\ModuleLoader\Container;
+use NewfoldLabs\WP\Module\ECommerce\Data\Brands;
 use NewfoldLabs\WP\Module\ECommerce\Partials\CaptiveFlow;
 use NewfoldLabs\WP\Module\ECommerce\Partials\WooCommerceBacklink;
+use NewfoldLabs\WP\Module\ECommerce\I18nService;
+use NewfoldLabs\WP\Module\Installer\Services\PluginInstaller;
+use NewfoldLabs\WP\ModuleLoader\Container;
 
 /**
  * Class ECommerce
@@ -56,6 +58,9 @@ class ECommerce {
 		'woocommerce_calc_taxes',
 		'woocommerce_currency',
 		'woocommerce_email_from_address',
+		'woocommerce_bacs_settings',
+        'woocommerce_cod_settings',
+        'woocommerce_cheque_settings',
 	);
 
 	/**
@@ -65,7 +70,8 @@ class ECommerce {
 	 */
 	public function __construct( Container $container ) {
 		$this->container = $container;
-		// Module functionality goes here
+		// Module functionality goes here		
+		add_action( 'init', array( $this, 'load_php_textdomain' ) );
 		add_action( 'admin_init', array( $this, 'maybe_do_dash_redirect' ) );
 		add_action( 'admin_bar_menu', array( $this, 'newfold_site_status' ), 200 );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
@@ -83,6 +89,30 @@ class ECommerce {
 				'single'       => true,
 			)
 		);
+		add_filter( 'newfold-runtime', array( $this, 'add_to_runtime' ) );
+	}
+
+	/**
+	 * Loads the textdomain for the module. This applies only to PHP strings.
+	 *
+	 * @return boolean
+	 */
+	public static function load_php_textdomain() {
+		return I18nService::load_php_translations(
+			'wp-module-ecommerce',
+			NFD_ECOMMERCE_PLUGIN_DIRNAME . '/vendor/newfold-labs/wp-module-ecommerce/languages'
+		);
+	}
+
+	public function add_to_runtime( $sdk ) {
+		$values = array(
+			'brand_settings' => Brands::get_config( $this->container ),
+			'nonces' => array(
+				'gateway_toggle' => \wp_create_nonce( 'woocommerce-toggle-payment-gateway-enabled' )
+			),
+			'install_token' => PluginInstaller::rest_get_plugin_install_hash()
+		);
+		return array_merge( $sdk, array( 'ecommerce' => $values ) );
 	}
 
 	public function maybe_do_dash_redirect() {
@@ -130,6 +160,37 @@ class ECommerce {
 				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
 			)
 		);
+		$payments = array(
+			'woocommerce_bacs_settings',
+			'woocommerce_cod_settings',
+			'woocommerce_cheque_settings'
+		);
+		$schema_for_offline_payments = array(
+			'show_in_rest' => array(
+				'schema' => array(
+					'type'       => 'object',
+					'properties' => array(
+						'gateway_id' => array(
+							'type' => 'string',
+						),
+						'enabled' => array(
+							'type' => 'string',
+						),
+						'action' => array(
+							'type' => 'string',
+						),
+						'security' => array(
+							'type' => 'string',
+						),
+					),
+				),
+			),
+			'type'         => 'object',
+			'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
+		);
+		foreach ( $payments as $payment ) {
+			\register_setting( 'general', $payment, $schema_for_offline_payments);
+		}
 	}
 
 	/**
@@ -178,10 +239,10 @@ class ECommerce {
 				array_merge( $asset['dependencies'], array() ),
 				$asset['version']
 			);
-			\wp_add_inline_script(
+			I18nService::load_js_translations(
+				'wp-module-ecommerce',
 				'nfd-ecommerce-dependency',
-				'window.NFDECOM =' . wp_json_encode( Runtime::prepareData( $this->container ) ) . ';',
-				'before'
+				NFD_ECOMMERCE_DIR . '/languages'
 			);
 			\wp_enqueue_script( 'nfd-ecommerce-dependency' );
 		}

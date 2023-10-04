@@ -54,7 +54,7 @@ export const FreePluginsDefinition = (props) => ({
           "Speed up your WordPress site by optimizing page performance with Jetpack Boost.",
           "wp-module-ecommerce"
         ),
-        actionName: isActive ? __("Manage") : __("Enable"),
+        actionName: isActive ? __("Manage", "wp-module-ecommerce") : __("Enable", "wp-module-ecommerce"),
       }),
       state: defineFeatureState(),
       actions: {
@@ -83,7 +83,7 @@ export const FreePluginsDefinition = (props) => ({
           "The best WordPress contact form plugin. Drag & Drop online form builder to create beautiful contact forms, payment forms, & other custom forms.",
           "wp-module-ecommerce"
         ),
-        actionName: isActive ? "Manage" : "Enable",
+        actionName: isActive ? __("Manage", "wp-module-ecommerce") : __("Enable", "wp-module-ecommerce"),
       }),
       state: defineFeatureState(),
       actions: {
@@ -112,7 +112,7 @@ export const FreePluginsDefinition = (props) => ({
           "The best free Google Analytics plugin for WordPress. See how visitors find and use your website, so you can grow your business.",
           "wp-module-ecommerce"
         ),
-        actionName: isActive ? "Manage" : "Enable",
+        actionName: isActive ? __("Manage", "wp-module-ecommerce") : __("Enable", "wp-module-ecommerce"),
       }),
       state: defineFeatureState(),
       actions: {
@@ -142,7 +142,7 @@ export const FreePluginsDefinition = (props) => ({
           "Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the Yoast SEO plugin.",
           "wp-module-ecommerce"
         ),
-        actionName: isActive ? "Manage" : "Enable",
+        actionName: isActive ? __("Manage", "wp-module-ecommerce") : __("Enable", "wp-module-ecommerce"),
       }),
       state: defineFeatureState(),
       actions: {
@@ -171,7 +171,7 @@ export const FreePluginsDefinition = (props) => ({
           "Creative Mail was designed specifically for WordPress and WooCommerce. Our intelligent (and super fun) email editor simplifies email marketing campaign.",
           "wp-module-ecommerce"
         ),
-        actionName: isActive ? "Manage" : "Enable",
+        actionName: isActive ? __("Manage", "wp-module-ecommerce") : __("Enable", "wp-module-ecommerce"),
       }),
       state: defineFeatureState(),
       actions: {
@@ -201,7 +201,7 @@ export const FreePluginsDefinition = (props) => ({
           "OptinMonster is the best WordPress popup builder plugin that helps you grow your email newsletter list and sales with email popups, exit intent popups, floating bars and more!",
           "wp-module-ecommerce"
         ),
-        actionName: isActive ? "Manage" : "Enable",
+        actionName: isActive ? __("Manage", "wp-module-ecommerce") : __("Enable", "wp-module-ecommerce"),
       }),
       state: defineFeatureState(),
       actions: {

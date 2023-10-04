@@ -1,9 +1,9 @@
+import { NewfoldRuntime } from "./NewfoldRuntime";
 import apiFetch from "@wordpress/api-fetch";
-import { createApiUrl } from "./createApiUrl";
 
 const Endpoints = {
   INTEGRATIONS: (id) =>
-    createApiUrl("/newfold-ecommerce/v1/integrations/" + id),
+    NewfoldRuntime.createApiUrl("/newfold-ecommerce/v1/integrations/" + id),
 };
 
 /**

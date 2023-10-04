@@ -2,8 +2,10 @@ import {
   ArrowLongRightIcon,
   CheckCircleIcon,
 } from "@heroicons/react/24/outline";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { useState } from "@wordpress/element";
-import { Card, Link, Spinner, Title } from "@yoast/ui-library";
+import { __ } from "@wordpress/i18n";
+import { Card, Link, Spinner, Title } from "@newfold/ui-component-library";
 import useSWRMutation from "swr/mutation";
 import { OnboardingListDefinition } from "../configs/OnboardingList.config";
 import { useCardManager } from "./useCardManager";
@@ -17,17 +19,17 @@ function OnboardingCheckListItem({ children, actions, state, ...props }) {
   return (
     <li
       className={classNames(
-        "yst-p-[2px]",
-        "yst-m-0 yst-border-b yst-border-line last:yst-border-b-0",
-        "hover:yst-bg-canvas"
+        "nfd-p-[2px]",
+        "nfd-m-0 nfd-border-b nfd-border-line last:nfd-border-b-0",
+        "hover:nfd-bg-canvas"
       )}
     >
       <Link
         className={classNames(
-          "yst-rounded-t-md",
-          "yst-flex yst-items-center yst-gap-3",
-          "yst-py-4 yst-px-5",
-          "yst-text-sm yst-no-underline"
+          "nfd-rounded-t-md",
+          "nfd-flex nfd-items-center nfd-gap-3",
+          "nfd-py-4 nfd-px-5",
+          "nfd-text-sm nfd-no-underline"
         )}
         href={state.url}
         {...(actions.manage && !manageAction.isMutating
@@ -36,15 +38,15 @@ function OnboardingCheckListItem({ children, actions, state, ...props }) {
       >
         <CheckCircleIcon
           className={classNames(
-            "yst-w-[1.125rem]",
-            state.isCompleted ? "yst-text-[#17B212]" : "yst-text-[#AAAFB8]"
+            "nfd-w-[1.125rem]",
+            state.isCompleted ? "nfd-text-[--nfd-ecomemerce-text-success]" : "nfd-text-[--nfd-ecommerce-text-light]"
           )}
         />
-        <span className="yst-flex-1 yst-text-black">{props.text}</span>
+        <span className="nfd-flex-1 nfd-text-black">{props.text}</span>
         {manageAction.isMutating ? (
-          <Spinner size={4} className="yst-text-primary" />
+          <Spinner size={4} className="nfd-text-primary" />
         ) : (
-          <ArrowLongRightIcon className="yst-text-black yst-w-[1.125rem]" />
+          <ArrowLongRightIcon className="nfd-text-black nfd-w-[1.125rem]" />
         )}
       </Link>
     </li>
@@ -56,8 +58,8 @@ export function OnboardingList(props) {
   let [items] = useCardManager(OnboardingListDefinition(props));
   if (items.length === 0) {
     return (
-      <div className="yst-flex-1 yst-flex yst-items-center yst-text-center yst-justify-center">
-        <Spinner size={8} className="yst-text-primary" />
+      <div className="nfd-flex-1 nfd-flex nfd-items-center nfd-text-center nfd-justify-center">
+        <Spinner size={8} className="nfd-text-primary" />
       </div>
     );
   }
@@ -66,15 +68,24 @@ export function OnboardingList(props) {
   let itemsToDisplay =
     view === "incomplete" ? incompleteItems.slice(0, 5) : completedItems;
   return (
-    <div className="yst-grid yst-grid-rows-[repeat(3,_min-content)] yst-gap-4">
-      <Title size={2}>Next steps for your site</Title>
+    <div className="nfd-grid nfd-grid-rows-[repeat(3,_min-content)] nfd-gap-4">
+      <Title size={2}>
+        {NewfoldRuntime.hasCapability("isEcommerce")
+          ? __("Next steps for your store", "wp-module-ecommerce")
+          : __("Next steps for your site", "wp-module-ecommerce")}
+      </Title>
       {view === "incomplete" && itemsToDisplay.length === 0 && (
         <div>
           <p>
-            {__(
-              "Great job! You've completed all the current tasks to get your site up and running successfully!",
-              "wp-module-ecommerce"
-            )}
+            {NewfoldRuntime.hasCapability("isEcommerce")
+              ? __(
+                  "Great job! You've completed all the current tasks to get your store up and running successfully!",
+                  "wp-module-ecommerce"
+                )
+              : __(
+                  "Great job! You've completed all the current tasks to get your site up and running successfully!",
+                  "wp-module-ecommerce"
+                )}
           </p>
           <br />
           <p>
@@ -86,7 +97,7 @@ export function OnboardingList(props) {
         </div>
       )}
       {itemsToDisplay.length > 0 && (
-        <Card as="ul" className="yst-p-0">
+        <Card as="ul" className="nfd-p-0">
           {itemsToDisplay.map((item) => (
             <OnboardingCheckListItem key={item.name} {...item} />
           ))}
@@ -96,7 +107,7 @@ export function OnboardingList(props) {
         <Link
           as="button"
           type="button"
-          className="yst-w-fit yst-justify-self-end yst-no-underline"
+          className="nfd-w-fit nfd-justify-self-end nfd-no-underline"
           onClick={() =>
             setView(view === "completed" ? "incomplete" : "completed")
           }
