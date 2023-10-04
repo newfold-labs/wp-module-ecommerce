@@ -167,6 +167,15 @@ class ECommerce {
 				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
 			)
 		);
+		\register_setting(
+			'general',
+			'bluehost_wordpress_signUp_Clicked',
+			array(
+				'show_in_rest' => true,
+				'type'         => 'boolean',
+				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
+			)
+		);
 		$payments = array(
 			'woocommerce_bacs_settings',
 			'woocommerce_cod_settings',

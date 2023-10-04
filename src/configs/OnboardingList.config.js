@@ -8,7 +8,7 @@ import { WordPressSdk } from "../sdk/wordpress";
 import { createPluginInstallAction } from "./actions";
 import { 
   wcTasksParser, yithOnboardingParser, yithOnboardingPaymentParser, 
-  yithOnboardingStoreParser, mediaUploadedSelector 
+  yithOnboardingStoreParser, mediaUploadedSelector , getBHSettingsDetails
 } from "./selectors";
 import { AnalyticsSdk } from "../sdk/analytics";
 
@@ -27,6 +27,12 @@ const data = {
   page: window.location.href
 }
 
+const signUpBluehostAcademy = () => {
+  AnalyticsSdk.track("next_step", "next_step_bh_wp_academy_clicked", data);
+
+  WordPressSdk.settings.put({bluehost_wordpress_signUp_Clicked: true})
+}
+
 export function OnboardingListDefinition(props) {
   const installJetpack = createPluginInstallAction("jetpack", 20, props);
   return {
@@ -38,6 +44,23 @@ export function OnboardingListDefinition(props) {
       media: WordPressSdk.media.get,
     },
     cards: [
+       {
+        name: "Sign up for Bluehost WordPress Academy",
+        text: __("Sign up for Bluehost WordPress Academy", "wp-module-ecommerce"),
+        state: {
+          isAvailable: (queries) => queries?.settings?.isNovice && RuntimeSdk?.brandSettings?.brand?.includes("bluehost"),
+          isCompleted: (queries) => queries?.settings?.BH_signed_up,
+          url: () => `https://academy.bluehost.com/?utm_source=wp-home&utm_medium=${NewfoldRuntime?.sdk?.ecommerce?.brand_settings?.name}_plugin`,
+          target: () => "_blank"
+        },
+        shouldRender: (state) => state.isAvailable,
+        actions: {
+          manage: () => signUpBluehostAcademy(),
+        },
+        queries: [
+          { key: "settings", selector: getBHSettingsDetails() },
+        ],
+      },
       {
         name: "Add your store info",
         text: __("Add your store info", "wp-module-ecommerce"),
