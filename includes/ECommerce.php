@@ -62,7 +62,8 @@ class ECommerce {
 		'woocommerce_bacs_settings',
         'woocommerce_cod_settings',
         'woocommerce_cheque_settings',
-		'onboarding_experience_level'
+		'onboarding_experience_level',
+		'yoast_seo_signup_status',
 	);
 
 	/**
@@ -169,7 +170,16 @@ class ECommerce {
 		);
 		\register_setting(
 			'general',
-			'bluehost_wordpress_signUp_Clicked',
+			'bluehost_wordpress_signUp_clicked',
+			array(
+				'show_in_rest' => true,
+				'type'         => 'boolean',
+				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
+			)
+		);
+		\register_setting(
+			'general',
+			'yoast_seo_signup_status',
 			array(
 				'show_in_rest' => true,
 				'type'         => 'boolean',

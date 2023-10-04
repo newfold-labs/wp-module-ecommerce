@@ -47,6 +47,10 @@ export const mediaUploadedSelector = () => (mediaData) => {
   return mediaData.filter(media => media?.media_details?.file?.includes("/")).length > 0
 };
 
-export const getBHSettingsDetails = () => (data) => {
-  return {"isNovice": data.onboarding_experience_level == "1", "BH_signed_up": data.bluehost_wordpress_signUp_Clicked}
-}
+export const getWPSettingsDetails = () => (data) => {
+  return {
+    isNovice: data.onboarding_experience_level == "1",
+    BH_signed_up: data.bluehost_wordpress_signUp_clicked,
+    Yoast_signed_up: data.yoast_seo_signup_status,
+  };
+};
