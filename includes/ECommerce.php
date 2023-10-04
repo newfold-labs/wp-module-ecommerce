@@ -90,6 +90,14 @@ class ECommerce {
 			)
 		);
 		add_filter( 'newfold-runtime', array( $this, 'add_to_runtime' ) );
+		add_filter( "postbox_classes_page_wpseo_meta", function( $classes ) {
+			$classes[] = 'closed';
+			return $classes;			
+		}, 10, 1 );
+		add_filter( "postbox_classes_post_wpseo_meta", function( $classes ) {
+			$classes[] = 'closed';
+			return $classes;			
+		}, 10, 1 );
 	}
 
 	/**
