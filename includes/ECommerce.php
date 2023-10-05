@@ -93,7 +93,34 @@ class ECommerce {
 				'single'       => true,
 			)
 		);
-		add_filter( 'newfold-runtime', array( $this, 'add_to_runtime' ) );
+		add_filter( 'newfold-runtime', array( $this, 'add_to_runtime' ) );		
+		$this->add_filters(array( 'postbox_classes_page_wpseo_meta', 'postbox_classes_post_wpseo_meta', 'postbox_classes_product_wpseo_meta' ), function( $classes ) {
+			$classes[] = 'closed';
+			return $classes;			
+		});		
+	}
+
+	/**
+	 * Add multiple filters to a closure
+	 *
+	 * @param $tags
+	 * @param $function_to_add
+	 * @param int $priority
+	 * @param int $accepted_args
+	 *
+	 * @return bool true
+	*/
+	public static function add_filters($tags, $function_to_add, $priority = 10, $accepted_args = 1)
+	{
+	//If the filter names are not an array, create an array containing one item
+	if(!is_array($tags))
+		$tags = array($tags);
+
+	//For each filter name
+	foreach($tags as $index => $tag)
+		add_filter($tag, $function_to_add, (int)(is_array($priority) ? $priority[$index] : $priority), (int)(is_array($accepted_args) ? $accepted_args[$index] : $accepted_args));
+
+	return true;
 	}
 
 	/**
