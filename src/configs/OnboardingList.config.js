@@ -8,7 +8,7 @@ import { WooCommerceSdk } from "../sdk/woocommerce";
 import { WordPressSdk } from "../sdk/wordpress";
 import { createPluginInstallAction } from "./actions";
 import {
-  getWPSettingsDetails,
+  getAcademyEnrollmentDetails,
   mediaUploadedSelector,
   wcTasksParser,
   yithOnboardingParser,
@@ -33,7 +33,7 @@ const data = {
 
 const signUpBluehostAcademy = () => {
   AnalyticsSdk.track("next_step", "next_step_bh_wp_academy_clicked", data);
-  WordPressSdk.settings.put({ bluehost_wordpress_signUp_clicked: true });
+  WordPressSdk.settings.put({ bluehost_academy_signup_clicked: true });
 };
 const signUpYoastSEOAcademy = () => {
   WordPressSdk.settings.put({ yoast_seo_signup_status: true });
@@ -72,7 +72,7 @@ export function OnboardingListDefinition(props) {
         actions: {
           manage: () => signUpBluehostAcademy(),
         },
-        queries: [{ key: "settings", selector: getWPSettingsDetails() }],
+        queries: [{ key: "settings", selector: getAcademyEnrollmentDetails() }],
       },
       {
         name: "Add your store info",
@@ -177,7 +177,7 @@ export function OnboardingListDefinition(props) {
         actions: {
           manage: () => signUpYoastSEOAcademy(),
         },
-        queries: [{ key: "settings", selector: getWPSettingsDetails() }],
+        queries: [{ key: "settings", selector: getAcademyEnrollmentDetails() }],
       },
       {
         name: "Add a new page to your site",

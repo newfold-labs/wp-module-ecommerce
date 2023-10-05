@@ -197,7 +197,7 @@ class ECommerce {
 		);
 		\register_setting(
 			'general',
-			'bluehost_wordpress_signUp_clicked',
+			'bluehost_academy_signup_clicked',
 			array(
 				'show_in_rest' => true,
 				'type'         => 'boolean',
