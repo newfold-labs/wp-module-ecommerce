@@ -260,7 +260,7 @@ class ECommerce {
 			$site_status_menu = array(
 				'id'     => 'site-status',
 				'parent' => 'top-secondary',
-				'href'   => admin_url('admin.php?page=' . $this->container->plugin()->id . '#/home'),
+				'href'   => admin_url('admin.php?page=' . $this->container->plugin()->id . '&nfd-target=coming-soon-section#/settings'),
 				'title'  => '<div style="background-color: #F8F8F8; padding: 0 16px;color:#333333;">' . esc_html__( 'Site Status: ', 'wp-module-ecommerce' ) . $status . '</div>',
 				'meta'   => array(
 					'title' => esc_attr__( 'Launch Your Site', 'wp-module-ecommerce' ),
@@ -288,7 +288,7 @@ class ECommerce {
 			$asset = require $asset_file;
 			\wp_register_script(
 				'nfd-ecommerce-dependency',
-				NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Partials/load-dependencies.js',
+				null,
 				array_merge( $asset['dependencies'], array() ),
 				$asset['version']
 			);
