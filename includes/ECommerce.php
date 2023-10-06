@@ -8,6 +8,7 @@ use NewfoldLabs\WP\Module\ECommerce\Partials\WooCommerceBacklink;
 use NewfoldLabs\WP\Module\ECommerce\I18nService;
 use NewfoldLabs\WP\Module\Installer\Services\PluginInstaller;
 use NewfoldLabs\WP\ModuleLoader\Container;
+use NewfoldLabs\WP\Module\Onboarding\Data\Services\FlowService;
 
 /**
  * Class ECommerce
@@ -61,6 +62,8 @@ class ECommerce {
 		'woocommerce_bacs_settings',
         'woocommerce_cod_settings',
         'woocommerce_cheque_settings',
+		'onboarding_experience_level',
+		'yoast_seo_signup_status',
 	);
 
 	/**
@@ -72,6 +75,7 @@ class ECommerce {
 		$this->container = $container;
 		// Module functionality goes here		
 		add_action( 'init', array( $this, 'load_php_textdomain' ) );
+		add_action( 'init', array( $this, 'load_experience_level' ) );
 		add_action( 'admin_init', array( $this, 'maybe_do_dash_redirect' ) );
 		add_action( 'admin_bar_menu', array( $this, 'newfold_site_status' ), 200 );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
@@ -89,7 +93,34 @@ class ECommerce {
 				'single'       => true,
 			)
 		);
-		add_filter( 'newfold-runtime', array( $this, 'add_to_runtime' ) );
+		add_filter( 'newfold-runtime', array( $this, 'add_to_runtime' ) );		
+		$this->add_filters(array( 'postbox_classes_page_wpseo_meta', 'postbox_classes_post_wpseo_meta', 'postbox_classes_product_wpseo_meta' ), function( $classes ) {
+			$classes[] = 'closed';
+			return $classes;			
+		});		
+	}
+
+	/**
+	 * Add multiple filters to a closure
+	 *
+	 * @param $tags
+	 * @param $function_to_add
+	 * @param int $priority
+	 * @param int $accepted_args
+	 *
+	 * @return bool true
+	*/
+	public static function add_filters($tags, $function_to_add, $priority = 10, $accepted_args = 1)
+	{
+	//If the filter names are not an array, create an array containing one item
+	if(!is_array($tags))
+		$tags = array($tags);
+
+	//For each filter name
+	foreach($tags as $index => $tag)
+		add_filter($tag, $function_to_add, (int)(is_array($priority) ? $priority[$index] : $priority), (int)(is_array($accepted_args) ? $accepted_args[$index] : $accepted_args));
+
+	return true;
 	}
 
 	/**
@@ -102,6 +133,10 @@ class ECommerce {
 			'wp-module-ecommerce',
 			NFD_ECOMMERCE_PLUGIN_DIRNAME . '/vendor/newfold-labs/wp-module-ecommerce/languages'
 		);
+	}
+
+	public static function load_experience_level() {
+		update_option( 'onboarding_experience_level', FlowService::get_experience_level() );
 	}
 
 	public function add_to_runtime( $sdk ) {
@@ -154,6 +189,24 @@ class ECommerce {
 		\register_setting(
 			'general',
 			'woocommerce_no_sales_tax',
+			array(
+				'show_in_rest' => true,
+				'type'         => 'boolean',
+				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
+			)
+		);
+		\register_setting(
+			'general',
+			'bluehost_academy_signup_clicked',
+			array(
+				'show_in_rest' => true,
+				'type'         => 'boolean',
+				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
+			)
+		);
+		\register_setting(
+			'general',
+			'yoast_seo_signup_status',
 			array(
 				'show_in_rest' => true,
 				'type'         => 'boolean',
