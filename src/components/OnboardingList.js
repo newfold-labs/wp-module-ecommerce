@@ -31,6 +31,7 @@ function OnboardingCheckListItem({ children, actions, state, ...props }) {
           "nfd-py-4 nfd-px-5",
           "nfd-text-sm nfd-no-underline"
         )}
+        target={state?.target || "_self"}
         href={state.url}
         {...(actions.manage && !manageAction.isMutating
           ? { onClick: manageAction.trigger }

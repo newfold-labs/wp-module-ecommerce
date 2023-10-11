@@ -9,11 +9,7 @@ export const AnalyticsSdk = {
     const hiiveEvent = new HiiveEvent(
       category,
       action,
-      {
-        value,
-        timestamp: Date.now(),
-        location: window.location.href,
-      },
+      value,
       "wp-module-ecommerce"
     );
     HiiveAnalytics.send(hiiveEvent);

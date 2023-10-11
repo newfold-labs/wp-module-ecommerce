@@ -4,6 +4,7 @@ import { safeFetch } from "./safeFetch";
 
 export const Endpoints = {
   SETTINGS: NewfoldRuntime.createApiUrl("/wp/v2/settings"),
+  MEDIA: NewfoldRuntime.createApiUrl("/wp/v2/media"),
 };
 
 export const WordPressSdk = {
@@ -18,5 +19,10 @@ export const WordPressSdk = {
         data: settings,
       });
     },
+  },
+  media: {
+    async get() {
+      return apiFetch({ url: Endpoints.MEDIA });
+    }
   },
 };
