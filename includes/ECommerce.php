@@ -60,8 +60,8 @@ class ECommerce {
 		'woocommerce_currency',
 		'woocommerce_email_from_address',
 		'woocommerce_bacs_settings',
-        'woocommerce_cod_settings',
-        'woocommerce_cheque_settings',
+		'woocommerce_cod_settings',
+		'woocommerce_cheque_settings',
 		'onboarding_experience_level',
 		'yoast_seo_signup_status',
 	);
@@ -73,7 +73,7 @@ class ECommerce {
 	 */
 	public function __construct( Container $container ) {
 		$this->container = $container;
-		// Module functionality goes here		
+		// Module functionality goes here
 		add_action( 'init', array( $this, 'load_php_textdomain' ) );
 		add_action( 'init', array( $this, 'load_experience_level' ) );
 		add_action( 'admin_init', array( $this, 'maybe_do_dash_redirect' ) );
@@ -93,11 +93,14 @@ class ECommerce {
 				'single'       => true,
 			)
 		);
-		add_filter( 'newfold-runtime', array( $this, 'add_to_runtime' ) );		
-		$this->add_filters(array( 'postbox_classes_page_wpseo_meta', 'postbox_classes_post_wpseo_meta', 'postbox_classes_product_wpseo_meta' ), function( $classes ) {
-			$classes[] = 'closed';
-			return $classes;			
-		});		
+		add_filter( 'newfold-runtime', array( $this, 'add_to_runtime' ) );
+		$this->add_filters(
+			array( 'postbox_classes_page_wpseo_meta', 'postbox_classes_post_wpseo_meta', 'postbox_classes_product_wpseo_meta' ),
+			function ( $classes ) {
+				$classes[] = 'closed';
+				return $classes;
+			}
+		);
 	}
 
 	/**
@@ -105,22 +108,23 @@ class ECommerce {
 	 *
 	 * @param $tags
 	 * @param $function_to_add
-	 * @param int $priority
-	 * @param int $accepted_args
+	 * @param int             $priority
+	 * @param int             $accepted_args
 	 *
 	 * @return bool true
-	*/
-	public static function add_filters($tags, $function_to_add, $priority = 10, $accepted_args = 1)
-	{
-	//If the filter names are not an array, create an array containing one item
-	if(!is_array($tags))
-		$tags = array($tags);
+	 */
+	public static function add_filters( $tags, $function_to_add, $priority = 10, $accepted_args = 1 ) {
+		// If the filter names are not an array, create an array containing one item
+		if ( ! is_array( $tags ) ) {
+			$tags = array( $tags );
+		}
 
-	//For each filter name
-	foreach($tags as $index => $tag)
-		add_filter($tag, $function_to_add, (int)(is_array($priority) ? $priority[$index] : $priority), (int)(is_array($accepted_args) ? $accepted_args[$index] : $accepted_args));
+		// For each filter name
+		foreach ( $tags as $index => $tag ) {
+			add_filter( $tag, $function_to_add, (int) ( is_array( $priority ) ? $priority[ $index ] : $priority ), (int) ( is_array( $accepted_args ) ? $accepted_args[ $index ] : $accepted_args ) );
+		}
 
-	return true;
+		return true;
 	}
 
 	/**
@@ -142,19 +146,19 @@ class ECommerce {
 	public function add_to_runtime( $sdk ) {
 		$values = array(
 			'brand_settings' => Brands::get_config( $this->container ),
-			'nonces' => array(
-				'gateway_toggle' => \wp_create_nonce( 'woocommerce-toggle-payment-gateway-enabled' )
+			'nonces'         => array(
+				'gateway_toggle' => \wp_create_nonce( 'woocommerce-toggle-payment-gateway-enabled' ),
 			),
-			'install_token' => PluginInstaller::rest_get_plugin_install_hash()
+			'install_token'  => PluginInstaller::rest_get_plugin_install_hash(),
 		);
 		return array_merge( $sdk, array( 'ecommerce' => $values ) );
 	}
 
 	public function maybe_do_dash_redirect() {
 		$show_dash = get_option( 'nfd_show_dash_after_woo_activation', false );
-		if ( $show_dash && !wp_doing_ajax() ) {
+		if ( $show_dash && ! wp_doing_ajax() ) {
 			update_option( 'nfd_show_dash_after_woo_activation', false );
-			wp_safe_redirect( admin_url('admin.php?page=' . $this->container->plugin()->id . '#/home') );
+			wp_safe_redirect( admin_url( 'admin.php?page=' . $this->container->plugin()->id . '#/home' ) );
 		}
 	}
 
@@ -213,10 +217,10 @@ class ECommerce {
 				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
 			)
 		);
-		$payments = array(
+		$payments                    = array(
 			'woocommerce_bacs_settings',
 			'woocommerce_cod_settings',
-			'woocommerce_cheque_settings'
+			'woocommerce_cheque_settings',
 		);
 		$schema_for_offline_payments = array(
 			'show_in_rest' => array(
@@ -226,13 +230,13 @@ class ECommerce {
 						'gateway_id' => array(
 							'type' => 'string',
 						),
-						'enabled' => array(
+						'enabled'    => array(
 							'type' => 'string',
 						),
-						'action' => array(
+						'action'     => array(
 							'type' => 'string',
 						),
-						'security' => array(
+						'security'   => array(
 							'type' => 'string',
 						),
 					),
@@ -242,7 +246,7 @@ class ECommerce {
 			'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
 		);
 		foreach ( $payments as $payment ) {
-			\register_setting( 'general', $payment, $schema_for_offline_payments);
+			\register_setting( 'general', $payment, $schema_for_offline_payments );
 		}
 	}
 
@@ -260,7 +264,7 @@ class ECommerce {
 			$site_status_menu = array(
 				'id'     => 'site-status',
 				'parent' => 'top-secondary',
-				'href'   => admin_url('admin.php?page=' . $this->container->plugin()->id . '&nfd-target=coming-soon-section#/settings'),
+				'href'   => admin_url( 'admin.php?page=' . $this->container->plugin()->id . '&nfd-target=coming-soon-section#/settings' ),
 				'title'  => '<div style="background-color: #F8F8F8; padding: 0 16px;color:#333333;">' . esc_html__( 'Site Status: ', 'wp-module-ecommerce' ) . $status . '</div>',
 				'meta'   => array(
 					'title' => esc_attr__( 'Launch Your Site', 'wp-module-ecommerce' ),
@@ -300,5 +304,4 @@ class ECommerce {
 			\wp_enqueue_script( 'nfd-ecommerce-dependency' );
 		}
 	}
-
 }
