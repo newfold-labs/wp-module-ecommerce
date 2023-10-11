@@ -9,6 +9,15 @@ export const yithOnboardingParser = (title) => (data) => {
   return { isCompleted: data?.[title] == "true" };
 };
 
+export const yithOnboardingPaymentParser = (titles) => (data) => {
+  let isCompleted = titles.some(key => data?.[key] === "true");
+  return { isCompleted: isCompleted };
+};
+
+export const yithOnboardingStoreParser = () => (data) => {
+  return data.woocommerce_store_address && data.woocommerce_store_city && data.woocommerce_store_postcode
+}
+
 export const razorpaySelector = (response) => {
   return {
     settings: response?.woocommerce_razorpay_settings,
@@ -32,4 +41,16 @@ export const wcPluginStatusParser = (slug) => (data) => {
 
 export const findUpsellWithName = (name) => (upsellOptions) => {
   return upsellOptions?.find((option) => option.name === name);
+};
+
+export const mediaUploadedSelector = () => (mediaData) => {
+  return mediaData.filter(media => media?.media_details?.file?.includes("/")).length > 0
+};
+
+export const getAcademyEnrollmentDetails = () => (data) => {
+  return {
+    isNovice: data.onboarding_experience_level == "1",
+    BH_signed_up: data.bluehost_academy_signup_clicked,
+    Yoast_signed_up: data.yoast_seo_signup_status,
+  };
 };

@@ -20,4 +20,10 @@ export const NewfoldRuntime = {
   get sdk() {
     return window.NewfoldRuntime?.sdk;
   },
+  get isWoo(){
+    return window.NewfoldRuntime?.isWoocommerceActive
+  },
+  get isJet(){
+    return window.NewfoldRuntime?.isJetpackBoostActive
+  }
 };

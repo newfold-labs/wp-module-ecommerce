@@ -50,7 +50,7 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
             className="nfd-flex nfd-mt-4 nfd-items-center nfd-gap-2 nfd-no-underline"
             href={learnMoreUrl}
             target="_blank"
-            onClick={() => AnalyticsSdk.track( "commerce", title, 'clicked on the learn more url' )}
+            onClick={() => AnalyticsSdk.track( "commerce", title, {value: 'clicked on the learn more url'} )}
           >
             <span>{__("Learn More", "wp-module-ecommerce")}</span>
             <ArrowLongRightIcon className="nfd-h-5 nfd-text-black" />

@@ -1,12 +1,20 @@
 import pandora from "@faizaanceg/pandora";
-import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { __ } from "@wordpress/i18n";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
+import { AnalyticsSdk } from "../sdk/analytics";
 import { PluginsSdk } from "../sdk/plugins";
 import { RuntimeSdk } from "../sdk/runtime";
 import { WooCommerceSdk } from "../sdk/woocommerce";
 import { WordPressSdk } from "../sdk/wordpress";
 import { createPluginInstallAction } from "./actions";
-import { wcTasksParser, yithOnboardingParser } from "./selectors";
+import {
+  getAcademyEnrollmentDetails,
+  mediaUploadedSelector,
+  wcTasksParser,
+  yithOnboardingParser,
+  yithOnboardingPaymentParser,
+  yithOnboardingStoreParser,
+} from "./selectors";
 
 const parsePluginStatus = (plugins) => ({
   isWCActive: PluginsSdk.queries.isPlugin(plugins, ["woocommerce"], "active"),
@@ -20,6 +28,21 @@ const CaptiveFlows = {
   stripe: "nfd-ecommerce-captive-flow-stripe"
 };
 
+const data = {
+  page: window.location.href,
+};
+
+const signUpBluehostAcademy = () => {
+  AnalyticsSdk.track("next_step", "next_step_bh_wp_academy_clicked", data);
+  WordPressSdk.settings.put({ bluehost_academy_signup_clicked: true });
+};
+const signUpYoastSEOAcademy = () => {
+  WordPressSdk.settings.put({ yoast_seo_signup_status: true });
+  AnalyticsSdk.track("next_step", "next_step_yoast_academy_clicked", data);
+};
+const brandName =
+  (NewfoldRuntime?.sdk?.ecommerce?.brand_settings?.name).toLowerCase();
+
 export function OnboardingListDefinition(props) {
   const installJetpack = createPluginInstallAction("jetpack", 20, props);
   return {
@@ -28,20 +51,42 @@ export function OnboardingListDefinition(props) {
       products: WooCommerceSdk.products.list,
       onboarding: WooCommerceSdk.onboarding.tasks,
       settings: WordPressSdk.settings.get,
+      media: WordPressSdk.media.get,
     },
     cards: [
+      {
+        name: "Sign up for Bluehost WordPress Academy",
+        text: __(
+          "Sign up for Bluehost WordPress Academy",
+          "wp-module-ecommerce"
+        ),
+        state: {
+          isAvailable: (queries) =>
+            queries?.settings?.isNovice &&
+            RuntimeSdk?.brandSettings?.brand?.includes("bluehost"),
+          isCompleted: (queries) => queries?.settings?.BH_signed_up,
+          url: () =>
+            `https://academy.bluehost.com/?utm_source=wp-home&utm_medium=${brandName}_plugin`,
+          target: () => "_blank",
+        },
+        shouldRender: (state) => state.isAvailable,
+        actions: {
+          manage: () => signUpBluehostAcademy(),
+        },
+        queries: [{ key: "settings", selector: getAcademyEnrollmentDetails() }],
+      },
       {
         name: "Add your store info",
         text: __("Add your store info", "wp-module-ecommerce"),
         state: {
           isAvailable: (queries) => queries?.plugins?.isWCActive,
-          isCompleted: (queries) => queries?.onboarding?.isCompleted,
+          isCompleted: (queries) => queries?.settings,
           url: () => "#/store/details?highlight=details",
         },
         shouldRender: (state) => state.isAvailable,
         actions: {},
         queries: [
-          { key: "onboarding", selector: wcTasksParser("store_details") },
+          { key: "settings", selector: yithOnboardingStoreParser() },
           { key: "plugins", selector: parsePluginStatus },
         ],
       },
@@ -61,7 +106,10 @@ export function OnboardingListDefinition(props) {
           { key: "plugins", selector: parsePluginStatus },
           {
             key: "settings",
-            selector: yithOnboardingParser(CaptiveFlows.paypal),
+            selector: yithOnboardingPaymentParser([
+              CaptiveFlows.paypal,
+              CaptiveFlows.razorpay,
+            ]),
           },
         ],
       },
@@ -117,6 +165,22 @@ export function OnboardingListDefinition(props) {
         ],
       },
       {
+        name: "Sign up for Yoast SEO Academy",
+        text: __("Sign up for Yoast SEO Academy", "wp-module-ecommerce"),
+        state: {
+          isAvailable: (queries) => queries?.settings?.isNovice,
+          isCompleted: (queries) => queries?.settings?.Yoast_signed_up,
+          url: () =>
+            `https://academy.yoast.com/courses/?utm_source=wp-home&utm_medium=${brandName}_plugin`,
+          target: () => "_blank",
+        },
+        shouldRender: (state) => state.isAvailable,
+        actions: {
+          manage: () => signUpYoastSEOAcademy(),
+        },
+        queries: [{ key: "settings", selector: getAcademyEnrollmentDetails() }],
+      },
+      {
         name: "Add a new page to your site",
         text: NewfoldRuntime.hasCapability("isEcommerce")
           ? __("Add a new page to your store", "wp-module-ecommerce")
@@ -137,6 +201,24 @@ export function OnboardingListDefinition(props) {
           },
         },
         queries: [],
+      },
+      {
+        name: "Upload media to your site",
+        text: __("Upload media to your site", "wp-module-ecommerce"),
+        state: {
+          isCompleted: (queries) => queries?.media,
+          url: () => "media-new.php",
+        },
+        shouldRender: () => true,
+        actions: {
+          manage: () =>
+            AnalyticsSdk.track(
+              "next_step",
+              "next_step_add_media_clicked",
+              data
+            ),
+        },
+        queries: [{ key: "media", selector: mediaUploadedSelector() }],
       },
       {
         name: "Connect to your social media accounts",

@@ -53,6 +53,23 @@ final class Brands {
 						'woocommerce_currency' => 'INR',
 					),
 				);
+			case 'hostgator':
+				return array(
+					'brand' => 'hostgator',
+					'name' => 'hostgator',
+					'url' => 'https://hostgator.com',
+					'hireExpertsInfo' => 'admin.php?page=hostgator#/marketplace/services/blue-sky',
+					'support' => 'https://www.hostgator.com/contact',
+					'adminPage' => 'admin.php?page=hostgator',
+					'setup' => array(
+						'payment' => array('Paypal', 'Razorpay'),
+						'shipping' => array(),
+					),
+					'defaultContact' => array(
+						'woocommerce_default_country' => 'BR:AL',
+						'woocommerce_currency' => 'BRL',
+					),
+				);
 			case 'bluehost':
 			default:
 				return array(

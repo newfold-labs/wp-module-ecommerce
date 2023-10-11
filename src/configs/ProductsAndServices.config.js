@@ -17,6 +17,7 @@ import {
   wcPluginStatusParser,
   wcProductsParser,
 } from "./selectors";
+import { RuntimeSdk } from "../sdk/runtime";
 
 const getUrl = (href) => {
   let [page, qs] = href.split("?");
@@ -24,6 +25,8 @@ const getUrl = (href) => {
   query.set("return_to_nfd", window.location.hash.replace("#", ""));
   return `${page}?${query}`;
 };
+
+const isBluehost = RuntimeSdk?.brandSettings?.brand?.includes("bluehost");
 
 function defineFeatureState() {
   return {
@@ -156,7 +159,7 @@ export const ProductsAndServicesDefinition = (props) => ({
       assets: ({ isActive }) => ({
         Image: CalendarIcon,
         ActionIcon: isActive,
-        learnMoreUrl:
+        learnMoreUrl: isBluehost &&
           "https://www.bluehost.com/help/article/yith-booking-and-appointment-for-woocommerce",
       }),
       text: (state) => ({
@@ -210,7 +213,7 @@ export const ProductsAndServicesDefinition = (props) => ({
       assets: ({ isActive }) => ({
         Image: GiftIcon,
         ActionIcon: isActive,
-        learnMoreUrl:
+        learnMoreUrl: isBluehost &&
           "https://www.bluehost.com/help/article/yith-woocommerce-gift-cards",
       }),
       text: (state) => ({

@@ -139,7 +139,7 @@ export function StoreDetails(props) {
             await WooCommerceSdk.onboarding.updateProfile({ completed: true });
           }
           notify.push(`store-details-save-success`, {
-            title: "Successfully saved the Store Details",
+            title: __("Successfully saved the Store Details", "wp-module-ecommerce"),
             variant: "success",
             autoDismiss: 5000,
           });
