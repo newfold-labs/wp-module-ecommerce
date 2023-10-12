@@ -6,6 +6,7 @@ use NewfoldLabs\WP\Module\ECommerce\Data\Brands;
 use NewfoldLabs\WP\Module\ECommerce\Partials\CaptiveFlow;
 use NewfoldLabs\WP\Module\ECommerce\Partials\WooCommerceBacklink;
 use NewfoldLabs\WP\Module\ECommerce\I18nService;
+use NewfoldLabs\WP\Module\ECommerce\WonderCart;
 use NewfoldLabs\WP\Module\Installer\Services\PluginInstaller;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\Module\Onboarding\Data\Services\FlowService;
@@ -81,6 +82,13 @@ class ECommerce {
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_assets' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_textdomains' ) );
+
+		// Handle WonderCart Integrations
+		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
+			$wonder_cart = new WonderCart( $container );
+			$wonder_cart->init();
+		}
+
 		CaptiveFlow::init();
 		WooCommerceBacklink::init( $container );
 		register_meta(
