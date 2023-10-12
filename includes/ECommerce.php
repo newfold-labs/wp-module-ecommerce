@@ -89,6 +89,21 @@ class ECommerce {
 			$wonder_cart->init();
 		}
 
+		// Temporary Yith Paypal filters for Brazilian sites
+		if ( get_locale() === 'pt_BR' ) {
+			add_filter( 'yith_ppwc_is_custom_credit_card_enabled', '__return_false' );
+			add_filter( 'yith_paypal_payments_remove_cc_settings', '__return_true' );
+			add_filter(
+				'yith_paypal_payments_login_url_params',
+				function () {
+					$args['country.x']   = 'BR';
+					$args['countryCode'] = 'BR';
+					$args['product']     = 'EXPRESS_CHECKOUT';
+					return $args;
+				}
+			);
+		}
+
 		CaptiveFlow::init();
 		WooCommerceBacklink::init( $container );
 		register_meta(
