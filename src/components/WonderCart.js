@@ -62,6 +62,7 @@ export function WonderCart(props) {
                   type="button"
                   as={canAccessGlobalCTB ? "a" : "button"}
                   data-ctb-id={canAccessGlobalCTB ? "f95ccf1e-3028-4ea7-b2c2-847969348e8b" : null}
+                  data-action={canAccessGlobalCTB ? "load-nfd-ctb" : null}
                   href={canAccessGlobalCTB && ""}
                   variant="upsell"
                   isLoading={showInProgress}
