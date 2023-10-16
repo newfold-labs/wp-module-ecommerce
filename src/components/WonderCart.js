@@ -62,8 +62,7 @@ export function WonderCart(props) {
                   type="button"
                   as={canAccessGlobalCTB ? "a" : "button"}
                   data-ctb-id={canAccessGlobalCTB ? "f95ccf1e-3028-4ea7-b2c2-847969348e8b" : null}
-                  data-action={canAccessGlobalCTB ? "load-nfd-ctb" : null}
-                  href={canAccessGlobalCTB && "https://my.bluehost.com/hosting/app?utm_source=wp-marketplace&utm_medium=brand-plugin&utm_campaign=wordpress-ad&utm_content=buynow#/marketplace/product"}
+                  href={canAccessGlobalCTB && NewfoldRuntime.sdk.ecommerce.brand_settings.wondercartBuyNow}
                   variant="upsell"
                   isLoading={showInProgress}
                   onClick={!canAccessGlobalCTB && installWonderCart}
@@ -78,7 +77,7 @@ export function WonderCart(props) {
         className="hide-html"
         shouldUpsell
         variant="card"
-        cardLink={canAccessGlobalCTB && "https://my.bluehost.com/hosting/app?utm_source=wp-marketplace&utm_medium=brand-plugin&utm_campaign=wordpress-ad&utm_content=buynow#/marketplace/product"}
+        cardLink={canAccessGlobalCTB && NewfoldRuntime.sdk.ecommerce.brand_settings.wondercartBuyNow}
         cardText={canAccessGlobalCTB ? __("Buy now", "wp-module-ecommerce") : __("Install now", "wp-module-ecommerce")}
         as={canAccessGlobalCTB ? "a" : "button"}
         disabled={showInProgress}

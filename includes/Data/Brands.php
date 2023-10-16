@@ -34,6 +34,7 @@ final class Brands {
 						'woocommerce_default_country' => 'AU:NSW',
 						'woocommerce_currency' => 'AUD',
 					),
+					'wondercartBuyNow' => ''
 				);
 
 			case 'bluehost-india':
@@ -52,6 +53,7 @@ final class Brands {
 						'woocommerce_default_country' => 'IN:AP',
 						'woocommerce_currency' => 'INR',
 					),
+					'wondercartBuyNow' => ''
 				);
 			case 'hostgator':
 				return array(
@@ -69,6 +71,7 @@ final class Brands {
 						'woocommerce_default_country' => 'BR:AL',
 						'woocommerce_currency' => 'BRL',
 					),
+					'wondercartBuyNow' => ''
 				);
 			case 'bluehost':
 			default:
@@ -87,6 +90,7 @@ final class Brands {
 						'woocommerce_default_country' => 'US:AZ',
 						'woocommerce_currency' => 'USD',
 					),
+					'wondercartBuyNow' => 'https://my.bluehost.com/hosting/app?utm_source=wp-marketplace&utm_medium=brand-plugin&utm_campaign=wordpress-ad&utm_content=buynow#/marketplace/product'
 				);
 		}
 	}
