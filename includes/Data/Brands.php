@@ -7,7 +7,7 @@ use NewfoldLabs\WP\ModuleLoader\Container;
  */
 final class Brands {
 	private static function get_brand_name( Container $container ) {
-		$brand_raw_value  = $container->plugin()->brand;
+		$brand_raw_value = $container->plugin()->brand;
 		return \sanitize_title( str_replace( '_', '-', $brand_raw_value ) );
 	}
 	/**
@@ -16,76 +16,76 @@ final class Brands {
 	 * @return array
 	 */
 	public static function get_config( Container $container ) {
-		$brand = Brands::get_brand_name( $container );
-		switch ($brand) {
+		$brand = self::get_brand_name( $container );
+		switch ( $brand ) {
 			case 'crazy-domains':
 				return array(
-					'brand' => 'crazy-domains',
-					'name' => 'CrazyDomains',
-					'url' => 'https://crazydomains.com',
+					'brand'           => 'crazy-domains',
+					'name'            => 'CrazyDomains',
+					'url'             => 'https://crazydomains.com',
 					'hireExpertsInfo' => 'admin.php?page=crazy-domains#/marketplace/services/blue-sky',
-					'support' => 'https://www.crazydomains.in/contact',
-					'adminPage' => 'admin.php?page=crazy-domains',
-					'setup' => array(
-						'payment' => array('Paypal'),
-						'shipping' => array('Shippo'),
+					'support'         => 'https://www.crazydomains.in/contact',
+					'adminPage'       => 'admin.php?page=crazy-domains',
+					'setup'           => array(
+						'payment'  => array( 'Paypal' ),
+						'shipping' => array( 'Shippo' ),
 					),
-					'defaultContact' => array(
+					'defaultContact'  => array(
 						'woocommerce_default_country' => 'AU:NSW',
-						'woocommerce_currency' => 'AUD',
+						'woocommerce_currency'        => 'AUD',
 					),
 				);
 
 			case 'bluehost-india':
 				return array(
-					'brand' => 'bluehost-india',
-					'name' => 'Bluehost',
-					'url' => 'https://bluehost.in',
+					'brand'           => 'bluehost-india',
+					'name'            => 'Bluehost',
+					'url'             => 'https://bluehost.in',
 					'hireExpertsInfo' => 'https://www.bluehost.in/solutions/full-service',
-					'support' => 'https://helpchat.bluehost.in',
-					'adminPage' => 'admin.php?page=bluehost',
-					'setup' => array(
-						'payment' => array('Paypal', 'Razorpay'),
+					'support'         => 'https://helpchat.bluehost.in',
+					'adminPage'       => 'admin.php?page=bluehost',
+					'setup'           => array(
+						'payment'  => array( 'Paypal', 'Razorpay' ),
 						'shipping' => array(),
 					),
-					'defaultContact' => array(
+					'defaultContact'  => array(
 						'woocommerce_default_country' => 'IN:AP',
-						'woocommerce_currency' => 'INR',
+						'woocommerce_currency'        => 'INR',
 					),
 				);
 			case 'hostgator':
 				return array(
-					'brand' => 'hostgator',
-					'name' => 'hostgator',
-					'url' => 'https://hostgator.com',
+					'brand'           => 'hostgator',
+					'name'            => 'hostgator',
+					'url'             => 'https://hostgator.com',
 					'hireExpertsInfo' => 'admin.php?page=hostgator#/marketplace/services/blue-sky',
-					'support' => 'https://www.hostgator.com/contact',
-					'adminPage' => 'admin.php?page=hostgator',
-					'setup' => array(
-						'payment' => array('Paypal', 'Razorpay'),
+					'support'         => 'https://www.hostgator.com/contact',
+					'adminPage'       => 'admin.php?page=hostgator',
+					'setup'           => array(
+						'payment'  => array( 'Paypal', 'Razorpay' ),
 						'shipping' => array(),
 					),
-					'defaultContact' => array(
+					'defaultContact'  => array(
 						'woocommerce_default_country' => 'BR:AL',
-						'woocommerce_currency' => 'BRL',
+						'woocommerce_currency'        => 'BRL',
 					),
 				);
 			case 'bluehost':
 			default:
 				return array(
-					'brand' => 'bluehost',
-					'name' => 'Bluehost',
-					'url' => 'https://bluehost.com',
+					'brand'           => 'bluehost',
+					'name'            => 'Bluehost',
+					'url'             => 'https://bluehost.com',
 					'hireExpertsInfo' => 'admin.php?page=bluehost#/marketplace/services/blue-sky',
-					'support' => 'https://www.bluehost.com/contact',
-					'adminPage' => 'admin.php?page=bluehost',
-					'setup' => array(
-						'payment' => array('Paypal', 'Razorpay'),
-						'shipping' => array('Shippo'),
+					'support'         => 'https://www.bluehost.com/contact',
+					'adminPage'       => 'admin.php?page=bluehost',
+					'setup'           => array(
+						'payment'  => array( 'Paypal', 'Razorpay' ),
+						'shipping' => array( 'Shippo' ),
 					),
-					'defaultContact' => array(
+					'defaultContact'  => array(
 						'woocommerce_default_country' => 'US:AZ',
-						'woocommerce_currency' => 'USD',
+						'woocommerce_currency'        => 'USD',
 					),
 				);
 		}
