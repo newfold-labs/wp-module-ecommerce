@@ -7,6 +7,7 @@ import { PluginsSdk } from "../sdk/plugins";
 import { Section } from "./Section";
 import { useInstallWonderCart } from "./useInstallWonderCart";
 import classNames from "classnames";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 
 let wonderCartParser = wcPluginStatusParser("nfd_slug_wonder_cart");
 
@@ -19,6 +20,9 @@ export function WonderCart(props) {
         .then(wonderCartParser),
     { refreshInterval: 30 * 1000 }
   );
+
+  const canAccessGlobalCTB = NewfoldRuntime.hasCapability("canAccessGlobalCTB");
+
   let [installWonderCart, isInstalling] = useInstallWonderCart(props);
   if (wonderCartStatus.isLoading) {
     return <span />;
@@ -54,14 +58,17 @@ export function WonderCart(props) {
               </span>
             </div>
             <div className="nfd-flex-none">
-              <Button
-                type="button"
-                variant="upsell"
-                isLoading={showInProgress}
-                onClick={installWonderCart}
-              >
-                {__("Install now", "wp-module-ecommerce")}
-              </Button>
+                <Button
+                  type="button"
+                  as={canAccessGlobalCTB ? "a" : "button"}
+                  data-ctb-id={canAccessGlobalCTB ? "f95ccf1e-3028-4ea7-b2c2-847969348e8b" : null}
+                  href={canAccessGlobalCTB && NewfoldRuntime.sdk.ecommerce.brand_settings.wondercartBuyNow}
+                  variant="upsell"
+                  isLoading={showInProgress}
+                  onClick={!canAccessGlobalCTB && installWonderCart}
+                >
+                  {canAccessGlobalCTB ? __("Buy now", "wp-module-ecommerce") : __("Install now", "wp-module-ecommerce")}
+                </Button>
             </div>
           </div>
         </div>
@@ -70,10 +77,12 @@ export function WonderCart(props) {
         className="hide-html"
         shouldUpsell
         variant="card"
-        cardText={__("Install now", "wp-module-ecommerce")}
-        as="button"
+        cardLink={canAccessGlobalCTB && NewfoldRuntime.sdk.ecommerce.brand_settings.wondercartBuyNow}
+        cardText={canAccessGlobalCTB ? __("Buy now", "wp-module-ecommerce") : __("Install now", "wp-module-ecommerce")}
+        as={canAccessGlobalCTB ? "a" : "button"}
         disabled={showInProgress}
-        onClick={installWonderCart}
+        data-ctb-id={canAccessGlobalCTB ? "f95ccf1e-3028-4ea7-b2c2-847969348e8b" : null}
+        onClick={!canAccessGlobalCTB && installWonderCart}
       >
         <WonderCartUpsell />
       </FeatureUpsell>
