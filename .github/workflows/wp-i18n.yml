@@ -98,8 +98,8 @@ jobs:
       - name: Commit web files
         if: steps.changes.outputs.changed != 0
         run: |
-          git config --local user.name "${{ github.event.head_commit.author.name }}"
-          git config --local user.email "${{ github.event.head_commit.author.email }}"
+          git config --global user.name "${{ github.event.head_commit.author.name }}"
+          git config --global user.email "${{ github.event.head_commit.author.email }}"
           git remote -v
           git add -A
           git commit -m "WordPress I18N triggered by commit ${{ github.sha }}"
