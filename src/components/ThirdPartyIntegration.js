@@ -78,7 +78,7 @@ export const ThirdPartyIntegration = ({
           await refreshIntegrationStatus();
       if (integrationStatusResponse.complete) {
         notify.push(`${id}-account-connect-success`, {
-          title: `Your ${id} account have been connected`,
+          title: __(`Your ${id} account have been connected`,"wp-module-ecommerce"),
           variant: 'success',
         });
       }

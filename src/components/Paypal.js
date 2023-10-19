@@ -75,8 +75,7 @@ const Paypal = ({ notify }) => {
                 <Link
                   href={yith_ppwc_login.loginURL}
                   variant="primary"
-                  style={{ color: "#fff" }}
-                  className="nfd-button nfd-button--primary yith-btn-paypal"
+                  className="nfd-button nfd-button--primary yith-btn-paypal nfd-text-white"
                   target="_blank"
                   data-paypal-onboard-complete="onboardedCallback"
                   data-paypal-button="PPLtBlue"
