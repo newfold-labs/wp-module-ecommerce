@@ -71,7 +71,7 @@ export function OnboardingScreen({
               </p>
                 <div className="nfd-relative nfd-flex nfd-justify-center nfd-items-center">
                   
-                  {comingSoon ? <div className="nfd-flex-col"><Illustration1 /><Illustration className="nfd-items-start" /></div>: {/* <iframe src = "http://ecommerce-module.local" height="100%" className="w-64 origin-[400%]" title="Iframe Example" ></iframe> */}} 
+                  {comingSoon ? <div className="nfd-flex-col"><Illustration1 /><Illustration className="nfd-items-start" /></div>: <div className="nfd-flex-col"><Illustration1 /></div>} 
                   <div className="nfd-absolute" style={{ top: "43%" }}>
                     <Button
                       as="a"
@@ -84,7 +84,7 @@ export function OnboardingScreen({
                       target="_blank"
                       variant="secondary"
                     >
-                      {__("View your button", "wp-module-ecommerce")}
+                      {__("View your site", "wp-module-ecommerce")}
                     </Button>
                   </div>
                 </div>
