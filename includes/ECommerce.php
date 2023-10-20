@@ -76,7 +76,6 @@ class ECommerce {
 		$this->container = $container;
 		// Module functionality goes here
 		add_action( 'init', array( $this, 'load_php_textdomain' ) );
-		add_action( 'toplevel_page_bluehost', array( $this, 'load_experience_level' ) );
 		add_action( 'admin_init', array( $this, 'maybe_do_dash_redirect' ) );
 		add_action( 'admin_bar_menu', array( $this, 'newfold_site_status' ), 200 );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
@@ -117,6 +116,7 @@ class ECommerce {
 			)
 		);
 		add_filter( 'newfold-runtime', array( $this, 'add_to_runtime' ) );
+		$this->load_experience_level(); // todo : to do it using custom hook;
 		$this->add_filters(
 			array( 'postbox_classes_page_wpseo_meta', 'postbox_classes_post_wpseo_meta', 'postbox_classes_product_wpseo_meta' ),
 			function ( $classes ) {
