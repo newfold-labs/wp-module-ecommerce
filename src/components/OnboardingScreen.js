@@ -111,7 +111,8 @@ export function OnboardingScreen({
                       <iframe
                         className="mini-preview-frame"
                         src={window.location.origin}
-                        style={{width: "400%", minHeight: "400%", transform: "scale(0.25)", backgroundColor: "rgb(255, 255, 255)", flexBasis: "fit-content"}}
+                        scrolling="no"
+                        style={{width: "400%", minHeight: "400%", transform: "scale(0.25)", backgroundColor: "rgb(255, 255, 255)", flexBasis: "fit-content", overflow: "hidden"}}
                       ></iframe>
                     </div>
                   </div>
