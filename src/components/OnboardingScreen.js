@@ -8,6 +8,7 @@ import { OnboardingList } from "./OnboardingList";
 import { Section } from "./Section";
 import { SiteStatus } from "./SiteStatus";
 import classNames from "classnames";
+import { useState } from "@wordpress/element";
 
 const Text = {
   Pending: {
@@ -19,13 +20,13 @@ const Text = {
       "wp-module-ecommerce"
     ),
     Illustration: ComingSoonIllustration,
-    Illustration1: SitePreviewIllustration
+    Illustration1: SitePreviewIllustration,
   },
   Live: {
     title: __("Ready to go to the next level?", "wp-module-ecommerce"),
     description: __("Your site is live to the world!", "wp-module-ecommerce"),
     Illustration: WelcomeIllustration,
-    Illustration1: SitePreviewIllustration
+    Illustration1: SitePreviewIllustration,
   },
 };
 
@@ -38,6 +39,16 @@ export function OnboardingScreen({
   const { title, description, Illustration, Illustration1 } = comingSoon
     ? Text.Pending
     : Text.Live;
+
+  const [hovered, setIsHovered] = useState(false);
+
+  const handleMouseOver = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
   return (
     <Section.Container
       className="nfd-welcome-section"
@@ -69,27 +80,65 @@ export function OnboardingScreen({
                   </span>
                 )}
               </p>
-                <div className="nfd-relative nfd-flex nfd-justify-center nfd-items-center">
-                  
-                  {comingSoon ? <div className="nfd-flex-col"><Illustration1 /><Illustration className="nfd-items-start" /></div>: <div className="nfd-flex-col"><Illustration1 /></div>} 
-                  <div className="nfd-absolute" style={{ top: "43%" }}>
-                    <Button
-                      as="a"
-                      className="nfd-bg-canvas"
-                      href={
-                        NewfoldRuntime.hasCapability("isEcommerce")
-                          ? `${NewfoldRuntime.siteDetails.url}/shop`
-                          : NewfoldRuntime.siteDetails.url
-                      }
-                      target="_blank"
-                      variant="secondary"
-                    >
-                      {__("View your site", "wp-module-ecommerce")}
-                    </Button>
+              <div
+                onMouseOver={handleMouseOver}
+                onMouseOut={handleMouseLeave}
+                className="nfd-relative  nfd-flex nfd-justify-center nfd-items-center"
+              >
+                {comingSoon ? (
+                  <div className="nfd-flex-col">
+                    <Illustration1 />
+                    <Illustration className="nfd-items-start" />
                   </div>
+                ) : (
+                  <div className="nfd-flex-col">
+                    <Illustration1 />
+                    <div
+                      className="mini-preview-wrapper"
+                      style={{
+                        width: "419px",
+                        height: "216px",
+                        boxSizing: "content-box",
+                        zIndex: "2",
+                        opacity: "1",
+                        border: "solid 1px #000",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItems:"center"
+                      }}
+                    >
+                      <iframe
+                        className="mini-preview-frame"
+                        src="http://ecommerce-module.local"
+                        style={{width: "400%", height: "400%", transform: "scale(0.25)", backgroundColor: "rgb(255, 255, 255)", flexBasis: "fit-content"}}
+                      ></iframe>
+                    </div>
+                  </div>
+                )}
+                <div
+                  className="nfd-absolute animate_pulse"
+                  style={{
+                    top: "43%",
+                    visibility: hovered ? "visible" : "hidden",
+                    transition: "all 0.8s ease-in-out 0.4s",
+                  }}
+                >
+                  <Button
+                    as="a"
+                    className="nfd-bg-canvas"
+                    href={
+                      NewfoldRuntime.hasCapability("isEcommerce")
+                        ? `${NewfoldRuntime.siteDetails.url}/shop`
+                        : NewfoldRuntime.siteDetails.url
+                    }
+                    target="_blank"
+                    variant="secondary"
+                  >
+                    {__("View your site", "wp-module-ecommerce")}
+                  </Button>
                 </div>
-
-              
+              </div>
             </div>
             <OnboardingList notify={notify} />
           </div>
