@@ -30,7 +30,7 @@
   ],
   "require": {
     "newfold-labs/wp-module-installer": "^1.1",
-    "newfold-labs/wp-module-onboarding-data": "^0.0.2"
+    "newfold-labs/wp-module-onboarding-data": "^0.0"
   },
   "require-dev": {
     "newfold-labs/wp-php-standards": "@stable",
@@ -39,7 +39,7 @@
   },
   "scripts": {
     "i18n": [
-      "vendor/bin/wp i18n make-pot . ./languages/wp-module-ecommerce.pot --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/aulisius/bluehost-wordpress-plugin/issues\",\"POT-Creation-Date\":null}' --exclude=node_modules,src,tests"
+      "vendor/bin/wp i18n make-pot . ./languages/wp-module-ecommerce.pot --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/newfold-labs/wp-module-ecommerce/issues\",\"POT-Creation-Date\":null}' --exclude=node_modules,src,tests"
     ],
     "fix": [
       "vendor/bin/phpcbf --standard=phpcs.xml ."
