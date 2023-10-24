@@ -82,6 +82,7 @@ class ECommerce {
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_assets' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_textdomains' ) );
+		add_action('wp_body_open', array( $this, 'regiester_site_preview' ));
 
 		// Handle WonderCart Integrations
 		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
@@ -325,6 +326,16 @@ class ECommerce {
 				NFD_ECOMMERCE_DIR . '/languages'
 			);
 			\wp_enqueue_script( 'nfd-ecommerce-dependency' );
+		}
+	}
+
+	/**
+	 * Load warning for site Preview
+	 */
+	public function regiester_site_preview() {
+		$is_coming_soon   = 'true' === get_option( 'nfd_coming_soon', 'false' );
+		if($is_coming_soon){
+		echo "<div style='background-color: #e71616; padding: 0 16px;color:#ffffff;font-size:16px;text-align:center;font-weight: 590;'>Site Preview - This site is NOT LIVE, only admins can see this view.</div>";
 		}
 	}
 }
