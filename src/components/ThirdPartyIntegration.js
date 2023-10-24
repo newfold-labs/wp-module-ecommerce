@@ -8,10 +8,9 @@ import { Section } from "./Section";
 import { useLayoutEffect } from "@wordpress/element";
 
 const replaceQueryParam = (param, newval, search) => {
-  var regex = new RegExp("([?;&])" + param + "[^&;]*[;&]?");
-  var query = search.replace(regex, "$1").replace(/&$/, '');
-
-  return (query.length > 2 ? query + "&" : "?") + (newval ? param + "=" + newval : '');
+  var regex = new URLSearchParams(search);
+  regex.set(param, newval);
+  return regex.toString();
 }
 
 export const ThirdPartyIntegration = ({
