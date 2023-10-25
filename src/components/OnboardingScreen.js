@@ -102,8 +102,8 @@ export function OnboardingScreen({
                         flexDirection: "column",
                         justifyContent: "center",
                         alignItems:"center"
-                      }}
-                      className={classNames("md:nfd-w-[520px] lg:nfd-w-[520px] lg:nfd-h-[258px]")}
+                        }}
+                      className={classNames("md:nfd-w-[520px] md:min-[783px]:nfd-w-[387px] lg:nfd-w-[520px] lg:nfd-h-[258px]")}
                     >
                       <iframe
                         className="mini-preview-frame"
