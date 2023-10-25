@@ -46,6 +46,14 @@ export function OnboardingScreen({
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
+  const media = {
+    '@media (max-width: 640px)':{
+        width: "420px" ,
+    },
+    '@media (min-width: 641px) and (max-width: 1024px)':{
+      width: "520px" ,
+  }
+}
   return (
     <Section.Container
       className="nfd-welcome-section"
@@ -86,14 +94,15 @@ export function OnboardingScreen({
                   <p className="nfd-font-bold">{__("SITE PREVIEW", "wp-module-ecommerce")}</p>
                 </div>
                 {comingSoon ? (
-                  <div className="nfd-flex-col">
+                  <div className="nfd-flex-col" style={{
+                    media}}>
                     <Illustration />
                   </div>
                 ) : (
                   <div className="nfd-flex-col">
                     <div
                       style={{
-                        width: "519px",
+                        media,
                         height: "216px",
                         boxSizing: "content-box",
                         zIndex: "2",
