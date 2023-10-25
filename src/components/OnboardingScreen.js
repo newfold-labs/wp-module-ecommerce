@@ -87,13 +87,12 @@ export function OnboardingScreen({
                 </div>
                 {comingSoon ? (
                   <div className="nfd-flex-col" >
-                    <Illustration />
+                    <Illustration className={classNames("nfd-h-full", "nfd-w-full")} />
                   </div>
                 ) : (
                   <div className="nfd-flex-col">
                     <div
                       style={{
-                        width: "519px",
                         height: "216px",
                         boxSizing: "content-box",
                         zIndex: "2",
@@ -104,6 +103,7 @@ export function OnboardingScreen({
                         justifyContent: "center",
                         alignItems:"center"
                       }}
+                      className={classNames("md:nfd-w-[520px] lg:nfd-w-[520px] lg:nfd-h-[258px]")}
                     >
                       <iframe
                         className="mini-preview-frame"
