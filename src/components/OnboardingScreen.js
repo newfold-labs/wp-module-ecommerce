@@ -2,7 +2,6 @@ import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { __ } from "@wordpress/i18n";
 import { Button, Title, Alert } from "@newfold/ui-component-library";
 import { ReactComponent as WelcomeIllustration } from "../icons/store-live.svg";
-import { ReactComponent as SitePreviewIllustration } from "../icons/site-preview.svg";
 import { ReactComponent as ComingSoonIllustration } from "../icons/coming-soon.svg";
 import { OnboardingList } from "./OnboardingList";
 import { Section } from "./Section";
@@ -16,17 +15,15 @@ const Text = {
       ? __("Congrats on your new store!", "wp-module-ecommerce")
       : __("Congrats on your new site!", "wp-module-ecommerce"),
     description: __(
-      "Your site is currently displaying a Coming Soon page.",
+      "Your site is currently displaying a \"Coming Soon\" page.",
       "wp-module-ecommerce"
     ),
     Illustration: ComingSoonIllustration,
-    Illustration1: SitePreviewIllustration,
   },
   Live: {
     title: __("Ready to go to the next level?", "wp-module-ecommerce"),
     description: __("Your site is live to the world!", "wp-module-ecommerce"),
     Illustration: WelcomeIllustration,
-    Illustration1: SitePreviewIllustration,
   },
 };
 
@@ -36,7 +33,7 @@ export function OnboardingScreen({
   notify,
   showShadowBox,
 }) {
-  const { title, description, Illustration, Illustration1 } = comingSoon
+  const { title, description, Illustration } = comingSoon
     ? Text.Pending
     : Text.Live;
 
@@ -61,7 +58,7 @@ export function OnboardingScreen({
             className={classNames(
               "nfd-grid nfd-gap-6 nfd-min-h-[350px]",
               "sm:nfd-grid-cols-1",
-              "lg:nfd-grid-cols-2"
+              "xl:nfd-grid-cols-2"
             )}
           >
             <div className="nfd-flex nfd-flex-col nfd-justify-start nfd-items-start nfd-gap-4">
@@ -70,7 +67,7 @@ export function OnboardingScreen({
                 {comingSoon ? (
                   <Alert
                     variant="warning"
-                    className="nfd-text-[--nfd-ecommerce-text-info] nfd-text-sm nfd-bg-transparent nfd-p-0 "
+                    className="nfd-text-red-600 nfd-text-sm nfd-bg-transparent nfd-p-0 "
                   >
                     {description}
                   </Alert>
@@ -83,18 +80,18 @@ export function OnboardingScreen({
               <div
                 onMouseOver={handleMouseOver}
                 onMouseOut={handleMouseLeave}
-                className="nfd-relative  nfd-flex nfd-justify-center nfd-items-center"
+                className="nfd-relative  nfd-flex-col nfd-justify-center nfd-items-center nfd-rounded-lg nfd-border-[#CBD5E1]"
               >
+                <div className="nfd-flex nfd-justify-center nfd-items-center nfd-bg-gray-200">
+                  <p className="nfd-font-bold">{__("SITE PREVIEW", "wp-module-ecommerce")}</p>
+                </div>
                 {comingSoon ? (
                   <div className="nfd-flex-col">
-                    <Illustration1 />
-                    <Illustration className="nfd-items-start" />
+                    <Illustration />
                   </div>
                 ) : (
                   <div className="nfd-flex-col">
-                    <Illustration1 />
                     <div
-                      className="mini-preview-wrapper"
                       style={{
                         width: "419px",
                         height: "216px",
@@ -118,9 +115,10 @@ export function OnboardingScreen({
                   </div>
                 )}
                 <div
-                  className="nfd-absolute animate_pulse"
+                  className="nfd-absolute"
                   style={{
                     top: "43%",
+                    left: "38%",
                     visibility: hovered ? "visible" : "hidden",
                     transition: "all 0.8s ease-in-out 0.4s",
                   }}
