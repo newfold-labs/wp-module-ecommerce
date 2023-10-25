@@ -1,13 +1,13 @@
-import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
+import { Alert, Button, Title } from "@newfold/ui-component-library";
+import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
-import { Button, Title, Alert } from "@newfold/ui-component-library";
-import { ReactComponent as WelcomeIllustration } from "../icons/store-live.svg";
+import classNames from "classnames";
 import { ReactComponent as ComingSoonIllustration } from "../icons/coming-soon.svg";
+import { ReactComponent as WelcomeIllustration } from "../icons/store-live.svg";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { OnboardingList } from "./OnboardingList";
 import { Section } from "./Section";
 import { SiteStatus } from "./SiteStatus";
-import classNames from "classnames";
-import { useState } from "@wordpress/element";
 
 const Text = {
   Pending: {
