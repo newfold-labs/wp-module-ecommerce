@@ -93,7 +93,7 @@ export function OnboardingScreen({
                   <div className="nfd-flex-col">
                     <div
                       style={{
-                        width: "419px",
+                        width: "519px",
                         height: "216px",
                         boxSizing: "content-box",
                         zIndex: "2",
