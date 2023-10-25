@@ -103,11 +103,14 @@ export function OnboardingScreen({
                         "nfd-h-[216px] nfd-box-content",
                         "nfd-box-content nfd-z-[2] nfd-opacity-100",
                         "nfd-flex nfd-flex-col nfd-justify-center nfd-items-center",
-                        "md:nfd-w-[520px] md:min-[783px]:nfd-w-[387px] lg:nfd-w-[520px] lg:nfd-h-[258px]"
+                        "md:nfd-w-[520px] md:min-[783px]:nfd-w-[387px] md:min-[768px]:nfd-w-[670px]",
+                        "lg:min-[1024px]:nfd-w-[486px] lg:nfd-w-[520px] lg:nfd-h-[258px]",
+                        "xl:min-[1280px]:nfd-w-[360px]",
+                        "2xl:nfd-w-[520px]"
                       )}
                     >
                       <iframe
-                        className="nfd-w-[400%] nfd-min-h-[400%] nfd-basis-full nfd-scale-[0.25] nfd-overflow-hidden	"
+                        className="nfd-w-[400%] nfd-min-h-[400%] nfd-basis-full nfd-scale-[0.25] nfd-overflow-hidden"
                         src={window.location.origin}
                         scrolling="no"
                       ></iframe>
