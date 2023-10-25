@@ -80,47 +80,47 @@ export function OnboardingScreen({
               <div
                 onMouseOver={handleMouseOver}
                 onMouseOut={handleMouseLeave}
-                className="nfd-relative  nfd-flex-col nfd-justify-center nfd-items-center nfd-rounded-lg nfd-border-[#CBD5E1]"
+                className={classNames(
+                  "nfd-relative  nfd-flex-col nfd-justify-center nfd-items-center",
+                  "nfd-border-[#CBD5E1] nfd-border-[1px] nfd-border-solid nfd-rounded-md"
+                )}
               >
                 <div className="nfd-flex nfd-justify-center nfd-items-center nfd-bg-gray-200">
-                  <p className="nfd-font-bold">{__("SITE PREVIEW", "wp-module-ecommerce")}</p>
+                  <p className="nfd-font-bold">
+                    {__("SITE PREVIEW", "wp-module-ecommerce")}
+                  </p>
                 </div>
                 {comingSoon ? (
-                  <div className="nfd-flex-col" >
-                    <Illustration className={classNames("nfd-h-full", "nfd-w-full")} />
+                  <div className="nfd-flex-col">
+                    <Illustration
+                      className={classNames("nfd-h-full", "nfd-w-full")}
+                    />
                   </div>
                 ) : (
                   <div className="nfd-flex-col">
                     <div
-                      style={{
-                        height: "216px",
-                        boxSizing: "content-box",
-                        zIndex: "2",
-                        opacity: "1",
-                        border: "solid 1px #000",
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "center",
-                        alignItems:"center"
-                        }}
-                      className={classNames("md:nfd-w-[520px] md:min-[783px]:nfd-w-[387px] lg:nfd-w-[520px] lg:nfd-h-[258px]")}
+                      className={classNames(
+                        "nfd-h-[216px] nfd-box-content",
+                        "nfd-box-content nfd-z-[2] nfd-opacity-100",
+                        "nfd-flex nfd-flex-col nfd-justify-center nfd-items-center",
+                        "md:nfd-w-[520px] md:min-[783px]:nfd-w-[387px] lg:nfd-w-[520px] lg:nfd-h-[258px]"
+                      )}
                     >
                       <iframe
-                        className="mini-preview-frame"
+                        className="nfd-w-[400%] nfd-min-h-[400%] nfd-basis-full nfd-scale-[0.25] nfd-overflow-hidden	"
                         src={window.location.origin}
                         scrolling="no"
-                        style={{width: "400%", minHeight: "400%", transform: "scale(0.25)", backgroundColor: "rgb(255, 255, 255)", flexBasis: "fit-content", overflow: "hidden"}}
                       ></iframe>
                     </div>
                   </div>
                 )}
                 <div
-                  className="nfd-absolute"
+                  className={classNames(
+                    "nfd-absolute nfd-top-[43%] nfd-left-[38%]",
+                    "nfd-transition-all nfd-duration-700	nfd-ease-in-out nfd-delay-300"
+                  )}
                   style={{
-                    top: "43%",
-                    left: "38%",
                     visibility: hovered ? "visible" : "hidden",
-                    transition: "all 0.8s ease-in-out 0.4s",
                   }}
                 >
                   <Button
