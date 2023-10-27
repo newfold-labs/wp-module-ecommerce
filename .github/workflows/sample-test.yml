@@ -1,0 +1,136 @@
+name: Trial Tests
+on:
+  push:
+    branches:
+      - trunk
+    paths-ignore:
+      - '.github/**'
+      - '.gitignore'
+      - '**.md'
+  pull_request:
+    types: [ opened, edited, synchronize, reopened, ready_for_review ]
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
+  cancel-in-progress: true
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup workflow context
+        id: workflow
+        working-directory: ${{ runner.temp }}
+        env:
+          REPO: ${{ github.repository }}
+        run: |
+          mkdir dist
+          echo "DIST=${PWD}/dist" >> $GITHUB_OUTPUT
+          echo "PACKAGE=${REPO##*/}" >> $GITHUB_OUTPUT
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          coverage: none
+          tools: composer
+
+      - name: Get Composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache Composer vendor directory
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Log debug information
+        run: |
+          php --version
+          composer --version
+          node --version
+          npm --version
+
+      - name: Validate composer.json and composer.lock files
+        run: composer validate
+
+      - name: Install PHP Dependencies
+        run: composer install --no-progress --no-dev --optimize-autoloader
+
+      - name: Setup Registry
+        run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.NEWFOLD_ACCESS_TOKEN }}" >> .npmrc
+
+      - name: Run NPM Install
+        run: npm install
+
+      - name: Build JavaScript
+        run: npm run build
+
+      - name: Create Distribution Copy
+        run: rsync -r --exclude-from=.distignore --include-from=.distinclude . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
+
+      - name: List Distribution Files
+        working-directory: ${{ steps.workflow.outputs.DIST }}
+        run: find .
+
+      - name: Configure WordPress
+        run: echo '{"config":{"WP_DEBUG_DISPLAY":false},"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
+
+      - name: Install WordPress
+        run: npx @wordpress/env@latest start
+
+      - name: Run PHPUnit Tests
+        run: npm run test:unit
+
+      - name: Run Cypress Tests
+        run: npx cypress run
+
+      - name: Store screenshots of test failures
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: screenshots
+          path: ./tests/cypress/screenshots
+
+      - name: Check if a debug.log file exists
+        id: hasErrors
+        run: npx wp-env run wordpress test ! -f /var/www/html/wp-content/debug.log
+
+      - name: Copy debug.log file
+        if: ${{ steps.hasErrors.outputs.failure }}
+        run: cat /var/www/html/wp-content/debug.log 1>./debug.log 2>/dev/null
+
+      - name: Store debug.log file
+        if: ${{ steps.hasErrors.outputs.failure }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: logs
+          path: ./debug.log
+
+      - name: Store a copy of the plugin on success
+        if: ${{ success() }}
+        uses: actions/upload-artifact@v1
+        with:
+          name: ${{ steps.workflow.outputs.PACKAGE }}
+          path: ${{ steps.workflow.outputs.DIST }}
