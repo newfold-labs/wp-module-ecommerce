@@ -335,7 +335,7 @@ class ECommerce {
 	public function regiester_site_preview() {
 		$is_coming_soon   = 'true' === get_option( 'nfd_coming_soon', 'false' );
 		if($is_coming_soon){
-		echo "<div style='background-color: #e71616; padding: 0 16px;color:#ffffff;font-size:16px;text-align:center;font-weight: 590;'>Site Preview - This site is NOT LIVE, only admins can see this view.</div>";
+		echo "<div style='background-color: #e71616; padding: 0 16px;color:#ffffff;font-size:16px;text-align:center;font-weight: 590;'>" . esc_html__( 'Site Preview - This site is NOT LIVE, only admins can see this view.', 'wp-module-ecommerce' ) . "</div>";
 		}
 	}
 }
