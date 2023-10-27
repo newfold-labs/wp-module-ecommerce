@@ -49,6 +49,10 @@ jobs:
         run: |
           node --version
           npm --version
+
+      - name: Setup Registry
+        run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.NEWFOLD_ACCESS_TOKEN }}" >> .npmrc
+      
       - name: NPM Install
         run: npm ci --legacy-peer-deps
 
