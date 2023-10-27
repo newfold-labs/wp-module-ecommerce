@@ -80,7 +80,7 @@ jobs:
 
       - name: Download Bluehost Plugin
         id: download-artifact
-        uses: dawidd6/action-download-artifact@v2
+        uses: ./.github/workflows/bluehost-plugin.yml
         with:
           workflow: bluehost-plugin.yml
           workflow_conclusion: success
