@@ -28,7 +28,7 @@ jobs:
         phpVersion:
           - '8.1'
         wpVersion:
-          - '6.2'
+          - '6.3'
 
     steps:
       - name: Checkout plugin
