@@ -17,16 +17,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
-    steps:
-      name: Download Bluehost Plugin
-      id: download-artifact
-      uses: ./.github/workflows/bluehost-plugin.yml
-      with:
-        workflow: bluehost-plugin.yml
-        workflow_conclusion: success
-        name: bluehost-wordpress-plugin
-        path: ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
 
   build:
     name: Build and Test
