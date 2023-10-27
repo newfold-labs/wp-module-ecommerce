@@ -1,6 +1,7 @@
 name: Build Bluehost Plugin For Testing
 on:
   workflow_dispatch:
+  workflow_call:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
