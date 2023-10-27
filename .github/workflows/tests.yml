@@ -17,8 +17,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  call-workflow-in-local-repo:
-    uses: ./.github/worklows/bluehost-plugin.yml
 
   build:
     name: Build and Test
@@ -83,7 +81,7 @@ jobs:
 
       - name: Download Bluehost Plugin
         id: download-artifact
-        uses: dawidd6/action-download-artifact@v2
+        uses: ./.github/workflows/bluehost-plugin.yml
         with:
           workflow: bluehost-plugin.yml
           workflow_conclusion: success
