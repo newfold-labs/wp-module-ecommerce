@@ -71,14 +71,14 @@ jobs:
         run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
 
       - name: Setup Registry on Plugin
-        run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
+        run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.NEWFOLD_ACCESS_TOKEN }}" >> .npmrc
 
       - name: NPM Install
         run: npm ci --legacy-peer-deps
 
       - name: Setup Registry on Module
         working-directory: ./modules/${{ github.repository }}
-        run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
+        run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.NEWFOLD_ACCESS_TOKEN }}" >> .npmrc
 
       - name: Setup module
         working-directory: ./modules/${{ github.repository }}
