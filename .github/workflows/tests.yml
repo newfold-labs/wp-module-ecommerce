@@ -8,8 +8,8 @@ on:
       - '.github/**'
       - '.gitignore'
       - '**.md'
-  # pull_request:
-  #   types: [opened, edited, synchronize, reopened, ready_for_review]
+  pull_request:
+    types: [opened, edited, synchronize, reopened, ready_for_review]
   workflow_dispatch:
 
 concurrency:
@@ -18,7 +18,11 @@ concurrency:
 
 jobs:
 
+  call-build-bluehost-plugin-in-local-repo:
+    uses: ./.github/workflows/bluehost-plugin.yml
+
   build:
+    needs: call-build-bluehost-plugin-in-local-repo
     name: Build and Test
     runs-on: ubuntu-latest
     timeout-minutes: 60
