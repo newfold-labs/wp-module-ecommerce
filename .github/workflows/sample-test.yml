@@ -7,12 +7,17 @@ on:
       - '.github/**'
       - '.gitignore'
       - '**.md'
-  pull_request:
-    types: [ opened, edited, synchronize, reopened, ready_for_review ]
+  # pull_request:
+  #   types: [ opened, edited, synchronize, reopened, ready_for_review ]
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
   cancel-in-progress: true
+
 jobs:
+
+  # call-workflow-2-in-local-repo:
+  #   uses: ./.github/workflows/bluehost-plugin.yml
+  
   tests:
     runs-on: ubuntu-latest
     steps:
