@@ -8,8 +8,8 @@ on:
       - '.github/**'
       - '.gitignore'
       - '**.md'
-  pull_request:
-    types: [opened, edited, synchronize, reopened, ready_for_review]
+  # pull_request:
+  #   types: [opened, edited, synchronize, reopened, ready_for_review]
   workflow_dispatch:
 
 concurrency:

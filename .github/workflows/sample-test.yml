@@ -7,103 +7,115 @@ on:
       - '.github/**'
       - '.gitignore'
       - '**.md'
-  # pull_request:
-  #   types: [ opened, edited, synchronize, reopened, ready_for_review ]
+  pull_request:
+    types: [ opened, edited, synchronize, reopened, ready_for_review ]
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
   cancel-in-progress: true
 
 jobs:
-
-  # call-workflow-2-in-local-repo:
-  #   uses: ./.github/workflows/bluehost-plugin.yml
   
   tests:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Setup workflow context
-        id: workflow
-        working-directory: ${{ runner.temp }}
-        env:
-          REPO: ${{ github.repository }}
-        run: |
-          mkdir dist
-          echo "DIST=${PWD}/dist" >> $GITHUB_OUTPUT
-          echo "PACKAGE=${REPO##*/}" >> $GITHUB_OUTPUT
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+      - name: Checkout plugin
+        uses: actions/checkout@v3
         with:
-          php-version: '8.1'
-          coverage: none
-          tools: composer
+          repository: bluehost/bluehost-wordpress-plugin
+          ref: 'develop'
+
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: "npm"
+
+      - name: Checkout module
+        uses: actions/checkout@v3
+        with:
+          path: ./modules/${{ github.repository }}
 
       - name: Get Composer cache directory
         id: composer-cache
         run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache Composer vendor directory
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
 
-      - name: Setup Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-
-      - name: Cache node modules
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-
-      - name: Log debug information
+      - name: Show versions
         run: |
           php --version
           composer --version
           node --version
           npm --version
 
-      - name: Validate composer.json and composer.lock files
+      - name: Modify composer.json
+        run: |
+          node ./modules/newfold-labs/wp-module-ecommerce/scripts/update-plugin-composer.mjs ${PWD}/composer.json ${PWD}/modules
+
+      - name: Update lockfile
+        run: composer update
+
+      - name: Validate composer.json and composer.lock
         run: composer validate
 
       - name: Install PHP Dependencies
-        run: composer install --no-progress --no-dev --optimize-autoloader
+        run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
 
-      - name: Setup Registry
-        run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.NEWFOLD_ACCESS_TOKEN }}" >> .npmrc
+      - name: Setup Registry on Plugin
+        run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
 
-      - name: Run NPM Install
-        run: npm install
+      - name: NPM Install
+        run: npm ci --legacy-peer-deps
+
+      - name: Setup Registry on Module
+        working-directory: ./modules/${{ github.repository }}
+        run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
+
+      - name: Setup module
+        working-directory: ./modules/${{ github.repository }}
+        run: npm ci --legacy-peer-deps
+
+      - name: NPM Install module
+        run: npm install ./modules/${{ github.repository }} --legacy-peer-deps --force
+
+      - name: View modified files
+        run: cat package.json composer.json
 
       - name: Build JavaScript
         run: npm run build
 
-      - name: Create Distribution Copy
-        run: rsync -r --exclude-from=.distignore --include-from=.distinclude . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
+      - name: Setup workflow context
+        id: workflow
+        working-directory: ${{ runner.temp }}
+        env:
+          REPO: "bluehost-wordpress-plugin"
+        run: |
+          mkdir dist
+          echo "DIST=${PWD}/dist" >> $GITHUB_OUTPUT
+          echo "PACKAGE=${REPO##*/}" >> $GITHUB_OUTPUT
 
-      - name: List Distribution Files
-        working-directory: ${{ steps.workflow.outputs.DIST }}
-        run: find .
+      - name: Prepare files
+        run: rsync -r --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: ${{ steps.workflow.outputs.PACKAGE }}
+          path: ${{ steps.workflow.outputs.DIST }}
+
 
       - name: Configure WordPress
+        working-directory: ./modules/${{ github.repository }}
         run: echo '{"config":{"WP_DEBUG_DISPLAY":false},"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
 
       - name: Install WordPress
-        run: npx @wordpress/env@latest start
+        working-directory: ./modules/${{ github.repository }}
+        run: npx wp-env start
 
       - name: Run PHPUnit Tests
         run: npm run test:unit
