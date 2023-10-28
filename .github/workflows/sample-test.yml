@@ -116,7 +116,7 @@ jobs:
           name: ${{ steps.workflow.outputs.PACKAGE }}
           path: ${{ steps.workflow.outputs.DIST }}
 
-       - name: Download Bluehost Plugin
+      - name: Download Bluehost Plugin
           id: download-artifact
           uses: dawidd6/action-download-artifact@v2
           with:
@@ -125,17 +125,15 @@ jobs:
             name: bluehost-wordpress-plugin
             path: ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
 
-        - name: List Distribution Files
-          working-directory: ${{ steps.workflow.outputs.DIST }}
-          run: find .
+      - name: List Distribution Files
+        working-directory: ${{ steps.workflow.outputs.DIST }}
+        run: find .
 
 
       - name: Configure WordPress
-        working-directory: ./modules/newfold-labs/wp-module-ecommerce
         run: echo '{"config":{"WP_DEBUG_DISPLAY":false},"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
 
       - name: Install WordPress
-        working-directory: ./modules/newfold-labs/wp-module-ecommerce
         run: npx wp-env start
 
       - name: Run PHPUnit Tests
