@@ -45,7 +45,7 @@ jobs:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
-            ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+            ${{ runner.os }}-composer- 
 
       - name: Show versions
         run: |
@@ -74,15 +74,15 @@ jobs:
         run: npm ci --legacy-peer-deps
 
       - name: Setup Registry on Module
-        working-directory: ./modules/${{ github.repository }}
+        working-directory: ./modules/newfold-labs/wp-module-ecommerce
         run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.NEWFOLD_ACCESS_TOKEN }}" >> .npmrc
 
       - name: Setup module
-        working-directory: ./modules/${{ github.repository }}
+        working-directory: ./modules/newfold-labs/wp-module-ecommerce
         run: npm ci --legacy-peer-deps
 
       - name: NPM Install module
-        run: npm install ./modules/${{ github.repository }} --legacy-peer-deps --force
+        run: npm install ./modules/newfold-labs/wp-module-ecommerce --legacy-peer-deps --force
 
       - name: View modified files
         run: cat package.json composer.json
@@ -110,11 +110,11 @@ jobs:
 
 
       - name: Configure WordPress
-        working-directory: ./modules/${{ github.repository }}
+        working-directory: ./modules/newfold-labs/wp-module-ecommerce
         run: echo '{"config":{"WP_DEBUG_DISPLAY":false},"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
 
       - name: Install WordPress
-        working-directory: ./modules/${{ github.repository }}
+        working-directory: ./modules/newfold-labs/wp-module-ecommerce
         run: npx wp-env start
 
       - name: Run PHPUnit Tests
