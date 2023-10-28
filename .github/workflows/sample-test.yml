@@ -32,7 +32,7 @@ jobs:
 
       - name: Checkout module
         uses: actions/checkout@v3
-        working-directory: bluehost-wordpress-plugin
+        working-directory: ./bluehost-wordpress-plugin
         with:
           path: ./modules/${{ github.repository }}
 
