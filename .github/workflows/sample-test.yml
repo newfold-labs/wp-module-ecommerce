@@ -23,9 +23,13 @@ jobs:
         with:
           repository: bluehost/bluehost-wordpress-plugin
           ref: 'develop'
+      - name: list directories
         run: |
           ls
           pwd
+
+    
+
 
       - name: Use Node.js 16.x
         uses: actions/setup-node@v3
