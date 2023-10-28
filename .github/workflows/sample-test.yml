@@ -110,10 +110,24 @@ jobs:
       - name: Prepare files
         run: rsync -r --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}
 
+
       - uses: actions/upload-artifact@v3
         with:
           name: ${{ steps.workflow.outputs.PACKAGE }}
           path: ${{ steps.workflow.outputs.DIST }}
+
+       - name: Download Bluehost Plugin
+          id: download-artifact
+          uses: dawidd6/action-download-artifact@v2
+          with:
+            workflow: bluehost-plugin.yml
+            workflow_conclusion: success
+            name: bluehost-wordpress-plugin
+            path: ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
+
+        - name: List Distribution Files
+          working-directory: ${{ steps.workflow.outputs.DIST }}
+          run: find .
 
 
       - name: Configure WordPress
