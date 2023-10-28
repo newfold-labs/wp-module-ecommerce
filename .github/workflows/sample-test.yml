@@ -32,9 +32,8 @@ jobs:
 
       - name: Checkout module
         uses: actions/checkout@v3
-        working-directory: ./bluehost-wordpress-plugin
         with:
-          path: ./modules/${{ github.repository }}
+          path: ./modules/newfold-labs/${{ github.repository }}
 
       - name: Get Composer cache directory
         id: composer-cache
