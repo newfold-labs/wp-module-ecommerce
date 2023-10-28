@@ -90,8 +90,8 @@ jobs:
       - name: View modified files
         run: cat package.json composer.json
 
-      - name: Build JavaScript
-        run: npm run build
+      # - name: Build JavaScript
+      #   run: npm run build
 
       - name: Setup workflow context
         id: workflow
