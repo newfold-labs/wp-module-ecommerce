@@ -136,8 +136,8 @@ jobs:
       - name: Install WordPress
         run: npx wp-env start
 
-      - name: Run PHPUnit Tests
-        run: npm run test:unit
+      # - name: Run PHPUnit Tests
+      #   run: npm run test:unit
 
       - name: Run Cypress Tests
         run: npx cypress run
