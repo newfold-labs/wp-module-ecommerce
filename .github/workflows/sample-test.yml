@@ -152,7 +152,7 @@ jobs:
 
       - name: Store screenshots of test failures
         if: ${{ failure() }}
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: screenshots
           path: ./tests/cypress/screenshots
@@ -167,14 +167,14 @@ jobs:
 
       - name: Store debug.log file
         if: ${{ steps.hasErrors.outputs.failure }}
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: logs
           path: ./debug.log
 
       - name: Store a copy of the plugin on success
         if: ${{ success() }}
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: ${{ steps.workflow.outputs.PACKAGE }}
           path: ${{ steps.workflow.outputs.DIST }}
