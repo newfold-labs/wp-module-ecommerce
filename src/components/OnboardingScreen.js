@@ -111,7 +111,7 @@ export function OnboardingScreen({
                     >
                       <iframe
                         className="nfd-w-[400%] nfd-min-h-[400%] nfd-basis-full nfd-scale-[0.25] nfd-overflow-hidden"
-                        src={window.location.origin}
+                        src={NewfoldRuntime.homeUrl}
                         scrolling="no"
                       ></iframe>
                     </div>
