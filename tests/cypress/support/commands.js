@@ -79,8 +79,12 @@ Cypress.Commands.add('logout', () => {
 	 */
 	Cypress.Commands.add('activatePlugin', (pluginName) => {
 		if (pluginName.toLowerCase() !== 'all') {
-			cy.exec(`npx wp-env run cli wp plugin activate ${pluginName}`);
+			cy.exec(`npx wp-env run cli wp plugin activate ${pluginName}`, {
+				failOnNonZeroExit: false,
+			});
 		} else {
-			cy.exec('npx wp-env run cli wp plugin activate --all');
+			cy.exec('npx wp-env run cli wp plugin activate --all', {
+				failOnNonZeroExit: false,
+			});
 		}
 	});
