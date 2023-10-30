@@ -18,6 +18,13 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.1"
+          coverage: none
+          tools: composer, cs2pr
+  
       - name: Checkout plugin
         uses: actions/checkout@v3
         with:
@@ -27,9 +34,6 @@ jobs:
         run: |
           ls
           pwd
-
-    
-
 
       - name: Use Node.js 16.x
         uses: actions/setup-node@v3
@@ -116,21 +120,22 @@ jobs:
           name: ${{ steps.workflow.outputs.PACKAGE }}
           path: ${{ steps.workflow.outputs.DIST }}
 
-      - name: Download Bluehost Plugin
-        id: download-artifact
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          workflow: bluehost-plugin.yml
-          workflow_conclusion: success
-          name: bluehost-wordpress-plugin
-          path: ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
+      # - name: Download Bluehost Plugin
+      #   id: download-artifact
+      #   uses: dawidd6/action-download-artifact@v2
+      #   with:
+      #     workflow: bluehost-plugin.yml
+      #     workflow_conclusion: success
+      #     name: bluehost-wordpress-plugin
+      #     path: ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
 
-      - name: List Distribution Files
-        working-directory: ${{ steps.workflow.outputs.DIST }}
-        run: find .
+      # - name: List Distribution Files
+      #   working-directory: ${{ steps.workflow.outputs.DIST }}
+      #   run: find .
 
 
       - name: Configure WordPress
+        working-directory: ./modules/${{ github.repository }}
         run: echo '{"config":{"WP_DEBUG_DISPLAY":false},"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
 
       - name: Install WordPress
