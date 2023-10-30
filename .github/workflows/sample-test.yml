@@ -133,6 +133,9 @@ jobs:
       #   working-directory: ${{ steps.workflow.outputs.DIST }}
       #   run: find .
 
+      - name: Destroy Existing Wp-env
+        run: npx wp-env destroy
+
 
       - name: Configure WordPress
         run: echo '{"config":{"WP_DEBUG_DISPLAY":false},"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
@@ -145,9 +148,7 @@ jobs:
 
       - name: Run Cypress Tests
         working-directory: ./modules/${{ github.repository }}
-        run: |
-          pwd
-          npx cypress run
+        run: npx cypress run
 
       - name: Store screenshots of test failures
         if: ${{ failure() }}
