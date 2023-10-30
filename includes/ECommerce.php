@@ -77,6 +77,7 @@ class ECommerce {
 		// Module functionality goes here
 		add_action( 'init', array( $this, 'load_php_textdomain' ) );
 		add_action( 'toplevel_page_'. $container->plugin()->id, array( $this, 'load_experience_level' ) );
+		add_action( 'admin_init', array( $this, 'maybe_do_dash_redirect' ) );
 		add_action( 'admin_bar_menu', array( $this, 'newfold_site_status' ), 200 );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_assets' ) );
