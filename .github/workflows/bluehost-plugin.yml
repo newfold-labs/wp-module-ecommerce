@@ -97,7 +97,7 @@ jobs:
         id: workflow
         working-directory: ${{ runner.temp }}
         env:
-          REPO: "bluehost-wordpress-plugin"
+          REPO: "bluehost-wordpress-1-plugin"
         run: |
           mkdir dist
           echo "DIST=${PWD}/dist" >> $GITHUB_OUTPUT
