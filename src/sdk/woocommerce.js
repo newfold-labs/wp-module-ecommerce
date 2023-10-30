@@ -6,6 +6,7 @@ import { WordPressSdk } from "./wordpress";
 
 const Endpoints = {
   ORDERS: (period) => NewfoldRuntime.createApiUrl("/wc/v3/orders", period),
+  ALL_TIME_ORDERS: NewfoldRuntime.createApiUrl("/wc/v3/orders"),
   PRODUCTS: NewfoldRuntime.createApiUrl("/wc/v3/products"),
   Analytics: {
     JETPACK: (range) =>
@@ -138,6 +139,9 @@ export const WooCommerceSdk = {
         }),
       });
       return orders.data ?? [];
+    },
+    async get() {
+      return apiFetch({ url: Endpoints.ALL_TIME_ORDERS });
     },
   },
   products: {

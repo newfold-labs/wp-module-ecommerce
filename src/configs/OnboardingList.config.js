@@ -14,6 +14,7 @@ import {
   yithOnboardingParser,
   yithOnboardingPaymentParser,
   yithOnboardingStoreParser,
+  getOrderList
 } from "./selectors";
 
 const parsePluginStatus = (plugins) => ({
@@ -51,6 +52,7 @@ export function OnboardingListDefinition(props) {
       onboarding: WooCommerceSdk.onboarding.tasks,
       settings: WordPressSdk.settings.get,
       media: WordPressSdk.media.get,
+      orders: WooCommerceSdk.orders.get
     },
     cards: [
       {
@@ -257,6 +259,23 @@ export function OnboardingListDefinition(props) {
           manage: installJetpack,
         },
         queries: [{ key: "plugins", selector: parsePluginStatus }],
+      },
+      {
+        name: "New Order Received",
+        text: __(
+          "New Order Received",
+          "wp-module-ecommerce"
+        ),
+        state: {
+          isCompleted: (queries) => queries?.orders.filter(order => (order.status === 'processing') || (order.status === 'on-hold')).length < 1,
+          isActive: (queries) => queries?.orders?.length > 0,
+          url: () => '/wp-admin/edit.php?post_type=shop_order'
+        },
+        shouldRender: (state) => state.isActive,
+        actions: {
+          
+        },
+        queries: [{ key: "orders", selector: getOrderList }],
       },
     ],
   };

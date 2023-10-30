@@ -54,3 +54,7 @@ export const getAcademyEnrollmentDetails = () => (data) => {
     Yoast_signed_up: data.yoast_seo_signup_status,
   };
 };
+
+export const getOrderList = () => (ordersList) => {
+  return ordersList
+}
