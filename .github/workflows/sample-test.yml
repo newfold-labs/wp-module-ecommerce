@@ -18,12 +18,6 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: "8.1"
-          coverage: none
-          tools: composer, cs2pr
   
       - name: Checkout plugin
         uses: actions/checkout@v3
@@ -34,6 +28,23 @@ jobs:
         run: |
           ls
           pwd
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.1"
+          coverage: none
+          tools: composer, cs2pr
+      
+      - name: Setup workflow context
+        id: workflow
+        working-directory: ${{ runner.temp }}
+        env:
+          REPO: "bluehost-wordpress-plugin"
+        run: |
+          mkdir dist
+          echo "DIST=${PWD}/dist" >> $GITHUB_OUTPUT
+          echo "PACKAGE=${REPO##*/}" >> $GITHUB_OUTPUT
 
       - name: Use Node.js 16.x
         uses: actions/setup-node@v3
@@ -101,18 +112,9 @@ jobs:
       # - name: Build JavaScript
       #   run: npm run build
 
-      - name: Setup workflow context
-        id: workflow
-        working-directory: ${{ runner.temp }}
-        env:
-          REPO: "bluehost-wordpress-plugin"
-        run: |
-          mkdir dist
-          echo "DIST=${PWD}/dist" >> $GITHUB_OUTPUT
-          echo "PACKAGE=${REPO##*/}" >> $GITHUB_OUTPUT
 
       - name: Prepare files
-        run: rsync -r --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}
+        run: rsync -r --include-from=.distinclude --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
 
 
       - uses: actions/upload-artifact@v3
@@ -141,7 +143,7 @@ jobs:
         run: echo '{"config":{"WP_DEBUG_DISPLAY":false},"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
 
       - name: Install WordPress
-        run: npx wp-env start
+        run: npx wp-env start --debug
 
       # - name: Run PHPUnit Tests
       #   run: npm run test:unit
