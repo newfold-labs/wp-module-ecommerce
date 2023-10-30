@@ -1,4 +1,4 @@
-name: Tests
+name: Cypress Tests
 on:
   workflow_dispatch:
   push:
@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   
-  Cypress Tests:
+  Tests:
     runs-on: ubuntu-latest
     steps:
   
