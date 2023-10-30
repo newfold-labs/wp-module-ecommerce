@@ -136,15 +136,11 @@ jobs:
 
       - name: Configure WordPress
         working-directory: ./modules/${{ github.repository }}
-        run: |
-          pwd
-          echo '{"config":{"WP_DEBUG_DISPLAY":false},"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
+        run: echo '{"config":{"WP_DEBUG_DISPLAY":false},"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
 
       - name: Install WordPress
         working-directory: ./modules/${{ github.repository }}
-        run: |
-          pwd
-          npx wp-env start
+        run: npx wp-env start
 
       # - name: Run PHPUnit Tests
       #   run: npm run test:unit
