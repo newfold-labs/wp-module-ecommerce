@@ -25,5 +25,8 @@ export const NewfoldRuntime = {
   },
   get isJet(){
     return window.NewfoldRuntime?.isJetpackBoostActive
+  },
+  get homeUrl(){
+    return window.NewfoldRuntime?.homeUrl
   }
 };
