@@ -267,15 +267,15 @@ export function OnboardingListDefinition(props) {
           "wp-module-ecommerce"
         ),
         state: {
-          isCompleted: (queries) => queries?.orders.filter(order => (order.status === 'processing') || (order.status === 'on-hold')).length < 1,
-          isActive: (queries) => queries?.orders?.length > 0,
+          isCompleted: (queries) => !queries?.orders.pendingOrders,
+          isActive: (queries) =>  queries?.orders.ordersCount > 0,
           url: () => '/wp-admin/edit.php?post_type=shop_order'
         },
         shouldRender: (state) => state.isActive,
         actions: {
-          
+          manage: AnalyticsSdk.track('next_step', 'next_step_new_order_received_clicked', data)
         },
-        queries: [{ key: "orders", selector: getOrderList }],
+        queries: [{ key: "orders", selector: getOrderList() }],
       },
     ],
   };

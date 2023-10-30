@@ -56,5 +56,8 @@ export const getAcademyEnrollmentDetails = () => (data) => {
 };
 
 export const getOrderList = () => (ordersList) => {
-  return ordersList
+  return {
+    pendingOrders: ordersList.filter(order => (order.status === 'processing') || (order.status === 'on-hold')).length > 0, 
+    ordersCount: ordersList.length
+  }
 }
