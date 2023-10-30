@@ -1,6 +1,6 @@
-name: Cypress Test
-
+name: Cypress Tests
 on:
+  workflow_dispatch:
   push:
     branches:
       - trunk
@@ -8,58 +8,93 @@ on:
       - '.github/**'
       - '.gitignore'
       - '**.md'
-  # pull_request:
-  #   types: [opened, edited, synchronize, reopened, ready_for_review]
-  workflow_dispatch:
-
+  pull_request:
+    types: [ opened, edited, synchronize, reopened, ready_for_review ]
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
   cancel-in-progress: true
 
 jobs:
-
-  call-build-bluehost-plugin-in-local-repo:
-    uses: ./.github/workflows/bluehost-plugin.yml
-
-  build:
-    needs: call-build-bluehost-plugin-in-local-repo
-    name: Build and Test
+  
+  Cypress Tests:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
-
-    strategy:
-      fail-fast: false
-      matrix:
-        phpVersion:
-          - '8.1'
-        wpVersion:
-          - '6.3'
-
     steps:
+  
       - name: Checkout plugin
         uses: actions/checkout@v3
+        with:
+          repository: bluehost/bluehost-wordpress-plugin
+          ref: 'develop'
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.1"
+          coverage: none
+          tools: composer, cs2pr
+      
+      - name: Setup workflow context
+        id: workflow
+        working-directory: ${{ runner.temp }}
+        env:
+          REPO: "bluehost-wordpress-plugin"
+        run: |
+          mkdir dist
+          echo "DIST=${PWD}/dist" >> $GITHUB_OUTPUT
+          echo "PACKAGE=${REPO##*/}" >> $GITHUB_OUTPUT
 
       - name: Use Node.js 16.x
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
-          cache: 'npm'
+          cache: "npm"
 
       - name: Checkout module
         uses: actions/checkout@v3
         with:
           path: ./modules/${{ github.repository }}
 
+      - name: Get Composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache Composer vendor directory
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer- 
+
       - name: Show versions
         run: |
+          php --version
+          composer --version
           node --version
           npm --version
 
-      - name: Setup Registry
+      - name: Modify composer.json
+        run: |
+          node ./modules/newfold-labs/wp-module-ecommerce/scripts/update-plugin-composer.mjs ${PWD}/composer.json ${PWD}/modules
+
+      - name: Update lockfile
+        run: composer update
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
+      - name: Install PHP Dependencies
+        run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
+
+      - name: Setup Registry on Plugin
         run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.NEWFOLD_ACCESS_TOKEN }}" >> .npmrc
-      
+
       - name: NPM Install
         run: npm ci --legacy-peer-deps
+
+      - name: Setup Registry on Module
+        working-directory: ./modules/${{ github.repository }}
+        run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.NEWFOLD_ACCESS_TOKEN }}" >> .npmrc
 
       - name: Setup module
         working-directory: ./modules/${{ github.repository }}
@@ -68,37 +103,35 @@ jobs:
       - name: NPM Install module
         run: npm install ./modules/newfold-labs/wp-module-ecommerce --legacy-peer-deps --force
 
-      - name: Setup workflow context
-        id: workflow
-        working-directory: ${{ runner.temp }}
-        env:
-          REPO: 'bluehost-wordpress-plugin'
-        run: |
-          mkdir dist
-          echo "DIST=${PWD}/dist" >> $GITHUB_OUTPUT
-          echo "PACKAGE=${REPO##*/}" >> $GITHUB_OUTPUT
-      - name: NPM Install
-        run: npm install --legacy-peer-deps
+      - name: View modified files
+        run: cat package.json composer.json
 
-      - name: Create Distribution Copy
-        run: rsync -r --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
+      - name: Build JavaScript in module
+        working-directory: ./modules/${{ github.repository }}
+        run: npm run build
 
+      - name: Build JavaScript in plugin
+        run: npm run build
 
-      - name: List Distribution Files
-        working-directory: ${{ steps.workflow.outputs.DIST }}
-        run: find .
+      - name: Prepare files
+        run: rsync -r --include-from=.distinclude --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: ${{ steps.workflow.outputs.PACKAGE }}
+          path: ${{ steps.workflow.outputs.DIST }}
+
+      - name: Destroy Existing Wp-env
+        run: npx wp-env destroy
 
       - name: Configure WordPress
-        run: |
-          echo '{"core": "WordPress/WordPress#tags/${{ matrix.wpVersion }}","phpVersion": "${{ matrix.phpVersion }}","plugins": [ "${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
+        run: echo '{"config":{"WP_DEBUG_DISPLAY":false},"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
+
       - name: Install WordPress
         run: npx wp-env start --debug
 
-      - name: list of installed plugin
-        run: |
-          npx wp-env run cli wp plugin list
-          npx wp-env run cli wp plugin activate --all
       - name: Run Cypress Tests
+        working-directory: ./modules/${{ github.repository }}
         run: npx cypress run
 
       - name: Store screenshots of test failures
@@ -106,9 +139,16 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: screenshots
-          path: ./tests/cypress/screenshots
+          path: ./modules/${{ github.repository }}/tests/cypress/screenshots
 
       - name: Output debug.log file contents
         if: ${{ always() }}
         continue-on-error: true
         run: npx wp-env run wordpress "cat /var/www/html/wp-content/debug.log"
+
+      - name: Store debug.log file
+        if: ${{ steps.hasErrors.outputs.failure }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: logs
+          path: ./debug.log
