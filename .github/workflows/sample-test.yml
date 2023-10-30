@@ -122,19 +122,6 @@ jobs:
           name: ${{ steps.workflow.outputs.PACKAGE }}
           path: ${{ steps.workflow.outputs.DIST }}
 
-      # - name: Download Bluehost Plugin
-      #   id: download-artifact
-      #   uses: dawidd6/action-download-artifact@v2
-      #   with:
-      #     workflow: bluehost-plugin.yml
-      #     workflow_conclusion: success
-      #     name: bluehost-wordpress-plugin
-      #     path: ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
-
-      # - name: List Distribution Files
-      #   working-directory: ${{ steps.workflow.outputs.DIST }}
-      #   run: find .
-
       - name: Destroy Existing Wp-env
         run: npx wp-env destroy
 
@@ -157,7 +144,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: screenshots
-          path: ./tests/cypress/screenshots
+          path: ./modules/${{ github.repository }}/tests/cypress/screenshots
 
       - name: Check if a debug.log file exists
         id: hasErrors
@@ -173,10 +160,3 @@ jobs:
         with:
           name: logs
           path: ./debug.log
-
-      # - name: Store a copy of the plugin on success
-      #   if: ${{ success() }}
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: ${{ steps.workflow.outputs.PACKAGE }}
-      #     path: ${{ steps.workflow.outputs.DIST }}
