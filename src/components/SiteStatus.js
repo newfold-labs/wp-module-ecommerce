@@ -82,7 +82,7 @@ export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
         <Button
           as="a"
           className="nfd-bg-canvas"
-          href={NewfoldRuntime.hasCapability("isEcommerce") ? `${NewfoldRuntime.siteDetails.url}/shop` : NewfoldRuntime.siteDetails.url}
+          href={NewfoldRuntime.hasCapability("isEcommerce") && window.location.href.includes('store') ? `${NewfoldRuntime.siteDetails.url}/shop` : NewfoldRuntime.siteDetails.url}
           target="_blank"
           variant="secondary"
         >
