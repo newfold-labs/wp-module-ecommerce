@@ -84,6 +84,7 @@ class ECommerce {
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_textdomains' ) );
 		add_action('wp_body_open', array( $this, 'regiester_site_preview' ));
 
+		add_filter( 'show_admin_bar' , array( $this, 'hide_admin_bar' )); 
 		// Handle WonderCart Integrations
 		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
 			$wonder_cart = new WonderCart( $container );
@@ -336,6 +337,12 @@ class ECommerce {
 		$is_coming_soon   = 'true' === get_option( 'nfd_coming_soon', 'false' );
 		if($is_coming_soon){
 		echo "<div style='background-color: #e71616; padding: 0 16px;color:#ffffff;font-size:16px;text-align:center;font-weight: 590;'>" . esc_html__( 'Site Preview - This site is NOT LIVE, only admins can see this view.', 'wp-module-ecommerce' ) . "</div>";
+		}
+	}
+	public function hide_admin_bar(){
+	if (isset($_GET['iframe_view'])) {
+		// to hide adminbar in iframe
+		return false;
 		}
 	}
 }

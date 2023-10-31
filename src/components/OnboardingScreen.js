@@ -1,5 +1,5 @@
 import { Alert, Button, Title } from "@newfold/ui-component-library";
-import { useState } from "@wordpress/element";
+import { useEffect, useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import classNames from "classnames";
 import { ReactComponent as ComingSoonIllustration } from "../icons/coming-soon.svg";
@@ -85,7 +85,7 @@ export function OnboardingScreen({
                   "nfd-border-[#CBD5E1] nfd-border-[1px] nfd-border-solid nfd-rounded-md"
                 )}
               >
-                <div className="nfd-flex nfd-justify-center nfd-items-center nfd-bg-gray-200">
+                <div className="nfd-flex nfd-justify-center nfd-items-center nfd-bg-gray-200 nfd-border-b nfd-border-[#dbd1d1]">
                   <p className="nfd-font-bold">
                     {__("SITE PREVIEW", "wp-module-ecommerce")}
                   </p>
@@ -110,23 +110,25 @@ export function OnboardingScreen({
                       )}
                     >
                       <iframe
-                        className="nfd-w-[400%] nfd-min-h-[400%] nfd-basis-full nfd-scale-[0.25] nfd-overflow-hidden"
+                        title="Preview"
+                        className="nfd-w-[400%] nfd-min-h-[400%] nfd-basis-full nfd-scale-[0.25] nfd-overflow-hidden "
                         src={NewfoldRuntime.homeUrl}
                         scrolling="no"
+                        sandbox seamless
                       ></iframe>
                     </div>
                   </div>
                 )}
                 <div
                   className={classNames(
-                    "nfd-absolute nfd-top-[43%] nfd-left-[38%]",
-                    "nfd-transition-all nfd-duration-700	nfd-ease-in-out nfd-delay-300"
+                    "nfd-absolute nfd-top-0 nfd-left-0 nfd-bottom-0 nfd-right-0 nfd-place-content-center nfd-grid",
+                    "hover:nfd-animate-[wiggle_1s_ease-in-out_infinite]"
                   )}
-                  style={{
-                    visibility: hovered ? "visible" : "hidden",
-                  }}
                 >
                   <Button
+                   style={{
+                    display: hovered ? "block" : "none",
+                  }}
                     as="a"
                     className="nfd-bg-canvas"
                     href={NewfoldRuntime.siteDetails.url}
