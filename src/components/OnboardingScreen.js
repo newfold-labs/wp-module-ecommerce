@@ -1,5 +1,5 @@
 import { Alert, Button, Title } from "@newfold/ui-component-library";
-import { useEffect, useState } from "@wordpress/element";
+import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import classNames from "classnames";
 import { ReactComponent as ComingSoonIllustration } from "../icons/coming-soon.svg";
