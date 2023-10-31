@@ -1,5 +1,5 @@
 import { Alert, Button, Title } from "@newfold/ui-component-library";
-import { useState } from "@wordpress/element";
+import { useEffect, useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import classNames from "classnames";
 import { ReactComponent as ComingSoonIllustration } from "../icons/coming-soon.svg";
@@ -46,6 +46,12 @@ export function OnboardingScreen({
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
+
+ const iframeOnLoad= () => {
+  window.frames["iframe-preview"].document.getElementById("wpadminbar").style.display = "none"
+ }
+     
+
   return (
     <Section.Container
       className="nfd-welcome-section"
@@ -85,7 +91,7 @@ export function OnboardingScreen({
                   "nfd-border-[#CBD5E1] nfd-border-[1px] nfd-border-solid nfd-rounded-md"
                 )}
               >
-                <div className="nfd-flex nfd-justify-center nfd-items-center nfd-bg-gray-200 nfd-border-b nfd-border-[#dbd1d1]">
+                <div className="nfd-flex nfd-justify-center nfd-items-center nfd-bg-gray-200 nfd-border-b nfd-border-[#dbd1d1] nfd-relative nfd-z-10">
                   <p className="nfd-font-bold">
                     {__("SITE PREVIEW", "wp-module-ecommerce")}
                   </p>
@@ -110,10 +116,13 @@ export function OnboardingScreen({
                       )}
                     >
                       <iframe
+                      onLoad={iframeOnLoad}
+                      id="iframe-preview"
                         title="Preview"
-                        className="nfd-w-[400%] nfd-min-h-[400%] nfd-basis-full nfd-scale-[0.25] nfd-overflow-hidden "
+                        className="nfd-w-[400%] nfd-min-h-[400%] nfd-basis-full nfd-scale-[0.25] nfd-overflow-hidden nfd-relative nfd-top-[-9px]"
                         src={NewfoldRuntime.homeUrl}
                         scrolling="no"
+                        name="iframe-preview"
                         sandbox seamless
                       ></iframe>
                     </div>
@@ -130,7 +139,7 @@ export function OnboardingScreen({
                     display: hovered ? "block" : "none",
                   }}
                     as="a"
-                    className="nfd-bg-canvas"
+                    className="nfd-bg-canvas "
                     href={NewfoldRuntime.siteDetails.url}
                     target="_blank"
                     variant="secondary"
