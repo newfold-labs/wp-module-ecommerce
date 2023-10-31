@@ -46,6 +46,12 @@ export function OnboardingScreen({
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
+
+ const iframeOnLoad= () => {
+  window.frames["iframe-preview"].document.getElementById("wpadminbar").style.display = "none"
+ }
+     
+
   return (
     <Section.Container
       className="nfd-welcome-section"
@@ -85,7 +91,7 @@ export function OnboardingScreen({
                   "nfd-border-[#CBD5E1] nfd-border-[1px] nfd-border-solid nfd-rounded-md"
                 )}
               >
-                <div className="nfd-flex nfd-justify-center nfd-items-center nfd-bg-gray-200">
+                <div className="nfd-flex nfd-justify-center nfd-items-center nfd-bg-gray-200 nfd-border-b nfd-border-[#dbd1d1] nfd-relative nfd-z-10">
                   <p className="nfd-font-bold">
                     {__("SITE PREVIEW", "wp-module-ecommerce")}
                   </p>
@@ -110,25 +116,30 @@ export function OnboardingScreen({
                       )}
                     >
                       <iframe
-                        className="nfd-w-[400%] nfd-min-h-[400%] nfd-basis-full nfd-scale-[0.25] nfd-overflow-hidden"
+                      onLoad={iframeOnLoad}
+                      id="iframe-preview"
+                        title="Preview"
+                        className="nfd-w-[400%] nfd-min-h-[400%] nfd-basis-full nfd-scale-[0.25] nfd-overflow-hidden nfd-relative nfd-top-[-9px]"
                         src={NewfoldRuntime.homeUrl}
                         scrolling="no"
+                        name="iframe-preview"
+                        sandbox seamless
                       ></iframe>
                     </div>
                   </div>
                 )}
                 <div
                   className={classNames(
-                    "nfd-absolute nfd-top-[43%] nfd-left-[38%]",
-                    "nfd-transition-all nfd-duration-700	nfd-ease-in-out nfd-delay-300"
+                    "nfd-absolute nfd-top-0 nfd-left-0 nfd-bottom-0 nfd-right-0 nfd-place-content-center nfd-grid",
+                    "hover:nfd-animate-[wiggle_1s_ease-in-out_infinite]"
                   )}
-                  style={{
-                    visibility: hovered ? "visible" : "hidden",
-                  }}
                 >
                   <Button
+                   style={{
+                    display: hovered ? "block" : "none",
+                  }}
                     as="a"
-                    className="nfd-bg-canvas"
+                    className="nfd-bg-canvas "
                     href={NewfoldRuntime.siteDetails.url}
                     target="_blank"
                     variant="secondary"
