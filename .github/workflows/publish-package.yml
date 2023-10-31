@@ -7,7 +7,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Setup Registry
         run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.NEWFOLD_ACCESS_TOKEN }}" >> .npmrc
       - uses: actions/setup-node@v4

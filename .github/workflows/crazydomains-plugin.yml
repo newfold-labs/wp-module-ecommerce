@@ -19,7 +19,7 @@ jobs:
           tools: composer, cs2pr
 
       - name: Checkout plugin
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: aulisius/wp-plugin-crazy-domains
           ref: feature/ecommerce-module-integration
@@ -31,7 +31,7 @@ jobs:
           cache: "npm"
 
       - name: Checkout module
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: ./modules/${{ github.repository }}
 

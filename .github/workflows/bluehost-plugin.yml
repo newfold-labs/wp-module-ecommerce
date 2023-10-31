@@ -21,7 +21,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Checkout plugin
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: bluehost/bluehost-wordpress-plugin
           ref: 'develop'
@@ -33,7 +33,7 @@ jobs:
           cache: "npm"
 
       - name: Checkout module
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: ./modules/${{ github.repository }}
 
