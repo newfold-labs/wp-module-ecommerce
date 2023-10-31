@@ -47,9 +47,9 @@ jobs:
             ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
 
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 18
 
       - name: Cache node modules
         uses: actions/cache@v2
