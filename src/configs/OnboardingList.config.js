@@ -83,9 +83,9 @@ export function OnboardingListDefinition(props) {
           "wp-module-ecommerce"
         ),
         state: {
-          isCompleted: (queries) => queries?.orders.pendingOrders.length < 1,
-          isActive: (queries) =>  queries?.orders.ordersCount > 0,
-          url: (queries) => queries?.orders.pendingOrders.length !== 1 ? '/wp-admin/edit.php?post_type=shop_order' : `/wp-admin/post.php?post=${queries?.orders?.pendingOrders[0]?.id}&action=edit`
+          isCompleted: (queries) => queries?.orders?.pendingOrders.length < 1,
+          isActive: (queries) =>  queries?.orders?.ordersCount > 0,
+          url: (queries) => queries?.orders?.pendingOrders.length !== 1 ? '/wp-admin/edit.php?post_type=shop_order' : `/wp-admin/post.php?post=${queries?.orders?.pendingOrders[0]?.id}&action=edit`
         },
         shouldRender: (state) => state.isActive,
         actions: {
