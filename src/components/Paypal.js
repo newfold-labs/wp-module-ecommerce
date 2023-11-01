@@ -80,7 +80,7 @@ const Paypal = ({ notify }) => {
                   data-paypal-onboard-complete="onboardedCallback"
                   data-paypal-button="PPLtBlue"
                 >
-                  Connect
+                   {__("Connect", "wp-module-ecommerce")}
                 </Link>
               ) : (
                 <Button
