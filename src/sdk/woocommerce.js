@@ -141,7 +141,9 @@ export const WooCommerceSdk = {
       return orders.data ?? [];
     },
     async get() {
+      if (NewfoldRuntime.isWoo) {
       return apiFetch({ url: Endpoints.ALL_TIME_ORDERS });
+      }
     },
   },
   products: {
