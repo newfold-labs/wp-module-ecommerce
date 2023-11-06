@@ -8,8 +8,8 @@ export function useInstallWoo({ woo, wpModules }) {
   let needsSyncInstall = woo.needsInstall;
   let installWooCommerce = useSWRMutation("install-woo", async () => {
     let response = needsSyncInstall
-      ? await PluginsSdk.actions.installSync("woocommerce", true)
-      : await PluginsSdk.actions.queueInstall("woocommerce", true);
+      ? await PluginsSdk.actions.installSync("woocommerce")
+      : await PluginsSdk.actions.queueInstall("woocommerce");
     if (response !== "failed") {
       console.log(response, "testingggg");
       notify.push("woo-install-status", {

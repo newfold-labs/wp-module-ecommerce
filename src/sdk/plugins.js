@@ -23,21 +23,21 @@ export const PluginsSdk = {
     },
   },
   actions: {
-    async installSync(plugin, reload = false) {
+    async installSync(plugin) {
       return apiFetch({
         url: Endpoints.PLUGIN_INSTALL,
         method: "POST",
         headers: { "X-NFD-INSTALLER": INSTALL_TOKEN },
         data: { plugin, activate: true, queue: false },
-      }).then(() =>{ reload && window.location.reload() }).catch((error) => "failed");
+      }).catch((error) => "failed");
     },
-    async queueInstall(plugin, priority = 10, reload = false) {
+    async queueInstall(plugin, priority = 10) {
       return apiFetch({
         url: Endpoints.PLUGIN_INSTALL,
         method: "POST",
         headers: { "X-NFD-INSTALLER": INSTALL_TOKEN },
         data: { plugin, activate: true, queue: true, priority },
-      }).then(() =>{ reload && window.location.reload() }).catch((error) => "failed");
+      }).catch((error) => "failed");
     },
   },
 };
