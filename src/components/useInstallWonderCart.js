@@ -8,14 +8,14 @@ import { sleep } from "../sdk/sleep";
 export function useInstallWonderCart({ wpModules }) {
   let { notify } = wpModules;
   let installWonderCart = useSWRMutation("install-nfd_slug_wonder_cart", async () => {
-    let response = await PluginsSdk.actions.installSync("nfd_slug_wonder_cart");
+    let response = await PluginsSdk.actions.installSync("nfd_slug_wonder_cart", true);
     if (response !== "failed") {
       notify.push("nfd_slug_wonder_cart-install-status", {
         title: "Installed successfully",
         variant: "success",
       });
       await sleep(1000);
-      window.location.reload();
+      // window.location.reload();
     } else {
       notify.push("nfd_slug_wonder_cart-install-status", {
         title: "Failed to install",
