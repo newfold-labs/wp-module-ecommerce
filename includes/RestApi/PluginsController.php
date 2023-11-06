@@ -70,6 +70,7 @@ class PluginsController {
 	 */
 	public function get_plugins_status( \WP_REST_Request $request) {
 		$pluginFilter = $request->get_param('plugins');
+		print "--plugin filter--".$pluginFilter;
 		$requestedPlugins = array( );
 		if ( isset( $pluginFilter ) ) {
 			$requestedPlugins = explode(',', $pluginFilter);
@@ -77,15 +78,19 @@ class PluginsController {
 		$details = array();
 		foreach ( Plugins::supported_plugins() as $plugin => $info ) {
 			if ( !in_array($plugin, $requestedPlugins) && !in_array('all', $requestedPlugins) ) {
+				print "---inside not in array--";
 				continue;
 			}
 			$status = 'need_to_install';
 			if ( file_exists( WP_PLUGIN_DIR . '/' . $info['file'] ) ) {
+				print "---plugin inside wp plugin dir--";
 				$active = \is_plugin_active( $info['file'] );
 				if ( $active ) {
 					$status = 'active';
+					print "---active--";
 				} else {
 					$status = 'need_to_activate';
+					print "---need to activate---";
 				}
 			}
 			$details[ $plugin ] = array(
