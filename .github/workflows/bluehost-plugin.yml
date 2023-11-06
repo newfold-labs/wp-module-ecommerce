@@ -21,19 +21,19 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Checkout plugin
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: bluehost/bluehost-wordpress-plugin
           ref: 'develop'
 
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v3
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          node-version: 16.x
+          node-version: 18
           cache: "npm"
 
       - name: Checkout module
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: ./modules/${{ github.repository }}
 

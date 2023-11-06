@@ -40,7 +40,9 @@ function OnboardingCheckListItem({ children, actions, state, ...props }) {
         <CheckCircleIcon
           className={classNames(
             "nfd-w-[1.125rem]",
-            state.isCompleted ? "nfd-text-[--nfd-ecomemerce-text-success]" : "nfd-text-[--nfd-ecommerce-text-light]"
+            state.isCompleted
+              ? "nfd-text-[--nfd-ecomemerce-text-success]"
+              : "nfd-text-[--nfd-ecommerce-text-light]"
           )}
         />
         <span className="nfd-flex-1 nfd-text-black">{props.text}</span>
@@ -75,6 +77,12 @@ export function OnboardingList(props) {
           ? __("Next steps for your store", "wp-module-ecommerce")
           : __("Next steps for your site", "wp-module-ecommerce")}
       </Title>
+      <p>
+        {__(
+          "You're just a few steps away from sharing your store with the world!",
+          "wp-module-ecommerce"
+        )}
+      </p>
       {view === "incomplete" && itemsToDisplay.length === 0 && (
         <div>
           <p>
