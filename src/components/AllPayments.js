@@ -160,6 +160,7 @@ export function AllPayments(props) {
                 key_secret: payload.key_secret,
               },
             });
+            window.location.reload();
           }
           notify.push(`store-details-save-success`, {
             title: __(
