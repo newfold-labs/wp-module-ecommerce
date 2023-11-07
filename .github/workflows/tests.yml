@@ -121,9 +121,6 @@ jobs:
           name: ${{ steps.workflow.outputs.PACKAGE }}
           path: ${{ steps.workflow.outputs.DIST }}
 
-      - name: Destroy Existing Wp-env
-        run: npx wp-env destroy
-
       - name: Configure WordPress
         run: echo '{"config":{"WP_DEBUG_DISPLAY":false},"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
 
