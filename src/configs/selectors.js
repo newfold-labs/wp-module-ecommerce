@@ -54,3 +54,10 @@ export const getAcademyEnrollmentDetails = () => (data) => {
     Yoast_signed_up: data.yoast_seo_signup_status,
   };
 };
+
+export const getOrderList = () => (ordersList) => {
+  return {
+    pendingOrders: ordersList.filter(order => (order.status === 'processing') || (order.status === 'on-hold') || (order.status === 'pending')), 
+    ordersCount: ordersList.length
+  }
+}
