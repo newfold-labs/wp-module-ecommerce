@@ -117,11 +117,13 @@ export function OnboardingScreen({
                         '2xl:nfd-w-[520px]'
                       )}
                     >
-                      <img
-                        className="nfd-w-full nfd-h-full"
-                        src={thumbnail}
-                        alt="image not available"
-                      />
+                      {thumbnail && (
+                        <img
+                          className="nfd-w-full nfd-h-full"
+                          src={thumbnail}
+                          alt="image not available"
+                        />
+                      )}
                     </div>
                   </div>
                 )}
