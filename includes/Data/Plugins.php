@@ -53,7 +53,7 @@ final class Plugins
 			'url' => 'admin.php?page=yith_woocommerce_gift_cards_panel',
 		),
 		'nfd_slug_yith_woocommerce_wishlist' => array(
-			'file' => 'yith-woocommerce-wishlist-extended/init.php',
+			'file' => 'yith-woocommerce-wishlist-premium/init.php',
 			'url' => 'admin.php?page=yith_wcwl_panel',
 		),
 		'nfd_slug_yith_woocommerce_ajax_product_filter' => array(
