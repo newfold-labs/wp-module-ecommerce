@@ -47,9 +47,9 @@ export function OnboardingScreen({
     setIsHovered(false);
   };
 
- //const iframeOnLoad= () => {
- // window.frames["iframe-preview"].document.getElementById("wpadminbar").style.display = "none"
- //}
+ const iframeOnLoad= () => {
+   window.frames["iframe-preview"].document.getElementById("wpadminbar").style.display = "none"
+ }
      
 
   return (
@@ -116,7 +116,7 @@ export function OnboardingScreen({
                       )}
                     >
                       <iframe
-                    //  onLoad={iframeOnLoad}
+                      onLoad={iframeOnLoad}
                       id="iframe-preview"
                         title="Preview"
                         className="nfd-w-[400%] nfd-min-h-[400%] nfd-basis-full nfd-scale-[0.25] nfd-overflow-hidden nfd-relative nfd-top-[-9px]"

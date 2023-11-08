@@ -13,7 +13,7 @@ export function YITHPlugins({ woo, wpModules }) {
   if (!woo.isActive) {
     return null;
   }
-console.log("cards",cards);
+
   return (
     <Section.Container>
       <Section.Header
