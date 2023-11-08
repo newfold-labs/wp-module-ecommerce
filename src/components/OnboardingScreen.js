@@ -48,7 +48,7 @@ export function OnboardingScreen({
   };
 
  const iframeOnLoad= () => {
-   window.frames["iframe-preview"].document.getElementById("wpadminbar").style.display = "none"
+  window.frames["iframe-preview"].document.getElementById("wpadminbar").style.display = "none"
  }
      
 
