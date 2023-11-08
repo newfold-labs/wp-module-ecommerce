@@ -45,11 +45,11 @@ final class Plugins
 			'url' => 'admin.php?page=wc-settings',
 		),
 		'nfd_slug_yith_woocommerce_customize_myaccount_page' => array(
-			'file' => 'yith-woocommerce-customize-myaccount-page-extended/init.php',
+			'file' => 'yith-woocommerce-customize-myaccount-page/init.php',
 			'url' => 'admin.php?page=yith_wcmap_panel',
 		),
 		'nfd_slug_yith_woocommerce_gift_cards' => array(
-			'file' => 'yith-woocommerce-gift-cards-extended/init.php',
+			'file' => 'yith-woocommerce-gift-cards-premium/init.php',
 			'url' => 'admin.php?page=yith_woocommerce_gift_cards_panel',
 		),
 		'nfd_slug_yith_woocommerce_wishlist' => array(
@@ -57,15 +57,15 @@ final class Plugins
 			'url' => 'admin.php?page=yith_wcwl_panel',
 		),
 		'nfd_slug_yith_woocommerce_ajax_product_filter' => array(
-			'file' => 'yith-woocommerce-ajax-product-filter-extended/init.php',
+			'file' => 'yith-woocommerce-ajax-product-filter-premium/init.php',
 			'url' => 'admin.php?page=yith_wcan_panel',
 		),
 		'nfd_slug_yith_woocommerce_booking' => array(
-			'file' => 'yith-woocommerce-booking-extended/init.php',
+			'file' => 'yith-woocommerce-booking-premium/init.php',
 			'url' => 'admin.php?page=yith_wcbk_panel',
 		),
 		'yith-woocommerce-ajax-search' => array(
-			'file' => 'yith-woocommerce-ajax-search/init.php',
+			'file' => 'yith-woocommerce-ajax-search-premium/init.php',
 			'url' => 'admin.php?page=yith_wcas_panel',
 		),
 		'nfd_slug_yith_shippo_shippings_for_woocommerce' => array(
