@@ -5,6 +5,13 @@ import { IntegrationsSdk } from "../sdk/integrations";
 import { PluginsSdk } from "../sdk/plugins";
 import { CaptiveRazorpay } from "./CaptiveRazorpay";
 import { Section } from "./Section";
+import { useLayoutEffect } from "@wordpress/element";
+
+const replaceQueryParam = (param, newval, search) => {
+  var regex = new URLSearchParams(search);
+  regex.set(param, newval);
+  return regex.toString();
+}
 
 export const ThirdPartyIntegration = ({
   id,
@@ -22,6 +29,31 @@ export const ThirdPartyIntegration = ({
   } = useSWR(id, IntegrationsSdk.status);
 
   const [isConnectionActive, setConnectionActive] = useState(false);
+  const [openSection, setOpenSection] = useState(true);
+  useLayoutEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentSection = urlParams.get('section');
+
+    if (typeof integrationStatus !== 'undefined') {
+      if (openSection && currentSection === 'paypal') {
+        const ppButton = document.querySelector('.yith-btn-paypal');
+
+        if (ppButton?.dataset?.securewindowmsg && document.getElementById('signup-js') !== 'undefined') {
+          ppButton.click();
+          ppButton.disabled = true;
+          setOpenSection(false);
+        }
+      }
+
+      if (openSection && currentSection === 'shippo') {
+        const shippoButton = document.querySelector('.section-shippo button');
+        const event = new Event('onboarding-shippo-popup');
+        window.document.dispatchEvent(event);
+        setOpenSection(false);
+      }
+    }
+  });
+
 
   let installPlugin = useSWRMutation("install-plugin", async () => {
     await PluginsSdk.actions.installSync(
@@ -29,14 +61,42 @@ export const ThirdPartyIntegration = ({
     );
     await refreshIntegrationStatus();
     setConnectionActive(true);
+    if (id === 'shippo' || id === 'paypal') {
+      window.location.reload();
+      if(  window.location.search.indexOf('section') !== -1 ){
+        window.location.search = replaceQueryParam('section', id,  window.location.search);
+      }else{
+        window.location.search += ('&section=' + id);
+      }
+
+    }
   });
+  const updateButtonEvent = async (event) => {
+    if (event.detail.connected == 1) {
+      const integrationStatusResponse =
+          await refreshIntegrationStatus();
+      if (integrationStatusResponse.complete) {
+        notify.push(`${id}-account-connect-success`, {
+          title: __(`Your ${id} account have been connected`,"wp-module-ecommerce"),
+          variant: 'success',
+        });
+      }
+      setConnectionActive(false);
+    }
+  };
+  document.addEventListener('yith-shippo-update-connection-button', updateButtonEvent);
 
   function onConnect() {
     const isPluginActive = integrationStatus?.integration?.plugin?.status;
     if (!isPluginActive) {
       installPlugin.trigger();
     } else {
-      setConnectionActive(true);
+      if (id === 'shippo') {
+        const event = new Event('onboarding-shippo-popup');
+        window.document.dispatchEvent(event);
+      } else {
+        setConnectionActive(true);
+      }
     }
   }
 

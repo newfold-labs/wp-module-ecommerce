@@ -1,5 +1,6 @@
+import { Badge, Button, Title, Link } from "@newfold/ui-component-library";
+import { useEffect } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
-import { Badge, Button, Title } from "@newfold/ui-component-library";
 import classNames from "classnames";
 import { ReactComponent as AmexBrand } from "../icons/brands/amex.svg";
 import { ReactComponent as DiscoverBrand } from "../icons/brands/discover.svg";
@@ -13,6 +14,17 @@ import { ReactComponent as VisaBrand } from "../icons/brands/visa.svg";
 import { ThirdPartyIntegration } from "./ThirdPartyIntegration";
 
 const Paypal = ({ notify }) => {
+  useEffect(() => {
+    const ppButton = document.querySelector(".yith-btn-paypal");
+    window?.PAYPAL?.apps?.Signup?.loadScripts(document, "script");
+    window?.PAYPAL?.apps?.Signup?.render();
+    return ()=>{
+      const panel = document.querySelector('#payment-details');
+      if( !panel && ppButton ){
+        ppButton.remove();
+      }
+    };
+  });
   return (
     <ThirdPartyIntegration
       id="paypal"
@@ -31,7 +43,7 @@ const Paypal = ({ notify }) => {
             <div
               className={classNames(
                 "max-[359px]:nfd-flex-col",
-                "min-[360px]:nfd-flex nfd-justify-between min-[360px]:nfd-mb-8"
+                "min-[360px]:nfd-flex nfd-justify-between nfd-items-center min-[360px]:nfd-mb-8"
               )}
             >
               <PaypalBrand />
@@ -58,6 +70,18 @@ const Paypal = ({ notify }) => {
                 >
                   {__("Manage", "wp-module-ecommerce")}
                 </Button>
+              ) : typeof yith_ppwc_login !== "undefined" &&
+                !parseInt(yith_ppwc_login?.liveConnected) ? (
+                <Link
+                  href={yith_ppwc_login.loginURL}
+                  variant="primary"
+                  className="nfd-button nfd-button--primary yith-btn-paypal nfd-text-white"
+                  target="_blank"
+                  data-paypal-onboard-complete="onboardedCallback"
+                  data-paypal-button="PPLtBlue"
+                >
+                   {__("Connect", "wp-module-ecommerce")}
+                </Link>
               ) : (
                 <Button
                   onClick={onConnect}
