@@ -42,6 +42,20 @@ export function NewfoldECommerce(props) {
   );
   let { Page } =
     pages.find((page) => page.key === props.state.location) ?? pages[0];
+  let { notify } = props.wpModules;
+
+  useEffect(() => {
+    sessionStorage.getItem('reload') === 'true' &&
+      notify.push('woo-install-status', {
+        title: __(
+          'WooCommerce has been installed successfully',
+          'wp-module-ecommerce'
+        ),
+        variant: 'success',
+        autoDismiss: 5000,
+      });
+    sessionStorage.setItem('reload', 'false');
+  }, []);
 
   if (woo === undefined) {
     return (
@@ -55,7 +69,6 @@ export function NewfoldECommerce(props) {
     sessionStorage.setItem('reload', 'true');
   } else {
     if (sessionStorage.getItem('reload') === 'true') {
-      sessionStorage.setItem('reload', 'false');
       window.location.reload();
     }
   }
