@@ -11,14 +11,11 @@
     "plugins": [
         "https://downloads.wordpress.org/plugin/woocommerce.latest-stable.zip"
     ],
-    "mappings": {
-        "wp-content/plugins/woocommerce": "https://downloads.wordpress.org/plugin/woocommerce.latest-stable.zip",
-        "wp-content/plugins/wpforms-lite": "https://downloads.wordpress.org/plugin/wpforms-lite.latest-stable.zip",
-        "wp-content/plugins/jetpack": "https://downloads.wordpress.org/plugin/jetpack.latest-stable.zip"
-    },
+
     "themes": [
         "https://downloads.wordpress.org/theme/yith-wonder.latest-stable.zip"
     ],
+    
     "port": 8882,
     "testsPort": 8883,
     "env": {

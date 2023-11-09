@@ -122,7 +122,7 @@ jobs:
           path: ${{ steps.workflow.outputs.DIST }}
 
       - name: Configure WordPress
-        run: echo '{"config":{"WP_DEBUG_DISPLAY":false},"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}"]}' > .wp-env.override.json
+        run: echo '{"config":{"WP_DEBUG_DISPLAY":false},"plugins":["${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}", "https://downloads.wordpress.org/plugin/woocommerce.latest-stable.zip"]}' > .wp-env.override.json
 
       - name: Install WordPress
         run: npx wp-env start --debug
