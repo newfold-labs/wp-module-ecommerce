@@ -8,7 +8,7 @@ describe(
 	'Bluehost WP Admin Home Page',
 	() => {
 		before(() => {
-			cy.activatePlugin('all');
+			// cy.activatePlugin('all');
 		})
 
 		beforeEach(() => {
