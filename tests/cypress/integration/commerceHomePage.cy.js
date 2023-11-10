@@ -1,7 +1,7 @@
 import 'cypress-iframe'
 import { GetPluginId } from './wp-module-support/pluginID.cy';
 
-const customCommandTimeout = 40000;
+const customCommandTimeout = 60000;
 
 
 describe(

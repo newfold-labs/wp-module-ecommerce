@@ -136,7 +136,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: screenshots
-          path: ./modules/${{ github.repository }}/tests/cypress/screenshots
+          path: ./tests/cypress/screenshots
 
       - name: Output debug.log file contents
         if: ${{ always() }}
