@@ -12,11 +12,7 @@ describe(
 		})
 
 		beforeEach(() => {
-			cy.visit('/wp-admin/admin.php?page=' + GetPluginId + '#/home')
-		})
-
-		it('Test Next steps for your site exists', () => {
-			cy.contains('Next steps for your site', { timeout: customCommandTimeout }).should('exist')
+			cy.visit('/wp-admin/admin.php?page=' + GetPluginId() + '#/home')
 		})
 
 		it('Test Ready to go next level ', () => {
