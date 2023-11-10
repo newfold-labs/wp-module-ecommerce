@@ -9,13 +9,11 @@
     },
     "phpVersion": "8.1",
     "plugins": [
-        "https://downloads.wordpress.org/plugin/woocommerce.latest-stable.zip"
+        "."
     ],
-
     "themes": [
         "https://downloads.wordpress.org/theme/yith-wonder.latest-stable.zip"
     ],
-    
     "port": 8882,
     "testsPort": 8883,
     "env": {
@@ -23,7 +21,7 @@
             "config": {
                 "WP_SITEURL": "localhost:8881",
                 "WP_TESTS_DOMAIN": "localhost:8881",
-                "WP_TESTS_TITLE": "Bluehost WordPress Plugin",
+                "WP_TESTS_TITLE": "Wordpress Tests",
                 "WP_TESTS_BINARY": "php"
             }
         }
