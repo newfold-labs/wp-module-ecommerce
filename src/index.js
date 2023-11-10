@@ -1,6 +1,7 @@
 import { NewfoldRuntime } from './sdk/NewfoldRuntime';
 import apiFetch from '@wordpress/api-fetch';
 import { Spinner } from '@newfold/ui-component-library';
+import { __ } from '@wordpress/i18n';
 import useSWR, { SWRConfig } from 'swr';
 import { Products } from './components/ProductsAndServices';
 import { Store } from './components/Store';
