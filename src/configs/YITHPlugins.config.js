@@ -15,7 +15,7 @@ import { createPluginInstallAction } from "./actions";
 import { findUpsellWithName, wcPluginStatusParser } from "./selectors";
 import { RuntimeSdk } from "../sdk/runtime";
 
-function defineFeatureState() {
+export function defineFeatureState() {
   return {
     upsellOptions: (data) => data?.upsellOptions,
     featureUrl: (data) =>
