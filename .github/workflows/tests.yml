@@ -128,8 +128,7 @@ jobs:
         run: npx wp-env start --debug
 
       - name: Run Cypress Tests
-        working-directory: ./modules/${{ github.repository }}
-        run: npx cypress run
+        run: npx cypress run --spec ./modules/${{ github.repository }}/tests/cypress/integration
 
       - name: Store screenshots of test failures
         if: ${{ failure() }}
