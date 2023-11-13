@@ -52,7 +52,7 @@ jobs:
       - name: Checkout module
         uses: actions/checkout@v4
         with:
-          path: ./modules/${{ github.repository }}
+          path: ./vendor/${{ github.repository }}
 
       - name: Get Composer cache directory
         id: composer-cache
@@ -75,7 +75,7 @@ jobs:
 
       - name: Modify composer.json
         run: |
-          node ./modules/newfold-labs/wp-module-ecommerce/scripts/update-plugin-composer.mjs ${PWD}/composer.json ${PWD}/modules
+          node ./vendor/newfold-labs/wp-module-ecommerce/scripts/update-plugin-composer.mjs ${PWD}/composer.json ${PWD}/vendor
 
       - name: Update lockfile
         run: composer update
@@ -93,21 +93,21 @@ jobs:
         run: npm ci --legacy-peer-deps
 
       - name: Setup Registry on Module
-        working-directory: ./modules/${{ github.repository }}
+        working-directory: ./vendor/${{ github.repository }}
         run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.NEWFOLD_ACCESS_TOKEN }}" >> .npmrc
 
       - name: Setup module
-        working-directory: ./modules/${{ github.repository }}
+        working-directory: ./vendor/${{ github.repository }}
         run: npm ci --legacy-peer-deps
 
       - name: NPM Install module
-        run: npm install ./modules/newfold-labs/wp-module-ecommerce --legacy-peer-deps --force
+        run: npm install ./vendor/newfold-labs/wp-module-ecommerce --legacy-peer-deps --force
 
       - name: View modified files
         run: cat package.json composer.json
 
       - name: Build JavaScript in module
-        working-directory: ./modules/${{ github.repository }}
+        working-directory: ./vendor/${{ github.repository }}
         run: npm run build
 
       - name: Build JavaScript in plugin
@@ -128,7 +128,7 @@ jobs:
         run: npx wp-env start --debug
 
       - name: Run Cypress Tests
-        run: npx cypress run --spec ./modules/${{ github.repository }}/tests/cypress/integration
+        run: npx cypress run --spec ./vendor/${{ github.repository }}/tests/cypress/integration
 
       - name: Store screenshots of test failures
         if: ${{ failure() }}
