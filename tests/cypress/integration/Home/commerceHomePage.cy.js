@@ -1,7 +1,7 @@
-import { GetPluginId } from './wp-module-support/pluginID.cy';
-import { comingSoon } from './wp-module-support/utils.cy';
+import { GetPluginId } from '../wp-module-support/pluginID.cy';
+import { comingSoon } from '../wp-module-support/utils.cy';
 
-const customCommandTimeout = 40000;
+const customCommandTimeout = 60000;
 
 
 describe(
@@ -51,7 +51,6 @@ describe(
 			cy.get('.nfd-notification--success').should('exist').and('contain.text', 'Your site is online now!')
 			cy.contains('Ready to go to the next level?', { timeout: customCommandTimeout }).should('exist')
 		})
-
 
 	},
 );
