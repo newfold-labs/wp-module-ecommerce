@@ -1,5 +1,5 @@
 import { Alert, Button, Title } from "@newfold/ui-component-library";
-import { useState } from "@wordpress/element";
+import { useEffect, useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import classNames from "classnames";
 import { ReactComponent as ComingSoonIllustration } from "../icons/coming-soon.svg";
@@ -8,6 +8,8 @@ import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { OnboardingList } from "./OnboardingList";
 import { Section } from "./Section";
 import { SiteStatus } from "./SiteStatus";
+import { IntegrationsSdk } from "../sdk/integrations";
+import { FacebookConnectButton } from "@newfold/wp-module-facebook";
 
 const Text = {
   Pending: {
@@ -36,6 +38,8 @@ export function OnboardingScreen({
   const { title, description, Illustration } = comingSoon
     ? Text.Pending
     : Text.Live;
+    const section = new URLSearchParams(window.location.search);
+    const facebook_token = section.get("facebook_token");
 
   const [hovered, setIsHovered] = useState(false);
 
@@ -50,7 +54,13 @@ export function OnboardingScreen({
  const iframeOnLoad= () => {
   window.frames["iframe-preview"].document.getElementById("wpadminbar").style.display = "none"
  }
-     
+
+useEffect(() => {
+  IntegrationsSdk.status("hiive")
+  if(!window.localStorage.getItem("facebook_token") || (window.localStorage.getItem("facebook_token") == null) || (window.localStorage.getItem("facebook_token") == "")){
+    window.localStorage.setItem("facebook_token", facebook_token)
+  }
+},[])
 
   return (
     <Section.Container
@@ -150,6 +160,8 @@ export function OnboardingScreen({
               </div>
             </div>
             <OnboardingList notify={notify} />
+           <FacebookConnectButton />
+            
           </div>
           <SiteStatus
             comingSoon={comingSoon}

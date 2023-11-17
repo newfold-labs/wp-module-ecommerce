@@ -6,6 +6,7 @@ use NewfoldLabs\WP\Module\ECommerce\Data\Plugins;
 use NewfoldLabs\WP\Module\ECommerce\Permissions;
 use NewfoldLabs\WP\Module\Installer\Services\PluginInstaller;
 use NewfoldLabs\WP\ModuleLoader\Container;
+use NewfoldLabs\WP\Module\Data\HiiveConnection;
 
 class IntegrationsController {
 
@@ -49,6 +50,17 @@ class IntegrationsController {
 				array(
 					'methods'             => \WP_REST_Server::READABLE,
 					'callback'            => array( $this, 'get_razorpay_status' ),
+					'permission_callback' => array( Permissions::class, 'rest_is_authorized_admin' ),
+				),
+			)
+		);
+		\register_rest_route(
+			$this->namespace,
+			$this->rest_base . '/hiive',
+			array(
+				array(
+					'methods'             => \WP_REST_Server::READABLE,
+					'callback'            => array( $this, 'get_hiive_token' ),
 					'permission_callback' => array( Permissions::class, 'rest_is_authorized_admin' ),
 				),
 			)
@@ -138,4 +150,17 @@ class IntegrationsController {
 			200
 		);
 	}
+
+	public function get_hiive_token() {
+		$hiive_token = HiiveConnection::get_auth_token();
+
+			if ( ! $hiive_token ) {}
+		return new \WP_REST_Response(
+			array(
+				'token' => $hiive_token ? $hiive_token : 'hiive_token_for_local',
+			),
+			200
+		);
+	}
+
 }
