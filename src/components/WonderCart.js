@@ -75,9 +75,7 @@ export function WonderCart(props) {
                 isLoading={showInProgress}
                 onClick={!canAccessGlobalCTB && installWonderCart}
               >
-                {hasYithExtended
-                  ? __('Install now', 'wp-module-ecommerce')
-                  : canAccessGlobalCTB
+                {canAccessGlobalCTB && !hasYithExtended
                   ? __('Buy now', 'wp-module-ecommerce')
                   : __('Install now', 'wp-module-ecommerce')}
               </Button>
@@ -94,9 +92,7 @@ export function WonderCart(props) {
           NewfoldRuntime.sdk.ecommerce.brand_settings.wondercartBuyNow
         }
         cardText={
-          hasYithExtended
-            ? __('Install now', 'wp-module-ecommerce')
-            : canAccessGlobalCTB
+          canAccessGlobalCTB && !hasYithExtended
             ? __('Buy now', 'wp-module-ecommerce')
             : __('Install now', 'wp-module-ecommerce')
         }
