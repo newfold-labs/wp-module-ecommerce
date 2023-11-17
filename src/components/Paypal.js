@@ -27,7 +27,7 @@ const Paypal = ({ notify }) => {
   });
   return (
     <ThirdPartyIntegration
-      id="hiive"
+      id="paypal"
       title={__("Paypal", "wp-module-ecommerce")}
       description={__(
         "Online payments built for success. We help you do business in 200+ markets and 100+ currencies—even if your customers don't have PayPal.",

@@ -157,7 +157,7 @@ class IntegrationsController {
 			if ( ! $hiive_token ) {}
 		return new \WP_REST_Response(
 			array(
-				'token' => $hiive_token ? $hiive_token : 'hiive_token_for_local',
+				'token' => $hiive_token ? $hiive_token : 'test',
 			),
 			200
 		);
