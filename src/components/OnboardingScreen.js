@@ -74,9 +74,9 @@ export function OnboardingScreen({
                 {comingSoon ? (
                   <Alert
                     variant="warning"
-                    className="nfd-text-red-600 nfd-text-sm nfd-bg-transparent nfd-p-0 "
+                    className="nfd-text-sm nfd-bg-transparent nfd-p-0 "
                   >
-                    {description}
+                    <span className="nfd-text-red-700">{description}</span>
                   </Alert>
                 ) : (
                   <span className="nfd-text-[--nfd-ecommerce-text-info] nfd-text-sm">
@@ -92,7 +92,7 @@ export function OnboardingScreen({
                   'nfd-border-[#CBD5E1] nfd-border-[1px] nfd-border-solid nfd-rounded-md'
                 )}
               >
-                <div className="nfd-flex nfd-justify-center nfd-items-center nfd-bg-gray-200 nfd-border-b nfd-border-[#dbd1d1] nfd-relative nfd-z-10">
+                <div className="nfd-flex nfd-justify-center nfd-items-center nfd-bg-gray-200 nfd-border-b nfd-border-[#dbd1d1] nfd-relative nfd-z-10 nfd-rounded-t-md">
                   <p className="nfd-font-bold">
                     {__('SITE PREVIEW', 'wp-module-ecommerce')}
                   </p>
@@ -100,7 +100,11 @@ export function OnboardingScreen({
                 {comingSoon ? (
                   <div className="nfd-flex-col">
                     <Illustration
-                      className={classNames('nfd-h-full', 'nfd-w-full')}
+                      className={classNames(
+                        'nfd-h-full',
+                        'nfd-w-full',
+                        'nfd-rounded-b-md'
+                      )}
                     />
                   </div>
                 ) : (
