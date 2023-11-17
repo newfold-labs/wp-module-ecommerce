@@ -70,7 +70,7 @@ export function OnboardingScreen({
           >
             <div className="nfd-flex nfd-flex-col nfd-justify-start nfd-items-start nfd-gap-4">
               <Title size={2}>{title}</Title>
-              <p>
+              <div>
                 {comingSoon ? (
                   <Alert
                     variant="warning"
@@ -83,7 +83,7 @@ export function OnboardingScreen({
                     {description}
                   </span>
                 )}
-              </p>
+              </div>
               <div
                 onMouseOver={handleMouseOver}
                 onMouseOut={handleMouseLeave}
