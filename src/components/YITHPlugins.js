@@ -1,68 +1,77 @@
-import { __ } from '@wordpress/i18n';
-import { Spinner } from '@newfold/ui-component-library';
-import { YITHPluginsDefinitions } from '../configs/YITHPlugins.config';
-import { Section } from './Section';
-import { useCardManager } from './useCardManager';
-import classNames from 'classnames';
-import { useEffect, useState } from '@wordpress/element';
-import apiFetch from '@wordpress/api-fetch';
-import { NewfoldRuntime } from '../sdk/NewfoldRuntime';
-import { YithFeatureCard } from './YithFeatureCard';
-import filter from '../icons/brands/yith-woocommerce-ajax-product-filter.svg';
-import search from '../icons/brands/yith-woocommerce-ajax-search.svg';
-import booking from '../icons/brands/yith-woocommerce-booking.svg';
-import customizeAccount from '../icons/brands/yith-woocommerce-customize-myaccount-page.svg';
-import gift from '../icons/brands/yith-woocommerce-gift-card.svg';
-import wishList from '../icons/brands/yith-woocommerce-wishlist.svg';
+import { __ } from "@wordpress/i18n";
+import { Spinner } from "@newfold/ui-component-library";
+import { YITHPluginsDefinitions } from "../configs/YITHPlugins.config";
+import { Section } from "./Section";
+import { useCardManager } from "./useCardManager";
+import classNames from "classnames";
+import { useEffect, useState } from "@wordpress/element";
+import apiFetch from "@wordpress/api-fetch";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
+import { YithFeatureCard } from "./YithFeatureCard";
+import filter from "../icons/brands/yith-woocommerce-ajax-product-filter.svg";
+import search from "../icons/brands/yith-woocommerce-ajax-search.svg";
+import booking from "../icons/brands/yith-woocommerce-booking.svg";
+import customizeAccount from "../icons/brands/yith-woocommerce-customize-myaccount-page.svg";
+import gift from "../icons/brands/yith-woocommerce-gift-card.svg";
+import wishList from "../icons/brands/yith-woocommerce-wishlist.svg";
 
 export function YITHPlugins({ woo, wpModules }) {
   const yithPluginsMap = new Map([
     [
-      'faf0acf9-b5a0-479d-9cde-20fb5fa530f9',
+      "faf0acf9-b5a0-479d-9cde-20fb5fa530f9",
       {
-        name: 'YITH Booking and Appointment for WooCommerce',
+        title: "nfd_slug_yith_woocommerce_booking",
+        name: "YITH Booking and Appointment for WooCommerce",
         learnMore:
-          'https://www.bluehost.com/help/article/yith-booking-and-appointment-for-woocommerce',
+          "https://www.bluehost.com/help/article/yith-booking-and-appointment-for-woocommerce",
         image: booking,
       },
     ],
     [
-      'c9201843-d8ae-4032-bd4e-f3fa5a8b8314',
-      { name: 'YITH WooCommerce AJAX Search', image: search },
+      "c9201843-d8ae-4032-bd4e-f3fa5a8b8314",
+      {
+        title: "yith-woocommerce-ajax-search",
+        name: "YITH WooCommerce AJAX Search",
+        image: search,
+      },
     ],
     [
-      '4f17bd36-4a10-4324-89ec-b0c0bf951c6b',
+      "4f17bd36-4a10-4324-89ec-b0c0bf951c6b",
       {
-        name: 'YITH WooCommerce Wishlist',
+        title: "nfd_slug_yith_woocommerce_wishlist",
+        name: "YITH WooCommerce Wishlist",
         learnMore:
-          'https://www.bluehost.com/help/article/yith-woocommerce-wishlist',
+          "https://www.bluehost.com/help/article/yith-woocommerce-wishlist",
         image: wishList,
       },
     ],
     [
-      '85a901f7-f919-4bd5-8717-8d0acbc8bb8d',
+      "85a901f7-f919-4bd5-8717-8d0acbc8bb8d",
       {
-        name: 'YITH WooCommerce Ajax Product Filter',
+        title: "nfd_slug_yith_woocommerce_ajax_product_filter",
+        name: "YITH WooCommerce Ajax Product Filter",
         learnMore:
-          'https://www.bluehost.com/help/article/yith-woocommerce-ajax-product-filter',
+          "https://www.bluehost.com/help/article/yith-woocommerce-ajax-product-filter",
         image: filter,
       },
     ],
     [
-      'f6f20a00-01bd-45ec-8d63-28b4a018188a',
+      "f6f20a00-01bd-45ec-8d63-28b4a018188a",
       {
-        name: 'YITH WooCommerce Gift Cards',
+        title: "nfd_slug_yith_woocommerce_gift_cards",
+        name: "YITH WooCommerce Gift Cards",
         learnMore:
-          'https://www.bluehost.com/help/article/yith-woocommerce-gift-cards',
+          "https://www.bluehost.com/help/article/yith-woocommerce-gift-cards",
         image: gift,
       },
     ],
     [
-      '7b490bad-380c-4e47-8b92-d78773f04f41',
+      "7b490bad-380c-4e47-8b92-d78773f04f41",
       {
-        name: 'YITH WooCommerce Customize My Account Page',
+        title: "nfd_slug_yith_woocommerce_customize_myaccount_page",
+        name: "YITH WooCommerce Customize My Account Page",
         learnMore:
-          'https://www.bluehost.com/help/article/yith-woocommerce-customize-my-account-page',
+          "https://www.bluehost.com/help/article/yith-woocommerce-customize-my-account-page",
         image: customizeAccount,
       },
     ],
@@ -74,12 +83,12 @@ export function YITHPlugins({ woo, wpModules }) {
   const [yithProducts, setYithProducts] = useState([]);
   useEffect(async () => {
     const data = await apiFetch({
-      url: NewfoldRuntime.createApiUrl('/newfold-marketplace/v1/marketplace'),
+      url: NewfoldRuntime.createApiUrl("/newfold-marketplace/v1/marketplace"),
     });
     setYithProducts(
       data?.products?.data.filter(
         (product) =>
-          product.categories?.includes('eCommerce') &&
+          product.categories?.includes("eCommerce") &&
           product.categories?.length === 1
       )
     );
@@ -91,10 +100,10 @@ export function YITHPlugins({ woo, wpModules }) {
   return (
     <Section.Container>
       <Section.Header
-        title={__('Additional Features', 'wp-module-ecommerce')}
+        title={__("Additional Features", "wp-module-ecommerce")}
         subTitle={__(
-          'Improve your store with these powerful add-ons.',
-          'wp-module-ecommerce'
+          "Improve your store with these powerful add-ons.",
+          "wp-module-ecommerce"
         )}
       />
       <Section.Content>
@@ -105,10 +114,10 @@ export function YITHPlugins({ woo, wpModules }) {
         )}
         <div
           className={classNames(
-            'nfd-grid nfd-gap-6',
-            'sm:nfd-grid-cols-1',
-            'md:nfd-grid-cols-2',
-            'lg:nfd-grid-cols-3'
+            "nfd-grid nfd-gap-6",
+            "sm:nfd-grid-cols-1",
+            "md:nfd-grid-cols-2",
+            "lg:nfd-grid-cols-3"
           )}
         >
           {yithProducts
@@ -119,6 +128,7 @@ export function YITHPlugins({ woo, wpModules }) {
                   id={product.id}
                   yithProducts={product}
                   yithPluginsMap={yithPluginsMap}
+                  cards={cards}
                 />
               );
             })}

@@ -1,18 +1,20 @@
-import { Button, Card, Link, Title } from '@newfold/ui-component-library';
-import { __ } from '@wordpress/i18n';
-import { AnalyticsSdk } from '../sdk/analytics';
-import { ArrowLongRightIcon } from '@heroicons/react/20/solid';
-import { defineFeatureState } from '../configs/YITHPlugins.config';
+import { Button, Card, Link, Title } from "@newfold/ui-component-library";
+import { __ } from "@wordpress/i18n";
+import { AnalyticsSdk } from "../sdk/analytics";
+import { ArrowLongRightIcon } from "@heroicons/react/20/solid";
 
 export function YithFeatureCard({
   yithProducts: { name, description, primaryUrl },
   yithPluginsMap,
   id,
+  cards,
 }) {
-  const state = defineFeatureState();
-  const { isDisabled, isInstalling, isUpsellNeeded, isActive } = state;
+  const cardsInfo = cards.filter(
+    (card) => card.name === yithPluginsMap.get(id).title
+  )[0];
+  const state = cardsInfo?.state;
   const isInstallDisabled =
-    !state.isActive && !state.isQueueEmpty && !isInstalling;
+    !state?.isActive && !state?.isQueueEmpty && !state?.isInstalling;
   return (
     <Card>
       <Card.Content>
@@ -32,12 +34,12 @@ export function YithFeatureCard({
             href={yithPluginsMap.get(id).learnMore}
             target="_blank"
             onClick={() =>
-              AnalyticsSdk.track('commerce', name, {
-                value: 'clicked on the learn more url',
+              AnalyticsSdk.track("commerce", name, {
+                value: "clicked on the learn more url",
               })
             }
           >
-            <span>{__('Learn More', 'wp-module-ecommerce')}</span>
+            <span>{__("Learn More", "wp-module-ecommerce")}</span>
             <ArrowLongRightIcon className="nfd-h-5 nfd-text-black" />
           </Link>
         )}
@@ -46,38 +48,38 @@ export function YithFeatureCard({
         <Card.Footer>
           <span>
             {__(
-              'please wait while other features are installed...',
-              'wp-module-ecommerce'
+              "please wait while other features are installed...",
+              "wp-module-ecommerce"
             )}
           </span>
         </Card.Footer>
-      ) : state.isActive && state.featureUrl !== null ? (
+      ) : state?.isActive && state?.featureUrl !== null ? (
         <Card.Footer>
           <Button
             className="nfd-w-full nfd-h-9 nfd-border nfd-flex nfd-items-center nfd-gap-2"
             variant="secondary"
             as="a"
-            href={state.featureUrl}
+            href={state?.featureUrl}
           >
-            <span>{isActive ? __('Manage') : __('Enable')}</span>
+            <span>{state?.isActive ? __("Manage") : __("Enable")}</span>
           </Button>
         </Card.Footer>
-      ) : isUpsellNeeded ? (
+      ) : state?.isUpsellNeeded ? (
         <Card.Footer>
           <Button
             className="nfd-w-full nfd-h-9 nfd-border nfd-flex nfd-items-center nfd-gap-2"
             variant="upsell"
             as="a"
             target="_blank"
-            {...(state.upsellOptions?.clickToBuyId
+            {...(state?.upsellOptions?.clickToBuyId
               ? {
-                  'data-action': 'load-nfd-ctb',
-                  'data-ctb-id': state.upsellOptions.clickToBuyId,
+                  "data-action": "load-nfd-ctb",
+                  "data-ctb-id": state?.upsellOptions.clickToBuyId,
                 }
               : {})}
             href={primaryUrl}
           >
-            <span>{__('Purchase', 'wp-module-ecommerce')}</span>
+            <span>{__("Purchase", "wp-module-ecommerce")}</span>
           </Button>
         </Card.Footer>
       ) : (
@@ -86,19 +88,19 @@ export function YithFeatureCard({
             className="nfd-w-full nfd-h-9 nfd-border nfd-flex nfd-items-center nfd-gap-2"
             variant="secondary"
             onClick={() =>
-              state.isActive
-                ? actions.manageFeature?.(state, props)
-                : actions.installFeature?.(state, props)
+              state?.isActive
+                ? actions.manageFeature?.(cardsInfo?.state, props)
+                : actions.installFeature?.(cardsInfo?.state, props)
             }
-            isLoading={isInstalling}
-            disabled={isDisabled}
+            isLoading={state?.isInstalling}
+            disabled={state?.isDisabled}
           >
             <span>
-              {isInstalling
-                ? __('Installing...', 'wp-module-ecommerce')
-                : isActive
-                ? __('Manage')
-                : __('Enable')}
+              {state?.isInstalling
+                ? __("Installing...", "wp-module-ecommerce")
+                : state?.isActive
+                ? __("Manage")
+                : __("Enable")}
             </span>
           </Button>
         </Card.Footer>
