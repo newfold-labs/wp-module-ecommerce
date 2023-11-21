@@ -14,8 +14,10 @@ import booking from "../icons/brands/yith-woocommerce-booking.svg";
 import customizeAccount from "../icons/brands/yith-woocommerce-customize-myaccount-page.svg";
 import gift from "../icons/brands/yith-woocommerce-gift-card.svg";
 import wishList from "../icons/brands/yith-woocommerce-wishlist.svg";
+import { RuntimeSdk } from "../sdk/runtime";
 
 export function YITHPlugins({ woo, wpModules }) {
+  const isBluehost = RuntimeSdk?.brandSettings?.brand?.includes("bluehost");
   const yithPluginsMap = new Map([
     [
       "faf0acf9-b5a0-479d-9cde-20fb5fa530f9",
@@ -23,6 +25,7 @@ export function YITHPlugins({ woo, wpModules }) {
         title: "nfd_slug_yith_woocommerce_booking",
         name: "YITH Booking and Appointment for WooCommerce",
         learnMore:
+          isBluehost &&
           "https://www.bluehost.com/help/article/yith-booking-and-appointment-for-woocommerce",
         image: booking,
       },
@@ -41,6 +44,7 @@ export function YITHPlugins({ woo, wpModules }) {
         title: "nfd_slug_yith_woocommerce_wishlist",
         name: "YITH WooCommerce Wishlist",
         learnMore:
+          isBluehost &&
           "https://www.bluehost.com/help/article/yith-woocommerce-wishlist",
         image: wishList,
       },
@@ -51,6 +55,7 @@ export function YITHPlugins({ woo, wpModules }) {
         title: "nfd_slug_yith_woocommerce_ajax_product_filter",
         name: "YITH WooCommerce Ajax Product Filter",
         learnMore:
+          isBluehost &&
           "https://www.bluehost.com/help/article/yith-woocommerce-ajax-product-filter",
         image: filter,
       },
@@ -61,6 +66,7 @@ export function YITHPlugins({ woo, wpModules }) {
         title: "nfd_slug_yith_woocommerce_gift_cards",
         name: "YITH WooCommerce Gift Cards",
         learnMore:
+          isBluehost &&
           "https://www.bluehost.com/help/article/yith-woocommerce-gift-cards",
         image: gift,
       },
@@ -71,6 +77,7 @@ export function YITHPlugins({ woo, wpModules }) {
         title: "nfd_slug_yith_woocommerce_customize_myaccount_page",
         name: "YITH WooCommerce Customize My Account Page",
         learnMore:
+          isBluehost &&
           "https://www.bluehost.com/help/article/yith-woocommerce-customize-my-account-page",
         image: customizeAccount,
       },
