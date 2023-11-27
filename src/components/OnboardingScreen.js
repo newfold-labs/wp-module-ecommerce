@@ -160,8 +160,7 @@ useEffect(() => {
               </div>
             </div>
             <OnboardingList notify={notify} />
-           <FacebookConnectButton />
-            
+            {(NewfoldRuntime.isAdmin &&  <FacebookConnectButton />) || ''}
           </div>
           <SiteStatus
             comingSoon={comingSoon}
