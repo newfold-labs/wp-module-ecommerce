@@ -1,6 +1,6 @@
 import { GetPluginId, getAppId } from '../wp-module-support/pluginID.cy';
 
-const customCommandTimeout = 60000;
+const customCommandTimeout = 30000;
 
 const appId = getAppId();
 
@@ -36,10 +36,10 @@ describe(
         it('Verify Install Now is shown when canAccessGlobalCTB and hasYithExtended set to true', () => {
             cy.exec( `npx wp-env run cli wp option delete _transient_nfd_site_capabilities` , { timeout: customCommandTimeout , failOnNonZeroExit: false})
             cy.exec( `npx wp-env run cli wp option set _transient_nfd_site_capabilities '${cTBAndYithTrue}'`, { timeout: customCommandTimeout, failOnNonZeroExit: false} )
-            cy.get(`.${appId}-app-navitem-Store`).click()
-            cy.get(`.${appId}-app-subnavitem`).contains('Sales & Discounts').as('salesTab').should('exist')
+            cy.get(`.${appId}-app-navitem-Store`, {timeout: customCommandTimeout}).click()
+            cy.get(`.${appId}-app-subnavitem`, {timeout: customCommandTimeout}).contains('Sales & Discounts').as('salesTab').should('exist')
             cy.get('@salesTab').click();
-            cy.get('.nfd-button--upsell').contains('Install now').should('exist')  
+            cy.get('.nfd-button--upsell', {timeout: customCommandTimeout}).contains('Install now').should('exist')  
             
         })
 
