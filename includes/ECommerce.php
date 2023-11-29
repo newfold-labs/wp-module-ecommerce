@@ -83,6 +83,7 @@ class ECommerce {
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_assets' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_textdomains' ) );
 		add_action('wp_body_open', array( $this, 'regiester_site_preview' ));
+		add_filter('woocommerce_before_cart', array( $this, 'hide_coupon_notice_on_cart'));
 
 		// Handle WonderCart Integrations
 		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
@@ -321,6 +322,22 @@ class ECommerce {
 		$is_coming_soon   = 'true' === get_option( 'nfd_coming_soon', 'false' );
 		if($is_coming_soon){
 		echo "<div style='background-color: #e71616; padding: 0 16px;color:#ffffff;font-size:16px;text-align:center;font-weight: 590;'>" . esc_html__( 'Site Preview - This site is NOT LIVE, only admins can see this view.', 'wp-module-ecommerce' ) . "</div>";
+		}
+	}
+
+	/**
+ 	* Remove Coupon notices and Add coupon field on cart page
+ 	*/
+
+ 	public function hide_coupon_notice_on_cart() {
+		if (is_cart()) {
+			?>
+			<style>
+				.woocommerce-info, .coupon {
+					display: none !important;
+				}
+			</style>
+			<?php
 		}
 	}
 }
