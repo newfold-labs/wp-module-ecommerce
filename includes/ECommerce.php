@@ -65,6 +65,7 @@ class ECommerce {
 		'woocommerce_cheque_settings',
 		'onboarding_experience_level',
 		'yoast_seo_signup_status',
+		'fb_token'
 	);
 
 	/**

@@ -9,7 +9,7 @@ import { OnboardingList } from "./OnboardingList";
 import { Section } from "./Section";
 import { SiteStatus } from "./SiteStatus";
 import { IntegrationsSdk } from "../sdk/integrations";
-import { FacebookConnectButton } from "@newfold/wp-module-facebook";
+import { FacebookConnectButton, getFacebookUserProfileDetails } from "@newfold/wp-module-facebook";
 
 const Text = {
   Pending: {
@@ -56,7 +56,9 @@ export function OnboardingScreen({
  }
 
 useEffect(() => {
-  IntegrationsSdk.status("hiive")
+  getFacebookUserProfileDetails().then(res => {
+    console.log(res, "ecommerce")
+  })
   if(!window.localStorage.getItem("facebook_token") || (window.localStorage.getItem("facebook_token") == null) || (window.localStorage.getItem("facebook_token") == "")){
     window.localStorage.setItem("facebook_token", facebook_token)
   }
