@@ -31,7 +31,7 @@ class WonderCart {
 		// For now these are only customized on Hostgator.
 		// If in the future we need to expand this to other brands,
 		// the brand checks could be moved into the individual methods.
-		if ( $this->container->plugin()->brand === 'Hostgator' ) {
+		if ( $this->container->plugin()->brand === 'hostgator' ) {
 			add_filter( 'yith_sales_panel_page', array( $this, 'get_panel_page' ) );
 			add_filter( 'yith_sales_main_panel_page', array( $this, 'get_main_panel_page' ) );
 			add_filter( 'yith_sales_main_app_id', array( $this, 'get_main_app_id' ) );
