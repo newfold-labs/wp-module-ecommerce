@@ -24,10 +24,10 @@ describe(
         it('Default test', () => {
 
             cy.exec( 'npx wp-env run cli wp option delete _transient_nfd_site_capabilities' )
-            // cy.exec(`wp-env run cli wp option set _transient_nfd_site_capabilities '${ecomTrue}'`).then((result) => {
-            //     cy.log(result.stdout);
-            //     cy.log(result.stderr);
-            // })
+            cy.exec(`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ecomTrue}'`).then((result) => {
+                cy.log(result.stdout);
+                cy.log(result.stderr);
+            })
 
             // cy.exec(`wp-env run cli wp option update _transient_nfd_site_capabilities '${ecomTrue}' --path c/Users/sangeetha.n1/Local Sites/bhlatest/app/public`, { timeout: 20000 }).then((result) => {
                 // cy.exec(`npx wp-env run cli wp option set mm_brand Bluehost`, { timeout: 20000 }).then((result) => {
