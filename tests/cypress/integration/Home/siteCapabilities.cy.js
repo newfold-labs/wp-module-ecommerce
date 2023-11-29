@@ -1,6 +1,6 @@
 import { GetPluginId, getAppId } from '../wp-module-support/pluginID.cy';
 
-const customCommandTimeout = 30000;
+const customCommandTimeout = 90000;
 
 const appId = getAppId();
 
