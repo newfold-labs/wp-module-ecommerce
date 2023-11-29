@@ -15,9 +15,7 @@ describe(
             "isEcommerce": true,
             "isJarvis" : true
         }
-        const optionsString = JSON.stringify(ecomArr);
-        const stringVal = '["canAccessAI" => false, "canAccessHelpCenter" => false,"canAccessGlobalCTB"  => true,"hasEcomdash" => false,"hasYithExtended" => false,"isEcommerce" => false,"isJarvis" => false]'
-
+        
         const cTBAndYithTrue = 'a:7:{s:11:"canAccessAI";b:1;s:18:"canAccessGlobalCTB";b:1;s:19:"canAccessHelpCenter";b:1;s:11:"hasEcomdash";b:0;s:15:"hasYithExtended";b:1;s:11:"isEcommerce";b:1;s:8:"isJarvis";b:1;}'
         const cTBFalseYithTrue = 'a:7:{s:11:"canAccessAI";b:1;s:18:"canAccessGlobalCTB";b:0;s:19:"canAccessHelpCenter";b:1;s:11:"hasEcomdash";b:0;s:15:"hasYithExtended";b:1;s:11:"isEcommerce";b:1;s:8:"isJarvis";b:1;}'
         const cTBTrueYithFalse = 'a:7:{s:11:"canAccessAI";b:1;s:18:"canAccessGlobalCTB";b:1;s:19:"canAccessHelpCenter";b:1;s:11:"hasEcomdash";b:0;s:15:"hasYithExtended";b:0;s:11:"isEcommerce";b:1;s:8:"isJarvis";b:1;}'
@@ -37,8 +35,8 @@ describe(
         })
 
         it('Verify Install Now is shown when canAccessGlobalCTB and hasYithExtended set to true', () => {
-            cy.exec( 'npx wp-env run cli wp option delete _transient_nfd_site_capabilities' , { timeout: customCommandTimeout })
-            cy.exec( `npx wp-env run cli wp option set _transient_nfd_site_capabilities '${cTBAndYithTrue}'`, { timeout: customCommandTimeout } )
+            // cy.exec( `npx wp-env run cli wp option delete _transient_nfd_site_capabilities` , { timeout: customCommandTimeout })
+            cy.exec( `npx wp-env run cli wp option update _transient_nfd_site_capabilities '${cTBAndYithTrue}'`, { timeout: customCommandTimeout } )
             cy.get(`.${appId}-app-navitem-Store`).click()
             cy.get(`.${appId}-app-subnavitem`).contains('Sales & Discounts').as('salesTab').should('exist')
             cy.get('@salesTab').click();
@@ -47,8 +45,8 @@ describe(
         })
 
         it('Verify Install Now is shown when canAccessGlobalCTB is false and hasYithExtended set to true', () => {
-            cy.exec( 'npx wp-env run cli wp option delete _transient_nfd_site_capabilities', { timeout: customCommandTimeout } )
-            cy.exec(`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${cTBFalseYithTrue}'`, { timeout: customCommandTimeout })
+            // cy.exec( `npx wp-env run cli wp option delete _transient_nfd_site_capabilities`, { timeout: customCommandTimeout } )
+            cy.exec(`npx wp-env run cli wp option update _transient_nfd_site_capabilities '${cTBFalseYithTrue}'`, { timeout: customCommandTimeout })
             cy.get(`.${appId}-app-navitem-Store`).click()
             cy.get(`.${appId}-app-subnavitem`).contains('Sales & Discounts').as('salesTab').should('exist')
             cy.get('@salesTab').click();
@@ -56,8 +54,8 @@ describe(
         })
 
         it('Verify Install Now is shown when canAccessGlobalCTB is true and hasYithExtended set to false', () => {
-            cy.exec( 'npx wp-env run cli wp option delete _transient_nfd_site_capabilities' , { timeout: customCommandTimeout })
-            cy.exec(`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${cTBTrueYithFalse}'`, { timeout: customCommandTimeout })
+            // cy.exec( `npx wp-env run cli wp option delete _transient_nfd_site_capabilities` , { timeout: customCommandTimeout })
+            cy.exec(`npx wp-env run cli wp option update _transient_nfd_site_capabilities '${cTBTrueYithFalse}'`, { timeout: customCommandTimeout })
             cy.get(`.${appId}-app-navitem-Store`).click()
             cy.get(`.${appId}-app-subnavitem`).contains('Sales & Discounts').as('salesTab').should('exist')
             cy.get('@salesTab').click();
