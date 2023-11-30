@@ -38,8 +38,6 @@ export function OnboardingScreen({
   const { title, description, Illustration } = comingSoon
     ? Text.Pending
     : Text.Live;
-    const section = new URLSearchParams(window.location.search);
-    const facebook_token = section.get("facebook_token");
 
   const [hovered, setIsHovered] = useState(false);
 
@@ -51,18 +49,15 @@ export function OnboardingScreen({
     setIsHovered(false);
   };
 
- const iframeOnLoad= () => {
-  window.frames["iframe-preview"].document.getElementById("wpadminbar").style.display = "none"
- }
-
-useEffect(() => {
-  getFacebookUserProfileDetails().then(res => {
-    console.log(res, "ecommerce")
-  })
-  if(!window.localStorage.getItem("facebook_token") || (window.localStorage.getItem("facebook_token") == null) || (window.localStorage.getItem("facebook_token") == "")){
-    window.localStorage.setItem("facebook_token", facebook_token)
+  const iframeOnLoad = () => {
+    window.frames["iframe-preview"].document.getElementById("wpadminbar").style.display = "none"
   }
-},[])
+
+  useEffect(() => {
+    getFacebookUserProfileDetails().then(res => {
+      console.log(res, "ecommerce")
+    })
+  }, [])
 
   return (
     <Section.Container
@@ -128,8 +123,8 @@ useEffect(() => {
                       )}
                     >
                       <iframe
-                      onLoad={iframeOnLoad}
-                      id="iframe-preview"
+                        onLoad={iframeOnLoad}
+                        id="iframe-preview"
                         title="Preview"
                         className="nfd-w-[400%] nfd-min-h-[400%] nfd-basis-full nfd-scale-[0.25] nfd-overflow-hidden nfd-relative nfd-top-[-9px]"
                         src={NewfoldRuntime.homeUrl}
@@ -147,9 +142,9 @@ useEffect(() => {
                   )}
                 >
                   <Button
-                   style={{
-                    display: hovered ? "block" : "none",
-                  }}
+                    style={{
+                      display: hovered ? "block" : "none",
+                    }}
                     as="a"
                     className="nfd-bg-canvas "
                     href={NewfoldRuntime.siteDetails.url}
@@ -162,7 +157,7 @@ useEffect(() => {
               </div>
             </div>
             <OnboardingList notify={notify} />
-            {(NewfoldRuntime.isAdmin &&  <FacebookConnectButton />) || ''}
+            <FacebookConnectButton />
           </div>
           <SiteStatus
             comingSoon={comingSoon}
