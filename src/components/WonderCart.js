@@ -22,6 +22,7 @@ export function WonderCart(props) {
   );
 
   const canAccessGlobalCTB = NewfoldRuntime.hasCapability("canAccessGlobalCTB");
+  const hasYithExtended = NewfoldRuntime.hasCapability("hasYithExtended");
 
   let [installWonderCart, isInstalling] = useInstallWonderCart(props);
   if (wonderCartStatus.isLoading) {
@@ -58,17 +59,27 @@ export function WonderCart(props) {
               </span>
             </div>
             <div className="nfd-flex-none">
-                <Button
-                  type="button"
-                  as={canAccessGlobalCTB ? "a" : "button"}
-                  data-ctb-id={canAccessGlobalCTB ? "f95ccf1e-3028-4ea7-b2c2-847969348e8b" : null}
-                  href={canAccessGlobalCTB && NewfoldRuntime.sdk.ecommerce.brand_settings.wondercartBuyNow}
-                  variant="upsell"
-                  isLoading={showInProgress}
-                  onClick={!canAccessGlobalCTB && installWonderCart}
-                >
-                  {canAccessGlobalCTB ? __("Buy now", "wp-module-ecommerce") : __("Install now", "wp-module-ecommerce")}
-                </Button>
+              <Button
+                type="button"
+                as={canAccessGlobalCTB && !hasYithExtended ? "a" : "button"}
+                data-ctb-id={
+                  canAccessGlobalCTB && !hasYithExtended
+                    ? "f95ccf1e-3028-4ea7-b2c2-847969348e8b"
+                    : null
+                }
+                href={
+                  canAccessGlobalCTB &&
+                  !hasYithExtended &&
+                  NewfoldRuntime.sdk.ecommerce.brand_settings.wondercartBuyNow
+                }
+                variant="upsell"
+                isLoading={showInProgress}
+                onClick={hasYithExtended && installWonderCart}
+              >
+                {canAccessGlobalCTB && !hasYithExtended
+                  ? __("Buy now", "wp-module-ecommerce")
+                  : __("Install now", "wp-module-ecommerce")}
+              </Button>
             </div>
           </div>
         </div>
@@ -77,12 +88,25 @@ export function WonderCart(props) {
         className="hide-html"
         shouldUpsell
         variant="card"
-        cardLink={canAccessGlobalCTB && NewfoldRuntime.sdk.ecommerce.brand_settings.wondercartBuyNow}
-        cardText={canAccessGlobalCTB ? __("Buy now", "wp-module-ecommerce") : __("Install now", "wp-module-ecommerce")}
-        as={canAccessGlobalCTB ? "a" : "button"}
+        cardLink={
+          canAccessGlobalCTB &&
+          !hasYithExtended &&
+          NewfoldRuntime.sdk.ecommerce.brand_settings.wondercartBuyNow
+        }
+        target="_blank"
+        cardText={
+          canAccessGlobalCTB && !hasYithExtended
+            ? __("Buy now", "wp-module-ecommerce")
+            : __("Install now", "wp-module-ecommerce")
+        }
+        as={canAccessGlobalCTB && !hasYithExtended ? "a" : "button"}
         disabled={showInProgress}
-        data-ctb-id={canAccessGlobalCTB ? "f95ccf1e-3028-4ea7-b2c2-847969348e8b" : null}
-        onClick={!canAccessGlobalCTB && installWonderCart}
+        data-ctb-id={
+          canAccessGlobalCTB && !hasYithExtended
+            ? "f95ccf1e-3028-4ea7-b2c2-847969348e8b"
+            : null
+        }
+        onClick={hasYithExtended && installWonderCart}
       >
         <WonderCartUpsell />
       </FeatureUpsell>
