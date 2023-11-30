@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "newfold-labs/wp-module-data",
-            "version": "2.4.11",
+            "version": "2.4.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "c244dd52e7e07bf0d890e51892e179c62f197bac"
+                "reference": "a21d4579037add8bb921426f8d41e15d13b81af3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/c244dd52e7e07bf0d890e51892e179c62f197bac",
-                "reference": "c244dd52e7e07bf0d890e51892e179c62f197bac",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/a21d4579037add8bb921426f8d41e15d13b81af3",
+                "reference": "a21d4579037add8bb921426f8d41e15d13b81af3",
                 "shasum": ""
             },
             "require": {
@@ -50,10 +50,10 @@
             ],
             "description": "Newfold Data Module",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.4.11",
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.4.13",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2023-11-13T19:54:44+00:00"
+            "time": "2023-11-29T18:53:24+00:00"
         },
         {
             "name": "newfold-labs/wp-module-installer",
@@ -99,16 +99,16 @@
         },
         {
             "name": "newfold-labs/wp-module-onboarding-data",
-            "version": "0.0.7",
+            "version": "0.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding-data.git",
-                "reference": "dbebb068b86e8645d137abadba316331f715dc9f"
+                "reference": "3d9265b2c2e75978f9a4b6d430518817b2244301"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding-data/zipball/dbebb068b86e8645d137abadba316331f715dc9f",
-                "reference": "dbebb068b86e8645d137abadba316331f715dc9f",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding-data/zipball/3d9265b2c2e75978f9a4b6d430518817b2244301",
+                "reference": "3d9265b2c2e75978f9a4b6d430518817b2244301",
                 "shasum": ""
             },
             "require": {
@@ -133,10 +133,10 @@
             ],
             "description": "A non-toggleable module containing a standardized interface for interacting with Onboarding data.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-onboarding-data/tree/0.0.7",
+                "source": "https://github.com/newfold-labs/wp-module-onboarding-data/tree/0.0.8",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding-data/issues"
             },
-            "time": "2023-11-17T09:04:51+00:00"
+            "time": "2023-11-29T09:37:19+00:00"
         },
         {
             "name": "wp-forge/wp-query-builder",
@@ -658,16 +658,16 @@
         },
         {
             "name": "composer/spdx-licenses",
-            "version": "1.5.7",
+            "version": "1.5.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/spdx-licenses.git",
-                "reference": "c848241796da2abf65837d51dce1fae55a960149"
+                "reference": "560bdcf8deb88ae5d611c80a2de8ea9d0358cc0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/spdx-licenses/zipball/c848241796da2abf65837d51dce1fae55a960149",
-                "reference": "c848241796da2abf65837d51dce1fae55a960149",
+                "url": "https://api.github.com/repos/composer/spdx-licenses/zipball/560bdcf8deb88ae5d611c80a2de8ea9d0358cc0a",
+                "reference": "560bdcf8deb88ae5d611c80a2de8ea9d0358cc0a",
                 "shasum": ""
             },
             "require": {
@@ -716,9 +716,9 @@
                 "validator"
             ],
             "support": {
-                "irc": "irc://irc.freenode.org/composer",
+                "irc": "ircs://irc.libera.chat:6697/composer",
                 "issues": "https://github.com/composer/spdx-licenses/issues",
-                "source": "https://github.com/composer/spdx-licenses/tree/1.5.7"
+                "source": "https://github.com/composer/spdx-licenses/tree/1.5.8"
             },
             "funding": [
                 {
@@ -734,7 +734,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-05-23T07:37:50+00:00"
+            "time": "2023-11-20T07:44:33+00:00"
         },
         {
             "name": "composer/xdebug-handler",
