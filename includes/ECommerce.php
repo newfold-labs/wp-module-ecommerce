@@ -83,6 +83,7 @@ class ECommerce {
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_assets' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_textdomains' ) );
 		add_action('wp_body_open', array( $this, 'regiester_site_preview' ));
+		add_action('wp_footer', array( $this, 'load_script_checkout' ));
 
 		// Handle WonderCart Integrations
 		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
@@ -322,5 +323,13 @@ class ECommerce {
 		if($is_coming_soon){
 		echo "<div style='background-color: #e71616; padding: 0 16px;color:#ffffff;font-size:16px;text-align:center;font-weight: 590;'>" . esc_html__( 'Site Preview - This site is NOT LIVE, only admins can see this view.', 'wp-module-ecommerce' ) . "</div>";
 		}
+	}
+
+	public function load_script_checkout() {
+		if(is_checkout()){
+			echo "<script>console.log('hiiii')</script>";
+			\wp_enqueue_script( 'wp_footer', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/smartfilling.js', array(), '1', true );
+		}
+			
 	}
 }
