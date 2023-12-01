@@ -27,8 +27,8 @@ describe(
         })
         it('Verify Install Now is shown when canAccessGlobalCTB and hasYithExtended set to true', () => {
             // cy.exec( `npx wp-env run cli wp option get _transient_nfd_site_capabilities` )
-            // cy.exec( `npx wp-env run cli wp option delete transient_nfd_site_capabilities` )
-            cy.exec(`npx wp-env run cli wp option update _transient_nfd_site_capabilities '${cTBAndYithTrue}'`, { timeout: customCommandTimeout }).then((result) => {
+            cy.exec( `npx wp-env run cli wp option delete transient_nfd_site_capabilities` )
+            cy.exec(`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${cTBAndYithTrue}'`, { timeout: customCommandTimeout }).then((result) => {
                 cy.log(result.stdout);
                 cy.log(result.stderr);
             })
