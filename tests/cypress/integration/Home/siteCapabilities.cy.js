@@ -28,7 +28,7 @@ describe(
         it('Verify Install Now is shown when canAccessGlobalCTB and hasYithExtended set to true', () => {
             // cy.exec( `npx wp-env run cli wp option get _transient_nfd_site_capabilities` )
             cy.exec( `npx wp-env run cli wp option delete mm_brand`, {failOnNonZeroExit: false})
-            cy.exec(`npx wp-env run cli wp option set mm_brand ${GetPluginId}`, { timeout: customCommandTimeout }).then((result) => {
+            cy.exec(`npx wp-env run cli wp option set mm_brand bluehost`, { timeout: customCommandTimeout }).then((result) => {
                 cy.log(result.stdout);
                 cy.log(result.stderr);
             })
