@@ -55,10 +55,10 @@ describe(
 
         it.skip('Verify Install Now is shown when canAccessGlobalCTB is true and hasYithExtended set to false', () => {
             // cy.exec( `npx wp-env run cli wp option delete _transient_nfd_site_capabilities` , { timeout: customCommandTimeout })
-            cy.exec(`npx wp-env run cli wp option update _transient_nfd_site_capabilities '${cTBTrueYithFalse}'`, { timeout: customCommandTimeout }).then((result) => {
-                cy.log(result.stdout);
-                cy.log(result.stderr);
-            })
+            // cy.exec(`npx wp-env run cli wp option update _transient_nfd_site_capabilities '${cTBTrueYithFalse}'`, { timeout: customCommandTimeout }).then((result) => {
+            //     cy.log(result.stdout);
+            //     cy.log(result.stderr);
+            // })
             cy.reload();
             cy.get(`.${appId}-app-navitem-Store`).click()
             cy.get(`.${appId}-app-subnavitem`).contains('Sales & Discounts').as('salesTab').should('exist')
