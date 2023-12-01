@@ -1,13 +1,14 @@
-import { Alert, Button, Title } from '@newfold/ui-component-library';
-import { useState } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
-import classNames from 'classnames';
-import { ReactComponent as ComingSoonIllustration } from '../icons/coming-soon.svg';
-import { ReactComponent as WelcomeIllustration } from '../icons/store-live.svg';
-import { NewfoldRuntime } from '../sdk/NewfoldRuntime';
-import { OnboardingList } from './OnboardingList';
-import { Section } from './Section';
-import { SiteStatus } from './SiteStatus';
+import { Alert, Button, Title } from "@newfold/ui-component-library";
+import { useEffect, useState } from "@wordpress/element";
+import { __ } from "@wordpress/i18n";
+import classNames from "classnames";
+import { ReactComponent as ComingSoonIllustration } from "../icons/coming-soon.svg";
+import { ReactComponent as WelcomeIllustration } from "../icons/store-live.svg";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
+import { OnboardingList } from "./OnboardingList";
+import { Section } from "./Section";
+import { SiteStatus } from "./SiteStatus";
+import useThumbnail from "./useThumbnail";
 
 const Text = {
   Pending: {
@@ -16,7 +17,7 @@ const Text = {
       : __('Congrats on your new site!', 'wp-module-ecommerce'),
     description: __(
       'Your site is currently displaying a "Coming Soon" page.',
-      'wp-module-ecommerce'
+      "wp-module-ecommerce"
     ),
     Illustration: ComingSoonIllustration,
   },
@@ -38,6 +39,7 @@ export function OnboardingScreen({
     : Text.Live;
 
   const [hovered, setIsHovered] = useState(false);
+  const [thumbnail, setThumbnail] = useState();
 
   const handleMouseOver = () => {
     setIsHovered(true);
@@ -47,11 +49,10 @@ export function OnboardingScreen({
     setIsHovered(false);
   };
 
-  const iframeOnLoad = () => {
-    window.frames['iframe-preview'].document.getElementById(
-      'wpadminbar'
-    ).style.display = 'none';
-  };
+  useEffect(async () => {
+    const data = await useThumbnail(NewfoldRuntime.homeUrl);
+    setThumbnail(data?.thumbnail_loc);
+  }, []);
 
   return (
     <Section.Container
@@ -111,26 +112,26 @@ export function OnboardingScreen({
                   <div className="nfd-flex-col">
                     <div
                       className={classNames(
-                        'nfd-h-[216px] nfd-box-content',
-                        'nfd-box-content nfd-z-[2] nfd-opacity-100',
-                        'nfd-flex nfd-flex-col nfd-justify-center nfd-items-center',
-                        'md:nfd-w-[520px] md:min-[783px]:nfd-w-[387px] md:min-[768px]:nfd-w-[670px]',
-                        'lg:min-[1024px]:nfd-w-[486px] lg:nfd-w-[520px] lg:nfd-h-[258px]',
-                        'xl:min-[1280px]:nfd-w-[360px]',
-                        '2xl:nfd-w-[520px]'
+                        "nfd-h-[216px] nfd-box-content",
+                        "nfd-box-content nfd-z-[2] nfd-opacity-100",
+                        "nfd-flex nfd-flex-col nfd-justify-center nfd-items-center",
+                        "md:nfd-w-[520px] md:min-[783px]:nfd-w-[387px] md:min-[768px]:nfd-w-[670px]",
+                        "lg:min-[1024px]:nfd-w-[486px] lg:nfd-w-[520px] lg:nfd-h-[245px]",
+                        "xl:min-[1280px]:nfd-w-[360px]",
+                        "2xl:nfd-w-[520px]"
                       )}
                     >
-                      <iframe
-                        onLoad={iframeOnLoad}
-                        id="iframe-preview"
-                        title="Preview"
-                        className="nfd-w-[400%] nfd-min-h-[400%] nfd-basis-full nfd-scale-[0.25] nfd-overflow-hidden nfd-relative nfd-top-[-9px]"
-                        src={NewfoldRuntime.homeUrl}
-                        scrolling="no"
-                        name="iframe-preview"
-                        sandbox
-                        seamless
-                      ></iframe>
+                      {thumbnail ? (
+                        <img
+                          className="nfd-w-full nfd-h-full"
+                          src={thumbnail}
+                          alt="image not available"
+                        />
+                      ) : (
+                        <Illustration
+                          className={classNames("nfd-h-full", "nfd-w-full")}
+                        />
+                      )}
                     </div>
                   </div>
                 )}
@@ -142,7 +143,7 @@ export function OnboardingScreen({
                 >
                   <Button
                     style={{
-                      display: hovered ? 'block' : 'none',
+                      display: hovered ? "block" : "none",
                     }}
                     as="a"
                     className="nfd-bg-canvas "
