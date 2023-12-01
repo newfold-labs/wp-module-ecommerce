@@ -84,6 +84,7 @@ class ECommerce {
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_textdomains' ) );
 		add_action('wp_body_open', array( $this, 'regiester_site_preview' ));
 		add_filter( 'woocommerce_coupons_enabled',  array( $this, 'disable_coupon_field_on_cart' ) );
+		add_filter( 'woocommerce_before_cart', array( $this, 'hide_banner_notice_on_cart'));
 
 		// Handle WonderCart Integrations
 		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
@@ -334,4 +335,19 @@ class ECommerce {
         }
         return $enabled;
     }
+
+	/**
+ 	* Remove notice banner on cart page
+ 	*/
+ 	public function hide_banner_notice_on_cart() {
+		if (is_cart()) {
+			?>
+			<style>
+				.wc-block-components-notice-banner, .ywgc_enter_code {
+					display: none;
+				}
+			</style>
+			<?php
+		}
+	}
 }
