@@ -83,7 +83,7 @@ class ECommerce {
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_assets' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_textdomains' ) );
 		add_action('wp_body_open', array( $this, 'regiester_site_preview' ));
-		add_filter('woocommerce_before_cart', array( $this, 'hide_coupon_notice_on_cart'));
+		add_filter( 'woocommerce_coupons_enabled',  array( $this, 'disable_coupon_field_on_cart' ) );
 
 		// Handle WonderCart Integrations
 		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
@@ -326,18 +326,12 @@ class ECommerce {
 	}
 
 	/**
- 	* Remove Coupon notices and Add coupon field on cart page
+ 	* Remove Add coupon field on cart page
  	*/
-
- 	public function hide_coupon_notice_on_cart() {
-		if (is_cart()) {
-			?>
-			<style>
-				.woocommerce-info, .coupon {
-					display: none !important;
-				}
-			</style>
-			<?php
-		}
-	}
+	public function disable_coupon_field_on_cart( $enabled ) {
+        if ( is_cart() ) {
+            $enabled = false;
+        }
+        return $enabled;
+    }
 }
