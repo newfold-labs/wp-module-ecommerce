@@ -4,7 +4,7 @@ export const APIList = {
 }
 
 export const EventsAPI = (events_name, pluginId) => {
-    cy.intercept(api_name).as('events');
+    cy.intercept(events_name).as('events');
     cy.wait('@events').then((requestObject) => {
         const responseBody = requestObject.request.body;
         const responseData = responseBody[0].data;

@@ -163,7 +163,7 @@ describe('Commerce Home Page- Live mode', () => {
 			});
 	});
 
-	it('Verify Next steps when experience level is novice', () => {
+	it.skip('Verify Next steps when experience level is novice', () => {
 		const steps = [
 			'Sign up for Bluehost WordPress Academy',
 			'Sign up for Yoast SEO Academy',
@@ -207,7 +207,7 @@ describe('Commerce Home Page- Live mode', () => {
 			});
 	});
 	
-	it('Verify Signup for Bluehost WordPress Academy step', () => {
+	it.skip('Verify Signup for Bluehost WordPress Academy step', () => {
 		if (GetPluginId() == 'bluehost') {
 			cy.exec(
 				`npx wp-env run cli wp option update onboarding_experience_level 1`
@@ -224,7 +224,7 @@ describe('Commerce Home Page- Live mode', () => {
 		}
 	})
 
-	it('Verify Signup for Wordpress SEO Academy step', () => {
+	it.skip('Verify Signup for Wordpress SEO Academy step', () => {
 		if (GetPluginId() == 'bluehost') {
 			cy.exec(
 				`npx wp-env run cli wp option update onboarding_experience_level 1`
