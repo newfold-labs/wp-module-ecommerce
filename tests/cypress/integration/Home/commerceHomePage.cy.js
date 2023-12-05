@@ -242,13 +242,14 @@ describe('Commerce Home Page- Live mode', () => {
 	})
 
 	it('Verify Add a new page to your site step', () => {
-		cy.get('.nfd-grid.nfd-gap-4 ul li', {timeout: customCommandTimeout}).scrollIntoView()
+		cy.get('.nfd-grid.nfd-gap-4 ul li', {timeout: customCommandTimeout})
 		cy.contains(
 			'.nfd-grid.nfd-gap-4 ul li a',
 			'Add a new page to your site',
 			{ timeout: customCommandTimeout }
 		)
-			.as( 'addPage' )
+			.as('addPage')
+			.scrollIntoView()
 			.click();
 		cy.url().should(
 			'eq',
