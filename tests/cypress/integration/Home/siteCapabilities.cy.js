@@ -33,11 +33,14 @@ describe(
                 cy.log(result.stdout);
                 cy.log(result.stderr);
             })
-            // cy.reload();
-            // cy.get(`.${appId}-app-navitem-Store`, {timeout: customCommandTimeout}).click()
-            // cy.get(`.${appId}-app-subnavitem`, {timeout: customCommandTimeout}).contains('Sales & Discounts').as('salesTab').should('exist')
-            // cy.get('@salesTab').click();
-            // cy.get('.nfd-button--upsell', {timeout: customCommandTimeout}).contains('Install now').should('exist')  
+        })
+
+        it('Verify Install Now is shown when canAccessGlobalCTB and hasYithExtended set to true', () => {
+            cy.reload();
+            cy.get(`.${appId}-app-navitem-Store`, {timeout: customCommandTimeout}).click()
+            cy.get(`.${appId}-app-subnavitem`, {timeout: customCommandTimeout}).contains('Sales & Discounts').as('salesTab').should('exist')
+            cy.get('@salesTab').click();
+            cy.get('.nfd-button--upsell', {timeout: customCommandTimeout}).contains('Install now').should('exist')  
             
         })
 
