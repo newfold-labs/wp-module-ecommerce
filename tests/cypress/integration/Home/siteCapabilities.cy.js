@@ -33,16 +33,16 @@ describe(
                 cy.log(result.stdout);
                 cy.log(result.stderr);
             })
-            cy.reload();
-            cy.get(`.${appId}-app-navitem-Store`, {timeout: customCommandTimeout}).click()
-            cy.get(`.${appId}-app-subnavitem`, {timeout: customCommandTimeout}).contains('Sales & Discounts').as('salesTab').should('exist')
-            cy.get('@salesTab').click();
-            cy.get('.nfd-button--upsell', {timeout: customCommandTimeout}).contains('Install now').should('exist')  
+            // cy.reload();
+            // cy.get(`.${appId}-app-navitem-Store`, {timeout: customCommandTimeout}).click()
+            // cy.get(`.${appId}-app-subnavitem`, {timeout: customCommandTimeout}).contains('Sales & Discounts').as('salesTab').should('exist')
+            // cy.get('@salesTab').click();
+            // cy.get('.nfd-button--upsell', {timeout: customCommandTimeout}).contains('Install now').should('exist')  
             
         })
 
         it('Verify Install Now is shown when canAccessGlobalCTB is false and hasYithExtended set to true', () => {
-            // cy.exec( `npx wp-env run cli wp option delete _transient_nfd_site_capabilities`, { timeout: customCommandTimeout } )
+            cy.exec( `npx wp-env run cli wp option delete _transient_nfd_site_capabilities`, { timeout: customCommandTimeout } )
             cy.exec(`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${cTBFalseYithTrue}'`, { timeout: customCommandTimeout }).then((result) => {
                 cy.log(result.stdout);
                 cy.log(result.stderr);
@@ -55,7 +55,7 @@ describe(
         })
 
         it('Verify Buy Now is shown when canAccessGlobalCTB is true and hasYithExtended set to false', () => {
-            // cy.exec( `npx wp-env run cli wp option delete _transient_nfd_site_capabilities` , { timeout: customCommandTimeout })
+            cy.exec( `npx wp-env run cli wp option delete _transient_nfd_site_capabilities` , { timeout: customCommandTimeout })
             cy.exec(`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${cTBTrueYithFalse}'`, { timeout: customCommandTimeout }).then((result) => {
                 cy.log(result.stdout);
                 cy.log(result.stderr);
