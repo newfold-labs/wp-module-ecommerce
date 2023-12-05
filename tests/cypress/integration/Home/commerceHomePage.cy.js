@@ -254,7 +254,7 @@ describe('Commerce Home Page- Live mode', () => {
 		cy.url().should(
 			'eq',
 			Cypress.config().baseUrl +
-				'/wp-admin/post-new.php?post_type=page&return_to_nfd'
+				'/wp-admin/post-new.php?post_type=page&return_to_nfd=%2Fhome'
 		);
 		cy.go( 'back' );
 		cy.wait( 2000 );
