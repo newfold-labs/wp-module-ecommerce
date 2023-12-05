@@ -84,6 +84,7 @@ class ECommerce {
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_textdomains' ) );
 		add_action('wp_body_open', array( $this, 'regiester_site_preview' ));
 		add_action('before_woocommerce_init', array( $this,'hide_woocommerce_set_up') );
+		add_action('before_woocommerce_init', array( $this,'update_shipping_destination') );
 
 		// Handle WonderCart Integrations
 		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
@@ -334,5 +335,13 @@ class ECommerce {
 			update_option('woocommerce_task_list_hidden_lists', $woocommerce_list);
 		}
 		
+	}
+
+	/**
+	 * Update shipping destination to 'shipping' by default
+	 */
+	public function update_shipping_destination()
+	{
+		update_option('woocommerce_ship_to_destination', 'shipping');
 	}
 }
