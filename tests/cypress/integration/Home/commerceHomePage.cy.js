@@ -183,9 +183,11 @@ describe('Commerce Home Page- Live mode', () => {
 			`npx wp-env run cli wp option set onboarding_experience_level 1`
 		);
 		cy.wait(2000)
+		cy.reload();
 		cy.get('.nfd-grid.nfd-gap-4', { timeout: customCommandTimeout })
 			.as('nextSteps')
-			.should('exist');
+			.should('exist')
+			.scrollIntoView()
 
 		cy.get('@nextSteps')
 			.find('ul li')
@@ -215,8 +217,9 @@ describe('Commerce Home Page- Live mode', () => {
 				.as('nextSteps')
 				.should('exist')
 				.invoke('removeAttr', 'target')
+				.scrollIntoView()
 				.click();
-			expect(cy.url()).equal('https://academy.bluehost.com/?utm_source=wp-home&utm_medium=bluehost_plugin')
+			cy.url().should('equal','https://academy.bluehost.com/?utm_source=wp-home&utm_medium=bluehost_plugin')
 			EventsAPI(APIList.bh_academy, GetPluginId())
 		}
 	})
@@ -231,8 +234,9 @@ describe('Commerce Home Page- Live mode', () => {
 				.as('nextSteps')
 				.should('exist')
 				.invoke('removeAttr', 'target')
+				.scrollIntoView()
 				.click();
-			expect(cy.url()).equal(`https://my.yoast.com/signup?redirect_to=https://academy.yoast.com/courses/?utm_medium=${GetPluginId()}_plugin&utm_source=wp-home`)
+			cy.url().should('equal',`https://my.yoast.com/signup?redirect_to=https://academy.yoast.com/courses/?utm_medium=${GetPluginId()}_plugin&utm_source=wp-home`)
 			EventsAPI(APIList.yoast_seo_academy, GetPluginId())
 		}
 	})
