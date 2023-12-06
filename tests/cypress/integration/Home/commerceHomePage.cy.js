@@ -180,8 +180,8 @@ describe('Commerce Home Page- Live mode', () => {
 		];
 
 		cy.visit('/wp-admin/index.php?page=nfd-onboarding#/wp-setup/step/get-started/experience')
-		cy.get('#inspector-radio-control-0-0', { timeout: customCommandTimeout }).click()
-		cy.get('.navigation-buttons_next').click()
+		cy.get('#inspector-radio-control-0-0', { timeout: customCommandTimeout }).click({force : true})
+		cy.get('.navigation-buttons_next').click({force: true})
 		cy.visit('/wp-admin/admin.php?page=' + GetPluginId() + '#/home');
 		cy.exec(`npx wp-env run cli wp plugin deactivate woocommerce`, {
 			failOnNonZeroExit: false,
@@ -211,7 +211,7 @@ describe('Commerce Home Page- Live mode', () => {
 			});
 	});
 	
-	it.skip('Verify Signup for Bluehost WordPress Academy step', () => {
+	it('Verify Signup for Bluehost WordPress Academy step', () => {
 		if (GetPluginId() == 'bluehost') {
 			// cy.exec(
 			// 	`npx wp-env run cli wp option update onboarding_experience_level 1`
@@ -220,8 +220,8 @@ describe('Commerce Home Page- Live mode', () => {
 			cy.contains('.nfd-grid.nfd-gap-4 ul li a', 'Sign up for Bluehost WordPress Academy', { timeout: customCommandTimeout })
 				.as('nextSteps')
 				.should('exist')
-				.invoke('removeAttr', 'target')
 				.scrollIntoView()
+				.invoke('removeAttr', 'target')
 				.click();
 			cy.url().should('equal','https://academy.bluehost.com/?utm_source=wp-home&utm_medium=bluehost_plugin')
 			EventsAPI(APIList.bh_academy, GetPluginId())
@@ -237,8 +237,8 @@ describe('Commerce Home Page- Live mode', () => {
 			cy.contains('.nfd-grid.nfd-gap-4 ul li a', 'Sign up for Yoast SEO Academy', { timeout: customCommandTimeout })
 				.as('nextSteps')
 				.should('exist')
-				.invoke('removeAttr', 'target')
 				.scrollIntoView()
+				.invoke('removeAttr', 'target')
 				.click();
 			cy.url().should('equal',`https://my.yoast.com/signup?redirect_to=https://academy.yoast.com/courses/?utm_medium=${GetPluginId()}_plugin&utm_source=wp-home`)
 			EventsAPI(APIList.yoast_seo_academy, GetPluginId())
