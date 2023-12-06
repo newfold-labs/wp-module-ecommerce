@@ -7,7 +7,9 @@ export const EventsAPI = (events_name, pluginId) => {
     cy.intercept(events_name).as('events');
     cy.wait('@events').then((requestObject) => {
         const responseBody = requestObject.request.body;
-        const responseData = responseBody[0].data;
+        cy.log(JSON.stringify(responseBody))
+        const responseData = responseBody.data;
+
         if (events_name == 'bh_academy') {
             
             expect(responseBody.category).equal(
