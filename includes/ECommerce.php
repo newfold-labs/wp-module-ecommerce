@@ -84,7 +84,9 @@ class ECommerce {
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_textdomains' ) );
 		add_action('wp_body_open', array( $this, 'regiester_site_preview' ));
 		add_action('before_woocommerce_init', array( $this,'hide_woocommerce_set_up') );
-		add_action('before_woocommerce_init', array( $this,'update_shipping_destination') );
+		//add_action('before_woocommerce_init', array( $this,'update_shipping_destination') );
+		add_action( 'woocommerce_before_checkout_form', array( $this, 'default_show_shiping_form') );
+		add_action('init', array( $this, 'interchange_billing_and_shipping_fields') );
 
 		// Handle WonderCart Integrations
 		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
@@ -340,8 +342,36 @@ class ECommerce {
 	/**
 	 * Update shipping destination to 'shipping' by default
 	 */
-	public function update_shipping_destination()
-	{
-		update_option('woocommerce_ship_to_destination', 'shipping');
+	//public function update_shipping_destination()
+	//{
+	//	update_option('woocommerce_ship_to_destination', 'shipping');
+	//}
+
+	public function default_show_shiping_form() {
+		echo '<script>console.log("inside checkout form")</script>';
+	/*	?>
+			<style>
+				.woocommerce-billing-fields {
+					display: none !important;
+				}
+			</style>
+			<script type="text/javascript">
+				jQuery(document).ready(function($) {
+					// Uncheck the "Ship to a different address" checkbox
+					$('#ship-to-different-address-checkbox').prop('checked', false);
+					$('#ship-to-different-address-checkbox + span').text('Bill to a different address');
+				});
+			</script>
+		<?php*/
+	}
+	public function interchange_billing_and_shipping_fields() {
+		echo '<script>console.log("interchange_billing_and_shipping_fields")</script>';
+			// Remove the default output of billing and shipping fields
+			remove_action('woocommerce_before_checkout_form', array( $this,'checkout_form_billing') );
+			remove_action('woocommerce_before_checkout_form', array( $this,'checkout_form_shipping') );
+			
+			// Output shipping fields before billing fields
+			add_action('woocommerce_before_checkout_form', array( $this,'checkout_form_billing' ), 10);
+		//	add_action('woocommerce_before_checkout_form', array( $this,'checkout_form_shipping' ), 20);
 	}
 }
