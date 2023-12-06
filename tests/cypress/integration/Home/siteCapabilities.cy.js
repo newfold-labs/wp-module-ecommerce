@@ -37,7 +37,7 @@ describe(
         })
 
         it('Verify Install Now is shown when canAccessGlobalCTB and hasYithExtended set to true', () => {
-            // cy.reload();
+            cy.reload();
             cy.get(`.${appId}-app-navitem-Store`, {timeout: customCommandTimeout}).click()
             cy.get(`.${appId}-app-subnavitem`, {timeout: customCommandTimeout}).contains('Sales & Discounts').as('salesTab').should('exist')
             cy.get('@salesTab').click();
@@ -51,11 +51,11 @@ describe(
                 cy.log(result.stdout);
                 cy.log(result.stderr);
             })
-            // cy.reload();
-            // cy.get(`.${appId}-app-navitem-Store`).click()
-            // cy.get(`.${appId}-app-subnavitem`).contains('Sales & Discounts').as('salesTab').should('exist')
-            // cy.get('@salesTab').click();
-            // cy.get('.nfd-button--upsell').contains('Install now').should('exist')
+            cy.reload();
+            cy.get(`.${appId}-app-navitem-Store`).click()
+            cy.get(`.${appId}-app-subnavitem`).contains('Sales & Discounts').as('salesTab').should('exist')
+            cy.get('@salesTab').click();
+            cy.get('.nfd-button--upsell').contains('Install now').should('exist')
         })
 
         it('Verify Buy Now is shown when canAccessGlobalCTB is true and hasYithExtended set to false', () => {
@@ -64,11 +64,11 @@ describe(
                 cy.log(result.stdout);
                 cy.log(result.stderr);
             })
-            // cy.reload();
-            // cy.get(`.${appId}-app-navitem-Store`).click()
-            // cy.get(`.${appId}-app-subnavitem`).contains('Sales & Discounts').as('salesTab').should('exist')
-            // cy.get('@salesTab').click();
-            // cy.get('.nfd-button--upsell').contains('Buy now').should('exist')
+            cy.reload();
+            cy.get(`.${appId}-app-navitem-Store`).click()
+            cy.get(`.${appId}-app-subnavitem`).contains('Sales & Discounts').as('salesTab').should('exist')
+            cy.get('@salesTab').click();
+            cy.get('.nfd-button--upsell').contains('Buy now').should('exist')
         })
         
     });
