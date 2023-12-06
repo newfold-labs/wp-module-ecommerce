@@ -163,7 +163,7 @@ describe('Commerce Home Page- Live mode', () => {
 			});
 	});
 
-	it.skip('Verify Next steps when experience level is novice', () => {
+	it('Verify Next steps when experience level is novice', () => {
 		const steps = [
 			'Sign up for Bluehost WordPress Academy',
 			'Sign up for Yoast SEO Academy',
@@ -179,10 +179,17 @@ describe('Commerce Home Page- Live mode', () => {
 			'Enable Jetpack to connect to your social media accounts',
 		];
 
-		cy.exec(
-			`npx wp-env run cli wp option set onboarding_experience_level 1`
-		);
-		cy.wait(3000)
+		cy.visit('/wp-admin/index.php?page=nfd-onboarding#/wp-setup/step/get-started/experience')
+		cy.get('#inspector-radio-control-0-0', { timeout: customCommandTimeout }).click()
+		cy.get('.navigation-buttons_next').click()
+		cy.visit('/wp-admin/admin.php?page=' + GetPluginId() + '#/home');
+		cy.exec(`npx wp-env run cli wp plugin deactivate woocommerce`, {
+			failOnNonZeroExit: false,
+		});
+		// cy.exec(
+		// 	`npx wp-env run cli wp option set onboarding_experience_level 1`
+		// );
+		cy.wait(2000)
 		// cy.reload();
 		cy.get('.nfd-grid.nfd-gap-4', { timeout: customCommandTimeout })
 			.as('nextSteps')
@@ -193,13 +200,10 @@ describe('Commerce Home Page- Live mode', () => {
 			.find('ul li')
 			.each((item, index, list) => {
 				if (GetPluginId() == 'bluehost') {
-					// Returns the elements from the cy.get command
-					// expect(list).to.have.length(5);
-					// Returns the current element from the loop
+					expect(list).to.have.length(5);
 					expect(Cypress.$(item).text()).to.eq(steps[index]);
 				} else {
 					expect(list).to.have.length(4);
-					// Returns the current element from the loop
 					expect(Cypress.$(item).text()).to.eq(
 						other_steps[index]
 					);
@@ -209,10 +213,10 @@ describe('Commerce Home Page- Live mode', () => {
 	
 	it.skip('Verify Signup for Bluehost WordPress Academy step', () => {
 		if (GetPluginId() == 'bluehost') {
-			cy.exec(
-				`npx wp-env run cli wp option update onboarding_experience_level 1`
-			);
-			cy.wait(3000)
+			// cy.exec(
+			// 	`npx wp-env run cli wp option update onboarding_experience_level 1`
+			// );
+			// cy.wait(3000)
 			cy.contains('.nfd-grid.nfd-gap-4 ul li a', 'Sign up for Bluehost WordPress Academy', { timeout: customCommandTimeout })
 				.as('nextSteps')
 				.should('exist')
@@ -224,7 +228,7 @@ describe('Commerce Home Page- Live mode', () => {
 		}
 	})
 
-	it.skip('Verify Signup for Wordpress SEO Academy step', () => {
+	it('Verify Signup for Wordpress SEO Academy step', () => {
 		if (GetPluginId() == 'bluehost') {
 			cy.exec(
 				`npx wp-env run cli wp option update onboarding_experience_level 1`
