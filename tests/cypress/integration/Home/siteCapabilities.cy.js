@@ -8,7 +8,7 @@ const appId = getAppId();
 describe(
     'Verify Wondercart as per capabilities',
     () => {
-        const cTBAndYithTrue = 'a:5:{s:19:"canAccessHelpCenter";b:1;s:11:"hasEcomdash";b:0;s:15:"hasYithExtended";b:1;s:11:"isEcommerce";b:1;s:8:"isJarvis";b:1;}'
+        const cTBAndYithTrue = 'a:7:{s:11:"canAccessAI";b:0;s:18:"canAccessGlobalCTB";b:1;s:19:"canAccessHelpCenter";b:0;s:11:"hasEcomdash";b:0;s:15:"hasYithExtended";b:1;s:11:"isEcommerce";b:0;s:8:"isJarvis";b:0;}'
         const cTBFalseYithTrue = 'a:5:{s:19:"canAccessHelpCenter";b:1;s:11:"hasEcomdash";b:0;s:15:"hasYithExtended";b:1;s:11:"isEcommerce";b:1;s:8:"isJarvis";b:1;}'
         const cTBTrueYithFalse = 'a:5:{s:19:"canAccessHelpCenter";b:1;s:11:"hasEcomdash";b:0;s:15:"hasYithExtended";b:0;s:11:"isEcommerce";b:1;s:8:"isJarvis";b:1;}'
 
