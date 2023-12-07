@@ -77,32 +77,19 @@ class ECommerce {
 		$this->container = $container;
 		// Module functionality goes here
 		add_action( 'init', array( $this, 'load_php_textdomain' ) );
-		add_action( 'toplevel_page_bluehost', array( $this, 'load_experience_level' ) );
+		add_action( 'toplevel_page_'. $container->plugin()->id, array( $this, 'load_experience_level' ) );
 		add_action( 'admin_init', array( $this, 'maybe_do_dash_redirect' ) );
 		add_action( 'admin_bar_menu', array( $this, 'newfold_site_status' ), 200 );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_assets' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_textdomains' ) );
+		add_action('wp_body_open', array( $this, 'regiester_site_preview' ));
+		add_action('before_woocommerce_init', array( $this,'hide_woocommerce_set_up') );
 
 		// Handle WonderCart Integrations
 		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
 			$wonder_cart = new WonderCart( $container );
 			$wonder_cart->init();
-		}
-
-		// Temporary Yith Paypal filters for Brazilian sites
-		if ( get_locale() === 'pt_BR' ) {
-			add_filter( 'yith_ppwc_is_custom_credit_card_enabled', '__return_false' );
-			add_filter( 'yith_paypal_payments_remove_cc_settings', '__return_true' );
-			add_filter(
-				'yith_paypal_payments_login_url_params',
-				function () {
-					$args['country.x']   = 'BR';
-					$args['countryCode'] = 'BR';
-					$args['product']     = 'EXPRESS_CHECKOUT';
-					return $args;
-				}
-			);
 		}
 
 		CaptiveFlow::init();
@@ -327,5 +314,26 @@ class ECommerce {
 			);
 			\wp_enqueue_script( 'nfd-ecommerce-dependency' );
 		}
+	}
+
+	/**
+	 * Load warning for site Preview
+	 */
+	public function regiester_site_preview() {
+		$is_coming_soon   = 'true' === get_option( 'nfd_coming_soon', 'false' );
+		if($is_coming_soon){
+		echo "<div style='background-color: #e71616; padding: 0 16px;color:#ffffff;font-size:16px;text-align:center;font-weight: 590;'>" . esc_html__( 'Site Preview - This site is NOT LIVE, only admins can see this view.', 'wp-module-ecommerce' ) . "</div>";
+		}
+	}
+	public function hide_woocommerce_set_up() {
+		$hidden_list = get_option('woocommerce_task_list_hidden_lists', []);
+		if(! in_array("setup", $hidden_list)){
+			$woocommerce_list = array_merge(get_option('woocommerce_task_list_hidden_lists', []),array(
+				"setup" 
+			));
+			// $woocommerce_list = array("setup");
+			update_option('woocommerce_task_list_hidden_lists', $woocommerce_list);
+		}
+		
 	}
 }

@@ -56,6 +56,7 @@ final class Brands {
 					'wondercartBuyNow' => ''
 				);
 			case 'hostgator':
+			case 'hostgator-latam':
 				return array(
 					'brand'           => 'hostgator',
 					'name'            => 'hostgator',

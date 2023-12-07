@@ -14,6 +14,7 @@ import {
   yithOnboardingParser,
   yithOnboardingPaymentParser,
   yithOnboardingStoreParser,
+  getOrderList
 } from "./selectors";
 
 const parsePluginStatus = (plugins) => ({
@@ -52,6 +53,7 @@ export function OnboardingListDefinition(props) {
       onboarding: WooCommerceSdk.onboarding.tasks,
       settings: WordPressSdk.settings.get,
       media: WordPressSdk.media.get,
+      orders: WooCommerceSdk.orders.get
     },
     cards: [
       {
@@ -74,6 +76,23 @@ export function OnboardingListDefinition(props) {
           manage: () => signUpBluehostAcademy(),
         },
         queries: [{ key: "settings", selector: getAcademyEnrollmentDetails() }],
+      },
+      {
+        name: "New Order Received",
+        text: __(
+          "New Order Received",
+          "wp-module-ecommerce"
+        ),
+        state: {
+          isCompleted: (queries) => queries?.orders?.pendingOrders?.length < 1,
+          isActive: (queries) =>  queries?.orders?.ordersCount > 0,
+          url: (queries) => queries?.orders?.pendingOrders?.length !== 1 ? `${RuntimeSdk.adminUrl('edit.php?post_type=shop_order')}` : RuntimeSdk.adminUrl(`post.php?post=${queries?.orders?.pendingOrders[0]?.id}&action=edit`)
+        },
+        shouldRender: (state) => NewfoldRuntime.isWoo && state.isActive,
+        actions: {
+          manage: () => AnalyticsSdk.track('next_step', 'next_step_new_order_received_clicked', data)
+        },
+        queries: [{ key: "orders", selector: getOrderList() }],
       },
       {
         name: "Add your store info",
