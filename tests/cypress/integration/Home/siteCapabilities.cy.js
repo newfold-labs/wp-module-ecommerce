@@ -29,7 +29,7 @@ describe(
         it('1 Verify Install Now is shown when canAccessGlobalCTB and hasYithExtended set to true', () => {
             // cy.exec( `npx wp-env run cli wp option get _transient_nfd_site_capabilities` )
             cy.exec( `npx wp-env run cli wp option delete _transient_nfd_site_capabilities`, {failOnNonZeroExit: false})
-            cy.exec(`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${cTBAndYithTrue}'`, { timeout: customCommandTimeout }).then((result) => {
+            cy.exec(`npx wp-env run cli wp option set _transient_nfd_site_capabilities 'a:2:{s:15:"hasYithExtended";b:1;s:11:"isEcommerce";b:1;}'`, { timeout: customCommandTimeout }).then((result) => {
                 cy.log(result.stdout);
                 cy.log(result.stderr);
             })
