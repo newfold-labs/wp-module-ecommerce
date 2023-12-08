@@ -33,84 +33,6 @@ describe("Commerce Home Page- Coming soon mode", () => {
       );
   });
 
-  it("Verify Option Upload Media to your site", () => {
-    cy.contains("View completed tasks", {
-      timeout: customCommandTimeout,
-    })
-      .should("exist")
-      .click();
-    cy.contains("Upload media to your site").as("uploadMedia").should("exist");
-    cy.get("@uploadMedia").click();
-    cy.url().should("eq", Cypress.config().baseUrl + "/wp-admin/media-new.php");
-    cy.go("back");
-  });
-
-  it("Verify Option Enable Jetpack to connect to your social media accounts", () => {
-    cy.contains("Enable Jetpack to connect to your social media accounts", {
-      timeout: customCommandTimeout,
-    })
-      .should("exist")
-      .click();
-    cy.contains("Plugin installation is in progress", {
-      timeout: customCommandTimeout,
-    }).should("exist");
-    cy.wait(2000);
-    cy.reload();
-    cy.contains("View completed tasks", {
-      timeout: customCommandTimeout,
-    })
-      .should("exist")
-      .click();
-    cy.contains("Connect to your social media accounts")
-      .as("enableJetpack")
-      .should("exist");
-    cy.get("@enableJetpack").invoke("removeAttr", "target").click();
-    cy.url().should(
-      "eq",
-      Cypress.config().baseUrl + "/wp-admin/admin.php?page=jetpack#/sharing"
-    );
-    cy.go("back");
-  });
-
-  it("Verify Option Upload Media to your site", () => {
-    cy.contains("View completed tasks", {
-      timeout: customCommandTimeout,
-    })
-      .should("exist")
-      .click();
-    cy.contains("Upload media to your site").as("uploadMedia").should("exist");
-    cy.get("@uploadMedia").click();
-    cy.url().should("eq", Cypress.config().baseUrl + "/wp-admin/media-new.php");
-    cy.go("back");
-  });
-
-  it("Verify Option Enable Jetpack to connect to your social media accounts", () => {
-    cy.contains("Enable Jetpack to connect to your social media accounts", {
-      timeout: customCommandTimeout,
-    })
-      .should("exist")
-      .click();
-    cy.contains("Plugin installation is in progress", {
-      timeout: customCommandTimeout,
-    }).should("exist");
-    cy.wait(2000);
-    cy.reload();
-    cy.contains("View completed tasks", {
-      timeout: customCommandTimeout,
-    })
-      .should("exist")
-      .click();
-    cy.contains("Connect to your social media accounts")
-      .as("enableJetpack")
-      .should("exist");
-    cy.get("@enableJetpack").invoke("removeAttr", "target").click();
-    cy.url().should(
-      "eq",
-      Cypress.config().baseUrl + "/wp-admin/admin.php?page=jetpack#/sharing"
-    );
-    cy.go("back");
-  });
-
   it("Verify Site Preview flex and View your site option", () => {
     cy.get(".nfd-justify-start > .nfd-flex-col > .nfd-absolute", {
       timeout: customCommandTimeout,
@@ -166,5 +88,39 @@ describe("Commerce Home Page- Coming soon mode", () => {
     cy.contains("Ready to go to the next level?", {
       timeout: customCommandTimeout,
     }).should("exist");
+  });
+
+  it("Verify Option Upload Media to your site", () => {
+    cy.contains("Upload media to your site").as("uploadMedia").should("exist");
+    cy.get("@uploadMedia").click();
+    cy.url().should("eq", Cypress.config().baseUrl + "/wp-admin/media-new.php");
+    cy.go("back");
+  });
+
+  it("Verify Option Enable Jetpack to connect to your social media accounts", () => {
+    cy.contains("Enable Jetpack to connect to your social media accounts", {
+      timeout: customCommandTimeout,
+    })
+      .should("exist")
+      .click();
+    cy.contains("Plugin installation is in progress", {
+      timeout: customCommandTimeout,
+    }).should("exist");
+    cy.wait(2000);
+    cy.reload();
+    cy.contains("View completed tasks", {
+      timeout: customCommandTimeout,
+    })
+      .should("exist")
+      .click();
+    cy.contains("Connect to your social media accounts")
+      .as("enableJetpack")
+      .should("exist");
+    cy.get("@enableJetpack").invoke("removeAttr", "target").click();
+    cy.url().should(
+      "eq",
+      Cypress.config().baseUrl + "/wp-admin/admin.php?page=jetpack#/sharing"
+    );
+    cy.go("back");
   });
 });
