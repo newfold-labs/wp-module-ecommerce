@@ -9,6 +9,7 @@ describe( 'Store Page- WooCommerce is deactivated/uninstalled', () => {
 		cy.exec( `npx wp-env run cli wp plugin deactivate woocommerce`, {
 			failOnNonZeroExit: false,
         });
+        cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
         comingSoon(false)
 	} );
 
