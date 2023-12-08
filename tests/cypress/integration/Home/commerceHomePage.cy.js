@@ -3,18 +3,19 @@ import { comingSoon } from '../wp-module-support/utils.cy';
 import { EventsAPI, APIList } from '../wp-module-support/eventsAPIs.cy';
 
 const customCommandTimeout = 60000;
+const pluginId = GetPluginId();
 
 describe( 'Commerce Home Page- Coming soon mode', () => {
 	before( () => {
 		cy.exec( `npx wp-env run cli wp plugin deactivate woocommerce`, {
 			failOnNonZeroExit: false,
 		} );
-		cy.visit( '/wp-admin/admin.php?page=' + GetPluginId() + '#/home' );
+		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
 		comingSoon( true );
 	} );
 
 	beforeEach( () => {
-		cy.visit( '/wp-admin/admin.php?page=' + GetPluginId() + '#/home' );
+		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
 	} );
 
 	it( 'Verify Congrats on your new site message, coming soon alert', () => {
@@ -101,12 +102,12 @@ describe( 'Commerce Home Page- Live Mode', () => {
 		cy.exec( `npx wp-env run cli wp plugin deactivate woocommerce`, {
 			failOnNonZeroExit: false,
 		} );
-		cy.visit( '/wp-admin/admin.php?page=' + GetPluginId() + '#/home' );
+		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
 		comingSoon( false );
 	} );
 
 	beforeEach( () => {
-		cy.visit( '/wp-admin/admin.php?page=' + GetPluginId() + '#/home' );
+		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
 	} );
 
 	it( 'Verify presense of Ready to go to next level? canvas', () => {
@@ -142,7 +143,7 @@ describe( 'Commerce Home Page- Next Steps', () => {
 	} );
 
 	beforeEach( () => {
-		cy.visit( '/wp-admin/admin.php?page=' + GetPluginId() + '#/home' );
+		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
 	} );
 
 	it( 'Verify Next steps for your site when woocommerce is not active', () => {
@@ -195,7 +196,7 @@ describe( 'Commerce Home Page- Next Steps', () => {
 			timeout: customCommandTimeout,
 		} ).click( { force: true } );
 		cy.get( '.navigation-buttons_next' ).click( { force: true } );
-		cy.visit( '/wp-admin/admin.php?page=' + GetPluginId() + '#/home' );
+		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
 		cy.exec( `npx wp-env run cli wp plugin deactivate woocommerce`, {
 			failOnNonZeroExit: false,
 		} );
@@ -208,7 +209,7 @@ describe( 'Commerce Home Page- Next Steps', () => {
 		cy.get( '@nextSteps' )
 			.find( 'ul li' )
 			.each( ( item, index, list ) => {
-				if ( GetPluginId() == 'bluehost' ) {
+				if ( pluginId == 'bluehost' ) {
 					expect( list ).to.have.length( 5 );
 					expect( Cypress.$( item ).text() ).to.eq( steps[ index ] );
 				} else {
@@ -221,7 +222,7 @@ describe( 'Commerce Home Page- Next Steps', () => {
 	} );
 
 	it( 'Verify Signup for Bluehost WordPress Academy step', () => {
-		if ( GetPluginId() == 'bluehost' ) {
+		if ( pluginId == 'bluehost' ) {
 			cy.intercept( APIList.bh_academy ).as( 'events' );
 			cy.contains(
 				'.nfd-grid.nfd-gap-4 ul li a',
@@ -238,7 +239,7 @@ describe( 'Commerce Home Page- Next Steps', () => {
 				'https://academy.bluehost.com/?utm_source=wp-home&utm_medium=bluehost_plugin'
 			);
 			cy.go( 'back' );
-			EventsAPI( APIList.bh_academy, GetPluginId() );
+			EventsAPI( APIList.bh_academy, pluginId );
 
 			cy.get( '@nextSteps' ).should( 'not.exist' );
 			cy.contains( '.nfd-link', 'View completed tasks', {
@@ -263,16 +264,16 @@ describe( 'Commerce Home Page- Next Steps', () => {
 			.click();
 		cy.url().should(
 			'equal',
-			`https://my.yoast.com/signup?redirect_to=https://academy.yoast.com/courses/?utm_medium=${ GetPluginId() }_plugin&utm_source=wp-home`
+			`https://my.yoast.com/signup?redirect_to=https://academy.yoast.com/courses/?utm_medium=${ pluginId }_plugin&utm_source=wp-home`
 		);
 		cy.go( 'back' );
-		EventsAPI( APIList.yoast_seo_academy, GetPluginId() );
+		EventsAPI( APIList.yoast_seo_academy, pluginId );
 
 		cy.get( '@nextSteps' ).should( 'not.exist' );
 		cy.contains( '.nfd-link', 'View completed tasks', {
 			timeout: customCommandTimeout,
 		} ).click();
-		cy.get('@nextSteps').should('exist');
+		cy.get( '@nextSteps' ).should( 'exist' );
 		cy.contains( '.nfd-link', 'View remaining tasks' ).click();
 	} );
 
