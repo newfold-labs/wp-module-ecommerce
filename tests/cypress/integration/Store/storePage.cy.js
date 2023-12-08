@@ -52,7 +52,7 @@ describe( 'Store Page- WooCommerce is deactivated/uninstalled', () => {
 			'Install WooCommerce to unlock',
 		];
 
-		cy.get( '.nfd-button--upsell' )
+		cy.get( '.nfd-app-section-container .nfd-button--upsell' )
 			.as( 'upsellButtons' )
 			.each( ( item, index, list ) => {
 				expect( list ).to.have.length( 2 );
