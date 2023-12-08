@@ -1,8 +1,6 @@
 import { GetPluginId, getAppId } from '../wp-module-support/pluginID.cy';
 import { comingSoon } from '../wp-module-support/utils.cy';
-import { EventsAPI, APIList } from '../wp-module-support/eventsAPIs.cy';
 
-const customCommandTimeout = 60000;
 const pluginId = GetPluginId();
 const appId = getAppId();
 
@@ -10,8 +8,8 @@ describe( 'Store Page- WooCommerce is deactivated/uninstalled', () => {
 	before( () => {
 		cy.exec( `npx wp-env run cli wp plugin deactivate woocommerce`, {
 			failOnNonZeroExit: false,
-		} );
-		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
+        });
+        comingSoon(false)
 	} );
 
 	beforeEach( () => {
@@ -54,7 +52,7 @@ describe( 'Store Page- WooCommerce is deactivated/uninstalled', () => {
 
 		cy.get( '.nfd-app-section-container .nfd-button--upsell' )
 			.as( 'upsellButtons' )
-			.each( ( item, index ) => {
+			.each( ( item, index, list ) => {
 				expect( Cypress.$( item ).text() ).to.eq(
 					buttonTexts[ index ]
 				);
