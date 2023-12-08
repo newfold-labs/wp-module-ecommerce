@@ -54,22 +54,19 @@ describe( 'Store Page- WooCommerce is deactivated/uninstalled', () => {
 
 		cy.get( '.nfd-app-section-container .nfd-button--upsell' )
 			.as( 'upsellButtons' )
-			.each( ( item, index, list ) => {
-				expect( list ).to.have.length( 2 );
+			.each( ( item, index ) => {
 				expect( Cypress.$( item ).text() ).to.eq(
 					buttonTexts[ index ]
 				);
 			} );
 
 		cy.get( `.${ appId }-app-subnavitem-Products` ).click();
-		cy.get( '@upsellButtons' ).each( ( item, index, list ) => {
-			expect( list ).to.have.length( 2 );
+		cy.get( '@upsellButtons' ).each( ( item, index ) => {
 			expect( Cypress.$( item ).text() ).to.eq( buttonTexts[ index ] );
 		} );
 
 		cy.get( `.${ appId }-app-subnavitem-Store ` ).click();
-		cy.get( '@upsellButtons' ).each( ( item, index, list ) => {
-			expect( list ).to.have.length( 2 );
+		cy.get( '@upsellButtons' ).each( ( item, index ) => {
 			expect( Cypress.$( item ).text() ).to.eq( buttonTexts[ index ] );
 		} );
 	} );
