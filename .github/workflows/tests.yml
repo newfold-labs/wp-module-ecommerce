@@ -128,7 +128,10 @@ jobs:
         run: npx wp-env start --debug
 
       - name: Run Cypress Tests
-        run: npx cypress run
+        run: npx cypress run --spec ./vendor/${{ github.repository }}/tests/cypress/integration
+
+      - name: Run Onboarding Tests
+        run: npx cypress run --spec ./vendor/wp-module-onboarding/tests/cypress/integration/2-general-onboarding-flow/get-started-experience.cy.js
 
       - name: Store screenshots of test failures
         if: ${{ failure() }}

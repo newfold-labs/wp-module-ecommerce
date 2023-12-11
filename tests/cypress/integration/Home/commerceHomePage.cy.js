@@ -144,7 +144,12 @@ describe( 'Commerce Home Page- Next Steps', () => {
 
 	beforeEach( () => {
 		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
-	} );
+	});
+	
+	after(() => {
+		cy.exec(`npx wp-env run cli wp option delete nfd_module_onboarding_flow`)
+		cy.reload();
+	})
 
 	it( 'Verify Next steps for your site when woocommerce is not active', () => {
 		const steps = [
