@@ -164,7 +164,7 @@ export function OnboardingScreen({
               </div>
             </div>
             <OnboardingList notify={notify} />
-            <FacebookConnectButton />
+            <FacebookConnectButton notify={notify} />
           </div>
           <SiteStatus
             comingSoon={comingSoon}
