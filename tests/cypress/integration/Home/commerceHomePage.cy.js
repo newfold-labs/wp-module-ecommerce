@@ -102,12 +102,18 @@ describe("Commerce Home Page- Coming soon mode", () => {
       timeout: customCommandTimeout,
     })
       .should("exist")
+      .scrollIntoView()
       .click();
     cy.contains("Plugin installation is in progress", {
       timeout: customCommandTimeout,
     }).should("exist");
     cy.wait(2000);
     cy.reload();
+    cy.contains("Next steps for your site", {
+      timeout: customCommandTimeout,
+    })
+      .should("exist")
+      .scrollIntoView();
     cy.contains("View completed tasks", {
       timeout: customCommandTimeout,
     })
