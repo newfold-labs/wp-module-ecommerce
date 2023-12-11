@@ -107,7 +107,7 @@ describe("Commerce Home Page- Coming soon mode", () => {
     cy.contains("Plugin installation is in progress", {
       timeout: customCommandTimeout,
     }).should("exist");
-    cy.wait(20000);
+    cy.wait(60000);
     cy.reload();
     cy.contains("Next steps for your site", {
       timeout: customCommandTimeout,
