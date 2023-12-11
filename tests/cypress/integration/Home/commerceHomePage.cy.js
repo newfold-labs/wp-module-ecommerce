@@ -149,6 +149,10 @@ describe( 'Commerce Home Page- Next Steps', () => {
 	after(() => {
 		cy.exec(`npx wp-env run cli wp option delete nfd_module_onboarding_flow`)
 		cy.reload();
+		cy.visit(
+			'/wp-admin/index.php?page=nfd-onboarding#/wp-setup/step/get-started/experience'
+		);
+		cy.get('button.nfd-nav-card-button.nfd-card-button').should('be.disabled')
 	})
 
 	it( 'Verify Next steps for your site when woocommerce is not active', () => {
