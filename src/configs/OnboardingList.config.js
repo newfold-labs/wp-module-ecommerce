@@ -128,6 +128,7 @@ export function OnboardingListDefinition(props) {
             selector: yithOnboardingPaymentParser([
               CaptiveFlows.paypal,
               CaptiveFlows.razorpay,
+              CaptiveFlows.stripe,
             ]),
           },
         ],
