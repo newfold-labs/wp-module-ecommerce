@@ -75,6 +75,7 @@ export const ThirdPartyIntegration = ({
     if (event.detail.connected == 1) {
       const integrationStatusResponse =
           await refreshIntegrationStatus();
+          console.log(integrationStatusResponse)
       if (integrationStatusResponse.complete) {
         notify.push(`${id}-account-connect-success`, {
           title: __(`Your ${id} account have been connected`,"wp-module-ecommerce"),
