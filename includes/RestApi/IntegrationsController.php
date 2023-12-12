@@ -6,7 +6,6 @@ use NewfoldLabs\WP\Module\ECommerce\Data\Plugins;
 use NewfoldLabs\WP\Module\ECommerce\Permissions;
 use NewfoldLabs\WP\Module\Installer\Services\PluginInstaller;
 use NewfoldLabs\WP\ModuleLoader\Container;
-use YITH\StripePayments\Account;
 
 class IntegrationsController {
 
@@ -156,7 +155,6 @@ class IntegrationsController {
 			'captive' => null,
 			'plugin' => $this->get_plugin_details( 'nfd_slug_yith_stripe_payments_for_woocommerce' ),
 		);
-		$connection = Account::get_connection_status();
 		$is_captive_flow_complete = \get_option( 'nfd-ecommerce-captive-flow-stripe', 'false' ); 
 		$stripewc_options = \get_option( 'yith_stripe_payments_enabled', array() );
 		if ( $is_captive_flow_complete === 'true' ) {
@@ -170,7 +168,6 @@ class IntegrationsController {
 		return new \WP_REST_Response(
 			array(
 				'complete'    => $is_captive_flow_complete === 'true',
-				'status'		=> $connection,
 				'details'     => $details,
 				'integration' => $integration,
 			),

@@ -37,7 +37,6 @@ const Stripe = ({ notify }) => {
       notify={notify}
     >
       {({ integrationStatus, onConnect, isInstalling }) => {
-        console.log(integrationStatus, "stripe")
         const isSetupComplete = integrationStatus?.complete;
         const environment = integrationStatus?.details?.environment;
 
