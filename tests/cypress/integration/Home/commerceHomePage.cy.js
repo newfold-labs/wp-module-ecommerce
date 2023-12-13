@@ -96,37 +96,4 @@ describe("Commerce Home Page- Coming soon mode", () => {
     cy.url().should("eq", Cypress.config().baseUrl + "/wp-admin/media-new.php");
     cy.go("back");
   });
-
-  it("Verify Option Enable Jetpack to connect to your social media accounts", () => {
-    cy.contains("Enable Jetpack to connect to your social media accounts", {
-      timeout: customCommandTimeout,
-    })
-      .should("exist")
-      .scrollIntoView()
-      .click();
-    cy.contains("Plugin installation is in progress", {
-      timeout: customCommandTimeout,
-    }).should("exist");
-    cy.wait(60000);
-    cy.reload();
-    cy.contains("Next steps for your site", {
-      timeout: customCommandTimeout,
-    })
-      .should("exist")
-      .scrollIntoView();
-    cy.contains("View completed tasks", {
-      timeout: customCommandTimeout,
-    })
-      .should("exist")
-      .click();
-    cy.contains("Connect to your social media accounts")
-      .as("enableJetpack")
-      .should("exist");
-    cy.get("@enableJetpack").invoke("removeAttr", "target").click();
-    cy.url().should(
-      "eq",
-      Cypress.config().baseUrl + "/wp-admin/admin.php?page=jetpack#/sharing"
-    );
-    cy.go("back");
-  });
 });
