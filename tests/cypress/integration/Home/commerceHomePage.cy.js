@@ -280,7 +280,7 @@ describe( 'Commerce Home Page- Next Steps', () => {
 		cy.contains( '.nfd-link', 'View remaining tasks' ).click();
 	} );
 
-	it.only( 'Verify Add a new page to your site step', () => {
+	it( 'Verify Add a new page to your site step', () => {
 		cy.get( '.nfd-grid.nfd-gap-4 ul li', {
 			timeout: customCommandTimeout,
 		} );
