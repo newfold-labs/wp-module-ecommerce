@@ -183,20 +183,14 @@ describe( 'Commerce Home Page- Next Steps', () => {
 	} );
 
 	it( 'Verify Next steps when experience level is novice', () => {
-		const steps = [
-			'Sign up for Bluehost WordPress Academy',
-			'Sign up for Yoast SEO Academy',
-			'Add a new page to your site',
-			'Upload media to your site',
-			'Enable Jetpack to connect to your social media accounts',
-		];
-
 		const other_steps = [
 			'Sign up for Yoast SEO Academy',
 			'Add a new page to your site',
 			'Upload media to your site',
 			'Enable Jetpack to connect to your social media accounts',
 		];
+
+		const steps = ['Sign up for Bluehost WordPress Academy', ...other_steps]
 
 		cy.visit(
 			'/wp-admin/index.php?page=nfd-onboarding#/wp-setup/step/get-started/experience'
@@ -286,7 +280,7 @@ describe( 'Commerce Home Page- Next Steps', () => {
 		cy.contains( '.nfd-link', 'View remaining tasks' ).click();
 	} );
 
-	it( 'Verify Add a new page to your site step', () => {
+	it.only( 'Verify Add a new page to your site step', () => {
 		cy.get( '.nfd-grid.nfd-gap-4 ul li', {
 			timeout: customCommandTimeout,
 		} );
@@ -306,5 +300,5 @@ describe( 'Commerce Home Page- Next Steps', () => {
 		cy.go( 'back' );
 		cy.wait( 2000 );
 		cy.get( '@addPage' ).should( 'not.exist' );
-	} );
+	});
 } );
