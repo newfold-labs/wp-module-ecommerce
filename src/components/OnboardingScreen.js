@@ -49,9 +49,12 @@ export function OnboardingScreen({
     setIsHovered(false);
   };
 
-  useEffect(async () => {
-    const data = await useThumbnail(NewfoldRuntime.homeUrl);
-    setThumbnail(data?.thumbnail_loc);
+  useEffect(() => {
+    async function thumbnail() {
+      const data = await useThumbnail(NewfoldRuntime.homeUrl);
+      setThumbnail(data?.thumbnail_loc);
+    }
+    thumbnail();
   }, []);
 
   return (
