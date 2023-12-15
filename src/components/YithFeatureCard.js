@@ -8,7 +8,7 @@ export function YithFeatureCard({
   yithPluginsMap,
   id,
   cards,
-}) {
+  }) {
   const cardsInfo = cards.filter(
     (card) => card.name === yithPluginsMap.get(id).title
   )[0];
@@ -89,8 +89,14 @@ export function YithFeatureCard({
             variant="secondary"
             onClick={() =>
               state?.isActive
-                ? actions.manageFeature?.(cardsInfo?.state, props)
-                : actions.installFeature?.(cardsInfo?.state, props)
+                ? cardsInfo?.actions?.manageFeature?.(
+                    cardsInfo?.state,
+                    cardsInfo
+                  )
+                : cardsInfo?.actions?.installFeature?.(
+                    cardsInfo?.state,
+                    cardsInfo
+                  )
             }
             isLoading={state?.isInstalling}
             disabled={state?.isDisabled}
