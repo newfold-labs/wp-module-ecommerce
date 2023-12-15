@@ -86,6 +86,7 @@ class ECommerce {
 		add_filter( 'woocommerce_coupons_enabled',  array( $this, 'disable_coupon_field_on_cart' ) );
 		add_filter( 'woocommerce_before_cart', array( $this, 'hide_banner_notice_on_cart'));
 		add_action('before_woocommerce_init', array( $this,'hide_woocommerce_set_up') );
+		add_filter( 'woocommerce_checkout_fields' , array( $this,'swap_billing_shipping_fields'), 10, 1 );
 
 		// Handle WonderCart Integrations
 		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
@@ -362,5 +363,44 @@ class ECommerce {
 			update_option('woocommerce_task_list_hidden_lists', $woocommerce_list);
 		}
 		
+	}
+
+	/**
+	 * To show the shipping form first if the ship to destination is set to 'Shipping'
+	 */
+	public function swap_billing_shipping_fields( $fields ) {
+		$shipping_destination = get_option( 'woocommerce_ship_to_destination');
+		if($shipping_destination == 'shipping') {
+			add_filter( 'gettext', array( $this, 'update_text'), 20, 3 );
+			?>
+			<script type="text/javascript">
+				jQuery(document).ready(function($) {
+					$('#ship-to-different-address-checkbox').prop('checked', false); //Uncheck the checkbox
+				});
+			</script>
+			<?php
+			// swapping billing and shipping fields
+			$billing = $fields["billing"];
+			$shipping = $fields["shipping"];
+ 
+			$fields['shipping'] = $billing;
+			$fields['billing'] = $shipping;
+		}
+		return $fields;
+	}
+
+	/**
+	 * Update the heading and checkbox text
+	 */
+	public function update_text( $translated_text, $text, $domain ) {
+		switch ( $translated_text ) {
+			case 'Billing details' :
+				$translated_text = __( 'Shipping details', 'woocommerce' );
+				break;
+			case 'Ship to a different address?' :
+				$translated_text = __( 'Bill to a different address?', 'woocommerce' );
+				break;
+		}
+		return $translated_text;
 	}
 }
