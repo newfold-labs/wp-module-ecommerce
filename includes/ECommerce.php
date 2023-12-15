@@ -83,6 +83,8 @@ class ECommerce {
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_assets' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_textdomains' ) );
 		add_action('wp_body_open', array( $this, 'regiester_site_preview' ));
+		add_filter( 'woocommerce_coupons_enabled',  array( $this, 'disable_coupon_field_on_cart' ) );
+		add_filter( 'woocommerce_before_cart', array( $this, 'hide_banner_notice_on_cart'));
 		add_action('before_woocommerce_init', array( $this,'hide_woocommerce_set_up') );
 
 		// Handle WonderCart Integrations
@@ -324,6 +326,32 @@ class ECommerce {
 		echo "<div style='background-color: #e71616; padding: 0 16px;color:#ffffff;font-size:16px;text-align:center;font-weight: 590;'>" . esc_html__( 'Site Preview - This site is NOT LIVE, only admins can see this view.', 'wp-module-ecommerce' ) . "</div>";
 		}
 	}
+
+
+	/**
+ 	* Remove Add coupon field on cart page
+ 	*/
+	public function disable_coupon_field_on_cart( $enabled ) {
+        if ( is_cart() ) {
+            $enabled = false;
+        }
+        return $enabled;
+    }
+
+	/**
+ 	* Remove notice banner on cart page
+ 	*/
+ 	public function hide_banner_notice_on_cart() {
+		if (is_cart()) {
+			?>
+			<style>
+				.wc-block-components-notice-banner, .ywgc_enter_code {
+					display: none;
+				}
+			</style>
+			<?php
+		}
+  }
 	public function hide_woocommerce_set_up() {
 		$hidden_list = get_option('woocommerce_task_list_hidden_lists', []);
 		if(! in_array("setup", $hidden_list)){
