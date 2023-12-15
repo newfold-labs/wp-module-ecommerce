@@ -85,6 +85,7 @@ class ECommerce {
 		add_action('wp_body_open', array( $this, 'regiester_site_preview' ));
 		add_filter( 'woocommerce_coupons_enabled',  array( $this, 'disable_coupon_field_on_cart' ) );
 		add_filter( 'woocommerce_before_cart', array( $this, 'hide_banner_notice_on_cart'));
+		add_action('before_woocommerce_init', array( $this,'hide_woocommerce_set_up') );
 
 		// Handle WonderCart Integrations
 		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
@@ -326,6 +327,7 @@ class ECommerce {
 		}
 	}
 
+
 	/**
  	* Remove Add coupon field on cart page
  	*/
@@ -349,5 +351,16 @@ class ECommerce {
 			</style>
 			<?php
 		}
+  }
+	public function hide_woocommerce_set_up() {
+		$hidden_list = get_option('woocommerce_task_list_hidden_lists', []);
+		if(! in_array("setup", $hidden_list)){
+			$woocommerce_list = array_merge(get_option('woocommerce_task_list_hidden_lists', []),array(
+				"setup" 
+			));
+			// $woocommerce_list = array("setup");
+			update_option('woocommerce_task_list_hidden_lists', $woocommerce_list);
+		}
+		
 	}
 }
