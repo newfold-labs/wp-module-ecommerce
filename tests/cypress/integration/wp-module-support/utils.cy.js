@@ -29,7 +29,7 @@ export const comingSoon = (shouldBeComingSoon) => {
 }
 
 export const installWoo = () => {
-    cy.contains('nfd-button--upsell', 'Install WooCommerce', { timeout: customCommandTimeout }).click()
+    cy.contains('.nfd-button--upsell', 'Install WooCommerce', { timeout: 90000 }).click()
     cy.get('.nfd-button--upsell.nfd-cursor-wait').should('exist')
     cy.get('.nfd-notifications--bottom-left .nfd-notification--success', {timeout: customCommandTimeout}).should('exist')
     cy.get('.nfd-w-0  p').should('have.text', 'WooCommerce has been installed successfully')
