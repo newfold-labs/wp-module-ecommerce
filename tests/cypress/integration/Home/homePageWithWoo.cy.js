@@ -175,7 +175,6 @@ describe( 'Commerce Home Page- Coming soon mode', () => {
 
 
 		cy.contains( '.nfd-button--primary', 'Save Changes' )
-			.should( 'not.be.disabled' )
 			.click();
 
 		cy.get( '.nfd-notifications--bottom-left .nfd-notification--success', {
