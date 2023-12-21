@@ -170,10 +170,7 @@ describe( 'Commerce Home Page- Coming soon mode', () => {
 			.scrollIntoView()
 			.click();
 		cy.get(`.${appId}-app-subnavitem-Store.active`).should('exist');
-
 		cy.get('#tax-yes').click()
-
-
 		cy.contains( '.nfd-button--primary', 'Save Changes' )
 			.click();
 
@@ -186,6 +183,7 @@ describe( 'Commerce Home Page- Coming soon mode', () => {
 		);
 
 		cy.get(`.${appId}-app-navitem-Home`).click();
+		cy.reload()
 		cy.get( '@taxStep', {timeout: customCommandTimeout}).should( 'not.exist' );
 		cy.contains( '.nfd-link', 'View completed tasks', {
 			timeout: customCommandTimeout,
