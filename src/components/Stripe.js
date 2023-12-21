@@ -38,11 +38,11 @@ const Stripe = ({ notify }) => {
     >
       {({ integrationStatus, onConnect, isInstalling }) => {
         const isSetupComplete = integrationStatus?.complete;
-        const environment = integrationStatus?.details?.environment;
+        let environment = integrationStatus?.details?.environment;
 
-        if (window?.yithStripePayments) {
-          window.yithStripePayments.env =
-            "live" === environment ? "live" : "test";
+
+        if ( ! environment ) {
+          environment = 'test' === window?.yithStripePayments?.env ? 'test' : 'live';
         }
 
         return (
@@ -140,4 +140,5 @@ const Stripe = ({ notify }) => {
     </ThirdPartyIntegration>
   );
 };
+
 export default Stripe;
