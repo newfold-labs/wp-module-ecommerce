@@ -101,7 +101,7 @@ describe( 'Commerce Home Page- Coming soon mode', () => {
 		cy.contains( '.nfd-link', 'View remaining tasks' ).click();
     });
     
-    it('Verify Next step "Connect a payment processor"', () => {
+    it('Verify next step "Connect a payment processor"', () => {
         cy.contains( '.nfd-grid.nfd-gap-4 ul li a', 'Connect a payment processor', {
 			timeout: customCommandTimeout,
 		} )
@@ -141,7 +141,7 @@ describe( 'Commerce Home Page- Coming soon mode', () => {
 
     })
 
-	it(' Verify next step Set up Shipping options ', () => {
+	it(' Verify next step "Set up Shipping options" ', () => {
 		cy.contains( '.nfd-grid.nfd-gap-4 ul li a', 'Setup shipping options', {
 			timeout: customCommandTimeout,
 		} )
@@ -161,7 +161,7 @@ describe( 'Commerce Home Page- Coming soon mode', () => {
 		cy.get('@windowOpen').should('be.called');
 	})
 
-	it('Verify step Configure tax settings', () => {
+	it('Verify next step "Configure tax settings"', () => {
 		cy.contains( '.nfd-grid.nfd-gap-4 ul li a', 'Configure tax settings', {
 			timeout: customCommandTimeout,
 		} )
@@ -192,7 +192,7 @@ describe( 'Commerce Home Page- Coming soon mode', () => {
 		cy.contains( '.nfd-link', 'View remaining tasks' ).click();
 	})
 
-	it('Verify step Add a Product', () => {
+	it('Verify next step "Add a Product"', () => {
 		cy.contains("Add a product").as("addProduct").should("exist");
     	cy.get("@addProduct").click();
     	cy.url().should("eq", Cypress.config().baseUrl + "/wp-admin/post-new.php?post_type=product&return_to_nfd=%2Fhome");
