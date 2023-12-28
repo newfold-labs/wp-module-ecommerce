@@ -4,5 +4,5 @@ export const GetPluginId = () => {
 }
 
 export const getAppId = () => {
-    return Cypress.env('appId')
+    return Cypress.env('appId');
 }
