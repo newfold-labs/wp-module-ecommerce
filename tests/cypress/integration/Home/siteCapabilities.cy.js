@@ -17,6 +17,7 @@ describe(
             "isEcommerce"         : true,
             "isJarvis"            : true,
         }
+        const cap = JSON.stringify(cTBAndYithTrue)
         // const cTBAndYithTrue = 'a:7:{s:11:"canAccessAI";b:1;s:18:"canAccessGlobalCTB";b:1;s:19:"canAccessHelpCenter";b:1;s:11:"hasEcomdash";b:0;s:15:"hasYithExtended";b:1;s:11:"isEcommerce";b:1;s:8:"isJarvis";b:1;}'
         const cTBFalseYithTrue = 'a:5:{s:19:"canAccessHelpCenter";b:1;s:11:"hasEcomdash";b:0;s:15:"hasYithExtended";b:1;s:11:"isEcommerce";b:1;s:8:"isJarvis";b:1;}'
         const cTBTrueYithFalse = 'a:5:{s:19:"canAccessHelpCenter";b:1;s:11:"hasEcomdash";b:0;s:15:"hasYithExtended";b:0;s:11:"isEcommerce";b:1;s:8:"isJarvis";b:1;}'
@@ -38,7 +39,7 @@ describe(
         it('1 Verify Install Now is shown when canAccessGlobalCTB and hasYithExtended set to true', () => {
             // cy.exec( `npx wp-env run cli wp option get _transient_nfd_site_capabilities` )
             cy.exec( `npx wp-env run cli wp option delete _transient_nfd_site_capabilities`, {failOnNonZeroExit: false})
-            cy.exec(`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${cTBAndYithTrue}' --format=json`, { timeout: customCommandTimeout }).then((result) => {
+            cy.exec(`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${cap}' --format=json`, { timeout: customCommandTimeout }).then((result) => {
                 cy.log(result.stdout);
                 cy.log(result.stderr);
             })
