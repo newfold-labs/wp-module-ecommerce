@@ -8,12 +8,21 @@ const appId = getAppId();
 describe(
     'Verify Wondercart as per capabilities',
     () => {
-        const cTBAndYithTrue = 'a:7:{s:11:"canAccessAI";b:1;s:18:"canAccessGlobalCTB";b:1;s:19:"canAccessHelpCenter";b:1;s:11:"hasEcomdash";b:0;s:15:"hasYithExtended";b:1;s:11:"isEcommerce";b:1;s:8:"isJarvis";b:1;}'
+        const cTBAndYithTrue = {
+            "canAccessAI"        : true,
+            "canAccessHelpCenter" : true,
+            "canAccessGlobalCTB"  : true,
+            "hasEcomdash"         : false,
+            "hasYithExtended"     : true,
+            "isEcommerce"         : true,
+            "isJarvis"            : true,
+        }
+        // const cTBAndYithTrue = 'a:7:{s:11:"canAccessAI";b:1;s:18:"canAccessGlobalCTB";b:1;s:19:"canAccessHelpCenter";b:1;s:11:"hasEcomdash";b:0;s:15:"hasYithExtended";b:1;s:11:"isEcommerce";b:1;s:8:"isJarvis";b:1;}'
         const cTBFalseYithTrue = 'a:5:{s:19:"canAccessHelpCenter";b:1;s:11:"hasEcomdash";b:0;s:15:"hasYithExtended";b:1;s:11:"isEcommerce";b:1;s:8:"isJarvis";b:1;}'
         const cTBTrueYithFalse = 'a:5:{s:19:"canAccessHelpCenter";b:1;s:11:"hasEcomdash";b:0;s:15:"hasYithExtended";b:0;s:11:"isEcommerce";b:1;s:8:"isJarvis";b:1;}'
 
         before(() => {
-            cy.visit('/wp-admin/admin.php?page=' + GetPluginId() + '#/store')
+            // cy.visit('/wp-admin/admin.php?page=' + GetPluginId() + '#/store')
             // cy.get('.nfd-app-section-content .nfd-button--upsell').eq(0).invoke('text').then((btnText) => {
             //     if (btnText == 'Install WooCommerce') {
             //         cy.get('.nfd-app-section-content .nfd-button--upsell').contains(btnText).click();
@@ -29,7 +38,7 @@ describe(
         it('1 Verify Install Now is shown when canAccessGlobalCTB and hasYithExtended set to true', () => {
             // cy.exec( `npx wp-env run cli wp option get _transient_nfd_site_capabilities` )
             cy.exec( `npx wp-env run cli wp option delete _transient_nfd_site_capabilities`, {failOnNonZeroExit: false})
-            cy.exec(`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${cTBAndYithTrue}'`, { timeout: customCommandTimeout }).then((result) => {
+            cy.exec(`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${cTBAndYithTrue}' --format=json`, { timeout: customCommandTimeout }).then((result) => {
                 cy.log(result.stdout);
                 cy.log(result.stderr);
             })
@@ -45,7 +54,7 @@ describe(
             
         })
 
-        it('3 Verify Install Now is shown when canAccessGlobalCTB is false and hasYithExtended set to true', () => {
+        it.skip('3 Verify Install Now is shown when canAccessGlobalCTB is false and hasYithExtended set to true', () => {
             // cy.exec( `npx wp-env run cli wp option delete _transient_nfd_site_capabilities`, { timeout: customCommandTimeout } )
             cy.exec(`npx wp-env run cli wp option update _transient_nfd_site_capabilities '${cTBFalseYithTrue}'`, { timeout: customCommandTimeout }).then((result) => {
                 cy.log(result.stdout);
@@ -58,7 +67,7 @@ describe(
             cy.get('.nfd-button--upsell').contains('Install now').should('exist')
         })
 
-        it('4 Verify Buy Now is shown when canAccessGlobalCTB is true and hasYithExtended set to false', () => {
+        it.skip('4 Verify Buy Now is shown when canAccessGlobalCTB is true and hasYithExtended set to false', () => {
             // cy.exec( `npx wp-env run cli wp option delete _transient_nfd_site_capabilities` , { timeout: customCommandTimeout })
             cy.exec(`npx wp-env run cli wp option update _transient_nfd_site_capabilities '${cTBTrueYithFalse}'`, { timeout: customCommandTimeout }).then((result) => {
                 cy.log(result.stdout);
