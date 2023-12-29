@@ -85,7 +85,7 @@ describe( 'Verify Wondercart accessibility as per capabilities', () => {
 			{ failOnNonZeroExit: false }
 		);
 		cy.exec(
-			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${cTBTrueYithFalse}'  --format=json`,
+			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${cTBTrueYithFalse}' --format=json`,
 			{ timeout: customCommandTimeout }
 		);
 		cy.reload();
