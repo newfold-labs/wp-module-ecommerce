@@ -85,12 +85,9 @@ describe( 'Verify Wondercart accessibility as per capabilities', () => {
 			{ failOnNonZeroExit: false }
 		);
 		cy.exec(
-			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ cTBTrueYithFalse }'`,
+			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${cTBTrueYithFalse}'  --format=json`,
 			{ timeout: customCommandTimeout }
-		).then( ( result ) => {
-			cy.log( result.stdout );
-			cy.log( result.stderr );
-		} );
+		);
 		cy.reload();
 		cy.get( `.${ appId }-app-navitem-Store`, {
 			timeout: mediumWait,
