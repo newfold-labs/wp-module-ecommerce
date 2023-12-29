@@ -17,9 +17,13 @@ describe( 'Verify Wondercart accessibility as per capabilities', () => {
 	} );
 
 	const cTBTrueYithFalse = JSON.stringify( {
-		...cTBAndYithTrue,
+		"canAccessAI": true,
+		"canAccessHelpCenter": true,
+		"canAccessGlobalCTB": true,
+		"hasEcomdash": false,
 		"hasYithExtended": false,
 		"isEcommerce": false,
+		"isJarvis": true,
 	} );
 
 	before( () => {
