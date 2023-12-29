@@ -5,7 +5,7 @@ const mediumWait = 30000;
 const pluginId = GetPluginId();
 const appId = getAppId();
 
-describe( 'Verify Wondercart accessibility as per capabilities', () => {
+describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 	const cTBAndYithTrue = JSON.stringify( {
 		"canAccessAI": true,
 		"canAccessHelpCenter": true,
