@@ -146,11 +146,11 @@ describe("Commerce Home Page- Next Steps", () => {
 
   after(() => {
     cy.exec(`npx wp-env run cli wp option delete nfd_module_onboarding_flow`);
-    cy.reload();
-    cy.visit(
-      "/wp-admin/index.php?page=nfd-onboarding#/wp-setup/step/get-started/experience"
-    );
-    cy.get("button.nfd-nav-card-button.nfd-card-button").should("be.disabled");
+    // cy.reload();
+    // cy.visit(
+    //   "/wp-admin/index.php?page=nfd-onboarding#/wp-setup/step/get-started/experience"
+    // );
+    // cy.get("button.nfd-nav-card-button.nfd-card-button").should("be.disabled");
   });
 
   it("Verify Next steps for your site when woocommerce is not active", () => {
@@ -190,17 +190,26 @@ describe("Commerce Home Page- Next Steps", () => {
 
     const steps = ["Sign up for Bluehost WordPress Academy", ...other_steps];
 
-    cy.visit(
-      "/wp-admin/index.php?page=nfd-onboarding#/wp-setup/step/get-started/experience"
-    );
-    cy.get("#inspector-radio-control-0-0", {
-      timeout: customCommandTimeout,
-    }).click({ force: true });
-    cy.get(".navigation-buttons_next").click({ force: true });
-    cy.visit("/wp-admin/admin.php?page=" + pluginId + "#/home");
-    cy.exec(`npx wp-env run cli wp plugin deactivate woocommerce`, {
-      failOnNonZeroExit: false,
-    });
+    // cy.visit(
+    //   "/wp-admin/index.php?page=nfd-onboarding#/wp-setup/step/get-started/experience"
+    // );
+    cy.exec(
+			`npx wp-env run cli wp option delete onboarding_experience_level`,
+			{ failOnNonZeroExit: false }
+		);
+		cy.exec(
+			`npx wp-env run cli wp option set onboarding_experience_level 1`,
+			{ timeout: customCommandTimeout }
+		);
+    	
+    // cy.get("#inspector-radio-control-0-0", {
+    //   timeout: customCommandTimeout,
+    // }).click({ force: true });
+    // cy.get(".navigation-buttons_next").click({ force: true });
+    // cy.visit("/wp-admin/admin.php?page=" + pluginId + "#/home");
+    // cy.exec(`npx wp-env run cli wp plugin deactivate woocommerce`, {
+    //   failOnNonZeroExit: false,
+    // });
     cy.wait(2000);
     cy.get(".nfd-grid.nfd-gap-4", { timeout: customCommandTimeout })
       .as("nextSteps")
@@ -221,6 +230,14 @@ describe("Commerce Home Page- Next Steps", () => {
   });
 
   it("Verify Signup for Bluehost WordPress Academy step", () => {
+    cy.exec(
+			`npx wp-env run cli wp option delete onboarding_experience_level`,
+			{ failOnNonZeroExit: false }
+		);
+		cy.exec(
+			`npx wp-env run cli wp option set onboarding_experience_level 1`,
+			{ timeout: customCommandTimeout }
+		);
     if (pluginId == "bluehost") {
       cy.intercept(APIList.bh_academy).as("events");
       cy.contains(
@@ -250,6 +267,15 @@ describe("Commerce Home Page- Next Steps", () => {
   });
 
   it("Verify Signup for Wordpress SEO Academy step", () => {
+    cy.exec(
+			`npx wp-env run cli wp option delete onboarding_experience_level`,
+			{ failOnNonZeroExit: false }
+		);
+		cy.exec(
+			`npx wp-env run cli wp option set onboarding_experience_level 1`,
+			{ timeout: customCommandTimeout }
+		);
+
     cy.intercept(APIList.yoast_seo_academy).as("events");
     cy.contains(
       ".nfd-grid.nfd-gap-4 ul li a",

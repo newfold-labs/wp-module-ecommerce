@@ -18,15 +18,22 @@ describe( 'Store Page- WooCommerce is deactivated/uninstalled', () => {
 	} );
 
 	it( 'Verify that Payments tab is not displayed', () => {
-		const subNavTexts = [ 'Products & Services', 'Store Details' ];
+		const subNavTexts = ['Products & Services', 'Store Details'];
+		const subNavTextsOther = [ 'Products', 'Store Details' ];
 
 		cy.contains( '.nfd-mb-0', 'Store' )
 			.find( `.${ appId }-app-subnavitem` )
 			.each( ( item, index, list ) => {
-				expect( list ).to.have.length( 2 );
-				expect( Cypress.$( item ).text() ).to.eq(
-					subNavTexts[ index ]
-				);
+				expect(list).to.have.length(2);
+				if (pluginId !== 'bluehost') {
+					expect(Cypress.$(item).text()).to.eq(
+						subNavTextsOther[index]
+					);
+				} else {
+					expect(Cypress.$(item).text()).to.eq(
+						subNavTexts[index]
+					);
+				}
 			} );
 	} );
 
