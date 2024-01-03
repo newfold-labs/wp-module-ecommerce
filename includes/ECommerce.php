@@ -78,11 +78,9 @@ class ECommerce {
 		add_action( 'init', array( $this, 'load_php_textdomain' ) );
 		add_action( 'toplevel_page_'. $container->plugin()->id, array( $this, 'load_experience_level' ) );
 		add_action( 'admin_init', array( $this, 'maybe_do_dash_redirect' ) );
-		add_action( 'admin_bar_menu', array( $this, 'newfold_site_status' ), 200 );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_assets' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_textdomains' ) );
-		add_action('wp_body_open', array( $this, 'regiester_site_preview' ));
 		add_filter( 'woocommerce_coupons_enabled',  array( $this, 'disable_coupon_field_on_cart' ) );
 		add_filter( 'woocommerce_before_cart', array( $this, 'hide_banner_notice_on_cart'));
 		add_action('before_woocommerce_init', array( $this,'hide_woocommerce_set_up') );
@@ -263,33 +261,6 @@ class ECommerce {
 		}
 	}
 
-	/**
-	 * Customize the admin bar with site status.
-	 *
-	 * @param \WP_Admin_Bar $admin_bar An instance of the WP_Admin_Bar class.
-	 */
-	public function newfold_site_status( \WP_Admin_Bar $admin_bar ) {
-		if ( current_user_can( 'manage_options' ) ) {
-			$is_coming_soon   = 'true' === get_option( 'nfd_coming_soon', 'false' );
-			$status           = $is_coming_soon
-			? '<span id="nfd-site-status-text" style="color:#E01C1C;">' . esc_html__( 'Coming Soon', 'wp-module-ecommerce' ) . '</span>'
-			: '<span id="nfd-site-status-text" style="color:#048200;">' . esc_html__( 'Live', 'wp-module-ecommerce' ) . '</span>';
-			$site_status_menu = array(
-				'id'     => 'site-status',
-				'parent' => 'top-secondary',
-				'href'   => admin_url( 'admin.php?page=' . $this->container->plugin()->id . '&nfd-target=coming-soon-section#/settings' ),
-				'title'  => '<div style="background-color: #F8F8F8; padding: 0 16px;color:#333333;">' . esc_html__( 'Site Status: ', 'wp-module-ecommerce' ) . $status . '</div>',
-				'meta'   => array(
-					'title' => esc_attr__( 'Launch Your Site', 'wp-module-ecommerce' ),
-				),
-			);
-			$admin_bar->add_menu( $site_status_menu );
-			// Remove status added by newfold-labs/wp-module-coming-soon
-			$menu_name = $this->container->plugin()->id . '-coming_soon';
-			$admin_bar->remove_menu( $menu_name );
-		}
-	}
-
 	public function register_textdomains() {
 		$MODULE_LANG_DIR = $this->container->plugin()->dir . 'vendor/newfold-labs/wp-module-ecommerce/languages';
 		\load_script_textdomain( 'nfd-ecommerce-dependency', 'wp-module-ecommerce', $MODULE_LANG_DIR );
@@ -317,17 +288,6 @@ class ECommerce {
 			\wp_enqueue_script( 'nfd-ecommerce-dependency' );
 		}
 	}
-
-	/**
-	 * Load warning for site Preview
-	 */
-	public function regiester_site_preview() {
-		$is_coming_soon   = 'true' === get_option( 'nfd_coming_soon', 'false' );
-		if($is_coming_soon){
-		echo "<div style='background-color: #e71616; padding: 0 16px;color:#ffffff;font-size:16px;text-align:center;font-weight: 590;'>" . esc_html__( 'Site Preview - This site is NOT LIVE, only admins can see this view.', 'wp-module-ecommerce' ) . "</div>";
-		}
-	}
-
 
 	/**
  	* Remove Add coupon field on cart page
