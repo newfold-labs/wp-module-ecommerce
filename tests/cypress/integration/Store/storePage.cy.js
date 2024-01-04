@@ -14,9 +14,6 @@ describe( 'Store Page- WooCommerce is deactivated/uninstalled', () => {
 	} );
 
 	beforeEach(() => {
-		if ( pluginId == 'crazy-domains' ) {
-			this.skip();
-		}
 		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/store' );
 	} );
 

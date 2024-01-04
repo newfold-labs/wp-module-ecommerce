@@ -106,9 +106,6 @@ describe("Commerce Home Page- Live Mode", () => {
   });
 
   beforeEach(() => {
-    if ( pluginId == 'crazy-domains' ) {
-			this.skip();
-		}
     cy.visit("/wp-admin/admin.php?page=" + pluginId + "#/home");
   });
 
@@ -142,7 +139,7 @@ describe("Commerce Home Page- Next Steps", () => {
     cy.exec(`npx wp-env run cli wp plugin deactivate woocommerce`, {
       failOnNonZeroExit: false,
     });
-    
+
     if (pluginId == 'hostgator') {
       cy.exec(`npx wp-env run cli wp option delete mm_brand`);
       cy.exec(`npx wp-env run cli wp option set mm_brand ${pluginId}`);
@@ -151,9 +148,6 @@ describe("Commerce Home Page- Next Steps", () => {
   });
 
   beforeEach(() => {
-    if ( pluginId == 'crazy-domains' ) {
-			this.skip();
-		}
     cy.visit("/wp-admin/admin.php?page=" + pluginId + "#/home");
   });
 
