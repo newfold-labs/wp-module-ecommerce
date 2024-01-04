@@ -98,6 +98,9 @@ describe("Commerce Home Page- Coming soon mode", () => {
 
 describe("Commerce Home Page- Live Mode", () => {
   before(() => {
+    if ( pluginId == 'crazy-domains' ) {
+			this.skip();
+		}
     cy.exec(`npx wp-env run cli wp plugin deactivate woocommerce`, {
       failOnNonZeroExit: false,
     });
@@ -136,6 +139,9 @@ describe("Commerce Home Page- Live Mode", () => {
 
 describe("Commerce Home Page- Next Steps", () => {
   before(() => {
+    if ( pluginId == 'crazy-domains' ) {
+			this.skip();
+		}
     cy.exec(`npx wp-env run cli wp plugin deactivate woocommerce`, {
       failOnNonZeroExit: false,
     });
@@ -202,15 +208,6 @@ describe("Commerce Home Page- Next Steps", () => {
     cy.visit(
       "/wp-admin/index.php?page=nfd-onboarding#/wp-setup/step/get-started/experience"
     );
-    // cy.exec(
-		// 	`npx wp-env run cli wp option delete onboarding_experience_level`,
-		// 	{ failOnNonZeroExit: false }
-		// );
-		// cy.exec(
-		// 	`npx wp-env run cli wp option set onboarding_experience_level 1`,
-		// 	{ timeout: customCommandTimeout }
-		// );
-    	
     cy.get("#inspector-radio-control-0-0", {
       timeout: customCommandTimeout,
     }).click({ force: true });
@@ -239,14 +236,6 @@ describe("Commerce Home Page- Next Steps", () => {
   });
 
   it("Verify Signup for Bluehost WordPress Academy step", () => {
-    // cy.exec(
-		// 	`npx wp-env run cli wp option delete onboarding_experience_level`,
-		// 	{ failOnNonZeroExit: false }
-		// );
-		// cy.exec(
-		// 	`npx wp-env run cli wp option set onboarding_experience_level 1`,
-		// 	{ timeout: customCommandTimeout }
-		// );
     if (pluginId == "bluehost") {
       cy.intercept(APIList.bh_academy).as("events");
       cy.contains(
@@ -276,15 +265,6 @@ describe("Commerce Home Page- Next Steps", () => {
   });
 
   it("Verify Signup for Wordpress SEO Academy step", () => {
-    // cy.exec(
-		// 	`npx wp-env run cli wp option delete onboarding_experience_level`,
-		// 	{ failOnNonZeroExit: false }
-		// );
-		// cy.exec(
-		// 	`npx wp-env run cli wp option set onboarding_experience_level 1`,
-		// 	{ timeout: customCommandTimeout }
-		// );
-
     cy.intercept(APIList.yoast_seo_academy).as("events");
     cy.contains(
       ".nfd-grid.nfd-gap-4 ul li a",

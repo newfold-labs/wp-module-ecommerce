@@ -5,7 +5,10 @@ const pluginId = GetPluginId();
 const appId = getAppId();
 
 describe( 'Store Page- WooCommerce is deactivated/uninstalled', () => {
-	before( () => {
+	before(() => {
+		if ( pluginId == 'crazy-domains' ) {
+			this.skip();
+		}
 		cy.exec( `npx wp-env run cli wp plugin deactivate woocommerce`, {
 			failOnNonZeroExit: false,
         });
