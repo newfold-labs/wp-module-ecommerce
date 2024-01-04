@@ -98,9 +98,6 @@ describe("Commerce Home Page- Coming soon mode", () => {
 
 describe("Commerce Home Page- Live Mode", () => {
   before(() => {
-    if ( pluginId == 'crazy-domains' ) {
-			this.skip();
-		}
     cy.exec(`npx wp-env run cli wp plugin deactivate woocommerce`, {
       failOnNonZeroExit: false,
     });
@@ -109,6 +106,9 @@ describe("Commerce Home Page- Live Mode", () => {
   });
 
   beforeEach(() => {
+    if ( pluginId == 'crazy-domains' ) {
+			this.skip();
+		}
     cy.visit("/wp-admin/admin.php?page=" + pluginId + "#/home");
   });
 
@@ -139,23 +139,21 @@ describe("Commerce Home Page- Live Mode", () => {
 
 describe("Commerce Home Page- Next Steps", () => {
   before(() => {
-    if ( pluginId == 'crazy-domains' ) {
-			this.skip();
-		}
     cy.exec(`npx wp-env run cli wp plugin deactivate woocommerce`, {
       failOnNonZeroExit: false,
     });
-  });
-
-  before(() => {
+    
     if (pluginId == 'hostgator') {
       cy.exec(`npx wp-env run cli wp option delete mm_brand`);
       cy.exec(`npx wp-env run cli wp option set mm_brand ${pluginId}`);
       cy.exec(`npx wp-env run cli wp option set hg_region ${hg_region}}`);
     }
-  })
+  });
 
   beforeEach(() => {
+    if ( pluginId == 'crazy-domains' ) {
+			this.skip();
+		}
     cy.visit("/wp-admin/admin.php?page=" + pluginId + "#/home");
   });
 

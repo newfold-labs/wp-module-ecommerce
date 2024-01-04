@@ -6,9 +6,6 @@ const appId = getAppId();
 
 describe( 'Store Page- WooCommerce is deactivated/uninstalled', () => {
 	before(() => {
-		if ( pluginId == 'crazy-domains' ) {
-			this.skip();
-		}
 		cy.exec( `npx wp-env run cli wp plugin deactivate woocommerce`, {
 			failOnNonZeroExit: false,
         });
@@ -16,7 +13,10 @@ describe( 'Store Page- WooCommerce is deactivated/uninstalled', () => {
         comingSoon(false)
 	} );
 
-	beforeEach( () => {
+	beforeEach(() => {
+		if ( pluginId == 'crazy-domains' ) {
+			this.skip();
+		}
 		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/store' );
 	} );
 
