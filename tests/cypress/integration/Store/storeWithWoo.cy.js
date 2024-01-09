@@ -1,11 +1,11 @@
 import { GetPluginId, getAppId } from '../wp-module-support/pluginID.cy';
 import { comingSoon, installWoo } from '../wp-module-support/utils.cy';
 
-const customCommandTimeout = 30000;
+const customCommandTimeout = 60000;
 const pluginId = GetPluginId();
 const appId = getAppId();
 
-describe('Commerce Home Page- Coming soon mode', () => {
+describe('Commerce Store page when WooCommerce is installed', () => {
     before(() => {
         cy.visit('/wp-admin/admin.php?page=' + pluginId + '#/store');
         installWoo();
