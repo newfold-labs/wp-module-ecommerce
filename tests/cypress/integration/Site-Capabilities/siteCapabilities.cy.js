@@ -145,7 +145,7 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 			.should( 'exist' );
 	} );
 
-	it( 'Verify clicking Install Now successfully installs Wonder Cart', () => {
+	it( 'Verify clicking Install Now successfully installs Wonder Cart plugin', () => {
 		cy.get( `.${ appId }-app-navitem-Store`, {
 			timeout: mediumWait,
 		} ).click();
