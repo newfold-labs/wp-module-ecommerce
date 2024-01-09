@@ -26,7 +26,10 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 		"isJarvis": true,
 	} );
 
-	before( () => {
+	before(function() {
+		if ( pluginId !== 'bluehost' ) {
+			this.skip();
+		}
 		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/store' );
 		cy.get( '.nfd-app-section-content .nfd-button--upsell' )
 			.eq( 0 )
@@ -48,9 +51,6 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 	} );
 
 	beforeEach( () => {
-		if ( pluginId !== 'bluehost' ) {
-			this.skip();
-		}
 		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
 	} );
 
