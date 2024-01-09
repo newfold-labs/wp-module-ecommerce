@@ -65,7 +65,7 @@ final class Brands {
 					'support'         => 'https://www.hostgator.com/contact',
 					'adminPage'       => 'admin.php?page=hostgator',
 					'setup'           => array(
-						'payment'  => array( 'Paypal', 'Razorpay', 'Stripe' ),
+						'payment'  => array( 'Paypal', 'Razorpay' ),
 						'shipping' => array(),
 					),
 					'defaultContact'  => array(
