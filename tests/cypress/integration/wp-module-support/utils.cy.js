@@ -1,6 +1,9 @@
+import { getAppId } from "./pluginID.cy";
+
+const appId = getAppId()
 const customCommandTimeout = 30000
 export const comingSoon = (shouldBeComingSoon) => {
-    cy.get('#wp-admin-bar-site-status', { timeout: customCommandTimeout }).find('a').click()
+    cy.get( `.${ appId }-app-navitem-Settings`, { timeout: customCommandTimeout }).click()
 
     cy.get('[data-id="coming-soon-toggle"]', { timeout: customCommandTimeout }).as('comingSoonToggle')
 
