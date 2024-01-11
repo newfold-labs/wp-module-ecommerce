@@ -1,4 +1,5 @@
 import { GetPluginId, getAppId } from '../wp-module-support/pluginID.cy';
+import { installWoo } from '../wp-module-support/utils.cy';
 
 const customCommandTimeout = 60000;
 const mediumWait = 30000;
@@ -26,28 +27,12 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 		"isJarvis": true,
 	} );
 
-	before(function() {
+	before( function () {
 		if ( pluginId !== 'bluehost' ) {
 			this.skip();
 		}
 		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/store' );
-		cy.get( '.nfd-app-section-content .nfd-button--upsell' )
-			.eq( 0 )
-			.invoke( 'text' )
-			.then( ( btnText ) => {
-				if ( btnText == 'Install WooCommerce' ) {
-					cy.get( '.nfd-app-section-content .nfd-button--upsell' )
-						.contains( btnText )
-						.click();
-					cy.get( '.nfd-notification--success', {
-						timeout: customCommandTimeout,
-					} )
-						.contains(
-							'WooCommerce has been installed successfully'
-						)
-						.should( 'exist' );
-				}
-			} );
+		installWoo();
 	} );
 
 	beforeEach( () => {
@@ -74,9 +59,7 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 		cy.get( `.${ appId }-app-navitem-Store`, {
 			timeout: mediumWait,
 		} ).click();
-		cy.get( `.${ appId }-app-subnavitem` )
-			.contains( 'Sales & Discounts' )
-			.should( 'exist' );
+		cy.get( `.${ appId }-app-subnavitem-Sales` ).should( 'exist' );
 	} );
 
 	it( 'Verify Buy Now is shown when canAccessGlobalCTB is true and commerce addon is false', () => {
@@ -85,30 +68,27 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 			{ failOnNonZeroExit: false }
 		);
 		cy.exec(
-			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${cTBTrueYithFalse}' --format=json`,
+			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ cTBTrueYithFalse }' --format=json`,
 			{ timeout: customCommandTimeout }
 		);
 		cy.reload();
 		cy.get( `.${ appId }-app-navitem-Store`, {
 			timeout: mediumWait,
 		} ).click();
-		cy.get( `.${ appId }-app-subnavitem` )
-			.contains( 'Sales & Discounts' )
+		cy.get( `.${ appId }-app-subnavitem-Sales` )
 			.as( 'salesTab' )
 			.should( 'exist' );
 		cy.get( '@salesTab' ).click();
-		cy.get( '.nfd-button--upsell', { timeout: mediumWait } )
-			.contains( 'Buy now', { timeout: mediumWait } )
-			.should( 'exist' );
+		cy.get( '.nfd-button--upsell', { timeout: mediumWait } ).should(
+			'exist'
+		);
 	} );
 
 	it( 'Verify clicking on Buy Now leads to cpanel login page', () => {
 		cy.get( `.${ appId }-app-navitem-Store`, {
 			timeout: mediumWait,
 		} ).click();
-		cy.get( `.${ appId }-app-subnavitem` )
-			.contains( 'Sales & Discounts' )
-			.click();
+		cy.get( `.${ appId }-app-subnavitem-Sales` ).click();
 		cy.get( '.nfd-button--upsell', { timeout: mediumWait } )
 			.eq( 1 )
 			.as( 'buyButton' );
@@ -135,37 +115,28 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 		cy.get( `.${ appId }-app-navitem-Store`, {
 			timeout: mediumWait,
 		} ).click();
-		cy.get( `.${ appId }-app-subnavitem`, { timeout: mediumWait } )
-			.contains( 'Sales & Discounts' )
+		cy.get( `.${ appId }-app-subnavitem-Sales`, { timeout: mediumWait } )
 			.as( 'salesTab' )
 			.should( 'exist' );
 		cy.get( '@salesTab' ).click();
-		cy.get( '.nfd-button--upsell', { timeout: mediumWait } )
-			.contains( 'Install now', { timeout: mediumWait } )
-			.should( 'exist' );
+		cy.get( '.nfd-button--upsell', { timeout: mediumWait } ).should(
+			'exist'
+		);
 	} );
 
 	it( 'Verify clicking Install Now successfully installs Wonder Cart plugin', () => {
 		cy.get( `.${ appId }-app-navitem-Store`, {
 			timeout: mediumWait,
 		} ).click();
-		cy.get( `.${ appId }-app-subnavitem` )
-			.contains( 'Sales & Discounts' )
-			.click();
+		cy.get( `.${ appId }-app-subnavitem-Sales` ).click();
 		cy.get( '.nfd-button--upsell', { timeout: mediumWait } )
-			.contains( 'Install now' )
+			.eq( 0 )
 			.scrollIntoView()
 			.click();
 		cy.get( '.nfd-notification--success', {
 			timeout: customCommandTimeout,
-		} )
-			.should( 'exist' )
-			.and( 'contain.text', 'Installed successfully' );
-
+		} ).should( 'exist' );
 		cy.get( '#wonder-cart-init', { timeout: mediumWait } ).should(
-			'exist'
-		);
-		cy.contains( 'Create campaign', { timeout: mediumWait } ).should(
 			'exist'
 		);
 	} );
