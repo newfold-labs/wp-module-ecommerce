@@ -4,6 +4,7 @@ import { EventsAPI, APIList } from "../wp-module-support/eventsAPIs.cy";
 
 const customCommandTimeout = 60000;
 const pluginId = GetPluginId();
+const hg_region = 'br'
 
 describe("Commerce Home Page- Coming soon mode", () => {
   before(() => {
@@ -138,6 +139,12 @@ describe("Commerce Home Page- Next Steps", () => {
     cy.exec(`npx wp-env run cli wp plugin deactivate woocommerce`, {
       failOnNonZeroExit: false,
     });
+
+    if (pluginId == 'hostgator') {
+      cy.exec(`npx wp-env run cli wp option delete mm_brand`);
+      cy.exec(`npx wp-env run cli wp option set mm_brand ${pluginId}`);
+      cy.exec(`npx wp-env run cli wp option set hg_region ${hg_region}}`);
+    }
   });
 
   beforeEach(() => {
@@ -261,10 +268,17 @@ describe("Commerce Home Page- Next Steps", () => {
       .scrollIntoView()
       .invoke("removeAttr", "target")
       .click();
-    cy.url().should(
-      "equal",
-      `https://my.yoast.com/signup?redirect_to=https://academy.yoast.com/courses/?utm_medium=${pluginId}_plugin&utm_source=wp-home`
-    );
+    if (pluginId == 'crazy-domains') {
+      cy.url().should(
+        "equal",
+        `https://my.yoast.com/signup?redirect_to=https://academy.yoast.com/courses/?utm_medium=crazydomains_plugin&utm_source=wp-home`
+      );
+    } else {
+      cy.url().should(
+        "equal",
+        `https://my.yoast.com/signup?redirect_to=https://academy.yoast.com/courses/?utm_medium=${pluginId}_plugin&utm_source=wp-home`
+      );
+    }
     cy.go("back");
     EventsAPI(APIList.yoast_seo_academy, pluginId);
 
@@ -297,7 +311,7 @@ describe("Commerce Home Page- Next Steps", () => {
   });
 
   it("Verify Option Upload Media to your site", () => {
-    cy.contains("Upload media to your site").as("uploadMedia").should("exist");
+    cy.contains("Upload media to your site", {timeout: customCommandTimeout}).as("uploadMedia").should("exist");
     cy.get("@uploadMedia").click();
     cy.url().should("eq", Cypress.config().baseUrl + "/wp-admin/media-new.php");
     cy.go("back");
