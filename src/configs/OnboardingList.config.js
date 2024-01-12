@@ -26,6 +26,7 @@ const CaptiveFlows = {
   paypal: "nfd-ecommerce-captive-flow-paypal",
   shippo: "nfd-ecommerce-captive-flow-shippo",
   razorpay: "nfd-ecommerce-captive-flow-razorpay",
+  stripe: "nfd-ecommerce-captive-flow-stripe"
 };
 
 const data = {
@@ -127,6 +128,7 @@ export function OnboardingListDefinition(props) {
             selector: yithOnboardingPaymentParser([
               CaptiveFlows.paypal,
               CaptiveFlows.razorpay,
+              CaptiveFlows.stripe,
             ]),
           },
         ],

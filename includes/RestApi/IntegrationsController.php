@@ -44,6 +44,17 @@ class IntegrationsController {
 		);
 		\register_rest_route(
 			$this->namespace,
+			$this->rest_base . '/stripe',
+			array(
+				array(
+					'methods'             => \WP_REST_Server::READABLE,
+					'callback'            => array( $this, 'get_stripe_status' ),
+					'permission_callback' => array( Permissions::class, 'rest_is_authorized_admin' ),
+				),
+			)
+		);
+		\register_rest_route(
+			$this->namespace,
 			$this->rest_base . '/razorpay',
 			array(
 				array(
@@ -132,6 +143,32 @@ class IntegrationsController {
 		return new \WP_REST_Response(
 			array(
 				'complete'    => $is_captive_flow_complete === 'true', 
+				'details'     => $details,
+				'integration' => $integration,
+			),
+			200
+		);
+	}
+
+	public function get_stripe_status() {
+		$integration = array(
+			'captive' => null,
+			'plugin' => $this->get_plugin_details( 'nfd_slug_yith_stripe_payments_for_woocommerce' ),
+		);
+		$is_captive_flow_complete = \get_option( 'nfd-ecommerce-captive-flow-stripe', 'false' ); 
+		$stripewc_options = \get_option( 'yith_stripe_payments_enabled', array() );
+		$details = array();
+		if ( $is_captive_flow_complete === 'true' ) {
+			$stripewc_email = \get_option( 'yith_stripe_payments_email', '' );
+			$details = array(
+				'environment' => \get_option( 'yith_stripe_payments_environment', 'live' ) === 'live' ? 'live' : 'sandbox' ,
+				'email' => $stripewc_email
+			);
+		}
+
+		return new \WP_REST_Response(
+			array(
+				'complete'    => $is_captive_flow_complete === 'true',
 				'details'     => $details,
 				'integration' => $integration,
 			),
