@@ -4,20 +4,73 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "384f77b7af2a01bf6cdfaf061a78f7b7",
+    "content-hash": "5742e827dea87d677914faff3b1b0a94",
     "packages": [
         {
-            "name": "newfold-labs/wp-module-data",
-            "version": "2.4.14",
+            "name": "newfold-labs/wp-module-coming-soon",
+            "version": "1.1.14",
             "source": {
                 "type": "git",
-                "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "3bdc70e9f0784832c2955bd2f887215cd38c4425"
+                "url": "https://github.com/newfold-labs/wp-module-coming-soon.git",
+                "reference": "98f13af0aeccab8b3d387c4bc731a48c6cf49668"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/3bdc70e9f0784832c2955bd2f887215cd38c4425",
-                "reference": "3bdc70e9f0784832c2955bd2f887215cd38c4425",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-coming-soon/zipball/98f13af0aeccab8b3d387c4bc731a48c6cf49668",
+                "reference": "98f13af0aeccab8b3d387c4bc731a48c6cf49668",
+                "shasum": ""
+            },
+            "require": {
+                "wp-forge/wp-upgrade-handler": "^1.0"
+            },
+            "require-dev": {
+                "newfold-labs/wp-php-standards": "^1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NewfoldLabs\\WP\\Module\\ComingSoon\\": "includes"
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "scripts": {
+                "fix": [
+                    "vendor/bin/phpcbf . --standard=phpcs.xml"
+                ],
+                "lint": [
+                    "vendor/bin/phpcs . --standard=phpcs.xml -s"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Evan Mullins",
+                    "homepage": "https://evanmullins.com"
+                }
+            ],
+            "description": "Coming Soon module for WordPress sites.",
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-coming-soon/tree/1.1.14",
+                "issues": "https://github.com/newfold-labs/wp-module-coming-soon/issues"
+            },
+            "time": "2024-01-11T20:19:06+00:00"
+        },
+        {
+            "name": "newfold-labs/wp-module-data",
+            "version": "2.4.16",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newfold-labs/wp-module-data.git",
+                "reference": "633712f1d717c564f62bd6cfc4e70d56959d8a22"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/633712f1d717c564f62bd6cfc4e70d56959d8a22",
+                "reference": "633712f1d717c564f62bd6cfc4e70d56959d8a22",
                 "shasum": ""
             },
             "require": {
@@ -50,10 +103,10 @@
             ],
             "description": "Newfold Data Module",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.4.14",
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.4.16",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2023-12-04T19:34:50+00:00"
+            "time": "2024-01-08T20:37:18+00:00"
         },
         {
             "name": "newfold-labs/wp-module-installer",
@@ -99,20 +152,21 @@
         },
         {
             "name": "newfold-labs/wp-module-onboarding-data",
-            "version": "0.0.9",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding-data.git",
-                "reference": "fddabb8dbdd8a717f6efb215d3a1f47d7ecd7c43"
+                "reference": "ebe0ef43930b7bf86dac7f6dc12fb9d6d4c962c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding-data/zipball/fddabb8dbdd8a717f6efb215d3a1f47d7ecd7c43",
-                "reference": "fddabb8dbdd8a717f6efb215d3a1f47d7ecd7c43",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding-data/zipball/ebe0ef43930b7bf86dac7f6dc12fb9d6d4c962c6",
+                "reference": "ebe0ef43930b7bf86dac7f6dc12fb9d6d4c962c6",
                 "shasum": ""
             },
             "require": {
-                "newfold-labs/wp-module-data": "^2.4.3",
+                "newfold-labs/wp-module-coming-soon": "^1.1.13",
+                "newfold-labs/wp-module-data": "^2.4.16",
                 "newfold-labs/wp-module-installer": "^1.1",
                 "wp-forge/wp-upgrade-handler": "^1.0"
             },
@@ -133,10 +187,10 @@
             ],
             "description": "A non-toggleable module containing a standardized interface for interacting with Onboarding data.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-onboarding-data/tree/0.0.9",
+                "source": "https://github.com/newfold-labs/wp-module-onboarding-data/tree/0.1.0",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding-data/issues"
             },
-            "time": "2023-12-08T20:29:27+00:00"
+            "time": "2024-01-11T09:45:56+00:00"
         },
         {
             "name": "wp-forge/wp-query-builder",
@@ -262,16 +316,16 @@
     "packages-dev": [
         {
             "name": "composer/ca-bundle",
-            "version": "1.3.7",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "76e46335014860eec1aa5a724799a00a2e47cc85"
+                "reference": "b66d11b7479109ab547f9405b97205640b17d385"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/76e46335014860eec1aa5a724799a00a2e47cc85",
-                "reference": "76e46335014860eec1aa5a724799a00a2e47cc85",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/b66d11b7479109ab547f9405b97205640b17d385",
+                "reference": "b66d11b7479109ab547f9405b97205640b17d385",
                 "shasum": ""
             },
             "require": {
@@ -283,7 +337,7 @@
                 "phpstan/phpstan": "^0.12.55",
                 "psr/log": "^1.0",
                 "symfony/phpunit-bridge": "^4.2 || ^5",
-                "symfony/process": "^2.5 || ^3.0 || ^4.0 || ^5.0 || ^6.0"
+                "symfony/process": "^2.5 || ^3.0 || ^4.0 || ^5.0 || ^6.0 || ^7.0"
             },
             "type": "library",
             "extra": {
@@ -318,7 +372,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/composer",
                 "issues": "https://github.com/composer/ca-bundle/issues",
-                "source": "https://github.com/composer/ca-bundle/tree/1.3.7"
+                "source": "https://github.com/composer/ca-bundle/tree/1.4.0"
             },
             "funding": [
                 {
@@ -334,7 +388,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-08-30T09:31:38+00:00"
+            "time": "2023-12-18T12:05:55+00:00"
         },
         {
             "name": "composer/composer",
@@ -1165,16 +1219,16 @@
         },
         {
             "name": "mck89/peast",
-            "version": "v1.15.4",
+            "version": "v1.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mck89/peast.git",
-                "reference": "1df4dc28a6b5bb7ab117ab073c1712256e954e18"
+                "reference": "63dee902bd281c792f1dd760b6df268682032ed0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mck89/peast/zipball/1df4dc28a6b5bb7ab117ab073c1712256e954e18",
-                "reference": "1df4dc28a6b5bb7ab117ab073c1712256e954e18",
+                "url": "https://api.github.com/repos/mck89/peast/zipball/63dee902bd281c792f1dd760b6df268682032ed0",
+                "reference": "63dee902bd281c792f1dd760b6df268682032ed0",
                 "shasum": ""
             },
             "require": {
@@ -1187,7 +1241,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.15.4-dev"
+                    "dev-master": "1.16.0-dev"
                 }
             },
             "autoload": {
@@ -1208,9 +1262,9 @@
             "description": "Peast is PHP library that generates AST for JavaScript code",
             "support": {
                 "issues": "https://github.com/mck89/peast/issues",
-                "source": "https://github.com/mck89/peast/tree/v1.15.4"
+                "source": "https://github.com/mck89/peast/tree/v1.16.0"
             },
-            "time": "2023-08-12T08:29:29+00:00"
+            "time": "2024-01-11T14:36:12+00:00"
         },
         {
             "name": "mustache/mustache",
@@ -1808,16 +1862,16 @@
         },
         {
             "name": "seld/jsonlint",
-            "version": "1.10.0",
+            "version": "1.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/jsonlint.git",
-                "reference": "594fd6462aad8ecee0b45ca5045acea4776667f1"
+                "reference": "76d449a358ece77d6f1d6331c68453e657172202"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/594fd6462aad8ecee0b45ca5045acea4776667f1",
-                "reference": "594fd6462aad8ecee0b45ca5045acea4776667f1",
+                "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/76d449a358ece77d6f1d6331c68453e657172202",
+                "reference": "76d449a358ece77d6f1d6331c68453e657172202",
                 "shasum": ""
             },
             "require": {
@@ -1844,7 +1898,7 @@
                 {
                     "name": "Jordi Boggiano",
                     "email": "j.boggiano@seld.be",
-                    "homepage": "http://seld.be"
+                    "homepage": "https://seld.be"
                 }
             ],
             "description": "JSON Linter",
@@ -1856,7 +1910,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Seldaek/jsonlint/issues",
-                "source": "https://github.com/Seldaek/jsonlint/tree/1.10.0"
+                "source": "https://github.com/Seldaek/jsonlint/tree/1.10.1"
             },
             "funding": [
                 {
@@ -1868,7 +1922,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-05-11T13:16:46+00:00"
+            "time": "2023-12-18T13:03:25+00:00"
         },
         {
             "name": "seld/phar-utils",
@@ -1920,16 +1974,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.8.0",
+            "version": "3.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "5805f7a4e4958dbb5e944ef1e6edae0a303765e7"
+                "reference": "14f5fff1e64118595db5408e946f3a22c75807f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/5805f7a4e4958dbb5e944ef1e6edae0a303765e7",
-                "reference": "5805f7a4e4958dbb5e944ef1e6edae0a303765e7",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/14f5fff1e64118595db5408e946f3a22c75807f7",
+                "reference": "14f5fff1e64118595db5408e946f3a22c75807f7",
                 "shasum": ""
             },
             "require": {
@@ -1939,11 +1993,11 @@
                 "php": ">=5.4.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0"
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.3.4"
             },
             "bin": [
-                "bin/phpcs",
-                "bin/phpcbf"
+                "bin/phpcbf",
+                "bin/phpcs"
             ],
             "type": "library",
             "extra": {
@@ -1996,7 +2050,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2023-12-08T12:32:31+00:00"
+            "time": "2024-01-11T20:47:48+00:00"
         },
         {
             "name": "symfony/console",
@@ -2575,16 +2629,16 @@
         },
         {
             "name": "wp-cli/config-command",
-            "version": "v2.3.2",
+            "version": "v2.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/config-command.git",
-                "reference": "9de6ce3536a2db56ae5264c61b6f1a35e9132e01"
+                "reference": "890b6e3c8fd945dcad2bff4bf565ba6dfb33e35d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/config-command/zipball/9de6ce3536a2db56ae5264c61b6f1a35e9132e01",
-                "reference": "9de6ce3536a2db56ae5264c61b6f1a35e9132e01",
+                "url": "https://api.github.com/repos/wp-cli/config-command/zipball/890b6e3c8fd945dcad2bff4bf565ba6dfb33e35d",
+                "reference": "890b6e3c8fd945dcad2bff4bf565ba6dfb33e35d",
                 "shasum": ""
             },
             "require": {
@@ -2593,7 +2647,7 @@
             },
             "require-dev": {
                 "wp-cli/db-command": "^1.3 || ^2",
-                "wp-cli/wp-cli-tests": "^4"
+                "wp-cli/wp-cli-tests": "^4.2.8"
             },
             "type": "wp-cli-package",
             "extra": {
@@ -2643,9 +2697,9 @@
             "homepage": "https://github.com/wp-cli/config-command",
             "support": {
                 "issues": "https://github.com/wp-cli/config-command/issues",
-                "source": "https://github.com/wp-cli/config-command/tree/v2.3.2"
+                "source": "https://github.com/wp-cli/config-command/tree/v2.3.3"
             },
-            "time": "2023-10-20T10:15:46+00:00"
+            "time": "2023-12-21T10:01:16+00:00"
         },
         {
             "name": "wp-cli/core-command",
@@ -4062,16 +4116,16 @@
         },
         {
             "name": "wp-cli/search-replace-command",
-            "version": "v2.1.3",
+            "version": "v2.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/search-replace-command.git",
-                "reference": "0b662a372483224fe93f113c2a4fa2089e951d34"
+                "reference": "88c9f23eda4eff4803a3eeeabd46d1a99cd17340"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/search-replace-command/zipball/0b662a372483224fe93f113c2a4fa2089e951d34",
-                "reference": "0b662a372483224fe93f113c2a4fa2089e951d34",
+                "url": "https://api.github.com/repos/wp-cli/search-replace-command/zipball/88c9f23eda4eff4803a3eeeabd46d1a99cd17340",
+                "reference": "88c9f23eda4eff4803a3eeeabd46d1a99cd17340",
                 "shasum": ""
             },
             "require": {
@@ -4116,9 +4170,9 @@
             "homepage": "https://github.com/wp-cli/search-replace-command",
             "support": {
                 "issues": "https://github.com/wp-cli/search-replace-command/issues",
-                "source": "https://github.com/wp-cli/search-replace-command/tree/v2.1.3"
+                "source": "https://github.com/wp-cli/search-replace-command/tree/v2.1.4"
             },
-            "time": "2023-09-01T12:41:32+00:00"
+            "time": "2023-12-19T12:41:53+00:00"
         },
         {
             "name": "wp-cli/server-command",

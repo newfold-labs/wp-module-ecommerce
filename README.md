@@ -12,7 +12,7 @@ Next-generation WordPress eCommerce Experience for WordPress sites at Newfold Di
 ### 1. Add the Newfold Satis to your `composer.json`.
 
  ```bash
- composer config repositories.newfold composer https://newfold.github.io/satis
+ composer config repositories.newfold composer https://newfold-labs.github.io/satis
  ```
 
 ### 2. Require the `newfold-labs/wp-module-ecommerce` package.
