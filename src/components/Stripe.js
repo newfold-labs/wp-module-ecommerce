@@ -15,16 +15,16 @@ import { ThirdPartyIntegration } from "./ThirdPartyIntegration";
 const Stripe = ({ notify }) => {
   const buttonRef = useRef();
 
-  useEffect(() => {
-    let button = false;
-    if (window?.yithStripePayments?.connectOnboarding) {
-      button = window.yithStripePayments.connectOnboarding(buttonRef.current, {
-        reloadOnClose: false,
-      });
-    }
+  useEffect(() =>{
+    return () => window?.yithStripePayments?.onboardingButton?.destroy();
+  })
 
-    return () => button && button.destroy();
-  });
+  const handleClick = () => {
+    if ( ! window?.yithStripePayments?.onboardingButton?.$button?.is( buttonRef.current ) ) {
+      window.yithStripePayments.onboardingButton = window.yithStripePayments.connectOnboarding( buttonRef.current, {reloadOnClose: false} );
+      window.yithStripePayments.onboardingButton.onClick();
+    }
+  }
 
   return (
     <ThirdPartyIntegration
@@ -51,7 +51,7 @@ const Stripe = ({ notify }) => {
               <StripeBrand />
               {!isInstalling ? (
                 <>
-                  {isSetupComplete ? (
+                  {isSetupComplete && integrationStatus?.integration?.plugin?.status ? (
                     <Button
                       variant="secondary"
                       as="a"
@@ -66,7 +66,7 @@ const Stripe = ({ notify }) => {
                           {__("Install", "wp-module-ecommerce")}
                         </Button>
                       ) : (
-                        <Button ref={buttonRef}>
+                        <Button ref={buttonRef} onClick={handleClick}>
                           {__("Connect", "wp-module-ecommerce")}
                         </Button>
                       )}
