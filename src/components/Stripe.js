@@ -14,6 +14,7 @@ import { ThirdPartyIntegration } from "./ThirdPartyIntegration";
 
 const Stripe = ({ notify }) => {
   const buttonRef = useRef();
+  const isHttp = window.location.protocol === "http:";
 
   useEffect(() =>{
     return () => window?.yithStripePayments?.onboardingButton?.destroy();
@@ -40,11 +41,10 @@ const Stripe = ({ notify }) => {
         const isSetupComplete = integrationStatus?.complete;
         let environment = integrationStatus?.details?.environment;
 
-
         if ( ! environment ) {
           environment = 'test' === window?.yithStripePayments?.env ? 'test' : 'live';
         }
-
+        const isLive = environment === "live";
         return (
           <div className="nfd-border nfd-rounded-md nfd-p-6">
             <div className="nfd-flex nfd-justify-between nfd-mb-8">
@@ -62,11 +62,11 @@ const Stripe = ({ notify }) => {
                   ) : (
                     <>
                       {!integrationStatus?.integration?.plugin?.status ? (
-                        <Button onClick={onConnect}>
+                        <Button onClick={onConnect} >
                           {__("Install", "wp-module-ecommerce")}
                         </Button>
                       ) : (
-                        <Button ref={buttonRef} onClick={handleClick}>
+                        <Button ref={buttonRef} disabled={isHttp && isLive} onClick={handleClick}>
                           {__("Connect", "wp-module-ecommerce")}
                         </Button>
                       )}
