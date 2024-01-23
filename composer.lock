@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "newfold-labs/wp-module-coming-soon",
-            "version": "1.1.14",
+            "version": "1.1.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-coming-soon.git",
-                "reference": "98f13af0aeccab8b3d387c4bc731a48c6cf49668"
+                "reference": "eac606ade15a8da188b6997ad72003ca7a47ffab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-coming-soon/zipball/98f13af0aeccab8b3d387c4bc731a48c6cf49668",
-                "reference": "98f13af0aeccab8b3d387c4bc731a48c6cf49668",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-coming-soon/zipball/eac606ade15a8da188b6997ad72003ca7a47ffab",
+                "reference": "eac606ade15a8da188b6997ad72003ca7a47ffab",
                 "shasum": ""
             },
             "require": {
@@ -54,10 +54,10 @@
             ],
             "description": "Coming Soon module for WordPress sites.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-coming-soon/tree/1.1.14",
+                "source": "https://github.com/newfold-labs/wp-module-coming-soon/tree/1.1.17",
                 "issues": "https://github.com/newfold-labs/wp-module-coming-soon/issues"
             },
-            "time": "2024-01-11T20:19:06+00:00"
+            "time": "2024-01-18T01:07:49+00:00"
         },
         {
             "name": "newfold-labs/wp-module-data",
@@ -3316,16 +3316,16 @@
         },
         {
             "name": "wp-cli/extension-command",
-            "version": "v2.1.16",
+            "version": "v2.1.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/extension-command.git",
-                "reference": "71183254b1e403bc0f9b4a97fab48e284cfe1367"
+                "reference": "955bd947d95ef91da501179c7e561d229ab3cc19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/extension-command/zipball/71183254b1e403bc0f9b4a97fab48e284cfe1367",
-                "reference": "71183254b1e403bc0f9b4a97fab48e284cfe1367",
+                "url": "https://api.github.com/repos/wp-cli/extension-command/zipball/955bd947d95ef91da501179c7e561d229ab3cc19",
+                "reference": "955bd947d95ef91da501179c7e561d229ab3cc19",
                 "shasum": ""
             },
             "require": {
@@ -3408,9 +3408,9 @@
             "homepage": "https://github.com/wp-cli/extension-command",
             "support": {
                 "issues": "https://github.com/wp-cli/extension-command/issues",
-                "source": "https://github.com/wp-cli/extension-command/tree/v2.1.16"
+                "source": "https://github.com/wp-cli/extension-command/tree/v2.1.17"
             },
-            "time": "2023-11-10T12:24:35+00:00"
+            "time": "2024-01-11T11:03:21+00:00"
         },
         {
             "name": "wp-cli/i18n-command",

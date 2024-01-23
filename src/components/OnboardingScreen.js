@@ -8,7 +8,7 @@ import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { OnboardingList } from "./OnboardingList";
 import { Section } from "./Section";
 import { SiteStatus } from "./SiteStatus";
-import { FacebookConnectButton, getFacebookUserProfileDetails } from "@newfold/wp-module-facebook";
+import { FacebookConnectButton, getFacebookUserProfileDetails } from "@newfold-labs/wp-module-facebook";
 
 const Text = {
   Pending: {
