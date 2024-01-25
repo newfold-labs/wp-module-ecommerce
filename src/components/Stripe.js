@@ -1,4 +1,4 @@
-import { Badge, Button, Title } from "@newfold/ui-component-library";
+import { Alert, Badge, Button, Title, Link } from "@newfold/ui-component-library";
 import { useEffect, useRef } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import classNames from "classnames";
@@ -11,18 +11,19 @@ import { ReactComponent as MasterCardBrand } from "../icons/brands/mastercard.sv
 import { ReactComponent as StripeBrand } from "../icons/brands/stripe.svg";
 import { ReactComponent as VisaBrand } from "../icons/brands/visa.svg";
 import { ThirdPartyIntegration } from "./ThirdPartyIntegration";
+import { RuntimeSdk } from "../sdk/runtime";
 
 const Stripe = ({ notify }) => {
   const buttonRef = useRef();
   const isHttp = window.location.protocol === "http:";
 
-  useEffect(() =>{
+  useEffect(() => {
     return () => window?.yithStripePayments?.onboardingButton?.destroy();
   })
 
   const handleClick = () => {
-    if ( ! window?.yithStripePayments?.onboardingButton?.$button?.is( buttonRef.current ) ) {
-      window.yithStripePayments.onboardingButton = window.yithStripePayments.connectOnboarding( buttonRef.current, {reloadOnClose: false} );
+    if (!window?.yithStripePayments?.onboardingButton?.$button?.is(buttonRef.current)) {
+      window.yithStripePayments.onboardingButton = window.yithStripePayments.connectOnboarding(buttonRef.current, { reloadOnClose: false });
       window.yithStripePayments.onboardingButton.onClick();
     }
   }
@@ -41,12 +42,16 @@ const Stripe = ({ notify }) => {
         const isSetupComplete = integrationStatus?.complete;
         let environment = integrationStatus?.details?.environment;
 
-        if ( ! environment ) {
+        if (!environment) {
           environment = 'test' === window?.yithStripePayments?.env ? 'test' : 'live';
         }
         const isLive = environment === "live";
         return (
           <div className="nfd-border nfd-rounded-md nfd-p-6">
+           {isHttp && isLive && <Alert variant="warning" className="nfd-mb-6">
+              A secure connection is required when running Stripe Payments in Live mode; plugin is currently enabled, but no gateway will be available until you secure connection to your site through a valid SSL certificate.
+              If you already have a valid SSL certificate, please change the url in <Link href={RuntimeSdk.adminUrl('options-general.php')}>settings</Link> page
+            </Alert>}
             <div className="nfd-flex nfd-justify-between nfd-mb-8">
               <StripeBrand />
               {!isInstalling ? (
