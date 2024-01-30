@@ -8,19 +8,20 @@
     "packages": [
         {
             "name": "newfold-labs/wp-module-coming-soon",
-            "version": "1.1.14",
+            "version": "1.1.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-coming-soon.git",
-                "reference": "98f13af0aeccab8b3d387c4bc731a48c6cf49668"
+                "reference": "0c0126bf277a8126bf1993a456dc5ba931fab35b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-coming-soon/zipball/98f13af0aeccab8b3d387c4bc731a48c6cf49668",
-                "reference": "98f13af0aeccab8b3d387c4bc731a48c6cf49668",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-coming-soon/zipball/0c0126bf277a8126bf1993a456dc5ba931fab35b",
+                "reference": "0c0126bf277a8126bf1993a456dc5ba931fab35b",
                 "shasum": ""
             },
             "require": {
+                "newfold-labs/wp-module-data": ">=2.4.18",
                 "wp-forge/wp-upgrade-handler": "^1.0"
             },
             "require-dev": {
@@ -54,23 +55,23 @@
             ],
             "description": "Coming Soon module for WordPress sites.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-coming-soon/tree/1.1.14",
+                "source": "https://github.com/newfold-labs/wp-module-coming-soon/tree/1.1.18",
                 "issues": "https://github.com/newfold-labs/wp-module-coming-soon/issues"
             },
-            "time": "2024-01-11T20:19:06+00:00"
+            "time": "2024-01-26T22:14:54+00:00"
         },
         {
             "name": "newfold-labs/wp-module-data",
-            "version": "2.4.16",
+            "version": "2.4.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "633712f1d717c564f62bd6cfc4e70d56959d8a22"
+                "reference": "f7bdfc1f70a2608c1ddaa6e3273221a880b794ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/633712f1d717c564f62bd6cfc4e70d56959d8a22",
-                "reference": "633712f1d717c564f62bd6cfc4e70d56959d8a22",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/f7bdfc1f70a2608c1ddaa6e3273221a880b794ed",
+                "reference": "f7bdfc1f70a2608c1ddaa6e3273221a880b794ed",
                 "shasum": ""
             },
             "require": {
@@ -103,10 +104,10 @@
             ],
             "description": "Newfold Data Module",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.4.16",
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.4.18",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2024-01-08T20:37:18+00:00"
+            "time": "2024-01-24T21:36:38+00:00"
         },
         {
             "name": "newfold-labs/wp-module-installer",
@@ -3316,16 +3317,16 @@
         },
         {
             "name": "wp-cli/extension-command",
-            "version": "v2.1.16",
+            "version": "v2.1.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/extension-command.git",
-                "reference": "71183254b1e403bc0f9b4a97fab48e284cfe1367"
+                "reference": "955bd947d95ef91da501179c7e561d229ab3cc19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/extension-command/zipball/71183254b1e403bc0f9b4a97fab48e284cfe1367",
-                "reference": "71183254b1e403bc0f9b4a97fab48e284cfe1367",
+                "url": "https://api.github.com/repos/wp-cli/extension-command/zipball/955bd947d95ef91da501179c7e561d229ab3cc19",
+                "reference": "955bd947d95ef91da501179c7e561d229ab3cc19",
                 "shasum": ""
             },
             "require": {
@@ -3408,9 +3409,9 @@
             "homepage": "https://github.com/wp-cli/extension-command",
             "support": {
                 "issues": "https://github.com/wp-cli/extension-command/issues",
-                "source": "https://github.com/wp-cli/extension-command/tree/v2.1.16"
+                "source": "https://github.com/wp-cli/extension-command/tree/v2.1.17"
             },
-            "time": "2023-11-10T12:24:35+00:00"
+            "time": "2024-01-11T11:03:21+00:00"
         },
         {
             "name": "wp-cli/i18n-command",
