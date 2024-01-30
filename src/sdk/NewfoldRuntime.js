@@ -30,6 +30,6 @@ export const NewfoldRuntime = {
     return window.NewfoldRuntime?.homeUrl
   },
   get currentTheme(){
-    return (window.NewfoldRuntime?.currentTheme).toLowerCase().replace(/[\s-]+/g, '');
+    return (window.NewfoldRuntime?.currentTheme);
   }
 };
