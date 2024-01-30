@@ -5,6 +5,7 @@ import classNames from "classnames";
 import { ReactComponent as ComingSoonIllustration } from "../icons/coming-soon.svg";
 import { ReactComponent as WelcomeIllustration } from "../icons/store-live.svg";
 import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
+import { RuntimeSdk } from "../sdk/runtime";
 import { OnboardingList } from "./OnboardingList";
 import { Section } from "./Section";
 import { SiteStatus } from "./SiteStatus";
@@ -134,13 +135,13 @@ export function OnboardingScreen({
                 )}
                 <div
                   className={classNames(
-                    "nfd-absolute nfd-top-0 nfd-left-0 nfd-bottom-0 nfd-right-0 nfd-place-content-center nfd-grid",
+                    "nfd-absolute nfd-top-0 nfd-left-0 nfd-bottom-0 nfd-right-0 nfd-flex nfd-items-center nfd-justify-center nfd-gap-4 nfd-flex-col ",
                     "hover:nfd-animate-[wiggle_1s_ease-in-out_infinite]"
                   )}
                 >
                   <Button
                     style={{
-                      display: hovered ? "block" : "none",
+                      display: hovered ? "inline-block" : "none",
                     }}
                     as="a"
                     className="nfd-bg-canvas "
@@ -149,6 +150,18 @@ export function OnboardingScreen({
                     variant="secondary"
                   >
                     {__("View your site", "wp-module-ecommerce")}
+                  </Button>
+                  <Button
+                    style={{
+                      display: hovered ? "inline-block" : "none",
+                    }}
+                    as="a"
+                    className="nfd-bg-canvas "
+                    href={RuntimeSdk.adminUrl('site-editor.php?postType=wp_template&postId='+NewfoldRuntime.currentTheme+'//home')}
+                    target="_blank"
+                    variant="secondary"
+                  >
+                    {__("Edit your site", "wp-module-ecommerce")}
                   </Button>
                 </div>
               </div>
