@@ -49,8 +49,8 @@ const Stripe = ({ notify }) => {
         return (
           <div className="nfd-border nfd-rounded-md nfd-p-6">
            {isHttp && isLive && <Alert variant="warning" className="nfd-mb-6">
-              A secure connection is required when running Stripe Payments in Live mode; plugin is currently enabled, but no gateway will be available until you secure connection to your site through a valid SSL certificate.
-              If you already have a valid SSL certificate, please change the url in <Link href={RuntimeSdk.adminUrl('options-general.php')}>settings</Link> page
+             {__("A secure connection is required when running Stripe Payments in Live mode; plugin is currently enabled, but no gateway will be available until you secure connection to your site through a valid SSL certificate.\
+             If you already have a valid SSL certificate, please change the url in", "wp-module-ecommerce")} <Link href={RuntimeSdk.adminUrl('options-general.php')}> {__("settings", "wp-module-ecommerce")}</Link> {__("page", "wp-module-ecommerce")}.
             </Alert>}
             <div className="nfd-flex nfd-justify-between nfd-mb-8">
               <StripeBrand />
