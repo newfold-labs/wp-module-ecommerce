@@ -46,7 +46,7 @@ describe("Commerce Home Page- Coming soon mode", () => {
       .should("exist");
     cy.get("@sitePreviewFlex")
       .trigger("mouseover")
-      .find("a.nfd-button")
+      .find("a.nfd-button:first-child")
       .should("have.text", "View your site")
       .invoke("removeAttr", "target")
       .click();
