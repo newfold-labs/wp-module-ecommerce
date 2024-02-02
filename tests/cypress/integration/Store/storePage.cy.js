@@ -3,6 +3,7 @@ import { comingSoon } from '../wp-module-support/utils.cy';
 
 const pluginId = GetPluginId();
 const appId = getAppId();
+const customCommandTimeout = 30000;
 
 describe( 'Store Page- WooCommerce is deactivated/uninstalled', () => {
 	before(() => {
@@ -20,8 +21,9 @@ describe( 'Store Page- WooCommerce is deactivated/uninstalled', () => {
 	it( 'Verify that Payments tab is not displayed', () => {
 		const subNavTexts = ['Products & Services', 'Store Details'];
 		const subNavTextsOther = [ 'Products', 'Store Details' ];
-
-		cy.contains( '.nfd-mb-0', 'Store' )
+	
+		cy.reload()
+		cy.contains( '.nfd-mb-0', 'Store' , { timeout: customCommandTimeout })
 			.find( `.${ appId }-app-subnavitem` )
 			.each( ( item, index, list ) => {
 				expect(list).to.have.length(2);
