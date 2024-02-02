@@ -148,6 +148,7 @@ export function OnboardingScreen({
                     href={NewfoldRuntime.siteDetails.url}
                     target="_blank"
                     variant="secondary"
+                    data-cy="view-site"
                   >
                     {__("View your site", "wp-module-ecommerce")}
                   </Button>
@@ -160,6 +161,7 @@ export function OnboardingScreen({
                     href={RuntimeSdk.adminUrl('site-editor.php?postType=wp_template&postId='+NewfoldRuntime.currentTheme+'//home')}
                     target="_blank"
                     variant="secondary"
+                    data-cy="edit-site"
                   >
                     {__("Edit your site", "wp-module-ecommerce")}
                   </Button>
