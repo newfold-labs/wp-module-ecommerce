@@ -86,6 +86,10 @@ class ECommerce {
 		add_filter( 'woocommerce_before_cart', array( $this, 'hide_banner_notice_on_cart'));
 		add_action('before_woocommerce_init', array( $this,'hide_woocommerce_set_up') );
 		add_filter( 'woocommerce_checkout_fields' , array( $this,'swap_billing_shipping_fields'), 10, 1 );
+		add_filter('woocommerce_shipping_fields', array( $this,'add_phone_number_email_to_shipping_form'), 10, 1 );
+		add_action('woocommerce_after_shipping_rate', array( $this,'display_custom_shipping_fields'), 20, 2);
+		add_action('woocommerce_checkout_create_order', array( $this, 'save_custom_shipping_fields' ), 10, 1);
+		add_action('woocommerce_admin_order_data_after_shipping_address', array( $this, 'display_custom_shipping_fields_in_admin' ), 10, 1 );
 
 		// Handle WonderCart Integrations
 		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
@@ -363,5 +367,71 @@ class ECommerce {
 				break;
 		}
 		return $translated_text;
+	}
+
+	public function add_phone_number_email_to_shipping_form($fields) {
+		$fields['shipping_phone'] = array(
+			'label'         => __('Phone Number', 'woocommerce'),
+			'required'      => true,
+			'class'         => array('form-row-wide'),
+			'clear'         => true,
+		);
+		$fields['shipping_email'] = array(
+			'label'         => __('Email Address', 'woocommerce'),
+			'required'      => true,
+			'class'         => array('form-row-wide'),
+			'clear'         => true,
+		);
+		return $fields;
+	}
+
+	
+	public function display_custom_shipping_fields($method, $index) {
+		echo '<div class="shipping-phone">';
+		woocommerce_form_field('shipping_phone', array(
+			'type'          => 'tel',
+			'class'         => array('form-row-wide'),
+			'label'         => __('Phone Number', 'woocommerce'),
+			'placeholder'   => __('Enter your phone number', 'woocommerce'),
+			'required'      => true,
+		), '');
+		echo '</div>';
+	
+		echo '<div class="shipping-email">';
+		woocommerce_form_field('shipping_email', array(
+			'type'          => 'email',
+			'class'         => array('form-row-wide'),
+			'label'         => __('Email Address', 'woocommerce'),
+			'placeholder'   => __('Enter your email address', 'woocommerce'),
+			'required'      => true,
+		), '');
+		echo '</div>';
+	}
+
+
+	function save_custom_shipping_fields($order) {
+		$shipping_phone = isset($_POST['shipping_phone']) ? sanitize_text_field($_POST['shipping_phone']) : '';
+		$shipping_email = isset($_POST['shipping_email']) ? sanitize_email($_POST['shipping_email']) : '';
+	
+		if (!empty($shipping_phone)) {
+			$order->update_meta_data('_shipping_phone', $shipping_phone);
+		}
+	
+		if (!empty($shipping_email)) {
+			$order->update_meta_data('_shipping_email', $shipping_email);
+		}
+	}
+
+	public function display_custom_shipping_fields_in_admin($order) {
+		$shipping_phone = $order->get_meta('_shipping_phone');
+		$shipping_email = $order->get_meta('_shipping_email');
+	
+		if (!empty($shipping_phone)) {
+			echo '<p><strong>' . __('Phone Number', 'woocommerce') . ':</strong> ' . esc_html($shipping_phone) . '</p>';
+		}
+	
+		if (!empty($shipping_email)) {
+			echo '<p><strong>' . __('Email Address', 'woocommerce') . ':</strong> ' . esc_html($shipping_email) . '</p>';
+		}
 	}
 }
