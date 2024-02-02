@@ -360,10 +360,10 @@ class ECommerce {
 	public function update_text( $translated_text, $text, $domain ) {
 		switch ( $translated_text ) {
 			case 'Billing details' :
-				$translated_text = __( 'Shipping details', 'woocommerce' );
+				$translated_text = __( 'Shipping details', 'wp_module_ecommerce' );
 				break;
 			case 'Ship to a different address?' :
-				$translated_text = __( 'Bill to a different address?', 'woocommerce' );
+				$translated_text = __( 'Bill to a different address?', 'wp_module_ecommerce' );
 				break;
 		}
 		return $translated_text;
@@ -374,13 +374,13 @@ class ECommerce {
 	*/
 	public function add_phone_number_email_to_shipping_form($fields) {
 		$fields['shipping_phone'] = array(
-			'label'         => __('Phone Number', 'woocommerce'),
+			'label'         => __('Phone Number', 'wp_module_ecommerce'),
 			'required'      => true,
 			'class'         => array('form-row-wide'),
 			'clear'         => true,
 		);
 		$fields['shipping_email'] = array(
-			'label'         => __('Email Address', 'woocommerce'),
+			'label'         => __('Email Address', 'wp_module_ecommerce'),
 			'required'      => true,
 			'class'         => array('form-row-wide'),
 			'clear'         => true,
@@ -396,8 +396,8 @@ class ECommerce {
 		woocommerce_form_field('shipping_phone', array(
 			'type'          => 'tel',
 			'class'         => array('form-row-wide'),
-			'label'         => __('Phone Number', 'woocommerce'),
-			'placeholder'   => __('Enter your phone number', 'woocommerce'),
+			'label'         => __('Phone Number', 'wp_module_ecommerce'),
+			'placeholder'   => __('Enter your phone number', 'wp_module_ecommerce'),
 			'required'      => true,
 		), '');
 		echo '</div>';
@@ -406,8 +406,8 @@ class ECommerce {
 		woocommerce_form_field('shipping_email', array(
 			'type'          => 'email',
 			'class'         => array('form-row-wide'),
-			'label'         => __('Email Address', 'woocommerce'),
-			'placeholder'   => __('Enter your email address', 'woocommerce'),
+			'label'         => __('Email Address', 'wp_module_ecommerce'),
+			'placeholder'   => __('Enter your email address', 'wp_module_ecommerce'),
 			'required'      => true,
 		), '');
 		echo '</div>';
@@ -437,11 +437,11 @@ class ECommerce {
 		$shipping_email = $order->get_meta('_shipping_email');
 	
 		if (!empty($shipping_phone)) {
-			echo '<p><strong>' . __('Phone Number', 'woocommerce') . ':</strong> ' . esc_html($shipping_phone) . '</p>';
+			echo '<p><strong>' . __('Phone Number', 'wp_module_ecommerce') . ':</strong> ' . esc_html($shipping_phone) . '</p>';
 		}
 	
 		if (!empty($shipping_email)) {
-			echo '<p><strong>' . __('Email Address', 'woocommerce') . ':</strong> ' . esc_html($shipping_email) . '</p>';
+			echo '<p><strong>' . __('Email Address', 'wp_module_ecommerce') . ':</strong> ' . esc_html($shipping_email) . '</p>';
 		}
 	}
 }
