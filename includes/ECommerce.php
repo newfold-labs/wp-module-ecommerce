@@ -369,6 +369,9 @@ class ECommerce {
 		return $translated_text;
 	}
 
+	/** 
+ 	*  Add phone number and Email field to WooCommerce shipping form
+	*/
 	public function add_phone_number_email_to_shipping_form($fields) {
 		$fields['shipping_phone'] = array(
 			'label'         => __('Phone Number', 'woocommerce'),
@@ -385,7 +388,9 @@ class ECommerce {
 		return $fields;
 	}
 
-	
+	/** 
+ 	 *  Display phone number and Email field on the shipping form
+	 */
 	public function display_custom_shipping_fields($method, $index) {
 		echo '<div class="shipping-phone">';
 		woocommerce_form_field('shipping_phone', array(
@@ -408,7 +413,9 @@ class ECommerce {
 		echo '</div>';
 	}
 
-
+	/**
+	 * Save phone number and email fields to order meta
+	 */
 	function save_custom_shipping_fields($order) {
 		$shipping_phone = isset($_POST['shipping_phone']) ? sanitize_text_field($_POST['shipping_phone']) : '';
 		$shipping_email = isset($_POST['shipping_email']) ? sanitize_email($_POST['shipping_email']) : '';
@@ -422,6 +429,9 @@ class ECommerce {
 		}
 	}
 
+	/**
+	 * Display phone number and email fields in order admin
+	 */
 	public function display_custom_shipping_fields_in_admin($order) {
 		$shipping_phone = $order->get_meta('_shipping_phone');
 		$shipping_email = $order->get_meta('_shipping_email');
