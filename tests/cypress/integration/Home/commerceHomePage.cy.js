@@ -46,8 +46,8 @@ describe("Commerce Home Page- Coming soon mode", () => {
       .should("exist");
     cy.get("@sitePreviewFlex")
       .trigger("mouseover")
-      .find("a.nfd-button")
-      .eq(0)
+      .find('[data-cy="view-site"]')
+      .should("have.text", "View your site")
       .invoke("removeAttr", "target")
       .click();
     cy.url().should("eq", Cypress.config().baseUrl + "/");
