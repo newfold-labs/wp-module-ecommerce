@@ -87,7 +87,7 @@ class ECommerce {
 		add_action('before_woocommerce_init', array( $this,'hide_woocommerce_set_up') );
 		add_filter( 'woocommerce_checkout_fields' , array( $this,'swap_billing_shipping_fields'), 10, 1 );
 		add_filter('woocommerce_shipping_fields', array( $this,'add_phone_number_email_to_shipping_form'), 10, 1 );
-		add_action('woocommerce_after_shipping_rate', array( $this,'display_custom_shipping_fields'), 20, 2);
+		//add_action('woocommerce_after_shipping_rate', array( $this,'display_custom_shipping_fields'), 20, 2);
 		add_action('woocommerce_checkout_create_order', array( $this, 'save_custom_shipping_fields' ), 10, 1);
 		add_action('woocommerce_admin_order_data_after_shipping_address', array( $this, 'display_custom_shipping_fields_in_admin' ), 10, 1 );
 
