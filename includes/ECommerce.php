@@ -86,6 +86,9 @@ class ECommerce {
 		add_filter( 'woocommerce_before_cart', array( $this, 'hide_banner_notice_on_cart'));
 		add_action('before_woocommerce_init', array( $this,'hide_woocommerce_set_up') );
 		add_filter( 'woocommerce_checkout_fields' , array( $this,'swap_billing_shipping_fields'), 10, 1 );
+		add_filter('woocommerce_shipping_fields', array( $this,'add_phone_number_email_to_shipping_form'), 10, 1 );
+		add_action('woocommerce_checkout_create_order', array( $this, 'save_custom_shipping_fields' ), 10, 1);
+		add_action('woocommerce_admin_order_data_after_shipping_address', array( $this, 'display_custom_shipping_fields_in_admin' ), 10, 1 );
 
 		// Handle WonderCart Integrations
 		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
@@ -356,12 +359,63 @@ class ECommerce {
 	public function update_text( $translated_text, $text, $domain ) {
 		switch ( $translated_text ) {
 			case 'Billing details' :
-				$translated_text = __( 'Shipping details', 'woocommerce' );
+				$translated_text = __( 'Shipping details', 'wp_module_ecommerce' );
 				break;
 			case 'Ship to a different address?' :
-				$translated_text = __( 'Bill to a different address?', 'woocommerce' );
+				$translated_text = __( 'Bill to a different address?', 'wp_module_ecommerce' );
 				break;
 		}
 		return $translated_text;
+	}
+
+	/** 
+ 	*  Add phone number and Email field to WooCommerce shipping form
+	*/
+	public function add_phone_number_email_to_shipping_form($fields) {
+		$fields['shipping_phone'] = array(
+			'label'         => __('Phone Number', 'wp_module_ecommerce'),
+			'required'      => true,
+			'class'         => array('form-row-wide'),
+			'clear'         => true,
+		);
+		$fields['shipping_email'] = array(
+			'label'         => __('Email Address', 'wp_module_ecommerce'),
+			'required'      => true,
+			'class'         => array('form-row-wide'),
+			'clear'         => true,
+		);
+		return $fields;
+	}
+
+	/*
+	 * Save phone number and email fields to order meta
+	 */
+	function save_custom_shipping_fields($order) {
+		$shipping_phone = isset($_POST['shipping_phone']) ? sanitize_text_field($_POST['shipping_phone']) : '';
+		$shipping_email = isset($_POST['shipping_email']) ? sanitize_email($_POST['shipping_email']) : '';
+	
+		if (!empty($shipping_phone)) {
+			$order->update_meta_data('_shipping_phone', $shipping_phone);
+		}
+	
+		if (!empty($shipping_email)) {
+			$order->update_meta_data('_shipping_email', $shipping_email);
+		}
+	}
+
+	/**
+	 * Display phone number and email fields in order admin
+	 */
+	public function display_custom_shipping_fields_in_admin($order) {
+		$shipping_phone = $order->get_meta('_shipping_phone');
+		$shipping_email = $order->get_meta('_shipping_email');
+	
+		if (!empty($shipping_phone)) {
+			echo '<p><strong>' . __('Phone Number', 'wp_module_ecommerce') . ':</strong> ' . esc_html($shipping_phone) . '</p>';
+		}
+	
+		if (!empty($shipping_email)) {
+			echo '<p><strong>' . __('Email Address', 'wp_module_ecommerce') . ':</strong> ' . esc_html($shipping_email) . '</p>';
+		}
 	}
 }
