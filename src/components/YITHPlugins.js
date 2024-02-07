@@ -20,7 +20,7 @@ export function YITHPlugins({ woo, wpModules }) {
   const isBluehost = RuntimeSdk?.brandSettings?.brand?.includes("bluehost");
   const yithPluginsMap = new Map([
     [
-      "faf0acf9-b5a0-479d-9cde-20fb5fa530f9",
+      "fc4cbc14-470d-471b-b448-c6666e5b763d",
       {
         title: "nfd_slug_yith_woocommerce_booking",
         name: "YITH Booking and Appointment for WooCommerce",
@@ -31,7 +31,7 @@ export function YITHPlugins({ woo, wpModules }) {
       },
     ],
     [
-      "c9201843-d8ae-4032-bd4e-f3fa5a8b8314",
+      "e307cb8f-24b5-46e1-81e3-83de32c62c78",
       {
         title: "yith-woocommerce-ajax-search",
         name: "YITH WooCommerce AJAX Search",
@@ -39,7 +39,7 @@ export function YITHPlugins({ woo, wpModules }) {
       },
     ],
     [
-      "4f17bd36-4a10-4324-89ec-b0c0bf951c6b",
+      "93c942e4-36fb-46be-867b-5f0d014adb22",
       {
         title: "nfd_slug_yith_woocommerce_wishlist",
         name: "YITH WooCommerce Wishlist",
@@ -50,7 +50,7 @@ export function YITHPlugins({ woo, wpModules }) {
       },
     ],
     [
-      "85a901f7-f919-4bd5-8717-8d0acbc8bb8d",
+      "c7025d24-a05a-4f01-bca7-5c9bcd17bb76",
       {
         title: "nfd_slug_yith_woocommerce_ajax_product_filter",
         name: "YITH WooCommerce Ajax Product Filter",
@@ -61,7 +61,7 @@ export function YITHPlugins({ woo, wpModules }) {
       },
     ],
     [
-      "f6f20a00-01bd-45ec-8d63-28b4a018188a",
+      "f7834881-f5df-43ab-9c7e-c4e6969f5606",
       {
         title: "nfd_slug_yith_woocommerce_gift_cards",
         name: "YITH WooCommerce Gift Cards",
@@ -72,7 +72,7 @@ export function YITHPlugins({ woo, wpModules }) {
       },
     ],
     [
-      "7b490bad-380c-4e47-8b92-d78773f04f41",
+      "58701f50-cb5c-4b39-b030-edadf4af6f97",
       {
         title: "nfd_slug_yith_woocommerce_customize_myaccount_page",
         name: "YITH WooCommerce Customize My Account Page",

@@ -81,7 +81,7 @@ class PluginsController {
 			}
 			$status = 'need_to_install';
 			if ( file_exists( WP_PLUGIN_DIR . '/' . $info['file'] ) ) {
-				$active = \is_plugin_active( $info['file'] );
+				$active = (\is_plugin_active( $info['file'] ) || \is_plugin_active( $info['file1'] )|| \is_plugin_active( $info['file2'] ));
 				if ( $active ) {
 					$status = 'active';
 				} else {
