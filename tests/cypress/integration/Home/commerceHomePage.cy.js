@@ -280,7 +280,7 @@ describe( 'Commerce Home Page- Next Steps', () => {
 
 		cy.get( '@nextSteps' ).should( 'not.exist' );
 		viewCompletedTasks();
-		cy.get( '@nextSteps' ).should( 'exist' );
+		cy.get('@nextSteps').should('exist');
 		viewRemainingTasks();
 	} );
 
@@ -307,8 +307,8 @@ describe( 'Commerce Home Page- Next Steps', () => {
 		cy.wait( 2000 );
 		cy.get( '@addPage' ).should( 'not.exist' );
 		viewCompletedTasks();
-    cy.get( '@addPage' ).should( 'exist' );
-    viewRemainingTasks();
+    	cy.get( '@addPage' ).should( 'exist' );
+    	viewRemainingTasks();
 	} );
 
 	it( 'Verify Option Upload Media to your site', () => {
