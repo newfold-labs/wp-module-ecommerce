@@ -307,7 +307,8 @@ describe( 'Commerce Home Page- Next Steps', () => {
 		cy.wait( 2000 );
 		cy.get( '@addPage' ).should( 'not.exist' );
 		viewCompletedTasks();
-		cy.get( '@addPage' ).should( 'exist' );
+    cy.get( '@addPage' ).should( 'exist' );
+    viewRemainingTasks();
 	} );
 
 	it( 'Verify Option Upload Media to your site', () => {
