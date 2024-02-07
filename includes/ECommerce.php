@@ -89,7 +89,7 @@ class ECommerce {
 		add_filter('woocommerce_shipping_fields', array( $this,'add_phone_number_email_to_shipping_form'), 10, 1 );
 		add_action('woocommerce_checkout_create_order', array( $this, 'save_custom_shipping_fields' ), 10, 1);
 		add_action('woocommerce_admin_order_data_after_shipping_address', array( $this, 'display_custom_shipping_fields_in_admin' ), 10, 1 );
-		add_filter( 'woocommerce_payment_gateways', array( $this,'custom_payment_gateways_order') , 10, 1);
+		add_action( 'woocommerce_payment_gateways', array( $this,'custom_payment_gateways_order'),10,1);
 		add_action('before_woocommerce_init', array( $this,'dismiss_woo_payments_cta'));
 
 		// Handle WonderCart Integrations
@@ -437,11 +437,14 @@ class ECommerce {
 		}
 
 		$sorted_gateways = array_merge($moved_gateways, $remaining_gateways);
-		return $sorted_gateways;	
+		return $sorted_gateways;
 	}  
 
 	public function dismiss_woo_payments_cta() {
-		update_option('wcpay_welcome_page_incentives_dismissed', array("wcpay-promo-2023-action-discount"));
+		$is_dismissed = get_option( 'wcpay_welcome_page_incentives_dismissed');
+		if (!is_array($is_dismissed) || empty($is_dismissed)) {
+			update_option('wcpay_welcome_page_incentives_dismissed', array("wcpay-promo-2023-action-discount"));
+		}
 	}
 	
 }
