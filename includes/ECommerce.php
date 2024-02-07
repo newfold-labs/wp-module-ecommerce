@@ -48,6 +48,7 @@ class ECommerce {
 	protected $options = array(
 		'nfd-ecommerce-captive-flow-paypal',
 		'nfd-ecommerce-captive-flow-shippo',
+		'nfd-ecommerce-captive-flow-stripe',
 		'nfd-ecommerce-captive-flow-razorpay',
 		'nfd-ecommerce-onboarding-check',
 		'nfd-ecommerce-counter',
@@ -78,12 +79,16 @@ class ECommerce {
 		add_action( 'init', array( $this, 'load_php_textdomain' ) );
 		add_action( 'toplevel_page_'. $container->plugin()->id, array( $this, 'load_experience_level' ) );
 		add_action( 'admin_init', array( $this, 'maybe_do_dash_redirect' ) );
-		add_action( 'admin_bar_menu', array( $this, 'newfold_site_status' ), 200 );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_assets' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_textdomains' ) );
-		add_action('wp_body_open', array( $this, 'regiester_site_preview' ));
+		add_filter( 'woocommerce_coupons_enabled',  array( $this, 'disable_coupon_field_on_cart' ) );
+		add_filter( 'woocommerce_before_cart', array( $this, 'hide_banner_notice_on_cart'));
 		add_action('before_woocommerce_init', array( $this,'hide_woocommerce_set_up') );
+		add_filter( 'woocommerce_checkout_fields' , array( $this,'swap_billing_shipping_fields'), 10, 1 );
+		add_filter('woocommerce_shipping_fields', array( $this,'add_phone_number_email_to_shipping_form'), 10, 1 );
+		add_action('woocommerce_checkout_create_order', array( $this, 'save_custom_shipping_fields' ), 10, 1);
+		add_action('woocommerce_admin_order_data_after_shipping_address', array( $this, 'display_custom_shipping_fields_in_admin' ), 10, 1 );
 
 		// Handle WonderCart Integrations
 		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
@@ -260,33 +265,6 @@ class ECommerce {
 		}
 	}
 
-	/**
-	 * Customize the admin bar with site status.
-	 *
-	 * @param \WP_Admin_Bar $admin_bar An instance of the WP_Admin_Bar class.
-	 */
-	public function newfold_site_status( \WP_Admin_Bar $admin_bar ) {
-		if ( current_user_can( 'manage_options' ) ) {
-			$is_coming_soon   = 'true' === get_option( 'nfd_coming_soon', 'false' );
-			$status           = $is_coming_soon
-			? '<span id="nfd-site-status-text" style="color:#E01C1C;">' . esc_html__( 'Coming Soon', 'wp-module-ecommerce' ) . '</span>'
-			: '<span id="nfd-site-status-text" style="color:#048200;">' . esc_html__( 'Live', 'wp-module-ecommerce' ) . '</span>';
-			$site_status_menu = array(
-				'id'     => 'site-status',
-				'parent' => 'top-secondary',
-				'href'   => admin_url( 'admin.php?page=' . $this->container->plugin()->id . '&nfd-target=coming-soon-section#/settings' ),
-				'title'  => '<div style="background-color: #F8F8F8; padding: 0 16px;color:#333333;">' . esc_html__( 'Site Status: ', 'wp-module-ecommerce' ) . $status . '</div>',
-				'meta'   => array(
-					'title' => esc_attr__( 'Launch Your Site', 'wp-module-ecommerce' ),
-				),
-			);
-			$admin_bar->add_menu( $site_status_menu );
-			// Remove status added by newfold-labs/wp-module-coming-soon
-			$menu_name = $this->container->plugin()->id . '-coming_soon';
-			$admin_bar->remove_menu( $menu_name );
-		}
-	}
-
 	public function register_textdomains() {
 		$MODULE_LANG_DIR = $this->container->plugin()->dir . 'vendor/newfold-labs/wp-module-ecommerce/languages';
 		\load_script_textdomain( 'nfd-ecommerce-dependency', 'wp-module-ecommerce', $MODULE_LANG_DIR );
@@ -316,14 +294,29 @@ class ECommerce {
 	}
 
 	/**
-	 * Load warning for site Preview
-	 */
-	public function regiester_site_preview() {
-		$is_coming_soon   = 'true' === get_option( 'nfd_coming_soon', 'false' );
-		if($is_coming_soon){
-		echo "<div style='background-color: #e71616; padding: 0 16px;color:#ffffff;font-size:16px;text-align:center;font-weight: 590;'>" . esc_html__( 'Site Preview - This site is NOT LIVE, only admins can see this view.', 'wp-module-ecommerce' ) . "</div>";
+ 	* Remove Add coupon field on cart page
+ 	*/
+	public function disable_coupon_field_on_cart( $enabled ) {
+        if ( is_cart() ) {
+            $enabled = false;
+        }
+        return $enabled;
+    }
+
+	/**
+ 	* Remove notice banner on cart page
+ 	*/
+ 	public function hide_banner_notice_on_cart() {
+		if (is_cart()) {
+			?>
+			<style>
+				.wc-block-components-notice-banner, .ywgc_enter_code {
+					display: none;
+				}
+			</style>
+			<?php
 		}
-	}
+  }
 	public function hide_woocommerce_set_up() {
 		$hidden_list = get_option('woocommerce_task_list_hidden_lists', []);
 		if(! in_array("setup", $hidden_list)){
@@ -334,5 +327,95 @@ class ECommerce {
 			update_option('woocommerce_task_list_hidden_lists', $woocommerce_list);
 		}
 		
+	}
+
+	/**
+	 * To show the shipping form first if the ship to destination is set to 'Shipping'
+	 */
+	public function swap_billing_shipping_fields( $fields ) {
+		$shipping_destination = get_option( 'woocommerce_ship_to_destination');
+		if($shipping_destination == 'shipping') {
+			add_filter( 'gettext', array( $this, 'update_text'), 20, 3 );
+			?>
+			<script type="text/javascript">
+				jQuery(document).ready(function($) {
+					$('#ship-to-different-address-checkbox').prop('checked', false); //Uncheck the checkbox
+				});
+			</script>
+			<?php
+			// swapping billing and shipping fields
+			$billing = $fields["billing"];
+			$shipping = $fields["shipping"];
+ 
+			$fields['shipping'] = $billing;
+			$fields['billing'] = $shipping;
+		}
+		return $fields;
+	}
+
+	/**
+	 * Update the heading and checkbox text
+	 */
+	public function update_text( $translated_text, $text, $domain ) {
+		switch ( $translated_text ) {
+			case 'Billing details' :
+				$translated_text = __( 'Shipping details', 'wp_module_ecommerce' );
+				break;
+			case 'Ship to a different address?' :
+				$translated_text = __( 'Bill to a different address?', 'wp_module_ecommerce' );
+				break;
+		}
+		return $translated_text;
+	}
+
+	/** 
+ 	*  Add phone number and Email field to WooCommerce shipping form
+	*/
+	public function add_phone_number_email_to_shipping_form($fields) {
+		$fields['shipping_phone'] = array(
+			'label'         => __('Phone Number', 'wp_module_ecommerce'),
+			'required'      => true,
+			'class'         => array('form-row-wide'),
+			'clear'         => true,
+		);
+		$fields['shipping_email'] = array(
+			'label'         => __('Email Address', 'wp_module_ecommerce'),
+			'required'      => true,
+			'class'         => array('form-row-wide'),
+			'clear'         => true,
+		);
+		return $fields;
+	}
+
+	/*
+	 * Save phone number and email fields to order meta
+	 */
+	function save_custom_shipping_fields($order) {
+		$shipping_phone = isset($_POST['shipping_phone']) ? sanitize_text_field($_POST['shipping_phone']) : '';
+		$shipping_email = isset($_POST['shipping_email']) ? sanitize_email($_POST['shipping_email']) : '';
+	
+		if (!empty($shipping_phone)) {
+			$order->update_meta_data('_shipping_phone', $shipping_phone);
+		}
+	
+		if (!empty($shipping_email)) {
+			$order->update_meta_data('_shipping_email', $shipping_email);
+		}
+	}
+
+	/**
+	 * Display phone number and email fields in order admin
+	 */
+	public function display_custom_shipping_fields_in_admin($order) {
+		$shipping_phone = $order->get_meta('_shipping_phone');
+		$shipping_email = $order->get_meta('_shipping_email');
+	
+		if (!empty($shipping_phone)) {
+			echo '<p><strong>' . __('Phone Number', 'wp_module_ecommerce') . ':</strong> ' . esc_html($shipping_phone) . '</p>';
+		}
+	
+		if (!empty($shipping_email)) {
+			echo '<p><strong>' . __('Email Address', 'wp_module_ecommerce') . ':</strong> ' . esc_html($shipping_email) . '</p>';
+		}
 	}
 }

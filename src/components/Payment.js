@@ -4,6 +4,7 @@ import { RuntimeSdk } from "../sdk/runtime";
 import Razorpay from "./Razorpay";
 import { Section } from "./Section";
 import Paypal from "./Paypal";
+import Stripe from "./Stripe";
 
 const Payment = ({ notify, pushChanges, values, controls }) => {
   if (RuntimeSdk.brandSettings.setup.payment.length === 0) {
@@ -14,6 +15,12 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
       {RuntimeSdk.brandSettings.setup.payment.includes("Paypal") && (
         <Section.Content separator>
           <Paypal notify={notify} />
+        </Section.Content>
+      )}
+
+      {RuntimeSdk.brandSettings.setup.payment.includes("Stripe") && (
+        <Section.Content separator>
+          <Stripe notify={notify} />
         </Section.Content>
       )}
 

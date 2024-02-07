@@ -17,7 +17,7 @@ const Endpoints = {
  */
 
 export const IntegrationsSdk = {
-  /** @type {(id: "paypal" | "shippo" | "razorpay") => Promise<IntegrationStatus>} */
+  /** @type {(id: "paypal" | "shippo" | "razorpay" | "stripe") => Promise<IntegrationStatus>} */
   async status(id) {
     return apiFetch({ url: Endpoints.INTEGRATIONS(id) });
   },
