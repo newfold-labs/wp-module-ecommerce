@@ -89,7 +89,7 @@ class ECommerce {
 		add_filter('woocommerce_shipping_fields', array( $this,'add_phone_number_email_to_shipping_form'), 10, 1 );
 		add_action('woocommerce_checkout_create_order', array( $this, 'save_custom_shipping_fields' ), 10, 1);
 		add_action('woocommerce_admin_order_data_after_shipping_address', array( $this, 'display_custom_shipping_fields_in_admin' ), 10, 1 );
-		add_action( 'woocommerce_payment_gateways', array( $this,'custom_payment_gateways_order'),10,1);
+		add_action( 'before_woocommerce_init', array( $this,'custom_payment_gateways_order'));
 		add_action('before_woocommerce_init', array( $this,'dismiss_woo_payments_cta'));
 
 		// Handle WonderCart Integrations
@@ -421,23 +421,12 @@ class ECommerce {
 		}
 	}
 
-	public function custom_payment_gateways_order($gateways) {
-		$gateways_to_move = array(
-			'YITH_PayPal_Gateway',
-			'YITH\StripePayments\Gateways\Payment_Element',
-		);
-		$moved_gateways = array();
-    	$remaining_gateways = array();
-		foreach ($gateways as $gateway) {
-			if (in_array($gateway, $gateways_to_move)) {
-				$moved_gateways[] = $gateway;
-			} else {
-				$remaining_gateways[] = $gateway;
-			}
-		}
-
-		$sorted_gateways = array_merge($moved_gateways, $remaining_gateways);
-		return $sorted_gateways;
+	public function custom_payment_gateways_order() {
+		$array_data = array("pre_install_woocommerce_payments_promotion" => 2,
+		"yith_paypal_payments" => 0,
+		"element" => 1
+	);
+		update_option('woocommerce_gateway_order', $array_data);
 	}  
 
 	public function dismiss_woo_payments_cta() {
