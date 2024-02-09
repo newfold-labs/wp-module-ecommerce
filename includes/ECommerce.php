@@ -94,8 +94,8 @@ class ECommerce {
     add_action( 'woocommerce_product_options_related',array($this,'custom_product_general_options'));
 
 
-		add_action( 'woocommerce_product_write_panel_tabs',array( $this, 'product_write_panel_tab') );
-		add_action( 'woocommerce_product_write_panels', array( $this,'product_write_panel') );
+		add_action( 'woocommerce_product_data_tabs',array( $this, 'custom_product_write_panel_tabs') );
+		add_action( 'woocommerce_product_data_panels', array( $this,'custom_tab_data') );
 
 
 
@@ -465,24 +465,27 @@ class ECommerce {
 
 
 	
-	function product_write_panel_tab() {
-    echo '<li class="wdm_custom_product_tab show_if_wdm_custom_product wdm_custom_product_options"><a href="#wdm_custom_product_data">'.__( 'English Courses' ).'</a></li>';
+
+
+	function custom_product_write_panel_tabs( $tabs ) {
+		$tabs['custom_tab'] = array(
+			'label'   =>  __( 'Promotions', 'domain' ),
+			'target'  =>  'custom_tab_data',
+			'priority' => 70,
+			'class'   => array()
+	);
+    return $tabs;
 }
 
 // Creates the panel for selecting product options
 
-function product_write_panel() {
-    global $post; ?>
+function custom_tab_data() {
+    global $post; 
+		echo '<div id="custom_tab_data" class="panel woocommerce_options_panel hidden">';
 
-    <div id="wdm_custom_product_data" class="wdm_custom_product panel panel woocommerce_options_panel wc-metaboxes-wrapper">
+    echo 'hello world';
 
-        <div class="options_group wdm_custom_product">
-        put your fields here
-        </div> <!-- options group -->
-
-    </div>
-
-<?php
+    echo '</div>';
 }
 
 
