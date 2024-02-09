@@ -50,3 +50,19 @@ export const installWoo = () => {
 	} ).should( 'exist' );
 	cy.get( '.nfd-w-0  p' ).should( 'exist' );
 };
+
+export const viewCompletedTasks = () => {
+	cy.get( '.nfd-card.nfd-p-0', {
+		timeout: customCommandTimeout,
+	} )
+		.next()
+		.click();
+};
+
+export const viewRemainingTasks = () => {
+	cy.get( '.nfd-card.nfd-p-0', {
+		timeout: customCommandTimeout,
+	} )
+		.next()
+		.click();
+};
