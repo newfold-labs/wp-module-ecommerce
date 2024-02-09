@@ -90,12 +90,13 @@ class ECommerce {
     add_action('woocommerce_checkout_create_order', array( $this, 'save_custom_shipping_fields' ), 10, 1);
     add_action('woocommerce_admin_order_data_after_shipping_address', array( $this, 'display_custom_shipping_fields_in_admin' ), 10, 1 );
     add_filter( 'admin_menu', array($this,'custom_add_promotion_menu_item') );
-		add_action( 'woocommerce_product_options_general_product_data', array( $this,'custom_product_general_options') );
+		add_action( 'woocommerce_product_options_general_product_data', array( $this,'custom_product_general_options'));
     add_action( 'woocommerce_product_options_related',array($this,'custom_product_general_options'));
 
 
-		add_action( 'woocommerce_product_data_tabs',array( $this, 'custom_product_write_panel_tabs') );
-		add_action( 'woocommerce_product_data_panels', array( $this,'custom_tab_data') );
+		add_action( 'woocommerce_product_data_tabs',array( $this, 'custom_product_write_panel_tabs'));
+		add_action( 'woocommerce_product_data_panels', array( $this,'custom_tab_data'));
+		add_action( 'admin_head', array( $this,'action_admin_head'));
 
 
 
@@ -486,6 +487,16 @@ function custom_tab_data() {
     echo 'hello world';
 
     echo '</div>';
+}
+
+// Add CSS - icon
+function action_admin_head() {
+	echo '<style>
+			#woocommerce-product-data ul.wc-tabs li.custom_tab_options a::before {
+					// content: "\f106";
+					content: "\f111";
+			} 
+	</style>';
 }
 
 
