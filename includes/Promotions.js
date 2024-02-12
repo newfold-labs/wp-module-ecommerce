@@ -23,6 +23,6 @@ node.innerHTML = `<div style="width: 100%;height:350px">
       </div>
     </div>
     <div style="text-align: center;">
-    <a style="color:white;background-color:#196BDE;text-decoration: none;border-radius: 6px;display: inline-block; border: 1px solid #2671B1;padding:8px 16px 8px 16px;font-size: 13px;text-align: center">Create a Promotion</a>
+    <a href="${promotionData.redirectUrl}" style="color:white;background-color:#196BDE;text-decoration: none;border-radius: 6px;display: inline-block; border: 1px solid #2671B1;padding:8px 16px 8px 16px;font-size: 13px;text-align: center">Create a Promotion</a>
     <div/>
 </div>`;

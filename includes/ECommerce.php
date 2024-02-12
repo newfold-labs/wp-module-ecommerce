@@ -471,9 +471,14 @@ class ECommerce {
 	 * Content on click of a Custom tab (Promotions tab) button added below Advance tab
    */
 	function custom_tab_data() {
+		$redirect_url ='?page='.$this->container->plugin()->id.'#/store/sales_discounts';
 		global $post; 
 		echo '<div id=custom_tab_data class="panel woocommerce_options_panel hidden"></div>';
 		\wp_enqueue_script( 'nfd_custom_tab_data', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Promotions.js', array('jquery'), '1.0', true);
+		$Promotion_data = array(
+			'redirectUrl' => $redirect_url
+	);
+	wp_localize_script('nfd_custom_tab_data', 'promotionData', $Promotion_data);
 	}
 
 	/**
