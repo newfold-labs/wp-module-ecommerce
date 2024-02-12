@@ -92,14 +92,9 @@ class ECommerce {
     add_filter( 'admin_menu', array($this,'custom_add_promotion_menu_item') );
 		add_action( 'woocommerce_product_options_general_product_data', array( $this,'custom_product_general_options'));
     add_action( 'woocommerce_product_options_related',array($this,'custom_product_general_options'));
-
-
 		add_action( 'woocommerce_product_data_tabs',array( $this, 'custom_product_write_panel_tabs'));
 		add_action( 'woocommerce_product_data_panels', array( $this,'custom_tab_data'));
 		add_action( 'admin_head', array( $this,'action_admin_head'));
-
-
-
 
     
     // Handle WonderCart Integrations
@@ -447,61 +442,49 @@ class ECommerce {
 
 	
 	/**
-	 * Add Create a Promotion button under Add New product tab
+	 * Add a Promotion button under Add New product tab
    */
 	function custom_product_general_options() {
 		global $post;
 		$redirect_url =admin_url( 'admin.php?page='.$this->container->plugin()->id.'#/store/sales_discounts');
-	
 		echo '<div class="options_group">';
-	
-		// Custom Button
 		echo '<p class="form-field custom-button-field">
 						<a href="'.$redirect_url.'" style="background-color:#F6F7F7;text-decoration: none;border-radius: 4px;display: inline-block; border: 1px solid #2671B1;padding:3px 10px;font-size: 13px;text-align: center">Create a Promotion</a>
 					</p>';
-	
 		echo '</div>';
 	}
 
-
-
-	
-
-
+	/**
+	 * Add a Custom tab (Prmotions tab) button added below Advance tab
+   */
 	function custom_product_write_panel_tabs( $tabs ) {
 		$tabs['custom_tab'] = array(
 			'label'   =>  __( 'Promotions', 'domain' ),
 			'target'  =>  'custom_tab_data',
 			'priority' => 70,
 			'class'   => array()
-	);
+		);
     return $tabs;
-}
+	}
 
-// Creates the panel for selecting product options
+	/**
+	 * Content on click of a Custom tab (Promotions tab) button added below Advance tab
+   */
+	function custom_tab_data() {
+		global $post; 
+		echo '<div id=custom_tab_data class="panel woocommerce_options_panel hidden"></div>';
+		\wp_enqueue_script( 'nfd_custom_tab_data', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Promotions.js', array('jquery'), '1.0', true);
+	}
 
-function custom_tab_data() {
-    global $post; 
-		echo '<div id="custom_tab_data" class="panel woocommerce_options_panel hidden">';
-
-    echo 'hello world';
-
-    echo '</div>';
-}
-
-// Add CSS - icon
-function action_admin_head() {
-	echo '<style>
-			#woocommerce-product-data ul.wc-tabs li.custom_tab_options a::before {
-					// content: "\f106";
-					content: "\f111";
-			} 
-	</style>';
-}
-
-
-
-
-
-
+	/**
+	 * change icon for a Custom tab (Promotions tab) button added below Advance tab
+	 */
+	function action_admin_head() {
+		echo '<style>
+				#woocommerce-product-data ul.wc-tabs li.custom_tab_options a::before {
+						// content: "\f106";
+						content: "\f111";
+				} 
+		</style>';
+	}
 }
