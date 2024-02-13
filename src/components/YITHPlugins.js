@@ -4,12 +4,102 @@ import { YITHPluginsDefinitions } from "../configs/YITHPlugins.config";
 import { Section } from "./Section";
 import { useCardManager } from "./useCardManager";
 import classNames from "classnames";
+import { useEffect, useState } from "@wordpress/element";
+import apiFetch from "@wordpress/api-fetch";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
+import { YithFeatureCard } from "./YithFeatureCard";
+import filter from "../icons/brands/yith-woocommerce-ajax-product-filter.svg";
+import search from "../icons/brands/yith-woocommerce-ajax-search.svg";
+import booking from "../icons/brands/yith-woocommerce-booking.svg";
+import customizeAccount from "../icons/brands/yith-woocommerce-customize-myaccount-page.svg";
+import gift from "../icons/brands/yith-woocommerce-gift-card.svg";
+import wishList from "../icons/brands/yith-woocommerce-wishlist.svg";
+import { RuntimeSdk } from "../sdk/runtime";
 
 export function YITHPlugins({ woo, wpModules }) {
+  const isBluehost = RuntimeSdk?.brandSettings?.brand?.includes("bluehost");
+  const yithPluginsMap = new Map([
+    [
+      "fc4cbc14-470d-471b-b448-c6666e5b763d",
+      {
+        title: "nfd_slug_yith_woocommerce_booking",
+        name: "YITH Booking and Appointment for WooCommerce",
+        learnMore:
+          isBluehost &&
+          "https://www.bluehost.com/help/article/yith-booking-and-appointment-for-woocommerce",
+        image: booking,
+      },
+    ],
+    [
+      "e307cb8f-24b5-46e1-81e3-83de32c62c78",
+      {
+        title: "yith-woocommerce-ajax-search",
+        name: "YITH WooCommerce AJAX Search",
+        image: search,
+      },
+    ],
+    [
+      "93c942e4-36fb-46be-867b-5f0d014adb22",
+      {
+        title: "nfd_slug_yith_woocommerce_wishlist",
+        name: "YITH WooCommerce Wishlist",
+        learnMore:
+          isBluehost &&
+          "https://www.bluehost.com/help/article/yith-woocommerce-wishlist",
+        image: wishList,
+      },
+    ],
+    [
+      "c7025d24-a05a-4f01-bca7-5c9bcd17bb76",
+      {
+        title: "nfd_slug_yith_woocommerce_ajax_product_filter",
+        name: "YITH WooCommerce Ajax Product Filter",
+        learnMore:
+          isBluehost &&
+          "https://www.bluehost.com/help/article/yith-woocommerce-ajax-product-filter",
+        image: filter,
+      },
+    ],
+    [
+      "f7834881-f5df-43ab-9c7e-c4e6969f5606",
+      {
+        title: "nfd_slug_yith_woocommerce_gift_cards",
+        name: "YITH WooCommerce Gift Cards",
+        learnMore:
+          isBluehost &&
+          "https://www.bluehost.com/help/article/yith-woocommerce-gift-cards",
+        image: gift,
+      },
+    ],
+    [
+      "58701f50-cb5c-4b39-b030-edadf4af6f97",
+      {
+        title: "nfd_slug_yith_woocommerce_customize_myaccount_page",
+        name: "YITH WooCommerce Customize My Account Page",
+        learnMore:
+          isBluehost &&
+          "https://www.bluehost.com/help/article/yith-woocommerce-customize-my-account-page",
+        image: customizeAccount,
+      },
+    ],
+  ]);
   let [cards] = useCardManager(
     YITHPluginsDefinitions({ notify: wpModules.notify }),
     { refreshInterval: 10 * 1000, isPaused: () => !woo.isActive }
   );
+  const [yithProducts, setYithProducts] = useState([]);
+  useEffect(async () => {
+    const data = await apiFetch({
+      url: NewfoldRuntime.createApiUrl("/newfold-marketplace/v1/marketplace"),
+    });
+    setYithProducts(
+      data?.products?.data.filter(
+        (product) =>
+          product.categories?.includes("eCommerce") &&
+          product.categories?.length === 1
+      )
+    );
+  }, []);
   if (!woo.isActive) {
     return null;
   }
@@ -37,10 +127,18 @@ export function YITHPlugins({ woo, wpModules }) {
             "lg:nfd-grid-cols-3"
           )}
         >
-          {cards.map((cardConfig) => {
-            let { Card, name, ...props } = cardConfig;
-            return <Card key={name} {...props} />;
-          })}
+          {yithProducts
+            ?.filter((product) => yithPluginsMap.has(product.id))
+            .map((product) => {
+              return (
+                <YithFeatureCard
+                  id={product.id}
+                  yithProducts={product}
+                  yithPluginsMap={yithPluginsMap}
+                  cards={cards}
+                />
+              );
+            })}
         </div>
       </Section.Content>
     </Section.Container>

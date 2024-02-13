@@ -43,10 +43,10 @@ final class Brands {
 					'name'            => 'Bluehost',
 					'url'             => 'https://bluehost.in',
 					'hireExpertsInfo' => 'https://www.bluehost.in/solutions/full-service',
-					'support'         => 'https://helpchat.bluehost.in',
-					'adminPage'       => 'admin.php?page=bluehost',
-					'setup'           => array(
-						'payment'  => array( 'Paypal', 'Razorpay' ),
+					'support' => 'https://helpchat.bluehost.in',
+					'adminPage' => 'admin.php?page=bluehost',
+					'setup' => array(
+						'payment' => array('Paypal', 'Razorpay', 'Stripe'),
 						'shipping' => array(),
 					),
 					'defaultContact'  => array(
@@ -65,7 +65,7 @@ final class Brands {
 					'support'         => 'https://www.hostgator.com/contact',
 					'adminPage'       => 'admin.php?page=hostgator',
 					'setup'           => array(
-						'payment'  => array( 'Paypal', 'Razorpay' ),
+						'payment'  => array( 'Paypal', 'Razorpay', 'Stripe' ),
 						'shipping' => array(),
 					),
 					'defaultContact'  => array(
@@ -81,11 +81,11 @@ final class Brands {
 					'name'            => 'Bluehost',
 					'url'             => 'https://bluehost.com',
 					'hireExpertsInfo' => 'admin.php?page=bluehost#/marketplace/services/blue-sky',
-					'support'         => 'https://www.bluehost.com/contact',
-					'adminPage'       => 'admin.php?page=bluehost',
-					'setup'           => array(
-						'payment'  => array( 'Paypal', 'Razorpay' ),
-						'shipping' => array( 'Shippo' ),
+					'support' => 'https://www.bluehost.com/contact',
+					'adminPage' => 'admin.php?page=bluehost',
+					'setup' => array(
+						'payment' => array('Paypal', 'Razorpay', 'Stripe'),
+						'shipping' => array('Shippo'),
 					),
 					'defaultContact'  => array(
 						'woocommerce_default_country' => 'US:AZ',

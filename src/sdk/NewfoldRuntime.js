@@ -28,5 +28,8 @@ export const NewfoldRuntime = {
   },
   get homeUrl(){
     return window.NewfoldRuntime?.homeUrl
+  },
+  get currentTheme(){
+    return (window.NewfoldRuntime?.currentTheme);
   }
 };

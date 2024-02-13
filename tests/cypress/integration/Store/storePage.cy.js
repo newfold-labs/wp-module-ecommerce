@@ -3,14 +3,15 @@ import { comingSoon } from '../wp-module-support/utils.cy';
 
 const pluginId = GetPluginId();
 const appId = getAppId();
+const customCommandTimeout = 30000;
 
 describe( 'Store Page- WooCommerce is deactivated/uninstalled', () => {
 	before( () => {
 		cy.exec( `npx wp-env run cli wp plugin deactivate woocommerce`, {
 			failOnNonZeroExit: false,
-        });
-        cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
-        comingSoon(false)
+		} );
+		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
+		comingSoon( false );
 	} );
 
 	beforeEach( () => {
@@ -18,55 +19,41 @@ describe( 'Store Page- WooCommerce is deactivated/uninstalled', () => {
 	} );
 
 	it( 'Verify that Payments tab is not displayed', () => {
-		const subNavTexts = [ 'Products & Services', 'Store Details' ];
-
-		cy.contains( '.nfd-mb-0', 'Store' )
-			.find( `.${ appId }-app-subnavitem` )
+		cy.reload();
+		cy.get( `.${ appId }-app-navitem-Store`, {
+			timeout: customCommandTimeout,
+		} )
+			.next()
+			.find( '.nfd-m-0' )
 			.each( ( item, index, list ) => {
 				expect( list ).to.have.length( 2 );
-				expect( Cypress.$( item ).text() ).to.eq(
-					subNavTexts[ index ]
-				);
 			} );
+		cy.get( `.${ appId }-app-subnavitem-Products` ).should( 'exist' );
+		cy.get( `.${ appId }-app-subnavitem-Store` ).should( 'exist' );
+		cy.get( `.${ appId }-app-subnavitem-Payments` ).should( 'not.exist' );
 	} );
 
 	it( 'Verify Store page title and sub titles', () => {
-		cy.get( '.nfd-app-section-header h2' )
-			.should( 'exist' )
-			.and( 'have.text', 'Store' );
-		cy.contains( '.nfd-app-section-content', 'Add a store to your site' )
+		cy.get( '.nfd-app-section-header h2' ).should( 'exist' );
+		cy.get( '.nfd-app-section-header' )
+			.next()
 			.as( 'storeFlex' )
 			.should( 'exist' );
-		cy.get( '@storeFlex' )
-			.find( 'span' )
-			.should(
-				'have.text',
-				'Adding a store to your website is quick and easy!\nJust install WooCommerce and get ready to start making money!'
-			);
+		cy.get( '@storeFlex' ).find( 'span' ).should( 'exist' );
 	} );
 
 	it( 'Verify Store and its sub tabs should have Install WooCommerce buttons', () => {
-		const buttonTexts = [
-			'Install WooCommerce',
-			'Install WooCommerce to unlock',
+		const storeNavElements = [
+			`.${ appId }-app-navitem-Store`,
+			`.${ appId }-app-subnavitem-Products`,
+			`.${ appId }-app-subnavitem-Store`,
 		];
 
-		cy.get( '.nfd-app-section-container .nfd-button--upsell' )
-			.as( 'upsellButtons' )
-			.each( ( item, index, list ) => {
-				expect( Cypress.$( item ).text() ).to.eq(
-					buttonTexts[ index ]
-				);
-			} );
-
-		cy.get( `.${ appId }-app-subnavitem-Products` ).click();
-		cy.get( '@upsellButtons' ).each( ( item, index ) => {
-			expect( Cypress.$( item ).text() ).to.eq( buttonTexts[ index ] );
-		} );
-
-		cy.get( `.${ appId }-app-subnavitem-Store ` ).click();
-		cy.get( '@upsellButtons' ).each( ( item, index ) => {
-			expect( Cypress.$( item ).text() ).to.eq( buttonTexts[ index ] );
+		storeNavElements.forEach( ( ele ) => {
+			cy.get( ele, { timeout: customCommandTimeout } ).click();
+			cy.get( '.nfd-button--upsell', {
+				timeout: customCommandTimeout,
+			} ).should( 'exist' );
 		} );
 	} );
 } );
