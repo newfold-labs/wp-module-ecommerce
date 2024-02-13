@@ -4,11 +4,11 @@ import { AnalyticsSdk } from "../sdk/analytics";
 import { ArrowLongRightIcon } from "@heroicons/react/20/solid";
 
 export function YithFeatureCard({
-  yithProducts: { name, description, primaryUrl },
+  yithProducts: { name, description, primaryUrl, clickToBuyId },
   yithPluginsMap,
   id,
   cards,
-  }) {
+}) {
   const cardsInfo = cards.filter(
     (card) => card.name === yithPluginsMap.get(id).title
   )[0];
@@ -59,6 +59,8 @@ export function YithFeatureCard({
             className="nfd-w-full nfd-h-9 nfd-border nfd-flex nfd-items-center nfd-gap-2"
             variant="secondary"
             as="a"
+            data-ctb-id={clickToBuyId}
+            data-action="load-nfd-ctb"
             href={state?.featureUrl}
           >
             <span>{state?.isActive ? __("Manage") : __("Enable")}</span>
@@ -71,12 +73,14 @@ export function YithFeatureCard({
             variant="upsell"
             as="a"
             target="_blank"
-            {...(state?.upsellOptions?.clickToBuyId
-              ? {
-                  "data-action": "load-nfd-ctb",
-                  "data-ctb-id": state?.upsellOptions.clickToBuyId,
-                }
-              : {})}
+            data-ctb-id={clickToBuyId}
+            data-action="load-nfd-ctb"
+            // {...(state?.upsellOptions?.clickToBuyId
+            //   ? {
+            //       "data-action": "load-nfd-ctb",
+            //       "data-ctb-id": state?.upsellOptions.clickToBuyId,
+            //     }
+            //   : {})}
             href={primaryUrl}
           >
             <span>{__("Purchase", "wp-module-ecommerce")}</span>
