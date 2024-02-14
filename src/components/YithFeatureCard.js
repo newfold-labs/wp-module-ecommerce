@@ -59,8 +59,6 @@ export function YithFeatureCard({
             className="nfd-w-full nfd-h-9 nfd-border nfd-flex nfd-items-center nfd-gap-2"
             variant="secondary"
             as="a"
-            data-ctb-id={clickToBuyId}
-            data-action="load-nfd-ctb"
             href={state?.featureUrl}
           >
             <span>{state?.isActive ? __("Manage") : __("Enable")}</span>
@@ -75,15 +73,9 @@ export function YithFeatureCard({
             target="_blank"
             data-ctb-id={clickToBuyId}
             data-action="load-nfd-ctb"
-            // {...(state?.upsellOptions?.clickToBuyId
-            //   ? {
-            //       "data-action": "load-nfd-ctb",
-            //       "data-ctb-id": state?.upsellOptions.clickToBuyId,
-            //     }
-            //   : {})}
             href={primaryUrl}
           >
-            <span>{__("Purchase", "wp-module-ecommerce")}</span>
+            {__("Purchase", "wp-module-ecommerce")}
           </Button>
         </Card.Footer>
       ) : (
