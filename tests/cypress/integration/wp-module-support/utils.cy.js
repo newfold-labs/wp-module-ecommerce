@@ -41,9 +41,8 @@ export const comingSoon = ( shouldBeComingSoon ) => {
 
 export const installWoo = () => {
 	cy.get(
-		'.nfd-app-section-content .nfd-bg-canvas .nfd-button.nfd-button--upsell'
+		'.nfd-button.nfd-button--upsell.nfd-gap-2.nfd-shadow-lg'
 	)
-		.eq( 0 )
 		.click();
 	cy.get( '.nfd-notifications--bottom-left .nfd-notification--success', {
 		timeout: longWait,
