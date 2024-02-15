@@ -66,17 +66,29 @@ export function YithFeatureCard({
         </Card.Footer>
       ) : state?.isUpsellNeeded ? (
         <Card.Footer>
-          <Button
-            className="nfd-w-full nfd-h-9 nfd-border nfd-flex nfd-items-center nfd-gap-2"
-            variant="upsell"
-            as="a"
-            target="_blank"
-            data-ctb-id={clickToBuyId}
-            data-action="load-nfd-ctb"
-            href={primaryUrl}
-          >
-            {__("Purchase", "wp-module-ecommerce")}
-          </Button>
+          {id !== "e307cb8f-24b5-46e1-81e3-83de32c62c78" ? (
+            <Button
+              className="nfd-w-full nfd-h-9 nfd-border nfd-flex nfd-items-center nfd-gap-2"
+              variant="upsell"
+              as="a"
+              target="_blank"
+              data-ctb-id={clickToBuyId}
+              data-action="load-nfd-ctb"
+              href={primaryUrl}
+            >
+              {__("Purchase", "wp-module-ecommerce")}
+            </Button>
+          ) : (
+            <Button
+              className="nfd-w-full nfd-h-9 nfd-border nfd-flex nfd-items-center nfd-gap-2"
+              variant="upsell"
+              as="a"
+              target="_blank"
+              href={primaryUrl}
+            >
+              {__("Purchase", "wp-module-ecommerce")}
+            </Button>
+          )}
         </Card.Footer>
       ) : (
         <Card.Footer>
