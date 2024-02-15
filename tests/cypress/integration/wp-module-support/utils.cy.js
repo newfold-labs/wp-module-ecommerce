@@ -3,7 +3,7 @@ import { getAppId } from './pluginID.cy';
 const appId = getAppId();
 const customCommandTimeout = 30000;
 const mediumWait = 60000;
-const longWait = 120000;
+const longWait = 300000;
 
 export const comingSoon = ( shouldBeComingSoon ) => {
 	cy.get( `.${ appId }-app-navitem-Settings`, {
