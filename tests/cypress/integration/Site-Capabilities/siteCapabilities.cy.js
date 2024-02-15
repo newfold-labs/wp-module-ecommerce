@@ -128,6 +128,9 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 		cy.get( `.${ appId }-app-navitem-Store`, {
 			timeout: mediumWait,
 		} ).click();
+		cy.intercept('GET', '**/index.php?rest_route=%2Fnewfold-installer%2Fv1%2Fplugins%2Finstall').as('getNotes')
+		cy.login()
+		cy.wait('@getNotes')
 		cy.get( `.${ appId }-app-subnavitem-Sales` ).click();
 		cy.get( '.nfd-button--upsell', { timeout: mediumWait } )
 			.eq( 0 )
