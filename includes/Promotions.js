@@ -1,4 +1,4 @@
-var node = document.getElementById("custom_tab_data");
+var node = document.getElementById("promotion_product_data");
 node.innerHTML = `<div style="width: 100%;height:350px">
     <p style=" text-align: center;padding-top:40px;line-height: 20px; font-size: 16px; font-weight: 600;">Boost Your Online Store Sales</p>
     <p style=" text-align: center;line-height: 20px; font-size: 13px;">Maximize your sales by creating effective </br> promotions and campaigns like:</p>

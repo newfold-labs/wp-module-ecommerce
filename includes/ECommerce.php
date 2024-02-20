@@ -93,7 +93,7 @@ class ECommerce {
 		add_action( 'woocommerce_product_options_general_product_data', array( $this,'custom_product_general_options'));
     add_action( 'woocommerce_product_options_related',array($this,'custom_product_general_options'));
 		add_action( 'woocommerce_product_data_tabs',array( $this, 'custom_product_write_panel_tabs'));
-		add_action( 'woocommerce_product_data_panels', array( $this,'custom_tab_data'));
+		add_action( 'woocommerce_product_data_panels', array( $this,'promotion_product_data'));
 		add_action( 'admin_head', array( $this,'action_admin_head'));
 
     
@@ -432,7 +432,7 @@ class ECommerce {
   function custom_add_promotion_menu_item( $menu_items ) {
     add_submenu_page(
       'woocommerce-marketing',
-      'Custom Submenu Page',
+      'Promotion product Page',
       __('Promote','wp_module_ecommerce'),
       'manage_options',
       $this->container->plugin()->id.'#/store/sales_discounts',
@@ -447,11 +447,11 @@ class ECommerce {
 	function custom_product_general_options() {
 		global $post;
 		$redirect_url =admin_url( 'admin.php?page='.$this->container->plugin()->id.'#/store/sales_discounts');
-		echo '<div class="options_group">';
-		echo '<p class="form-field custom-button-field">
-						<a href="'.$redirect_url.'" style="background-color:#F6F7F7;text-decoration: none;border-radius: 4px;display: inline-block; border: 1px solid #2671B1;padding:3px 10px;font-size: 13px;text-align: center">'. __('Create a Promotion', 'wp_module_ecommerce').'</a>
-					</p>';
-		echo '</div>';
+		echo '<div class="options_group">
+            <p class="form-field custom-button-field">
+						  <a href="'.$redirect_url.'" style="background-color:#F6F7F7;text-decoration: none;border-radius: 4px;display: inline-block; border: 1px solid #2671B1;padding:3px 10px;font-size: 13px;text-align: center">'. __('Create a Promotion', 'wp_module_ecommerce').'</a>
+					  </p>
+          </div>';
 	}
 
 	/**
@@ -459,8 +459,8 @@ class ECommerce {
    */
 	function custom_product_write_panel_tabs( $tabs ) {
 		$tabs['custom_tab'] = array(
-			'label'   =>  __( 'Promotions', 'domain' ),
-			'target'  =>  'custom_tab_data',
+			'label'   =>  __( 'Promotions', 'wp_module_ecommerce' ),
+			'target'  =>  'promotion_product_data',
 			'priority' => 70,
 			'class'   => array()
 		);
@@ -470,15 +470,15 @@ class ECommerce {
 	/**
 	 * Content on click of a Custom tab (Promotions tab) button added below Advance tab
    */
-	function custom_tab_data() {
+	function promotion_product_data() {
 		$redirect_url ='?page='.$this->container->plugin()->id.'#/store/sales_discounts';
 		global $post; 
-		echo '<div id=custom_tab_data class="panel woocommerce_options_panel hidden"></div>';
-		\wp_enqueue_script( 'nfd_custom_tab_data', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Promotions.js', array('jquery'), '1.0', true);
+		echo '<div id="promotion_product_data" class="panel woocommerce_options_panel hidden"></div>';
+		\wp_enqueue_script( 'nfd_promotion_product_data', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Promotions.js', array('jquery'), '1.0', true);
 		$Promotion_data = array(
 			'redirectUrl' => $redirect_url
 	);
-	wp_localize_script('nfd_custom_tab_data', 'promotionData', $Promotion_data);
+	wp_localize_script('nfd_promotion_product_data', 'promotionData', $Promotion_data);
 	}
 
 	/**
