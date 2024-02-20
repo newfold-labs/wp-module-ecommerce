@@ -40,14 +40,15 @@ export const comingSoon = ( shouldBeComingSoon ) => {
 };
 
 export const installWoo = () => {
-	cy.get(
-		'.nfd-button.nfd-button--upsell.nfd-gap-2.nfd-shadow-lg'
-	)
-		.click();
-	cy.get( '.nfd-notifications--bottom-left .nfd-notification--success', {
-		timeout: longWait,
-	} ).should( 'exist' );
-	cy.get( '.nfd-w-0  p' ).should( 'exist' );
+	// cy.get(
+	// 	'.nfd-button.nfd-button--upsell.nfd-gap-2.nfd-shadow-lg'
+	// )
+	// 	.click();
+	// cy.get( '.nfd-notifications--bottom-left .nfd-notification--success', {
+	// 	timeout: longWait,
+	// } ).should( 'exist' );
+	// cy.get( '.nfd-w-0  p' ).should( 'exist' );
+	cy.exec( `npx wp-env run cli wp plugin install woocommerce`, {timeout: longWait} );
 };
 
 export const viewCompletedTasks = () => {
