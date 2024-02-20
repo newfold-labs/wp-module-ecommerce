@@ -449,7 +449,7 @@ class ECommerce {
 		$redirect_url =admin_url( 'admin.php?page='.$this->container->plugin()->id.'#/store/sales_discounts');
 		echo '<div class="options_group">';
 		echo '<p class="form-field custom-button-field">
-						<a href="'.$redirect_url.'" style="background-color:#F6F7F7;text-decoration: none;border-radius: 4px;display: inline-block; border: 1px solid #2671B1;padding:3px 10px;font-size: 13px;text-align: center">Create a Promotion</a>
+						<a href="'.$redirect_url.'" style="background-color:#F6F7F7;text-decoration: none;border-radius: 4px;display: inline-block; border: 1px solid #2671B1;padding:3px 10px;font-size: 13px;text-align: center">'. __('Create a Promotion', 'wp_module_ecommerce').'</a>
 					</p>';
 		echo '</div>';
 	}
