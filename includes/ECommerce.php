@@ -455,9 +455,10 @@ class ECommerce {
 	function custom_product_general_options() {
 		global $post;
 		$redirect_url =admin_url( 'admin.php?page='.$this->container->plugin()->id.'#/store/sales_discounts');
+    wp_enqueue_style ( 'Create_a_Promotion' , NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Promotions.css' , array (), '1.0' , 'all' );
 		echo '<div class="options_group">
             <p class="form-field custom-button-field">
-						  <a href="'.$redirect_url.'" style="background-color:#F6F7F7;text-decoration: none;border-radius: 4px;display: inline-block; border: 1px solid #2671B1;padding:3px 10px;font-size: 13px;text-align: center">'. __('Create a Promotion', 'wp_module_ecommerce').'</a>
+						  <a id="Create_a_Promotion" href="'.$redirect_url.'" class="promotion">'. __('Create a Promotion', 'wp_module_ecommerce').'</a>
 					  </p>
           </div>';
 	}
@@ -484,7 +485,20 @@ class ECommerce {
 		echo '<div id="promotion_product_data" class="panel woocommerce_options_panel hidden"></div>';
 		\wp_enqueue_script( 'nfd_promotion_product_data', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Promotions.js', array('jquery'), '1.0', true);
 		$Promotion_data = array(
-			'redirectUrl' => $redirect_url
+			'redirectUrl' => $redirect_url,
+      'boostYourOnline' =>  __( 'Boost Your Online Store Sales', 'wp_module_ecommerce' ),
+      'maximizeYourSales' => __('Maximize your sales by creating effective','wp_module_ecommerce'),
+      'promotionsAndCampaigns' => __('promotions and campaigns like:','wp_module_ecommerce'),
+      'createPromotion' => __('Create a Promotion', 'wp_module_ecommerce'),
+      'free' => __('Free', 'wp_module_ecommerce'),
+      'shipping' => __('Shipping', 'wp_module_ecommerce'),
+      'buyOne' => __('Buy One', 'wp_module_ecommerce'),
+      'getOne' => __('Get One', 'wp_module_ecommerce'),
+      'freeGift' => __('Free Gift', 'wp_module_ecommerce'),
+      'inCart' => __('in Cart', 'wp_module_ecommerce'),
+      'frequently' => __('Frequently', 'wp_module_ecommerce'),
+      'boughtTogether' => __('Bought Together', 'wp_module_ecommerce'),
+
 	);
 	wp_localize_script('nfd_promotion_product_data', 'promotionData', $Promotion_data);
 	}
