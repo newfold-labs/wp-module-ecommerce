@@ -10,6 +10,7 @@ use NewfoldLabs\WP\Module\ECommerce\WonderCart;
 use NewfoldLabs\WP\Module\Installer\Services\PluginInstaller;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\Module\Onboarding\Data\Services\FlowService;
+use NewfoldLabs\WP\Module\Data\SiteCapabilities;
 
 /**
  * Class ECommerce
@@ -67,6 +68,7 @@ class ECommerce {
     'onboarding_experience_level',
     'yoast_seo_signup_status',
   );
+  
 
   /**
    * ECommerce constructor.
@@ -74,6 +76,10 @@ class ECommerce {
    * @param Container $container Container loaded from the brand plugin.
    */
   public function __construct( Container $container ) {
+    $capability = new SiteCapabilities();
+    $hasYithExtended = $capability->get( 'hasYithExtended' );
+    $canAccessGlobalCTB = $capability->get( 'canAccessGlobalCTB' );
+
     $this->container = $container;
     // Module functionality goes here
     add_action( 'init', array( $this, 'load_php_textdomain' ) );
@@ -89,13 +95,15 @@ class ECommerce {
     add_filter('woocommerce_shipping_fields', array( $this,'add_phone_number_email_to_shipping_form'), 10, 1 );
     add_action('woocommerce_checkout_create_order', array( $this, 'save_custom_shipping_fields' ), 10, 1);
     add_action('woocommerce_admin_order_data_after_shipping_address', array( $this, 'display_custom_shipping_fields_in_admin' ), 10, 1 );
-    add_filter( 'admin_menu', array($this,'custom_add_promotion_menu_item') );
-		add_action( 'woocommerce_product_options_general_product_data', array( $this,'custom_product_general_options'));
-    add_action( 'woocommerce_product_options_related',array($this,'custom_product_general_options'));
-		add_action( 'woocommerce_product_data_tabs',array( $this, 'custom_product_write_panel_tabs'));
-		add_action( 'woocommerce_product_data_panels', array( $this,'promotion_product_data'));
-		add_action( 'admin_head', array( $this,'action_admin_head'));
-
+    if ($canAccessGlobalCTB || $hasYithExtended) 
+    { 
+      add_filter( 'admin_menu', array($this,'custom_add_promotion_menu_item') );
+      add_action( 'woocommerce_product_options_general_product_data', array( $this,'custom_product_general_options'));
+      add_action( 'woocommerce_product_options_related',array($this,'custom_product_general_options'));
+      add_action( 'woocommerce_product_data_tabs',array( $this, 'custom_product_write_panel_tabs'));
+      add_action( 'woocommerce_product_data_panels', array( $this,'promotion_product_data'));
+      add_action( 'admin_head', array( $this,'action_admin_head'));
+    };
     
     // Handle WonderCart Integrations
     if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
