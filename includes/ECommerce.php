@@ -514,4 +514,20 @@ class ECommerce {
 				} 
 		</style>';
 	}
+
+	public function custom_payment_gateways_order() {
+		$array_data = array("pre_install_woocommerce_payments_promotion" => 2,
+		"yith_paypal_payments" => 0,
+		"element" => 1
+	);
+		update_option('woocommerce_gateway_order', $array_data);
+	}  
+
+	public function dismiss_woo_payments_cta() {
+		$is_dismissed = get_option( 'wcpay_welcome_page_incentives_dismissed');
+		if (!is_array($is_dismissed) || empty($is_dismissed)) {
+			update_option('wcpay_welcome_page_incentives_dismissed', array("wcpay-promo-2023-action-discount"));
+		}
+	}
+	
 }
