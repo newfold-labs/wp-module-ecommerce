@@ -16,6 +16,9 @@ import { ThirdPartyIntegration } from "./ThirdPartyIntegration";
 const Paypal = ({ notify }) => {
   useEffect(() => {
     const ppButton = document.querySelector(".yith-btn-paypal");
+    if( !ppButton ){
+      return;
+    }
     window?.PAYPAL?.apps?.Signup?.loadScripts(document, "script");
     window?.PAYPAL?.apps?.Signup?.render();
     return ()=>{
