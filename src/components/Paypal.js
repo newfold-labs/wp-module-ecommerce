@@ -15,14 +15,21 @@ import { ThirdPartyIntegration } from "./ThirdPartyIntegration";
 
 const Paypal = ({ notify }) => {
   useEffect(() => {
-    const ppButton = document.querySelector(".yith-btn-paypal");
-    if( !ppButton ){
-      return;
+    const ppButton = document.querySelector( ".yith-btn-paypal" );
+    if( ppButton ){
+      (function( d, s, id ) {
+        var js, ref = d.getElementsByTagName( s )[0];
+        if ( !d.getElementById( id ) ) {
+          js = d.createElement( s );
+          js.id = id;
+          js.async = true;
+          js.src = "https://www.paypal.com/webapps/merchantboarding/js/lib/lightbox/partner.js";
+          ref.parentNode.insertBefore( js, ref );
+        }
+      }( document, "script", "paypal-js" ));
     }
-    window?.PAYPAL?.apps?.Signup?.loadScripts(document, "script");
-    window?.PAYPAL?.apps?.Signup?.render();
     return ()=>{
-      const panel = document.querySelector('#payment-details');
+      const panel = document.querySelector( '#payment-details' );
       if( !panel && ppButton ){
         ppButton.remove();
       }
