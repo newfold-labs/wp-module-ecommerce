@@ -30,7 +30,7 @@
   ],
   "require": {
     "newfold-labs/wp-module-installer": "^1.1",
-    "newfold-labs/wp-module-onboarding-data": "^0.1"
+    "newfold-labs/wp-module-onboarding-data": "^1.1"
   },
   "require-dev": {
     "newfold-labs/wp-php-standards": "@stable",
