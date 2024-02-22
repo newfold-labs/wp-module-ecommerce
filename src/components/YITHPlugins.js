@@ -110,7 +110,7 @@ export function YITHPlugins({ woo, wpModules }) {
   return (
     <Section.Container>
       <Section.Header
-        title={__("Additional Features", "wp-module-ecommerce")}
+        title={__("eCommerce Products", "wp-module-ecommerce")}
         subTitle={__(
           "Improve your store with these powerful add-ons.",
           "wp-module-ecommerce"
