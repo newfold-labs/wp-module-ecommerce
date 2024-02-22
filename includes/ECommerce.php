@@ -92,6 +92,7 @@ class ECommerce {
 		add_action( 'before_woocommerce_init', array( $this,'custom_payment_gateways_order'));
 		add_action('before_woocommerce_init', array( $this,'dismiss_woo_payments_cta'));
 		add_action( 'load-toplevel_page_'. $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
+		add_action( 'activated_plugin', array( $this, 'detect_plugin_activation' ), 10, 2 );
 
 		// Handle WonderCart Integrations
 		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
@@ -444,4 +445,15 @@ class ECommerce {
 		}
 	}
 	
+	public function detect_plugin_activation( $plugin, $network_activation ) {
+		$plugin_slugs = [
+			'nfd_slug_yith_paypal_payments_for_woocommerce',
+			'nfd_slug_yith_stripe_payments_for_woocommerce'
+		];
+		if( $plugin == "woocommerce/woocommerce.php" ){
+			foreach( $plugin_slugs as $plugin ){
+				PluginInstaller::install( $plugin, true );
+			}
+		}
+	}
 }
