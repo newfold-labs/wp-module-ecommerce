@@ -84,7 +84,11 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 		);
 	} );
 
-	it( 'Verify clicking on Buy Now leads to cpanel login page', () => {
+	it('Verify clicking on Buy Now leads to cpanel login page', () => {
+		cy.reload();
+		cy.get( `.${ appId }-app-navitem-Store`, {
+			timeout: customCommandTimeout,
+		} ).should( 'exist' );
 		cy.get( `.${ appId }-app-navitem-Store`, {
 			timeout: customCommandTimeout,
 		} ).click();
