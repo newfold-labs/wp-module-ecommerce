@@ -43,6 +43,10 @@ export const installWoo = () => {
 	cy.exec( `npx wp-env run cli wp plugin install woocommerce`, {
 		timeout: longWait
 	} );
+	
+	cy.exec( `npx wp-env run cli wp plugin activate woocommerce`, {
+		timeout: longWait
+	} );
 };
 
 export const viewCompletedTasks = () => {
