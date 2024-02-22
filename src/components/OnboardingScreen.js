@@ -1,5 +1,5 @@
 import { Alert, Button, Title } from "@newfold/ui-component-library";
-import { useState } from "@wordpress/element";
+import { useEffect, useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import classNames from "classnames";
 import { ReactComponent as ComingSoonIllustration } from "../icons/coming-soon.svg";
@@ -9,6 +9,7 @@ import { RuntimeSdk } from "../sdk/runtime";
 import { OnboardingList } from "./OnboardingList";
 import { Section } from "./Section";
 import { SiteStatus } from "./SiteStatus";
+import { WordPressSdk } from "../sdk/wordpress";
 
 const Text = {
   Pending: {
@@ -39,6 +40,7 @@ export function OnboardingScreen({
     : Text.Live;
 
   const [hovered, setIsHovered] = useState(false);
+  const [editUrl, setEditUrl] = useState('');
 
   const handleMouseOver = () => {
     setIsHovered(true);
@@ -52,6 +54,17 @@ export function OnboardingScreen({
       "wpadminbar"
     ).style.display = "none";
   };
+
+  useEffect(() => {
+    WordPressSdk.settings.get().then(res => {
+      if(res?.page_on_front && res?.show_on_front === 'page'){
+        setEditUrl(RuntimeSdk.adminUrl(`post.php?post=${res?.page_on_front}&action=edit`, false))
+      }else{
+        setEditUrl(RuntimeSdk.adminUrl('site-editor.php?canvas=edit'));
+      }
+    })
+  }, [])
+
   return (
     <Section.Container
       className="nfd-welcome-section"
@@ -158,7 +171,7 @@ export function OnboardingScreen({
                     }}
                     as="a"
                     className="nfd-bg-canvas "
-                    href={RuntimeSdk.adminUrl('site-editor.php?postType=wp_template&postId='+NewfoldRuntime.currentTheme+'//home')}
+                    href={editUrl}
                     target="_blank"
                     variant="secondary"
                     data-cy="edit-site"
