@@ -95,6 +95,10 @@ class ECommerce {
     add_filter('woocommerce_shipping_fields', array( $this,'add_phone_number_email_to_shipping_form'), 10, 1 );
     add_action('woocommerce_checkout_create_order', array( $this, 'save_custom_shipping_fields' ), 10, 1);
     add_action('woocommerce_admin_order_data_after_shipping_address', array( $this, 'display_custom_shipping_fields_in_admin' ), 10, 1 );
+    add_action( 'before_woocommerce_init', array( $this,'custom_payment_gateways_order'));
+		add_action('before_woocommerce_init', array( $this,'dismiss_woo_payments_cta'));
+		add_action( 'load-toplevel_page_'. $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
+    
     if (($container->plugin()->id === "bluehost" && ($canAccessGlobalCTB || $hasYithExtended)) || ($container->plugin()->id === "hostgator" && $hasYithExtended))
     { 
       add_filter( 'admin_menu', array($this,'custom_add_promotion_menu_item') );
@@ -526,6 +530,13 @@ class ECommerce {
 		$is_dismissed = get_option( 'wcpay_welcome_page_incentives_dismissed');
 		if (!is_array($is_dismissed) || empty($is_dismissed)) {
 			update_option('wcpay_welcome_page_incentives_dismissed', array("wcpay-promo-2023-action-discount"));
+		}
+	}
+
+	public function disable_creative_mail_banner() {
+		$is_dismissed = get_option( 'ce4wp_ignore_review_notice');
+		if (!is_array($is_dismissed) || empty($is_dismissed)) {
+			update_option('ce4wp_ignore_review_notice', true);
 		}
 	}
 	
