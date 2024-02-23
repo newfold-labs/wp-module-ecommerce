@@ -76,7 +76,10 @@ jobs:
       - name: Modify composer.json
         run: |
           node ./vendor/newfold-labs/wp-module-ecommerce/scripts/update-plugin-composer.mjs ${PWD}/composer.json ${PWD}/vendor
-
+       
+      - name: Update lockfile
+        run: composer update -W
+  
       - name: Install PHP Dependencies
         run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
 
