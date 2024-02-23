@@ -92,6 +92,8 @@ class ECommerce {
 		add_action( 'before_woocommerce_init', array( $this,'custom_payment_gateways_order'));
 		add_action('before_woocommerce_init', array( $this,'dismiss_woo_payments_cta'));
 		add_action( 'activated_plugin', array( $this, 'detect_plugin_activation' ), 10, 2 );
+		add_action( 'load-toplevel_page_'. $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
+
 
 		// Handle WonderCart Integrations
 		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
@@ -434,6 +436,13 @@ class ECommerce {
 		$is_dismissed = get_option( 'wcpay_welcome_page_incentives_dismissed');
 		if (!is_array($is_dismissed) || empty($is_dismissed)) {
 			update_option('wcpay_welcome_page_incentives_dismissed', array("wcpay-promo-2023-action-discount"));
+		}
+	}
+
+	public function disable_creative_mail_banner() {
+		$is_dismissed = get_option( 'ce4wp_ignore_review_notice');
+		if (!is_array($is_dismissed) || empty($is_dismissed)) {
+			update_option('ce4wp_ignore_review_notice', true);
 		}
 	}
 	
