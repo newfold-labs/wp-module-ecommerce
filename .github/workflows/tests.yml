@@ -77,9 +77,6 @@ jobs:
         run: |
           node ./vendor/newfold-labs/wp-module-ecommerce/scripts/update-plugin-composer.mjs ${PWD}/composer.json ${PWD}/vendor
 
-      - name: Update lockfile
-        run: composer update
-
       - name: Validate composer.json and composer.lock
         run: composer validate
 
