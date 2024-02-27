@@ -81,7 +81,7 @@ export function OnboardingScreen({
             )}
           >
             <div className="nfd-flex nfd-flex-col nfd-justify-start nfd-items-start nfd-gap-4">
-              <Title size={2}>{title}</Title>
+              <Title size="2">{title}</Title>
               <div>
                 {comingSoon ? (
                   <Alert
@@ -140,7 +140,6 @@ export function OnboardingScreen({
                         src={NewfoldRuntime.homeUrl}
                         scrolling="no"
                         name="iframe-preview"
-                        sandbox
                         seamless
                       ></iframe>
                     </div>

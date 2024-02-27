@@ -47,7 +47,7 @@ function OnboardingCheckListItem({ children, actions, state, ...props }) {
         />
         <span className="nfd-flex-1 nfd-text-black">{props.text}</span>
         {manageAction.isMutating ? (
-          <Spinner size={4} className="nfd-text-primary" />
+          <Spinner size="4" className="nfd-text-primary" />
         ) : (
           <ArrowLongRightIcon className="nfd-text-black nfd-w-[1.125rem]" />
         )}
@@ -62,7 +62,7 @@ export function OnboardingList(props) {
   if (items.length === 0) {
     return (
       <div className="nfd-flex-1 nfd-flex nfd-items-center nfd-text-center nfd-justify-center">
-        <Spinner size={8} className="nfd-text-primary" />
+        <Spinner size="8" className="nfd-text-primary" />
       </div>
     );
   }
@@ -72,7 +72,7 @@ export function OnboardingList(props) {
     view === "incomplete" ? incompleteItems.slice(0, 5) : completedItems;
   return (
     <div className="nfd-grid nfd-grid-rows-[repeat(3,_min-content)] nfd-gap-4">
-      <Title size={2}>
+      <Title size="2">
         {NewfoldRuntime.hasCapability("isEcommerce")
           ? __("Next steps for your store", "wp-module-ecommerce")
           : __("Next steps for your site", "wp-module-ecommerce")}
