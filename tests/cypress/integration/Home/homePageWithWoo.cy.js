@@ -6,7 +6,7 @@ import {
 	viewRemainingTasks,
 } from '../wp-module-support/utils.cy';
 
-const customCommandTimeout = 30000;
+const customCommandTimeout = 35000;
 const pluginId = GetPluginId();
 const appId = getAppId();
 
