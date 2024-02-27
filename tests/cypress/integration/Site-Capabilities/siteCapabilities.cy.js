@@ -73,7 +73,7 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 		);
 		cy.reload();
 		cy.get( `.${ appId }-app-navitem-Store`, {
-			timeout: mediumWait,
+			timeout: customCommandTimeout,
 		} ).click();
 		cy.get( `.${ appId }-app-subnavitem-Sales` )
 			.as( 'salesTab' )
@@ -84,9 +84,13 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 		);
 	} );
 
-	it( 'Verify clicking on Buy Now leads to cpanel login page', () => {
+	it('Verify clicking on Buy Now leads to cpanel login page', () => {
+		cy.reload();
 		cy.get( `.${ appId }-app-navitem-Store`, {
-			timeout: mediumWait,
+			timeout: customCommandTimeout,
+		} ).should( 'exist' );
+		cy.get( `.${ appId }-app-navitem-Store`, {
+			timeout: customCommandTimeout,
 		} ).click();
 		cy.get( `.${ appId }-app-subnavitem-Sales` ).click();
 		cy.get( '.nfd-button--upsell', { timeout: mediumWait } )
@@ -113,7 +117,7 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 		);
 		cy.reload();
 		cy.get( `.${ appId }-app-navitem-Store`, {
-			timeout: mediumWait,
+			timeout: customCommandTimeout,
 		} ).click();
 		cy.get( `.${ appId }-app-subnavitem-Sales`, { timeout: mediumWait } )
 			.as( 'salesTab' )
@@ -126,7 +130,7 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 
 	it( 'Verify clicking Install Now successfully installs Wonder Cart plugin', () => {
 		cy.get( `.${ appId }-app-navitem-Store`, {
-			timeout: mediumWait,
+			timeout: customCommandTimeout,
 		} ).click();
 		cy.get( `.${ appId }-app-subnavitem-Sales` ).click();
 		cy.get( '.nfd-button--upsell', { timeout: mediumWait } )
