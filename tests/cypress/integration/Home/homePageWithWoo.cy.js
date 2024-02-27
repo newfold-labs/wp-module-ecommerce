@@ -68,7 +68,8 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 		viewRemainingTasks();
 	} );
 
-	it( 'Verify next step "Connect a payment processor"', () => {
+	it('Verify next step "Connect a payment processor"', () => {
+		cy.reload()
 		cy.contains(
 			'.nfd-grid.nfd-gap-4 ul li a',
 			'Connect a payment processor',
