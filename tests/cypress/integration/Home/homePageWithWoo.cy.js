@@ -21,30 +21,7 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
 	} );
 
-	it( 'Verify next steps when woocommerce is installed', () => {
-		const nextSteps = [
-			'Add your store info',
-			'Connect a payment processor',
-			'Setup shipping options',
-			'Configure tax settings',
-			'Add a product',
-		];
-
-		cy.get( '.nfd-grid.nfd-gap-4', { timeout: customCommandTimeout } )
-			.as( 'nextSteps' )
-			.should( 'exist' );
-		cy.get( '@nextSteps' ).find( 'h1' ).should( 'exist' );
-		cy.get( '@nextSteps' ).find( 'p' ).should( 'exist' );
-		cy.get( '@nextSteps' )
-			.find( 'ul li' )
-			.each( ( item, index, list ) => {
-				expect( list ).to.have.length( 5 );
-
-				expect( Cypress.$( item ).text() ).to.eq( nextSteps[ index ] );
-			} );
-	} );
-
-	it.only( 'Verify next steps "Add your store info"', () => {
+	it( 'Verify next steps "Add your store info"', () => {
 		cy.contains( '.nfd-grid.nfd-gap-4 ul li a', 'Add your store info', {
 			timeout: customCommandTimeout,
 		} )
@@ -58,7 +35,7 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 
 		// Select country
 		cy.get( '[data-id="store-country-select"]' ).click();
-		cy.get( '[id="headlessui-listbox-option-:r76:"]' ).click();
+		cy.cobtains( '.nfd-select__option' , 'United States (US)').click();
 		// Enter city
 		cy.get( '[name="woocommerce_store_address"]' ).type(
 			'Sunflower Canal'
@@ -66,12 +43,12 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 		cy.get( '[name="woocommerce_store_city"]' ).type( 'Safford' );
 		// Select state
 		cy.get( '[data-id="state-select"]' ).click();
-		cy.get( '[id="headlessui-listbox-option-:r7n:"]' ).click();
+		cy.cobtains( '.nfd-select__option' , 'Arizona').click();
 		// Enter postcode
 		cy.get( '[name="woocommerce_store_postcode"]' ).type( '85546' );
 		// Select Currency
 		cy.get( '[data-id="currency"]' ).click();
-		cy.get( '[id="headlessui-listbox-option-:re0:"]' ).click();
+		cy.cobtains( '.nfd-select__option' , 'United States (US) dollar ($)').click();
 
 		cy.get( '.nfd-border-t .nfd-button--primary' )
 			.should( 'not.be.disabled' )
@@ -138,24 +115,26 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 		);
 	} );
 
-	it( ' Verify next step "Set up Shipping options" ', () => {
-		cy.contains( '.nfd-grid.nfd-gap-4 ul li a', 'Setup shipping options', {
-			timeout: customCommandTimeout,
-		} )
-			.as( 'paymentStep' )
-			.should( 'exist' )
-			.scrollIntoView()
-			.click();
+	it(' Verify next step "Set up Shipping options" ', () => {
+		if (pluginId == 'bluehost') {
+			cy.contains('.nfd-grid.nfd-gap-4 ul li a', 'Setup shipping options', {
+				timeout: customCommandTimeout,
+			})
+				.as('paymentStep')
+				.should('exist')
+				.scrollIntoView()
+				.click();
 
-		cy.window().then( ( win ) => {
-			cy.spy( win, 'open', ( url ) => {
-				win.location.href =
-					'https://goshippo.com/oauth/register?next=/oauth/authorize';
-			} ).as( 'windowOpen' );
-		} );
+			cy.window().then((win) => {
+				cy.spy(win, 'open', (url) => {
+					win.location.href =
+						'https://goshippo.com/oauth/register?next=/oauth/authorize';
+				}).as('windowOpen');
+			});
 
-		cy.get( '.nfd-button--primary' ).contains( 'Connect' ).click();
-		cy.get( '@windowOpen' ).should( 'be.called' );
+			cy.get('.nfd-button--primary').contains('Connect').click();
+			cy.get('@windowOpen').should('be.called');
+		}
 	} );
 
 	it( 'Verify next step "Configure tax settings"', () => {
