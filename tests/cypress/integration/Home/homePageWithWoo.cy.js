@@ -35,7 +35,7 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 
 		// Select country
 		cy.get( '[data-id="store-country-select"]' ).click();
-		cy.cobtains( '.nfd-select__option' , 'United States (US)').click();
+		cy.contains( '.nfd-select__option' , 'United States (US)').click();
 		// Enter city
 		cy.get( '[name="woocommerce_store_address"]' ).type(
 			'Sunflower Canal'
@@ -43,12 +43,12 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 		cy.get( '[name="woocommerce_store_city"]' ).type( 'Safford' );
 		// Select state
 		cy.get( '[data-id="state-select"]' ).click();
-		cy.cobtains( '.nfd-select__option' , 'Arizona').click();
+		cy.contains( '.nfd-select__option' , 'Arizona').click();
 		// Enter postcode
 		cy.get( '[name="woocommerce_store_postcode"]' ).type( '85546' );
 		// Select Currency
 		cy.get( '[data-id="currency"]' ).click();
-		cy.cobtains( '.nfd-select__option' , 'United States (US) dollar ($)').click();
+		cy.contains( '.nfd-select__option' , 'United States (US) dollar ($)').click();
 
 		cy.get( '.nfd-border-t .nfd-button--primary' )
 			.should( 'not.be.disabled' )
