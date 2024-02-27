@@ -94,7 +94,7 @@ const Content = ({ separator = false, className, children }) => {
 function Block({ title, subtitle, children, className }) {
   return (
     <div className={`nfd-bg-white ${className}`}>
-      <Title size={4}>{title}</Title>
+      <Title size="4">{title}</Title>
       <div style={{ height: "10px" }} />
       <span className="nfd-text-sm">{subtitle}</span>
       {children}

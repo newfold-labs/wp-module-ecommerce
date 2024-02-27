@@ -41,7 +41,7 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
     <Card>
       <Card.Content>
         <Image className="nfd-w-12 nfd-text-[--nfd-ecommerce-text-dark]" />
-        <Title size={4} className="nfd-leading-normal nfd-my-4">
+        <Title size="4" className="nfd-leading-normal nfd-my-4">
           {title}
         </Title>
         {description ? <span>{description}</span> : null}

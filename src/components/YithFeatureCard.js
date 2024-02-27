@@ -22,7 +22,7 @@ export function YithFeatureCard({
           src={yithPluginsMap.get(id).image}
           className="nfd-w-12 nfd-text-[--nfd-ecommerce-text-dark]"
         />
-        <Title size={4} className="nfd-leading-normal nfd-my-4">
+        <Title size="4" className="nfd-leading-normal nfd-my-4">
           {name}
         </Title>
         {description ? <span>{description}</span> : null}

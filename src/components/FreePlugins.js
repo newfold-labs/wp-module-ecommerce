@@ -27,7 +27,7 @@ export function FreePlugins({ notify, showShadowBox }) {
       <Section.Content>
         {cards.length === 0 && (
           <div className="nfd-flex-1 nfd-flex nfd-items-center nfd-text-center nfd-justify-center">
-            <Spinner size={8} className="nfd-text-primary" />
+            <Spinner size="8" className="nfd-text-primary" />
           </div>
         )}
         <div className={classNames("nfd-grid nfd-gap-6", "sm:nfd-grid-cols-1", "md:nfd-grid-cols-2", "lg:nfd-grid-cols-3")}>

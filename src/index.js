@@ -62,7 +62,7 @@ export function NewfoldECommerce(props) {
   if (woo === undefined) {
     return (
       <div className="nfd-flex nfd-items-center nfd-text-center nfd-justify-center nfd-h-full">
-        <Spinner size={8} className="nfd-text-primary" />
+        <Spinner size="8" className="nfd-text-primary" />
       </div>
     );
   }

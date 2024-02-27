@@ -119,7 +119,7 @@ export function YITHPlugins({ woo, wpModules }) {
       <Section.Content>
         {cards.length === 0 && (
           <div className="nfd-flex nfd-items-center nfd-text-center nfd-justify-center nfd-h-60">
-            <Spinner size={8} className="nfd-text-primary" />
+            <Spinner size="8" className="nfd-text-primary" />
           </div>
         )}
         <div

@@ -48,7 +48,7 @@ function RecentReport({ title, filter, onSelect, disabled, children }) {
             "sm:nfd-flex sm:nfd-flex-row sm:nfd-items-baseline"
           )}
         >
-          <Title className="nfd-flex-1" size={4}>
+          <Title className="nfd-flex-1" size="4">
             {title}
           </Title>
           <Select
@@ -85,7 +85,7 @@ function RecentActivity() {
     <RecentReport title={__("Recent Activity", "wp-module-ecommerce")} filter={filter} onSelect={onSelect}>
       {cards.length === 0 && (
         <div className="nfd-flex-1 nfd-flex nfd-items-center nfd-text-center nfd-justify-center">
-          <Spinner size={8} className="nfd-text-primary" />
+          <Spinner size="8" className="nfd-text-primary" />
         </div>
       )}
       {cards.length > 0 && (
@@ -150,7 +150,7 @@ function RecentOrders() {
     <RecentReport title={__("Recent Orders", "wp-module-ecommerce")} filter={filter} onSelect={onSelect}>
       {orders.isLoading && (
         <div className="nfd-flex-1 nfd-items-center nfd-text-center nfd-justify-center">
-          <Spinner size={8} className="nfd-text-primary" />
+          <Spinner size="8" className="nfd-text-primary" />
         </div>
       )}
       {!orders.isLoading && orders.data.length === 0 && (
@@ -187,7 +187,7 @@ function RecentOrders() {
                   )}
                 >
                   <Title
-                    size={4}
+                    size="4"
                     className="nfd-leading-normal nfd-text-[--nfd-ecommerce-text-info]"
                   >
                     {order.billing.first_name || "Guest"}{" "}

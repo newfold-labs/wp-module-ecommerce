@@ -140,6 +140,7 @@ export function OnboardingScreen({
                         src={NewfoldRuntime.homeUrl}
                         scrolling="no"
                         name="iframe-preview"
+                        sandbox="allow-scripts allow-same-origin"
                         seamless
                       ></iframe>
                     </div>
