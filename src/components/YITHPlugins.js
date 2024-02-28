@@ -88,17 +88,20 @@ export function YITHPlugins({ woo, wpModules }) {
     { refreshInterval: 10 * 1000, isPaused: () => !woo.isActive }
   );
   const [yithProducts, setYithProducts] = useState([]);
-  useEffect(async () => {
-    const data = await apiFetch({
-      url: NewfoldRuntime.createApiUrl("/newfold-marketplace/v1/marketplace"),
-    });
-    setYithProducts(
-      data?.products?.data.filter(
-        (product) =>
-          product.categories?.includes("eCommerce") &&
-          product.categories?.length === 1
-      )
-    );
+  useEffect( () => {
+    const fecthApi = async () => {
+      const data = await apiFetch({
+        url: NewfoldRuntime.createApiUrl("/newfold-marketplace/v1/marketplace"),
+      });
+      setYithProducts(
+        data?.products?.data.filter(
+          (product) =>
+            product.categories?.includes("eCommerce") &&
+            product.categories?.length === 1
+        )
+      );
+    }
+    fecthApi()
   }, []);
   if (!woo.isActive) {
     return null;
