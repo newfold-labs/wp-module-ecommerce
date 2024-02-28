@@ -53,7 +53,7 @@ export const installWoo = () => {
 		.eq( 0 )
 		.click();
 	cy.intercept('POST', 'index.php?rest_route=%2Fnewfold-installer%2Fv1%2Fplugins%2Finstall&_locale=user').as('installRequest')
-	cy.wait('@installRequest').then((interception) => {
+	cy.wait('@installRequest', { timeout: customCommandTimeout }).then((interception) => {
 		// Modify the payload
 		const modifiedPayload = {
 			...interception.request.body,
