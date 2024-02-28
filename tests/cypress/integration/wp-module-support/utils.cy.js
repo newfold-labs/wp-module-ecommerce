@@ -40,13 +40,36 @@ export const comingSoon = ( shouldBeComingSoon ) => {
 };
 
 export const installWoo = () => {
-	cy.exec( `npx wp-env run cli wp plugin install woocommerce`, {
-		timeout: longWait, failOnNonZeroExit: false
-	} );
+	// cy.exec( `npx wp-env run cli wp plugin install woocommerce`, {
+	// 	timeout: longWait, failOnNonZeroExit: false, log: true
+	// } );
 	
-	cy.exec( `npx wp-env run cli wp plugin activate woocommerce`, {
-		timeout: longWait, failOnNonZeroExit: false
-	} );
+	// cy.exec( `npx wp-env run cli wp plugin activate woocommerce`, {
+	// 	timeout: longWait, failOnNonZeroExit: false
+	// } );
+	cy.get(
+		'.nfd-app-section-content .nfd-bg-canvas .nfd-button.nfd-button--upsell'
+	)
+		.eq( 0 )
+		.click();
+	cy.intercept('POST', 'index.php?rest_route=%2Fnewfold-installer%2Fv1%2Fplugins%2Finstall&_locale=user').as('installRequest')
+	cy.wait('@installRequest').then((interception) => {
+		// Modify the payload
+		const modifiedPayload = {
+			...interception.request.body,
+			"queue": false,
+		};
+
+		// Continue with the modified payload
+		interception.continue({
+			body: modifiedPayload,
+		  });
+	});
+	cy.get( '.nfd-notifications--bottom-left .nfd-notification--success', {
+		timeout: longWait,
+	} ).should( 'exist' );
+	cy.get( '.nfd-w-0  p' ).should( 'exist' );
+	
 };
 
 export const viewCompletedTasks = () => {
