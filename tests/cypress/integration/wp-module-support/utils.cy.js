@@ -40,13 +40,22 @@ export const comingSoon = ( shouldBeComingSoon ) => {
 };
 
 export const installWoo = () => {
-	cy.exec( `npx wp-env run cli wp plugin install woocommerce`, {
-		timeout: longWait
-	} );
+	// cy.exec( `npx wp-env run cli wp plugin install woocommerce`, {
+	// 	timeout: longWait
+	// } );
 	
-	cy.exec( `npx wp-env run cli wp plugin activate woocommerce`, {
-		timeout: longWait
-	} );
+	// cy.exec( `npx wp-env run cli wp plugin activate woocommerce`, {
+	// 	timeout: longWait
+	// } );
+	cy.get(
+		'.nfd-app-section-content .nfd-bg-canvas .nfd-button.nfd-button--upsell'
+	)
+		.eq( 0 )
+		.click();
+	cy.get( '.nfd-notifications--bottom-left .nfd-notification--success', {
+		timeout: longWait,
+	} ).should( 'exist' );
+	cy.get( '.nfd-w-0  p' ).should( 'exist' );
 };
 
 export const viewCompletedTasks = () => {
