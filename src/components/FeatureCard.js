@@ -90,7 +90,7 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
             as="a"
             target="_blank"
             data-action="load-nfd-ctb"
-            data-ctb-id={state.upsellOptions.clickToBuyId}
+            data-ctb-id={state?.upsellOptions?.clickToBuyId}
             href={state.upsellOptions?.primaryUrl}
           >
             <span>{__("Purchase", "wp-module-ecommerce")}</span>

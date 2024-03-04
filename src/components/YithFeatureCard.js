@@ -72,8 +72,8 @@ export function YithFeatureCard({
               variant="upsell"
               as="a"
               target="_blank"
-              data-ctb-id={clickToBuyId}
               data-action="load-nfd-ctb"
+              data-ctb-id={clickToBuyId}
               href={primaryUrl}
             >
               {__("Purchase", "wp-module-ecommerce")}
