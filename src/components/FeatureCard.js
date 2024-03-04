@@ -1,7 +1,7 @@
-import { ArrowLongRightIcon } from '@heroicons/react/20/solid';
-import { __ } from '@wordpress/i18n';
-import { Button, Card, Link, Title } from '@newfold/ui-component-library';
-import { AnalyticsSdk } from '../sdk/analytics';
+import { ArrowLongRightIcon } from "@heroicons/react/20/solid";
+import { __ } from "@wordpress/i18n";
+import { Button, Card, Link, Title } from "@newfold/ui-component-library";
+import { AnalyticsSdk } from "../sdk/analytics";
 
 /**
  * @typedef FeatureCardState
@@ -50,13 +50,9 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
             className="nfd-flex nfd-mt-4 nfd-items-center nfd-gap-2 nfd-no-underline"
             href={learnMoreUrl}
             target="_blank"
-            onClick={() =>
-              AnalyticsSdk.track('commerce', title, {
-                value: 'clicked on the learn more url',
-              })
-            }
+            onClick={() => AnalyticsSdk.track( "commerce", title, {value: 'clicked on the learn more url'} )}
           >
-            <span>{__('Learn More', 'wp-module-ecommerce')}</span>
+            <span>{__("Learn More", "wp-module-ecommerce")}</span>
             <ArrowLongRightIcon className="nfd-h-5 nfd-text-black" />
           </Link>
         )}
@@ -65,8 +61,8 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
         <Card.Footer>
           <span>
             {__(
-              'please wait while other features are installed...',
-              'wp-module-ecommerce'
+              "please wait while other features are installed...",
+              "wp-module-ecommerce"
             )}
           </span>
         </Card.Footer>
@@ -89,11 +85,15 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
             variant="upsell"
             as="a"
             target="_blank"
-            data-action="load-nfd-ctb"
-            data-ctb-id={state.upsellOptions.clickToBuyId}
+            {...(state.upsellOptions?.clickToBuyId
+              ? {
+                  "data-action": "load-nfd-ctb",
+                  "data-ctb-id": state.upsellOptions.clickToBuyId,
+                }
+              : {})}
             href={state.upsellOptions?.primaryUrl}
           >
-            <span>{__('Purchase', 'wp-module-ecommerce')}</span>
+            <span>{__("Purchase", "wp-module-ecommerce")}</span>
             {ActionIcon && !isInstalling ? <ArrowLongRightIcon /> : null}
           </Button>
         </Card.Footer>
@@ -112,7 +112,7 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
           >
             <span>
               {isInstalling
-                ? __('Installing...', 'wp-module-ecommerce')
+                ? __("Installing...", "wp-module-ecommerce")
                 : actionName}
             </span>
             {ActionIcon && !isInstalling ? <ArrowLongRightIcon /> : null}
