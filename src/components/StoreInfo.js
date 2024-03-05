@@ -82,6 +82,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                         label={country.name}
                         value={country.code}
                         key={country.code}
+                        id={country.code}
                         name="country"
                       />
                     );
@@ -93,6 +94,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
               <TextField
                 data-section="details"
                 name="woocommerce_store_address"
+                id="woocommerce_store_address"
                 value={values.woocommerce_store_address}
                 required
                 label={__("Address Line 1 *", "wp-module-ecommerce")}
@@ -102,6 +104,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
               <TextField
                 data-section="details"
                 name="woocommerce_store_address_2"
+                id="woocommerce_store_address_2"
                 value={values.woocommerce_store_address_2}
                 label={__("Address Line 2 (optional)", "wp-module-ecommerce")}
               />
@@ -117,6 +120,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                 <TextField
                   data-section="details"
                   name="woocommerce_store_city"
+                  id="woocommerce_store_city"
                   value={values.woocommerce_store_city}
                   label={__("City *", "wp-module-ecommerce")}
                   required
@@ -144,6 +148,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                           label={state.name}
                           value={state.code}
                           key={state.code}
+                          id={state.code}
                         />
                       );
                     })}
@@ -154,6 +159,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                 <TextField
                   data-section="details"
                   name="woocommerce_store_postcode"
+                  id="woocommerce_store_postcode"
                   value={values.woocommerce_store_postcode}
                   label={__("Postal Code *", "wp-module-ecommerce")}
                   required
@@ -164,6 +170,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
               <TextField
                 data-section="details"
                 name="woocommerce_email_from_address"
+                id="woocommerce_email_from_address"
                 value={values.woocommerce_email_from_address}
                 label={__("Email", "wp-module-ecommerce")}
                 required
@@ -208,6 +215,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                         )}
                         value={currency.code}
                         key={currency.code}
+                        id={currency.code}
                       />
                     );
                   })}

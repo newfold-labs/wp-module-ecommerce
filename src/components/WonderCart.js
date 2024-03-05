@@ -68,9 +68,9 @@ export function WonderCart(props) {
                     : null
                 }
                 href={
-                  canAccessGlobalCTB &&
+                  (canAccessGlobalCTB &&
                   !hasYithExtended &&
-                  NewfoldRuntime.sdk.ecommerce.brand_settings.wondercartBuyNow
+                  NewfoldRuntime.sdk.ecommerce.brand_settings.wondercartBuyNow) || ''
                 }
                 variant="upsell"
                 isLoading={showInProgress}
@@ -89,9 +89,9 @@ export function WonderCart(props) {
         shouldUpsell
         variant="card"
         cardLink={
-          canAccessGlobalCTB &&
+          (canAccessGlobalCTB &&
           !hasYithExtended &&
-          NewfoldRuntime.sdk.ecommerce.brand_settings.wondercartBuyNow
+          NewfoldRuntime.sdk.ecommerce.brand_settings.wondercartBuyNow) || ''
         }
         target="_blank"
         cardText={
