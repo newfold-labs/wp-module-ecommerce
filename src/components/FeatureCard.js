@@ -93,7 +93,7 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
             data-ctb-id={state?.upsellOptions?.clickToBuyId}
             href={state.upsellOptions?.primaryUrl}
           >
-            <span>{__("Purchase", "wp-module-ecommerce")}</span>
+            {__("Purchase", "wp-module-ecommerce")}
             {ActionIcon && !isInstalling ? <ArrowLongRightIcon /> : null}
           </Button>
         </Card.Footer>
