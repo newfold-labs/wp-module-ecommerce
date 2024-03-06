@@ -96,6 +96,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                 name="woocommerce_store_address"
                 id="woocommerce_store_address"
                 value={values.woocommerce_store_address}
+                onChange={() => {}}
                 required
                 label={__("Address Line 1 *", "wp-module-ecommerce")}
               />
@@ -106,6 +107,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                 name="woocommerce_store_address_2"
                 id="woocommerce_store_address_2"
                 value={values.woocommerce_store_address_2}
+                onChange={() => {}}
                 label={__("Address Line 2 (optional)", "wp-module-ecommerce")}
               />
             </div>
@@ -124,6 +126,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                   value={values.woocommerce_store_city}
                   label={__("City *", "wp-module-ecommerce")}
                   required
+                  onChange={() => {}}
                 />
               </div>
               {states?.length > 0 && (
@@ -158,6 +161,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
               <div className="nfd-flex-1 md:nfd-ml-8">
                 <TextField
                   data-section="details"
+                  onChange={() => {}}
                   name="woocommerce_store_postcode"
                   id="woocommerce_store_postcode"
                   value={values.woocommerce_store_postcode}
@@ -169,6 +173,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
             <div className="nfd-mt-6">
               <TextField
                 data-section="details"
+                onChange={() => {}}
                 name="woocommerce_email_from_address"
                 id="woocommerce_email_from_address"
                 value={values.woocommerce_email_from_address}
