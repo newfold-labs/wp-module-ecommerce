@@ -36,7 +36,7 @@ export function Products({ woo, wpModules }) {
           )}
         >
           <div className="nfd-flex-1">
-            <Title size={4} className="nfd-leading-normal">
+            <Title size="4" className="nfd-leading-normal">
               {__("Want help adding products?", "wp-module-ecommerce")}
             </Title>
             <span className="lg:nfd-whitespace-pre-wrap nfd-leading-tight">
@@ -66,7 +66,7 @@ export function Products({ woo, wpModules }) {
         </div>
         {cards?.length === 0 && (
           <div className="nfd-flex nfd-items-center nfd-text-center nfd-justify-center nfd-h-60">
-            <Spinner size={8} className="nfd-text-primary" />
+            <Spinner size="8" className="nfd-text-primary" />
           </div>
         )}
         <div

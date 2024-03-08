@@ -11,7 +11,7 @@ export function ReportTile(props) {
       <Card.Content className="nfd-flex nfd-flex-col nfd-gap-4">
         <Title
           className="nfd-text-[--nfd-ecommerce-text-info] nfd-leading-normal nfd-text-base"
-          size={5}
+          size="5"
         >
           {title}
         </Title>
