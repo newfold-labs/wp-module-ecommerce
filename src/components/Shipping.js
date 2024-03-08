@@ -55,7 +55,7 @@ const Shipping = ({ notify }) => {
                           "min-[360px]:nfd-m-0"
                         )}
                       >
-                        {__("Connect", "wp-module-ecommerce")}
+                          {!integrationStatus?.integration?.plugin?.status ? __("Install", "wp-module-ecommerce") : __("Connect", "wp-module-ecommerce")}
                       </Button>
                     )}
                   </>
