@@ -83,29 +83,29 @@ const Paypal = ({ notify }) => {
                       >
                         {__("Manage", "wp-module-ecommerce")}
                       </Button>
-                  ) : ((typeof yith_ppwc_login !== "undefined" &&
+                  ) : (!(typeof yith_ppwc_login !== "undefined" &&
                   !parseInt(yith_ppwc_login?.liveConnected)) ? (
-                      <Link
-                          href={yith_ppwc_login.loginURL}
-                          variant="primary"
-                          className="nfd-button nfd-button--primary yith-btn-paypal nfd-text-white"
-                          target="_blank"
-                          data-paypal-onboard-complete="onboardedCallback"
-                          data-paypal-button="PPLtBlue"
-                      >
-                        {__("Connect", "wp-module-ecommerce")}
-                      </Link>
-                  ) : (
-                      <Button
-                          onClick={onConnect}
-                          className={classNames(
-                              "max-[359px]:nfd-my-2",
-                              "min-[360px]:nfd-m-0"
-                          )}
-                      >
-                        {__("Install", "wp-module-ecommerce")}
-                      </Button>
-                  ))}
+                    <Button
+                        onClick={onConnect}
+                        className={classNames(
+                            "max-[359px]:nfd-my-2",
+                            "min-[360px]:nfd-m-0"
+                        )}
+                    >
+                      {__("Install", "wp-module-ecommerce")}
+                    </Button>
+                ) : (
+                  <Link
+                      href={yith_ppwc_login.loginURL}
+                      variant="primary"
+                      className="nfd-button nfd-button--primary yith-btn-paypal nfd-text-white"
+                      target="_blank"
+                      data-paypal-onboard-complete="onboardedCallback"
+                      data-paypal-button="PPLtBlue"
+                  >
+                    {__("Connect", "wp-module-ecommerce")}
+                  </Link>
+              ))}
                 </div>
                 {isSetupComplete && environment && (
                     <div className="nfd-flex nfd-gap-4 nfd-mt-4">
