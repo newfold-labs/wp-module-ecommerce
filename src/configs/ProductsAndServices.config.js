@@ -159,11 +159,15 @@ export const ProductsAndServicesDefinition = (props) => ({
       assets: ({ isActive }) => ({
         Image: CalendarIcon,
         ActionIcon: isActive,
-        learnMoreUrl: isBluehost &&
+        learnMoreUrl:
+          isBluehost &&
           "https://www.bluehost.com/help/article/yith-booking-and-appointment-for-woocommerce",
       }),
       text: (state) => ({
-        title: __("Bookings", "wp-module-ecommerce"),
+        title: __(
+          "YITH Booking and Appointment for WooCommerce",
+          "wp-module-ecommerce"
+        ),
         actionName: !state.isActive
           ? __("Enable", "wp-module-ecommerce")
           : state.hasUsedPlugin
@@ -213,11 +217,12 @@ export const ProductsAndServicesDefinition = (props) => ({
       assets: ({ isActive }) => ({
         Image: GiftIcon,
         ActionIcon: isActive,
-        learnMoreUrl: isBluehost &&
+        learnMoreUrl:
+          isBluehost &&
           "https://www.bluehost.com/help/article/yith-woocommerce-gift-cards",
       }),
       text: (state) => ({
-        title: __("Gift Cards", "wp-module-ecommerce"),
+        title: __("YITH WooCommerce Gift Cards", "wp-module-ecommerce"),
         actionName: !state.isActive
           ? __("Enable", "wp-module-ecommerce")
           : state.hasUsedPlugin
