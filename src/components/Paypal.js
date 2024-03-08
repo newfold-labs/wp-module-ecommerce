@@ -83,8 +83,8 @@ const Paypal = ({ notify }) => {
                       >
                         {__("Manage", "wp-module-ecommerce")}
                       </Button>
-                  ) : typeof yith_ppwc_login !== "undefined" &&
-                  !parseInt(yith_ppwc_login?.liveConnected) ? (
+                  ) : ((typeof yith_ppwc_login !== "undefined" &&
+                  !parseInt(yith_ppwc_login?.liveConnected)) ? (
                       <Link
                           href={yith_ppwc_login.loginURL}
                           variant="primary"
@@ -105,7 +105,7 @@ const Paypal = ({ notify }) => {
                       >
                         {__("Install", "wp-module-ecommerce")}
                       </Button>
-                  )}
+                  ))}
                 </div>
                 {isSetupComplete && environment && (
                     <div className="nfd-flex nfd-gap-4 nfd-mt-4">
