@@ -4,11 +4,11 @@ import { AnalyticsSdk } from "../sdk/analytics";
 import { ArrowLongRightIcon } from "@heroicons/react/20/solid";
 
 export function YithFeatureCard({
-  yithProducts: { name, description, primaryUrl },
+  yithProducts: { name, description, primaryUrl, clickToBuyId },
   yithPluginsMap,
   id,
   cards,
-  }) {
+}) {
   const cardsInfo = cards.filter(
     (card) => card.name === yithPluginsMap.get(id).title
   )[0];
@@ -66,21 +66,29 @@ export function YithFeatureCard({
         </Card.Footer>
       ) : state?.isUpsellNeeded ? (
         <Card.Footer>
-          <Button
-            className="nfd-w-full nfd-h-9 nfd-border nfd-flex nfd-items-center nfd-gap-2"
-            variant="upsell"
-            as="a"
-            target="_blank"
-            {...(state?.upsellOptions?.clickToBuyId
-              ? {
-                  "data-action": "load-nfd-ctb",
-                  "data-ctb-id": state?.upsellOptions.clickToBuyId,
-                }
-              : {})}
-            href={primaryUrl}
-          >
-            <span>{__("Purchase", "wp-module-ecommerce")}</span>
-          </Button>
+          {id !== "e307cb8f-24b5-46e1-81e3-83de32c62c78" ? (
+            <Button
+              className="nfd-w-full nfd-h-9 nfd-border nfd-flex nfd-items-center nfd-gap-2"
+              variant="upsell"
+              as="a"
+              target="_blank"
+              data-action="load-nfd-ctb"
+              data-ctb-id={clickToBuyId}
+              href={primaryUrl}
+            >
+              {__("Purchase", "wp-module-ecommerce")}
+            </Button>
+          ) : (
+            <Button
+              className="nfd-w-full nfd-h-9 nfd-border nfd-flex nfd-items-center nfd-gap-2"
+              variant="upsell"
+              as="a"
+              target="_blank"
+              href={primaryUrl}
+            >
+              {__("Purchase", "wp-module-ecommerce")}
+            </Button>
+          )}
         </Card.Footer>
       ) : (
         <Card.Footer>
