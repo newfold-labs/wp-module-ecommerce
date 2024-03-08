@@ -284,11 +284,12 @@ class ECommerce {
     }
   }
 
-  public function register_textdomains() {
-    $MODULE_LANG_DIR = $this->container->plugin()->dir . 'vendor/newfold-labs/wp-module-ecommerce/languages';
-    \load_script_textdomain( 'nfd-ecommerce-dependency', 'wp-module-ecommerce', $MODULE_LANG_DIR );
-    \load_textdomain( 'wp-module-ecommerce', $MODULE_LANG_DIR );
-  }
+	public function register_textdomains() {
+		$MODULE_LANG_DIR = $this->container->plugin()->dir . 'vendor/newfold-labs/wp-module-ecommerce/languages';
+		\load_script_textdomain( 'nfd-ecommerce-dependency', 'wp-module-ecommerce', $MODULE_LANG_DIR );
+		$current_language = get_locale();
+		\load_textdomain( 'wp-module-ecommerce', $MODULE_LANG_DIR."/wp-module-ecommerce-".$current_language.".mo" );
+	}
 
   /**
    * Load WP dependencies into the page.
