@@ -71,7 +71,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                     });
                     setStates(statesList);
                   }}
-                  value={values.country}
+                  value={values.country || ''}
                   selectedLabel={
                     countries?.find((_) => _.code === values.country)?.name
                   }
@@ -139,7 +139,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                     onChange={(target) => {
                       pushChanges({ state: target });
                     }}
-                    value={values.state}
+                    value={(values.state) || ''}
                     selectedLabel={
                       states?.find((_) => _.code === values.state)?.name ??
                       states[0].name
@@ -196,10 +196,10 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                   id="currency"
                   className="nfd-mt-2 nfd-mb-4"
                   name="woocommerce_currency"
+                  value={(values.woocommerce_currency) || ''}
                   onChange={(target) => {
                     pushChanges({ woocommerce_currency: target });
                   }}
-                  value={values.woocommerce_currency}
                   selectedLabel={formatCurrency(
                     `${
                       currencies.find(

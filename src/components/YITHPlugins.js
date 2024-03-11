@@ -136,6 +136,7 @@ export function YITHPlugins({ woo, wpModules }) {
               return (
                 <YithFeatureCard
                   id={product.id}
+                  key={product.id}
                   yithProducts={product}
                   yithPluginsMap={yithPluginsMap}
                   cards={cards}
