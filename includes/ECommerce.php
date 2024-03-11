@@ -92,6 +92,7 @@ class ECommerce {
 		add_action( 'before_woocommerce_init', array( $this,'custom_payment_gateways_order'));
 		add_action('before_woocommerce_init', array( $this,'dismiss_woo_payments_cta'));
 		add_action( 'load-toplevel_page_'. $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
+		add_action( 'activated_plugin', array( $this, 'detect_plugin_activation' ), 10, 2 );
 
 		// Handle WonderCart Integrations
 		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
@@ -329,7 +330,6 @@ class ECommerce {
 			// $woocommerce_list = array("setup");
 			update_option('woocommerce_task_list_hidden_lists', $woocommerce_list);
 		}
-		
 	}
 
 	/**
@@ -441,6 +441,26 @@ class ECommerce {
 		$is_dismissed = get_option( 'ce4wp_ignore_review_notice');
 		if (!is_array($is_dismissed) || empty($is_dismissed)) {
 			update_option('ce4wp_ignore_review_notice', true);
+		}
+	}
+
+	/**
+	 *  Activates yith plugins (Paypal, Stripe) when woocommerce is activated
+	 *
+	 * @param string $plugin Path to the plugin file relative
+	 * @param bool   $network_activation enable the plugin for all sites
+	 *
+	 * @return void
+	 */
+	public function detect_plugin_activation( $plugin, $network_activation ) {
+		$plugin_slugs = array(
+			'nfd_slug_yith_paypal_payments_for_woocommerce',
+			'nfd_slug_yith_stripe_payments_for_woocommerce',
+		);
+		if ( 'woocommerce/woocommerce.php' === $plugin ) {
+			foreach ( $plugin_slugs as $plugin ) {
+				PluginInstaller::install( $plugin, true );
+			}
 		}
 	}
 	
