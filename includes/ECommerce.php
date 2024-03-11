@@ -77,23 +77,22 @@ class ECommerce {
 		$this->container = $container;
 		// Module functionality goes here
 		add_action( 'init', array( $this, 'load_php_textdomain' ) );
-		add_action( 'toplevel_page_'. $container->plugin()->id, array( $this, 'load_experience_level' ) );
+		add_action( 'toplevel_page_' . $container->plugin()->id, array( $this, 'load_experience_level' ) );
 		add_action( 'admin_init', array( $this, 'maybe_do_dash_redirect' ) );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_assets' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_textdomains' ) );
-		add_filter( 'woocommerce_coupons_enabled',  array( $this, 'disable_coupon_field_on_cart' ) );
-		add_filter( 'woocommerce_before_cart', array( $this, 'hide_banner_notice_on_cart'));
-		add_action('before_woocommerce_init', array( $this,'hide_woocommerce_set_up') );
-		add_filter( 'woocommerce_checkout_fields' , array( $this,'swap_billing_shipping_fields'), 10, 1 );
-		add_filter('woocommerce_shipping_fields', array( $this,'add_phone_number_email_to_shipping_form'), 10, 1 );
-		add_action('woocommerce_checkout_create_order', array( $this, 'save_custom_shipping_fields' ), 10, 1);
-		add_action('woocommerce_admin_order_data_after_shipping_address', array( $this, 'display_custom_shipping_fields_in_admin' ), 10, 1 );
-		add_action( 'before_woocommerce_init', array( $this,'custom_payment_gateways_order'));
-		add_action('before_woocommerce_init', array( $this,'dismiss_woo_payments_cta'));
+		add_filter( 'woocommerce_coupons_enabled', array( $this, 'disable_coupon_field_on_cart' ) );
+		add_filter( 'woocommerce_before_cart', array( $this, 'hide_banner_notice_on_cart' ) );
+		add_action( 'before_woocommerce_init', array( $this, 'hide_woocommerce_set_up' ) );
+		add_filter( 'woocommerce_checkout_fields', array( $this, 'swap_billing_shipping_fields' ), 10, 1 );
+		add_filter( 'woocommerce_shipping_fields', array( $this, 'add_phone_number_email_to_shipping_form' ), 10, 1 );
+		add_action( 'woocommerce_checkout_create_order', array( $this, 'save_custom_shipping_fields' ), 10, 1 );
+		add_action( 'woocommerce_admin_order_data_after_shipping_address', array( $this, 'display_custom_shipping_fields_in_admin' ), 10, 1 );
+		add_action( 'before_woocommerce_init', array( $this, 'custom_payment_gateways_order' ) );
+		add_action( 'before_woocommerce_init', array( $this, 'dismiss_woo_payments_cta' ) );
 		add_action( 'activated_plugin', array( $this, 'detect_plugin_activation' ), 10, 2 );
-		add_action( 'load-toplevel_page_'. $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
-
+		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
 
 		// Handle WonderCart Integrations
 		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
@@ -299,20 +298,20 @@ class ECommerce {
 	}
 
 	/**
- 	* Remove Add coupon field on cart page
- 	*/
+	 * Remove Add coupon field on cart page
+	 */
 	public function disable_coupon_field_on_cart( $enabled ) {
-        if ( is_cart() ) {
-            $enabled = false;
-        }
-        return $enabled;
-    }
+		if ( is_cart() ) {
+			$enabled = false;
+		}
+		return $enabled;
+	}
 
 	/**
- 	* Remove notice banner on cart page
- 	*/
- 	public function hide_banner_notice_on_cart() {
-		if (is_cart()) {
+	 * Remove notice banner on cart page
+	 */
+	public function hide_banner_notice_on_cart() {
+		if ( is_cart() ) {
 			?>
 			<style>
 				.wc-block-components-notice-banner, .ywgc_enter_code {
@@ -321,26 +320,28 @@ class ECommerce {
 			</style>
 			<?php
 		}
-  }
+	}
 	public function hide_woocommerce_set_up() {
-		$hidden_list = get_option('woocommerce_task_list_hidden_lists', []);
-		if(! in_array("setup", $hidden_list)){
-			$woocommerce_list = array_merge(get_option('woocommerce_task_list_hidden_lists', []),array(
-				"setup" 
-			));
+		$hidden_list = get_option( 'woocommerce_task_list_hidden_lists', array() );
+		if ( ! in_array( 'setup', $hidden_list ) ) {
+			$woocommerce_list = array_merge(
+				get_option( 'woocommerce_task_list_hidden_lists', array() ),
+				array(
+					'setup',
+				)
+			);
 			// $woocommerce_list = array("setup");
-			update_option('woocommerce_task_list_hidden_lists', $woocommerce_list);
+			update_option( 'woocommerce_task_list_hidden_lists', $woocommerce_list );
 		}
-		
 	}
 
 	/**
 	 * To show the shipping form first if the ship to destination is set to 'Shipping'
 	 */
 	public function swap_billing_shipping_fields( $fields ) {
-		$shipping_destination = get_option( 'woocommerce_ship_to_destination');
-		if($shipping_destination == 'shipping') {
-			add_filter( 'gettext', array( $this, 'update_text'), 20, 3 );
+		$shipping_destination = get_option( 'woocommerce_ship_to_destination' );
+		if ( $shipping_destination == 'shipping' ) {
+			add_filter( 'gettext', array( $this, 'update_text' ), 20, 3 );
 			?>
 			<script type="text/javascript">
 				jQuery(document).ready(function($) {
@@ -349,11 +350,11 @@ class ECommerce {
 			</script>
 			<?php
 			// swapping billing and shipping fields
-			$billing = $fields["billing"];
-			$shipping = $fields["shipping"];
- 
+			$billing  = $fields['billing'];
+			$shipping = $fields['shipping'];
+
 			$fields['shipping'] = $billing;
-			$fields['billing'] = $shipping;
+			$fields['billing']  = $shipping;
 		}
 		return $fields;
 	}
@@ -363,31 +364,31 @@ class ECommerce {
 	 */
 	public function update_text( $translated_text, $text, $domain ) {
 		switch ( $translated_text ) {
-			case 'Billing details' :
+			case 'Billing details':
 				$translated_text = __( 'Shipping details', 'wp_module_ecommerce' );
 				break;
-			case 'Ship to a different address?' :
+			case 'Ship to a different address?':
 				$translated_text = __( 'Bill to a different address?', 'wp_module_ecommerce' );
 				break;
 		}
 		return $translated_text;
 	}
 
-	/** 
- 	*  Add phone number and Email field to WooCommerce shipping form
-	*/
-	public function add_phone_number_email_to_shipping_form($fields) {
+	/**
+	 *  Add phone number and Email field to WooCommerce shipping form
+	 */
+	public function add_phone_number_email_to_shipping_form( $fields ) {
 		$fields['shipping_phone'] = array(
-			'label'         => __('Phone Number', 'wp_module_ecommerce'),
-			'required'      => true,
-			'class'         => array('form-row-wide'),
-			'clear'         => true,
+			'label'    => __( 'Phone Number', 'wp_module_ecommerce' ),
+			'required' => true,
+			'class'    => array( 'form-row-wide' ),
+			'clear'    => true,
 		);
 		$fields['shipping_email'] = array(
-			'label'         => __('Email Address', 'wp_module_ecommerce'),
-			'required'      => true,
-			'class'         => array('form-row-wide'),
-			'clear'         => true,
+			'label'    => __( 'Email Address', 'wp_module_ecommerce' ),
+			'required' => true,
+			'class'    => array( 'form-row-wide' ),
+			'clear'    => true,
 		);
 		return $fields;
 	}
@@ -395,64 +396,73 @@ class ECommerce {
 	/*
 	 * Save phone number and email fields to order meta
 	 */
-	function save_custom_shipping_fields($order) {
-		$shipping_phone = isset($_POST['shipping_phone']) ? sanitize_text_field($_POST['shipping_phone']) : '';
-		$shipping_email = isset($_POST['shipping_email']) ? sanitize_email($_POST['shipping_email']) : '';
-	
-		if (!empty($shipping_phone)) {
-			$order->update_meta_data('_shipping_phone', $shipping_phone);
+	function save_custom_shipping_fields( $order ) {
+		$shipping_phone = isset( $_POST['shipping_phone'] ) ? sanitize_text_field( $_POST['shipping_phone'] ) : '';
+		$shipping_email = isset( $_POST['shipping_email'] ) ? sanitize_email( $_POST['shipping_email'] ) : '';
+
+		if ( ! empty( $shipping_phone ) ) {
+			$order->update_meta_data( '_shipping_phone', $shipping_phone );
 		}
-	
-		if (!empty($shipping_email)) {
-			$order->update_meta_data('_shipping_email', $shipping_email);
+
+		if ( ! empty( $shipping_email ) ) {
+			$order->update_meta_data( '_shipping_email', $shipping_email );
 		}
 	}
 
 	/**
 	 * Display phone number and email fields in order admin
 	 */
-	public function display_custom_shipping_fields_in_admin($order) {
-		$shipping_phone = $order->get_meta('_shipping_phone');
-		$shipping_email = $order->get_meta('_shipping_email');
-	
-		if (!empty($shipping_phone)) {
-			echo '<p><strong>' . __('Phone Number', 'wp_module_ecommerce') . ':</strong> ' . esc_html($shipping_phone) . '</p>';
+	public function display_custom_shipping_fields_in_admin( $order ) {
+		$shipping_phone = $order->get_meta( '_shipping_phone' );
+		$shipping_email = $order->get_meta( '_shipping_email' );
+
+		if ( ! empty( $shipping_phone ) ) {
+			echo '<p><strong>' . __( 'Phone Number', 'wp_module_ecommerce' ) . ':</strong> ' . esc_html( $shipping_phone ) . '</p>';
 		}
-	
-		if (!empty($shipping_email)) {
-			echo '<p><strong>' . __('Email Address', 'wp_module_ecommerce') . ':</strong> ' . esc_html($shipping_email) . '</p>';
+
+		if ( ! empty( $shipping_email ) ) {
+			echo '<p><strong>' . __( 'Email Address', 'wp_module_ecommerce' ) . ':</strong> ' . esc_html( $shipping_email ) . '</p>';
 		}
 	}
 
 	public function custom_payment_gateways_order() {
-		$array_data = array("pre_install_woocommerce_payments_promotion" => 2,
-		"yith_paypal_payments" => 0,
-		"element" => 1
-	);
-		update_option('woocommerce_gateway_order', $array_data);
-	}  
+		$array_data = array(
+			'pre_install_woocommerce_payments_promotion' => 2,
+			'yith_paypal_payments'                       => 0,
+			'element'                                    => 1,
+		);
+		update_option( 'woocommerce_gateway_order', $array_data );
+	}
 
 	public function dismiss_woo_payments_cta() {
-		$is_dismissed = get_option( 'wcpay_welcome_page_incentives_dismissed');
-		if (!is_array($is_dismissed) || empty($is_dismissed)) {
-			update_option('wcpay_welcome_page_incentives_dismissed', array("wcpay-promo-2023-action-discount"));
+		$is_dismissed = get_option( 'wcpay_welcome_page_incentives_dismissed' );
+		if ( ! is_array( $is_dismissed ) || empty( $is_dismissed ) ) {
+			update_option( 'wcpay_welcome_page_incentives_dismissed', array( 'wcpay-promo-2023-action-discount' ) );
 		}
 	}
 
 	public function disable_creative_mail_banner() {
-		$is_dismissed = get_option( 'ce4wp_ignore_review_notice');
-		if (!is_array($is_dismissed) || empty($is_dismissed)) {
-			update_option('ce4wp_ignore_review_notice', true);
+		$is_dismissed = get_option( 'ce4wp_ignore_review_notice' );
+		if ( ! is_array( $is_dismissed ) || empty( $is_dismissed ) ) {
+			update_option( 'ce4wp_ignore_review_notice', true );
 		}
 	}
-	
+
+	/**
+	 *  Activates yith plugins (Paypal, Stripe) when woocommerce is activated
+	 *
+	 * @param string $plugin Path to the plugin file relative
+	 * @param bool   $network_activation enable the plugin for all sites
+	 *
+	 * @return void
+	 */
 	public function detect_plugin_activation( $plugin, $network_activation ) {
-		$plugin_slugs = [
+		$plugin_slugs = array(
 			'nfd_slug_yith_paypal_payments_for_woocommerce',
-			'nfd_slug_yith_stripe_payments_for_woocommerce'
-		];
-		if( $plugin == "woocommerce/woocommerce.php" ){
-			foreach( $plugin_slugs as $plugin ){
+			'nfd_slug_yith_stripe_payments_for_woocommerce',
+		);
+		if ( 'woocommerce/woocommerce.php' === $plugin ) {
+			foreach ( $plugin_slugs as $plugin ) {
 				PluginInstaller::install( $plugin, true );
 			}
 		}
