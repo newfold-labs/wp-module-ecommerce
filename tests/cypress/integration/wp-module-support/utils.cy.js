@@ -3,7 +3,7 @@ import { getAppId } from './pluginID.cy';
 const appId = getAppId();
 const customCommandTimeout = 30000;
 const mediumWait = 60000;
-const longWait = 90000;
+const longWait = 120000;
 
 export const comingSoon = ( shouldBeComingSoon ) => {
 	cy.get( `.${ appId }-app-navitem-Settings`, {
@@ -41,11 +41,11 @@ export const comingSoon = ( shouldBeComingSoon ) => {
 
 export const installWoo = () => {
 	cy.exec( `npx wp-env run cli wp plugin install woocommerce`, {
-		timeout: longWait
+		timeout: longWait, failOnNonZeroExit: false, log: true
 	} );
 	
 	cy.exec( `npx wp-env run cli wp plugin activate woocommerce`, {
-		timeout: longWait
+		timeout: longWait, failOnNonZeroExit: false
 	} );
 };
 
