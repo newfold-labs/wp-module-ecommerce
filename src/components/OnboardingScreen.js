@@ -40,7 +40,7 @@ export function OnboardingScreen({
     : Text.Live;
 
   const [hovered, setIsHovered] = useState(false);
-  const [editUrl, setEditUrl] = useState('');
+  const [editUrl, setEditUrl] = useState("");
 
   const handleMouseOver = () => {
     setIsHovered(true);
@@ -56,14 +56,19 @@ export function OnboardingScreen({
   };
 
   useEffect(() => {
-    WordPressSdk.settings.get().then(res => {
-      if(res?.page_on_front && res?.show_on_front === 'page'){
-        setEditUrl(RuntimeSdk.adminUrl(`post.php?post=${res?.page_on_front}&action=edit`, false))
-      }else{
-        setEditUrl(RuntimeSdk.adminUrl('site-editor.php?canvas=edit'));
+    WordPressSdk.settings.get().then((res) => {
+      if (res?.page_on_front && res?.show_on_front === "page") {
+        setEditUrl(
+          RuntimeSdk.adminUrl(
+            `post.php?post=${res?.page_on_front}&action=edit`,
+            false
+          )
+        );
+      } else {
+        setEditUrl(RuntimeSdk.adminUrl("site-editor.php?canvas=edit"));
       }
-    })
-  }, [])
+    });
+  }, []);
 
   return (
     <Section.Container
@@ -109,43 +114,35 @@ export function OnboardingScreen({
                     {__("SITE PREVIEW", "wp-module-ecommerce")}
                   </p>
                 </div>
-                {comingSoon ? (
-                  <div className="nfd-flex-col">
-                    <Illustration
-                      className={classNames(
-                        "nfd-h-full",
-                        "nfd-w-full",
-                        "nfd-rounded-b-md"
-                      )}
-                    />
+                <div className="nfd-flex-col">
+                  <div
+                    className={classNames(
+                      "nfd-h-[216px] nfd-box-content",
+                      "nfd-box-content nfd-z-[2] nfd-opacity-100",
+                      "nfd-flex nfd-flex-col nfd-justify-center nfd-items-center",
+                      "md:nfd-w-[520px] md:min-[783px]:nfd-w-[387px] md:min-[768px]:nfd-w-[670px]",
+                      "lg:min-[1024px]:nfd-w-[486px] lg:nfd-w-[520px] lg:nfd-h-[245px]",
+                      "xl:min-[1280px]:nfd-w-[360px]",
+                      "2xl:nfd-w-[520px]"
+                    )}
+                  >
+                    <iframe
+                      onLoad={iframeOnLoad}
+                      id="iframe-preview"
+                      title="Preview"
+                      className="nfd-w-[400%] nfd-min-h-[400%] nfd-basis-full nfd-scale-[0.25] nfd-overflow-hidden nfd-relative nfd-top-[-9px]"
+                      src={
+                        !comingSoon
+                          ? NewfoldRuntime.homeUrl
+                          : NewfoldRuntime.homeUrl + "/?preview=coming_soon"
+                      }
+                      scrolling="no"
+                      name="iframe-preview"
+                      sandbox="allow-scripts allow-same-origin"
+                      seamless
+                    ></iframe>
                   </div>
-                ) : (
-                  <div className="nfd-flex-col">
-                    <div
-                      className={classNames(
-                        "nfd-h-[216px] nfd-box-content",
-                        "nfd-box-content nfd-z-[2] nfd-opacity-100",
-                        "nfd-flex nfd-flex-col nfd-justify-center nfd-items-center",
-                        "md:nfd-w-[520px] md:min-[783px]:nfd-w-[387px] md:min-[768px]:nfd-w-[670px]",
-                        "lg:min-[1024px]:nfd-w-[486px] lg:nfd-w-[520px] lg:nfd-h-[245px]",
-                        "xl:min-[1280px]:nfd-w-[360px]",
-                        "2xl:nfd-w-[520px]"
-                      )}
-                    >
-                      <iframe
-                        onLoad={iframeOnLoad}
-                        id="iframe-preview"
-                        title="Preview"
-                        className="nfd-w-[400%] nfd-min-h-[400%] nfd-basis-full nfd-scale-[0.25] nfd-overflow-hidden nfd-relative nfd-top-[-9px]"
-                        src={NewfoldRuntime.homeUrl}
-                        scrolling="no"
-                        name="iframe-preview"
-                        sandbox="allow-scripts allow-same-origin"
-                        seamless
-                      ></iframe>
-                    </div>
-                  </div>
-                )}
+                </div>
                 <div
                   className={classNames(
                     "nfd-absolute nfd-top-0 nfd-left-0 nfd-bottom-0 nfd-right-0 nfd-flex nfd-items-center nfd-justify-center nfd-gap-4 nfd-flex-col ",

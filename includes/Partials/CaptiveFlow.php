@@ -73,18 +73,18 @@ class CaptiveFlow {
 
 	public static function register_page() {
 		\add_submenu_page(
-			null,
-			null,
-			null,
+			'',
+			'',
+			'',
 			Permissions::ADMIN,
 			self::$PAYPAL_CAPTIVE_FLOW,
 			array( __CLASS__, 'render_paypal' ),
 			100
 		);
 		\add_submenu_page(
-			null,
-			null,
-			null,
+			'',
+			'',
+			'',
 			Permissions::ADMIN,
 			self::$SHIPPO_CAPTIVE_FLOW,
 			array( __CLASS__, 'render_shippo' ),

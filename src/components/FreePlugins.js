@@ -21,7 +21,7 @@ export function FreePlugins({ notify, showShadowBox }) {
   return (
     <Section.Container showShadowBox={showShadowBox}>
       <Section.Header
-        title={__("eCommerce Products", "wp-module-ecommerce")}
+        title={__("Additional Features", "wp-module-ecommerce")}
         subTitle={Text}
       />
       <Section.Content>
