@@ -26,7 +26,7 @@ export const MarketplaceSdk = {
           product.type === "plugin"
       )
       .map((product) => ({
-        clickToBuyId: ctbIsSupported ? product.clickToBuyId : null,
+        clickToBuyId: product.clickToBuyId,
         name: product.name,
         primaryUrl: product.primaryUrl,
       }));

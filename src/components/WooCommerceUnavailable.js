@@ -14,7 +14,7 @@ export function WooCommerceUnavailable(props) {
       <div className="nfd-bg-canvas nfd-rounded-lg nfd-border nfd-border-solid nfd-border-line">
         <div className="nfd-px-4 nfd-py-2 nfd-flex nfd-items-center nfd-rounded-lg">
           <div className="nfd-flex-1">
-            <Title size={4} className="nfd-leading-normal">
+            <Title size="4" className="nfd-leading-normal">
               {__("Add a store to your site", "wp-module-ecommerce")}
             </Title>
             <span className="nfd-whitespace-pre-wrap">

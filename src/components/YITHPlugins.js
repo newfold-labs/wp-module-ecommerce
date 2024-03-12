@@ -110,7 +110,7 @@ export function YITHPlugins({ woo, wpModules }) {
   return (
     <Section.Container>
       <Section.Header
-        title={__("eCommerce Products", "wp-module-ecommerce")}
+        title={__("eCommerce Features", "wp-module-ecommerce")}
         subTitle={__(
           "Improve your store with these powerful add-ons.",
           "wp-module-ecommerce"
@@ -119,7 +119,7 @@ export function YITHPlugins({ woo, wpModules }) {
       <Section.Content>
         {cards.length === 0 && (
           <div className="nfd-flex nfd-items-center nfd-text-center nfd-justify-center nfd-h-60">
-            <Spinner size={8} className="nfd-text-primary" />
+            <Spinner size="8" className="nfd-text-primary" />
           </div>
         )}
         <div
@@ -135,6 +135,7 @@ export function YITHPlugins({ woo, wpModules }) {
             .map((product) => {
               return (
                 <YithFeatureCard
+                  key={product.id}
                   id={product.id}
                   yithProducts={product}
                   yithPluginsMap={yithPluginsMap}

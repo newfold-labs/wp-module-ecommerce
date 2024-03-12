@@ -86,7 +86,7 @@ export function OnboardingScreen({
             )}
           >
             <div className="nfd-flex nfd-flex-col nfd-justify-start nfd-items-start nfd-gap-4">
-              <Title size={2}>{title}</Title>
+              <Title size="2">{title}</Title>
               <div>
                 {comingSoon ? (
                   <Alert
@@ -138,7 +138,7 @@ export function OnboardingScreen({
                       }
                       scrolling="no"
                       name="iframe-preview"
-                      sandbox
+                      sandbox="allow-scripts allow-same-origin"
                       seamless
                     ></iframe>
                   </div>

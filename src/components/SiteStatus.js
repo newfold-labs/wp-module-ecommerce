@@ -56,7 +56,7 @@ export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
       )}
     >
       <div className="nfd-flex-1">
-        <Title size={4} className="nfd-leading-normal">
+        <Title size="4" className="nfd-leading-normal">
           {__("Ready to go live?", "wp-module-ecommerce")}
         </Title>
         <span className="nfd-whitespace-pre-wrap nfd-leading-tight">

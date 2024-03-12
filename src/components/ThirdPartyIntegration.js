@@ -74,7 +74,7 @@ export const ThirdPartyIntegration = ({
     <Section.Settings title={title} description={description}>
       {isLoading ? (
         <div className="nfd-flex nfd-items-center nfd-text-center nfd-justify-center nfd-h-60">
-          <Spinner size={8} className="nfd-text-primary" />
+          <Spinner size="8" className="nfd-text-primary" />
         </div>
       ) : (
           <div className="nfd-flex-1">
