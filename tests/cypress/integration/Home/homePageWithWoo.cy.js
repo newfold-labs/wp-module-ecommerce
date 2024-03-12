@@ -35,7 +35,7 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 
 		// Select country
 		cy.get( '[data-id="store-country-select"]' ).click();
-		cy.contains( '.nfd-select__option' , 'United States (US)').click();
+		cy.contains( '.nfd-select__option', 'United States (US)' ).click();
 		// Enter city
 		cy.get( '[name="woocommerce_store_address"]' ).type(
 			'Sunflower Canal'
@@ -43,12 +43,15 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 		cy.get( '[name="woocommerce_store_city"]' ).type( 'Safford' );
 		// Select state
 		cy.get( '[data-id="state-select"]' ).click();
-		cy.contains( '.nfd-select__option' , 'Arizona').click();
+		cy.contains( '.nfd-select__option', 'Arizona' ).click();
 		// Enter postcode
 		cy.get( '[name="woocommerce_store_postcode"]' ).type( '85546' );
 		// Select Currency
 		cy.get( '[data-id="currency"]' ).click();
-		cy.contains( '.nfd-select__option' , 'United States (US) dollar ($)').click();
+		cy.contains(
+			'.nfd-select__option',
+			'United States (US) dollar ($)'
+		).click();
 
 		cy.get( '.nfd-border-t .nfd-button--primary' )
 			.should( 'not.be.disabled' )
@@ -68,8 +71,8 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 		viewRemainingTasks();
 	} );
 
-	it('Verify next step "Connect a payment processor"', () => {
-		cy.reload()
+	it( 'Verify next step "Connect a payment processor"', () => {
+		cy.reload();
 		cy.contains(
 			'.nfd-grid.nfd-gap-4 ul li a',
 			'Connect a payment processor',
@@ -116,25 +119,42 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 		);
 	} );
 
-	it(' Verify next step "Set up Shipping options" ', () => {
-		if (pluginId == 'bluehost') {
-			cy.contains('.nfd-grid.nfd-gap-4 ul li a', 'Setup shipping options', {
-				timeout: customCommandTimeout,
-			})
-				.as('paymentStep')
-				.should('exist')
+	it( ' Verify next step "Set up Shipping options" ', () => {
+		if ( pluginId == 'bluehost' ) {
+			cy.contains(
+				'.nfd-grid.nfd-gap-4 ul li a',
+				'Setup shipping options',
+				{
+					timeout: customCommandTimeout,
+				}
+			)
+				.as( 'paymentStep' )
+				.should( 'exist' )
 				.scrollIntoView()
 				.click();
 
-			cy.window().then((win) => {
-				cy.spy(win, 'open', (url) => {
+			cy.get( '.nfd-app-section-content .nfd-button--primary' )
+				.contains( 'Install' )
+				.click();
+			cy.get( '.nfd-app-section-content .nfd-button--primary' )
+				.contains( 'Installing' )
+				.should( 'not.exist' );
+
+			cy.window().then( ( win ) => {
+				cy.spy( win, 'open', ( url ) => {
 					win.location.href =
 						'https://goshippo.com/oauth/register?next=/oauth/authorize';
-				}).as('windowOpen');
-			});
+				} ).as( 'windowOpen' );
+			} );
 
-			cy.get('.nfd-button--primary').contains('Connect').click();
-			cy.get('@windowOpen').should('be.called');
+			cy.get( '.nfd-app-section-content .nfd-button--primary', {
+				timeout: customCommandTimeout,
+			} )
+				.contains( 'Connect' )
+				.click();
+			cy.get( '@windowOpen', { timeout: customCommandTimeout } ).should(
+				'be.called'
+			);
 		}
 	} );
 
