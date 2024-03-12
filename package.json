@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@faizaanceg/pandora": "^1.1.1",
-    "@heroicons/react": "2.0.18",
+    "@heroicons/react": "2.1.1",
     "@newfold-labs/js-utility-ui-analytics": "^1.2.0",
     "@newfold-labs/wp-module-runtime": "^1.0.0",
     "@newfold/ui-component-library": "^1.0.0",
