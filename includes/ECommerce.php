@@ -458,8 +458,8 @@ class ECommerce {
 	 */
 	public function detect_plugin_activation( $plugin, $network_activation ) {
 		$plugin_slugs = array(
-			// 'nfd_slug_yith_paypal_payments_for_woocommerce',
-			'nfd_slug_yith_stripe_payments_for_woocommerce',
+			'nfd_slug_yith_paypal_payments_for_woocommerce',
+			// 'nfd_slug_yith_stripe_payments_for_woocommerce',
 		);
 		if ( 'woocommerce/woocommerce.php' === $plugin ) {
 			foreach ( $plugin_slugs as $plugin ) {
