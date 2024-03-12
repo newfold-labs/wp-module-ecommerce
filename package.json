@@ -27,7 +27,7 @@
     "@reduxjs/toolkit": "1.9.5",
     "@wordpress/api-fetch": "^3.6.2",
     "@wordpress/components": "^8.3.2",
-    "@wordpress/date": "^4.34.0",
+    "@wordpress/date": "^4.53.0",
     "@wordpress/element": "^2.8.2",
     "@wordpress/i18n": "^4.29.0",
     "classnames": "2.3.2",
