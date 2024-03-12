@@ -103,7 +103,7 @@ const Paypal = ({ notify }) => {
                               "min-[360px]:nfd-m-0"
                           )}
                       >
-                        {__("Connect", "wp-module-ecommerce")}
+                        {__("Install", "wp-module-ecommerce")}
                       </Button>
                   )}
                 </div>
