@@ -45,7 +45,7 @@ export function WonderCart(props) {
             )}
           >
             <div className="nfd-flex-1">
-              <Title size={4} className="nfd-leading-normal">
+              <Title size="4" className="nfd-leading-normal">
                 {__(
                   "Add Upsells, Cross-sells, and other Promotions to your store",
                   "wp-module-ecommerce"

@@ -29,30 +29,6 @@ export const ThirdPartyIntegration = ({
   } = useSWR(id, IntegrationsSdk.status);
 
   const [isConnectionActive, setConnectionActive] = useState(false);
-  const [openSection, setOpenSection] = useState(true);
-  useLayoutEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const currentSection = urlParams.get('section');
-
-    if (typeof integrationStatus !== 'undefined') {
-      if (openSection && currentSection === 'paypal') {
-        const ppButton = document.querySelector('.yith-btn-paypal');
-
-        if (ppButton?.dataset?.securewindowmsg && document.getElementById('signup-js') !== 'undefined') {
-          ppButton.click();
-          ppButton.disabled = true;
-          setOpenSection(false);
-        }
-      }
-
-      if (openSection && currentSection === 'shippo') {
-        const shippoButton = document.querySelector('.section-shippo button');
-        const event = new Event('onboarding-shippo-popup');
-        window.document.dispatchEvent(event);
-        setOpenSection(false);
-      }
-    }
-  });
 
 
   let installPlugin = useSWRMutation("install-plugin", async () => {
@@ -63,12 +39,6 @@ export const ThirdPartyIntegration = ({
     setConnectionActive(true);
     if (id === 'shippo' || id === 'paypal') {
       window.location.reload();
-      if(  window.location.search.indexOf('section') !== -1 ){
-        window.location.search = replaceQueryParam('section', id,  window.location.search);
-      }else{
-        window.location.search += ('&section=' + id);
-      }
-
     }
   });
   const updateButtonEvent = async (event) => {
@@ -104,54 +74,26 @@ export const ThirdPartyIntegration = ({
     <Section.Settings title={title} description={description}>
       {isLoading ? (
         <div className="nfd-flex nfd-items-center nfd-text-center nfd-justify-center nfd-h-60">
-          <Spinner size={8} className="nfd-text-primary" />
+          <Spinner size="8" className="nfd-text-primary" />
         </div>
       ) : (
-        <div className="nfd-flex-1">
-          {isConnectionActive ? (
-            id !== "razorpay" && id !== "stripe" ? (
-              <div className="components-modal__frame nfd-h-[500px]">
-                <button
-                  type="button"
-                  onClick={async () => {
-                    setConnectionActive(false);
-                    const integrationStatusResponse =
-                      await refreshIntegrationStatus();
-                    if (integrationStatusResponse.complete) {
-                      notify.push(`${id}-account-connect-success`, {
-                        title: sprintf(
-                          __(
-                            `Your "%1$s" account have been connected`,
-                            "wp-module-ecommerce"
-                          ),            
-                          `${id}`
-                        ),
-                        variant: "success",
-                        autoDismiss: 5000
-                      });
-                    }
-                  }}
-                />
-                <iframe
-                  className="nfd-h-full nfd-w-full"
-                  src={integrationStatus?.integration?.captive}
-                />
-              </div>
-            ) : id == "razorpay" ? (
-              <CaptiveRazorpay
-                razorpaySettings={integrationStatus?.details?.settings}
-              />
+          <div className="nfd-flex-1">
+            {isConnectionActive ? (
+                id == "razorpay" ? (
+                    <CaptiveRazorpay
+                        razorpaySettings={integrationStatus?.details?.settings}
+                    />
+                ) : (
+                    (id == "stripe" || id == 'paypal') && window.location.reload()
+                )
             ) : (
-              id == "stripe" && window.location.reload()
-            )
-          ) : (
-            children({
-              integrationStatus,
-              onConnect,
-              isInstalling: installPlugin.isMutating,
-            })
-          )}
-        </div>
+                children({
+                  integrationStatus,
+                  onConnect,
+                  isInstalling: installPlugin.isMutating,
+                })
+            )}
+          </div>
       )}
     </Section.Settings>
   );
