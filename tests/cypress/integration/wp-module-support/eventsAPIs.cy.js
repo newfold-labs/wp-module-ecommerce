@@ -1,6 +1,7 @@
 export const APIList = {
     'bh_academy' : '/index.php?rest_route=%2Fnewfold-data%2Fv1%2Fevents&_locale=user',
     'yoast_seo_academy' : '/index.php?rest_route=%2Fnewfold-data%2Fv1%2Fevents&_locale=user',
+    'shippo_plugin_status' : '/index.php?rest_route=%2Fnewfold-ecommerce%2Fv1%2Fintegrations%2Fshippo&_locale=user',
 }
 
 export const EventsAPI = (events_name, pluginId) => {

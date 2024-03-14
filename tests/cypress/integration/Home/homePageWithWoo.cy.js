@@ -133,28 +133,35 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 				.scrollIntoView()
 				.click();
 
-			cy.get( '.nfd-app-section-content .nfd-button--primary' )
-				.contains( 'Install' )
-				.click();
-			cy.get( '.nfd-app-section-content .nfd-button--primary' )
-				.contains( 'Installing' )
-				.should( 'not.exist' );
+				cy.intercept("GET", APIList.shippo_plugin_status).as("shippo")
 
-			cy.window().then( ( win ) => {
-				cy.spy( win, 'open', ( url ) => {
-					win.location.href =
-						'https://goshippo.com/oauth/register?next=/oauth/authorize';
-				} ).as( 'windowOpen' );
-			} );
-
-			cy.get( '.nfd-app-section-content .nfd-button--primary', {
-				timeout: customCommandTimeout,
-			} )
-				.contains( 'Connect' )
-				.click();
-			cy.get( '@windowOpen', { timeout: customCommandTimeout } ).should(
-				'be.called'
-			);
+				cy.wait("@shippo").then(data => {
+					cy.wrap(data).then(res=> {
+						if(res.response.body.integration.plugin.status == true){
+							cy.window().then( ( win ) => {
+								cy.spy( win, 'open', ( url ) => {
+									win.location.href =
+										'https://goshippo.com/oauth/register?next=/oauth/authorize';
+								} ).as( 'windowOpen' );
+								} );
+							cy.get( '.nfd-app-section-content .nfd-button--primary', {
+								timeout: customCommandTimeout,
+							} )
+								.contains( 'Connect' )
+								.click();
+							cy.get( '@windowOpen', { timeout: customCommandTimeout } ).should(
+								'be.called'
+							);
+						}else{
+							cy.get( '.nfd-app-section-content .nfd-button--primary' )
+						.contains( 'Install' )
+						.click();
+						cy.get( '.nfd-app-section-content .nfd-button--primary' )
+						.contains( 'Installing' )
+						.should( 'not.exist' );			
+						}
+					})
+				})
 		}
 	} );
 
