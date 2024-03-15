@@ -7,7 +7,7 @@ const pluginId = GetPluginId();
 const appId = getAppId();
 
 describe( 'Verify Wondercart accessibility as per site capabilities', () => {
-	const cTBAndYithTrue =  {
+	const cTBAndYithTrue = JSON.stringify( {
 		"canAccessAI": true,
 		"canAccessHelpCenter": true,
 		"canAccessGlobalCTB": true,
@@ -15,9 +15,9 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 		"hasYithExtended": true,
 		"isEcommerce": true,
 		"isJarvis": true,
-	} ;
+	} );
 
-	const cTBTrueYithFalse =  {
+	const cTBTrueYithFalse = JSON.stringify( {
 		"canAccessAI": true,
 		"canAccessHelpCenter": true,
 		"canAccessGlobalCTB": true,
@@ -25,7 +25,7 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 		"hasYithExtended": false,
 		"isEcommerce": false,
 		"isJarvis": true,
-	} ;
+	} );
 
 	before( function () {
 		if ( pluginId !== 'bluehost' ) {
@@ -52,7 +52,7 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 			{ failOnNonZeroExit: false }
 		);
 		cy.exec(
-			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ cTBAndYithTrue }' --format=json`,
+			`npx wp-env run cli wp option set _transient_nfd_site_capabilities ${ cTBAndYithTrue } --format=json`,
 			{ timeout: customCommandTimeout }
 		);
 		cy.reload();
@@ -68,7 +68,7 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 			{ failOnNonZeroExit: false }
 		);
 		cy.exec(
-			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ cTBTrueYithFalse }' --format=json`,
+			`npx wp-env run cli wp option set _transient_nfd_site_capabilities ${ cTBTrueYithFalse } --format=json`,
 			{ timeout: customCommandTimeout }
 		);
 		cy.reload();
@@ -112,7 +112,7 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 			{ failOnNonZeroExit: false }
 		);
 		cy.exec(
-			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ cTBAndYithTrue }' --format=json`,
+			`npx wp-env run cli wp option set _transient_nfd_site_capabilities ${ cTBAndYithTrue }' --format=json`,
 			{ timeout: customCommandTimeout }
 		);
 		cy.reload();
