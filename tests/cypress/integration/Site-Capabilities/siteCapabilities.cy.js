@@ -52,7 +52,7 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 			{ failOnNonZeroExit: false }
 		);
 		cy.exec(
-			`npx wp-env run cli wp option set _transient_nfd_site_capabilities ${ cTBAndYithTrue } --format=json`,
+			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ cTBAndYithTrue }' --format=json`,
 			{ timeout: customCommandTimeout }
 		);
 		cy.reload();
@@ -68,7 +68,7 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 			{ failOnNonZeroExit: false }
 		);
 		cy.exec(
-			`npx wp-env run cli wp option set _transient_nfd_site_capabilities ${ cTBTrueYithFalse } --format=json`,
+			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ cTBTrueYithFalse }' --format=json`,
 			{ timeout: customCommandTimeout }
 		);
 		cy.reload();
@@ -112,7 +112,7 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 			{ failOnNonZeroExit: false }
 		);
 		cy.exec(
-			`npx wp-env run cli wp option set _transient_nfd_site_capabilities ${ cTBAndYithTrue }' --format=json`,
+			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ cTBAndYithTrue }'' --format=json`,
 			{ timeout: customCommandTimeout }
 		);
 		cy.reload();
