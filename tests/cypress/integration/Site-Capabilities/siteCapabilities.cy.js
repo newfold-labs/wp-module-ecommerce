@@ -7,7 +7,7 @@ const pluginId = GetPluginId();
 const appId = getAppId();
 
 describe( 'Verify Wondercart accessibility as per site capabilities', () => {
-	const cTBAndYithTrue = JSON.stringify( {
+	const cTBAndYithTrue =  {
 		"canAccessAI": true,
 		"canAccessHelpCenter": true,
 		"canAccessGlobalCTB": true,
@@ -15,9 +15,9 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 		"hasYithExtended": true,
 		"isEcommerce": true,
 		"isJarvis": true,
-	} );
+	} ;
 
-	const cTBTrueYithFalse = JSON.stringify( {
+	const cTBTrueYithFalse =  {
 		"canAccessAI": true,
 		"canAccessHelpCenter": true,
 		"canAccessGlobalCTB": true,
@@ -25,7 +25,7 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 		"hasYithExtended": false,
 		"isEcommerce": false,
 		"isJarvis": true,
-	} );
+	} ;
 
 	before( function () {
 		if ( pluginId !== 'bluehost' ) {
