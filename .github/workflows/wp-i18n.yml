@@ -1,5 +1,8 @@
 name: WP Internationalization
 on:
+  push:
+    branches:
+      - "**"
   pull_request:
     types: [opened, edited, synchronize, reopened, ready_for_review]
 concurrency:
@@ -95,8 +98,8 @@ jobs:
       - name: Commit web files
         if: steps.changes.outputs.changed != 0
         run: |
-          git config --local user.name "${GITHUB_ACTOR} "
-          git config --local user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git config --local user.name "${{ github.event.head_commit.author.name }}"
+          git config --local user.email "${{ github.event.head_commit.author.email }}"
           git remote -v
           git add -A
           git commit -m "WordPress I18N triggered by commit ${{ github.sha }}"
@@ -107,4 +110,3 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
