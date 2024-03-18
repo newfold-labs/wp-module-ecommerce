@@ -16,6 +16,7 @@ final class Brands {
 		return \sanitize_title( str_replace( '_', '-', $brand_raw_value ) );
 	}
 	/**
+	 * 
 	 * Brand specific data
 	 *
 	 * @param Container $container the container from the module loader
