@@ -159,9 +159,7 @@ export const ProductsAndServicesDefinition = (props) => ({
       assets: ({ isActive }) => ({
         Image: CalendarIcon,
         ActionIcon: isActive,
-        learnMoreUrl:
-          isBluehost &&
-          "https://www.bluehost.com/help/article/yith-booking-and-appointment-for-woocommerce",
+        learnMoreUrl: RuntimeSdk.brandSettings.nfd_slug_yith_woocommerce_booking,
       }),
       text: (state) => ({
         title: __(
@@ -217,9 +215,7 @@ export const ProductsAndServicesDefinition = (props) => ({
       assets: ({ isActive }) => ({
         Image: GiftIcon,
         ActionIcon: isActive,
-        learnMoreUrl:
-          isBluehost &&
-          "https://www.bluehost.com/help/article/yith-woocommerce-gift-cards",
+        learnMoreUrl: RuntimeSdk.brandSettings.nfd_slug_yith_woocommerce_gift_cards,
       }),
       text: (state) => ({
         title: __("YITH WooCommerce Gift Cards", "wp-module-ecommerce"),
