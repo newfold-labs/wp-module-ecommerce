@@ -42,14 +42,14 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 	after( () => {
 		cy.exec(
 			`npx wp-env run cli wp option delete _transient_nfd_site_capabilities`,
-			{ failOnNonZeroExit: false }
+			{ failOnNonZeroExit: false, log: true }
 		);
 	} );
 
 	it( 'Verify if Sales and Discounts sub tab is displayed', () => {
 		cy.exec(
 			`npx wp-env run cli wp option delete _transient_nfd_site_capabilities`,
-			{ failOnNonZeroExit: false }
+			{ failOnNonZeroExit: false, log: true }
 		);
 		cy.exec(
 			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ cTBAndYithTrue }' --format=json`,
@@ -65,11 +65,11 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 	it( 'Verify Buy Now is shown when canAccessGlobalCTB is true and commerce addon is false', () => {
 		cy.exec(
 			`npx wp-env run cli wp option delete _transient_nfd_site_capabilities`,
-			{ failOnNonZeroExit: false }
+			{ failOnNonZeroExit: false, log: true }
 		);
 		cy.exec(
 			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ cTBTrueYithFalse }' --format=json`,
-			{ timeout: customCommandTimeout }
+			{ timeout: customCommandTimeout, log: true }
 		);
 		cy.reload();
 		cy.get( `.${ appId }-app-navitem-Store`, {
@@ -109,11 +109,11 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 	it( 'Verify Install Now is shown when customer has ecommerce addon', () => {
 		cy.exec(
 			`npx wp-env run cli wp option delete _transient_nfd_site_capabilities`,
-			{ failOnNonZeroExit: false }
+			{ failOnNonZeroExit: false, log: true }
 		);
 		cy.exec(
 			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ cTBAndYithTrue }' --format=json`,
-			{ timeout: customCommandTimeout }
+			{ timeout: customCommandTimeout, log: true }
 		);
 		cy.reload();
 		cy.get( `.${ appId }-app-navitem-Store`, {
