@@ -1,10 +1,9 @@
 name: WP Internationalization
 on:
-  push:
-    branches:
-      - "**"
   pull_request:
     types: [opened, edited, synchronize, reopened, ready_for_review]
+    branches:
+      - 'trunk'
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
   cancel-in-progress: true
@@ -76,9 +75,6 @@ jobs:
       - name: Install PHP Dependencies
         run: composer install --no-progress --optimize-autoloader
 
-      - name: Add text domains
-        run: npx node-wp-i18n addtextdomain
-
       - name: Setup Registry
         run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.NEWFOLD_ACCESS_TOKEN }}" >> .npmrc
 
@@ -87,6 +83,12 @@ jobs:
 
       - name: Build dist
         run: npm run build
+        
+      - name: Remove token
+        run: git checkout -- '.npmrc'
+        
+      - name: Add text domains
+        run: npx node-wp-i18n addtextdomain
 
       - name: Generate POT file
         run: vendor/bin/wp i18n make-pot . ./languages/${{ github.event.repository.name }}.pot --headers='{"Report-Msgid-Bugs-To":"https://github.com/${{ github.repository }}/issues","POT-Creation-Date":null}' --exclude=node_modules,tests
