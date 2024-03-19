@@ -17,7 +17,10 @@ import {
   wcPluginStatusParser,
   wcProductsParser,
 } from "./selectors";
-import { RuntimeSdk } from "../sdk/runtime";
+import {
+  YITH_WOOCOMMERCE_BOOKING_APPOINTMENTS,
+  YITH_WOOCOMMERCE_GIFT_CARDS
+} from "../constants";
 
 const getUrl = (href) => {
   let [page, qs] = href.split("?");
@@ -25,8 +28,6 @@ const getUrl = (href) => {
   query.set("return_to_nfd", window.location.hash.replace("#", ""));
   return `${page}?${query}`;
 };
-
-const isBluehost = RuntimeSdk?.brandSettings?.brand?.includes("bluehost");
 
 function defineFeatureState() {
   return {
@@ -159,9 +160,7 @@ export const ProductsAndServicesDefinition = (props) => ({
       assets: ({ isActive }) => ({
         Image: CalendarIcon,
         ActionIcon: isActive,
-        learnMoreUrl:
-          isBluehost &&
-          "https://www.bluehost.com/help/article/yith-booking-and-appointment-for-woocommerce",
+        learnMoreUrl: YITH_WOOCOMMERCE_BOOKING_APPOINTMENTS,
       }),
       text: (state) => ({
         title: __(
@@ -217,9 +216,7 @@ export const ProductsAndServicesDefinition = (props) => ({
       assets: ({ isActive }) => ({
         Image: GiftIcon,
         ActionIcon: isActive,
-        learnMoreUrl:
-          isBluehost &&
-          "https://www.bluehost.com/help/article/yith-woocommerce-gift-cards",
+        learnMoreUrl: YITH_WOOCOMMERCE_GIFT_CARDS,
       }),
       text: (state) => ({
         title: __("YITH WooCommerce Gift Cards", "wp-module-ecommerce"),
