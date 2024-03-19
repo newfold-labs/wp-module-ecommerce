@@ -206,16 +206,16 @@
         },
         {
             "name": "newfold-labs/wp-module-installer",
-            "version": "1.1.2",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-installer.git",
-                "reference": "a5a683c2b6d2422a4e18c50919bdb8fd4bd89a5c"
+                "reference": "2f1289336d1f49c18a95b05aa7279c12471d3bd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/a5a683c2b6d2422a4e18c50919bdb8fd4bd89a5c",
-                "reference": "a5a683c2b6d2422a4e18c50919bdb8fd4bd89a5c",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/2f1289336d1f49c18a95b05aa7279c12471d3bd6",
+                "reference": "2f1289336d1f49c18a95b05aa7279c12471d3bd6",
                 "shasum": ""
             },
             "require-dev": {
@@ -241,10 +241,10 @@
             ],
             "description": "An installer for WordPress plugins and themes.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-installer/tree/1.1.2",
+                "source": "https://github.com/newfold-labs/wp-module-installer/tree/1.1.4",
                 "issues": "https://github.com/newfold-labs/wp-module-installer/issues"
             },
-            "time": "2023-09-18T06:42:43+00:00"
+            "time": "2024-03-19T09:53:55+00:00"
         },
         {
             "name": "newfold-labs/wp-module-onboarding-data",
