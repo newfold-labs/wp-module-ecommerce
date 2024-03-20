@@ -159,6 +159,7 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 	} );
 
 	it( 'Verify next step "Configure tax settings"', () => {
+		cy.reload()
 		cy.contains( '.nfd-grid.nfd-gap-4 ul li a', 'Configure tax settings', {
 			timeout: customCommandTimeout,
 		} )
