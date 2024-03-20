@@ -6,7 +6,7 @@ import {
 } from '../wp-module-support/utils.cy';
 import { EventsAPI, APIList } from '../wp-module-support/eventsAPIs.cy';
 
-const customCommandTimeout = 60000;
+const customCommandTimeout = 20000;
 const pluginId = GetPluginId();
 const hg_region = 'br';
 
