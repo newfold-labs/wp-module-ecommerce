@@ -58,16 +58,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ai",
-            "version": "1.1.6",
+            "version": "1.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ai.git",
-                "reference": "de39aa47b11d68c763087ac26cca674068d47161"
+                "reference": "2d1ea36f2a17c79934f3c41b02316d8d12fd299d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ai/zipball/de39aa47b11d68c763087ac26cca674068d47161",
-                "reference": "de39aa47b11d68c763087ac26cca674068d47161",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ai/zipball/2d1ea36f2a17c79934f3c41b02316d8d12fd299d",
+                "reference": "2d1ea36f2a17c79934f3c41b02316d8d12fd299d",
                 "shasum": ""
             },
             "require": {
@@ -96,10 +96,10 @@
             ],
             "description": "A module for providing artificial intelligence capabilities.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ai/tree/1.1.6",
+                "source": "https://github.com/newfold-labs/wp-module-ai/tree/1.1.7",
                 "issues": "https://github.com/newfold-labs/wp-module-ai/issues"
             },
-            "time": "2024-02-29T10:39:41+00:00"
+            "time": "2024-03-18T11:49:32+00:00"
         },
         {
             "name": "newfold-labs/wp-module-coming-soon",
@@ -206,16 +206,16 @@
         },
         {
             "name": "newfold-labs/wp-module-installer",
-            "version": "1.1.2",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-installer.git",
-                "reference": "a5a683c2b6d2422a4e18c50919bdb8fd4bd89a5c"
+                "reference": "2f1289336d1f49c18a95b05aa7279c12471d3bd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/a5a683c2b6d2422a4e18c50919bdb8fd4bd89a5c",
-                "reference": "a5a683c2b6d2422a4e18c50919bdb8fd4bd89a5c",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/2f1289336d1f49c18a95b05aa7279c12471d3bd6",
+                "reference": "2f1289336d1f49c18a95b05aa7279c12471d3bd6",
                 "shasum": ""
             },
             "require-dev": {
@@ -241,10 +241,10 @@
             ],
             "description": "An installer for WordPress plugins and themes.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-installer/tree/1.1.2",
+                "source": "https://github.com/newfold-labs/wp-module-installer/tree/1.1.4",
                 "issues": "https://github.com/newfold-labs/wp-module-installer/issues"
             },
-            "time": "2023-09-18T06:42:43+00:00"
+            "time": "2024-03-19T09:53:55+00:00"
         },
         {
             "name": "newfold-labs/wp-module-onboarding-data",
@@ -294,16 +294,16 @@
         },
         {
             "name": "newfold-labs/wp-module-patterns",
-            "version": "0.1.14",
+            "version": "0.1.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-patterns.git",
-                "reference": "a104b98dd8c743e92230b3e383706e871530a0e5"
+                "reference": "4d82192a614f21b5e083fcd2c7893677dd974f9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-patterns/zipball/a104b98dd8c743e92230b3e383706e871530a0e5",
-                "reference": "a104b98dd8c743e92230b3e383706e871530a0e5",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-patterns/zipball/4d82192a614f21b5e083fcd2c7893677dd974f9c",
+                "reference": "4d82192a614f21b5e083fcd2c7893677dd974f9c",
                 "shasum": ""
             },
             "require-dev": {
@@ -337,10 +337,10 @@
             ],
             "description": "WordPress Cloud Patterns",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-patterns/tree/0.1.14",
+                "source": "https://github.com/newfold-labs/wp-module-patterns/tree/0.1.15",
                 "issues": "https://github.com/newfold-labs/wp-module-patterns/issues"
             },
-            "time": "2024-02-16T20:03:09+00:00"
+            "time": "2024-03-15T15:00:55+00:00"
         },
         {
             "name": "newfold-labs/wp-module-performance",
@@ -588,16 +588,16 @@
     "packages-dev": [
         {
             "name": "composer/ca-bundle",
-            "version": "1.4.1",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "3ce240142f6d59b808dd65c1f52f7a1c252e6cfd"
+                "reference": "18fc0ab083a48f85bfee31f3786537353b8a8403"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/3ce240142f6d59b808dd65c1f52f7a1c252e6cfd",
-                "reference": "3ce240142f6d59b808dd65c1f52f7a1c252e6cfd",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/18fc0ab083a48f85bfee31f3786537353b8a8403",
+                "reference": "18fc0ab083a48f85bfee31f3786537353b8a8403",
                 "shasum": ""
             },
             "require": {
@@ -644,7 +644,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/composer",
                 "issues": "https://github.com/composer/ca-bundle/issues",
-                "source": "https://github.com/composer/ca-bundle/tree/1.4.1"
+                "source": "https://github.com/composer/ca-bundle/tree/1.4.2"
             },
             "funding": [
                 {
@@ -660,7 +660,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-23T10:16:52+00:00"
+            "time": "2024-03-14T13:20:33+00:00"
         },
         {
             "name": "composer/composer",
@@ -1874,22 +1874,22 @@
         },
         {
             "name": "phpcsstandards/phpcsutils",
-            "version": "1.0.9",
+            "version": "1.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHPCSUtils.git",
-                "reference": "908247bc65010c7b7541a9551e002db12e9dae70"
+                "reference": "51609a5b89f928e0c463d6df80eb38eff1eaf544"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSUtils/zipball/908247bc65010c7b7541a9551e002db12e9dae70",
-                "reference": "908247bc65010c7b7541a9551e002db12e9dae70",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSUtils/zipball/51609a5b89f928e0c463d6df80eb38eff1eaf544",
+                "reference": "51609a5b89f928e0c463d6df80eb38eff1eaf544",
                 "shasum": ""
             },
             "require": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.4.1 || ^0.5 || ^0.6.2 || ^0.7 || ^1.0",
                 "php": ">=5.4",
-                "squizlabs/php_codesniffer": "^3.8.0 || 4.0.x-dev@dev"
+                "squizlabs/php_codesniffer": "^3.9.0 || 4.0.x-dev@dev"
             },
             "require-dev": {
                 "ext-filter": "*",
@@ -1958,7 +1958,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2023-12-08T14:50:00+00:00"
+            "time": "2024-03-17T23:44:50+00:00"
         },
         {
             "name": "psr/log",
@@ -4911,5 +4911,5 @@
     "platform-overrides": {
         "php": "7.0.0"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }
