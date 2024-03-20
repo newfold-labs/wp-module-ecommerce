@@ -7,7 +7,7 @@ import {
 	waitForNextSteps
 } from '../wp-module-support/utils.cy';
 
-const customCommandTimeout = 30000;
+const customCommandTimeout = 20000;
 const pluginId = GetPluginId();
 const appId = getAppId();
 
@@ -87,7 +87,9 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 			.should( 'exist' )
 			.scrollIntoView()
 			.click();
-		cy.get( `.${ appId }-app-subnavitem-Payments.active` ).should(
+		cy.get( `.${ appId }-app-subnavitem-Payments.active`, {
+			timeout: customCommandTimeout
+		}).should(
 			'exist'
 		);
 		cy.contains( 'section', 'Razorpay' ).as( 'razorpayBlock' );
@@ -103,7 +105,7 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 		cy.get( '.nfd-border-t .nfd-button--primary' ).click();
 
 		cy.get( '@razorpayBlock' , { timeout: customCommandTimeout } )
-			.find( '.nfd-badge--upsell' )
+			.find( '.nfd-badge--upsell' , { timeout: customCommandTimeout })
 			.should( 'exist' );
 
 		cy.get( `.${ appId }-app-navitem-Home` ).click();
@@ -137,7 +139,9 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 				.scrollIntoView()
 				.click();
 
-			cy.get( '.nfd-app-section-content .nfd-button--primary' )
+			cy.get( '.nfd-app-section-content .nfd-button--primary', {
+				timeout: customCommandTimeout,
+			} )
 				.contains( 'Install' )
 				.click();
 			cy.get( '.nfd-app-section-content .nfd-button--primary' )
@@ -171,7 +175,7 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 			.should( 'exist' )
 			.scrollIntoView()
 			.click();
-		cy.get( `.${ appId }-app-subnavitem-Store.active` ).should( 'exist' );
+		cy.get( `.${ appId }-app-subnavitem-Store.active`, { timeout : customCommandTimeout } ).should( 'exist' );
 		cy.get( '#tax-yes' ).click();
 		cy.get( '.nfd-border-t .nfd-button--primary' ).click();
 
