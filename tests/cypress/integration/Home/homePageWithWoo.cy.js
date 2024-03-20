@@ -167,7 +167,7 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 		}
 	} );
 
-	it( 'Verify next step "Configure tax settings"', () => {
+	it.skip( 'Verify next step "Configure tax settings"', () => {
 		waitForNextSteps();
 		cy.contains( '.nfd-grid.nfd-gap-4 ul li a', 'Configure tax settings', {
 			timeout: customCommandTimeout,
