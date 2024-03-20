@@ -61,3 +61,7 @@ export const getOrderList = () => (ordersList) => {
     ordersCount: ordersList.length
   }
 }
+
+export const get_tax_configured = (list) => {
+  return list.woocommerce_calc_taxes === "yes"
+}
