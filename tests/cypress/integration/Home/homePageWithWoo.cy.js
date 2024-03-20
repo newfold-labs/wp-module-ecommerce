@@ -187,7 +187,7 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 
 		cy.get( `.${ appId }-app-navitem-Home` ).click();
 		waitForNextSteps()
-		cy.get( '@taxStep', { timeout: customCommandTimeout } ).should(
+		cy.get( '@taxStep', { timeout: 30000 } ).should(
 			'not.exist'
 		);
 		viewCompletedTasks();
