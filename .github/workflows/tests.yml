@@ -116,7 +116,7 @@ jobs:
       - name: Prepare files
         run: rsync -r --include-from=.distinclude --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.workflow.outputs.PACKAGE }}
           path: ${{ steps.workflow.outputs.DIST }}
@@ -132,7 +132,7 @@ jobs:
 
       - name: Store screenshots of test failures
         if: ${{ failure() }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: screenshots
           path: ./tests/cypress/screenshots
@@ -144,7 +144,7 @@ jobs:
 
       - name: Store debug.log file
         if: ${{ steps.hasErrors.outputs.failure }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: logs
           path: ./debug.log

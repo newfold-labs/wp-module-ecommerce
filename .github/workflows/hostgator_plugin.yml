@@ -110,7 +110,7 @@ jobs:
       - name: Prepare files
         run: rsync -r --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.workflow.outputs.PACKAGE }}
           path: ${{ steps.workflow.outputs.DIST }}
