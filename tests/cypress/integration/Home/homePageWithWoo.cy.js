@@ -4,9 +4,10 @@ import {
 	installWoo,
 	viewCompletedTasks,
 	viewRemainingTasks,
+	waitForNextSteps
 } from '../wp-module-support/utils.cy';
 
-const customCommandTimeout = 35000;
+const customCommandTimeout = 30000;
 const pluginId = GetPluginId();
 const appId = getAppId();
 
@@ -22,6 +23,7 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 	} );
 
 	it( 'Verify next steps "Add your store info"', () => {
+		waitForNextSteps()
 		cy.contains( '.nfd-grid.nfd-gap-4 ul li a', 'Add your store info', {
 			timeout: customCommandTimeout,
 		} )
@@ -63,6 +65,7 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 		cy.get( '.nfd-w-0  p' ).should( 'exist' );
 
 		cy.get( `.${ appId }-app-navitem-Home` ).click();
+		waitForNextSteps();
 		cy.get( '@storeInfoStep', { timeout: customCommandTimeout } ).should(
 			'not.exist'
 		);
@@ -72,7 +75,7 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 	} );
 
 	it( 'Verify next step "Connect a payment processor"', () => {
-		cy.reload();
+		waitForNextSteps();
 		cy.contains(
 			'.nfd-grid.nfd-gap-4 ul li a',
 			'Connect a payment processor',
@@ -98,13 +101,13 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 		cy.get( '[name="key_secret"]' ).type( 'rzp_test_qn0AnShxeczQr4' );
 
 		cy.get( '.nfd-border-t .nfd-button--primary' ).click();
-		cy.wait( 5000 );
 
-		cy.get( '@razorpayBlock' )
-			.find( '.nfd-badge--upsell', { timeout: customCommandTimeout } )
+		cy.get( '@razorpayBlock' , { timeout: customCommandTimeout } )
+			.find( '.nfd-badge--upsell' )
 			.should( 'exist' );
 
 		cy.get( `.${ appId }-app-navitem-Home` ).click();
+		waitForNextSteps();
 		cy.get( '@paymentStep' ).should( 'not.exist' );
 		viewCompletedTasks();
 		cy.get( '@paymentStep' ).should( 'exist' );
@@ -121,6 +124,7 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 
 	it( ' Verify next step "Set up Shipping options" ', () => {
 		if ( pluginId == 'bluehost' ) {
+			waitForNextSteps();
 			cy.contains(
 				'.nfd-grid.nfd-gap-4 ul li a',
 				'Setup shipping options',
@@ -159,7 +163,7 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 	} );
 
 	it( 'Verify next step "Configure tax settings"', () => {
-		cy.reload()
+		waitForNextSteps();
 		cy.contains( '.nfd-grid.nfd-gap-4 ul li a', 'Configure tax settings', {
 			timeout: customCommandTimeout,
 		} )
@@ -177,7 +181,7 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 		cy.get( '.nfd-w-0  p' ).should( 'exist' );
 
 		cy.get( `.${ appId }-app-navitem-Home` ).click();
-		cy.reload();
+		waitForNextSteps()
 		cy.get( '@taxStep', { timeout: customCommandTimeout } ).should(
 			'not.exist'
 		);
@@ -187,8 +191,13 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 	} );
 
 	it( 'Verify next step "Add a Product"', () => {
-		cy.contains( 'Add a product' ).as( 'addProduct' ).should( 'exist' );
-		cy.get( '@addProduct' ).click();
+		waitForNextSteps();
+		cy.contains( '.nfd-grid.nfd-gap-4 ul li a', 'Add a product', {
+			timeout: customCommandTimeout,
+		})
+			.as( 'addProduct' )
+			.should( 'exist' )
+		.click();
 		cy.url().should(
 			'eq',
 			Cypress.config().baseUrl +
