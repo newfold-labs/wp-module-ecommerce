@@ -18,15 +18,14 @@ const Paypal = ({ notify }) => {
   const [signupLoaded, setSignupLoaded] = useState(false);
 
   useEffect(() => {
-    const selector = document.querySelector("#signup-js");
-    if (!selector) {
+    const selector = document.querySelector('#signup-js');
+    if( ! selector ){
       let observer = new MutationObserver(mutations => {
         mutations.forEach(mutation => {
-          console.log(mutations);
           mutation.addedNodes.forEach(node => {
-            if ("signup-js" === node.id) {
-              const selector = document.querySelector("#signup-js");
-              selector.addEventListener("load", () => setSignupLoaded(true));
+            if ('signup-js' === node.id) {
+              const selector = document.querySelector('#signup-js');
+              selector.addEventListener('load', () =>  setSignupLoaded(true));
             }
           });
         });
@@ -36,31 +35,30 @@ const Paypal = ({ notify }) => {
         subtree: false, // lower descendants too
         characterDataOldValue: true, // pass old data to callback
       });
-    } else {
+    }else{
       window?.PAYPAL?.apps?.Signup?.render();
       setSignupLoaded(true);
     }
   });
 
   useEffect(() => {
-    const ppButton = document.querySelector(".yith-btn-paypal");
-    if ( ppButton ) {
-      (function ( d, s, id ) {
-        var js, ref = d.getElementsByTagName( s )[0];
-        if ( !d.getElementById( id ) ) {
-          js = d.createElement( s );
+    const ppButton = document.querySelector('.yith-btn-paypal');
+    if (ppButton) {
+      (function(d, s, id) {
+        var js, ref = d.getElementsByTagName(s)[0];
+        if (!d.getElementById(id)) {
+          js = d.createElement(s);
           js.id = id;
           js.async = true;
-          js.src = "https://www.paypal.com/webapps/merchantboarding/js/lib/lightbox/partner.js";
+          js.src = 'https://www.paypal.com/webapps/merchantboarding/js/lib/lightbox/partner.js';
           ref.parentNode.insertBefore(js, ref);
         }
-      }( document, "script", "paypal-js" ));
-      window?.PAYPAL?.apps?.Signup?.loadScripts( document, "script" );
+      }(document, 'script', 'paypal-js'));
     }
-
+    window?.PAYPAL?.apps?.Signup?.loadScripts( document, "script" );
     return () => {
-      const panel = document.querySelector( "#payment-details" );
-      if ( !panel && ppButton ) {
+      const panel = document.querySelector('#payment-details');
+      if (!panel && ppButton) {
         ppButton.remove();
       }
     };
