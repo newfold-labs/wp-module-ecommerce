@@ -71,7 +71,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                     });
                     setStates(statesList);
                   }}
-                  value={values.country}
+                  value={values.country || ''}
                   selectedLabel={
                     countries?.find((_) => _.code === values.country)?.name
                   }
@@ -82,6 +82,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                         label={country.name}
                         value={country.code}
                         key={country.code}
+                        id={country.code}
                         name="country"
                       />
                     );
@@ -93,7 +94,9 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
               <TextField
                 data-section="details"
                 name="woocommerce_store_address"
+                id="woocommerce_store_address"
                 value={values.woocommerce_store_address}
+                onChange={() => {}}
                 required
                 label={__("Address Line 1 *", "wp-module-ecommerce")}
               />
@@ -102,7 +105,9 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
               <TextField
                 data-section="details"
                 name="woocommerce_store_address_2"
+                id="woocommerce_store_address_2"
                 value={values.woocommerce_store_address_2}
+                onChange={() => {}}
                 label={__("Address Line 2 (optional)", "wp-module-ecommerce")}
               />
             </div>
@@ -117,9 +122,11 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                 <TextField
                   data-section="details"
                   name="woocommerce_store_city"
+                  id="woocommerce_store_city"
                   value={values.woocommerce_store_city}
                   label={__("City *", "wp-module-ecommerce")}
                   required
+                  onChange={() => {}}
                 />
               </div>
               {states?.length > 0 && (
@@ -132,7 +139,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                     onChange={(target) => {
                       pushChanges({ state: target });
                     }}
-                    value={values.state}
+                    value={(values.state) || ''}
                     selectedLabel={
                       states?.find((_) => _.code === values.state)?.name ??
                       states[0].name
@@ -144,6 +151,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                           label={state.name}
                           value={state.code}
                           key={state.code}
+                          id={state.code}
                         />
                       );
                     })}
@@ -153,7 +161,9 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
               <div className="nfd-flex-1 md:nfd-ml-8">
                 <TextField
                   data-section="details"
+                  onChange={() => {}}
                   name="woocommerce_store_postcode"
+                  id="woocommerce_store_postcode"
                   value={values.woocommerce_store_postcode}
                   label={__("Postal Code *", "wp-module-ecommerce")}
                   required
@@ -163,7 +173,9 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
             <div className="nfd-mt-6">
               <TextField
                 data-section="details"
+                onChange={() => {}}
                 name="woocommerce_email_from_address"
+                id="woocommerce_email_from_address"
                 value={values.woocommerce_email_from_address}
                 label={__("Email", "wp-module-ecommerce")}
                 required
@@ -184,10 +196,10 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                   id="currency"
                   className="nfd-mt-2 nfd-mb-4"
                   name="woocommerce_currency"
+                  value={(values.woocommerce_currency) || ''}
                   onChange={(target) => {
                     pushChanges({ woocommerce_currency: target });
                   }}
-                  value={values.woocommerce_currency}
                   selectedLabel={formatCurrency(
                     `${
                       currencies.find(
@@ -208,6 +220,7 @@ const StoreInfo = ({ values, pushChanges, controls }) => {
                         )}
                         value={currency.code}
                         key={currency.code}
+                        id={currency.code}
                       />
                     );
                   })}

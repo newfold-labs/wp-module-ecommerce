@@ -33,6 +33,8 @@ const TaxSettings = ({ values }) => {
               id={"tax-" + option.value}
               label={option.label}
               value={option.value}
+              key={option.value}
+              onChange={() => {}}
               name="woocommerce_calc_taxes"
             />
           ))}
