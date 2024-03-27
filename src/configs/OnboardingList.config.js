@@ -14,7 +14,8 @@ import {
   yithOnboardingParser,
   yithOnboardingPaymentParser,
   yithOnboardingStoreParser,
-  getOrderList
+  getOrderList,
+  get_tax_configured
 } from "./selectors";
 
 const parsePluginStatus = (plugins) => ({
@@ -158,14 +159,14 @@ export function OnboardingListDefinition(props) {
         text: __("Configure tax settings", "wp-module-ecommerce"),
         state: {
           isAvailable: (queries) => queries?.plugins?.isWCActive,
-          isCompleted: (queries) => queries?.onboarding?.isCompleted,
+          isCompleted: (queries) => queries?.settings,
           url: () => "#/store/details?highlight=tax",
         },
         shouldRender: (state) => state.isAvailable,
         actions: {},
         queries: [
           { key: "plugins", selector: parsePluginStatus },
-          { key: "onboarding", selector: wcTasksParser("tax") },
+          { key: "settings", selector: get_tax_configured },
         ],
       },
       {
