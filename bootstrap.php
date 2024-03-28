@@ -15,6 +15,9 @@ if ( function_exists( 'is_admin' ) && is_admin() ) {
 	}
 }
 
+/**
+ * Skips woocommerce onboarding
+ */
 function skip_woo_onboarding() {
 	$wc_option       = 'woocommerce_onboarding_profile';
 	$skip_onboarding = array(
