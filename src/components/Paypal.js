@@ -1,5 +1,4 @@
-import { Badge, Button, Title, Link } from "@newfold/ui-component-library";
-import { useEffect, useState } from "@wordpress/element";
+import { Badge, Button, Title } from "@newfold/ui-component-library";
 import { __ } from "@wordpress/i18n";
 import classNames from "classnames";
 import { ReactComponent as AmexBrand } from "../icons/brands/amex.svg";
@@ -12,57 +11,9 @@ import { ReactComponent as SofortBrand } from "../icons/brands/sofort.svg";
 import { ReactComponent as VenmoBrand } from "../icons/brands/venmo.svg";
 import { ReactComponent as VisaBrand } from "../icons/brands/visa.svg";
 import { ThirdPartyIntegration } from "./ThirdPartyIntegration";
+import PayPalButton from "./PayPalButton";
 
 const Paypal = ({ notify }) => {
-
-  const [signupLoaded, setSignupLoaded] = useState(false);
-
-  useEffect(() => {
-    const selector = document.querySelector('#signup-js');
-    if( ! selector ){
-      let observer = new MutationObserver(mutations => {
-        mutations.forEach(mutation => {
-          mutation.addedNodes.forEach(node => {
-            if ('signup-js' === node.id) {
-              const selector = document.querySelector('#signup-js');
-              selector.addEventListener('load', () =>  setSignupLoaded(true));
-            }
-          });
-        });
-      });
-      observer.observe(document.head, {
-        childList: true, // observe direct children
-        subtree: false, // lower descendants too
-        characterDataOldValue: true, // pass old data to callback
-      });
-    }else{
-      window?.PAYPAL?.apps?.Signup?.render();
-      setSignupLoaded(true);
-    }
-  });
-
-  useEffect(() => {
-    const ppButton = document.querySelector('.yith-btn-paypal');
-    if (ppButton) {
-      (function(d, s, id) {
-        var js, ref = d.getElementsByTagName(s)[0];
-        if (!d.getElementById(id)) {
-          js = d.createElement(s);
-          js.id = id;
-          js.async = true;
-          js.src = 'https://www.paypal.com/webapps/merchantboarding/js/lib/lightbox/partner.js';
-          ref.parentNode.insertBefore(js, ref);
-        }
-      }(document, 'script', 'paypal-js'));
-    }
-    window?.PAYPAL?.apps?.Signup?.loadScripts( document, "script" );
-    return () => {
-      const panel = document.querySelector('#payment-details');
-      if (!panel && ppButton) {
-        ppButton.remove();
-      }
-    };
-  });
 
   return (
     <ThirdPartyIntegration
@@ -111,17 +62,7 @@ const Paypal = ({ notify }) => {
                 </Button>
               ) : typeof yith_ppwc_login !== "undefined" &&
                 !parseInt(yith_ppwc_login?.liveConnected) ? (
-                <Link
-                  href={yith_ppwc_login.loginURL}
-                  variant="primary"
-                  className="nfd-button nfd-button--primary yith-btn-paypal nfd-text-white"
-                  target="_blank"
-                  data-paypal-onboard-complete="onboardedCallback"
-                  data-paypal-button="PPLtBlue"
-                  style={!signupLoaded ? { display: "none" } : {}}
-                >
-                  {__("Connect", "wp-module-ecommerce")}
-                </Link>
+                <PayPalButton />
               ) : (
                 <Button
                   onClick={onConnect}
