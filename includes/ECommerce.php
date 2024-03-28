@@ -135,6 +135,7 @@ class ECommerce {
         return $classes;
       }
     );
+    $this->set_wpnav_collapse_setting();
   }
 
   /**
@@ -159,6 +160,20 @@ class ECommerce {
     }
 
     return true;
+  }
+
+  public static function set_wpnav_collapse_setting() {
+
+    wp_enqueue_script( 'nfd_wpnavbar_setting', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/src/configs/wpnavbar.js', array('jquery'), '1.0', true);
+
+    $my_option_value = get_option('wp_navbar_collapsed');      
+        
+    if ($my_option_value == "expand") {        
+      
+    } 
+    else {        
+        update_option('wp_navbar_collapsed', "collapsed");
+    }    
   }
 
   /**
