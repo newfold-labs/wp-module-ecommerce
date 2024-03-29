@@ -219,7 +219,7 @@ class ECommerce {
     $option_settings = array(
       'show_in_rest' => true,
       'type'         => 'string',
-      'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
+      'description'  => __( "NFD eCommerce Options", 'wp-module-ecommerce' ),
     );
     foreach ( $this->options as $option ) {
       \register_setting( 'general', $option, $option_settings );
@@ -230,7 +230,7 @@ class ECommerce {
       array(
         'show_in_rest' => true,
         'type'         => 'boolean',
-        'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
+        'description'  => __( "NFD eCommerce Options", 'wp-module-ecommerce' ),
       )
     );
     \register_setting(
@@ -239,7 +239,7 @@ class ECommerce {
       array(
         'show_in_rest' => true,
         'type'         => 'boolean',
-        'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
+        'description'  => __( "NFD eCommerce Options", 'wp-module-ecommerce' ),
       )
     );
     \register_setting(
@@ -248,7 +248,7 @@ class ECommerce {
       array(
         'show_in_rest' => true,
         'type'         => 'boolean',
-        'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
+        'description'  => __( "NFD eCommerce Options", 'wp-module-ecommerce' ),
       )
     );
     $payments                    = array(
@@ -277,7 +277,7 @@ class ECommerce {
         ),
       ),
       'type'         => 'object',
-      'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
+      'description'  => __( "NFD eCommerce Options", 'wp-module-ecommerce' ),
     );
     foreach ( $payments as $payment ) {
       \register_setting( 'general', $payment, $schema_for_offline_payments );
@@ -379,10 +379,10 @@ class ECommerce {
   public function update_text( $translated_text, $text, $domain ) {
     switch ( $translated_text ) {
       case 'Billing details' :
-        $translated_text = __( 'Shipping details', 'wp_module_ecommerce' );
+        $translated_text = __( "Shipping details", 'wp-module-ecommerce' );
         break;
       case 'Ship to a different address?' :
-        $translated_text = __( 'Bill to a different address?', 'wp_module_ecommerce' );
+        $translated_text = __( "Bill to a different address?", 'wp-module-ecommerce' );
         break;
     }
     return $translated_text;
@@ -393,13 +393,13 @@ class ECommerce {
   */
   public function add_phone_number_email_to_shipping_form($fields) {
     $fields['shipping_phone'] = array(
-      'label'         => __('Phone Number', 'wp_module_ecommerce'),
+      'label'         => __("Phone Number", 'wp-module-ecommerce'),
       'required'      => true,
       'class'         => array('form-row-wide'),
       'clear'         => true,
     );
     $fields['shipping_email'] = array(
-      'label'         => __('Email Address', 'wp_module_ecommerce'),
+      'label'         => __("Email Address", 'wp-module-ecommerce'),
       'required'      => true,
       'class'         => array('form-row-wide'),
       'clear'         => true,
@@ -431,11 +431,11 @@ class ECommerce {
     $shipping_email = $order->get_meta('_shipping_email');
   
     if (!empty($shipping_phone)) {
-      echo '<p><strong>' . __('Phone Number', 'wp_module_ecommerce') . ':</strong> ' . esc_html($shipping_phone) . '</p>';
+      echo '<p><strong>' . __("Phone Number", 'wp-module-ecommerce') . ':</strong> ' . esc_html($shipping_phone) . '</p>';
     }
   
     if (!empty($shipping_email)) {
-      echo '<p><strong>' . __('Email Address', 'wp_module_ecommerce') . ':</strong> ' . esc_html($shipping_email) . '</p>';
+      echo '<p><strong>' . __("Email Address", 'wp-module-ecommerce') . ':</strong> ' . esc_html($shipping_email) . '</p>';
     }
   }
 
@@ -446,7 +446,7 @@ class ECommerce {
     add_submenu_page(
       'woocommerce-marketing',
       'Promotion product Page',
-      __('Promote','wp_module_ecommerce'),
+      __('Promotions','wp-module-ecommerce'),
       'manage_options',
       $this->container->plugin()->id.'#/store/sales_discounts',
       'custom_submenu_redirect'
@@ -463,7 +463,7 @@ class ECommerce {
     wp_enqueue_style ( 'Create_a_Promotion' , NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Promotions.css' , array (), '1.0' , 'all' );
 		echo '<div class="options_group">
             <p class="form-field custom-button-field">
-						  <a id="Create_a_Promotion" href="'.$redirect_url.'" class="promotion">'. __('Create a Promotion', 'wp_module_ecommerce').'</a>
+						  <a id="Create_a_Promotion" href="'.$redirect_url.'" class="promotion">'. __('Create a Promotion', 'wp-module-ecommerce').'</a>
 					  </p>
           </div>';
 	}
@@ -473,7 +473,7 @@ class ECommerce {
    */
 	function custom_product_write_panel_tabs( $tabs ) {
 		$tabs['custom_tab'] = array(
-			'label'   =>  __( 'Promotions', 'wp_module_ecommerce' ),
+			'label'   =>  __( "Promotions", 'wp-module-ecommerce' ),
 			'target'  =>  'promotion_product_data',
 			'priority' => 70,
 			'class'   => array()
@@ -491,18 +491,18 @@ class ECommerce {
 		\wp_enqueue_script( 'nfd_promotion_product_data', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Promotions.js', array('jquery'), '1.0', true);
 		$Promotion_data = array(
 			'redirectUrl' => $redirect_url,
-      'boostYourOnline' =>  __( 'Boost Your Online Store Sales', 'wp_module_ecommerce' ),
-      'maximizeYourSales' => __('Maximize your sales by creating effective','wp_module_ecommerce'),
-      'promotionsAndCampaigns' => __('promotions and campaigns like:','wp_module_ecommerce'),
-      'createPromotion' => __('Create a Promotion', 'wp_module_ecommerce'),
-      'free' => __('Free', 'wp_module_ecommerce'),
-      'shipping' => __('Shipping', 'wp_module_ecommerce'),
-      'buyOne' => __('Buy One', 'wp_module_ecommerce'),
-      'getOne' => __('Get One', 'wp_module_ecommerce'),
-      'freeGift' => __('Free Gift', 'wp_module_ecommerce'),
-      'inCart' => __('in Cart', 'wp_module_ecommerce'),
-      'frequently' => __('Frequently', 'wp_module_ecommerce'),
-      'boughtTogether' => __('Bought Together', 'wp_module_ecommerce'),
+      'boostYourOnline' =>  __( "Boost Your Online Store Sales", 'wp-module-ecommerce' ),
+      'maximizeYourSales' => __("Maximize your sales by creating effective",'wp-module-ecommerce'),
+      'promotionsAndCampaigns' => __("promotions and campaigns like:",'wp-module-ecommerce'),
+      'createPromotion' => __("Create a Promotion", 'wp-module-ecommerce'),
+      'free' => __("Free", 'wp-module-ecommerce'),
+      'shipping' => __("Shipping", 'wp-module-ecommerce'),
+      'buyOne' => __("Buy One", 'wp-module-ecommerce'),
+      'getOne' => __("Get One", 'wp-module-ecommerce'),
+      'freeGift' => __("Free Gift", 'wp-module-ecommerce'),
+      'inCart' => __("in Cart", 'wp-module-ecommerce'),
+      'frequently' => __("Frequently", 'wp-module-ecommerce'),
+      'boughtTogether' => __("Bought Together", 'wp-module-ecommerce'),
 
 	);
 	wp_localize_script('nfd_promotion_product_data', 'promotionData', $Promotion_data);

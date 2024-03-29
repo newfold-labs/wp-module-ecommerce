@@ -56,7 +56,7 @@ class CaptiveFlow {
 					),
 				),
 				'type'         => 'object',
-				'description'  => __( 'NFD eCommerce RazorPay Options', 'wp-module-ecommerce' ),
+				'description'  => __( "NFD eCommerce RazorPay Options", 'wp-module-ecommerce' ),
 			)
 		);
 	}

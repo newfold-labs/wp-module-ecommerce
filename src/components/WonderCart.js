@@ -34,7 +34,7 @@ export function WonderCart(props) {
   let showInProgress = isInstalling || wonderCartStatus.data?.isInstalling;
   return (
     <Section.Container>
-      <Section.Header title={__("Sales & Discounts", "wp-module-ecommerce")} />
+      <Section.Header title={__("Sales & Promotions", "wp-module-ecommerce")} />
       <Section.Content>
         <div className="nfd-bg-canvas nfd-rounded-lg nfd-border nfd-border-solid nfd-border-line">
           <div
@@ -53,7 +53,7 @@ export function WonderCart(props) {
               </Title>
               <span className="nfd-whitespace-pre-wrap">
                 {__(
-                  "Create and manage deals, sales promotions and upsell campaigns like Buy-One-Get-One and more.",
+                  "Create and manage X-sell, Upsell, sales and promotions through campaigns to boost your sales",
                   "wp-module-ecommerce"
                 )}
               </span>
