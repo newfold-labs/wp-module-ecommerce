@@ -165,15 +165,29 @@ class ECommerce {
   public static function set_wpnav_collapse_setting() {
 
     wp_enqueue_script( 'nfd_wpnavbar_setting', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/src/configs/wpnavbar.js', array('jquery'), '1.0', true);
-
-    $my_option_value = get_option('wp_navbar_collapsed');      
         
-    if ($my_option_value == "expand") {        
+    $navbar_cookie_value = isset($_COOKIE['wp_navbar_collapsed']) ? $_COOKIE['wp_navbar_collapsed'] : "collapsed";
+
+    $my_option_value = get_option('wp_navbar_collapsed'); 
+
+    $classes = "folded";
+
+    if($navbar_cookie_value != $my_option_value){
+      update_option('wp_navbar_collapsed', $navbar_cookie_value);
+    }
+    if($navbar_cookie_value == "collapsed"){
+      add_filter( 'body_class', function( $classes ) {
+        return array_merge( $classes, array( 'class-name' ) );
+      });
       
-    } 
-    else {        
-        update_option('wp_navbar_collapsed', "collapsed");
-    }    
+    }else{
+      add_filter('body_class', function (array $classes) {
+        if (in_array('class_name', $classes)) {
+          unset( $classes[array_search('class_name', $classes)] );
+        }
+        return $classes;
+      });  
+    }        
   }
 
   /**
