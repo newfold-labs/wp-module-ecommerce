@@ -64,3 +64,10 @@ export const viewRemainingTasks = () => {
 		.next()
 		.click();
 };
+
+export const waitForNextSteps = () => {
+	cy.get( '.nfd-grid.nfd-gap-4' , { timeout: customCommandTimeout } )
+		.as( 'nextSteps' )
+		.scrollIntoView()
+		.should( 'exist' );
+};
