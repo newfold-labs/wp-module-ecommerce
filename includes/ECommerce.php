@@ -166,10 +166,13 @@ class ECommerce {
 
     wp_enqueue_script( 'nfd_wpnavbar_setting', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/src/configs/wpnavbar.js', array('jquery'), '1.0', true);
         
-    $navbar_cookie_value = isset($_COOKIE['wp_navbar_collapsed']) ? $_COOKIE['wp_navbar_collapsed'] : "collapsed";
+    if(!(isset($_COOKIE['wp_navbar_collapsed']))){        
+        $expiration_time = time() + (10 * 365 * 24 * 60 * 60);
+        setcookie('wp_navbar_collapsed', 'collapsed', $expiration_time, '/');
+    }
 
+    $navbar_cookie_value = $_COOKIE['wp_navbar_collapsed'];
     $my_option_value = get_option('wp_navbar_collapsed'); 
-
     $classes = "folded";
 
     if($navbar_cookie_value != $my_option_value){
