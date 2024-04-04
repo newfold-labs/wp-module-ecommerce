@@ -99,6 +99,13 @@ class ECommerce {
 		add_action('before_woocommerce_init', array( $this,'dismiss_woo_payments_cta'));
 		add_action( 'load-toplevel_page_'. $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
     
+
+    $currenPageUrl = $_SERVER["REQUEST_URI"];    
+
+    if(str_contains($currenPageUrl, $container->plugin()->brand)){
+      $this->set_wpnav_collapse_setting();
+    }
+
     if (($container->plugin()->id === "bluehost" && ($canAccessGlobalCTB || $hasYithExtended)) || ($container->plugin()->id === "hostgator" && $hasYithExtended))
     { 
       add_filter( 'admin_menu', array($this,'custom_add_promotion_menu_item') );
@@ -134,8 +141,7 @@ class ECommerce {
         $classes[] = 'closed';
         return $classes;
       }
-    );
-    $this->set_wpnav_collapse_setting();
+    );    
   }
 
   /**
@@ -179,6 +185,7 @@ class ECommerce {
       update_option('wp_navbar_collapsed', $navbar_cookie_value);
     }
     if($navbar_cookie_value == "collapsed"){
+      echo "wtf";
       add_filter( 'body_class', function( $classes ) {
         return array_merge( $classes, array( 'class-name' ) );
       });
