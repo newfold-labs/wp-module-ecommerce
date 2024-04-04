@@ -75,7 +75,7 @@ export function OnboardingScreen({
       className="nfd-welcome-section"
       showShadowBox={showShadowBox}
     >
-      <Section.Header title={__("Home we are testing workflow", "wp-module-ecommerce")} />
+      <Section.Header title={__("Home", "wp-module-ecommerce")} />
       <Section.Content className="nfd-app-section-home">
         <div className="nfd-flex nfd-flex-col nfd-gap-6">
           <div

@@ -170,7 +170,7 @@ class ECommerce {
 
   public static function set_wpnav_collapse_setting() {
 
-    wp_enqueue_script( 'nfd_wpnavbar_setting', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/src/configs/wpnavbar.js', array('jquery'), '1.0', true);
+    wp_enqueue_script( 'nfd_wpnavbar_setting', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/wpnavbar.js', array('jquery'), '1.0', true);
         
     if(!(isset($_COOKIE['wp_navbar_collapsed']))){        
         $expiration_time = time() + (10 * 365 * 24 * 60 * 60);
@@ -179,25 +179,24 @@ class ECommerce {
 
     $navbar_cookie_value = $_COOKIE['wp_navbar_collapsed'];
     $my_option_value = get_option('wp_navbar_collapsed'); 
-    $classes = "folded";
-
+    
     if($navbar_cookie_value != $my_option_value){
       update_option('wp_navbar_collapsed', $navbar_cookie_value);
     }
+
     if($navbar_cookie_value == "collapsed"){
-      echo "wtf";
       add_filter( 'body_class', function( $classes ) {
-        return array_merge( $classes, array( 'class-name' ) );
+        return array_merge( $classes, array( 'folded' ) );
       });
-      
-    }else{
-      add_filter('body_class', function (array $classes) {
-        if (in_array('class_name', $classes)) {
-          unset( $classes[array_search('class_name', $classes)] );
+    }
+    else{
+        add_filter('body_class', function (array $classes) {
+        if (in_array('folded', $classes)) {
+            unset( $classes[array_search('folded', $classes)] );
         }
         return $classes;
-      });  
-    }        
+        });
+    }            
   }
 
   /**
@@ -349,6 +348,7 @@ class ECommerce {
         NFD_ECOMMERCE_DIR . '/languages'
       );
       \wp_enqueue_script( 'nfd-ecommerce-dependency' );
+      \wp_enqueue_script( 'nfd_wpnavbar_setting' );
     }
   }
 
@@ -491,6 +491,26 @@ class ECommerce {
       'custom_submenu_redirect'
   );
   }
+
+  /**
+	 * Add class to body tag for collapsing wp-navbar
+   */
+  function add_custom_admin_body_class($classes) {
+    // Add your custom CSS class to the array of body classes
+    $classes .= ' folded';
+
+    return $classes;
+}
+
+  /**
+	 * Remove class to body tag for collapsing wp-navbar
+   */
+  function remove_custom_admin_body_class($classes) {
+    // Add your custom CSS class to the array of body classes
+    $classes .= ' folded';
+
+    return $classes;
+}
 
 	
 	/**
