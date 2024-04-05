@@ -99,6 +99,47 @@ class ECommerce {
 		add_action( 'before_woocommerce_init', array( $this, 'dismiss_woo_payments_cta' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
 		add_action( 'activated_plugin', array( $this, 'detect_plugin_activation' ), 10, 1 );
+    add_action( 'activated_plugin', array( $this, 'detect_plugin_activation' ), 10, 1 );
+    
+    $brandNameValue = $container->plugin()->brand;
+    $this->set_wpnav_collapse_setting($brandNameValue);
+
+    if (($container->plugin()->id === "bluehost" && ($canAccessGlobalCTB || $hasYithExtended)) || ($container->plugin()->id === "hostgator" && $hasYithExtended))
+    { 
+      add_filter( 'admin_menu', array($this,'custom_add_promotion_menu_item') );
+      add_action( 'woocommerce_product_options_general_product_data', array( $this,'custom_product_general_options'));
+      add_action( 'woocommerce_product_options_related',array($this,'custom_product_general_options'));
+      add_action( 'woocommerce_product_data_tabs',array( $this, 'custom_product_write_panel_tabs'));
+      add_action( 'woocommerce_product_data_panels', array( $this,'promotion_product_data'));
+      add_action( 'admin_head', array( $this,'action_admin_head'));
+    };
+    
+    // Handle WonderCart Integrations
+    if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
+      $wonder_cart = new WonderCart( $container );
+      $wonder_cart->init();
+    }
+
+    CaptiveFlow::init();
+    WooCommerceBacklink::init( $container );
+    register_meta(
+      'post',
+      'nf_dc_page',
+      array(
+        'type'         => 'string',
+        'description'  => 'Reference to page category',
+        'show_in_rest' => true,
+        'single'       => true,
+      )
+    );
+    add_filter( 'newfold-runtime', array( $this, 'add_to_runtime' ) );
+    $this->add_filters(
+      array( 'postbox_classes_page_wpseo_meta', 'postbox_classes_post_wpseo_meta', 'postbox_classes_product_wpseo_meta' ),
+      function ( $classes ) {
+        $classes[] = 'closed';
+        return $classes;
+      }
+    );    
 
 		if ( ( $container->plugin()->id === 'bluehost' && ( $canAccessGlobalCTB || $hasYithExtended ) ) || ( $container->plugin()->id === 'hostgator' && $hasYithExtended ) ) {
 			add_filter( 'admin_menu', array( $this, 'custom_add_promotion_menu_item' ) );
@@ -152,14 +193,22 @@ class ECommerce {
 		if ( ! is_array( $tags ) ) {
 			$tags = array( $tags );
 		}
-
-		// For each filter name
+    		// For each filter name
 		foreach ( $tags as $index => $tag ) {
 			add_filter( $tag, $function_to_add, (int) ( is_array( $priority ) ? $priority[ $index ] : $priority ), (int) ( is_array( $accepted_args ) ? $accepted_args[ $index ] : $accepted_args ) );
 		}
 
 		return true;
-	}
+  }
+
+  public static function set_wpnav_collapse_setting($brandNameValue) {
+         
+    $expiration_time = time() + (10 * 365 * 24 * 60 * 60);
+    setcookie('nfdbrandname', $brandNameValue, $expiration_time, '/');
+  
+    wp_enqueue_script( 'nfd_wpnavbar_setting', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/wpnavbar.js', array('jquery'), '1.0', true);
+         
+  }
 
 	/**
 	 * Loads the textdomain for the module. This applies only to PHP strings.
@@ -291,27 +340,28 @@ class ECommerce {
 		\load_textdomain( 'wp-module-ecommerce', $MODULE_LANG_DIR . '/wp-module-ecommerce-' . $current_language . '.mo' );
 	}
 
-	/**
-	 * Load WP dependencies into the page.
-	 */
-	public function register_assets() {
-		$asset_file = NFD_ECOMMERCE_BUILD_DIR . 'index.asset.php';
-		if ( file_exists( $asset_file ) ) {
-			$asset = require $asset_file;
-			\wp_register_script(
-				'nfd-ecommerce-dependency',
-				NFD_ECOMMERCE_PLUGIN_URL,
-				array_merge( $asset['dependencies'], array() ),
-				$asset['version']
-			);
-			I18nService::load_js_translations(
-				'wp-module-ecommerce',
-				'nfd-ecommerce-dependency',
-				NFD_ECOMMERCE_DIR . '/languages'
-			);
-			\wp_enqueue_script( 'nfd-ecommerce-dependency' );
-		}
-	}
+  /**
+   * Load WP dependencies into the page.
+   */
+  public function register_assets() {
+    $asset_file = NFD_ECOMMERCE_BUILD_DIR . 'index.asset.php';
+    if ( file_exists( $asset_file ) ) {
+      $asset = require $asset_file;
+      \wp_register_script(
+        'nfd-ecommerce-dependency',
+        NFD_ECOMMERCE_PLUGIN_URL,
+        array_merge( $asset['dependencies'], array() ),
+        $asset['version']
+      );
+      I18nService::load_js_translations(
+        'wp-module-ecommerce',
+        'nfd-ecommerce-dependency',
+        NFD_ECOMMERCE_DIR . '/languages'
+      );
+      \wp_enqueue_script( 'nfd-ecommerce-dependency' );
+      \wp_enqueue_script( 'nfd_wpnavbar_setting' );
+    }
+  }
 
 	/**
 	 * Remove Add coupon field on cart page

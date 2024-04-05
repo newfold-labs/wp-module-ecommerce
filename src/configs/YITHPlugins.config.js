@@ -13,7 +13,13 @@ import { MarketplaceSdk } from '../sdk/marketplace';
 import { PluginsSdk } from '../sdk/plugins';
 import { createPluginInstallAction } from './actions';
 import { findUpsellWithName, wcPluginStatusParser } from './selectors';
-import { RuntimeSdk } from '../sdk/runtime';
+import {
+  YITH_WOOCOMMERCE_ACCOUNT_PAGE,
+  YITH_WOOCOMMERCE_AJAX_PRODUCT_FILTER,
+  YITH_WOOCOMMERCE_BOOKING_APPOINTMENTS,
+  YITH_WOOCOMMERCE_GIFT_CARDS,
+  YITH_WOOCOMMERCE_WISHLIST
+} from '../constants';
 
 export function defineFeatureState() {
   return {
@@ -28,8 +34,6 @@ export function defineFeatureState() {
   };
 }
 
-const isBluehost = RuntimeSdk?.brandSettings?.brand?.includes('bluehost');
-
 export const YITHPluginsDefinitions = (props) => ({
   dataDependencies: {
     plugins: async () => PluginsSdk.queries.status('all'),
@@ -43,9 +47,7 @@ export const YITHPluginsDefinitions = (props) => ({
       assets: () => ({
         Image: Booking,
         ActionIcon: null,
-        learnMoreUrl:
-          isBluehost &&
-          'https://www.bluehost.com/help/article/yith-booking-and-appointment-for-woocommerce',
+        learnMoreUrl: YITH_WOOCOMMERCE_BOOKING_APPOINTMENTS,
       }),
       text: ({ isActive }) => ({
         title: __(
@@ -120,9 +122,7 @@ export const YITHPluginsDefinitions = (props) => ({
       name: 'nfd_slug_yith_woocommerce_wishlist',
       assets: () => ({
         Image: WishList,
-        learnMoreUrl:
-          isBluehost &&
-          'https://www.bluehost.com/help/article/yith-woocommerce-wishlist',
+        learnMoreUrl: YITH_WOOCOMMERCE_WISHLIST,
       }),
       text: ({ isActive }) => ({
         title: __('YITH WooCommerce Wishlist', 'wp-module-ecommerce'),
@@ -158,9 +158,7 @@ export const YITHPluginsDefinitions = (props) => ({
       name: 'nfd_slug_yith_woocommerce_ajax_product_filter',
       assets: () => ({
         Image: Filter,
-        learnMoreUrl:
-          isBluehost &&
-          'https://www.bluehost.com/help/article/yith-woocommerce-ajax-product-filter',
+        learnMoreUrl: YITH_WOOCOMMERCE_AJAX_PRODUCT_FILTER,
       }),
       text: ({ isActive }) => ({
         title: __(
@@ -201,9 +199,7 @@ export const YITHPluginsDefinitions = (props) => ({
       name: 'nfd_slug_yith_woocommerce_gift_cards',
       assets: () => ({
         Image: Gift,
-        learnMoreUrl:
-          isBluehost &&
-          'https://www.bluehost.com/help/article/yith-woocommerce-gift-cards',
+        learnMoreUrl: YITH_WOOCOMMERCE_GIFT_CARDS,
       }),
       text: ({ isActive }) => ({
         title: __('YITH WooCommerce Gift Cards', 'wp-module-ecommerce'),
@@ -241,9 +237,7 @@ export const YITHPluginsDefinitions = (props) => ({
       name: 'nfd_slug_yith_woocommerce_customize_myaccount_page',
       assets: () => ({
         Image: CustomizeAccount,
-        learnMoreUrl:
-          isBluehost &&
-          'https://www.bluehost.com/help/article/yith-woocommerce-customize-my-account-page',
+        learnMoreUrl: YITH_WOOCOMMERCE_ACCOUNT_PAGE,
       }),
       text: ({ isActive }) => ({
         title: __(

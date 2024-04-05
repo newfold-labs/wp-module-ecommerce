@@ -7,7 +7,7 @@ import { WordPressSdk } from "./wordpress";
 const Endpoints = {
   ORDERS: (period) => NewfoldRuntime.createApiUrl("/wc/v3/orders", period),
   ALL_TIME_ORDERS: NewfoldRuntime.createApiUrl("/wc/v3/orders"),
-  PRODUCTS: NewfoldRuntime.createApiUrl("/wc/v3/products"),
+  PRODUCTS: NewfoldRuntime.createApiUrl("/wc/store/products"),
   Analytics: {
     JETPACK: (range) =>
       NewfoldRuntime.createApiUrl("/jetpack/v4/module/stats/data", { range }),
@@ -111,7 +111,7 @@ export const WooCommerceSdk = {
           visitors: [this_period[visitorsIndex], prior_period[visitorsIndex]],
         };
       }
-        return { views: [], visitors: [] };
+      return { views: [], visitors: [] };
     },
     async sales(period) {
       if (NewfoldRuntime.isWoo) {
@@ -142,7 +142,7 @@ export const WooCommerceSdk = {
     },
     async get() {
       if (NewfoldRuntime.isWoo) {
-      return apiFetch({ url: Endpoints.ALL_TIME_ORDERS });
+        return apiFetch({ url: Endpoints.ALL_TIME_ORDERS });
       }
     },
   },
