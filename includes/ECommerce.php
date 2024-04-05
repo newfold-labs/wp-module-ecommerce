@@ -98,7 +98,6 @@ class ECommerce {
 		add_action( 'before_woocommerce_init', array( $this, 'custom_payment_gateways_order' ) );
 		add_action( 'before_woocommerce_init', array( $this, 'dismiss_woo_payments_cta' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
-		add_action( 'activated_plugin', array( $this, 'detect_plugin_activation' ), 10, 1 );
     add_action( 'activated_plugin', array( $this, 'detect_plugin_activation' ), 10, 1 );
     
     $brandNameValue = $container->plugin()->brand;
