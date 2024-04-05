@@ -34,7 +34,7 @@ export function WonderCart(props) {
   let showInProgress = isInstalling || wonderCartStatus.data?.isInstalling;
   return (
     <Section.Container>
-      <Section.Header title={__("Sales & Discounts", "wp-module-ecommerce")} />
+      <Section.Header title={__('Sales & Promotions', "wp-module-ecommerce")} />
       <Section.Content>
         <div className="nfd-bg-canvas nfd-rounded-lg nfd-border nfd-border-solid nfd-border-line">
           <div
@@ -47,13 +47,13 @@ export function WonderCart(props) {
             <div className="nfd-flex-1">
               <Title size="4" className="nfd-leading-normal">
                 {__(
-                  "Add Upsells, Cross-sells, and other Promotions to your store",
+                  'Add Upsells, Cross-sells, and other Promotions to your store',
                   "wp-module-ecommerce"
                 )}
               </Title>
               <span className="nfd-whitespace-pre-wrap">
                 {__(
-                  "Create and manage deals, sales promotions and upsell campaigns like Buy-One-Get-One and more.",
+                  'Create and manage X-sell, Upsell, sales and promotions through campaigns to boost your sales',
                   "wp-module-ecommerce"
                 )}
               </span>
@@ -77,8 +77,8 @@ export function WonderCart(props) {
                 onClick={hasYithExtended && installWonderCart}
               >
                 {canAccessGlobalCTB && !hasYithExtended
-                  ? __("Buy now", "wp-module-ecommerce")
-                  : __("Install now", "wp-module-ecommerce")}
+                  ? __('Buy now', "wp-module-ecommerce")
+                  : __('Install now', "wp-module-ecommerce")}
               </Button>
             </div>
           </div>
@@ -96,8 +96,8 @@ export function WonderCart(props) {
         target="_blank"
         cardText={
           canAccessGlobalCTB && !hasYithExtended
-            ? __("Buy now", "wp-module-ecommerce")
-            : __("Install now", "wp-module-ecommerce")
+            ? __('Buy now', "wp-module-ecommerce")
+            : __('Install now', "wp-module-ecommerce")
         }
         as={canAccessGlobalCTB && !hasYithExtended ? "a" : "button"}
         disabled={showInProgress}
