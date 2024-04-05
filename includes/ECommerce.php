@@ -99,6 +99,9 @@ class ECommerce {
 		add_action('before_woocommerce_init', array( $this,'dismiss_woo_payments_cta'));
 		add_action( 'load-toplevel_page_'. $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
     
+    $brandNameValue = $container->plugin()->brand;
+    $this->set_wpnav_collapse_setting($brandNameValue);
+
     if (($container->plugin()->id === "bluehost" && ($canAccessGlobalCTB || $hasYithExtended)) || ($container->plugin()->id === "hostgator" && $hasYithExtended))
     { 
       add_filter( 'admin_menu', array($this,'custom_add_promotion_menu_item') );
@@ -134,7 +137,7 @@ class ECommerce {
         $classes[] = 'closed';
         return $classes;
       }
-    );
+    );    
   }
 
   /**
@@ -159,6 +162,15 @@ class ECommerce {
     }
 
     return true;
+  }
+
+  public static function set_wpnav_collapse_setting($brandNameValue) {
+         
+    $expiration_time = time() + (10 * 365 * 24 * 60 * 60);
+    setcookie('nfdbrandname', $brandNameValue, $expiration_time, '/');
+  
+    wp_enqueue_script( 'nfd_wpnavbar_setting', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/wpnavbar.js', array('jquery'), '1.0', true);
+         
   }
 
   /**
@@ -310,6 +322,7 @@ class ECommerce {
         NFD_ECOMMERCE_DIR . '/languages'
       );
       \wp_enqueue_script( 'nfd-ecommerce-dependency' );
+      \wp_enqueue_script( 'nfd_wpnavbar_setting' );
     }
   }
 
@@ -453,6 +466,7 @@ class ECommerce {
   );
   }
 
+  
 	
 	/**
 	 * Add a Promotion button under Add New product tab
