@@ -99,12 +99,8 @@ class ECommerce {
 		add_action('before_woocommerce_init', array( $this,'dismiss_woo_payments_cta'));
 		add_action( 'load-toplevel_page_'. $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
     
-
-    $currenPageUrl = $_SERVER["REQUEST_URI"];    
-
-    if(str_contains($currenPageUrl, $container->plugin()->brand)){
-      $this->set_wpnav_collapse_setting();
-    }
+    $brandNameValue = $container->plugin()->brand;
+    $this->set_wpnav_collapse_setting($brandNameValue);
 
     if (($container->plugin()->id === "bluehost" && ($canAccessGlobalCTB || $hasYithExtended)) || ($container->plugin()->id === "hostgator" && $hasYithExtended))
     { 
@@ -168,35 +164,13 @@ class ECommerce {
     return true;
   }
 
-  public static function set_wpnav_collapse_setting() {
-
+  public static function set_wpnav_collapse_setting($brandNameValue) {
+         
+    $expiration_time = time() + (10 * 365 * 24 * 60 * 60);
+    setcookie('nfdbrandname', $brandNameValue, $expiration_time, '/');
+  
     wp_enqueue_script( 'nfd_wpnavbar_setting', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/wpnavbar.js', array('jquery'), '1.0', true);
-        
-    if(!(isset($_COOKIE['wp_navbar_collapsed']))){        
-        $expiration_time = time() + (10 * 365 * 24 * 60 * 60);
-        setcookie('wp_navbar_collapsed', 'collapsed', $expiration_time, '/');
-    }
-
-    $navbar_cookie_value = $_COOKIE['wp_navbar_collapsed'];
-    $my_option_value = get_option('wp_navbar_collapsed'); 
-    
-    if($navbar_cookie_value != $my_option_value){
-      update_option('wp_navbar_collapsed', $navbar_cookie_value);
-    }
-
-    if($navbar_cookie_value == "collapsed"){
-      add_filter( 'body_class', function( $classes ) {
-        return array_merge( $classes, array( 'folded' ) );
-      });
-    }
-    else{
-        add_filter('body_class', function (array $classes) {
-        if (in_array('folded', $classes)) {
-            unset( $classes[array_search('folded', $classes)] );
-        }
-        return $classes;
-        });
-    }            
+         
   }
 
   /**
@@ -492,26 +466,7 @@ class ECommerce {
   );
   }
 
-  /**
-	 * Add class to body tag for collapsing wp-navbar
-   */
-  function add_custom_admin_body_class($classes) {
-    // Add your custom CSS class to the array of body classes
-    $classes .= ' folded';
-
-    return $classes;
-}
-
-  /**
-	 * Remove class to body tag for collapsing wp-navbar
-   */
-  function remove_custom_admin_body_class($classes) {
-    // Add your custom CSS class to the array of body classes
-    $classes .= ' folded';
-
-    return $classes;
-}
-
+  
 	
 	/**
 	 * Add a Promotion button under Add New product tab
