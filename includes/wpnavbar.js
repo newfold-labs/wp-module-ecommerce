@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let brandCookie = "?page="+getCookie('nfdbrandname');
     let urlSearchString = window.location.search;
 
+    
     let now = new Date();
     let expirationDate = new Date();
     expirationDate.setFullYear(now.getFullYear() + 10);
