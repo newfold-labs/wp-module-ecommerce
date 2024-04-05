@@ -5,13 +5,13 @@ use NewfoldLabs\WP\Module\ECommerce\ECommerce;
 
 use function NewfoldLabs\WP\ModuleLoader\register;
 
-define( 'NFD_WOOCOMMERCE_MODULE_VERSION', '1.3.26' );
+define( 'NFD_ECOMMERCE_MODULE_VERSION', '1.3.26' );
 
 if ( function_exists( 'is_admin' ) && is_admin() ) {
-	$old_woocommerce_module_version = get_option( 'nfd_woocommerce_module_version' );
+	$old_woocommerce_module_version = get_option( 'nfd_ecommerce_module_version' );
 
-	if ( $old_woocommerce_module_version < NFD_WOOCOMMERCE_MODULE_VERSION ) {
-		update_option( 'nfd_woocommerce_module_version', NFD_WOOCOMMERCE_MODULE_VERSION, true );
+	if ( $old_woocommerce_module_version < NFD_ECOMMERCE_MODULE_VERSION ) {
+		update_option( 'nfd_ecommerce_module_version', NFD_ECOMMERCE_MODULE_VERSION, true );
 	}
 }
 
