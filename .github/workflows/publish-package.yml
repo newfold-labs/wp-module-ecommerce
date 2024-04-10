@@ -17,7 +17,7 @@ jobs:
         run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.NEWFOLD_ACCESS_TOKEN }}" >> .npmrc
       - run: npm ci
       - name: Reset Registry for npm publish
-        run: sed '$d' .npmrc
+        run: sed -i '$d' .npmrc
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
