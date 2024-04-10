@@ -91,10 +91,6 @@ class ECommerce {
 		add_filter( 'woocommerce_coupons_enabled', array( $this, 'disable_coupon_field_on_cart' ) );
 		add_filter( 'woocommerce_before_cart', array( $this, 'hide_banner_notice_on_cart' ) );
 		add_action( 'before_woocommerce_init', array( $this, 'hide_woocommerce_set_up' ) );
-		add_filter( 'woocommerce_checkout_fields', array( $this, 'swap_billing_shipping_fields' ), 10, 1 );
-		add_filter( 'woocommerce_shipping_fields', array( $this, 'add_phone_number_email_to_shipping_form' ), 10, 1 );
-		add_action( 'woocommerce_checkout_create_order', array( $this, 'save_custom_shipping_fields' ), 10, 1 );
-		add_action( 'woocommerce_admin_order_data_after_shipping_address', array( $this, 'display_custom_shipping_fields_in_admin' ), 10, 1 );
 		add_action( 'before_woocommerce_init', array( $this, 'custom_payment_gateways_order' ) );
 		add_action( 'before_woocommerce_init', array( $this, 'dismiss_woo_payments_cta' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
@@ -392,30 +388,6 @@ class ECommerce {
 	}
 
 	/**
-	 * To show the shipping form first if the ship to destination is set to 'Shipping'
-	 */
-	public function swap_billing_shipping_fields( $fields ) {
-		$shipping_destination = get_option( 'woocommerce_ship_to_destination' );
-		if ( $shipping_destination == 'shipping' ) {
-			add_filter( 'gettext', array( $this, 'update_text' ), 20, 3 );
-			?>
-		<script type="text/javascript">
-		jQuery(document).ready(function($) {
-			$('#ship-to-different-address-checkbox').prop('checked', false); //Uncheck the checkbox
-		});
-		</script>
-			<?php
-			// swapping billing and shipping fields
-			$billing  = $fields['billing'];
-			$shipping = $fields['shipping'];
-
-			$fields['shipping'] = $billing;
-			$fields['billing']  = $shipping;
-		}
-		return $fields;
-	}
-
-	/**
 	 * Update the heading and checkbox text
 	 */
 	public function update_text( $translated_text, $text, $domain ) {
@@ -428,57 +400,6 @@ class ECommerce {
 				break;
 		}
 		return $translated_text;
-	}
-
-	/**
-	 *  Add phone number and Email field to WooCommerce shipping form
-	 */
-	public function add_phone_number_email_to_shipping_form( $fields ) {
-		$fields['shipping_phone'] = array(
-			'label'    => __( 'Phone Number', 'wp-module-ecommerce' ),
-			'required' => true,
-			'class'    => array( 'form-row-wide' ),
-			'clear'    => true,
-		);
-		$fields['shipping_email'] = array(
-			'label'    => __( 'Email Address', 'wp-module-ecommerce' ),
-			'required' => true,
-			'class'    => array( 'form-row-wide' ),
-			'clear'    => true,
-		);
-		return $fields;
-	}
-
-	/*
-	* Save phone number and email fields to order meta
-	*/
-	function save_custom_shipping_fields( $order ) {
-		$shipping_phone = isset( $_POST['shipping_phone'] ) ? sanitize_text_field( $_POST['shipping_phone'] ) : '';
-		$shipping_email = isset( $_POST['shipping_email'] ) ? sanitize_email( $_POST['shipping_email'] ) : '';
-
-		if ( ! empty( $shipping_phone ) ) {
-			$order->update_meta_data( '_shipping_phone', $shipping_phone );
-		}
-
-		if ( ! empty( $shipping_email ) ) {
-			$order->update_meta_data( '_shipping_email', $shipping_email );
-		}
-	}
-
-	/**
-	 * Display phone number and email fields in order admin
-	 */
-	public function display_custom_shipping_fields_in_admin( $order ) {
-		$shipping_phone = $order->get_meta( '_shipping_phone' );
-		$shipping_email = $order->get_meta( '_shipping_email' );
-
-		if ( ! empty( $shipping_phone ) ) {
-			echo '<p><strong>' . __( 'Phone Number', 'wp-module-ecommerce' ) . ':</strong> ' . esc_html( $shipping_phone ) . '</p>';
-		}
-
-		if ( ! empty( $shipping_email ) ) {
-			echo '<p><strong>' . __( 'Email Address', 'wp-module-ecommerce' ) . ':</strong> ' . esc_html( $shipping_email ) . '</p>';
-		}
 	}
 
 	/**
