@@ -38,6 +38,16 @@ Next-generation WordPress eCommerce Experience for WordPress sites at Newfold Di
   3. Under `tax settings` tab, store owner can choose to enable/disable sales tax. 
 
 
+## Critical Paths
+
+1. Ecommerce Module should display, `Home` page with site preview, links to Hosting brand a/c and links to pending & completed tasks to setup Ecommerce store.
+2. If currently WordPress site is in coming soon mode, WordPress administrator should see visit site/ store CTA and also a button to Launch or go live under `Ready to go live` section. 
+3. `Store` page should give a brief overview of recent customer activity on store. It also has a section to setup `Ecommerce features` with purchase/enable/manage YITH extended plugins. 
+4. YITH PayPal Payment, WonderCart, YITH Stripe Payments and Ecomdash plugins require WooCommerce to be installed and activated. If WooCommerce isn't setup, `Store` tab should ask customers to first Install & activate WooCommerce. `Home` should display warnings for the same.
+5. `Products & Services` submenu must facilitat CTA's to Add new product/Import CSV of products into store. Also disply services offered by YITH extended plugins.
+6. `Sales & Promotions` submenu allows customers to install `WonderCart` plugin if it is not already installed & activated. Once `WonderCart` is activated it offers option to setup different promotional campaigns.
+7. `Payments` submenu should display payment gateway setup & offline payments setup options.
+8. Stores geographical address, owners email address & currency used on store should be setup under `Store details` tab. Apart from these, option to setup 3rd party shipping setup and enable/disable sales tax should also be set from `Store details` tab. 
 
 
 ## Installation
