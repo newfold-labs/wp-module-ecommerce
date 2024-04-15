@@ -12,9 +12,14 @@ Next-generation WordPress eCommerce Experience for WordPress sites at Newfold Di
 
 * Ecommerce module displays `Home or Dashboard` page for Brand plugin, with below options:
   1. Live site preview for both, live and coming soon mode for WordPress site with view & edit site options
-  2. Next steps to setup your site/store and also link to view completed tasks
-  3. Links to your Hosting Brand Account
-  4. Link to 24/7 support to reachout to experts to build your site for you. 
+  2. Next steps to setup your site helps customers to complete below tasks: 
+      * To add store info 
+      * Setup online payment options like PayPal, Stripe, RazorPay. Also choose offline payment options like, check payments, bank transfers & C.O.D
+      * Setup shipping options like Shippo.
+      * Configure tax settings
+      * Add/import products
+      * Customers who have selected `novice` as WordPress experience level will have access to Signup to BlueHost WP academy / Yoast academy for learning purpose. 
+      * There is also link for Customers to view list of `Completed tasks`
 * Ecommerce module also displays `Store` option which gives snapshot of recent customer activity with details like total sales, net sales, recent orders, products sold, visitors, views and also a link to detailed `Analytics` page of Woocommerce plugin.
 * `Store` page also, allows customers to Purchase/Enable/Manage and learn more about YITH extended plugins like: 
   1. YITH Booking and Appointment for WooCommerce
@@ -40,15 +45,14 @@ Next-generation WordPress eCommerce Experience for WordPress sites at Newfold Di
 
 ## Critical Paths
 
-1. Ecommerce Module should display, `Home` page with site preview, links to Hosting brand a/c and links to pending & completed tasks to setup Ecommerce store.
+1. Ecommerce Module should display, `Home` page with live `site preview` for both Live & Coming Soon mode same as what customers would see for WordPress site.
 2. If currently WordPress site is in coming soon mode, WordPress administrator should see visit site/ store CTA and also a button to Launch or go live under `Ready to go live` section. 
 3. `Store` page should give a brief overview of recent customer activity on store. It also has a section to setup `Ecommerce features` with purchase/enable/manage YITH extended plugins. 
 4. YITH PayPal Payment, WonderCart, YITH Stripe Payments and Ecomdash plugins require WooCommerce to be installed and activated. If WooCommerce isn't setup, `Store` tab should ask customers to first Install & activate WooCommerce. `Home` should display warnings for the same.
-5. `Products & Services` submenu must facilitat CTA's to Add new product/Import CSV of products into store. Also disply services offered by YITH extended plugins.
+5. `Products & Services` tab should provide customers access to purchase services offered by YITH extended plugins like: YITH Booking and Appointment for WooCommerce and YITH WooCommerce Gift Cards.
 6. `Sales & Promotions` submenu allows customers to install `WonderCart` plugin if it is not already installed & activated. Once `WonderCart` is activated it offers option to setup different promotional campaigns.
-7. `Payments` submenu should display payment gateway setup & offline payments setup options.
-8. Stores geographical address, owners email address & currency used on store should be setup under `Store details` tab. Apart from these, option to setup 3rd party shipping setup and enable/disable sales tax should also be set from `Store details` tab. 
-
+7. `Payments` tab facilitates Customers to connect their accounts to receive payments via popular online payment options like PayPal, Stripe and RazorPay. Customers can also choose to accept offline payment via options like: check payments, bank transfers & C.O.D
+8. `Store details` tab facilitates setup of `Shippo` third party shipping software for e-commerce businesses.
 
 ## Installation
 
