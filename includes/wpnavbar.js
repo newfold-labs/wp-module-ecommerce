@@ -1,7 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
 
-    let brandCookie = "?page="+getCookie('nfdbrandname');
+    let brandCookie = "?page="+navBarParams.nfdbrandname;
     let urlSearchString = window.location.search;
 
     
