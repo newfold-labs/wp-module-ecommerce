@@ -14,8 +14,8 @@ import { WordPressSdk } from "../sdk/wordpress";
 const Text = {
   Pending: {
     title: NewfoldRuntime.hasCapability("isEcommerce")
-      ? __("Congrats on your new store!", "wp-module-ecommerce")
-      : __("Congrats on your new site!", "wp-module-ecommerce"),
+      ? __("Congratulations on your new store!", "wp-module-ecommerce")
+      : __("Congratulations on your new site!", "wp-module-ecommerce"),
     description: __(
       'Your site is currently displaying a "Coming Soon" page.',
       "wp-module-ecommerce"
@@ -23,7 +23,7 @@ const Text = {
     Illustration: ComingSoonIllustration,
   },
   Live: {
-    title: __("Ready to go to the next level?", "wp-module-ecommerce"),
+    title: __("Are you ready to go to the next level?", "wp-module-ecommerce"),
     description: __("Your site is live to the world!", "wp-module-ecommerce"),
     Illustration: WelcomeIllustration,
   },
