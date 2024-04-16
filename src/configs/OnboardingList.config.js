@@ -15,7 +15,8 @@ import {
   yithOnboardingPaymentParser,
   yithOnboardingStoreParser,
   getOrderList,
-  get_tax_configured
+  get_tax_configured,
+  get_settings_list
 } from "./selectors";
 
 const parsePluginStatus = (plugins) => ({
@@ -38,6 +39,17 @@ const signUpBluehostAcademy = () => {
   AnalyticsSdk.track("next_step", "next_step_bh_wp_academy_clicked", data);
   WordPressSdk.settings.put({ bluehost_academy_signup_clicked: true });
 };
+
+const updateSiteServers = () => {
+  WordPressSdk.settings.put({ update_site_server_clicked: true });
+};
+
+const updateStoreSetup = (setIsMigrationCompleted) => {
+  WordPressSdk.settings.put({ showMigrationSteps: false }).then(() => {
+    WordPressSdk.settings.get();
+    setIsMigrationCompleted(false);
+  });
+};
 const signUpYoastSEOAcademy = () => {
   WordPressSdk.settings.put({ yoast_seo_signup_status: true });
   AnalyticsSdk.track("next_step", "next_step_yoast_academy_clicked", data);
@@ -57,6 +69,63 @@ export function OnboardingListDefinition(props) {
       orders: WooCommerceSdk.orders.get
     },
     cards: [
+      {
+        name: "Update your website namerservers",
+        text: __(
+          "Update your website namerservers",
+          "wp-module-ecommerce"
+        ),
+        state: {
+          isCompleted: (queries) => queries?.settings?.update_site_server_clicked,
+          isMigrated: (queries) => queries?.settings?.showMigrationSteps
+        },
+        shouldRender: (state) => state.isMigrated,
+        actions: {
+          manage: updateSiteServers,
+        },
+        queries: [
+          { key: "settings", selector: get_settings_list }
+        ],
+      },
+      {
+        name: "Need help updating your nameservers?",
+        text: __(
+          "Need help updating your nameservers?",
+          "wp-module-ecommerce"
+        ),
+        state: {
+          isCompleted: (queries) => queries?.settings?.update_site_server_clicked,
+          isMigrated: (queries) => queries?.settings?.showMigrationSteps,
+          className: () => "nfd-bg-canvas",
+          hideCheck: () => true,
+          showText: () => <a className="nfd-underline">View Guide</a>
+        },
+        shouldRender: (state) => state.isMigrated && !state.isCompleted,
+        actions: {
+          manage: installJetpack,
+        },
+        queries: [
+          { key: "settings", selector: get_settings_list }
+        ],
+      },
+      {
+        name: "Continue with store setup",
+        text: __(
+          "Continue with store setup",
+          "wp-module-ecommerce"
+        ),
+        state: {
+          isCompleted: (queries) => false,
+          isMigrated: (queries) => queries?.settings?.showMigrationSteps && queries?.settings?.update_site_server_clicked,
+        },
+        shouldRender: (state) => state.isMigrated && !state.isCompleted,
+        actions: {
+          manage: () => updateStoreSetup(props.setIsMigrationCompleted),
+        },
+        queries: [
+          { key: "settings", selector: get_settings_list }
+        ],
+      },
       {
         name: "Sign up for Bluehost WordPress Academy",
         text: __(

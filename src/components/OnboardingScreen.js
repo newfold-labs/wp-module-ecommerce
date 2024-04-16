@@ -27,6 +27,10 @@ const Text = {
     description: __("Your site is live to the world!", "wp-module-ecommerce"),
     Illustration: WelcomeIllustration,
   },
+  isMigrated: {
+    title: __("Welcome home!", "wp-module-ecommerce"),
+    description: __("Your site has been successfully migrated.", "wp-module-ecommerce"),
+  }
 };
 
 export function OnboardingScreen({
@@ -41,6 +45,7 @@ export function OnboardingScreen({
 
   const [hovered, setIsHovered] = useState(false);
   const [editUrl, setEditUrl] = useState("");
+  const [isMigrationCompleted, setIsMigrationCompleted] = useState(false);
 
   const handleMouseOver = () => {
     setIsHovered(true);
@@ -57,6 +62,7 @@ export function OnboardingScreen({
 
   useEffect(() => {
     WordPressSdk.settings.get().then((res) => {
+      setIsMigrationCompleted( res.showMigrationSteps );
       if (res?.page_on_front && res?.show_on_front === "page") {
         setEditUrl(
           RuntimeSdk.adminUrl(
@@ -86,18 +92,18 @@ export function OnboardingScreen({
             )}
           >
             <div className="nfd-flex nfd-flex-col nfd-justify-start nfd-items-start nfd-gap-4">
-              <Title size="2">{title}</Title>
+              <Title size="2">{isMigrationCompleted ? Text.isMigrated.title : title}</Title>
               <div>
                 {comingSoon ? (
                   <Alert
                     variant="warning"
                     className="nfd-text-sm nfd-bg-transparent nfd-p-0 "
                   >
-                    <span className="nfd-text-red-700">{description}</span>
+                    <span className="nfd-text-red-700">{isMigrationCompleted ? Text.isMigrated.description : description}</span>
                   </Alert>
                 ) : (
                   <span className="nfd-text-[--nfd-ecommerce-text-info] nfd-text-sm">
-                    {description}
+                    {isMigrationCompleted ? Text.isMigrated.description : description}
                   </span>
                 )}
               </div>
@@ -178,7 +184,7 @@ export function OnboardingScreen({
                 </div>
               </div>
             </div>
-            <OnboardingList notify={notify} />
+            <OnboardingList notify={notify} isMigrationCompleted={isMigrationCompleted} setIsMigrationCompleted={setIsMigrationCompleted} />
           </div>
           <SiteStatus
             comingSoon={comingSoon}

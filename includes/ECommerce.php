@@ -67,6 +67,8 @@ class ECommerce {
 		'woocommerce_cheque_settings',
 		'onboarding_experience_level',
 		'yoast_seo_signup_status',
+		'showMigrationSteps',
+		'update_site_server_clicked'
 	);
 
 
@@ -296,6 +298,24 @@ class ECommerce {
 		\register_setting(
 			'general',
 			'yoast_seo_signup_status',
+			array(
+				'show_in_rest' => true,
+				'type'         => 'boolean',
+				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
+			)
+		);
+		\register_setting(
+			'general',
+			'update_site_server_clicked',
+			array(
+				'show_in_rest' => true,
+				'type'         => 'boolean',
+				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
+			)
+		);
+		\register_setting(
+			'general',
+			'showMigrationSteps',
 			array(
 				'show_in_rest' => true,
 				'type'         => 'boolean',
