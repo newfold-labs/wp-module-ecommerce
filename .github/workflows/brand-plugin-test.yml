@@ -27,7 +27,7 @@ jobs:
   bluehost:
     name: Bluehost Build and Test
     needs: setup
-    uses: newfold-labs/workflows/.github/workflows/module-plugin-test.yml@main
+    uses: newfold-labs/workflows/.github/workflows/module-plugin-test.yml@add/plugin-test
     with:
       only-module-tests: true
       module-repo: ${{ github.repository }}
