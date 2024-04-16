@@ -45,7 +45,7 @@ function OnboardingCheckListItem({ children, actions, state, ...props }) {
               : "nfd-text-[--nfd-ecommerce-text-light]"
           )}
         />
-        <span className="nfd-flex-1 nfd-text-black">{props.text}</span>
+        <span className="nfd-flex-1 nfd-text-black" id={props.text.trim().replace(/\s+/g, '-').toLowerCase()}>{props.text}</span>
         {manageAction.isMutating ? (
           <Spinner size="4" className="nfd-text-primary" />
         ) : (
@@ -71,7 +71,7 @@ export function OnboardingList(props) {
   let itemsToDisplay =
     view === "incomplete" ? incompleteItems.slice(0, 5) : completedItems;
   return (
-    <div className="nfd-grid nfd-grid-rows-[repeat(3,_min-content)] nfd-gap-4">
+    <div className="nfd-grid nfd-grid-rows-[repeat(3,_min-content)] nfd-gap-4" id="next-steps-section">
       <Title size="2">
         {NewfoldRuntime.hasCapability("isEcommerce")
           ? __("Next steps for your store", "wp-module-ecommerce")

@@ -13,24 +13,24 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
   return (
     <Section.Container>
       {RuntimeSdk.brandSettings.setup.payment.includes("Paypal") && (
-        <Section.Content separator>
+        <Section.Content className="paypal-section" separator>
           <Paypal notify={notify} />
         </Section.Content>
       )}
 
       {RuntimeSdk.brandSettings.setup.payment.includes("Stripe") && (
-        <Section.Content separator>
+        <Section.Content className="stripe-section" separator>
           <Stripe notify={notify} />
         </Section.Content>
       )}
 
       {RuntimeSdk.brandSettings.setup.payment.includes("Razorpay") && (
-        <Section.Content separator>
+        <Section.Content className="razorpay-section" separator>
           <Razorpay notify={notify} />
         </Section.Content>
       )}
 
-      <Section.Content>
+      <Section.Content className="offline-payment-section">
         <Section.Settings title={__("Offline Payments", "wp-module-ecommerce")} description={__("Accept payments (money orders, bank transfers or C.O.D.) that are made outside your online store. ", "wp-module-ecommerce")} >
           <div className="nfd-border nfd-rounded-md nfd-p-6">
             <CheckboxGroup

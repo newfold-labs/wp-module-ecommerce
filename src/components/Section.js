@@ -78,6 +78,7 @@ const Content = ({ separator = false, className, children }) => {
         "nfd-app-section-content nfd-p-8 nfd-pb-0",
         className
       )}
+      id={className}
     >
       <div
         className={classNames(
