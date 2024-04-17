@@ -187,10 +187,11 @@ export function StoreDetails(props) {
             variant="secondary"
             disabled={!isDirty}
             isLoading={isFormBusy}
+            id="store-details-update-discard-changes"
           >
             {__("Discard Changes", "wp-module-ecommerce")}
           </Button>
-          <Button disabled={!isDirty} isLoading={isFormBusy} type="submit">
+          <Button disabled={!isDirty} isLoading={isFormBusy} type="submit" id="store-details-update-save-changes">
             {__("Save Changes", "wp-module-ecommerce")}
           </Button>
         </div>
