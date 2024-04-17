@@ -23,6 +23,7 @@ function OnboardingCheckListItem({ children, actions, state, ...props }) {
         "nfd-m-0 nfd-border-b nfd-border-line last:nfd-border-b-0",
         "hover:nfd-bg-canvas"
       )}
+      id={props.name.trim().replace(/\s+/g, '-').toLowerCase()}
     >
       <Link
         className={classNames(
@@ -45,7 +46,7 @@ function OnboardingCheckListItem({ children, actions, state, ...props }) {
               : "nfd-text-[--nfd-ecommerce-text-light]"
           )}
         />
-        <span className="nfd-flex-1 nfd-text-black" id={props.text.trim().replace(/\s+/g, '-').toLowerCase()}>{props.text}</span>
+        <span className="nfd-flex-1 nfd-text-black">{props.text}</span>
         {manageAction.isMutating ? (
           <Spinner size="4" className="nfd-text-primary" />
         ) : (
