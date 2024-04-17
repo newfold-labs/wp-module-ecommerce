@@ -75,6 +75,9 @@ export function WonderCart(props) {
                 variant="upsell"
                 isLoading={showInProgress}
                 onClick={hasYithExtended && installWonderCart}
+                id={canAccessGlobalCTB && !hasYithExtended
+                  ? "buynow-wondercart"
+                  : "installnow-wondercart"}
               >
                 {canAccessGlobalCTB && !hasYithExtended
                   ? __('Buy now', "wp-module-ecommerce")
