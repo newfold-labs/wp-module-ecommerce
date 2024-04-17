@@ -235,6 +235,7 @@ export function QuickLook(props) {
       as="button"
       disabled={isInstalling}
       onClick={installWoo}
+      id="install-woocommerce-to-unlock-btn"
     >
       <Section.Content>
         <Section.Block

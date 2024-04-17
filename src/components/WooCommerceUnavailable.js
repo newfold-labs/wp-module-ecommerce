@@ -30,6 +30,7 @@ export function WooCommerceUnavailable(props) {
               variant="upsell"
               isLoading={showInProgress}
               onClick={installWoo}
+              id="install-woocommerce-btn"
             >
               {__("Install WooCommerce", "wp-module-ecommerce")}
             </Button>
