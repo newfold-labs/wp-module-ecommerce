@@ -46,7 +46,7 @@ function OnboardingCheckListItem({ children, actions, state, ...props }) {
               : "nfd-text-[--nfd-ecommerce-text-light]"
           )}
         />}
-        <span className="nfd-flex-1 nfd-text-black">{props.text}</span>
+        <span className="nfd-flex-1 nfd-text-black" {...(props["data-openNfdHelpCenter"] ? {"data-openNfdHelpCenter": props["data-openNfdHelpCenter"]} : {})}>{props.text}</span>
         {manageAction.isMutating ? (
           <Spinner size="4" className="nfd-text-primary" />
         ) : (
@@ -70,7 +70,7 @@ export function OnboardingList(props) {
   let completedItems = items.filter((item) => item.state.isCompleted);
   let incompleteItems = items.filter((item) => !item.state.isCompleted);
   let itemsToDisplay =
-    props.isMigrationCompleted ? items.slice(0, 2) : (view === "incomplete" ? incompleteItems.slice(0, 5) : completedItems);
+    props.isMigrationCompleted ? items.slice(0, 3) : (view === "incomplete" ? incompleteItems.slice(0, 5) : completedItems);
   return (
     <div className="nfd-grid nfd-grid-rows-[repeat(3,_min-content)] nfd-gap-4">
       <Title size="2">

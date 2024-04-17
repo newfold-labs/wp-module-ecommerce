@@ -18,6 +18,7 @@ import {
   get_tax_configured,
   get_settings_list
 } from "./selectors";
+import { BH_UR_REGEX, HG_UR_REGEX } from "../constants";
 
 const parsePluginStatus = (plugins) => ({
   isWCActive: PluginsSdk.queries.isPlugin(plugins, ["woocommerce"], "active"),
@@ -57,6 +58,17 @@ const signUpYoastSEOAcademy = () => {
 const brandName =
   (NewfoldRuntime?.sdk?.ecommerce?.brand_settings?.name).toLowerCase();
 
+const check_url_match = () => {
+  switch (brandName){
+    case "bluehost": 
+      return !(BH_UR_REGEX.test(window.location.origin));
+    case "hostgator":
+      return !(HG_UR_REGEX.test(window.location.origin));
+    default: 
+     return true;
+  }
+}
+
 export function OnboardingListDefinition(props) {
   const installJetpack = createPluginInstallAction("jetpack", 20, props);
   return {
@@ -83,6 +95,24 @@ export function OnboardingListDefinition(props) {
         actions: {
           manage: updateSiteServers,
         },
+        "data-openNfdHelpCenter": true,
+        queries: [
+          { key: "settings", selector: get_settings_list }
+        ],
+      },
+      {
+        name: "Connect this site to your domain",
+        text: __(
+          "Connect this site to your domain",
+          "wp-module-ecommerce"
+        ),
+        state: {
+          isCompleted: () => check_url_match(),
+          isMigrated: (queries) => queries?.settings?.showMigrationSteps,
+        },
+        "data-openNfdHelpCenter": true,
+        shouldRender: (state) => state.isMigrated,
+        actions: {},
         queries: [
           { key: "settings", selector: get_settings_list }
         ],
@@ -94,7 +124,7 @@ export function OnboardingListDefinition(props) {
           "wp-module-ecommerce"
         ),
         state: {
-          isCompleted: (queries) => queries?.settings?.update_site_server_clicked,
+          isCompleted: (queries) => queries?.settings?.update_site_server_clicked && check_url_match(),
           isMigrated: (queries) => queries?.settings?.showMigrationSteps,
           className: () => "nfd-bg-canvas",
           hideCheck: () => true,
@@ -102,7 +132,6 @@ export function OnboardingListDefinition(props) {
         },
         shouldRender: (state) => state.isMigrated && !state.isCompleted,
         actions: {
-          manage: installJetpack,
         },
         queries: [
           { key: "settings", selector: get_settings_list }
