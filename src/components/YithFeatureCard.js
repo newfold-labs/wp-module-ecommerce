@@ -14,10 +14,9 @@ export function YithFeatureCard({
   )[0];
   const state = cardsInfo?.state;
   const isInstallDisabled =
-    !state?.isActive && !state?.isQueueEmpty && !state?.isInstalling;
-    console.log(yithPluginsMap, "yithPluginsMap");
-  return (
-    <Card>
+    !state?.isActive && !state?.isQueueEmpty && !state?.isInstalling;    
+  return (    
+    <Card id={yithPluginsMap.get(id).title}>
       <Card.Content>
         <img
           src={yithPluginsMap.get(id).image}

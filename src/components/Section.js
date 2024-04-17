@@ -1,13 +1,14 @@
 import { Button, Title } from "@newfold/ui-component-library";
 import classNames from "classnames";
 
-const Container = ({ className, children, showShadowBox = true }) => {
+const Container = ({ className, children, id = "", showShadowBox = true }) => {
   return (
     <div
       className={classNames(
         "nfd-app-section-container nfd-bg-white nfd-w-full nfd-rounded-lg",
         className
-      )}
+      )}     
+      id={id} 
     >
       {children}
     </div>
@@ -109,7 +110,7 @@ const Settings = ({ className, children, title, description }) => {
       className={classNames(
         "nfd-grid 2xl:nfd-grid-cols-3 2xl:nfd-gap-12",
         className
-      )}
+      )}      
     >
       <div className="nfd-col-span-1">
         <div className="nfd-max-w-screen-sm">
