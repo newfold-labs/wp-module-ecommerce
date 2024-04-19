@@ -44,6 +44,7 @@ const Shipping = ({ notify }) => {
                           "max-[359px]:nfd-my-2",
                           "min-[360px]:nfd-m-0"
                         )}
+                        id="manage-shippo"
                       >
                         {__("Manage", "wp-module-ecommerce")}
                       </Button>
@@ -54,6 +55,7 @@ const Shipping = ({ notify }) => {
                           "max-[359px]:nfd-my-2",
                           "min-[360px]:nfd-m-0"
                         )}
+                        id={!integrationStatus?.integration?.plugin?.status ? "install-shippo" : "connect-to-shippo-btn"}
                       >
                           {!integrationStatus?.integration?.plugin?.status ? __("Install", "wp-module-ecommerce") : __("Connect", "wp-module-ecommerce")}
                       </Button>
@@ -67,6 +69,7 @@ const Shipping = ({ notify }) => {
                       "max-[359px]:nfd-my-2",
                       "min-[360px]:nfd-m-0"
                     )}
+                    id="installing-shippo"
                   >
                     {__("Installing...", "wp-module-ecommerce")}
                   </Button>

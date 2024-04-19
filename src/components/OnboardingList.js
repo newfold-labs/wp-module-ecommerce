@@ -23,6 +23,7 @@ function OnboardingCheckListItem({ children, actions, state, ...props }) {
         "nfd-m-0 nfd-border-b nfd-border-line last:nfd-border-b-0",
         "hover:nfd-bg-canvas"
       )}
+      id={props.name.trim().replace(/\s+/g, '-').toLowerCase()}
     >
       <Link
         className={classNames(
@@ -71,17 +72,23 @@ export function OnboardingList(props) {
   let itemsToDisplay =
     view === "incomplete" ? incompleteItems.slice(0, 5) : completedItems;
   return (
-    <div className="nfd-grid nfd-grid-rows-[repeat(3,_min-content)] nfd-gap-4">
+    <div className="nfd-grid nfd-grid-rows-[repeat(3,_min-content)] nfd-gap-4" id="next-steps-section">
       <Title size="2">
         {NewfoldRuntime.hasCapability("isEcommerce")
           ? __("Next steps for your store", "wp-module-ecommerce")
           : __("Next steps for your site", "wp-module-ecommerce")}
       </Title>
       <p>
-        {__(
-          "You're just a few steps away from sharing your store with the world!",
-          "wp-module-ecommerce"
-        )}
+        {NewfoldRuntime.hasCapability("isEcommerce")
+          ? __(
+            "You're just a few steps away from sharing your store with the world!",
+            "wp-module-ecommerce"
+          )
+          : __(
+            "You're just a few steps away from sharing your site with the world!",
+            "wp-module-ecommerce"
+            )
+        }
       </p>
       {view === "incomplete" && itemsToDisplay.length === 0 && (
         <div>

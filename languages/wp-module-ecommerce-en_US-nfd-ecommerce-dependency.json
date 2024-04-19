@@ -1,6 +1,6 @@
 {
     "translation-revision-date": "YEAR-MO-DA HO:MI+ZONE",
-    "generator": "WP-CLI\/2.9.0",
+    "generator": "WP-CLI\/2.8.1",
     "source": "build\/index.js",
     "domain": "messages",
     "locale_data": {
@@ -274,9 +274,6 @@
             "Would you like to enable sales tax?": [
                 ""
             ],
-            "Sales & Discounts": [
-                ""
-            ],
             "Add Upsells, Cross-sells, and other Promotions to your store": [
                 ""
             ],
@@ -382,9 +379,6 @@
             "Import products": [
                 ""
             ],
-            "Bookings": [
-                ""
-            ],
             "Enable": [
                 ""
             ],
@@ -392,9 +386,6 @@
                 ""
             ],
             "Create a booking": [
-                ""
-            ],
-            "Gift Cards": [
                 ""
             ],
             "Manage gift cards": [
@@ -556,9 +547,6 @@
             "enter your \"%1$s\" key secret here.": [
                 ""
             ],
-            "Your \"%1$s\" account have been connected": [
-                ""
-            ],
             "Check payments": [
                 ""
             ],
@@ -623,6 +611,48 @@
                 ""
             ],
             "Buy now": [
+                ""
+            ],
+            "Edit your site": [
+                ""
+            ],
+            "Stripe": [
+                ""
+            ],
+            "Stripe provides all the tools that you need to accept payments online around the world, including support for Apple Pay and Google Pay.": [
+                ""
+            ],
+            "A secure connection is required when running Stripe Payments in Live mode; plugin is currently enabled, but no gateway will be available until you secure connection to your site through a valid SSL certificate.             If you already have a valid SSL certificate, please change the url in": [
+                ""
+            ],
+            "settings": [
+                ""
+            ],
+            "page": [
+                ""
+            ],
+            "One-click refunds": [
+                ""
+            ],
+            "Option to let customers save their credit card info securely": [
+                ""
+            ],
+            "Support ACH direct debt": [
+                ""
+            ],
+            " Uses many popular payment methods": [
+                ""
+            ],
+            "Sales & Promotions": [
+                ""
+            ],
+            "Create and manage X-sell, Upsell, sales and promotions through campaigns to boost your sales": [
+                ""
+            ],
+            "eCommerce Features": [
+                ""
+            ],
+            "New Order Received": [
                 ""
             ]
         }
