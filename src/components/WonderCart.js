@@ -69,12 +69,12 @@ export function WonderCart(props) {
                 }
                 href={
                   (canAccessGlobalCTB &&
-                  !hasYithExtended &&
-                  NewfoldRuntime.sdk.ecommerce.brand_settings.wondercartBuyNow) || ''
+                    !hasYithExtended &&
+                    NewfoldRuntime.sdk.ecommerce.brand_settings.wondercartBuyNow) || ''
                 }
                 variant="upsell"
                 isLoading={showInProgress}
-                onClick={hasYithExtended && installWonderCart}
+                onClick={hasYithExtended ? installWonderCart : null}
               >
                 {canAccessGlobalCTB && !hasYithExtended
                   ? __("Buy now", "wp-module-ecommerce")
@@ -90,8 +90,8 @@ export function WonderCart(props) {
         variant="card"
         cardLink={
           (canAccessGlobalCTB &&
-          !hasYithExtended &&
-          NewfoldRuntime.sdk.ecommerce.brand_settings.wondercartBuyNow) || ''
+            !hasYithExtended &&
+            NewfoldRuntime.sdk.ecommerce.brand_settings.wondercartBuyNow) || ''
         }
         target="_blank"
         cardText={
@@ -106,7 +106,7 @@ export function WonderCart(props) {
             ? "f95ccf1e-3028-4ea7-b2c2-847969348e8b"
             : null
         }
-        onClick={hasYithExtended && installWonderCart}
+        onClick={hasYithExtended ? installWonderCart : null}
       >
         <WonderCartUpsell />
       </FeatureUpsell>
