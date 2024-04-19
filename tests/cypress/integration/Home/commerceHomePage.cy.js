@@ -132,14 +132,10 @@ describe( 'Commerce Home Page- Next Steps', () => {
 			failOnNonZeroExit: false,
 		} );
 
+		cy.exec(`npx wp-env run cli wp option set mm_brand ${ pluginId }`);
+
 		if ( pluginId == 'hostgator' ) {
-			cy.exec( `npx wp-env run cli wp option delete mm_brand` );
-			cy.exec(
-				`npx wp-env run cli wp option set mm_brand ${ pluginId }`
-			);
-			cy.exec(
-				`npx wp-env run cli wp option set hg_region ${ hg_region }}`
-			);
+			cy.exec(`npx wp-env run cli wp option set hg_region ${ hg_region }`);
 		}
 	} );
 
