@@ -82,9 +82,9 @@ export function OnboardingListDefinition(props) {
     },
     cards: [
       {
-        name: "Update your website namerservers",
+        name: "Update your website nameservers",
         text: __(
-          "Update your website namerservers",
+          "Update your website nameservers",
           "wp-module-ecommerce"
         ),
         state: {
@@ -95,7 +95,8 @@ export function OnboardingListDefinition(props) {
         actions: {
           manage: updateSiteServers,
         },
-        "data-openNfdHelpCenter": true,
+        
+        "data-nfdhelpcenterquery": "How do I update my nameserver to BH?",
         queries: [
           { key: "settings", selector: get_settings_list }
         ],
@@ -110,7 +111,8 @@ export function OnboardingListDefinition(props) {
           isCompleted: () => check_url_match(),
           isMigrated: (queries) => queries?.settings?.showMigrationSteps,
         },
-        "data-openNfdHelpCenter": true,
+        
+        "data-nfdhelpcenterquery": "How do I connect my site to the Domain ?",
         shouldRender: (state) => state.isMigrated,
         actions: {},
         queries: [
@@ -214,7 +216,7 @@ export function OnboardingListDefinition(props) {
         state: {
           isAvailable: (queries) =>
             queries?.plugins?.isWCActive &&
-            RuntimeSdk.brandSettings.setup.payment.length > 0,
+            RuntimeSdk?.brandSettings?.setup?.payment?.length > 0,
           isCompleted: (queries) => queries?.settings?.isCompleted,
           url: () => "#/store/payments",
         },
