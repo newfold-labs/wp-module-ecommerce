@@ -79,10 +79,16 @@ export function OnboardingList(props) {
           : __("Next steps for your site", "wp-module-ecommerce")}
       </Title>
       <p>
-        {__(
-          "You're just a few steps away from sharing your store with the world!",
-          "wp-module-ecommerce"
-        )}
+        {NewfoldRuntime.hasCapability("isEcommerce")
+          ? __(
+            "You're just a few steps away from sharing your store with the world!",
+            "wp-module-ecommerce"
+          )
+          : __(
+            "You're just a few steps away from sharing your site with the world!",
+            "wp-module-ecommerce"
+            )
+        }
       </p>
       {view === "incomplete" && itemsToDisplay.length === 0 && (
         <div>
