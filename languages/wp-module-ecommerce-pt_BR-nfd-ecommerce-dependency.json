@@ -1,6 +1,6 @@
 {
-    "translation-revision-date": "2023-09-05 19:28+0530",
-    "generator": "WP-CLI\/2.9.0",
+    "translation-revision-date": "2023-10-30 12:18+0530",
+    "generator": "WP-CLI\/2.8.1",
     "source": "build\/index.js",
     "domain": "messages",
     "locale_data": {
@@ -274,9 +274,6 @@
             "Would you like to enable sales tax?": [
                 "Gostaria de ativar o imposto sobre vendas?"
             ],
-            "Sales & Discounts": [
-                "Vendas & Descontos"
-            ],
             "Add Upsells, Cross-sells, and other Promotions to your store": [
                 "Adicione Upsell, Cross-sell e outras a\u00e7\u00f5es \u00e0 sua loja"
             ],
@@ -382,9 +379,6 @@
             "Import products": [
                 "Importe produtos"
             ],
-            "Bookings": [
-                "Reservas"
-            ],
             "Enable": [
                 "Habilitar"
             ],
@@ -393,9 +387,6 @@
             ],
             "Create a booking": [
                 "Crie uma reserva"
-            ],
-            "Gift Cards": [
-                "Cart\u00f5es-presente"
             ],
             "Manage gift cards": [
                 "Gerencie cart\u00f5es-presente"
@@ -482,7 +473,7 @@
                 "Resumo"
             ],
             "Once you launch your store, you'll see a snapshot of recent purchases and other customer activity.": [
-                "Quando publicar sua loja, voc\u00ea ter\u00e1 acesso as compras recentes e atividades de seus clientes "
+                "Quando publicar sua loja, voc\u00ea ter\u00e1 acesso as compras recentes e atividades de seus clientes."
             ],
             "* indicates a required field": [
                 "*campo obrigat\u00f3rio"
@@ -545,7 +536,7 @@
                 "Os detalhes da loja foram salvos com sucesso"
             ],
             "enter your \"%1$s\" key ID here.": [
-                "Insira o ID da sua chave de \"%1$s\" aqui."
+                "insira o ID da sua chave de \"%1$s\" aqui."
             ],
             "test": [
                 "teste"
@@ -554,10 +545,7 @@
                 "produ\u00e7\u00e3o"
             ],
             "enter your \"%1$s\" key secret here.": [
-                "Insira o segredo da sua chave de \"%1$s\" aqui."
-            ],
-            "Your \"%1$s\" account have been connected": [
-                "Sua conta \"%1$s\" foi conectada."
+                "insira o segredo da sua chave de \"%1$s\" aqui."
             ],
             "Check payments": [
                 "Verifique pagamentos"
@@ -596,7 +584,7 @@
                 "Compre Agora Com PayPal E Pague Mais Tarde"
             ],
             " Supports many popular payment methods": [
-                "Suporta v\u00e1rios m\u00e9todos de pagamento populares"
+                " Suporta v\u00e1rios m\u00e9todos de pagamento populares"
             ],
             "Sign up for Bluehost WordPress Academy": [
                 "Inscreva-se na Bluehost WordPress Academy"
@@ -611,7 +599,7 @@
                 "Seu site est\u00e1 exibindo uma p\u00e1gina tempor\u00e1ria \"Em breve\"."
             ],
             "Your site is live to the world!": [
-                "Parab\u00e9ns! Seu site j\u00e1 est\u00e1 online"
+                "Parab\u00e9ns! Seu site j\u00e1 est\u00e1 online!"
             ],
             "SITE PREVIEW": [
                 "SITE VISUALIZANDO"
@@ -624,6 +612,48 @@
             ],
             "Buy now": [
                 "Compre Agora"
+            ],
+            "Edit your site": [
+                ""
+            ],
+            "Stripe": [
+                ""
+            ],
+            "Stripe provides all the tools that you need to accept payments online around the world, including support for Apple Pay and Google Pay.": [
+                ""
+            ],
+            "A secure connection is required when running Stripe Payments in Live mode; plugin is currently enabled, but no gateway will be available until you secure connection to your site through a valid SSL certificate.             If you already have a valid SSL certificate, please change the url in": [
+                ""
+            ],
+            "settings": [
+                ""
+            ],
+            "page": [
+                ""
+            ],
+            "One-click refunds": [
+                ""
+            ],
+            "Option to let customers save their credit card info securely": [
+                ""
+            ],
+            "Support ACH direct debt": [
+                ""
+            ],
+            " Uses many popular payment methods": [
+                ""
+            ],
+            "Sales & Promotions": [
+                "Vendas e Promo\u00e7\u00f5es"
+            ],
+            "Create and manage X-sell, Upsell, sales and promotions through campaigns to boost your sales": [
+                "Crie e gerencie vendas cruzadas, vendas adicionais, vendas e promo\u00e7\u00f5es atrav\u00e9s de campanhas para impulsionar suas vendas"
+            ],
+            "eCommerce Features": [
+                ""
+            ],
+            "New Order Received": [
+                ""
             ]
         }
     }

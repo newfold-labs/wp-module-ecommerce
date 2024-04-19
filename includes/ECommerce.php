@@ -10,6 +10,7 @@ use NewfoldLabs\WP\Module\ECommerce\WonderCart;
 use NewfoldLabs\WP\Module\Installer\Services\PluginInstaller;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\Module\Onboarding\Data\Services\FlowService;
+use NewfoldLabs\WP\Module\Data\SiteCapabilities;
 
 /**
  * Class ECommerce
@@ -68,30 +69,71 @@ class ECommerce {
 		'yoast_seo_signup_status',
 	);
 
+
 	/**
 	 * ECommerce constructor.
 	 *
 	 * @param Container $container Container loaded from the brand plugin.
 	 */
 	public function __construct( Container $container ) {
+		$capability         = new SiteCapabilities();
+		$hasYithExtended    = $capability->get( 'hasYithExtended' );
+		$canAccessGlobalCTB = $capability->get( 'canAccessGlobalCTB' );
+
 		$this->container = $container;
 		// Module functionality goes here
 		add_action( 'init', array( $this, 'load_php_textdomain' ) );
-		add_action( 'toplevel_page_'. $container->plugin()->id, array( $this, 'load_experience_level' ) );
+		add_action( 'toplevel_page_' . $container->plugin()->id, array( $this, 'load_experience_level' ) );
 		add_action( 'admin_init', array( $this, 'maybe_do_dash_redirect' ) );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_assets' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_textdomains' ) );
-		add_filter( 'woocommerce_coupons_enabled',  array( $this, 'disable_coupon_field_on_cart' ) );
-		add_filter( 'woocommerce_before_cart', array( $this, 'hide_banner_notice_on_cart'));
-		add_action('before_woocommerce_init', array( $this,'hide_woocommerce_set_up') );
-		add_filter( 'woocommerce_checkout_fields' , array( $this,'swap_billing_shipping_fields'), 10, 1 );
-		add_filter('woocommerce_shipping_fields', array( $this,'add_phone_number_email_to_shipping_form'), 10, 1 );
-		add_action('woocommerce_checkout_create_order', array( $this, 'save_custom_shipping_fields' ), 10, 1);
-		add_action('woocommerce_admin_order_data_after_shipping_address', array( $this, 'display_custom_shipping_fields_in_admin' ), 10, 1 );
-		add_action( 'before_woocommerce_init', array( $this,'custom_payment_gateways_order'));
-		add_action('before_woocommerce_init', array( $this,'dismiss_woo_payments_cta'));
-		add_action( 'load-toplevel_page_'. $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
+		add_filter( 'woocommerce_coupons_enabled', array( $this, 'disable_coupon_field_on_cart' ) );
+		add_filter( 'woocommerce_before_cart', array( $this, 'hide_banner_notice_on_cart' ) );
+		add_action( 'before_woocommerce_init', array( $this, 'hide_woocommerce_set_up' ) );
+		add_action( 'before_woocommerce_init', array( $this, 'custom_payment_gateways_order' ) );
+		add_action( 'before_woocommerce_init', array( $this, 'dismiss_woo_payments_cta' ) );
+		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
+		add_action( 'activated_plugin', array( $this, 'detect_plugin_activation' ), 10, 1 );
+
+		$brandNameValue = $container->plugin()->brand;
+		$this->set_wpnav_collapse_setting( $brandNameValue );
+
+		if ( ( $container->plugin()->id === 'bluehost' && ( $canAccessGlobalCTB || $hasYithExtended ) ) || ( $container->plugin()->id === 'hostgator' && $hasYithExtended ) ) {
+			add_filter( 'admin_menu', array( $this, 'custom_add_promotion_menu_item' ) );
+			add_action( 'woocommerce_product_options_general_product_data', array( $this, 'custom_product_general_options' ) );
+			add_action( 'woocommerce_product_options_related', array( $this, 'custom_product_general_options' ) );
+			add_action( 'woocommerce_product_data_tabs', array( $this, 'custom_product_write_panel_tabs' ) );
+			add_action( 'woocommerce_product_data_panels', array( $this, 'promotion_product_data' ) );
+			add_action( 'admin_head', array( $this, 'action_admin_head' ) );
+		}
+
+		// Handle WonderCart Integrations
+		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
+			$wonder_cart = new WonderCart( $container );
+			$wonder_cart->init();
+		}
+
+		CaptiveFlow::init();
+		WooCommerceBacklink::init( $container );
+		register_meta(
+			'post',
+			'nf_dc_page',
+			array(
+				'type'         => 'string',
+				'description'  => 'Reference to page category',
+				'show_in_rest' => true,
+				'single'       => true,
+			)
+		);
+		add_filter( 'newfold-runtime', array( $this, 'add_to_runtime' ) );
+		$this->add_filters(
+			array( 'postbox_classes_page_wpseo_meta', 'postbox_classes_post_wpseo_meta', 'postbox_classes_product_wpseo_meta' ),
+			function ( $classes ) {
+				$classes[] = 'closed';
+				return $classes;
+			}
+		);
 
 		// Handle WonderCart Integrations
 		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
@@ -124,10 +166,10 @@ class ECommerce {
 	/**
 	 * Add multiple filters to a closure
 	 *
-	 * @param $tags
-	 * @param $function_to_add
-	 * @param int             $priority
-	 * @param int             $accepted_args
+	 * @param string|array $tags The filter name or array of filter names
+	 * @param callable     $function_to_add The closure to add to the filter
+	 * @param int|array    $priority The priority at which the closure should be added
+	 * @param int|array    $accepted_args The number of arguments the closure accepts
 	 *
 	 * @return bool true
 	 */
@@ -136,13 +178,25 @@ class ECommerce {
 		if ( ! is_array( $tags ) ) {
 			$tags = array( $tags );
 		}
-
-		// For each filter name
+			// For each filter name
 		foreach ( $tags as $index => $tag ) {
 			add_filter( $tag, $function_to_add, (int) ( is_array( $priority ) ? $priority[ $index ] : $priority ), (int) ( is_array( $accepted_args ) ? $accepted_args[ $index ] : $accepted_args ) );
 		}
 
 		return true;
+	}
+
+	/**
+	 * Set the wpnav_collapse setting
+	 *
+	 * @param string $brandNameValue The brand name value
+	 */
+	public static function set_wpnav_collapse_setting( $brandNameValue ) {
+
+		$expiration_time = time() + ( 10 * 365 * 24 * 60 * 60 );
+		setcookie( 'nfdbrandname', $brandNameValue, $expiration_time, '/' );
+
+		wp_enqueue_script( 'nfd_wpnavbar_setting', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/wpnavbar.js', array( 'jquery' ), '1.0', true );
 	}
 
 	/**
@@ -157,10 +211,20 @@ class ECommerce {
 		);
 	}
 
+	/**
+	 * Update the experience level
+	 */
 	public static function load_experience_level() {
 		update_option( 'onboarding_experience_level', FlowService::get_experience_level() );
 	}
 
+	/**
+	 * Add values to the runtime object.
+	 *
+	 * @param array $sdk The runtime object.
+	 *
+	 * @return array
+	 */
 	public function add_to_runtime( $sdk ) {
 		$values = array(
 			'brand_settings' => Brands::get_config( $this->container ),
@@ -172,6 +236,9 @@ class ECommerce {
 		return array_merge( $sdk, array( 'ecommerce' => $values ) );
 	}
 
+	/**
+	 * Redirect to the dashboard after WooCommerce activation.
+	 */
 	public function maybe_do_dash_redirect() {
 		$show_dash = get_option( 'nfd_show_dash_after_woo_activation', false );
 		if ( $show_dash && ! wp_doing_ajax() ) {
@@ -268,10 +335,14 @@ class ECommerce {
 		}
 	}
 
+	/**
+	 * Load the textdomains for the module.
+	 */
 	public function register_textdomains() {
 		$MODULE_LANG_DIR = $this->container->plugin()->dir . 'vendor/newfold-labs/wp-module-ecommerce/languages';
 		\load_script_textdomain( 'nfd-ecommerce-dependency', 'wp-module-ecommerce', $MODULE_LANG_DIR );
-		\load_textdomain( 'wp-module-ecommerce', $MODULE_LANG_DIR );
+		$current_language = get_locale();
+		\load_textdomain( 'wp-module-ecommerce', $MODULE_LANG_DIR . '/wp-module-ecommerce-' . $current_language . '.mo' );
 	}
 
 	/**
@@ -293,155 +364,183 @@ class ECommerce {
 				NFD_ECOMMERCE_DIR . '/languages'
 			);
 			\wp_enqueue_script( 'nfd-ecommerce-dependency' );
+			\wp_enqueue_script( 'nfd_wpnavbar_setting' );
 		}
 	}
 
 	/**
- 	* Remove Add coupon field on cart page
- 	*/
+	 * Remove Add coupon field on cart page
+	 *
+	 * @param boolean $enabled The enabled status of the coupon field.
+	 */
 	public function disable_coupon_field_on_cart( $enabled ) {
-        if ( is_cart() ) {
-            $enabled = false;
-        }
-        return $enabled;
-    }
+		if ( is_cart() ) {
+			$enabled = false;
+		}
+		return $enabled;
+	}
 
 	/**
- 	* Remove notice banner on cart page
- 	*/
- 	public function hide_banner_notice_on_cart() {
-		if (is_cart()) {
+	 * Remove notice banner on cart page
+	 */
+	public function hide_banner_notice_on_cart() {
+		if ( is_cart() ) {
 			?>
-			<style>
-				.wc-block-components-notice-banner, .ywgc_enter_code {
-					display: none;
-				}
-			</style>
+		<style>
+		.wc-block-components-notice-banner, .ywgc_enter_code {
+			display: none;
+		}
+		</style>
 			<?php
 		}
-  }
+	}
+
+	/**
+	 * Hide the WooCommerce set up task list
+	 */
 	public function hide_woocommerce_set_up() {
-		$hidden_list = get_option('woocommerce_task_list_hidden_lists', []);
-		if(! in_array("setup", $hidden_list)){
-			$woocommerce_list = array_merge(get_option('woocommerce_task_list_hidden_lists', []),array(
-				"setup" 
-			));
-			// $woocommerce_list = array("setup");
-			update_option('woocommerce_task_list_hidden_lists', $woocommerce_list);
+		$hidden_list = get_option( 'woocommerce_task_list_hidden_lists', array() );
+		if ( ! in_array( 'setup', $hidden_list, true ) ) {
+			$woocommerce_list = array_merge(
+				get_option( 'woocommerce_task_list_hidden_lists', array() ),
+				array(
+					'setup',
+				)
+			);
+			update_option( 'woocommerce_task_list_hidden_lists', $woocommerce_list );
 		}
-		
 	}
 
 	/**
-	 * To show the shipping form first if the ship to destination is set to 'Shipping'
+	 * Add promotion (Promote) under WooCommerce Marketing tab
 	 */
-	public function swap_billing_shipping_fields( $fields ) {
-		$shipping_destination = get_option( 'woocommerce_ship_to_destination');
-		if($shipping_destination == 'shipping') {
-			add_filter( 'gettext', array( $this, 'update_text'), 20, 3 );
-			?>
-			<script type="text/javascript">
-				jQuery(document).ready(function($) {
-					$('#ship-to-different-address-checkbox').prop('checked', false); //Uncheck the checkbox
-				});
-			</script>
-			<?php
-			// swapping billing and shipping fields
-			$billing = $fields["billing"];
-			$shipping = $fields["shipping"];
- 
-			$fields['shipping'] = $billing;
-			$fields['billing'] = $shipping;
-		}
-		return $fields;
-	}
-
-	/**
-	 * Update the heading and checkbox text
-	 */
-	public function update_text( $translated_text, $text, $domain ) {
-		switch ( $translated_text ) {
-			case 'Billing details' :
-				$translated_text = __( 'Shipping details', 'wp_module_ecommerce' );
-				break;
-			case 'Ship to a different address?' :
-				$translated_text = __( 'Bill to a different address?', 'wp_module_ecommerce' );
-				break;
-		}
-		return $translated_text;
-	}
-
-	/** 
- 	*  Add phone number and Email field to WooCommerce shipping form
-	*/
-	public function add_phone_number_email_to_shipping_form($fields) {
-		$fields['shipping_phone'] = array(
-			'label'         => __('Phone Number', 'wp_module_ecommerce'),
-			'required'      => true,
-			'class'         => array('form-row-wide'),
-			'clear'         => true,
+	public function custom_add_promotion_menu_item() {
+		add_submenu_page(
+			'woocommerce-marketing',
+			'Promotion product Page',
+			__( 'Promotions', 'wp-module-ecommerce' ),
+			'manage_options',
+			$this->container->plugin()->id . '#/store/sales_discounts',
+			'custom_submenu_redirect'
 		);
-		$fields['shipping_email'] = array(
-			'label'         => __('Email Address', 'wp_module_ecommerce'),
-			'required'      => true,
-			'class'         => array('form-row-wide'),
-			'clear'         => true,
-		);
-		return $fields;
 	}
 
-	/*
-	 * Save phone number and email fields to order meta
+
+	/**
+	 * Add a Promotion button under Add New product tab
 	 */
-	function save_custom_shipping_fields($order) {
-		$shipping_phone = isset($_POST['shipping_phone']) ? sanitize_text_field($_POST['shipping_phone']) : '';
-		$shipping_email = isset($_POST['shipping_email']) ? sanitize_email($_POST['shipping_email']) : '';
-	
-		if (!empty($shipping_phone)) {
-			$order->update_meta_data('_shipping_phone', $shipping_phone);
-		}
-	
-		if (!empty($shipping_email)) {
-			$order->update_meta_data('_shipping_email', $shipping_email);
-		}
+	public function custom_product_general_options() {
+		global $post;
+		$redirect_url = admin_url( 'admin.php?page=' . $this->container->plugin()->id . '#/store/sales_discounts' );
+		wp_enqueue_style( 'Create_a_Promotion', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Promotions.css', array(), '1.0', 'all' );
+		echo '<div class="options_group">
+            <p class="form-field custom-button-field">
+						  <a id="Create_a_Promotion" href="' . esc_url( $redirect_url ) . '" class="promotion">' . __( 'Create a Promotion', 'wp-module-ecommerce' ) . '</a>
+					  </p>
+          </div>';
 	}
 
 	/**
-	 * Display phone number and email fields in order admin
+	 * Add a Custom tab (Prmotions tab) button added below Advance tab
+	 *
+	 * @param array $tabs The tabs.
 	 */
-	public function display_custom_shipping_fields_in_admin($order) {
-		$shipping_phone = $order->get_meta('_shipping_phone');
-		$shipping_email = $order->get_meta('_shipping_email');
-	
-		if (!empty($shipping_phone)) {
-			echo '<p><strong>' . __('Phone Number', 'wp_module_ecommerce') . ':</strong> ' . esc_html($shipping_phone) . '</p>';
-		}
-	
-		if (!empty($shipping_email)) {
-			echo '<p><strong>' . __('Email Address', 'wp_module_ecommerce') . ':</strong> ' . esc_html($shipping_email) . '</p>';
-		}
+	public function custom_product_write_panel_tabs( $tabs ) {
+		$tabs['custom_tab'] = array(
+			'label'    => __( 'Promotions', 'wp-module-ecommerce' ),
+			'target'   => 'promotion_product_data',
+			'priority' => 70,
+			'class'    => array(),
+		);
+		return $tabs;
 	}
 
+	/**
+	 * Content on click of a Custom tab (Promotions tab) button added below Advance tab
+	 */
+	public function promotion_product_data() {
+		$redirect_url = 'admin.php?page=' . $this->container->plugin()->id . '#/store/sales_discounts';
+		global $post;
+		echo '<div id="promotion_product_data" class="panel woocommerce_options_panel hidden"></div>';
+		\wp_enqueue_script( 'nfd_promotion_product_data', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Promotions.js', array( 'jquery' ), '1.0', true );
+		$Promotion_data = array(
+			'redirectUrl'            => $redirect_url,
+			'boostYourOnline'        => __( 'Boost Your Online Store Sales', 'wp-module-ecommerce' ),
+			'maximizeYourSales'      => __( 'Maximize your sales by creating effective', 'wp-module-ecommerce' ),
+			'promotionsAndCampaigns' => __( 'promotions and campaigns like:', 'wp-module-ecommerce' ),
+			'createPromotion'        => __( 'Create a Promotion', 'wp-module-ecommerce' ),
+			'free'                   => __( 'Free', 'wp-module-ecommerce' ),
+			'shipping'               => __( 'Shipping', 'wp-module-ecommerce' ),
+			'buyOne'                 => __( 'Buy One', 'wp-module-ecommerce' ),
+			'getOne'                 => __( 'Get One', 'wp-module-ecommerce' ),
+			'freeGift'               => __( 'Free Gift', 'wp-module-ecommerce' ),
+			'inCart'                 => __( 'in Cart', 'wp-module-ecommerce' ),
+			'frequently'             => __( 'Frequently', 'wp-module-ecommerce' ),
+			'boughtTogether'         => __( 'Bought Together', 'wp-module-ecommerce' ),
+
+		);
+		wp_localize_script( 'nfd_promotion_product_data', 'promotionData', $Promotion_data );
+	}
+
+	/**
+	 * Change icon for a Custom tab (Promotions tab) button added below Advance tab
+	 */
+	public function action_admin_head() {
+		echo '<style>
+				#woocommerce-product-data ul.wc-tabs li.custom_tab_options a::before {
+					content: "\f323";
+				} 
+		</style>';
+	}
+
+	/**
+	 * Change the order of payment gateways
+	 */
 	public function custom_payment_gateways_order() {
-		$array_data = array("pre_install_woocommerce_payments_promotion" => 2,
-		"yith_paypal_payments" => 0,
-		"element" => 1
-	);
-		update_option('woocommerce_gateway_order', $array_data);
-	}  
+		$array_data = array(
+			'pre_install_woocommerce_payments_promotion' => 2,
+			'yith_paypal_payments'                       => 0,
+			'element'                                    => 1,
+		);
+		update_option( 'woocommerce_gateway_order', $array_data );
+	}
 
+	/**
+	 * Dismisses the WooCommerce Payments CTA
+	 */
 	public function dismiss_woo_payments_cta() {
-		$is_dismissed = get_option( 'wcpay_welcome_page_incentives_dismissed');
-		if (!is_array($is_dismissed) || empty($is_dismissed)) {
-			update_option('wcpay_welcome_page_incentives_dismissed', array("wcpay-promo-2023-action-discount"));
+		$is_dismissed = get_option( 'wcpay_welcome_page_incentives_dismissed' );
+		if ( ! is_array( $is_dismissed ) || empty( $is_dismissed ) ) {
+			update_option( 'wcpay_welcome_page_incentives_dismissed', array( 'wcpay-promo-2023-action-discount' ) );
 		}
 	}
 
+	/**
+	 * Disables the creative mail banner
+	 */
 	public function disable_creative_mail_banner() {
-		$is_dismissed = get_option( 'ce4wp_ignore_review_notice');
-		if (!is_array($is_dismissed) || empty($is_dismissed)) {
-			update_option('ce4wp_ignore_review_notice', true);
+		$is_dismissed = get_option( 'ce4wp_ignore_review_notice' );
+		if ( ! is_array( $is_dismissed ) || empty( $is_dismissed ) ) {
+			update_option( 'ce4wp_ignore_review_notice', true );
 		}
 	}
-	
+
+	/**
+	 *  Activates yith payment plugins (Paypal, Stripe) when woocommerce is activated
+	 *
+	 * @param string $plugin Path to the plugin file relative
+	 *
+	 * @return void
+	 */
+	public function detect_plugin_activation( $plugin ) {
+		$plugin_slugs = array(
+			'nfd_slug_yith_paypal_payments_for_woocommerce',
+			'nfd_slug_yith_stripe_payments_for_woocommerce',
+		);
+		if ( 'woocommerce/woocommerce.php' === $plugin ) {
+			foreach ( $plugin_slugs as $plugin ) {
+				PluginInstaller::install( $plugin, true );
+			}
+		}
+	}
 }

@@ -80,8 +80,16 @@ class PluginsController {
 				continue;
 			}
 			$status = 'need_to_install';
-			if ( file_exists( WP_PLUGIN_DIR . '/' . $info['file_extented'] ) ||file_exists( WP_PLUGIN_DIR . '/' . $info['file_premium'] ) ||file_exists( WP_PLUGIN_DIR . '/' . $info['file'] ) ) {
-				$active = (\is_plugin_active( $info['file_extented'] ) || \is_plugin_active( $info['file_premium'] )|| \is_plugin_active( $info['file'] ));
+			if (
+				(isset($info['file_extended']) && file_exists(WP_PLUGIN_DIR . '/' . $info['file_extended'])) ||
+				(isset($info['file_premium']) && file_exists(WP_PLUGIN_DIR . '/' . $info['file_premium'])) ||
+				file_exists(WP_PLUGIN_DIR . '/' . $info['file'])
+			){
+				$active = (
+					(isset($info['file_extended']) && \is_plugin_active($info['file_extended'])) ||
+					(isset($info['file_premium']) && \is_plugin_active($info['file_premium'])) ||
+					\is_plugin_active($info['file'])
+				);
 				if ( $active ) {
 					$status = 'active';
 				} else {

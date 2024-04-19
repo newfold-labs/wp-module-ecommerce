@@ -14,19 +14,22 @@ import booking from "../icons/brands/yith-woocommerce-booking.svg";
 import customizeAccount from "../icons/brands/yith-woocommerce-customize-myaccount-page.svg";
 import gift from "../icons/brands/yith-woocommerce-gift-card.svg";
 import wishList from "../icons/brands/yith-woocommerce-wishlist.svg";
-import { RuntimeSdk } from "../sdk/runtime";
+import { 
+  YITH_WOOCOMMERCE_ACCOUNT_PAGE,
+  YITH_WOOCOMMERCE_AJAX_PRODUCT_FILTER,
+  YITH_WOOCOMMERCE_BOOKING_APPOINTMENTS,
+  YITH_WOOCOMMERCE_GIFT_CARDS,
+  YITH_WOOCOMMERCE_WISHLIST
+} from "../constants";
 
 export function YITHPlugins({ woo, wpModules }) {
-  const isBluehost = RuntimeSdk?.brandSettings?.brand?.includes("bluehost");
   const yithPluginsMap = new Map([
     [
       "fc4cbc14-470d-471b-b448-c6666e5b763d",
       {
         title: "nfd_slug_yith_woocommerce_booking",
         name: "YITH Booking and Appointment for WooCommerce",
-        learnMore:
-          isBluehost &&
-          "https://www.bluehost.com/help/article/yith-booking-and-appointment-for-woocommerce",
+        learnMore: YITH_WOOCOMMERCE_BOOKING_APPOINTMENTS,
         image: booking,
       },
     ],
@@ -43,9 +46,7 @@ export function YITHPlugins({ woo, wpModules }) {
       {
         title: "nfd_slug_yith_woocommerce_wishlist",
         name: "YITH WooCommerce Wishlist",
-        learnMore:
-          isBluehost &&
-          "https://www.bluehost.com/help/article/yith-woocommerce-wishlist",
+        learnMore: YITH_WOOCOMMERCE_WISHLIST,
         image: wishList,
       },
     ],
@@ -54,9 +55,7 @@ export function YITHPlugins({ woo, wpModules }) {
       {
         title: "nfd_slug_yith_woocommerce_ajax_product_filter",
         name: "YITH WooCommerce Ajax Product Filter",
-        learnMore:
-          isBluehost &&
-          "https://www.bluehost.com/help/article/yith-woocommerce-ajax-product-filter",
+        learnMore: YITH_WOOCOMMERCE_AJAX_PRODUCT_FILTER,
         image: filter,
       },
     ],
@@ -65,9 +64,7 @@ export function YITHPlugins({ woo, wpModules }) {
       {
         title: "nfd_slug_yith_woocommerce_gift_cards",
         name: "YITH WooCommerce Gift Cards",
-        learnMore:
-          isBluehost &&
-          "https://www.bluehost.com/help/article/yith-woocommerce-gift-cards",
+        learnMore: YITH_WOOCOMMERCE_GIFT_CARDS,
         image: gift,
       },
     ],
@@ -76,9 +73,7 @@ export function YITHPlugins({ woo, wpModules }) {
       {
         title: "nfd_slug_yith_woocommerce_customize_myaccount_page",
         name: "YITH WooCommerce Customize My Account Page",
-        learnMore:
-          isBluehost &&
-          "https://www.bluehost.com/help/article/yith-woocommerce-customize-my-account-page",
+        learnMore: YITH_WOOCOMMERCE_ACCOUNT_PAGE,
         image: customizeAccount,
       },
     ],
@@ -110,7 +105,7 @@ export function YITHPlugins({ woo, wpModules }) {
   return (
     <Section.Container>
       <Section.Header
-        title={__("eCommerce Products", "wp-module-ecommerce")}
+        title={__("eCommerce Features", "wp-module-ecommerce")}
         subTitle={__(
           "Improve your store with these powerful add-ons.",
           "wp-module-ecommerce"
@@ -119,7 +114,7 @@ export function YITHPlugins({ woo, wpModules }) {
       <Section.Content>
         {cards.length === 0 && (
           <div className="nfd-flex nfd-items-center nfd-text-center nfd-justify-center nfd-h-60">
-            <Spinner size={8} className="nfd-text-primary" />
+            <Spinner size="8" className="nfd-text-primary" />
           </div>
         )}
         <div
@@ -135,6 +130,7 @@ export function YITHPlugins({ woo, wpModules }) {
             .map((product) => {
               return (
                 <YithFeatureCard
+                  key={product.id}
                   id={product.id}
                   yithProducts={product}
                   yithPluginsMap={yithPluginsMap}
