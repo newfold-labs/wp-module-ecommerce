@@ -103,7 +103,7 @@ export function YITHPlugins({ woo, wpModules }) {
   }
 
   return (
-    <Section.Container>
+    <Section.Container id="ecommerce-features-wrapper">
       <Section.Header
         title={__("eCommerce Features", "wp-module-ecommerce")}
         subTitle={__(
@@ -124,6 +124,7 @@ export function YITHPlugins({ woo, wpModules }) {
             "md:nfd-grid-cols-2",
             "lg:nfd-grid-cols-3"
           )}
+          id="ecommerce-features-container"
         >
           {yithProducts
             ?.filter((product) => yithPluginsMap.has(product.id))

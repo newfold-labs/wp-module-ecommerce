@@ -61,17 +61,18 @@ const Stripe = ({ notify }) => {
                       variant="secondary"
                       as="a"
                       href={integrationStatus?.integration?.plugin?.url}
+                      id="manage-stripe"
                     >
                       {__("Manage", "wp-module-ecommerce")}
                     </Button>
                   ) : (
                     <>
                       {!integrationStatus?.integration?.plugin?.status ? (
-                        <Button onClick={onConnect} >
+                        <Button onClick={onConnect} id="install-stripe">
                           {__("Install", "wp-module-ecommerce")}
                         </Button>
                       ) : (
-                        <Button ref={buttonRef} disabled={isHttp && isLive} onClick={handleClick}>
+                        <Button ref={buttonRef} disabled={isHttp && isLive} onClick={handleClick} id="connect-to-stripe-btn">
                           {__("Connect", "wp-module-ecommerce")}
                         </Button>
                       )}
@@ -79,7 +80,7 @@ const Stripe = ({ notify }) => {
                   )}
                 </>
               ) : (
-                <Button variant="secondary" isLoading={isInstalling}>
+                <Button variant="secondary" isLoading={isInstalling} id="installing-stripe">
                   {__("Installing...", "wp-module-ecommerce")}
                 </Button>
               )}

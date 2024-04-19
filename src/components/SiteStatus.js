@@ -56,7 +56,7 @@ export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
       )}
     >
       <div className="nfd-flex-1">
-        <Title size="4" className="nfd-leading-normal">
+        <Title size="4" className="nfd-leading-normal" id="ready-to-go-live">
           {__("Ready to go live?", "wp-module-ecommerce")}
         </Title>
         <span className="nfd-whitespace-pre-wrap nfd-leading-tight">
@@ -85,6 +85,7 @@ export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
           href={NewfoldRuntime.hasCapability("isEcommerce") && window.location.href.includes('store') ? `${NewfoldRuntime.siteDetails.url}/shop` : NewfoldRuntime.siteDetails.url}
           target="_blank"
           variant="secondary"
+          id="view-site"
         >
           {NewfoldRuntime.hasCapability("isEcommerce")
             ? __("View your store", "wp-module-ecommerce")
@@ -95,6 +96,7 @@ export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
           variant="upsell"
           isLoading={comingSoonAction.isMutating}
           onClick={comingSoonAction.trigger}
+          id="launch-site"
         >
           <RocketLaunchIcon />
           {NewfoldRuntime.hasCapability("isEcommerce")
