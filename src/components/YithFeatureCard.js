@@ -14,9 +14,9 @@ export function YithFeatureCard({
   )[0];
   const state = cardsInfo?.state;
   const isInstallDisabled =
-    !state?.isActive && !state?.isQueueEmpty && !state?.isInstalling;
-  return (
-    <Card>
+    !state?.isActive && !state?.isQueueEmpty && !state?.isInstalling;    
+  return (    
+    <Card id={yithPluginsMap.get(id).title}>
       <Card.Content>
         <img
           src={yithPluginsMap.get(id).image}
@@ -60,6 +60,7 @@ export function YithFeatureCard({
             variant="secondary"
             as="a"
             href={state?.featureUrl}
+            id={state?.isActive ? "manage_"+yithPluginsMap.get(id).title : "enable_"+yithPluginsMap.get(id).title }
           >
             <span>{state?.isActive ? __("Manage") : __("Enable")}</span>
           </Button>
@@ -75,6 +76,7 @@ export function YithFeatureCard({
               data-action="load-nfd-ctb"
               data-ctb-id={clickToBuyId}
               href={primaryUrl}
+              id={"purchase_"+yithPluginsMap.get(id).title}
             >
               {__("Purchase", "wp-module-ecommerce")}
             </Button>
@@ -85,6 +87,7 @@ export function YithFeatureCard({
               as="a"
               target="_blank"
               href={primaryUrl}
+              id={"purchase_"+yithPluginsMap.get(id).title}
             >
               {__("Purchase", "wp-module-ecommerce")}
             </Button>
@@ -108,6 +111,11 @@ export function YithFeatureCard({
             }
             isLoading={state?.isInstalling}
             disabled={state?.isDisabled}
+            id={state?.isInstalling
+              ? "installing_"+yithPluginsMap.get(id).title
+              : state?.isActive
+              ? "manage_"+yithPluginsMap.get(id).title
+              : "enable_"+yithPluginsMap.get(id).title}
           >
             <span>
               {state?.isInstalling
