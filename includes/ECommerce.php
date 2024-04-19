@@ -193,10 +193,10 @@ class ECommerce {
 	 */
 	public static function set_wpnav_collapse_setting( $brandNameValue ) {
 
-		$expiration_time = time() + ( 10 * 365 * 24 * 60 * 60 );
-		setcookie( 'nfdbrandname', $brandNameValue, $expiration_time, '/' );
-
 		wp_enqueue_script( 'nfd_wpnavbar_setting', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/wpnavbar.js', array( 'jquery' ), '1.0', true );
+		$params = array('nfdbrandname' => $brandNameValue);
+		wp_localize_script( 'nfd_wpnavbar_setting', 'navBarParams', $params );
+
 	}
 
 	/**
