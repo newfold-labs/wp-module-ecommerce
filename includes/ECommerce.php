@@ -95,6 +95,7 @@ class ECommerce {
 		add_action( 'before_woocommerce_init', array( $this, 'dismiss_woo_payments_cta' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
 		add_action( 'activated_plugin', array( $this, 'detect_plugin_activation' ), 10, 1 );
+		add_action( 'admin_init', array( $this, 'hide_page_columns' ) );
 
 		$brandNameValue = $container->plugin()->brand;
 		$this->set_wpnav_collapse_setting( $brandNameValue );
@@ -543,4 +544,18 @@ class ECommerce {
 			}
 		}
 	}
+
+	/**
+	 * Shows title and date in the page/post screen by default
+     *
+     * @return void
+     */
+	public function hide_page_columns() {
+        if ( ! get_user_meta( get_current_user_id(), 'manageedit-pagecolumnshidden' ) ) {
+            update_user_meta( get_current_user_id(), 'manageedit-pagecolumnshidden', array( 'author', 'comments' ) );
+        }
+        if ( ! get_user_meta( get_current_user_id(), 'manageedit-postcolumnshidden' ) ) {
+            update_user_meta( get_current_user_id(), 'manageedit-postcolumnshidden', array( 'author', 'categories', 'tags', 'comments' ) );
+        }
+    }
 }
