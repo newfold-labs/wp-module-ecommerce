@@ -25,7 +25,7 @@
     "@newfold-labs/wp-module-runtime": "^1.0.0",
     "@newfold/ui-component-library": "^1.1.0",
     "@reduxjs/toolkit": "2.2.3",
-    "@wordpress/api-fetch": "^6.52.0",
+    "@wordpress/api-fetch": "^6.53.0",
     "@wordpress/components": "^27.3.0",
     "@wordpress/date": "^4.55.0",
     "@wordpress/element": "^5.32.0",
