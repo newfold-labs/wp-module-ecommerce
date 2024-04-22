@@ -42,7 +42,14 @@ const signUpBluehostAcademy = () => {
 };
 
 const updateSiteServers = () => {
+  AnalyticsSdk.track("next_step", "next_step_update_nameserver_clicked", data);
   WordPressSdk.settings.put({ update_site_server_clicked: true });
+};
+const updateSiteDomain = () => {
+  AnalyticsSdk.track("next_step", "next_step_connect_domain_clicked", data);
+};
+const updateMigrateViewGuide = () => {
+  AnalyticsSdk.track("next_step", "next_step_migrate_view_guide_clicked", data);
 };
 
 const updateStoreSetup = (setIsMigrationCompleted) => {
@@ -88,7 +95,7 @@ export function OnboardingListDefinition(props) {
           "wp-module-ecommerce"
         ),
         state: {
-          isCompleted: (queries) => queries?.settings?.update_site_server_clicked,
+          isCompleted: (queries) => queries?.settings?.update_site_server_clicked || check_url_match(),
           isMigrated: (queries) => queries?.settings?.showMigrationSteps
         },
         shouldRender: (state) => state.isMigrated,
@@ -114,15 +121,17 @@ export function OnboardingListDefinition(props) {
         
         "data-nfdhelpcenterquery": "How do I connect my site to the Domain ?",
         shouldRender: (state) => state.isMigrated,
-        actions: {},
+        actions: {
+          manage: updateSiteDomain,
+        },
         queries: [
           { key: "settings", selector: get_settings_list }
         ],
       },
       {
-        name: "Need help updating your nameservers?",
+        name: "Need help with these steps?",
         text: __(
-          "Need help updating your nameservers?",
+          "Need help with these steps?",
           "wp-module-ecommerce"
         ),
         state: {
@@ -134,6 +143,7 @@ export function OnboardingListDefinition(props) {
         },
         shouldRender: (state) => state.isMigrated && !state.isCompleted,
         actions: {
+          manage: updateMigrateViewGuide,
         },
         queries: [
           { key: "settings", selector: get_settings_list }
