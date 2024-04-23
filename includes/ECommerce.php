@@ -95,11 +95,11 @@ class ECommerce {
 		add_action( 'before_woocommerce_init', array( $this, 'dismiss_woo_payments_cta' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
 		add_action( 'activated_plugin', array( $this, 'detect_plugin_activation' ), 10, 1 );
-		add_action( 'admin_init', array( $this, 'hide_page_columns' ) );
-		add_filter('manage_posts_columns', array($this, 'custom_posts_columns'), 10, 1);
-		add_action('manage_posts_custom_column', array($this, 'custom_posts_column_content'), 10, 2);
-		add_filter('manage_pages_columns', array( $this,'custom_posts_columns'), 10, 1 );
-		add_action('manage_pages_custom_column', array($this, 'custom_posts_column_content'), 10, 2);
+		add_action( 'admin_init', array( $this, 'hide_columns' ) );
+		add_filter('manage_posts_columns', array($this, 'custom_status_column'), 10, 1);
+		add_action('manage_posts_custom_column', array($this, 'custom_status_column_content'), 10, 2);
+		add_filter('manage_pages_columns', array( $this,'custom_status_column'), 10, 1 );
+		add_action('manage_pages_custom_column', array($this, 'custom_status_column_content'), 10, 2);
 		add_filter('manage_edit-product_sortable_columns', array($this, 'sortable_product_columns'));
 		add_filter('manage_edit-post_sortable_columns', array($this, 'sortable_product_columns'));
 		add_filter('manage_edit-page_sortable_columns', array($this, 'sortable_product_columns'));
@@ -553,11 +553,12 @@ class ECommerce {
 	}
 
 	/**
-	 * Shows title and date in the page/post screen by default
+	 * Hide Most columns by default
+	 * Shows title and date in the page/post/product screen by default
      *
      * @return void
      */
-	public function hide_page_columns() {
+	public function hide_columns() {
         if ( ! get_user_meta( get_current_user_id(), 'manageedit-pagecolumnshidden' ) ) {
             update_user_meta( get_current_user_id(), 'manageedit-pagecolumnshidden', array( 'author', 'comments', 'date' ) );
         }
@@ -569,14 +570,19 @@ class ECommerce {
 		}
     }
 
-	// Add custom column header
-	public function custom_posts_columns($columns) {
+	/**
+	 * Add custom column header for post/page/product screen
+	 */
+	public function custom_status_column($columns) {
 		// Add 'Status' column after 'Title'
 		$columns['status'] = 'Status';
 		return $columns;
 	}
 
-	public function custom_posts_column_content($column_name, $post_id) {	
+	/**
+	 * Shows status and availability under status
+	 */
+	public function custom_status_column_content($column_name, $post_id) {	
 		if ($column_name === 'status') {
 			// Get the post status
 			$post_status = get_post_status($post_id);
@@ -584,9 +590,8 @@ class ECommerce {
 			$post_date = get_post_field('post_date', $post_id);
 			// Get the post visibility
 			$post_visibility = get_post_field('post_password', $post_id);
-			
+
 			$common_style = 'height: 24px; border-radius: 13px 13px 13px 13px;  gap: 16px; padding: 5px 10px; font-weight: 590;font-size: 12px;';
-			
 			if ($post_status === 'publish') {
 				$background_color = empty($post_visibility) ? '#C6E8CA' : '#FDE5CC';
 				$label_text = empty($post_visibility) ? 'Published - Public' : 'Published - Password Protected';
@@ -597,13 +602,20 @@ class ECommerce {
 			}
 			else {
 				$background_color = '#E8ECF0';
-           		 $label_text = $post_status;
+           		$label_text = $post_status;
+			}
+			// Check if coming soon option is enabled
+			$coming_soon = get_option( 'nfd_coming_soon' );
+			if($coming_soon){
+				$background_color = '#E8ECF0';
 			}
 			echo '<span style="background-color: ' . $background_color . '; ' . $common_style . '">' . $label_text . '</span><br> Last Modified: ' . mysql2date('Y/m/d \a\t g:i a', $post_date);
 		}  
 	}
 
-	//Add sorting for the status column
+	/**
+	 * Add sorting for the status column
+	 */
 	public function sortable_product_columns($columns) {
 		$columns['status'] = 'status';
 		return $columns;
