@@ -142,7 +142,7 @@ export function OnboardingListDefinition(props) {
           isMigrated: (queries) => queries?.settings?.showMigrationSteps,
           className: () => "nfd-bg-canvas",
           hideCheck: () => true,
-          showText: () => <a className="nfd-underline">View Guide</a>
+          showText: () => <a className="nfd-underline" href="https://www.bluehost.com/help">View Guide</a>
         },
         shouldRender: (state) => state.isMigrated && !state.isCompleted,
         actions: {
