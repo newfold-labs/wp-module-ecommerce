@@ -97,6 +97,7 @@ class ECommerce {
 		add_action( 'before_woocommerce_init', array( $this, 'dismiss_woo_payments_cta' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
 		add_action( 'activated_plugin', array( $this, 'detect_plugin_activation' ), 10, 1 );
+		add_action( 'wp_login', array( $this, 'show_store_setup' ) );
 
 		$brandNameValue = $container->plugin()->brand;
 		$this->set_wpnav_collapse_setting( $brandNameValue );
@@ -561,6 +562,31 @@ class ECommerce {
 			foreach ( $plugin_slugs as $plugin ) {
 				PluginInstaller::install( $plugin, true );
 			}
+		}
+	}
+
+	/**
+	 * 	On login, it checks whether to show the migration steps, post migration to user
+	 */
+	public function show_store_setup() {
+		$siteUrl = get_option( 'siteurl', false );
+		$webserverUpdated = get_option( 'update_site_server_clicked', false );
+
+		$brand = $this->container->plugin()->id;
+
+		function check_url_match(){
+			switch($brand){
+				case 'bluehost':
+					return preg_match( '/\b\w+(\.\w+)*\.mybluehost\.me\b/', $siteUrl );
+				case 'hostgator':
+					return preg_match( '/\b\w+(\.\w+)*\.temporary\.site\b/', $siteUrl );
+				default:
+					return true;
+			}
+		}
+
+		if( $webserverUpdated &&  check_url_match()){
+			update_option("showMigrationSteps", false);
 		}
 	}
 }

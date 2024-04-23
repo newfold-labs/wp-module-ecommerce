@@ -46,6 +46,7 @@ export function OnboardingScreen({
   const [hovered, setIsHovered] = useState(false);
   const [editUrl, setEditUrl] = useState("");
   const [isMigrationCompleted, setIsMigrationCompleted] = useState(false);
+  const [ webServersUpdated, setWebServersUpdated ] = useState(false);
 
   const handleMouseOver = () => {
     setIsHovered(true);
@@ -63,6 +64,7 @@ export function OnboardingScreen({
   useEffect(() => {
     WordPressSdk.settings.get().then((res) => {
       setIsMigrationCompleted( res.showMigrationSteps );
+      setWebServersUpdated( res.update_site_server_clicked );
       if (res?.page_on_front && res?.show_on_front === "page") {
         setEditUrl(
           RuntimeSdk.adminUrl(
@@ -184,7 +186,12 @@ export function OnboardingScreen({
                 </div>
               </div>
             </div>
-            <OnboardingList notify={notify} isMigrationCompleted={isMigrationCompleted} setIsMigrationCompleted={setIsMigrationCompleted} />
+            <OnboardingList notify={notify}
+            isMigrationCompleted={isMigrationCompleted}
+            setIsMigrationCompleted={setIsMigrationCompleted} 
+            setWebServersUpdated={setWebServersUpdated}
+            webServersUpdated={webServersUpdated}
+            />
           </div>
           <SiteStatus
             comingSoon={comingSoon}

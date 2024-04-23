@@ -41,8 +41,11 @@ const signUpBluehostAcademy = () => {
   WordPressSdk.settings.put({ bluehost_academy_signup_clicked: true });
 };
 
-const updateSiteServers = () => {
-  WordPressSdk.settings.put({ update_site_server_clicked: true });
+const updateSiteServers = (setWebServersUpdated) => {
+  WordPressSdk.settings.put({ update_site_server_clicked: true }).then(() => {
+    WordPressSdk.settings.get();
+    setWebServersUpdated(true);
+  });
 };
 
 const updateStoreSetup = (setIsMigrationCompleted) => {
@@ -58,17 +61,16 @@ const signUpYoastSEOAcademy = () => {
 const brandName =
   (NewfoldRuntime?.sdk?.ecommerce?.brand_settings?.name).toLowerCase();
 
-const check_url_match = () => {
-  switch (brandName){
-    case "bluehost": 
-      return !(BH_UR_REGEX.test(window.location.origin));
-    case "hostgator":
-      return !(HG_UR_REGEX.test(window.location.origin));
-    default: 
-     return true;
+  const check_url_match = () => {
+    switch (brandName){
+      case "bluehost": 
+        return !(BH_UR_REGEX.test(window.location.origin));
+      case "hostgator":
+        return !(HG_UR_REGEX.test(window.location.origin));
+      default: 
+       return true;
+    }
   }
-}
-
 export function OnboardingListDefinition(props) {
   const installJetpack = createPluginInstallAction("jetpack", 20, props);
   return {
@@ -93,7 +95,7 @@ export function OnboardingListDefinition(props) {
         },
         shouldRender: (state) => state.isMigrated,
         actions: {
-          manage: updateSiteServers,
+          manage: () => updateSiteServers(props.setWebServersUpdated),
         },
         "data-openNfdHelpCenter": true,
         queries: [

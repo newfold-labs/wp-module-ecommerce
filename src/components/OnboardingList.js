@@ -9,6 +9,7 @@ import { Card, Link, Spinner, Title } from "@newfold/ui-component-library";
 import useSWRMutation from "swr/mutation";
 import { OnboardingListDefinition } from "../configs/OnboardingList.config";
 import { useCardManager } from "./useCardManager";
+import { BH_UR_REGEX, HG_UR_REGEX } from "../constants";
 
 function OnboardingCheckListItem({ children, actions, state, ...props }) {
   let manageAction = useSWRMutation(props.name, async () => {
@@ -57,6 +58,18 @@ function OnboardingCheckListItem({ children, actions, state, ...props }) {
   );
 }
 
+const check_url_match = () => {
+  const brandName = (NewfoldRuntime?.sdk?.ecommerce?.brand_settings?.name).toLowerCase();
+  switch (brandName){
+    case "bluehost": 
+      return !(BH_UR_REGEX.test(window.location.origin));
+    case "hostgator":
+      return !(HG_UR_REGEX.test(window.location.origin));
+    default: 
+     return true;
+  }
+}
+
 export function OnboardingList(props) {
   let [view, setView] = useState("incomplete");
   let [items] = useCardManager(OnboardingListDefinition(props));
@@ -71,15 +84,21 @@ export function OnboardingList(props) {
   let incompleteItems = items.filter((item) => !item.state.isCompleted);
   let itemsToDisplay =
     props.isMigrationCompleted ? items.slice(0, 3) : (view === "incomplete" ? incompleteItems.slice(0, 5) : completedItems);
+
+  const migration_text = {
+    title: check_url_match() && props.webServersUpdated ? __("Good job!", "wp-module-ecommerce") : __("One last thing to do...", "wp-module-ecommerce"),
+    description: check_url_match() && props.webServersUpdated ? __("Your site is now ready for public visitors!", "wp-module-ecommerce") : __("Finish this last step so your migrated site is ready for visitors.", "wp-module-ecommerce")
+  }
+
   return (
     <div className="nfd-grid nfd-grid-rows-[repeat(3,_min-content)] nfd-gap-4">
       <Title size="2">
-        {props.isMigrationCompleted ? __("One last thing to do...", "wp-module-ecommerce") : NewfoldRuntime.hasCapability("isEcommerce")
+        {props.isMigrationCompleted ? migration_text.title : NewfoldRuntime.hasCapability("isEcommerce")
           ? __("Next steps for your store", "wp-module-ecommerce")
           : __("Next steps for your site", "wp-module-ecommerce")}
       </Title>
       <p>
-        {props.isMigrationCompleted ? __("Finish this last step so your migrated site is ready for visitors.", "wp-module-ecommerce") : __(
+        {props.isMigrationCompleted ? migration_text.description : __(
           "You're just a few steps away from sharing your store with the world!",
           "wp-module-ecommerce"
         )}
