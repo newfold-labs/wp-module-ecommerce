@@ -66,13 +66,13 @@ const brandName =
   (NewfoldRuntime?.sdk?.ecommerce?.brand_settings?.name).toLowerCase();
 
 const check_url_match = () => {
-  switch (brandName){
-    case "bluehost": 
+  switch (brandName) {
+    case "bluehost":
       return !(BH_UR_REGEX.test(window.location.origin));
     case "hostgator":
       return !(HG_UR_REGEX.test(window.location.origin));
-    default: 
-     return true;
+    default:
+      return true;
   }
 }
 
@@ -102,7 +102,7 @@ export function OnboardingListDefinition(props) {
         actions: {
           manage: updateSiteServers,
         },
-        
+
         "data-nfdhelpcenterquery": "How do I update my nameserver to BH?",
         queries: [
           { key: "settings", selector: get_settings_list }
@@ -118,7 +118,7 @@ export function OnboardingListDefinition(props) {
           isCompleted: () => check_url_match(),
           isMigrated: (queries) => queries?.settings?.showMigrationSteps,
         },
-        
+
         "data-nfdhelpcenterquery": "How do I connect my site to the Domain ?",
         shouldRender: (state) => state.isMigrated,
         actions: {
@@ -135,7 +135,7 @@ export function OnboardingListDefinition(props) {
           "wp-module-ecommerce"
         ),
         state: {
-          isCompleted: (queries) => queries?.settings?.update_site_server_clicked && check_url_match(),
+          isCompleted: (queries) => (queries?.settings?.update_site_server_clicked && check_url_match()) || check_url_match(),
           isMigrated: (queries) => queries?.settings?.showMigrationSteps,
           className: () => "nfd-bg-canvas",
           hideCheck: () => true,
@@ -157,7 +157,7 @@ export function OnboardingListDefinition(props) {
         ),
         state: {
           isCompleted: (queries) => false,
-          isMigrated: (queries) => queries?.settings?.showMigrationSteps && queries?.settings?.update_site_server_clicked,
+          isMigrated: (queries) => queries?.settings?.showMigrationSteps && (queries?.settings?.update_site_server_clicked || check_url_match()),
         },
         shouldRender: (state) => state.isMigrated && !state.isCompleted,
         actions: {
@@ -196,7 +196,7 @@ export function OnboardingListDefinition(props) {
         ),
         state: {
           isCompleted: (queries) => queries?.orders?.pendingOrders?.length < 1,
-          isActive: (queries) =>  queries?.orders?.ordersCount > 0,
+          isActive: (queries) => queries?.orders?.ordersCount > 0,
           url: (queries) => queries?.orders?.pendingOrders?.length !== 1 ? `${RuntimeSdk.adminUrl('edit.php?post_type=shop_order')}` : RuntimeSdk.adminUrl(`post.php?post=${queries?.orders?.pendingOrders[0]?.id}&action=edit`)
         },
         shouldRender: (state) => NewfoldRuntime.isWoo && state.isActive,
