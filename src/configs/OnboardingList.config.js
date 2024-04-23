@@ -42,10 +42,17 @@ const signUpBluehostAcademy = () => {
 };
 
 const updateSiteServers = (setWebServersUpdated) => {
+  AnalyticsSdk.track("next_step", "next_step_update_nameserver_clicked", data);
   WordPressSdk.settings.put({ update_site_server_clicked: true }).then(() => {
     WordPressSdk.settings.get();
     setWebServersUpdated(true);
   });
+};
+const updateSiteDomain = () => {
+  AnalyticsSdk.track("next_step", "next_step_connect_domain_clicked", data);
+};
+const updateMigrateViewGuide = () => {
+  AnalyticsSdk.track("next_step", "next_step_migrate_view_guide_clicked", data);
 };
 
 const updateStoreSetup = (setIsMigrationCompleted) => {
@@ -61,16 +68,17 @@ const signUpYoastSEOAcademy = () => {
 const brandName =
   (NewfoldRuntime?.sdk?.ecommerce?.brand_settings?.name).toLowerCase();
 
-  const check_url_match = () => {
-    switch (brandName){
-      case "bluehost": 
-        return !(BH_UR_REGEX.test(window.location.origin));
-      case "hostgator":
-        return !(HG_UR_REGEX.test(window.location.origin));
-      default: 
-       return true;
-    }
+const check_url_match = () => {
+  switch (brandName) {
+    case "bluehost":
+      return !(BH_UR_REGEX.test(window.location.origin));
+    case "hostgator":
+      return !(HG_UR_REGEX.test(window.location.origin));
+    default:
+      return true;
   }
+}
+
 export function OnboardingListDefinition(props) {
   const installJetpack = createPluginInstallAction("jetpack", 20, props);
   return {
@@ -84,20 +92,21 @@ export function OnboardingListDefinition(props) {
     },
     cards: [
       {
-        name: "Update your website namerservers",
+        name: "Update your website nameservers",
         text: __(
-          "Update your website namerservers",
+          "Update your website nameservers",
           "wp-module-ecommerce"
         ),
         state: {
-          isCompleted: (queries) => queries?.settings?.update_site_server_clicked,
+          isCompleted: (queries) => queries?.settings?.update_site_server_clicked || check_url_match(),
           isMigrated: (queries) => queries?.settings?.showMigrationSteps
         },
         shouldRender: (state) => state.isMigrated,
         actions: {
           manage: () => updateSiteServers(props.setWebServersUpdated),
         },
-        "data-openNfdHelpCenter": true,
+
+        "data-nfdhelpcenterquery": "How do I update my nameserver to BH?",
         queries: [
           { key: "settings", selector: get_settings_list }
         ],
@@ -112,21 +121,24 @@ export function OnboardingListDefinition(props) {
           isCompleted: () => check_url_match(),
           isMigrated: (queries) => queries?.settings?.showMigrationSteps,
         },
-        "data-openNfdHelpCenter": true,
+
+        "data-nfdhelpcenterquery": "How do I connect my site to the Domain ?",
         shouldRender: (state) => state.isMigrated,
-        actions: {},
+        actions: {
+          manage: updateSiteDomain,
+        },
         queries: [
           { key: "settings", selector: get_settings_list }
         ],
       },
       {
-        name: "Need help updating your nameservers?",
+        name: "Need help with these steps?",
         text: __(
-          "Need help updating your nameservers?",
+          "Need help with these steps?",
           "wp-module-ecommerce"
         ),
         state: {
-          isCompleted: (queries) => queries?.settings?.update_site_server_clicked && check_url_match(),
+          isCompleted: (queries) => (queries?.settings?.update_site_server_clicked && check_url_match()) || check_url_match(),
           isMigrated: (queries) => queries?.settings?.showMigrationSteps,
           className: () => "nfd-bg-canvas",
           hideCheck: () => true,
@@ -134,6 +146,7 @@ export function OnboardingListDefinition(props) {
         },
         shouldRender: (state) => state.isMigrated && !state.isCompleted,
         actions: {
+          manage: updateMigrateViewGuide,
         },
         queries: [
           { key: "settings", selector: get_settings_list }
@@ -147,7 +160,7 @@ export function OnboardingListDefinition(props) {
         ),
         state: {
           isCompleted: (queries) => false,
-          isMigrated: (queries) => queries?.settings?.showMigrationSteps && queries?.settings?.update_site_server_clicked,
+          isMigrated: (queries) => queries?.settings?.showMigrationSteps && (queries?.settings?.update_site_server_clicked || check_url_match()),
         },
         shouldRender: (state) => state.isMigrated && !state.isCompleted,
         actions: {
@@ -186,7 +199,7 @@ export function OnboardingListDefinition(props) {
         ),
         state: {
           isCompleted: (queries) => queries?.orders?.pendingOrders?.length < 1,
-          isActive: (queries) =>  queries?.orders?.ordersCount > 0,
+          isActive: (queries) => queries?.orders?.ordersCount > 0,
           url: (queries) => queries?.orders?.pendingOrders?.length !== 1 ? `${RuntimeSdk.adminUrl('edit.php?post_type=shop_order')}` : RuntimeSdk.adminUrl(`post.php?post=${queries?.orders?.pendingOrders[0]?.id}&action=edit`)
         },
         shouldRender: (state) => NewfoldRuntime.isWoo && state.isActive,
@@ -216,7 +229,7 @@ export function OnboardingListDefinition(props) {
         state: {
           isAvailable: (queries) =>
             queries?.plugins?.isWCActive &&
-            RuntimeSdk.brandSettings.setup.payment.length > 0,
+            RuntimeSdk?.brandSettings?.setup?.payment?.length > 0,
           isCompleted: (queries) => queries?.settings?.isCompleted,
           url: () => "#/store/payments",
         },

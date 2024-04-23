@@ -47,7 +47,10 @@ function OnboardingCheckListItem({ children, actions, state, ...props }) {
               : "nfd-text-[--nfd-ecommerce-text-light]"
           )}
         />}
-        <span className="nfd-flex-1 nfd-text-black" {...(props["data-openNfdHelpCenter"] ? {"data-openNfdHelpCenter": props["data-openNfdHelpCenter"]} : {})}>{props.text}</span>
+        <span className="nfd-flex-1 nfd-text-black" {...(props["data-nfdhelpcenterquery"] 
+        ? {"data-nfdhelpcenterquery": props["data-nfdhelpcenterquery"]} 
+        : {}
+    )} >{props.text}</span>
         {manageAction.isMutating ? (
           <Spinner size="4" className="nfd-text-primary" />
         ) : (
