@@ -207,10 +207,11 @@ export function AllPayments(props) {
             variant="secondary"
             disabled={!isDirty}
             isLoading={isFormBusy}
+            id="payment-details-update-discard-changes"
           >
             {__("Discard Changes", "wp-module-ecommerce")}
           </Button>
-          <Button disabled={!isDirty} isLoading={isFormBusy} type="submit">
+          <Button disabled={!isDirty} isLoading={isFormBusy} type="submit" id="payment-details-update-save-changes">
             {__("Save Changes", "wp-module-ecommerce")}
           </Button>
         </div>

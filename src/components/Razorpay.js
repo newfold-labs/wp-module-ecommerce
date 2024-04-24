@@ -39,6 +39,7 @@ const Razorpay = ({ notify }) => {
                         "max-[359px]:nfd-my-2",
                         "min-[360px]:nfd-m-0"
                       )}
+                      id="manage-razorpay"
                     >
                       {__("Manage", "wp-module-ecommerce")}
                     </Button>
@@ -49,6 +50,7 @@ const Razorpay = ({ notify }) => {
                         "max-[359px]:nfd-my-2",
                         "min-[360px]:nfd-m-0"
                       )}
+                      id={ !isInstalled ? "install-razorpay" : "connect-to-razorpay-btn"} 
                     >
                       { !isInstalled ? (__("Install", "wp-module-ecommerce")) : (__("Connect", "wp-module-ecommerce"))}                      
                     </Button>
@@ -62,6 +64,7 @@ const Razorpay = ({ notify }) => {
                     "max-[359px]:nfd-my-2",
                     "min-[360px]:nfd-m-0"
                   )}
+                  id="installing-razorpay"
                 >
                   {__("Installing...", "wp-module-ecommerce")}
                 </Button>

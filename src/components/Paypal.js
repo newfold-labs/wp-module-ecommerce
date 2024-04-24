@@ -45,6 +45,7 @@ const Paypal = ({ notify }) => {
                     "max-[359px]:nfd-my-2",
                     "min-[360px]:nfd-m-0",
                   )}
+                  id="installing-paypal"
                 >
                   {__("Installing...", "wp-module-ecommerce")}
                 </Button>
@@ -57,6 +58,7 @@ const Paypal = ({ notify }) => {
                     "max-[359px]:nfd-my-2",
                     "min-[360px]:nfd-m-0",
                   )}
+                  id="manage-paypal"
                 >
                   {__("Manage", "wp-module-ecommerce")}
                 </Button>
@@ -70,6 +72,7 @@ const Paypal = ({ notify }) => {
                     "max-[359px]:nfd-my-2",
                     "min-[360px]:nfd-m-0",
                   )}
+                  id="install-paypal"
                 >
                   {__("Install", "wp-module-ecommerce")}
                 </Button>
