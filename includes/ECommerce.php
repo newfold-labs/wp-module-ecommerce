@@ -100,9 +100,8 @@ class ECommerce {
 		add_action( 'manage_posts_custom_column', array( $this, 'custom_status_column_content' ), 10, 2 );
 		add_filter( 'manage_pages_columns', array( $this, 'custom_status_column' ), 10, 1 );
 		add_action( 'manage_pages_custom_column', array( $this, 'custom_status_column_content' ), 10, 2 );
-		add_filter( 'manage_edit-product_sortable_columns', array( $this, 'sortable_product_columns' ) );
-		add_filter( 'manage_edit-post_sortable_columns', array( $this, 'sortable_product_columns' ) );
-		add_filter( 'manage_edit-page_sortable_columns', array( $this, 'sortable_product_columns' ) );
+		add_filter( 'manage_edit-post_sortable_columns', array( $this, 'sortable_columns' ) );
+		add_filter( 'manage_edit-page_sortable_columns', array( $this, 'sortable_columns' ) );
 
 		$brandNameValue = $container->plugin()->brand;
 		$this->set_wpnav_collapse_setting( $brandNameValue );
@@ -553,30 +552,32 @@ class ECommerce {
 
 	/**
 	 * Hide Most columns by default
-	 * Shows title and date in the page/post/product screen by default
+	 * Shows title and date in the page/post screen by default
 	 *
 	 * @return void
 	 */
 	public function hide_columns() {
-		if ( ! get_user_meta( get_current_user_id(), 'manageedit-pagecolumnshidden' ) ) {
-			update_user_meta( get_current_user_id(), 'manageedit-pagecolumnshidden', array( 'author', 'comments', 'date' ) );
+		if( 1 === get_option( 'onboarding_experience_level' ) ) {
+			if ( ! get_user_meta( get_current_user_id(), 'manageedit-pagecolumnshidden' ) ) {
+				update_user_meta( get_current_user_id(), 'manageedit-pagecolumnshidden', array( 'author', 'comments', 'date' ) );
+			}
+			if ( ! get_user_meta( get_current_user_id(), 'manageedit-postcolumnshidden' ) ) {
+				update_user_meta( get_current_user_id(), 'manageedit-postcolumnshidden', array( 'author', 'categories', 'tags', 'comments', 'date' ) );
+			}
 		}
-		if ( ! get_user_meta( get_current_user_id(), 'manageedit-postcolumnshidden' ) ) {
-			update_user_meta( get_current_user_id(), 'manageedit-postcolumnshidden', array( 'author', 'categories', 'tags', 'comments', 'date' ) );
-		}
-		if ( ! get_user_meta( get_current_user_id(), 'manageedit-productcolumnshidden' ) ) {
-			update_user_meta( get_current_user_id(), 'manageedit-productcolumnshidden', array( 'sku', 'stock', 'date' ) );
-		}
+		
 	}
 
 	/**
 	 * Add custom column header for post/page/product screen
 	 *
-	 * @param array $columns Array of column names for posts/pages/products
+	 * @param array $columns Array of column names for posts/pages
 	 */
 	public function custom_status_column( $columns ) {
-		// Add 'Status' column after 'Title'
-		$columns['status'] = 'Status';
+		if ( 'product' != get_post_type() && 1 === get_option( 'onboarding_experience_level' ) ) {
+			// Add 'Status' column after 'Title'
+			$columns['status'] = 'Status';
+		}
 		return $columns;
 	}
 
@@ -585,7 +586,7 @@ class ECommerce {
 	 *
 	 * @param string $column_name column names to which content needs to be updated
 	 *
-	 * @param int    $post_id Id of post/page/product
+	 * @param int    $post_id Id of post/page
 	 */
 	public function custom_status_column_content( $column_name, $post_id ) {
 		if ( 'status' === $column_name ) {
@@ -619,9 +620,9 @@ class ECommerce {
 	/**
 	 * Add sorting for the status column
 	 *
-	 * @param array $columns Array of column names for posts/pages/products
+	 * @param array $columns Array of sortable column names for posts/pages
 	 */
-	public function sortable_product_columns( $columns ) {
+	public function sortable_columns( $columns ) {
 		$columns['status'] = 'status';
 		return $columns;
 	}
