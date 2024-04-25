@@ -45,14 +45,20 @@ Next-generation WordPress eCommerce Experience for WordPress sites at Newfold Di
 
 ## Critical Paths
 
-1. Ecommerce Module should display, `Home` page with live `site preview` for both Live & Coming Soon mode same as what customers would see for WordPress site.
-2. If currently WordPress site is in coming soon mode, WordPress administrator should see visit site/ store CTA and also a button to Launch or go live under `Ready to go live` section. 
-3. `Store` page should give a brief overview of recent customer activity on store. It also has a section to setup `Ecommerce features` with purchase/enable/manage YITH extended plugins. 
-4. YITH PayPal Payment, WonderCart, YITH Stripe Payments and Ecomdash plugins require WooCommerce to be installed and activated. If WooCommerce isn't setup, `Store` tab should ask customers to first Install & activate WooCommerce. `Home` should display warnings for the same.
-5. `Products & Services` tab should provide customers access to purchase services offered by YITH extended plugins like: YITH Booking and Appointment for WooCommerce and YITH WooCommerce Gift Cards.
-6. `Sales & Promotions` submenu allows customers to install `WonderCart` plugin if it is not already installed & activated. Once `WonderCart` is activated it offers option to setup different promotional campaigns.
-7. `Payments` tab facilitates Customers to connect their accounts to receive payments via popular online payment options like PayPal, Stripe and RazorPay. Customers can also choose to accept offline payment via options like: check payments, bank transfers & C.O.D
-8. `Store details` tab facilitates setup of `Shippo` third party shipping software for e-commerce businesses.
+* `Store` page should give a brief overview of `recent customer activity` on Ecommerce website. 
+* `Store` page displays section to setup `Ecommerce features` where users can purchase/enable/manage YITH extended plugins. 
+* It is required to install & activate `WooCommerce` plugin for below plugins to work,
+  1. `YITH PayPal Payment` plugin for - facilitating payments via PayPal, 
+  2. `WonderCart`plugin for - creating sales & promotional campaigns, 
+  3. `YITH Stripe Payments` plugin for - facilitating payments via Stripe  
+  4. `Ecomdash` plugin for - managing marketplace and ecommerce website sales.
+* `Home` page should display warnings `enabled but not effective, requires WooCommerce in order to work.` for above YITH plugins, incase WooCommerce isn't setup.
+* If `WooCommerce` plugin isn't setup, `Store` tab should ask users to first install & activate `WooCommerce` till then all the sub-menu options under `Store` menu should be disabled.
+* `Products & Services` tab should provide customers access to purchase services offered by YITH extended plugins like: YITH Booking and Appointment for WooCommerce and YITH WooCommerce Gift Cards.
+* `Sales & Promotions` submenu allows customers to install `WonderCart` plugin if it is not already installed & activated. Once `WonderCart` is activated it offers option to setup different promotional campaigns.
+* `Payments` tab facilitates Customers to connect their accounts to receive payments via popular online payment options like PayPal, Stripe and RazorPay. Customers can also choose to accept offline payment via options like: check payments, bank transfers & C.O.D.
+* `Store details` tab facilitates setup of `Shippo` third party shipping software for e-commerce businesses.
+
 
 ## Installation
 
