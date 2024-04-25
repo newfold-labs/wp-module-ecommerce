@@ -98,7 +98,8 @@ class ECommerce {
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
 		add_action( 'activated_plugin', array( $this, 'detect_plugin_activation' ), 10, 1 );
 		add_action( 'wp_login', array( $this, 'show_store_setup' ) );
-
+		add_action( 'auth_cookie_expired', array( $this, 'show_store_setup' ) );
+		
 		$brandNameValue = $container->plugin()->brand;
 		$this->set_wpnav_collapse_setting( $brandNameValue );
 
