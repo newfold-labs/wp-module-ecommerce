@@ -24,7 +24,7 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 
 	it( 'Verify next steps "Add your store info"', () => {
 		waitForNextSteps()
-		cy.contains( '.nfd-grid.nfd-gap-4 ul li a', 'Add your store info', {
+		cy.get( '#add-your-store-info a', {
 			timeout: customCommandTimeout,
 		} )
 			.as( 'storeInfoStep' )
@@ -77,9 +77,8 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 	it( 'Verify next step "Connect a payment processor"', () => {
 		cy.reload();
 		waitForNextSteps();
-		cy.contains(
-			'.nfd-grid.nfd-gap-4 ul li a',
-			'Connect a payment processor',
+		cy.get(
+			'#connect-a-payment-processor a',
 			{
 				timeout: customCommandTimeout,
 			}
@@ -128,9 +127,8 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 	it( ' Verify next step "Set up Shipping options" ', () => {
 		if ( pluginId == 'bluehost' ) {
 			waitForNextSteps();
-			cy.contains(
-				'.nfd-grid.nfd-gap-4 ul li a',
-				'Setup shipping options',
+			cy.get(
+				'#setup-shipping-options a',
 				{
 					timeout: customCommandTimeout,
 				}
@@ -167,9 +165,9 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 		}
 	} );
 
-	it.skip( 'Verify next step "Configure tax settings"', () => {
+	it( 'Verify next step "Configure tax settings"', () => {
 		waitForNextSteps();
-		cy.contains( '.nfd-grid.nfd-gap-4 ul li a', 'Configure tax settings', {
+		cy.get( '#configure-tax-settings a', {
 			timeout: customCommandTimeout,
 		} )
 			.as( 'taxStep' )
@@ -197,7 +195,7 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 
 	it( 'Verify next step "Add a Product"', () => {
 		waitForNextSteps();
-		cy.contains( '.nfd-grid.nfd-gap-4 ul li a', 'Add a product', {
+		cy.get( '#add-a-product a', {
 			timeout: customCommandTimeout,
 		})
 			.as( 'addProduct' )

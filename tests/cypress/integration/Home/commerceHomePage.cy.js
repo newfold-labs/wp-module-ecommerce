@@ -157,11 +157,17 @@ describe( 'Commerce Home Page- Next Steps', () => {
 	} );
 
 	it( 'Verify Next steps for your site when woocommerce is not active', () => {
-		const steps = [
-			'Add a new page to your site',
-			'Upload media to your site',
-			'Enable Jetpack to connect to your social media accounts',
+		// const steps = [
+		// 	'Upload media to your site',
+		// 	'Add a new page to your site',
+		// 	'Enable Jetpack to connect to your social media accounts',
+		// ];
+		const step_id = [
+			'add-a-new-page-to-your-site',
+			'upload-media-to-your-site',
+			'enable-jetpack-to-connect-to-your-social-media-accounts',
 		];
+
 		cy.get( '.nfd-grid.nfd-gap-4', { timeout: customCommandTimeout } )
 			.as( 'nextSteps' )
 			.should( 'exist' );
@@ -169,25 +175,40 @@ describe( 'Commerce Home Page- Next Steps', () => {
 		cy.get( '@nextSteps' ).find( 'p' ).should( 'exist' );
 		cy.get( '@nextSteps' )
 			.find( 'ul li' )
-			.each( ( item, index, list ) => {
-				expect( list ).to.have.length( 3 );
+			.each( ( ele, index, list ) => {
+				expect(list).to.have.length(3);
+				cy.get(ele).invoke('attr', 'id').then((domId) => {
+					expect(domId).to.eq(step_id[ index ])
+				})
 
-				expect( Cypress.$( item ).text() ).to.eq( steps[ index ] );
+				// expect( Cypress.$( item ).id() ).to.eq( steps[ index ] );
 			} );
 	} );
 
 	it( 'Verify Next steps when experience level is novice', () => {
-		const other_steps = [
-			'Sign up for Yoast SEO Academy',
-			'Add a new page to your site',
-			'Upload media to your site',
-			'Enable Jetpack to connect to your social media accounts',
-		];
+		// const other_steps = [
+		// 	'Sign up for Yoast SEO Academy',
+		// 	'Add a new page to your site',
+		// 	'Upload media to your site',
+		// 	'Enable Jetpack to connect to your social media accounts',
+		// ];
 
-		const steps = [
-			'Sign up for Bluehost WordPress Academy',
-			...other_steps,
-		];
+		const other_step_id = [
+			'sign-up-for-yoast-seo-academy',
+			'add-a-new-page-to-your-site',
+			'upload-media-to-your-site',
+			'enable-jetpack-to-connect-to-your-social-media-accounts',
+		]
+
+		// const steps = [
+		// 	'Sign up for Bluehost WordPress Academy',
+		// 	...other_steps,
+		// ];
+
+		const step_id = [
+			'sign-up-for-bluehost-wordpress-academy',
+			...other_step_id,
+		]
 
 		cy.visit(
 			'/wp-admin/index.php?page=nfd-onboarding#/wp-setup/step/get-started/experience'
@@ -208,15 +229,17 @@ describe( 'Commerce Home Page- Next Steps', () => {
 
 		cy.get( '@nextSteps' )
 			.find( 'ul li' )
-			.each( ( item, index, list ) => {
+			.each( ( ele, index, list ) => {
 				if ( pluginId == 'bluehost' ) {
 					expect( list ).to.have.length( 5 );
-					expect( Cypress.$( item ).text() ).to.eq( steps[ index ] );
-				} else {
+					cy.get(ele).invoke('attr', 'id').then((domId) => {
+						expect(domId).to.eq(other_step_id[index])
+					}
+			)} else {
 					expect( list ).to.have.length( 4 );
-					expect( Cypress.$( item ).text() ).to.eq(
-						other_steps[ index ]
-					);
+					cy.get(ele).invoke('attr', 'id').then((domId) => {
+						expect(domId).to.eq(step_id[index])
+					})
 				}
 			} );
 	} );
@@ -224,9 +247,7 @@ describe( 'Commerce Home Page- Next Steps', () => {
 	it( 'Verify Signup for Bluehost WordPress Academy step', () => {
 		if ( pluginId == 'bluehost' ) {
 			cy.intercept( APIList.bh_academy ).as( 'events' );
-			cy.contains(
-				'.nfd-grid.nfd-gap-4 ul li a',
-				'Sign up for Bluehost WordPress Academy',
+			cy.get('#sign-up-for-bluehost-wordpress-academy a',
 				{ timeout: customCommandTimeout }
 			)
 				.as( 'nextSteps' )
@@ -250,9 +271,8 @@ describe( 'Commerce Home Page- Next Steps', () => {
 
 	it( 'Verify Signup for Wordpress SEO Academy step', () => {
 		cy.intercept( APIList.yoast_seo_academy ).as( 'events' );
-		cy.contains(
-			'.nfd-grid.nfd-gap-4 ul li a',
-			'Sign up for Yoast SEO Academy',
+		cy.get(
+			'#sign-up-for-yoast-seo-academy a',
 			{ timeout: customCommandTimeout }
 		)
 			.as( 'nextSteps' )
@@ -284,9 +304,8 @@ describe( 'Commerce Home Page- Next Steps', () => {
 		cy.get( '.nfd-grid.nfd-gap-4 ul li', {
 			timeout: customCommandTimeout,
 		} );
-		cy.contains(
-			'.nfd-grid.nfd-gap-4 ul li a',
-			'Add a new page to your site',
+		cy.get(
+			'#add-a-new-page-to-your-site a',
 			{
 				timeout: customCommandTimeout,
 			}
@@ -308,7 +327,7 @@ describe( 'Commerce Home Page- Next Steps', () => {
 	} );
 
 	it( 'Verify Option Upload Media to your site', () => {
-		cy.contains( 'Upload media to your site', {
+		cy.get( '#upload-media-to-your-site a', {
 			timeout: customCommandTimeout,
 		} )
 			.as( 'uploadMedia' )
