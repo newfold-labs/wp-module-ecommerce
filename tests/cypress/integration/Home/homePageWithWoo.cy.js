@@ -4,7 +4,7 @@ import {
 	installWoo,
 	viewCompletedTasks,
 	viewRemainingTasks,
-	waitForNextSteps
+	waitForNextSteps,
 } from '../wp-module-support/utils.cy';
 
 const customCommandTimeout = 20000;
@@ -23,7 +23,7 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 	} );
 
 	it( 'Verify next steps "Add your store info"', () => {
-		waitForNextSteps()
+		waitForNextSteps();
 		cy.get( '#add-your-store-info a', {
 			timeout: customCommandTimeout,
 		} )
@@ -77,23 +77,18 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 	it( 'Verify next step "Connect a payment processor"', () => {
 		cy.reload();
 		waitForNextSteps();
-		cy.get(
-			'#connect-a-payment-processor a',
-			{
-				timeout: customCommandTimeout,
-			}
-		)
+		cy.get( '#connect-a-payment-processor a', {
+			timeout: customCommandTimeout,
+		} )
 			.as( 'paymentStep' )
 			.should( 'exist' )
 			.scrollIntoView()
 			.click();
 		cy.get( `.${ appId }-app-subnavitem-Payments.active`, {
-			timeout: customCommandTimeout
-		}).should(
-			'exist'
-		);
-		cy.contains( 'section', 'Razorpay' ).as( 'razorpayBlock' );
-		cy.get( '@razorpayBlock' ).find( '.nfd-button--primary' ).click();
+			timeout: customCommandTimeout,
+		} ).should( 'exist' );
+		cy.get( '#razorpay-section' ).as( 'razorpayBlock' );
+		cy.get( '@razorpayBlock' ).find( '#install-razorpay' ).click();
 
 		cy.get( '[data-id="rzpTestModeToggle"]', {
 			timeout: customCommandTimeout,
@@ -104,8 +99,8 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 
 		cy.get( '.nfd-border-t .nfd-button--primary' ).click();
 
-		cy.get( '@razorpayBlock' , { timeout: customCommandTimeout } )
-			.find( '.nfd-badge--upsell' , { timeout: customCommandTimeout })
+		cy.get( '@razorpayBlock', { timeout: customCommandTimeout } )
+			.find( '.nfd-badge--upsell', { timeout: customCommandTimeout } )
 			.should( 'exist' );
 
 		cy.get( `.${ appId }-app-navitem-Home` ).click();
@@ -127,25 +122,18 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 	it( ' Verify next step "Set up Shipping options" ', () => {
 		if ( pluginId == 'bluehost' ) {
 			waitForNextSteps();
-			cy.get(
-				'#setup-shipping-options a',
-				{
-					timeout: customCommandTimeout,
-				}
-			)
+			cy.get( '#setup-shipping-options a', {
+				timeout: customCommandTimeout,
+			} )
 				.as( 'paymentStep' )
 				.should( 'exist' )
 				.scrollIntoView()
 				.click();
 
-			cy.get( '.nfd-app-section-content .nfd-button--primary', {
+			cy.get( '#install-shippo', {
 				timeout: customCommandTimeout,
-			} )
-				.contains( 'Install' )
-				.click();
-			cy.get( '.nfd-app-section-content .nfd-button--primary' )
-				.contains( 'Installing' )
-				.should( 'not.exist' );
+			} ).click();
+			cy.get( '#installing-shippo' ).should( 'not.exist' );
 
 			cy.window().then( ( win ) => {
 				cy.spy( win, 'open', ( url ) => {
@@ -154,11 +142,9 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 				} ).as( 'windowOpen' );
 			} );
 
-			cy.get( '.nfd-app-section-content .nfd-button--primary', {
+			cy.get( '#connect-to-shippo-btn', {
 				timeout: customCommandTimeout,
-			} )
-				.contains( 'Connect' )
-				.click();
+			} ).click();
 			cy.get( '@windowOpen', { timeout: customCommandTimeout } ).should(
 				'be.called'
 			);
@@ -174,7 +160,9 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 			.should( 'exist' )
 			.scrollIntoView()
 			.click();
-		cy.get( `.${ appId }-app-subnavitem-Store.active`, { timeout : customCommandTimeout } ).should( 'exist' );
+		cy.get( `.${ appId }-app-subnavitem-Store.active`, {
+			timeout: customCommandTimeout,
+		} ).should( 'exist' );
 		cy.get( '#tax-yes' ).click();
 		cy.get( '.nfd-border-t .nfd-button--primary' ).click();
 
@@ -183,12 +171,10 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 		} ).should( 'exist' );
 		cy.get( '.nfd-w-0  p' ).should( 'exist' );
 
-		cy.get(`.${appId}-app-navitem-Home`).click();
-		cy.reload()
-		waitForNextSteps()
-		cy.get( '@taxStep', { timeout: 30000 } ).should(
-			'not.exist'
-		);
+		cy.get( `.${ appId }-app-navitem-Home` ).click();
+		cy.reload();
+		waitForNextSteps();
+		cy.get( '@taxStep', { timeout: 30000 } ).should( 'not.exist' );
 		viewCompletedTasks();
 		cy.get( '@taxStep' ).should( 'exist' );
 		viewRemainingTasks();
@@ -198,10 +184,10 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 		waitForNextSteps();
 		cy.get( '#add-a-product a', {
 			timeout: customCommandTimeout,
-		})
+		} )
 			.as( 'addProduct' )
 			.should( 'exist' )
-		.click();
+			.click();
 		cy.url().should(
 			'eq',
 			Cypress.config().baseUrl +
