@@ -143,7 +143,7 @@ describe( 'Commerce Home Page- Next Steps', () => {
 
 	const novice_step_id_bh = [
 		'sign-up-for-bluehost-wordpress-academy',
-		...other_step_id,
+		...novice_step_id,
 	];
 
 	before( () => {
