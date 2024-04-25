@@ -183,7 +183,8 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 		} ).should( 'exist' );
 		cy.get( '.nfd-w-0  p' ).should( 'exist' );
 
-		cy.get( `.${ appId }-app-navitem-Home` ).click();
+		cy.get(`.${appId}-app-navitem-Home`).click();
+		cy.reload()
 		waitForNextSteps()
 		cy.get( '@taxStep', { timeout: 30000 } ).should(
 			'not.exist'

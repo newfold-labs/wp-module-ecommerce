@@ -233,12 +233,12 @@ describe( 'Commerce Home Page- Next Steps', () => {
 				if ( pluginId == 'bluehost' ) {
 					expect( list ).to.have.length( 5 );
 					cy.get(ele).invoke('attr', 'id').then((domId) => {
-						expect(domId).to.eq(other_step_id[index])
+						expect(domId).to.eq(step_id[index])
 					}
 			)} else {
 					expect( list ).to.have.length( 4 );
 					cy.get(ele).invoke('attr', 'id').then((domId) => {
-						expect(domId).to.eq(step_id[index])
+						expect(domId).to.eq(other_step_id[index])
 					})
 				}
 			} );
