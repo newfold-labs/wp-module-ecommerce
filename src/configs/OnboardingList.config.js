@@ -99,9 +99,9 @@ export function OnboardingListDefinition(props) {
         ),
         state: {
           isCompleted: (queries) => queries?.settings?.update_site_server_clicked || check_url_match(),
-          isMigrated: (queries) => queries?.settings?.showMigrationSteps
+          isMigrated: (queries) => queries?.settings?.showMigrationSteps || props.isMigrationCompleted
         },
-        shouldRender: (state) => state.isMigrated,
+        shouldRender: (state) => (state.isMigrated),
         actions: {
           manage: () => updateSiteServers(props.setWebServersUpdated),
         },
@@ -119,7 +119,7 @@ export function OnboardingListDefinition(props) {
         ),
         state: {
           isCompleted: () => check_url_match(),
-          isMigrated: (queries) => queries?.settings?.showMigrationSteps,
+          isMigrated: (queries) => queries?.settings?.showMigrationSteps || props.isMigrationCompleted,
         },
 
         "data-nfdhelpcenterquery": "How do I connect my site to the Domain ?",
@@ -142,7 +142,7 @@ export function OnboardingListDefinition(props) {
           isMigrated: (queries) => queries?.settings?.showMigrationSteps,
           className: () => "nfd-bg-canvas",
           hideCheck: () => true,
-          showText: () => <a className="nfd-underline" href="https://www.bluehost.com/help">View Guide</a>
+          showText: () => <a className="nfd-underline" href="https://www.bluehost.com/help" target="_blank">View Guide</a>
         },
         shouldRender: (state) => state.isMigrated && !state.isCompleted,
         actions: {
