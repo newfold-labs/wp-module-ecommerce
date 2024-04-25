@@ -38,9 +38,9 @@ const individualOrderLink = (postId) =>
     action: "edit",
   })}`;
 
-function RecentReport({ title, filter, onSelect, disabled, children }) {
+function RecentReport({ title, divname, filter, onSelect, disabled, children }) {
   return (
-    <Card className={`nfd-flex-1`}>
+    <Card className={`nfd-flex-1`} id={`${divname}-report-wrapper`}>
       <Card.Content className={"nfd-flex nfd-flex-col nfd-gap-4"}>
         <div
           className={classNames(
@@ -82,7 +82,7 @@ function RecentActivity() {
     revalidateIfStale: false,
   });
   return (
-    <RecentReport title={__("Recent Activity", "wp-module-ecommerce")} filter={filter} onSelect={onSelect}>
+    <RecentReport title={__("Recent Activity", "wp-module-ecommerce")} filter={filter} onSelect={onSelect} divname="recent-activity">
       {cards.length === 0 && (
         <div className="nfd-flex-1 nfd-flex nfd-items-center nfd-text-center nfd-justify-center">
           <Spinner size="8" className="nfd-text-primary" />
@@ -147,7 +147,7 @@ function RecentOrders() {
     { revalidateOnFocus: false }
   );
   return (
-    <RecentReport title={__("Recent Orders", "wp-module-ecommerce")} filter={filter} onSelect={onSelect}>
+    <RecentReport title={__("Recent Orders", "wp-module-ecommerce")} filter={filter} onSelect={onSelect} divname="recent-orders">
       {orders.isLoading && (
         <div className="nfd-flex-1 nfd-items-center nfd-text-center nfd-justify-center">
           <Spinner size="8" className="nfd-text-primary" />
@@ -235,6 +235,7 @@ export function QuickLook(props) {
       as="button"
       disabled={isInstalling}
       onClick={installWoo}
+      id="install-woocommerce-to-unlock-btn"
     >
       <Section.Content>
         <Section.Block

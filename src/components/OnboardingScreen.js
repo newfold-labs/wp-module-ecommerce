@@ -56,9 +56,11 @@ export function OnboardingScreen({
     setIsHovered(false);
   };
   const iframeOnLoad = () => {
-    window.frames["iframe-preview"].document.getElementById(
-      "wpadminbar"
-    ).style.display = "none";
+    if(window.frames["iframe-preview"].document.getElementById("wpadminbar")){
+      window.frames["iframe-preview"].document.getElementById(
+        "wpadminbar"
+      ).style.display = "none";
+    }
   };
 
   useEffect(() => {

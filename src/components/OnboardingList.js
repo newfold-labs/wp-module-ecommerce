@@ -25,6 +25,7 @@ function OnboardingCheckListItem({ children, actions, state, ...props }) {
         state.className,
         "hover:nfd-bg-canvas"
       )}
+      id={props.name.trim().replace(/\s+/g, '-').toLowerCase()}
     >
       <Link
         className={classNames(
@@ -94,17 +95,23 @@ export function OnboardingList(props) {
   }
 
   return (
-    <div className="nfd-grid nfd-grid-rows-[repeat(3,_min-content)] nfd-gap-4">
+    <div className="nfd-grid nfd-grid-rows-[repeat(3,_min-content)] nfd-gap-4" id="next-steps-section">
       <Title size="2">
         {props.isMigrationCompleted ? migration_text.title : NewfoldRuntime.hasCapability("isEcommerce")
           ? __("Next steps for your store", "wp-module-ecommerce")
           : __("Next steps for your site", "wp-module-ecommerce")}
       </Title>
       <p>
-        {props.isMigrationCompleted ? migration_text.description : __(
-          "You're just a few steps away from sharing your store with the world!",
-          "wp-module-ecommerce"
-        )}
+        {props.isMigrationCompleted ? migration_text.description : NewfoldRuntime.hasCapability("isEcommerce")
+          ? __(
+            "You're just a few steps away from sharing your store with the world!",
+            "wp-module-ecommerce"
+          )
+          : __(
+            "You're just a few steps away from sharing your site with the world!",
+            "wp-module-ecommerce"
+            )
+        }
       </p>
       {view === "incomplete" && itemsToDisplay.length === 0 && (
         <div>

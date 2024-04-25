@@ -41,11 +41,11 @@ export const comingSoon = ( shouldBeComingSoon ) => {
 
 export const installWoo = () => {
 	cy.exec( `npx wp-env run cli wp plugin install woocommerce`, {
-		timeout: longWait, failOnNonZeroExit: false, log: true
+		timeout: longWait, log: true
 	} );
 	
 	cy.exec( `npx wp-env run cli wp plugin activate woocommerce`, {
-		timeout: longWait, failOnNonZeroExit: false
+		timeout: longWait,
 	} );
 };
 
