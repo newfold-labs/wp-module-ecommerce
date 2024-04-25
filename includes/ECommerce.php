@@ -95,9 +95,7 @@ class ECommerce {
 		add_action( 'before_woocommerce_init', array( $this, 'dismiss_woo_payments_cta' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
 		add_action( 'activated_plugin', array( $this, 'detect_plugin_activation' ), 10, 1 );
-
-		$brandNameValue = $container->plugin()->brand;
-		$this->set_wpnav_collapse_setting( $brandNameValue );
+		add_action('admin_enqueue_scripts', array( $this, 'set_wpnav_collapse_setting'));			
 
 		if ( ( $container->plugin()->id === 'bluehost' && ( $canAccessGlobalCTB || $hasYithExtended ) ) || ( $container->plugin()->id === 'hostgator' && $hasYithExtended ) ) {
 			add_filter( 'admin_menu', array( $this, 'custom_add_promotion_menu_item' ) );
@@ -187,12 +185,11 @@ class ECommerce {
 	}
 
 	/**
-	 * Set the wpnav_collapse setting
-	 *
-	 * @param string $brandNameValue The brand name value
+	 * Set the wpnav_collapse setting	 
 	 */
-	public static function set_wpnav_collapse_setting( $brandNameValue ) {
+	public function set_wpnav_collapse_setting() {
 
+		$brandNameValue = $this->container->plugin()->brand;
 		wp_enqueue_script( 'nfd_wpnavbar_setting', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/wpnavbar.js', array( 'jquery' ), '1.0', true );
 		$params = array('nfdbrandname' => $brandNameValue);
 		wp_localize_script( 'nfd_wpnavbar_setting', 'navBarParams', $params );
@@ -364,7 +361,6 @@ class ECommerce {
 				NFD_ECOMMERCE_DIR . '/languages'
 			);
 			\wp_enqueue_script( 'nfd-ecommerce-dependency' );
-			\wp_enqueue_script( 'nfd_wpnavbar_setting' );
 		}
 	}
 
