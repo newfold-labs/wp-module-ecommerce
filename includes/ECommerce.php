@@ -559,10 +559,10 @@ class ECommerce {
 	public function hide_columns() {
 		if( 1 == get_option( 'onboarding_experience_level' ) ) {
 			if ( ! get_user_meta( get_current_user_id(), 'manageedit-pagecolumnshidden' ) ) {
-				update_user_meta( get_current_user_id(), 'manageedit-pagecolumnshidden', array( 'author', 'comments', 'date' ) );
+				update_user_meta( get_current_user_id(), 'manageedit-pagecolumnshidden', array( 'author', 'comments', 'date', 'wpseo-score', 'wpseo-score-readability', 'wpseo-title', 'wpseo-metadesc', 'wpseo-focuskw', 'wpseo-links' ) );
 			}
 			if ( ! get_user_meta( get_current_user_id(), 'manageedit-postcolumnshidden' ) ) {
-				update_user_meta( get_current_user_id(), 'manageedit-postcolumnshidden', array( 'author', 'categories', 'tags', 'comments', 'date' ) );
+				update_user_meta( get_current_user_id(), 'manageedit-postcolumnshidden', array( 'author', 'categories', 'tags', 'comments', 'date', 'wpseo-score', 'wpseo-score-readability', 'wpseo-title', 'wpseo-metadesc', 'wpseo-focuskw', 'wpseo-links' ) );
 			}
 		}
 		
