@@ -9,7 +9,7 @@ import { Card, Link, Spinner, Title } from "@newfold/ui-component-library";
 import useSWRMutation from "swr/mutation";
 import { OnboardingListDefinition } from "../configs/OnboardingList.config";
 import { useCardManager } from "./useCardManager";
-import { BH_UR_REGEX, HG_UR_REGEX } from "../constants";
+import { check_url_match } from "../configs/Utility";
 
 function OnboardingCheckListItem({ children, actions, state, ...props }) {
   let manageAction = useSWRMutation(props.name, async () => {
@@ -62,17 +62,7 @@ function OnboardingCheckListItem({ children, actions, state, ...props }) {
   );
 }
 
-const check_url_match = () => {
-  const brandName = (NewfoldRuntime?.sdk?.ecommerce?.brand_settings?.name).toLowerCase();
-  switch (brandName){
-    case "bluehost": 
-      return !(BH_UR_REGEX.test(window.location.origin));
-    case "hostgator":
-      return !(HG_UR_REGEX.test(window.location.origin));
-    default: 
-     return true;
-  }
-}
+const brandName = (NewfoldRuntime?.sdk?.ecommerce?.brand_settings?.name).toLowerCase();
 
 export function OnboardingList(props) {
   let [view, setView] = useState("incomplete");
@@ -90,8 +80,8 @@ export function OnboardingList(props) {
     props.isMigrationCompleted ? items.slice(0, 3) : (view === "incomplete" ? incompleteItems.slice(0, 5) : completedItems);
 
   const migration_text = {
-    title: check_url_match() && props.webServersUpdated ? __("Good job!", "wp-module-ecommerce") : __("One last thing to do...", "wp-module-ecommerce"),
-    description: check_url_match() && props.webServersUpdated ? __("Your site is now ready for public visitors!", "wp-module-ecommerce") : __("Finish this last step so your migrated site is ready for visitors.", "wp-module-ecommerce")
+    title: check_url_match( brandName ) && props.webServersUpdated ? __("Good job!", "wp-module-ecommerce") : __("One last thing to do...", "wp-module-ecommerce"),
+    description: check_url_match( brandName ) && props.webServersUpdated ? __("Your site is now ready for public visitors!", "wp-module-ecommerce") : __("Finish this last step so your migrated site is ready for visitors.", "wp-module-ecommerce")
   }
 
   return (

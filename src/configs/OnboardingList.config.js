@@ -18,7 +18,7 @@ import {
   get_tax_configured,
   get_settings_list
 } from "./selectors";
-import { BH_UR_REGEX, HG_UR_REGEX } from "../constants";
+import { check_url_match } from "./Utility";
 
 const parsePluginStatus = (plugins) => ({
   isWCActive: PluginsSdk.queries.isPlugin(plugins, ["woocommerce"], "active"),
@@ -68,16 +68,7 @@ const signUpYoastSEOAcademy = () => {
 const brandName =
   (NewfoldRuntime?.sdk?.ecommerce?.brand_settings?.name).toLowerCase();
 
-const check_url_match = () => {
-  switch (brandName) {
-    case "bluehost":
-      return !(BH_UR_REGEX.test(window.location.origin));
-    case "hostgator":
-      return !(HG_UR_REGEX.test(window.location.origin));
-    default:
-      return true;
-  }
-}
+
 
 export function OnboardingListDefinition(props) {
   const installJetpack = createPluginInstallAction("jetpack", 20, props);
@@ -98,7 +89,7 @@ export function OnboardingListDefinition(props) {
           "wp-module-ecommerce"
         ),
         state: {
-          isCompleted: (queries) => queries?.settings?.update_site_server_clicked || check_url_match(),
+          isCompleted: (queries) => queries?.settings?.update_site_server_clicked || check_url_match(brandName),
           isMigrated: (queries) => queries?.settings?.showMigrationSteps || props.isMigrationCompleted
         },
         shouldRender: (state) => (state.isMigrated),
@@ -106,7 +97,10 @@ export function OnboardingListDefinition(props) {
           manage: () => updateSiteServers(props.setWebServersUpdated),
         },
 
-        "data-nfdhelpcenterquery": "How do I update my nameserver to BH?",
+        "data-nfdhelpcenterquery": __(
+          "How do I update my nameserver to BH?",
+          "wp-module-ecommerce"
+        ),
         queries: [
           { key: "settings", selector: get_settings_list }
         ],
@@ -118,11 +112,14 @@ export function OnboardingListDefinition(props) {
           "wp-module-ecommerce"
         ),
         state: {
-          isCompleted: () => check_url_match(),
+          isCompleted: () => check_url_match( brandName ),
           isMigrated: (queries) => queries?.settings?.showMigrationSteps || props.isMigrationCompleted,
         },
 
-        "data-nfdhelpcenterquery": "How do I connect my site to the Domain ?",
+        "data-nfdhelpcenterquery": __(
+          "How do I connect my site to the Domain ?",
+          "wp-module-ecommerce"
+        ),
         shouldRender: (state) => state.isMigrated,
         actions: {
           manage: updateSiteDomain,
@@ -138,7 +135,7 @@ export function OnboardingListDefinition(props) {
           "wp-module-ecommerce"
         ),
         state: {
-          isCompleted: (queries) => (queries?.settings?.update_site_server_clicked && check_url_match()) || check_url_match(),
+          isCompleted: (queries) => (queries?.settings?.update_site_server_clicked && check_url_match(brandName)) || check_url_match(brandName),
           isMigrated: (queries) => queries?.settings?.showMigrationSteps,
           className: () => "nfd-bg-canvas",
           hideCheck: () => true,
@@ -160,7 +157,7 @@ export function OnboardingListDefinition(props) {
         ),
         state: {
           isCompleted: (queries) => false,
-          isMigrated: (queries) => queries?.settings?.showMigrationSteps && (queries?.settings?.update_site_server_clicked || check_url_match()),
+          isMigrated: (queries) => queries?.settings?.showMigrationSteps && (queries?.settings?.update_site_server_clicked || check_url_match(brandName)),
         },
         shouldRender: (state) => state.isMigrated && !state.isCompleted,
         actions: {
