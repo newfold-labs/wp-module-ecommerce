@@ -18,7 +18,7 @@ import {
   get_tax_configured,
   get_settings_list
 } from "./selectors";
-import { check_url_match } from "./Utility";
+import { brandName, check_url_match } from "./Utility";
 
 const parsePluginStatus = (plugins) => ({
   isWCActive: PluginsSdk.queries.isPlugin(plugins, ["woocommerce"], "active"),
@@ -65,10 +65,6 @@ const signUpYoastSEOAcademy = () => {
   WordPressSdk.settings.put({ yoast_seo_signup_status: true });
   AnalyticsSdk.track("next_step", "next_step_yoast_academy_clicked", data);
 };
-const brandName =
-  (NewfoldRuntime?.sdk?.ecommerce?.brand_settings?.name).toLowerCase();
-
-
 
 export function OnboardingListDefinition(props) {
   const installJetpack = createPluginInstallAction("jetpack", 20, props);
@@ -139,7 +135,7 @@ export function OnboardingListDefinition(props) {
           isMigrated: (queries) => queries?.settings?.showMigrationSteps,
           className: () => "nfd-bg-canvas",
           hideCheck: () => true,
-          showText: () => <a className="nfd-underline" href="https://www.bluehost.com/help" target="_blank">View Guide</a>
+          showText: () => <a className="nfd-underline" href={ NewfoldRuntime.sdk.ecommerce.brand_settings.videGuideLink } target="_blank">View Guide</a>
         },
         shouldRender: (state) => state.isMigrated && !state.isCompleted,
         actions: {

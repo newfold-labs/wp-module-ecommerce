@@ -9,7 +9,7 @@ import { Card, Link, Spinner, Title } from "@newfold/ui-component-library";
 import useSWRMutation from "swr/mutation";
 import { OnboardingListDefinition } from "../configs/OnboardingList.config";
 import { useCardManager } from "./useCardManager";
-import { check_url_match } from "../configs/Utility";
+import { brandName, check_url_match } from "../configs/Utility";
 
 function OnboardingCheckListItem({ children, actions, state, ...props }) {
   let manageAction = useSWRMutation(props.name, async () => {
@@ -61,8 +61,6 @@ function OnboardingCheckListItem({ children, actions, state, ...props }) {
     </li>
   );
 }
-
-const brandName = (NewfoldRuntime?.sdk?.ecommerce?.brand_settings?.name).toLowerCase();
 
 export function OnboardingList(props) {
   let [view, setView] = useState("incomplete");
