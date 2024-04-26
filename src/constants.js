@@ -6,3 +6,8 @@ export const YITH_WOOCOMMERCE_ACCOUNT_PAGE = "https://docs.yithemes.com/yith-woo
 
 export const BH_UR_REGEX = /\b\w+(\.\w+)*\.mybluehost\.me\b/;
 export const HG_UR_REGEX = /\b\w+(\.\w+)*\.temporary\.site\b/;
+
+export const VIEW_GUIDE_LINK = {
+    'bluehost': 'https://www.bluehost.com/help', 
+    'hostgator': 'https://www.hostgator.com/help'
+}

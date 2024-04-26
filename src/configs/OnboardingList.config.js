@@ -19,6 +19,7 @@ import {
   get_settings_list
 } from "./selectors";
 import { brandName, check_url_match } from "./Utility";
+import { VIEW_GUIDE_LINK } from "../constants";
 
 const parsePluginStatus = (plugins) => ({
   isWCActive: PluginsSdk.queries.isPlugin(plugins, ["woocommerce"], "active"),
@@ -135,7 +136,7 @@ export function OnboardingListDefinition(props) {
           isMigrated: (queries) => queries?.settings?.showMigrationSteps,
           className: () => "nfd-bg-canvas",
           hideCheck: () => true,
-          showText: () => <a className="nfd-underline" href={ NewfoldRuntime.sdk.ecommerce.brand_settings.videGuideLink } target="_blank">View Guide</a>
+          showText: () => <a className="nfd-underline" href={ VIEW_GUIDE_LINK[brandName] } target="_blank">View Guide</a>
         },
         shouldRender: (state) => state.isMigrated && !state.isCompleted,
         actions: {
