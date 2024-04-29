@@ -34,7 +34,7 @@ final class Brands {
 						'woocommerce_default_country' => 'AU:NSW',
 						'woocommerce_currency'        => 'AUD',
 					),
-					'wondercartBuyNow' => '',
+					'wondercartBuyNow' => ''
 				);
 
 			case 'bluehost-india':
@@ -53,7 +53,7 @@ final class Brands {
 						'woocommerce_default_country' => 'IN:AP',
 						'woocommerce_currency'        => 'INR',
 					),
-					'wondercartBuyNow' => '',
+					'wondercartBuyNow' => ''
 				);
 			case 'hostgator':
 			case 'hostgator-latam':
@@ -72,7 +72,7 @@ final class Brands {
 						'woocommerce_default_country' => 'BR:AL',
 						'woocommerce_currency'        => 'BRL',
 					),
-					'wondercartBuyNow' => '',
+					'wondercartBuyNow' => ''
 				);
 			case 'bluehost':
 			default:
@@ -91,7 +91,7 @@ final class Brands {
 						'woocommerce_default_country' => 'US:AZ',
 						'woocommerce_currency'        => 'USD',
 					),
-					'wondercartBuyNow' => 'https://my.bluehost.com/hosting/app?utm_source=wp-marketplace&utm_medium=brand-plugin&utm_campaign=wordpress-ad&utm_content=buynow#/marketplace/product',
+					'wondercartBuyNow' => 'https://my.bluehost.com/hosting/app?utm_source=wp-marketplace&utm_medium=brand-plugin&utm_campaign=wordpress-ad&utm_content=buynow#/marketplace/product'
 				);
 		}
 	}
