@@ -557,7 +557,7 @@ class ECommerce {
 	 * @return void
 	 */
 	public function hide_columns() {
-		if( 1 == get_option( 'onboarding_experience_level' ) ) {
+		if ( 1 == get_option( 'onboarding_experience_level' ) ) {
 			if ( ! get_user_meta( get_current_user_id(), 'manageedit-pagecolumnshidden' ) ) {
 				update_user_meta( get_current_user_id(), 'manageedit-pagecolumnshidden', array( 'author', 'comments', 'date', 'wpseo-score', 'wpseo-score-readability', 'wpseo-title', 'wpseo-metadesc', 'wpseo-focuskw', 'wpseo-links' ) );
 			}
@@ -565,7 +565,6 @@ class ECommerce {
 				update_user_meta( get_current_user_id(), 'manageedit-postcolumnshidden', array( 'author', 'categories', 'tags', 'comments', 'date', 'wpseo-score', 'wpseo-score-readability', 'wpseo-title', 'wpseo-metadesc', 'wpseo-focuskw', 'wpseo-links' ) );
 			}
 		}
-		
 	}
 
 	/**
@@ -576,7 +575,7 @@ class ECommerce {
 	public function custom_status_column( $columns ) {
 		if ( 'product' != get_post_type() && 1 == get_option( 'onboarding_experience_level' ) ) {
 			// Add 'Status' column after 'Title'
-			$columns['status'] = 'Status';
+			$columns['status'] = __( 'Status', 'wp-module-ecommerce' );
 		}
 		return $columns;
 	}
@@ -589,7 +588,7 @@ class ECommerce {
 	 * @param int    $post_id Id of post/page
 	 */
 	public function custom_status_column_content( $column_name, $post_id ) {
-		if ( 'status' === $column_name ) {
+		if ( __( 'Status', 'wp-module-ecommerce' ) === $column_name ) {
 			// Get the post status
 			$post_status = get_post_status( $post_id );
 			// Get the post date
@@ -600,7 +599,7 @@ class ECommerce {
 			$common_style = 'height: 24px; border-radius: 13px 13px 13px 13px;  gap: 16px; padding: 5px 10px; font-weight: 590;font-size: 12px;';
 			if ( 'publish' === $post_status ) {
 				$background_color = empty( $post_visibility ) ? '#C6E8CA' : '#FDE5CC';
-				$label_text       = empty( $post_visibility ) ? 'Published - Public' : 'Published - Password Protected';
+				$label_text       = empty( $post_visibility ) ? __( 'Published - Public', 'wp-module-ecommerce' ) : __( 'Published - Password Protected', 'wp-module-ecommerce' );
 			} elseif ( 'private' === $post_status ) {
 				$background_color = '#CCDCF4';
 				$label_text       = 'Published - Private';
@@ -613,7 +612,7 @@ class ECommerce {
 			if ( $coming_soon ) {
 				$background_color = '#E8ECF0';
 			}
-			echo '<span style="background-color: ' . $background_color . '; ' . $common_style . '">' . $label_text . '</span><br> Last Modified: ' . mysql2date( 'Y/m/d \a\t g:i a', $post_date );
+			echo '<span style="background-color: ' . $background_color . '; ' . $common_style . '">' . $label_text . '</span><br>' . __( 'Last Modified', 'wp-module-ecommerce' ) . ' : ' . mysql2date( 'Y/m/d \a\t g:i a', $post_date );
 		}
 	}
 
