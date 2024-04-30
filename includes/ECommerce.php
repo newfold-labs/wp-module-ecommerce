@@ -95,7 +95,7 @@ class ECommerce {
 		add_action( 'before_woocommerce_init', array( $this, 'dismiss_woo_payments_cta' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
 		add_action( 'activated_plugin', array( $this, 'detect_plugin_activation' ), 10, 1 );
-		add_action( 'admin_init', array( $this, 'hide_columns' ) );
+		add_action( 'wp_footer', array( $this, 'hide_columns' ) );
 		add_filter( 'manage_posts_columns', array( $this, 'custom_status_column' ), 10, 1 );
 		add_action( 'manage_posts_custom_column', array( $this, 'custom_status_column_content' ), 10, 2 );
 		add_filter( 'manage_pages_columns', array( $this, 'custom_status_column' ), 10, 1 );
@@ -588,7 +588,7 @@ class ECommerce {
 	 * @param int    $post_id Id of post/page
 	 */
 	public function custom_status_column_content( $column_name, $post_id ) {
-		if ( __( 'Status', 'wp-module-ecommerce' ) === $column_name ) {
+		if ( 'status' === $column_name ) {
 			// Get the post status
 			$post_status = get_post_status( $post_id );
 			// Get the post date
@@ -602,10 +602,10 @@ class ECommerce {
 				$label_text       = empty( $post_visibility ) ? __( 'Published - Public', 'wp-module-ecommerce' ) : __( 'Published - Password Protected', 'wp-module-ecommerce' );
 			} elseif ( 'private' === $post_status ) {
 				$background_color = '#CCDCF4';
-				$label_text       = 'Published - Private';
+				$label_text       = __( 'Published - Private', 'wp-module-ecommerce' );
 			} else {
 				$background_color = '#E8ECF0';
-				$label_text       = $post_status;
+				$label_text       = __( $post_status, 'wp-module-ecommerce' );
 			}
 			// Check if coming soon option is enabled
 			$coming_soon = get_option( 'nfd_coming_soon' );
