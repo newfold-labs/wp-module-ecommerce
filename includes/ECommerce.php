@@ -95,7 +95,7 @@ class ECommerce {
 		add_action( 'before_woocommerce_init', array( $this, 'dismiss_woo_payments_cta' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
 		add_action( 'activated_plugin', array( $this, 'detect_plugin_activation' ), 10, 1 );
-		add_action( 'wp_footer', array( $this, 'hide_columns' ) );
+		add_action( 'admin_init', array( $this, 'hide_columns' ) );
 		add_filter( 'manage_posts_columns', array( $this, 'custom_status_column' ), 10, 1 );
 		add_action( 'manage_posts_custom_column', array( $this, 'custom_status_column_content' ), 10, 2 );
 		add_filter( 'manage_pages_columns', array( $this, 'custom_status_column' ), 10, 1 );
