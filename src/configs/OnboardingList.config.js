@@ -87,7 +87,7 @@ export function OnboardingListDefinition(props) {
         ),
         state: {
           isCompleted: (queries) => queries?.settings?.update_site_server_clicked || check_url_match(brandName),
-          isMigrated: (queries) => queries?.settings?.showMigrationSteps || props.isMigrationCompleted
+          isMigrated: (queries) => queries?.settings?.showMigrationSteps && props.isMigrationCompleted
         },
         shouldRender: (state) => (state.isMigrated),
         actions: {
@@ -110,7 +110,7 @@ export function OnboardingListDefinition(props) {
         ),
         state: {
           isCompleted: () => check_url_match( brandName ),
-          isMigrated: (queries) => queries?.settings?.showMigrationSteps || props.isMigrationCompleted,
+          isMigrated: (queries) => queries?.settings?.showMigrationSteps && props.isMigrationCompleted,
         },
 
         "data-nfdhelpcenterquery": __(
@@ -153,7 +153,7 @@ export function OnboardingListDefinition(props) {
           "wp-module-ecommerce"
         ),
         state: {
-          isCompleted: (queries) => false,
+          isCompleted: (queries) => !props.isMigrationCompleted,
           isMigrated: (queries) => queries?.settings?.showMigrationSteps && (queries?.settings?.update_site_server_clicked || check_url_match(brandName)),
         },
         shouldRender: (state) => state.isMigrated && !state.isCompleted,
