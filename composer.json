@@ -56,9 +56,6 @@
   "config": {
     "optimize-autoloader": true,
     "sort-packages": true,
-    "platform": {
-      "php": "7.3.0"
-    },
     "preferred-install": {
       "newfold-labs/*": "source",
       "*": "dist"
