@@ -647,6 +647,8 @@ class ECommerce {
 		$columns['status'] = 'status';
 		return $columns;
 	}
+
+	/*
 	 *  On login, it checks whether to show the migration steps, post migration to user
 	 */
 	public function show_store_setup() {
