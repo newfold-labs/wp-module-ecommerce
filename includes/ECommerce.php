@@ -67,6 +67,8 @@ class ECommerce {
 		'woocommerce_cheque_settings',
 		'onboarding_experience_level',
 		'yoast_seo_signup_status',
+		'showMigrationSteps',
+		'update_site_server_clicked',
 	);
 
 
@@ -95,9 +97,17 @@ class ECommerce {
 		add_action( 'before_woocommerce_init', array( $this, 'dismiss_woo_payments_cta' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
 		add_action( 'activated_plugin', array( $this, 'detect_plugin_activation' ), 10, 1 );
+		add_action( 'admin_init', array( $this, 'hide_columns' ) );
+		add_filter( 'manage_posts_columns', array( $this, 'custom_status_column' ), 10, 1 );
+		add_action( 'manage_posts_custom_column', array( $this, 'custom_status_column_content' ), 10, 2 );
+		add_filter( 'manage_pages_columns', array( $this, 'custom_status_column' ), 10, 1 );
+		add_action( 'manage_pages_custom_column', array( $this, 'custom_status_column_content' ), 10, 2 );
+		add_filter( 'manage_edit-post_sortable_columns', array( $this, 'sortable_columns' ) );
+		add_filter( 'manage_edit-page_sortable_columns', array( $this, 'sortable_columns' ) );
+		add_action( 'wp_login', array( $this, 'show_store_setup' ) );
+		add_action( 'auth_cookie_expired', array( $this, 'show_store_setup' ) );
 
-		$brandNameValue = $container->plugin()->brand;
-		$this->set_wpnav_collapse_setting( $brandNameValue );
+		add_action('admin_enqueue_scripts', array( $this, 'set_wpnav_collapse_setting'));			
 
 		if ( ( $container->plugin()->id === 'bluehost' && ( $canAccessGlobalCTB || $hasYithExtended ) ) || ( $container->plugin()->id === 'hostgator' && $hasYithExtended ) ) {
 			add_filter( 'admin_menu', array( $this, 'custom_add_promotion_menu_item' ) );
@@ -187,16 +197,14 @@ class ECommerce {
 	}
 
 	/**
-	 * Set the wpnav_collapse setting
-	 *
-	 * @param string $brandNameValue The brand name value
+	 * Set the wpnav_collapse setting	 
 	 */
-	public static function set_wpnav_collapse_setting( $brandNameValue ) {
+	public function set_wpnav_collapse_setting() {
 
+		$brandNameValue = $this->container->plugin()->brand;
 		wp_enqueue_script( 'nfd_wpnavbar_setting', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/wpnavbar.js', array( 'jquery' ), '1.0', true );
-		$params = array('nfdbrandname' => $brandNameValue);
+		$params = array( 'nfdbrandname' => $brandNameValue );
 		wp_localize_script( 'nfd_wpnavbar_setting', 'navBarParams', $params );
-
 	}
 
 	/**
@@ -302,6 +310,24 @@ class ECommerce {
 				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
 			)
 		);
+		\register_setting(
+			'general',
+			'update_site_server_clicked',
+			array(
+				'show_in_rest' => true,
+				'type'         => 'boolean',
+				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
+			)
+		);
+		\register_setting(
+			'general',
+			'showMigrationSteps',
+			array(
+				'show_in_rest' => true,
+				'type'         => 'boolean',
+				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
+			)
+		);
 		$payments                    = array(
 			'woocommerce_bacs_settings',
 			'woocommerce_cod_settings',
@@ -364,7 +390,6 @@ class ECommerce {
 				NFD_ECOMMERCE_DIR . '/languages'
 			);
 			\wp_enqueue_script( 'nfd-ecommerce-dependency' );
-			\wp_enqueue_script( 'nfd_wpnavbar_setting' );
 		}
 	}
 
@@ -541,6 +566,113 @@ class ECommerce {
 			foreach ( $plugin_slugs as $plugin ) {
 				PluginInstaller::install( $plugin, true );
 			}
+		}
+	}
+
+	/**
+	 * Hide Most columns by default
+	 * Shows title and date in the page/post screen by default
+	 *
+	 * @return void
+	 */
+	public function hide_columns() {
+		if ( 1 == get_option( 'onboarding_experience_level' ) ) {
+			if ( ! get_user_meta( get_current_user_id(), 'manageedit-pagecolumnshidden' ) ) {
+				update_user_meta( get_current_user_id(), 'manageedit-pagecolumnshidden', array( 'author', 'comments', 'date', 'wpseo-score', 'wpseo-score-readability', 'wpseo-title', 'wpseo-metadesc', 'wpseo-focuskw', 'wpseo-links' ) );
+			}
+			if ( ! get_user_meta( get_current_user_id(), 'manageedit-postcolumnshidden' ) ) {
+				update_user_meta( get_current_user_id(), 'manageedit-postcolumnshidden', array( 'author', 'categories', 'tags', 'comments', 'date', 'wpseo-score', 'wpseo-score-readability', 'wpseo-title', 'wpseo-metadesc', 'wpseo-focuskw', 'wpseo-links' ) );
+			}
+		}
+	}
+
+	/**
+	 * Add custom column header for post/page/product screen
+	 *
+	 * @param array $columns Array of column names for posts/pages
+	 */
+	public function custom_status_column( $columns ) {
+		if ( 'product' != get_post_type() && 1 == get_option( 'onboarding_experience_level' ) ) {
+			// Add 'Status' column after 'Title'
+			$columns['status'] = __( 'Status', 'wp-module-ecommerce' );
+		}
+		return $columns;
+	}
+
+	/**
+	 * Shows status and availability under status
+	 *
+	 * @param string $column_name column names to which content needs to be updated
+	 *
+	 * @param int    $post_id Id of post/page
+	 */
+	public function custom_status_column_content( $column_name, $post_id ) {
+		if ( 'status' === $column_name ) {
+			// Get the post status
+			$post_status = get_post_status( $post_id );
+			// Get the post date
+			$post_date = get_post_field( 'post_date', $post_id );
+			// Get the post visibility
+			$post_visibility = get_post_field( 'post_password', $post_id );
+
+			$common_style = 'height: 24px; border-radius: 13px 13px 13px 13px;  gap: 16px; padding: 5px 10px; font-weight: 590;font-size: 12px;';
+			if ( 'publish' === $post_status ) {
+				$background_color = empty( $post_visibility ) ? '#C6E8CA' : '#FDE5CC';
+				$label_text       = empty( $post_visibility ) ? __( 'Published - Public', 'wp-module-ecommerce' ) : __( 'Published - Password Protected', 'wp-module-ecommerce' );
+			} elseif ( 'private' === $post_status ) {
+				$background_color = '#CCDCF4';
+				$label_text       = __( 'Published - Private', 'wp-module-ecommerce' );
+			} else {
+				$background_color = '#E8ECF0';
+				$label_text       = __( $post_status, 'wp-module-ecommerce' );
+			}
+			// Check if coming soon option is enabled
+			$coming_soon = get_option( 'nfd_coming_soon' );
+			if ( $coming_soon ) {
+				$background_color = '#E8ECF0';
+			}
+			echo '<span style="background-color: ' . $background_color . '; ' . $common_style . '">' . $label_text . '</span><br>' . __( 'Last Modified', 'wp-module-ecommerce' ) . ' : ' . mysql2date( 'Y/m/d \a\t g:i a', $post_date );
+		}
+	}
+
+	/**
+	 * Add sorting for the status column
+	 *
+	 * @param array $columns Array of sortable column names for posts/pages
+	 */
+	public function sortable_columns( $columns ) {
+		$columns['status'] = 'status';
+		return $columns;
+	}
+
+	/*
+	 *  On login, it checks whether to show the migration steps, post migration to user
+	 */
+	public function show_store_setup() {
+		$site_url         = get_option( 'siteurl', false );
+		$webserverUpdated = get_option( 'update_site_server_clicked', false );
+
+		$brand = $this->container->plugin()->id;
+
+		/**
+		 * Verifies if the url is matching with the regex
+		 *
+		 * @param string $brand_name id of the brand
+		 *
+		 * @param string $site_url siteurl
+		 */
+		function check_url_match( $brand_name, $site_url ) {
+			switch ( $brand_name ) {
+				case 'bluehost':
+					return ! preg_match( '/\b\w+(\.\w+)*\.mybluehost\.me\b/', $site_url );
+				case 'hostgator':
+					return ! preg_match( '/\b\w+(\.\w+)*\.temporary\.site\b/', $site_url );
+				default:
+					return true;
+			}
+		}
+		if ( check_url_match( $brand, $site_url ) ) {
+			update_option( 'showMigrationSteps', false );
 		}
 	}
 }

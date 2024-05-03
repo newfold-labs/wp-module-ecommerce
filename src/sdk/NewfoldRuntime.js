@@ -31,5 +31,8 @@ export const NewfoldRuntime = {
   },
   get currentTheme(){
     return (window.NewfoldRuntime?.currentTheme);
+  },
+  get plugin(){
+    return (window.NewfoldRuntime?.plugin);
   }
 };
