@@ -15,8 +15,11 @@ import {
   yithOnboardingPaymentParser,
   yithOnboardingStoreParser,
   getOrderList,
-  get_tax_configured
+  get_tax_configured,
+  get_settings_list
 } from "./selectors";
+import { brandName, check_url_match } from "./Utility";
+import { VIEW_GUIDE_LINK } from "../constants";
 
 const parsePluginStatus = (plugins) => ({
   isWCActive: PluginsSdk.queries.isPlugin(plugins, ["woocommerce"], "active"),
@@ -38,12 +41,31 @@ const signUpBluehostAcademy = () => {
   AnalyticsSdk.track("next_step", "next_step_bh_wp_academy_clicked", data);
   WordPressSdk.settings.put({ bluehost_academy_signup_clicked: true });
 };
+
+const updateSiteServers = (setWebServersUpdated) => {
+  AnalyticsSdk.track("next_step", "next_step_update_nameserver_clicked", data);
+  WordPressSdk.settings.put({ update_site_server_clicked: true }).then(() => {
+    WordPressSdk.settings.get();
+    setWebServersUpdated(true);
+  });
+};
+const updateSiteDomain = () => {
+  AnalyticsSdk.track("next_step", "next_step_connect_domain_clicked", data);
+};
+const updateMigrateViewGuide = () => {
+  AnalyticsSdk.track("next_step", "next_step_migrate_view_guide_clicked", data);
+};
+
+const updateStoreSetup = (setIsMigrationCompleted) => {
+  WordPressSdk.settings.put({ showMigrationSteps: false }).then(() => {
+    WordPressSdk.settings.get();
+    setIsMigrationCompleted(false);
+  });
+};
 const signUpYoastSEOAcademy = () => {
   WordPressSdk.settings.put({ yoast_seo_signup_status: true });
   AnalyticsSdk.track("next_step", "next_step_yoast_academy_clicked", data);
 };
-const brandName =
-  (NewfoldRuntime?.sdk?.ecommerce?.brand_settings?.name).toLowerCase();
 
 export function OnboardingListDefinition(props) {
   const installJetpack = createPluginInstallAction("jetpack", 20, props);
@@ -57,6 +79,91 @@ export function OnboardingListDefinition(props) {
       orders: WooCommerceSdk.orders.get
     },
     cards: [
+      {
+        name: "Update your website nameservers",
+        text: __(
+          "Update your website nameservers",
+          "wp-module-ecommerce"
+        ),
+        state: {
+          isCompleted: (queries) => queries?.settings?.update_site_server_clicked || check_url_match(brandName),
+          isMigrated: (queries) => queries?.settings?.showMigrationSteps && props.isMigrationCompleted
+        },
+        shouldRender: (state) => (state.isMigrated),
+        actions: {
+          manage: () => updateSiteServers(props.setWebServersUpdated),
+        },
+
+        "data-nfdhelpcenterquery": __(
+          "How do I update my nameserver to BH?",
+          "wp-module-ecommerce"
+        ),
+        queries: [
+          { key: "settings", selector: get_settings_list }
+        ],
+      },
+      {
+        name: "Connect this site to your domain",
+        text: __(
+          "Connect this site to your domain",
+          "wp-module-ecommerce"
+        ),
+        state: {
+          isCompleted: () => check_url_match( brandName ),
+          isMigrated: (queries) => queries?.settings?.showMigrationSteps && props.isMigrationCompleted,
+        },
+
+        "data-nfdhelpcenterquery": __(
+          "How do I connect my site to the Domain ?",
+          "wp-module-ecommerce"
+        ),
+        shouldRender: (state) => state.isMigrated,
+        actions: {
+          manage: updateSiteDomain,
+        },
+        queries: [
+          { key: "settings", selector: get_settings_list }
+        ],
+      },
+      {
+        name: "Need help with these steps?",
+        text: __(
+          "Need help with these steps?",
+          "wp-module-ecommerce"
+        ),
+        state: {
+          isCompleted: (queries) => (queries?.settings?.update_site_server_clicked && check_url_match(brandName)) || check_url_match(brandName),
+          isMigrated: (queries) => queries?.settings?.showMigrationSteps,
+          className: () => "nfd-bg-canvas",
+          hideCheck: () => true,
+          showText: () => <a className="nfd-underline" href={ VIEW_GUIDE_LINK[brandName] } target="_blank">View Guide</a>
+        },
+        shouldRender: (state) => state.isMigrated && !state.isCompleted,
+        actions: {
+          manage: updateMigrateViewGuide,
+        },
+        queries: [
+          { key: "settings", selector: get_settings_list }
+        ],
+      },
+      {
+        name: "Continue with store setup",
+        text: __(
+          "Continue with store setup",
+          "wp-module-ecommerce"
+        ),
+        state: {
+          isCompleted: (queries) => !props.isMigrationCompleted,
+          isMigrated: (queries) => queries?.settings?.showMigrationSteps && (queries?.settings?.update_site_server_clicked || check_url_match(brandName)),
+        },
+        shouldRender: (state) => state.isMigrated && !state.isCompleted,
+        actions: {
+          manage: () => updateStoreSetup(props.setIsMigrationCompleted),
+        },
+        queries: [
+          { key: "settings", selector: get_settings_list }
+        ],
+      },
       {
         name: "Sign up for Bluehost WordPress Academy",
         text: __(
@@ -86,7 +193,7 @@ export function OnboardingListDefinition(props) {
         ),
         state: {
           isCompleted: (queries) => queries?.orders?.pendingOrders?.length < 1,
-          isActive: (queries) =>  queries?.orders?.ordersCount > 0,
+          isActive: (queries) => queries?.orders?.ordersCount > 0,
           url: (queries) => queries?.orders?.pendingOrders?.length !== 1 ? `${RuntimeSdk.adminUrl('edit.php?post_type=shop_order')}` : RuntimeSdk.adminUrl(`post.php?post=${queries?.orders?.pendingOrders[0]?.id}&action=edit`)
         },
         shouldRender: (state) => NewfoldRuntime.isWoo && state.isActive,
@@ -116,7 +223,7 @@ export function OnboardingListDefinition(props) {
         state: {
           isAvailable: (queries) =>
             queries?.plugins?.isWCActive &&
-            RuntimeSdk.brandSettings.setup.payment.length > 0,
+            RuntimeSdk?.brandSettings?.setup?.payment?.length > 0,
           isCompleted: (queries) => queries?.settings?.isCompleted,
           url: () => "#/store/payments",
         },

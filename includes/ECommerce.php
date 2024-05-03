@@ -67,6 +67,8 @@ class ECommerce {
 		'woocommerce_cheque_settings',
 		'onboarding_experience_level',
 		'yoast_seo_signup_status',
+		'showMigrationSteps',
+		'update_site_server_clicked',
 	);
 
 
@@ -95,6 +97,8 @@ class ECommerce {
 		add_action( 'before_woocommerce_init', array( $this, 'dismiss_woo_payments_cta' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
 		add_action( 'activated_plugin', array( $this, 'detect_plugin_activation' ), 10, 1 );
+		add_action( 'wp_login', array( $this, 'show_store_setup' ) );
+		add_action( 'auth_cookie_expired', array( $this, 'show_store_setup' ) );
 
 		$brandNameValue = $container->plugin()->brand;
 		$this->set_wpnav_collapse_setting( $brandNameValue );
@@ -194,9 +198,8 @@ class ECommerce {
 	public static function set_wpnav_collapse_setting( $brandNameValue ) {
 
 		wp_enqueue_script( 'nfd_wpnavbar_setting', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/wpnavbar.js', array( 'jquery' ), '1.0', true );
-		$params = array('nfdbrandname' => $brandNameValue);
+		$params = array( 'nfdbrandname' => $brandNameValue );
 		wp_localize_script( 'nfd_wpnavbar_setting', 'navBarParams', $params );
-
 	}
 
 	/**
@@ -296,6 +299,24 @@ class ECommerce {
 		\register_setting(
 			'general',
 			'yoast_seo_signup_status',
+			array(
+				'show_in_rest' => true,
+				'type'         => 'boolean',
+				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
+			)
+		);
+		\register_setting(
+			'general',
+			'update_site_server_clicked',
+			array(
+				'show_in_rest' => true,
+				'type'         => 'boolean',
+				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
+			)
+		);
+		\register_setting(
+			'general',
+			'showMigrationSteps',
 			array(
 				'show_in_rest' => true,
 				'type'         => 'boolean',
@@ -541,6 +562,37 @@ class ECommerce {
 			foreach ( $plugin_slugs as $plugin ) {
 				PluginInstaller::install( $plugin, true );
 			}
+		}
+	}
+
+	/**
+	 *  On login, it checks whether to show the migration steps, post migration to user
+	 */
+	public function show_store_setup() {
+		$site_url         = get_option( 'siteurl', false );
+		$webserverUpdated = get_option( 'update_site_server_clicked', false );
+
+		$brand = $this->container->plugin()->id;
+
+		/**
+		 * Verifies if the url is matching with the regex
+		 *
+		 * @param string $brand_name id of the brand
+		 *
+		 * @param string $site_url siteurl
+		 */
+		function check_url_match( $brand_name, $site_url ) {
+			switch ( $brand_name ) {
+				case 'bluehost':
+					return ! preg_match( '/\b\w+(\.\w+)*\.mybluehost\.me\b/', $site_url );
+				case 'hostgator':
+					return ! preg_match( '/\b\w+(\.\w+)*\.temporary\.site\b/', $site_url );
+				default:
+					return true;
+			}
+		}
+		if ( check_url_match( $brand, $site_url ) ) {
+			update_option( 'showMigrationSteps', false );
 		}
 	}
 }
