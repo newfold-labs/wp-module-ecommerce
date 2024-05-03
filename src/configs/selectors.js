@@ -65,3 +65,7 @@ export const getOrderList = () => (ordersList) => {
 export const get_tax_configured = (list) => {
   return list.woocommerce_calc_taxes === "yes"
 }
+
+export const get_settings_list = (list) => {
+  return list;
+}

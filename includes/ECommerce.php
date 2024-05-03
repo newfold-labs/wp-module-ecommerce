@@ -67,6 +67,8 @@ class ECommerce {
 		'woocommerce_cheque_settings',
 		'onboarding_experience_level',
 		'yoast_seo_signup_status',
+		'showMigrationSteps',
+		'update_site_server_clicked',
 	);
 
 
@@ -102,6 +104,8 @@ class ECommerce {
 		add_action( 'manage_pages_custom_column', array( $this, 'custom_status_column_content' ), 10, 2 );
 		add_filter( 'manage_edit-post_sortable_columns', array( $this, 'sortable_columns' ) );
 		add_filter( 'manage_edit-page_sortable_columns', array( $this, 'sortable_columns' ) );
+		add_action( 'wp_login', array( $this, 'show_store_setup' ) );
+		add_action( 'auth_cookie_expired', array( $this, 'show_store_setup' ) );
 
 		$brandNameValue = $container->plugin()->brand;
 		$this->set_wpnav_collapse_setting( $brandNameValue );
@@ -302,6 +306,24 @@ class ECommerce {
 		\register_setting(
 			'general',
 			'yoast_seo_signup_status',
+			array(
+				'show_in_rest' => true,
+				'type'         => 'boolean',
+				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
+			)
+		);
+		\register_setting(
+			'general',
+			'update_site_server_clicked',
+			array(
+				'show_in_rest' => true,
+				'type'         => 'boolean',
+				'description'  => __( 'NFD eCommerce Options', 'wp-module-ecommerce' ),
+			)
+		);
+		\register_setting(
+			'general',
+			'showMigrationSteps',
 			array(
 				'show_in_rest' => true,
 				'type'         => 'boolean',
@@ -624,5 +646,34 @@ class ECommerce {
 	public function sortable_columns( $columns ) {
 		$columns['status'] = 'status';
 		return $columns;
+	}
+	 *  On login, it checks whether to show the migration steps, post migration to user
+	 */
+	public function show_store_setup() {
+		$site_url         = get_option( 'siteurl', false );
+		$webserverUpdated = get_option( 'update_site_server_clicked', false );
+
+		$brand = $this->container->plugin()->id;
+
+		/**
+		 * Verifies if the url is matching with the regex
+		 *
+		 * @param string $brand_name id of the brand
+		 *
+		 * @param string $site_url siteurl
+		 */
+		function check_url_match( $brand_name, $site_url ) {
+			switch ( $brand_name ) {
+				case 'bluehost':
+					return ! preg_match( '/\b\w+(\.\w+)*\.mybluehost\.me\b/', $site_url );
+				case 'hostgator':
+					return ! preg_match( '/\b\w+(\.\w+)*\.temporary\.site\b/', $site_url );
+				default:
+					return true;
+			}
+		}
+		if ( check_url_match( $brand, $site_url ) ) {
+			update_option( 'showMigrationSteps', false );
+		}
 	}
 }

@@ -9,6 +9,7 @@ import { Card, Link, Spinner, Title } from "@newfold/ui-component-library";
 import useSWRMutation from "swr/mutation";
 import { OnboardingListDefinition } from "../configs/OnboardingList.config";
 import { useCardManager } from "./useCardManager";
+import { brandName, check_url_match } from "../configs/Utility";
 
 function OnboardingCheckListItem({ children, actions, state, ...props }) {
   let manageAction = useSWRMutation(props.name, async () => {
@@ -21,6 +22,7 @@ function OnboardingCheckListItem({ children, actions, state, ...props }) {
       className={classNames(
         "nfd-p-[2px]",
         "nfd-m-0 nfd-border-b nfd-border-line last:nfd-border-b-0",
+        state.className,
         "hover:nfd-bg-canvas"
       )}
       id={props.name.trim().replace(/\s+/g, '-').toLowerCase()}
@@ -38,19 +40,22 @@ function OnboardingCheckListItem({ children, actions, state, ...props }) {
           ? { onClick: manageAction.trigger }
           : {})}
       >
-        <CheckCircleIcon
+        {!state.hideCheck && <CheckCircleIcon
           className={classNames(
             "nfd-w-[1.125rem]",
             state.isCompleted
               ? "nfd-text-[--nfd-ecomemerce-text-success]"
               : "nfd-text-[--nfd-ecommerce-text-light]"
           )}
-        />
-        <span className="nfd-flex-1 nfd-text-black">{props.text}</span>
+        />}
+        <span className="nfd-flex-1 nfd-text-black" {...(props["data-nfdhelpcenterquery"] 
+        ? {"data-nfdhelpcenterquery": props["data-nfdhelpcenterquery"]} 
+        : {}
+    )} >{props.text}</span>
         {manageAction.isMutating ? (
           <Spinner size="4" className="nfd-text-primary" />
         ) : (
-          <ArrowLongRightIcon className="nfd-text-black nfd-w-[1.125rem]" />
+          (state.showText || <ArrowLongRightIcon className="nfd-text-black nfd-w-[1.125rem]" />)
         )}
       </Link>
     </li>
@@ -70,16 +75,22 @@ export function OnboardingList(props) {
   let completedItems = items.filter((item) => item.state.isCompleted);
   let incompleteItems = items.filter((item) => !item.state.isCompleted);
   let itemsToDisplay =
-    view === "incomplete" ? incompleteItems.slice(0, 5) : completedItems;
+    props.isMigrationCompleted ? items.slice(0, 3) : (view === "incomplete" ? incompleteItems.slice(0, 5) : completedItems);
+
+  const migration_text = {
+    title: check_url_match( brandName ) && props.webServersUpdated ? __("Good job!", "wp-module-ecommerce") : __("One last thing to do...", "wp-module-ecommerce"),
+    description: check_url_match( brandName ) && props.webServersUpdated ? __("Your site is now ready for public visitors!", "wp-module-ecommerce") : __("Finish this last step so your migrated site is ready for visitors.", "wp-module-ecommerce")
+  }
+
   return (
     <div className="nfd-grid nfd-grid-rows-[repeat(3,_min-content)] nfd-gap-4" id="next-steps-section">
       <Title size="2">
-        {NewfoldRuntime.hasCapability("isEcommerce")
+        {props.isMigrationCompleted ? migration_text.title : NewfoldRuntime.hasCapability("isEcommerce")
           ? __("Next steps for your store", "wp-module-ecommerce")
           : __("Next steps for your site", "wp-module-ecommerce")}
       </Title>
       <p>
-        {NewfoldRuntime.hasCapability("isEcommerce")
+        {props.isMigrationCompleted ? migration_text.description : NewfoldRuntime.hasCapability("isEcommerce")
           ? __(
             "You're just a few steps away from sharing your store with the world!",
             "wp-module-ecommerce"
@@ -128,9 +139,9 @@ export function OnboardingList(props) {
             setView(view === "completed" ? "incomplete" : "completed")
           }
         >
-          {view === "completed"
+          {!props.isMigrationCompleted && (view === "completed"
             ? __("View remaining tasks", "wp-module-ecommerce")
-            : __("View completed tasks", "wp-module-ecommerce")}
+            : __("View completed tasks", "wp-module-ecommerce"))}
         </Link>
       )}
     </div>
