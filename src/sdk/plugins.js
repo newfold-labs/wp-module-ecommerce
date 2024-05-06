@@ -9,7 +9,7 @@ const Endpoints = {
   PLUGIN_INSTALL: NewfoldRuntime.createApiUrl("/newfold-installer/v1/plugins/install"),
 };
 
-const INSTALL_TOKEN = NewfoldRuntime.sdk.ecommerce.install_token;
+const INSTALL_TOKEN = NewfoldRuntime.ecommerce.install_token;
 
 export const PluginsSdk = {
   queries: {

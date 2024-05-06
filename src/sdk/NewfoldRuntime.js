@@ -6,19 +6,16 @@ export const NewfoldRuntime = {
     return window.NewfoldRuntime?.capabilities[name] === true;
   },
   adminUrl(path) {
-    return window.NewfoldRuntime?.admin_url + path;
+    return window.NewfoldRuntime?.adminUrl + path;
   },
   createApiUrl(url, qs = {}) {
-    return addQueryArgs(window.NewfoldRuntime?.base_url, {
+    return addQueryArgs(window.NewfoldRuntime?.homeUrl, {
       rest_route: url,
       ...qs,
     });
   },
-  get siteDetails() {
-    return window.NewfoldRuntime?.site;
-  },
-  get sdk() {
-    return window.NewfoldRuntime?.sdk;
+  get siteUrl() {
+    return window.NewfoldRuntime?.siteUrl;
   },
   get isWoo(){
     return window.NewfoldRuntime?.isWoocommerceActive
