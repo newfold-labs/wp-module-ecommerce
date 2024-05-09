@@ -160,18 +160,17 @@ export const ProductsAndServicesDefinition = (props) => ({
       assets: ({ isActive }) => ({
         Image: CalendarIcon,
         ActionIcon: isActive,
-        learnMoreUrl: YITH_WOOCOMMERCE_BOOKING_APPOINTMENTS,
       }),
       text: (state) => ({
         title: __(
-          "YITH Booking and Appointment for WooCommerce",
+          "Bookings & Appointments",
           "wp-module-ecommerce"
         ),
         actionName: !state.isActive
-          ? __("Enable", "wp-module-ecommerce")
+          ? __("Setup Bookings & Appointments", "wp-module-ecommerce")
           : state.hasUsedPlugin
-          ? __("Manage bookings", "wp-module-ecommerce")
-          : __("Create a booking", "wp-module-ecommerce"),
+          ? __("Manage Bookings & Appointments", "wp-module-ecommerce")
+          : __("Create a Bookings & Appointments", "wp-module-ecommerce"),
         slug: "yith_wcbk_panel",
       }),
       state: defineFeatureState(),
@@ -215,16 +214,15 @@ export const ProductsAndServicesDefinition = (props) => ({
       name: "gifts",
       assets: ({ isActive }) => ({
         Image: GiftIcon,
-        ActionIcon: isActive,
-        learnMoreUrl: YITH_WOOCOMMERCE_GIFT_CARDS,
+        ActionIcon: isActive,        
       }),
       text: (state) => ({
-        title: __("YITH WooCommerce Gift Cards", "wp-module-ecommerce"),
+        title: __("Gift Cards", "wp-module-ecommerce"),
         actionName: !state.isActive
-          ? __("Enable", "wp-module-ecommerce")
+          ? __("Create a Gift Card", "wp-module-ecommerce")
           : state.hasUsedPlugin
-          ? __("Manage gift cards", "wp-module-ecommerce")
-          : __("Create a gift card", "wp-module-ecommerce"),
+          ? __("Manage Gift Cards", "wp-module-ecommerce")
+          : __("Create a Gift Card", "wp-module-ecommerce"),
         slug: "yith_woocommerce_gift_cards_panel",
       }),
       state: defineFeatureState(),
