@@ -1,10 +1,10 @@
 import { Button } from "@newfold/ui-component-library";
 import { __ } from "@wordpress/i18n";
 import { ReactComponent as CheckMarkIcon } from "../icons/check.svg";
+import { ReactComponent as LockIcon } from "../icons/lockicon.svg";
 import { ReactComponent as TransformStore } from "../icons/transform-store.svg";
 import { ReactComponent as WonderCartIcon } from "../icons/wondercart.svg";
 import { ReactComponent as YithPluginsIcon } from "../icons/yithplugins.svg";
-import { ReactComponent as LockIcon } from "../icons/lockicon.svg";
 
 export function TransformtoEcommerce() {
     return(
