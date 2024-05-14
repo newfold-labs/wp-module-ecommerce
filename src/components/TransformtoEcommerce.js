@@ -20,7 +20,7 @@ export function TransformtoEcommerce() {
                         <h1 className="nfd-text-2xl nfd-leading-9 nfd-font-medium" style={{color: "#111729"}}>
                             {__("Transform your store!", "wp-module-ecommerce")}
                         </h1>
-                        <p style={{fontSize: "0.813rem", color: "#4A5567" }} className="nfd-leading-5 nfd-w-3/4">
+                        <p style={{fontSize: "0.813rem", color: "#4A5567" }} className="nfd-leading-5 nfd-w-5/6">
                         {__("Give your online store a boost with our all-in-one eCommerce bundle filled with exclusive plugins and tools designed to help you sell your products and services like a pro.", "wp-module-ecommerce")}
                         </p>
                     </div>
