@@ -7,11 +7,9 @@ import { ReactComponent as WonderCartIcon } from "../icons/wondercart.svg";
 import { ReactComponent as YithPluginsIcon } from "../icons/yithplugins.svg";
 
 export function TransformtoEcommerce() {
-    return(
-           
-        
-        <div class="nfd-app-section-container nfd-bg-white nfd-w-full nfd-rounded-lg" id="nonecommerce-features-wrapper">
-            <div class="nfd-app-section-content nfd-border nfd-rounded-lg nfd-px-8 nfd-pt-0 nfd-pb-8 nfd-m-8 nfd--mt-2 nfd-items-start" style={{borderColor: "#E2E8F0"}}>                
+    return(           
+        <div className="nfd-app-section-container nfd-bg-white nfd-w-full nfd-rounded-lg" id="nonecommerce-features-wrapper">
+            <div className="nfd-app-section-content nfd-border nfd-rounded-lg nfd-px-8 nfd-pt-0 nfd-pb-8 nfd-m-8 nfd--mt-2 nfd-items-start" style={{borderColor: "#E2E8F0"}}>                
                 <div className="nfd-flex nfd-flex-wrap nfd-gap-x-10">
                     <div className="nfd-flex-none nfd-mt-8 nfd-w-40">
                         <TransformStore />

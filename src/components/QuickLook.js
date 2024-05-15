@@ -1,6 +1,3 @@
-import { dateI18n } from "@wordpress/date";
-import { useState } from "@wordpress/element";
-import { __ } from "@wordpress/i18n";
 import {
   Badge,
   Card,
@@ -10,16 +7,21 @@ import {
   Spinner,
   Title,
 } from "@newfold/ui-component-library";
+import { dateI18n } from "@wordpress/date";
+import { useState } from "@wordpress/element";
+import { __ } from "@wordpress/i18n";
 import classNames from "classnames";
 import useSWR from "swr";
 import Reports from "../configs/Reports.config";
 import { ReactComponent as NoOrdersFallback } from "../icons/no-orders-fallback.svg";
-import { formatMoney } from "../sdk/formatMoney";
 import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
+import { formatMoney } from "../sdk/formatMoney";
 import { RuntimeSdk } from "../sdk/runtime";
 import { WooCommerceSdk } from "../sdk/woocommerce";
 import { Section } from "./Section";
 import { SiteStatus } from "./SiteStatus";
+import { TransformtoEcommerce } from "./TransformtoEcommerce";
+import { YITHPlugins } from "./YITHPlugins";
 import { useCardManager } from "./useCardManager";
 import { useInstallWoo } from "./useInstallWoo";
 
@@ -260,6 +262,7 @@ export function QuickLook(props) {
           />
         </Section.Block>
       </Section.Content>
+      {NewfoldRuntime.hasCapability("isEcommerce") ? (<YITHPlugins {...props} />) : <TransformtoEcommerce /> }  
     </FeatureUpsell>
   );
 }
