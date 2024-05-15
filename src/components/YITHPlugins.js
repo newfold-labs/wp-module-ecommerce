@@ -107,7 +107,7 @@ export function YITHPlugins({ woo, wpModules }) {
 
   return (
     <Section.Container id="ecommerce-features-wrapper" className={"nfd-border nfd-border-amber-300 nfd-rounded-xl nfd-pt-0"}>
-      <div className="nfd-flex nfd-p-8 nfd-flex-row nfd-justify-between nfd-gap-6 nfd-items-center">
+      <div className="nfd-flex  nfd-flex-col md:nfd-flex-row nfd-p-8  nfd-justify-between nfd-gap-6 nfd-items-center">
         <img
           src={lightchest}
           className="nfd-w-48 nfd-text-[--nfd-ecommerce-text-dark]"
