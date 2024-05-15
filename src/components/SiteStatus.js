@@ -9,16 +9,16 @@ const getTitle = (comingSoon) =>
   comingSoon
     ? __("Coming Soon activated", "wp-module-ecommerce")
     : NewfoldRuntime.hasCapability("isEcommerce")
-    ? __("Your store is online and ready for business!", "wp-module-ecommerce")
-    : __("Your site is online now!", "wp-module-ecommerce");
+      ? __("Your store is online and ready for business!", "wp-module-ecommerce")
+      : __("Your site is online now!", "wp-module-ecommerce");
 
 const getDescription = (comingSoon) =>
   comingSoon
     ? ""
     : __(
-        `You can re-enable the 'Coming Soon' mode in “Settings”.`,
-        "wp-module-ecommerce"
-      );
+      `You can re-enable the 'Coming Soon' mode in “Settings”.`,
+      "wp-module-ecommerce"
+    );
 
 /**
  * @typedef SiteStatusProps
@@ -44,9 +44,6 @@ export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
       $statusText.style.setProperty("color", "var(--nfd-ecommerce-text-dark-success)");
     }
   });
-  if (!comingSoon) {
-    return null;
-  }
   return (
     <div
       className={classNames(
@@ -62,13 +59,13 @@ export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
         <span className="nfd-whitespace-pre-wrap nfd-leading-tight">
           {NewfoldRuntime.hasCapability("isEcommerce")
             ? __(
-                "Preview your store before setting it live to make sure everything is how you want it.\nOnce you're ready, set your store live!",
-                "wp-module-ecommerce"
-              )
+              "Preview your store before setting it live to make sure everything \nis how you want it. Once you're ready, set your store live!",
+              "wp-module-ecommerce"
+            )
             : __(
-                "Preview your Site before setting it live to make sure everything is how you want it.\nOnce you're ready, set your site live!",
-                "wp-module-ecommerce"
-              )}
+              "Preview your Site before setting it live to make sure everything \nis how you want it. Once you're ready, set your site live!",
+              "wp-module-ecommerce"
+            )}
         </span>
       </div>
       <div

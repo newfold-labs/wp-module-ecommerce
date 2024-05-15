@@ -12,10 +12,10 @@ function formatMoneyToTile(filter) {
       queries?.pluginStatus !== true
         ? "-"
         : formatMoney({
-            cost: Number(queries?.[`reports_for_${filter}`]?.[0]),
-            currency: queries?.currency?.value,
-            currencyDisplay: "symbol",
-          }),
+          cost: Number(queries?.[`reports_for_${filter}`]?.[0]),
+          currency: queries?.currency?.value,
+          currencyDisplay: "symbol",
+        }),
   };
 }
 
@@ -56,88 +56,27 @@ const Reports = (filter) => ({
     {
       Card: ReportTile,
       shouldRender: () => true,
-      name: "total_sales",
+      name: "views",
       text: () => ({
-        title: __("Total Sales", "wp-module-ecommerce"),
-      }),
-      state: formatMoneyToTile(filter),
-      queries: [
-        { key: "currency" },
-        {
-          key: "pluginStatus",
-          selector: (plugins) =>
-            PluginsSdk.queries.isPlugin(plugins, ["woocommerce"], "active"),
-        },
-        {
-          key: `reports_for_${filter}`,
-          selector: (reports) => reports.total_sales,
-        },
-      ],
-    },
-    {
-      Card: ReportTile,
-      shouldRender: () => true,
-      name: "net_sales",
-      text: () => ({
-        title: __("Net Sales", "wp-module-ecommerce"),
-      }),
-      state: formatMoneyToTile(filter),
-      queries: [
-        { key: "currency" },
-        {
-          key: "pluginStatus",
-          selector: (plugins) =>
-            PluginsSdk.queries.isPlugin(plugins, ["woocommerce"], "active"),
-        },
-        {
-          key: `reports_for_${filter}`,
-          selector: (reports) => reports.net_sales,
-        },
-      ],
-    },
-    {
-      Card: ReportTile,
-      shouldRender: () => true,
-      name: "orders",
-      text: () => ({
-        title: __("Orders", "wp-module-ecommerce"),
+        title: __("Views", "wp-module-ecommerce"),
       }),
       state: {
-        reportValue: getReportValue(`reports_for_${filter}`),
-        change: calculateDelta(`reports_for_${filter}`),
+        reportValue: getReportValue(`analytics_for_${filter}`),
+        change: calculateDelta(`analytics_for_${filter}`),
       },
       queries: [
         {
           key: "pluginStatus",
           selector: (plugins) =>
-            PluginsSdk.queries.isPlugin(plugins, ["woocommerce"], "active"),
+            PluginsSdk.queries.isPlugin(
+              plugins,
+              ["woocommerce", "jetpack"],
+              "active"
+            ),
         },
         {
-          key: `reports_for_${filter}`,
-          selector: (reports) => reports.total_orders,
-        },
-      ],
-    },
-    {
-      Card: ReportTile,
-      shouldRender: () => true,
-      name: "products",
-      text: () => ({
-        title: __("Products Sold", "wp-module-ecommerce"),
-      }),
-      state: {
-        reportValue: getReportValue(`reports_for_${filter}`),
-        change: calculateDelta(`reports_for_${filter}`),
-      },
-      queries: [
-        {
-          key: "pluginStatus",
-          selector: (plugins) =>
-            PluginsSdk.queries.isPlugin(plugins, ["woocommerce"], "active"),
-        },
-        {
-          key: `reports_for_${filter}`,
-          selector: (reports) => reports.total_items,
+          key: `analytics_for_${filter}`,
+          selector: (stats) => stats.views,
         },
       ],
     },
@@ -171,30 +110,93 @@ const Reports = (filter) => ({
     {
       Card: ReportTile,
       shouldRender: () => true,
-      name: "views",
+      name: "orders",
       text: () => ({
-        title: __("Views", "wp-module-ecommerce"),
+        title: __("Orders", "wp-module-ecommerce"),
       }),
       state: {
-        reportValue: getReportValue(`analytics_for_${filter}`),
-        change: calculateDelta(`analytics_for_${filter}`),
+        reportValue: getReportValue(`reports_for_${filter}`),
+        change: calculateDelta(`reports_for_${filter}`),
       },
       queries: [
         {
           key: "pluginStatus",
           selector: (plugins) =>
-            PluginsSdk.queries.isPlugin(
-              plugins,
-              ["woocommerce", "jetpack"],
-              "active"
-            ),
+            PluginsSdk.queries.isPlugin(plugins, ["woocommerce"], "active"),
         },
         {
-          key: `analytics_for_${filter}`,
-          selector: (stats) => stats.views,
+          key: `reports_for_${filter}`,
+          selector: (reports) => reports.total_orders,
         },
       ],
     },
+    {
+      Card: ReportTile,
+      shouldRender: () => true,
+      name: "total_sales",
+      text: () => ({
+        title: __("Total Sales", "wp-module-ecommerce"),
+      }),
+      state: formatMoneyToTile(filter),
+      queries: [
+        { key: "currency" },
+        {
+          key: "pluginStatus",
+          selector: (plugins) =>
+            PluginsSdk.queries.isPlugin(plugins, ["woocommerce"], "active"),
+        },
+        {
+          key: `reports_for_${filter}`,
+          selector: (reports) => reports.total_sales,
+        },
+      ],
+    },
+    // {
+    //   Card: ReportTile,
+    //   shouldRender: () => true,
+    //   name: "net_sales",
+    //   text: () => ({
+    //     title: __("Net Sales", "wp-module-ecommerce"),
+    //   }),
+    //   state: formatMoneyToTile(filter),
+    //   queries: [
+    //     { key: "currency" },
+    //     {
+    //       key: "pluginStatus",
+    //       selector: (plugins) =>
+    //         PluginsSdk.queries.isPlugin(plugins, ["woocommerce"], "active"),
+    //     },
+    //     {
+    //       key: `reports_for_${filter}`,
+    //       selector: (reports) => reports.net_sales,
+    //     },
+    //   ],
+    // },
+
+    // {
+    //   Card: ReportTile,
+    //   shouldRender: () => true,
+    //   name: "products",
+    //   text: () => ({
+    //     title: __("Products Sold", "wp-module-ecommerce"),
+    //   }),
+    //   state: {
+    //     reportValue: getReportValue(`reports_for_${filter}`),
+    //     change: calculateDelta(`reports_for_${filter}`),
+    //   },
+    //   queries: [
+    //     {
+    //       key: "pluginStatus",
+    //       selector: (plugins) =>
+    //         PluginsSdk.queries.isPlugin(plugins, ["woocommerce"], "active"),
+    //     },
+    //     {
+    //       key: `reports_for_${filter}`,
+    //       selector: (reports) => reports.total_items,
+    //     },
+    //   ],
+    // },
+
   ],
 });
 

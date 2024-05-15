@@ -51,6 +51,12 @@ function RecentReport({ title, divname, filter, onSelect, disabled, children }) 
           <Title className="nfd-flex-1" size="4">
             {title}
           </Title>
+          <Link
+            className="nfd-text-base nfd-no-underline nfd-w-fit nfd-pr-2"
+            href={RuntimeSdk.adminUrl(recentActivityLink, true)}
+          >
+            {__("View all analytics", "wp-module-ecommerce")}
+          </Link>
           <Select
             id={title}
             className={classNames("lg:nfd-w-1/4", "sm:nfd-w-2/5")}
@@ -90,11 +96,14 @@ function RecentActivity() {
       )}
       {cards.length > 0 && (
         <>
+          <span className="nfd-whitespace-pre-wrap nfd-leading-tight">
+            {cards[0]?.state?.reportValue === "-" && __("Once you launch your store, you'll see a snapshot of recent purchases and other \ncustomer activity here.", "wp-module-ecommerce")}
+          </span>
           <div
             className={classNames(
               "nfd-flex-1 nfd-grid nfd-gap-4",
               "sm:nfd-grid-cols-1",
-              "md:nfd-grid-cols-2"
+              "md:nfd-grid-cols-4"
             )}
           >
             {cards.map((cardConfig) => {
@@ -102,12 +111,6 @@ function RecentActivity() {
               return <Card key={name} {...props} />;
             })}
           </div>
-          <Link
-            className="nfd-text-base nfd-no-underline nfd-w-fit"
-            href={RuntimeSdk.adminUrl(recentActivityLink, true)}
-          >
-            {__("view all", "wp-module-ecommerce")}
-          </Link>
         </>
       )}
     </RecentReport>
@@ -228,7 +231,7 @@ export function QuickLook(props) {
   let [installWoo, isInstalling] = useInstallWoo(props);
   return (
     <FeatureUpsell
-      className={"nfd-p-0 hide-html"}
+      className={"hide-html"}
       shouldUpsell={shouldUpsell}
       variant="card"
       cardText={__("Install WooCommerce to unlock", "wp-module-ecommerce")}
@@ -237,27 +240,16 @@ export function QuickLook(props) {
       onClick={installWoo}
       id="install-woocommerce-to-unlock-btn"
     >
-      <Section.Content>
-        <Section.Block
-          title={__("Quick Look", "wp-module-ecommerce")}
-          subtitle={__("Once you launch your store, you'll see a snapshot of recent purchases and other customer activity.", "wp-module-ecommerce")}
-        >
+      <Section.Content className={"nfd-pt-4"} subClassName={"nfd-pb-4"}>
+        <Section.Block>
           <div
             className={classNames(
-              "nfd-mt-10 nfd-gap-6",
               "nfd-flex nfd-flex-col",
               "xl:nfd-flex-row"
             )}
           >
             <RecentActivity />
-            {NewfoldRuntime.isWoo && <RecentOrders />}
           </div>
-          <div className="nfd-h-4" />
-          <SiteStatus
-            comingSoon={props.state.wp.comingSoon}
-            notify={props.wpModules.notify}
-            toggleComingSoon={props.actions.toggleComingSoon}
-          />
         </Section.Block>
       </Section.Content>
     </FeatureUpsell>
