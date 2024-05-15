@@ -19,9 +19,10 @@ import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { RuntimeSdk } from "../sdk/runtime";
 import { WooCommerceSdk } from "../sdk/woocommerce";
 import { Section } from "./Section";
-import { SiteStatus } from "./SiteStatus";
 import { useCardManager } from "./useCardManager";
 import { useInstallWoo } from "./useInstallWoo";
+import { YITHPlugins } from "./YITHPlugins";
+import { TransformtoEcommerce } from "./TransformtoEcommerce";
 
 let recentActivityLink = `admin.php?${new URLSearchParams({
   page: "wc-admin",
@@ -231,7 +232,7 @@ export function QuickLook(props) {
   let [installWoo, isInstalling] = useInstallWoo(props);
   return (
     <FeatureUpsell
-      className={"hide-html"}
+      className={"hide-html nfd-p-0"}
       shouldUpsell={shouldUpsell}
       variant="card"
       cardText={__("Install WooCommerce to unlock", "wp-module-ecommerce")}
@@ -250,6 +251,11 @@ export function QuickLook(props) {
           >
             <RecentActivity />
           </div>
+        </Section.Block>
+      </Section.Content>
+      <Section.Content className={"nfd-pt-0"} subClassName={"nfd-pb-4"} >
+        <Section.Block>
+          {NewfoldRuntime.hasCapability("isEcommerce") ? (<YITHPlugins {...props} />) : <TransformtoEcommerce />}
         </Section.Block>
       </Section.Content>
     </FeatureUpsell>

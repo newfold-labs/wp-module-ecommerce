@@ -75,7 +75,7 @@ export function YITHPlugins({ woo, wpModules }) {
   ]));
   let [cards] = useCardManager(
     YITHPluginsDefinitions({ notify: wpModules.notify }),
-    { refreshInterval: 10 * 1000, isPaused: () => !woo.isActive }
+    { refreshInterval: 10 * 1000, isPaused: () => false }
   );
   const [yithProducts, setYithProducts] = useState([]);
   useEffect(() => {
@@ -104,11 +104,6 @@ export function YITHPlugins({ woo, wpModules }) {
       )
 
   }, [yithProducts])
-
-
-  if (!woo.isActive) {
-    return null;
-  }
 
   return (
     <Section.Container id="ecommerce-features-wrapper" className={"nfd-border nfd-border-amber-300 nfd-rounded-xl nfd-pt-0"}>

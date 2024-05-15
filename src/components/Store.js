@@ -14,11 +14,6 @@ export function Store(props) {
         <Section.Header title={__("Store", "wp-module-ecommerce")} />
         <WooCommerceUnavailable {...props} />
         <QuickLook {...props} />
-        <Section.Content className={"nfd-pt-0"} subClassName={"nfd-pb-4"} >
-          <Section.Block>
-            {NewfoldRuntime.hasCapability("isEcommerce") ? (<YITHPlugins {...props} />) : <TransformtoEcommerce />}
-          </Section.Block>
-        </Section.Content>
         {NewfoldRuntime.hasCapability("isEcommerce") &&
           props.state.wp.comingSoon &&
           <Section.Content>
