@@ -683,11 +683,8 @@ class ECommerce {
 	 */
 
 	public function hide_wp_pointer_with_css() {
-		$brand = $this->container->plugin()->id;
-		if ( 'bluehost' === $brand || 'hostgator' === $brand ) {
-			echo '<style>
-				.wp-pointer { display: none !important; }
-			</style>';
-		}
+		echo '<style>
+			.wp-pointer { display: none !important; }
+		</style>';
 	}
 }
