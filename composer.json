@@ -56,12 +56,9 @@
   "config": {
     "optimize-autoloader": true,
     "sort-packages": true,
-<<<<<<< PRESS0-1159
     "platform": {
       "php": "7.3.0"
     },
-=======
->>>>>>> trunk
     "preferred-install": {
       "newfold-labs/*": "source",
       "*": "dist"
