@@ -19,6 +19,7 @@ describe( 'Home page', () => {
 			.scrollIntoView()
 			.should( 'exist' );
 		cy.wait( 5000 );
+		cy.intercept( APIList.update_nameserver ).as( 'events' );
 		cy.get( '.nfd-grid.nfd-gap-4 ul li a' ).eq( 0 ).click();
 		EventsAPI( APIList.update_nameserver, pluginId );
 
@@ -35,6 +36,7 @@ describe( 'Home page', () => {
 			.scrollIntoView()
 			.should( 'exist' );
 		cy.wait( 5000 );
+		cy.intercept( APIList.connect_domain ).as( 'events' );
 		cy.get( '.nfd-grid.nfd-gap-4 ul li a' ).eq( 1 ).click();
 		EventsAPI( APIList.connect_domain, pluginId );
 		cy.get( '.nfd-help-center', { timeout: customCommandTimeout } ).should(

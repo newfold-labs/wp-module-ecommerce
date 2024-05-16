@@ -11,7 +11,7 @@ export const APIList = {
 
 export const EventsAPI = ( events_name, pluginId ) => {
 	cy.intercept( events_name ).as( 'events' );
-	cy.wait( '@events' ).then( ( requestObject ) => {
+	cy.wait( '@events', { timeout: 15000 } ).then( ( requestObject ) => {
 		const responseBody = requestObject.request.body;
 		cy.log( JSON.stringify( responseBody ) );
 		const responseData = responseBody.data;
