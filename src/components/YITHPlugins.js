@@ -156,11 +156,10 @@ export function YITHPlugins({ woo, wpModules }) {
       <Modal
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
-        hasCloseButton={false}
         className="wppbh-app-sidenav-mobile nfd-z-40"
         initialFocus
       >
-        <Modal.Panel className="nfd-p-0 nfd-overflow-visible">
+        <Modal.Panel className="nfd-p-0 nfd-overflow-visible" hasCloseButton={false}>
           <div className="wppbh-app-sidenav nfd-p-5 nfd-max-h-[70vh] nfd-overflow-y-auto">
             <LoadingPanel pluginName={pluginName} />
           </div>
