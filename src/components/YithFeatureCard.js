@@ -48,7 +48,7 @@ export function YithFeatureCard({
               )
           }
           as="a"
-          href={state?.featureUrl}
+          href={(yithPluginsMap.get(id).title === "nfd_slug_wonder_cart" && state?.featureUrl !== null) ? state?.featureUrl + "?reload=true" : state?.featureUrl}
           isLoading={state?.isInstalling}
           disabled={state?.isDisabled}
           id={state?.isInstalling
