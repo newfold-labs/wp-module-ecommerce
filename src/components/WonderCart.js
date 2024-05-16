@@ -12,6 +12,11 @@ import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 let wonderCartParser = wcPluginStatusParser("nfd_slug_wonder_cart");
 
 export function WonderCart(props) {
+  const searchParams = new URLSearchParams(window.location.hash.split('?')[1]);
+  if (searchParams.get('reload') === "true") {
+    window.location.href = "http://localhost:10024/wp-admin/admin.php?page=bluehost#/store/sales_discounts";
+    window.location.reload()
+  }
   let wonderCartStatus = useSWR(
     "nfd_slug_wonder_cart-status",
     () =>
