@@ -101,7 +101,7 @@ export function YITHPlugins({ woo, wpModules }) {
         updatedObject.primaryUrl = product.primaryUrl;
         setYithPluginsMap(yithPluginsMap.set(String(product.id), updatedObject), ...yithPluginsMap);
       }
-      )
+      )      
 
   }, [yithProducts])
 
@@ -155,6 +155,7 @@ export function YITHPlugins({ woo, wpModules }) {
       <Modal
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
+        hasCloseButton={false}
         className="wppbh-app-sidenav-mobile nfd-z-40"
         initialFocus
       >
