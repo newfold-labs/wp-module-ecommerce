@@ -1,11 +1,9 @@
 import { __ } from "@wordpress/i18n";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { QuickLook } from "./QuickLook";
 import { Section } from "./Section";
-import { WooCommerceUnavailable } from "./WooCommerceUnavailable";
-import { YITHPlugins } from "./YITHPlugins";
-import { NewfoldRuntime } from "../sdk/NewfoldRuntime"
-import { TransformtoEcommerce } from "../components/TransformtoEcommerce";
 import { SiteStatus } from "./SiteStatus";
+import { WooCommerceUnavailable } from "./WooCommerceUnavailable";
 
 export function Store(props) {
   return (
