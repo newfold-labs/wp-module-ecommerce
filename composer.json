@@ -29,8 +29,8 @@
     }
   ],
   "require": {
-    "newfold-labs/wp-module-installer": "^1.1",
-    "newfold-labs/wp-module-onboarding-data": "^1.1"
+    "newfold-labs/wp-module-installer": "^1.1.4",
+    "newfold-labs/wp-module-onboarding-data": "^1.1.8"
   },
   "require-dev": {
     "newfold-labs/wp-php-standards": "@stable",

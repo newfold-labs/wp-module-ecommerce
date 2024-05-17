@@ -112,7 +112,7 @@ export function YITHPlugins({ woo, wpModules }) {
   }, [yithProducts])
 
   return (
-    <Section.Container id="ecommerce-features-wrapper" className={"nfd-border nfd-rounded-xl nfd-pt-0" + (anyPluginActive <= 0 ? " nfd-border-amber-300" : null)}>
+    <Section.Container id="ecommerce-features-wrapper" className={"nfd-border nfd-rounded-xl nfd-pt-0" + (anyPluginActive <= 0 ? " nfd-border-amber-300" : null) + + (!(NewfoldRuntime.isWoo) ? 'nfd--mt-12' : '')}>
       <div className={(anyPluginActive <= 0 ? "nfd-p-4 " : "nfd-p-4 nfd-pb-0 ") + "nfd-flex  nfd-flex-col md:nfd-flex-row nfd-justify-between nfd-gap-6 nfd-items-center"}>
         {anyPluginActive <= 0 ? <img
           src={lightchest}
@@ -165,7 +165,7 @@ export function YITHPlugins({ woo, wpModules }) {
         className="wppbh-app-sidenav-mobile nfd-z-40"
         initialFocus
       >
-        <Modal.Panel className="nfd-p-0 nfd-overflow-visible">
+        <Modal.Panel className="nfd-p-0 nfd-overflow-visible" hasCloseButton={false}>
           <div className="wppbh-app-sidenav nfd-p-5 nfd-max-h-[70vh] nfd-overflow-y-auto">
             <LoadingPanel pluginName={pluginName} />
           </div>
