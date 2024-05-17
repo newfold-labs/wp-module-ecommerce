@@ -1,12 +1,21 @@
 import { GetPluginId } from '../wp-module-support/pluginID.cy';
+import { EventsAPI, APIList } from '../wp-module-support/eventsAPIs.cy';
 
 const customCommandTimeout = 20000;
 const pluginId = GetPluginId();
-import { EventsAPI, APIList } from '../wp-module-support/eventsAPIs.cy';
+const helpCenter = JSON.stringify( {
+	canAccessAI: true,
+	canAccessHelpCenter: true,
+} );
 
 describe( 'Home page', () => {
 	before( () => {
 		cy.exec( `npx wp-env run cli wp option set showMigrationSteps "true"` );
+
+		cy.exec(
+			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ helpCenter }' --format=json`,
+			{ timeout: customCommandTimeout }
+		);
 	} );
 
 	beforeEach( () => {
