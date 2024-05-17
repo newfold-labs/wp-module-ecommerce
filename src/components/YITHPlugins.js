@@ -14,6 +14,8 @@ import { LoadingPanel } from "./LoadingPanel";
 export function YITHPlugins({ woo, wpModules }) {
   const [isOpen, setIsOpen] = useState(false);
   const [pluginName, setPluginName] = useState("");
+  const [yithProducts, setYithProducts] = useState([]);
+  let anyPluginActive = 0;
   const [yithPluginsMap, setYithPluginsMap] = useState(new Map([
     [
       "f7834881-f5df-43ab-9c7e-c4e6969f5606",
@@ -77,7 +79,11 @@ export function YITHPlugins({ woo, wpModules }) {
     YITHPluginsDefinitions({ notify: wpModules.notify }),
     { refreshInterval: 10 * 1000, isPaused: () => false }
   );
-  const [yithProducts, setYithProducts] = useState([]);
+
+  cards.map(card => {
+    card.state?.isActive ? anyPluginActive = anyPluginActive + 1 : null;
+  })
+
   useEffect(() => {
     const fecthApi = async () => {
       const data = await apiFetch({
@@ -101,21 +107,21 @@ export function YITHPlugins({ woo, wpModules }) {
         updatedObject.primaryUrl = product.primaryUrl;
         setYithPluginsMap(yithPluginsMap.set(String(product.id), updatedObject), ...yithPluginsMap);
       }
-      )      
+      )
 
   }, [yithProducts])
 
   return (
-    
-    <Section.Container id="ecommerce-features-wrapper" className={"nfd-border nfd-border-amber-300 nfd-rounded-xl nfd-pt-0 " + (!(NewfoldRuntime.isWoo) ? 'nfd--mt-12' : '')}>
-      <div className="nfd-flex  nfd-flex-col md:nfd-flex-row nfd-p-8  nfd-justify-between nfd-gap-6 nfd-items-center">
-        <img
+    <Section.Container id="ecommerce-features-wrapper" className={"nfd-border nfd-rounded-xl nfd-pt-0" + (anyPluginActive <= 0 ? " nfd-border-amber-300" : null) + + (!(NewfoldRuntime.isWoo) ? 'nfd--mt-12' : '')}>
+      <div className={(anyPluginActive <= 0 ? "nfd-p-4 " : "nfd-p-4 nfd-pb-0 ") + "nfd-flex  nfd-flex-col md:nfd-flex-row nfd-justify-between nfd-gap-6 nfd-items-center"}>
+        {anyPluginActive <= 0 ? <img
           src={lightchest}
           className="nfd-w-48 nfd-text-[--nfd-ecommerce-text-dark]"
-        />
+        /> : null}
         <div className="nfd-flex nfd-flex-col nfd-gap-3">
           <h2 className="nfd-font-medium nfd-text-base">
-            {__("Elevate Your Store with Exclusive WooCommerce Tools Included in Your Plan!", "wp-module-ecommerce")}
+            {anyPluginActive > 0 ? __("Exclusive Tools Included in Your Plan", "wp-module-ecommerce")
+              : __("Elevate Your Store with Exclusive WooCommerce Tools Included in Your Plan!", "wp-module-ecommerce")}
           </h2>
           {__(
             "Unlock the full power of your plan with access to a range of exclusive WooCommerce tools powered by \nYITH. Enhance your store and keep your customers coming back for more!",
@@ -123,7 +129,7 @@ export function YITHPlugins({ woo, wpModules }) {
           )}
         </div>
       </div>
-      <Section.Content>
+      <Section.Content className={"nfd-pt-4 nfd-pl-4 nfd-pr-4"}>
         {cards.length === 0 && (
           <div className="nfd-flex nfd-items-center nfd-text-center nfd-justify-center nfd-h-60">
             <Spinner size="8" className="nfd-text-primary" />

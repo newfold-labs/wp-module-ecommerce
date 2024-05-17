@@ -41,7 +41,7 @@ const individualOrderLink = (postId) =>
 
 function RecentReport({ title, divname, filter, onSelect, disabled, children }) {
   return (
-    <Card className={`nfd-flex-1`} id={`${divname}-report-wrapper`}>
+    <Card className={`nfd-flex-1 nfd-p-4`} id={`${divname}-report-wrapper`}>
       <Card.Content className={"nfd-flex nfd-flex-col nfd-gap-4"}>
         <div
           className={classNames(
