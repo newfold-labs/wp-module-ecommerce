@@ -67,7 +67,7 @@ class ECommerce {
 		'woocommerce_cheque_settings',
 		'onboarding_experience_level',
 		'yoast_seo_signup_status',
-		'showMigrationSteps',
+		'nfd_show_migration_steps',
 		'update_site_server_clicked',
 	);
 
@@ -321,7 +321,7 @@ class ECommerce {
 		);
 		\register_setting(
 			'general',
-			'showMigrationSteps',
+			'nfd_show_migration_steps',
 			array(
 				'show_in_rest' => true,
 				'type'         => 'boolean',
@@ -672,7 +672,7 @@ class ECommerce {
 			}
 		}
 		if ( check_url_match( $brand, $site_url ) ) {
-			update_option( 'showMigrationSteps', false );
+			update_option( 'nfd_show_migration_steps', false );
 		}
 	}
 }
