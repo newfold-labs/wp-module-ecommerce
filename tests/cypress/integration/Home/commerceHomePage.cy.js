@@ -2,7 +2,7 @@ import { GetPluginId } from '../wp-module-support/pluginID.cy';
 import {
 	comingSoon,
 	viewCompletedTasks,
-	viewRemainingTasks,
+	viewRemainingTasks
 } from '../wp-module-support/utils.cy';
 import { EventsAPI, APIList } from '../wp-module-support/eventsAPIs.cy';
 
@@ -116,9 +116,10 @@ describe( 'Commerce Home Page- Live Mode', () => {
 	} );
 
 	it( 'Verify by default View Site option should be displayed', () => {
-		cy.contains( '.nfd-button--primary', 'View Site', {
+		cy.get( '.nfd-button--primary', {
 			timeout: customCommandTimeout,
 		} )
+			.eq( 1 )
 			.should( 'exist' )
 			.invoke( 'removeAttr', 'target' )
 			.click();
@@ -127,15 +128,35 @@ describe( 'Commerce Home Page- Live Mode', () => {
 } );
 
 describe( 'Commerce Home Page- Next Steps', () => {
+	const step_id = [
+		'add-a-new-page-to-your-site',
+		'upload-media-to-your-site',
+		'enable-jetpack-to-connect-to-your-social-media-accounts',
+	];
+
+	const novice_step_id = [
+		'sign-up-for-yoast-seo-academy',
+		'add-a-new-page-to-your-site',
+		'upload-media-to-your-site',
+		'enable-jetpack-to-connect-to-your-social-media-accounts',
+	];
+
+	const novice_step_id_bh = [
+		'sign-up-for-bluehost-wordpress-academy',
+		...novice_step_id,
+	];
+
 	before( () => {
 		cy.exec( `npx wp-env run cli wp plugin deactivate woocommerce`, {
 			failOnNonZeroExit: false,
 		} );
 
-		cy.exec(`npx wp-env run cli wp option set mm_brand ${ pluginId }`);
+		cy.exec( `npx wp-env run cli wp option set mm_brand ${ pluginId }` );
 
 		if ( pluginId == 'hostgator' ) {
-			cy.exec(`npx wp-env run cli wp option set hg_region ${ hg_region }`);
+			cy.exec(
+				`npx wp-env run cli wp option set hg_region ${ hg_region }`
+			);
 		}
 	} );
 
@@ -157,38 +178,24 @@ describe( 'Commerce Home Page- Next Steps', () => {
 	} );
 
 	it( 'Verify Next steps for your site when woocommerce is not active', () => {
-		const steps = [
-			'Add a new page to your site',
-			'Upload media to your site',
-			'Enable Jetpack to connect to your social media accounts',
-		];
-		cy.get( '.nfd-grid.nfd-gap-4', { timeout: customCommandTimeout } )
+		cy.get( '#next-steps-section', { timeout: customCommandTimeout } )
 			.as( 'nextSteps' )
 			.should( 'exist' );
 		cy.get( '@nextSteps' ).find( 'h1' ).should( 'exist' );
 		cy.get( '@nextSteps' ).find( 'p' ).should( 'exist' );
 		cy.get( '@nextSteps' )
 			.find( 'ul li' )
-			.each( ( item, index, list ) => {
+			.each( ( ele, index, list ) => {
 				expect( list ).to.have.length( 3 );
-
-				expect( Cypress.$( item ).text() ).to.eq( steps[ index ] );
+				cy.get( ele )
+					.invoke( 'attr', 'id' )
+					.then( ( domId ) => {
+						expect( domId ).to.eq( step_id[ index ] );
+					} );
 			} );
 	} );
 
 	it( 'Verify Next steps when experience level is novice', () => {
-		const other_steps = [
-			'Sign up for Yoast SEO Academy',
-			'Add a new page to your site',
-			'Upload media to your site',
-			'Enable Jetpack to connect to your social media accounts',
-		];
-
-		const steps = [
-			'Sign up for Bluehost WordPress Academy',
-			...other_steps,
-		];
-
 		cy.visit(
 			'/wp-admin/index.php?page=nfd-onboarding#/wp-setup/step/get-started/experience'
 		);
@@ -201,22 +208,28 @@ describe( 'Commerce Home Page- Next Steps', () => {
 			failOnNonZeroExit: false,
 		} );
 		cy.wait( 2000 );
-		cy.get( '.nfd-grid.nfd-gap-4', { timeout: customCommandTimeout } )
+		cy.get( '#next-steps-section', { timeout: customCommandTimeout } )
 			.as( 'nextSteps' )
 			.should( 'exist' )
 			.scrollIntoView();
 
 		cy.get( '@nextSteps' )
 			.find( 'ul li' )
-			.each( ( item, index, list ) => {
+			.each( ( ele, index, list ) => {
 				if ( pluginId == 'bluehost' ) {
 					expect( list ).to.have.length( 5 );
-					expect( Cypress.$( item ).text() ).to.eq( steps[ index ] );
+					cy.get( ele )
+						.invoke( 'attr', 'id' )
+						.then( ( domId ) => {
+							expect( domId ).to.eq( novice_step_id_bh[ index ] );
+						} );
 				} else {
 					expect( list ).to.have.length( 4 );
-					expect( Cypress.$( item ).text() ).to.eq(
-						other_steps[ index ]
-					);
+					cy.get( ele )
+						.invoke( 'attr', 'id' )
+						.then( ( domId ) => {
+							expect( domId ).to.eq( novice_step_id[ index ] );
+						} );
 				}
 			} );
 	} );
@@ -224,11 +237,9 @@ describe( 'Commerce Home Page- Next Steps', () => {
 	it( 'Verify Signup for Bluehost WordPress Academy step', () => {
 		if ( pluginId == 'bluehost' ) {
 			cy.intercept( APIList.bh_academy ).as( 'events' );
-			cy.contains(
-				'.nfd-grid.nfd-gap-4 ul li a',
-				'Sign up for Bluehost WordPress Academy',
-				{ timeout: customCommandTimeout }
-			)
+			cy.get( `#${ novice_step_id_bh[ 0 ] } a`, {
+				timeout: customCommandTimeout,
+			} )
 				.as( 'nextSteps' )
 				.should( 'exist' )
 				.scrollIntoView()
@@ -250,11 +261,9 @@ describe( 'Commerce Home Page- Next Steps', () => {
 
 	it( 'Verify Signup for Wordpress SEO Academy step', () => {
 		cy.intercept( APIList.yoast_seo_academy ).as( 'events' );
-		cy.contains(
-			'.nfd-grid.nfd-gap-4 ul li a',
-			'Sign up for Yoast SEO Academy',
-			{ timeout: customCommandTimeout }
-		)
+		cy.get( `#${ novice_step_id_bh[ 1 ] } a`, {
+			timeout: customCommandTimeout,
+		} )
 			.as( 'nextSteps' )
 			.should( 'exist' )
 			.scrollIntoView()
@@ -276,7 +285,7 @@ describe( 'Commerce Home Page- Next Steps', () => {
 
 		cy.get( '@nextSteps' ).should( 'not.exist' );
 		viewCompletedTasks();
-		cy.get('@nextSteps').should('exist');
+		cy.get( '@nextSteps' ).should( 'exist' );
 		viewRemainingTasks();
 	} );
 
@@ -284,13 +293,9 @@ describe( 'Commerce Home Page- Next Steps', () => {
 		cy.get( '.nfd-grid.nfd-gap-4 ul li', {
 			timeout: customCommandTimeout,
 		} );
-		cy.contains(
-			'.nfd-grid.nfd-gap-4 ul li a',
-			'Add a new page to your site',
-			{
-				timeout: customCommandTimeout,
-			}
-		)
+		cy.get( `#${ novice_step_id_bh[ 2 ] } a`, {
+			timeout: customCommandTimeout,
+		} )
 			.as( 'addPage' )
 			.scrollIntoView()
 			.click();
@@ -303,12 +308,12 @@ describe( 'Commerce Home Page- Next Steps', () => {
 		cy.wait( 2000 );
 		cy.get( '@addPage' ).should( 'not.exist' );
 		viewCompletedTasks();
-    	cy.get( '@addPage' ).should( 'exist' );
-    	viewRemainingTasks();
+		cy.get( '@addPage' ).should( 'exist' );
+		viewRemainingTasks();
 	} );
 
 	it( 'Verify Option Upload Media to your site', () => {
-		cy.contains( 'Upload media to your site', {
+		cy.get( `#${ novice_step_id_bh[ 3 ] } a`, {
 			timeout: customCommandTimeout,
 		} )
 			.as( 'uploadMedia' )
