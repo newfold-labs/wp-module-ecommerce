@@ -32,7 +32,7 @@
     "@wordpress/i18n": "^4.55.0",
     "classnames": "2.5.1",
     "moment": "^2.29.4",
-    "swr": "2.1.5"
+    "swr": "2.2.5"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",
