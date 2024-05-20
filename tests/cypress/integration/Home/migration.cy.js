@@ -53,7 +53,7 @@ describe( 'Home page', () => {
 		cy.intercept( APIList.connect_domain ).as( 'events' );
 		cy.get( '.nfd-grid.nfd-gap-4 ul li a' ).eq( 1 ).click();
 		EventsAPI( APIList.connect_domain, pluginId );
-		cy.get( "[fill='#196BDE']" ).click();
+		
 		cy.get( '.nfd-help-center', { timeout: customCommandTimeout } ).should(
 			'be.visible'
 		);
