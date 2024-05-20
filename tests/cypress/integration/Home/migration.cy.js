@@ -21,6 +21,9 @@ describe( 'Home page', () => {
 			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ helpCenter }' --format=json`,
 			{ timeout: customCommandTimeout }
 		);
+
+		cy.reload();
+		
 	} );
 
 	beforeEach( () => {
