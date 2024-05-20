@@ -13,6 +13,11 @@ describe( 'Home page', () => {
 		cy.exec( `npx wp-env run cli wp option set showMigrationSteps "true"` );
 
 		cy.exec(
+			`npx wp-env run cli wp option delete _transient_nfd_site_capabilities`,
+			{ failOnNonZeroExit: false }
+		);
+
+		cy.exec(
 			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ helpCenter }' --format=json`,
 			{ timeout: customCommandTimeout }
 		);
@@ -33,7 +38,7 @@ describe( 'Home page', () => {
 		EventsAPI( APIList.update_nameserver, pluginId );
 
 		cy.get( '.nfd-help-center', { timeout: customCommandTimeout } ).should(
-			'exist'
+			'be.visible'
 		);
 
 		cy.get( '.close-button' ).click();
@@ -48,10 +53,10 @@ describe( 'Home page', () => {
 		cy.intercept( APIList.connect_domain ).as( 'events' );
 		cy.get( '.nfd-grid.nfd-gap-4 ul li a' ).eq( 1 ).click();
 		EventsAPI( APIList.connect_domain, pluginId );
+		cy.get( "[fill='#196BDE']" ).click();
 		cy.get( '.nfd-help-center', { timeout: customCommandTimeout } ).should(
-			'exist'
+			'be.visible'
 		);
-
 		cy.get( '.close-button' ).click();
 	} );
 
