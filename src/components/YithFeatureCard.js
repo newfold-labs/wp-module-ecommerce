@@ -15,7 +15,7 @@ export function YithFeatureCard({
 
   useEffect(() => {
     setPluginName(cardsInfo?.text(state)?.title);
-    state?.isInstalling ? setIsOpen(true) : setIsOpen(false)
+    (state?.isInstalling && !state?.isActive) ? setIsOpen(true) : setIsOpen(false)
   }, [state?.isInstalling])
 
   return (
@@ -49,7 +49,7 @@ export function YithFeatureCard({
           }
           as="a"
           href={(yithPluginsMap.get(id).title === "nfd_slug_wonder_cart" && state?.featureUrl !== null) ? state?.featureUrl + "?reload=true" : state?.featureUrl}
-          isLoading={state?.isInstalling}
+          isLoading={state?.isInstalling && !state?.isActive}
           disabled={state?.isDisabled}
           id={state?.isInstalling
             ? "installing_" + yithPluginsMap.get(id).title
@@ -58,7 +58,7 @@ export function YithFeatureCard({
               : "enable_" + yithPluginsMap.get(id).title}
         >
           <span>
-            {state?.isInstalling
+            {(state?.isInstalling && !state?.isActive)
               ? __("Installing...", "wp-module-ecommerce")
               : cardsInfo?.text(state).actionName}
           </span>
