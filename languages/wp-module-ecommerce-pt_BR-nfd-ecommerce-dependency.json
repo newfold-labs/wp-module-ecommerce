@@ -1,6 +1,6 @@
 {
     "translation-revision-date": "2023-10-30 12:18+0530",
-    "generator": "WP-CLI\/2.8.1",
+    "generator": "WP-CLI\/2.9.0",
     "source": "build\/index.js",
     "domain": "messages",
     "locale_data": {
@@ -620,28 +620,28 @@
                 ""
             ],
             "Stripe provides all the tools that you need to accept payments online around the world, including support for Apple Pay and Google Pay.": [
-                ""
+                "A Stripe fornece todas as ferramentas necessárias para aceitar pagamentos online ao redor do mundo, incluindo suporte para Apple Pay e Google Pay."
             ],
             "A secure connection is required when running Stripe Payments in Live mode; plugin is currently enabled, but no gateway will be available until you secure connection to your site through a valid SSL certificate.             If you already have a valid SSL certificate, please change the url in": [
-                ""
+                "Uma conexão segura é necessária ao executar o Stripe Payments em modo Live; o plugin está atualmente habilitado, mas nenhum gateway estará disponível até que você garanta uma conexão segura ao seu site através de um certificado SSL válido. Se você já possui um certificado SSL válido, por favor, altere a url nas"
             ],
             "settings": [
-                ""
+                "configurações"
             ],
             "page": [
-                ""
+                "da página"
             ],
             "One-click refunds": [
-                ""
+                "Reembolsos em um clique"
             ],
             "Option to let customers save their credit card info securely": [
-                ""
+                "Opção para permitir que clientes salvem suas informações de cartão de crédito de forma segura"
             ],
             "Support ACH direct debt": [
-                ""
+                "Suporte a débito direto ACH"
             ],
             " Uses many popular payment methods": [
-                ""
+                "Utiliza muitos métodos de pagamento populares"
             ],
             "Sales & Promotions": [
                 "Vendas e Promo\u00e7\u00f5es"
@@ -653,6 +653,48 @@
                 ""
             ],
             "New Order Received": [
+                ""
+            ],
+            "Good job!": [
+                ""
+            ],
+            "One last thing to do...": [
+                ""
+            ],
+            "Your site is now ready for public visitors!": [
+                ""
+            ],
+            "Finish this last step so your migrated site is ready for visitors.": [
+                ""
+            ],
+            "You're just a few steps away from sharing your site with the world!": [
+                ""
+            ],
+            "Welcome home!": [
+                ""
+            ],
+            "Your site has been successfully migrated.": [
+                ""
+            ],
+            "Immediate capture or authorize and capture later": [
+                "Captura imediata ou autorize e capture mais tarde"
+            ],
+            "Update your website nameservers": [
+                ""
+            ],
+            "How do I update my nameserver to BH?": [
+                ""
+            ],
+            "Connect this site to your domain": [
+                ""
+            ],
+            "How do I connect my site to the Domain ?": [
+                ""
+            ],
+            "Need help with these steps?": [
+                ""
+            ],
+            "Continue with store setup": [
                 ""
             ]
         }
