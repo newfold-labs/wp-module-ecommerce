@@ -11,7 +11,7 @@ import { YithFeatureCard } from "./YithFeatureCard";
 import lightchest from '../icons/light-chest.svg';
 import { LoadingPanel } from "./LoadingPanel";
 
-export function YITHPlugins({ woo, wpModules }) {
+export function YITHPlugins({ wpModules }) {
   const [isOpen, setIsOpen] = useState(false);
   const [pluginName, setPluginName] = useState("");
   const [yithProducts, setYithProducts] = useState([]);
