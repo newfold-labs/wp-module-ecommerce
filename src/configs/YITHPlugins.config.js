@@ -92,7 +92,7 @@ export const YITHPluginsDefinitions = (props) => ({
           'Let customers add products to lists and share them with family and friends.',
           'wp-module-ecommerce'
         ),
-        actionName: isActive ? __('Manage', 'wp-module-ecommerce') : __('Setup Wishlists', 'wp-module-ecommerce'),
+        actionName: isActive ? __('View Wishlists', 'wp-module-ecommerce') : __('Setup Wishlists', 'wp-module-ecommerce'),
         slug: 'yith_wcwl_panel',
       }),
       state: defineFeatureState(),
@@ -131,7 +131,7 @@ export const YITHPluginsDefinitions = (props) => ({
           'Create custom upsell, cross-sell and other promotional campaigns to generate more sales.',
           'wp-module-ecommerce'
         ),
-        actionName: isActive ? __('Configure Campaign', 'wp-module-ecommerce') : __('Create a Campaign', 'wp-module-ecommerce'),
+        actionName: isActive ? __('Create a Campaign', 'wp-module-ecommerce') : __('Create a Campaign', 'wp-module-ecommerce'),
       }),
       state: {
         ...defineFeatureState(),
@@ -172,7 +172,7 @@ export const YITHPluginsDefinitions = (props) => ({
           'Manage renting or booking of services and items so customers can do business with you.',
           'wp-module-ecommerce'
         ),
-        actionName: isActive ? __('Setup Now', 'wp-module-ecommerce') : __('Setup Bookings & Appointments', 'wp-module-ecommerce'),
+        actionName: isActive ? __('Manage Bookings & Appointments', 'wp-module-ecommerce') : __('Setup Bookings & Appointments', 'wp-module-ecommerce'),
       }),
       state: defineFeatureState(),
       actions: {
@@ -212,7 +212,7 @@ export const YITHPluginsDefinitions = (props) => ({
           'Add an advanced filter to help customers find the right product with ease.',
           'wp-module-ecommerce'
         ),
-        actionName: isActive ? __('Manage', 'wp-module-ecommerce') : __('Setup Product Filters', 'wp-module-ecommerce'),
+        actionName: isActive ? __('Product Filter Settings', 'wp-module-ecommerce') : __('Setup Product Filters', 'wp-module-ecommerce'),
         slug: 'yith_wcan_panel',
       }),
       state: defineFeatureState(),
@@ -249,7 +249,7 @@ export const YITHPluginsDefinitions = (props) => ({
           'Speed up search for your customers with a predictive real-time search engine.',
           'wp-module-ecommerce'
         ),
-        actionName: isActive ? __('Configure Product Search', 'wp-module-ecommerce') : __('Enable', 'wp-module-ecommerce'),
+        actionName: isActive ? __('Product Search Settings', 'wp-module-ecommerce') : __('Configure Product Search', 'wp-module-ecommerce'),
         slug: 'yith_wcas_panel',
       }),
       state: defineFeatureState(),
@@ -288,7 +288,7 @@ export const YITHPluginsDefinitions = (props) => ({
           'Add custom content like videos, files, discount codes, and more to your customers account page.',
           'wp-module-ecommerce'
         ),
-        actionName: isActive ? __('Manage', 'wp-module-ecommerce') : __('Customize the My Account Page', 'wp-module-ecommerce'),
+        actionName: isActive ? __(`'My Account' Page Settings`, 'wp-module-ecommerce') : __(`Customize the 'My Account' Page`, 'wp-module-ecommerce'),
         slug: 'yith_wcmap_panel',
       }),
       state: defineFeatureState(),
@@ -325,7 +325,7 @@ export const YITHPluginsDefinitions = (props) => ({
           'Boost sales by selling your products and services across multiple marketplaces.',
           'wp-module-ecommerce'
         ),
-        actionName: isActive ? __('Manage', 'wp-module-ecommerce') : __('Setup Sales Channels', 'wp-module-ecommerce'),
+        actionName: isActive ? __('Manage Sales Channels', 'wp-module-ecommerce') : __('Setup Sales Channels', 'wp-module-ecommerce'),
         slug: 'nfd_slug_ecomdash_wordpress_plugin',
       }),
       state: {
