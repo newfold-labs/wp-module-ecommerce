@@ -150,53 +150,7 @@ const Reports = (filter) => ({
           selector: (reports) => reports.total_sales,
         },
       ],
-    },
-    // {
-    //   Card: ReportTile,
-    //   shouldRender: () => true,
-    //   name: "net_sales",
-    //   text: () => ({
-    //     title: __("Net Sales", "wp-module-ecommerce"),
-    //   }),
-    //   state: formatMoneyToTile(filter),
-    //   queries: [
-    //     { key: "currency" },
-    //     {
-    //       key: "pluginStatus",
-    //       selector: (plugins) =>
-    //         PluginsSdk.queries.isPlugin(plugins, ["woocommerce"], "active"),
-    //     },
-    //     {
-    //       key: `reports_for_${filter}`,
-    //       selector: (reports) => reports.net_sales,
-    //     },
-    //   ],
-    // },
-
-    // {
-    //   Card: ReportTile,
-    //   shouldRender: () => true,
-    //   name: "products",
-    //   text: () => ({
-    //     title: __("Products Sold", "wp-module-ecommerce"),
-    //   }),
-    //   state: {
-    //     reportValue: getReportValue(`reports_for_${filter}`),
-    //     change: calculateDelta(`reports_for_${filter}`),
-    //   },
-    //   queries: [
-    //     {
-    //       key: "pluginStatus",
-    //       selector: (plugins) =>
-    //         PluginsSdk.queries.isPlugin(plugins, ["woocommerce"], "active"),
-    //     },
-    //     {
-    //       key: `reports_for_${filter}`,
-    //       selector: (reports) => reports.total_items,
-    //     },
-    //   ],
-    // },
-
+    }
   ],
 });
 
