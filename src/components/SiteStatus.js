@@ -85,8 +85,8 @@ export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
           id="view-site"
         >
           {NewfoldRuntime.hasCapability("isEcommerce")
-            ? __("View your store", "wp-module-ecommerce")
-            : __("View your site", "wp-module-ecommerce")}
+            ? __("Preview your store", "wp-module-ecommerce")
+            : __("Preview your site", "wp-module-ecommerce")}
         </Button>
         <Button
           className="nfd-flex nfd-gap-2 nfd-items-center"

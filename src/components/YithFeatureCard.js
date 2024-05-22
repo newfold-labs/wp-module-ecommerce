@@ -1,4 +1,5 @@
 import { Button, Card, Title } from "@newfold/ui-component-library";
+import { useEffect, useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 
 export function YithFeatureCard({
@@ -6,7 +7,7 @@ export function YithFeatureCard({
   setPluginName,
   yithPluginsMap,
   id,
-  cards,
+  cards
 }) {
   const cardsInfo = cards.filter(
     (card) => card.name === yithPluginsMap.get(id).title
@@ -16,7 +17,7 @@ export function YithFeatureCard({
   useEffect(() => {
     setPluginName(cardsInfo?.text(state)?.title);
     (state?.isInstalling && !state?.isActive) ? setIsOpen(true) : setIsOpen(false)
-  }, [state?.isInstalling])
+  }, [state?.isInstalling, cardsInfo?.text(state).actionName])
 
   return (
     <Card id={yithPluginsMap.get(id).title}>

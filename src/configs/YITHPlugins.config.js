@@ -54,7 +54,7 @@ export const YITHPluginsDefinitions = (props) => ({
           "Offer customizable gift cards with personalized messages for the recipient.",
           'wp-module-ecommerce'
         ),
-        actionName: isActive ? __('Configure Gift Cards', 'wp-module-ecommerce') : __('Create a Gift Card', 'wp-module-ecommerce'),
+        actionName: isActive ? __('Manage Gift Cards', 'wp-module-ecommerce') : __('Create a Gift Card', 'wp-module-ecommerce'),
         slug: 'yith_woocommerce_gift_cards_panel',
       }),
       state: defineFeatureState(),
@@ -83,7 +83,7 @@ export const YITHPluginsDefinitions = (props) => ({
       shouldRender: () => true,
       name: 'nfd_slug_yith_woocommerce_wishlist',
       assets: () => ({
-        Image: WishList,
+        Image: WishLists,
         learnMoreUrl: YITH_WOOCOMMERCE_WISHLIST,
       }),
       text: ({ isActive }) => ({
@@ -205,7 +205,7 @@ export const YITHPluginsDefinitions = (props) => ({
       }),
       text: ({ isActive }) => ({
         title: __(
-          'Product Filter',
+          'Product Filters',
           'wp-module-ecommerce'
         ),
         description: __(

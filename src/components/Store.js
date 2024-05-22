@@ -1,8 +1,6 @@
 import { __ } from "@wordpress/i18n";
-import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { QuickLook } from "./QuickLook";
 import { Section } from "./Section";
-import { SiteStatus } from "./SiteStatus";
 import { WooCommerceUnavailable } from "./WooCommerceUnavailable";
 
 export function Store(props) {
@@ -12,18 +10,6 @@ export function Store(props) {
         <Section.Header title={__("Store", "wp-module-ecommerce")} />
         <WooCommerceUnavailable {...props} />
         <QuickLook {...props} />
-        {NewfoldRuntime.hasCapability("isEcommerce") &&
-          props.state.wp.comingSoon &&
-          <Section.Content>
-            <Section.Block>
-              <SiteStatus
-                comingSoon={props.state.wp.comingSoon}
-                notify={props.wpModules.notify}
-                toggleComingSoon={props.actions.toggleComingSoon}
-              />
-            </Section.Block>
-          </Section.Content>
-        }
       </Section.Container>
     </>
   );
