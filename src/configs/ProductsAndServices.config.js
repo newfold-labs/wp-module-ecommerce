@@ -214,7 +214,7 @@ export const ProductsAndServicesDefinition = (props) => ({
       }),
       text: (state) => ({
         title: __("Gift Cards", "wp-module-ecommerce"),
-        actionName: state.isActive ? __('Configure Gift Cards', 'wp-module-ecommerce') : __('Create a Gift Card', 'wp-module-ecommerce'),
+        actionName: state.isActive ? __('Manage Gift Cards', 'wp-module-ecommerce') : __('Create a Gift Card', 'wp-module-ecommerce'),
         slug: "yith_woocommerce_gift_cards_panel",
       }),
       state: defineFeatureState(),

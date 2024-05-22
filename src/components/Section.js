@@ -83,9 +83,9 @@ const Content = ({ separator = false, className, subClassName, children }) => {
     >
       <div
         className={classNames(
-          subClassName,
           "nfd-pb-8",
-          separator && "nfd-border-b nfd-border-[#CBD5E1]"
+          separator && "nfd-border-b nfd-border-[#CBD5E1]",
+          subClassName
         )}
       >
         {children}

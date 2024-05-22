@@ -31,7 +31,6 @@ export const wcProductsParser = (type) => (products) => {
 };
 
 export const wcPluginStatusParser = (slug) => (data) => {
-  console.log(data)
   const isInstalled = data?.details?.[slug].status === "active";
   const isQueueEmpty = data?.queue?.length === 0;
   const isInstalling = data?.queue?.includes(slug);
