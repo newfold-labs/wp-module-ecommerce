@@ -8,22 +8,21 @@ const helpCenter = JSON.stringify( {
 	canAccessHelpCenter: true,
 } );
 
-describe( 'Home page', () => {
+describe( 'Home page - post migration events with help center ', () => {
 	before( () => {
+		if ( pluginId !== 'bluehost' ) {
+			this.skip();
+		}
 		cy.exec( `npx wp-env run cli wp option set showMigrationSteps "true"` );
-
 		cy.exec(
 			`npx wp-env run cli wp option delete _transient_nfd_site_capabilities`,
 			{ failOnNonZeroExit: false }
 		);
-
-		cy.exec(
+	cy.exec(
 			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ helpCenter }' --format=json`,
 			{ timeout: customCommandTimeout }
 		);
-
 		cy.reload();
-		
 	} );
 
 	beforeEach( () => {
@@ -31,19 +30,16 @@ describe( 'Home page', () => {
 	} );
 
 	it( 'Verify when update nameserver clicked', () => {
-		const steps = [ 'update nameserver clicked' ];
 		cy.get( '.nfd-grid.nfd-gap-4', { timeout: customCommandTimeout } )
 			.scrollIntoView()
 			.should( 'exist' );
-		cy.wait( 5000 );
+			timeout(20000);
 		cy.intercept( APIList.update_nameserver ).as( 'events' );
 		cy.get( '.nfd-grid.nfd-gap-4 ul li a' ).eq( 0 ).click();
 		EventsAPI( APIList.update_nameserver, pluginId );
-
 		cy.get( '.nfd-help-center', { timeout: customCommandTimeout } ).should(
 			'be.visible'
 		);
-
 		cy.get( '.close-button' ).click();
 	} );
 
@@ -52,11 +48,9 @@ describe( 'Home page', () => {
 		cy.get( '.nfd-grid.nfd-gap-4', { timeout: customCommandTimeout } )
 			.scrollIntoView()
 			.should( 'exist' );
-		cy.wait( 5000 );
 		cy.intercept( APIList.connect_domain ).as( 'events' );
 		cy.get( '.nfd-grid.nfd-gap-4 ul li a' ).eq( 1 ).click();
 		EventsAPI( APIList.connect_domain, pluginId );
-		
 		cy.get( '.nfd-help-center', { timeout: customCommandTimeout } ).should(
 			'be.visible'
 		);
@@ -64,11 +58,14 @@ describe( 'Home page', () => {
 	} );
 
 	it( 'Verify when continue with store setup clicked', () => {
-		const steps = [ 'continue with store setup clicked' ];
 		cy.get( '.nfd-grid.nfd-gap-4', { timeout: customCommandTimeout } )
 			.scrollIntoView()
 			.should( 'exist' );
-		cy.wait( 5000 );
 		cy.get( '.nfd-grid.nfd-gap-4 ul li a' ).eq( 2 ).click();
+		cy.get( '#next-steps-section', { timeout: customCommandTimeout } )
+			.scrollIntoView()
+			.should( 'exist' );
+		cy.get( '#add-a-product', { timeout: customCommandTimeout } )
+			.should( 'exist' );		
 	} );
 } );

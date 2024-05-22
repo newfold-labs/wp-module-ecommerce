@@ -13,7 +13,6 @@ export const EventsAPI = ( events_name, pluginId ) => {
 	cy.intercept( events_name ).as( 'events' );
 	cy.wait( '@events', { timeout: 15000 } ).then( ( requestObject ) => {
 		const responseBody = requestObject.request.body;
-		cy.log( JSON.stringify( responseBody ) );
 		const responseData = responseBody.data;
 
 		if ( events_name == 'bh_academy' ) {
@@ -30,26 +29,26 @@ export const EventsAPI = ( events_name, pluginId ) => {
 			expect( responseBody.action ).equal(
 				'next_step_yoast_academy_clicked'
 			);
+		}
+
+		expect( responseData.page ).equal( cy.url() );
+
+		if ( events_name == 'update_nameserver' ) {
+			expect( responseBody.category ).equal( 'next_step' );
+			expect( responseBody.action ).equal(
+				'next_step_update_nameserver_clicked'
+			);
 
 			expect( responseData.page ).equal( cy.url() );
+		}
 
-			if ( events_name == 'update_nameserver' ) {
-				expect( responseBody.category ).equal( 'next_step' );
-				expect( responseBody.action ).equal(
-					'next_step_update_nameserver_clicked'
-				);
+		if ( events_name == 'connect_domain' ) {
+			expect( responseBody.category ).equal( 'next_step' );
+			expect( responseBody.action ).equal(
+				'next_step_connect_domain_clicked'
+			);
 
-				expect( responseData.page ).equal( cy.url() );
-			}
-
-			if ( events_name == 'connect_domain' ) {
-				expect( responseBody.category ).equal( 'next_step' );
-				expect( responseBody.action ).equal(
-					'next_step_connect_domain_clicked'
-				);
-
-				expect( responseData.page ).equal( cy.url() );
-			}
+			expect( responseData.page ).equal( cy.url() );
 		}
 	} );
 };
