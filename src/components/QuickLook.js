@@ -53,10 +53,10 @@ function RecentReport({ title, divname, filter, onSelect, disabled, children }) 
             {title}
           </Title>
           <Link
-            className="nfd-text-base nfd-no-underline nfd-w-fit nfd-pr-2"
+            className="nfd-text-base nfd-no-underline nfd-w-fit nfd-mr-2 nfd-text-sm"
             href={RuntimeSdk.adminUrl(recentActivityLink, true)}
           >
-            {__("View all analytics", "wp-module-ecommerce")}
+            <span>{__("View all analytics", "wp-module-ecommerce")}</span>
           </Link>
           <Select
             id={title}
@@ -253,7 +253,7 @@ export function QuickLook(props) {
           </div>
         </Section.Block>
       </Section.Content>
-      <Section.Content className={"nfd-pt-0"} subClassName={"nfd-pb-4"} >
+      <Section.Content className={"nfd-pt-0"} subClassName={"nfd-pb-0"} >
         <Section.Block>
           {NewfoldRuntime.hasCapability("isEcommerce") ? (<YITHPlugins {...props} />) : <TransformtoEcommerce />}
         </Section.Block>

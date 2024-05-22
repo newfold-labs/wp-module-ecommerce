@@ -7,29 +7,17 @@ export function YithFeatureCard({
   setPluginName,
   yithPluginsMap,
   id,
-  cards,
+  cards
 }) {
-  const [isInititalLoad, setIsInitialLaod] = useState(true);
   const cardsInfo = cards.filter(
     (card) => card.name === yithPluginsMap.get(id).title
   )[0];
   const state = cardsInfo?.state;
 
   useEffect(() => {
-    if (cardsInfo?.text(state)?.title === "WonderCart" && state?.isActive) {
-      setIsInitialLaod(false);
-    }
     setPluginName(cardsInfo?.text(state)?.title);
     (state?.isInstalling && !state?.isActive) ? setIsOpen(true) : setIsOpen(false)
-  }, [state?.isInstalling])
-
-  useEffect(() => {
-    console.log("isInititalLoad", isInititalLoad)
-    if (cardsInfo?.text(state)?.title === "WonderCart" && state?.isActive && !isInititalLoad) {
-      console.log("called")
-      window.location.href = state?.featureUrl + "?reload=true";
-    }
-  }, [state?.isActive])
+  }, [state?.isInstalling, cardsInfo?.text(state).actionName])
 
   return (
     <Card id={yithPluginsMap.get(id).title}>

@@ -13,8 +13,8 @@ export function Store(props) {
         <WooCommerceUnavailable {...props} />
         <QuickLook {...props} />
         {NewfoldRuntime.hasCapability("isEcommerce") &&
-          props.state.wp.comingSoon &&
-          <Section.Content>
+          true &&
+          <Section.Content className={"nfd-pt-0"}>
             <Section.Block>
               <SiteStatus
                 comingSoon={props.state.wp.comingSoon}
