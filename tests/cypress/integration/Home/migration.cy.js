@@ -9,7 +9,7 @@ const helpCenter = JSON.stringify( {
 } );
 
 describe( 'Home page - post migration events with help center ', () => {
-	before( () => {
+	before( function () {
 		if ( pluginId !== 'bluehost' ) {
 			this.skip();
 		}
