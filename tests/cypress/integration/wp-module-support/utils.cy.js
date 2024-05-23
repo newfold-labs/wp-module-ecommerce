@@ -2,7 +2,6 @@ import { getAppId } from './pluginID.cy';
 
 const appId = getAppId();
 const customCommandTimeout = 30000;
-const mediumWait = 60000;
 const longWait = 120000;
 
 export const comingSoon = ( shouldBeComingSoon ) => {
@@ -41,9 +40,10 @@ export const comingSoon = ( shouldBeComingSoon ) => {
 
 export const installWoo = () => {
 	cy.exec( `npx wp-env run cli wp plugin install woocommerce`, {
-		timeout: longWait, log: true
+		timeout: longWait,
+		log: true,
 	} );
-	
+
 	cy.exec( `npx wp-env run cli wp plugin activate woocommerce`, {
 		timeout: longWait,
 	} );
@@ -66,7 +66,7 @@ export const viewRemainingTasks = () => {
 };
 
 export const waitForNextSteps = () => {
-	cy.get( '.nfd-grid.nfd-gap-4' , { timeout: customCommandTimeout } )
+	cy.get( '#next-steps-section', { timeout: customCommandTimeout } )
 		.as( 'nextSteps' )
 		.scrollIntoView()
 		.should( 'exist' );
