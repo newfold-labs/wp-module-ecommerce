@@ -83,11 +83,11 @@ export const YITHPluginsDefinitions = (props) => ({
       shouldRender: () => true,
       name: 'nfd_slug_yith_woocommerce_wishlist',
       assets: () => ({
-        Image: WishLists,
+        Image: WishList,
         learnMoreUrl: YITH_WOOCOMMERCE_WISHLIST,
       }),
       text: ({ isActive }) => ({
-        title: __('Wishlist', 'wp-module-ecommerce'),
+        title: __('Wishlists', 'wp-module-ecommerce'),
         description: __(
           'Let customers add products to lists and share them with family and friends.',
           'wp-module-ecommerce'
