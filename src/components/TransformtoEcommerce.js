@@ -57,29 +57,29 @@ export function TransformtoEcommerce() {
                             <ul className="nfd-flex-1 nfd-text-black">
                                 <li className="nfd-flex">
                                     <CheckMarkIcon className="nfd-mt-0.5 nfd-pt-px nfd-mr-1" />
-                                    <span className="nfd-text-black nfd-font-medium">{__("Gift Cards", "wp-module-ecommerce")}</span>
+                                    <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("Gift Cards", "wp-module-ecommerce")}</span>
                                 </li>
                                 <li className="nfd-flex">
                                     <CheckMarkIcon className="nfd-mt-0.5 nfd-pt-px nfd-mr-1" />
-                                    <span className="nfd-text-black nfd-font-medium">{__("Wishlists", "wp-module-ecommerce")}</span>
+                                    <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("Wishlists", "wp-module-ecommerce")}</span>
                                 </li>
                                 <li className="nfd-flex">
                                     <CheckMarkIcon className="nfd-mt-0.5 nfd-pt-px nfd-mr-1" />
-                                    <span className="nfd-text-black nfd-font-medium">{__("Custom 'My Account' Page", "wp-module-ecommerce")}</span>
+                                    <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("Custom 'My Account' Page", "wp-module-ecommerce")}</span>
                                 </li>
                             </ul>
                             <ul className="nfd-flex-1 nfd-text-black">
                                 <li className="nfd-flex">
                                     <CheckMarkIcon className="nfd-mt-0.5 nfd-pt-px nfd-mr-1" />
-                                    <span className="nfd-text-black nfd-font-medium">{__("Bookings & Appointments", "wp-module-ecommerce")}</span>
+                                    <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("Bookings & Appointments", "wp-module-ecommerce")}</span>
                                 </li>
                                 <li className="nfd-flex">
                                     <CheckMarkIcon className="nfd-mt-0.5 nfd-pt-px nfd-mr-1" />
-                                    <span className="nfd-text-black nfd-font-medium">{__("AJAX Product Filters", "wp-module-ecommerce")}</span>
+                                    <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("AJAX Product Filters", "wp-module-ecommerce")}</span>
                                 </li>
                                 <li className="nfd-flex">
                                     <CheckMarkIcon className="nfd-mt-0.5 nfd-pt-px nfd-mr-1" />
-                                    <span className="nfd-text-black nfd-font-medium">{__("AJAX Product Search", "wp-module-ecommerce")}</span>
+                                    <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("AJAX Product Search", "wp-module-ecommerce")}</span>
                                 </li>
                             </ul>
                         </div>
@@ -103,29 +103,29 @@ export function TransformtoEcommerce() {
                             <ul className="nfd-flex-1 nfd-text-black">
                                 <li className="nfd-flex">
                                     <CheckMarkIcon className="nfd-mt-0.5 nfd-pt-px nfd-mr-1" />
-                                    <span className="nfd-text-black nfd-font-medium">{__("Buy One Get One", "wp-module-ecommerce")}</span>
+                                    <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("Buy One Get One", "wp-module-ecommerce")}</span>
                                 </li>
                                 <li className="nfd-flex">
                                     <CheckMarkIcon className="nfd-mt-0.5 nfd-pt-px nfd-mr-1" />
-                                    <span className="nfd-text-black nfd-font-medium">{__("Cart Promotions", "wp-module-ecommerce")}</span>
+                                    <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("Cart Promotions", "wp-module-ecommerce")}</span>
                                 </li>
                                 <li className="nfd-flex">
                                     <CheckMarkIcon className="nfd-mt-0.5 nfd-pt-px nfd-mr-1" />
-                                    <span className="nfd-text-black nfd-font-medium">{__("Related Items Discounts", "wp-module-ecommerce")}</span>
+                                    <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("Related Items Discounts", "wp-module-ecommerce")}</span>
                                 </li>
                             </ul>
                             <ul className="nfd-flex-1 nfd-text-black">
                                 <li className="nfd-flex">
                                     <CheckMarkIcon className="nfd-mt-0.5 nfd-pt-px nfd-mr-1" />
-                                    <span className="nfd-text-black nfd-font-medium">{__("Free Shipping Offers", "wp-module-ecommerce")}</span>
+                                    <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("Free Shipping Offers", "wp-module-ecommerce")}</span>
                                 </li>
                                 <li className="nfd-flex">
                                     <CheckMarkIcon className="nfd-mt-0.5 nfd-pt-px nfd-mr-1" />
-                                    <span className="nfd-text-black nfd-font-medium">{__("Category Discounts", "wp-module-ecommerce")}</span>
+                                    <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("Category Discounts", "wp-module-ecommerce")}</span>
                                 </li>
                                 <li className="nfd-flex">
                                     <CheckMarkIcon className="nfd-mt-0.5 nfd-pt-px nfd-mr-1" />
-                                    <span className="nfd-text-black nfd-font-medium">{__("and more!", "wp-module-ecommerce")}</span>
+                                    <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("and more!", "wp-module-ecommerce")}</span>
                                 </li>
                             </ul>
                         </div>
