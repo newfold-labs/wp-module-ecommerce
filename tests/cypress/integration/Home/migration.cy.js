@@ -43,7 +43,6 @@ describe( 'Home page - post migration events with help center ', () => {
 	} );
 
 	it( 'Verify when connect domain to site clicked', () => {
-		const steps = [ 'connect domain to site clicked' ];
 		cy.get( '.nfd-grid.nfd-gap-4', { timeout: customCommandTimeout } )
 			.scrollIntoView()
 			.should( 'exist' );
