@@ -18,7 +18,7 @@ describe( 'Home page - post migration events with help center ', () => {
 			`npx wp-env run cli wp option delete _transient_nfd_site_capabilities`,
 			{ failOnNonZeroExit: false }
 		);
-	cy.exec(
+		cy.exec(
 			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ helpCenter }' --format=json`,
 			{ timeout: customCommandTimeout }
 		);
@@ -33,7 +33,6 @@ describe( 'Home page - post migration events with help center ', () => {
 		cy.get( '.nfd-grid.nfd-gap-4', { timeout: customCommandTimeout } )
 			.scrollIntoView()
 			.should( 'exist' );
-			timeout(20000);
 		cy.intercept( APIList.update_nameserver ).as( 'events' );
 		cy.get( '.nfd-grid.nfd-gap-4 ul li a' ).eq( 0 ).click();
 		EventsAPI( APIList.update_nameserver, pluginId );
@@ -65,7 +64,8 @@ describe( 'Home page - post migration events with help center ', () => {
 		cy.get( '#next-steps-section', { timeout: customCommandTimeout } )
 			.scrollIntoView()
 			.should( 'exist' );
-		cy.get( '#add-a-product', { timeout: customCommandTimeout } )
-			.should( 'exist' );		
+		cy.get( '#add-a-product', { timeout: customCommandTimeout } ).should(
+			'exist'
+		);
 	} );
 } );

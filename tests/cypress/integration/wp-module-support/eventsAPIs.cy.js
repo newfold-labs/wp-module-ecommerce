@@ -29,9 +29,8 @@ export const EventsAPI = ( events_name, pluginId ) => {
 			expect( responseBody.action ).equal(
 				'next_step_yoast_academy_clicked'
 			);
+			expect( responseData.page ).equal( cy.url() );
 		}
-
-		expect( responseData.page ).equal( cy.url() );
 
 		if ( events_name == 'update_nameserver' ) {
 			expect( responseBody.category ).equal( 'next_step' );
