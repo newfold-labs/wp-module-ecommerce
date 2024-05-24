@@ -19,11 +19,11 @@ import { formatMoney } from "../sdk/formatMoney";
 import { RuntimeSdk } from "../sdk/runtime";
 import { WooCommerceSdk } from "../sdk/woocommerce";
 import { Section } from "./Section";
+import { SiteStatus } from "./SiteStatus";
 import { TransformtoEcommerce } from "./TransformtoEcommerce";
 import { YITHPlugins } from "./YITHPlugins";
 import { useCardManager } from "./useCardManager";
 import { useInstallWoo } from "./useInstallWoo";
-import { SiteStatus } from "./SiteStatus";
 
 let recentActivityLink = `admin.php?${new URLSearchParams({
   page: "wc-admin",
@@ -256,7 +256,7 @@ export function QuickLook(props) {
       </Section.Content>
       <Section.Content className={"nfd-pt-0"} subClassName={"nfd-pb-4"} >
         <Section.Block>
-          {NewfoldRuntime.hasCapability("isEcommerce") ? (<YITHPlugins {...props} />) : <TransformtoEcommerce />}
+          {!NewfoldRuntime.hasCapability("isEcommerce") ? (<YITHPlugins {...props} />) : <TransformtoEcommerce />}
         </Section.Block>
       </Section.Content>
       {NewfoldRuntime.hasCapability("isEcommerce") &&
