@@ -31,8 +31,9 @@ export const wcProductsParser = (type) => (products) => {
 };
 
 export const wcPluginStatusParser = (slug) => (data) => {
+  console.log(data)
   const isInstalled = data?.details?.[slug].status === "active";
-  const isQueueEmpty = data?.queue?.length === 0;
+  const isQueueEmpty = data?.queue[0] ? data?.queue[0]?.length === 0 ? true : false : data?.queue?.length === 0;
   const isInstalling = data?.queue?.includes(slug);
   const isWCActive = data?.details?.woocommerce.status === "active";
   const pluginUrl = data?.details?.[slug].url;
