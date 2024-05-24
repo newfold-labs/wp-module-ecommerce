@@ -1,23 +1,36 @@
 import { Button, Card, Title } from "@newfold/ui-component-library";
-import { useEffect, useState } from "@wordpress/element";
+import { useEffect } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
+import { useInstallWonderCart } from "./useInstallWonderCart";
 
 export function YithFeatureCard({
   setIsOpen,
   setPluginName,
   yithPluginsMap,
   id,
-  cards
+  cards,
+  wpModules
 }) {
   const cardsInfo = cards.filter(
     (card) => card.name === yithPluginsMap.get(id).title
   )[0];
   const state = cardsInfo?.state;
+  let [installWonderCart, isInstalling] = useInstallWonderCart({ wpModules });
 
   useEffect(() => {
     setPluginName(cardsInfo?.text(state)?.title);
     (state?.isInstalling && !state?.isActive) ? setIsOpen(true) : setIsOpen(false)
-  }, [state?.isInstalling, cardsInfo?.text(state).actionName])
+  }, [state?.isInstalling])
+
+  useEffect(() => {
+    setPluginName(cardsInfo?.text(state)?.title);
+    isInstalling ? setIsOpen(true) : setIsOpen(false)
+  }, [isInstalling])
+
+  const handleWonderCart = () => {
+    console.log("called");
+    installWonderCart();
+  }
 
   return (
     <Card id={yithPluginsMap.get(id).title}>
@@ -38,18 +51,19 @@ export function YithFeatureCard({
           className="nfd-w-full nfd-h-9 nfd-border nfd-flex nfd-items-center nfd-gap-2"
           variant="secondary"
           onClick={() =>
-            state?.isActive
-              ? cardsInfo?.actions?.manageFeature?.(
-                cardsInfo?.state,
-                cardsInfo
-              )
-              : cardsInfo?.actions?.installFeature?.(
-                cardsInfo?.state,
-                cardsInfo
-              )
+            yithPluginsMap.get(id).title === "nfd_slug_wonder_cart" && !state?.isActive ? handleWonderCart() :
+              state?.isActive
+                ? cardsInfo?.actions?.manageFeature?.(
+                  cardsInfo?.state,
+                  cardsInfo
+                )
+                : cardsInfo?.actions?.installFeature?.(
+                  cardsInfo?.state,
+                  cardsInfo
+                )
           }
           as="a"
-          href={(yithPluginsMap.get(id).title === "nfd_slug_wonder_cart" && state?.featureUrl !== null) ? state?.featureUrl + "?reload=true" : state?.featureUrl}
+          href={state?.featureUrl}
           isLoading={state?.isInstalling && !state?.isActive}
           disabled={state?.isDisabled}
           id={state?.isInstalling

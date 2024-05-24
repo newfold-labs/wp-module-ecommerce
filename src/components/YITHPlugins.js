@@ -154,6 +154,7 @@ export function YITHPlugins({ wpModules }) {
                   setPluginName={setPluginName}
                   yithPluginsMap={yithPluginsMap}
                   cards={cards}
+                  wpModules = {wpModules}
                 />
               );
             })}
