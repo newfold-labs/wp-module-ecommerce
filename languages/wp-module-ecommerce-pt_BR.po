@@ -1228,27 +1228,27 @@ msgstr ""
 #: build/index.js:9917
 #: build/index.js:8555
 msgid "Transform your store!"
-msgstr ""
+msgstr "Transforme sua loja!"
 
 #: build/index.js:9919
 #: build/index.js:8558
 msgid "Give your online store a boost with our all-in-one eCommerce bundle filled with exclusive plugins and tools designed to help you sell your products and services like a pro."
-msgstr ""
+msgstr "Turbine sua loja online com nosso pacote completo de e-commerce repleto de plugins e ferramentas exclusivos projetados para te ajudar a vender seus produtos e serviços de forma profissional."
 
 #: build/index.js:9932
 #: build/index.js:8575
 msgid "Buy Now"
-msgstr ""
+msgstr "Comprar agora"
 
 #: build/index.js:9934
 #: build/index.js:8583
 msgid "Exclusive YITH plugins and tools to help you sell online"
-msgstr ""
+msgstr "Plugins e ferramentas YITH exclusivos para te ajudar a vender online"
 
 #: build/index.js:9936
 #: build/index.js:8586
 msgid "Our eCommerce bundle includes a comprehensive suite of advanced tools designed to boost the performance of your WooCommerce store. This bundle includes these exclusive YITH plugins:"
-msgstr ""
+msgstr "Nosso pacote de e-commerce inclui um conjunto abrangente de ferramentas avançadas projetadas para aumentar o desempenho de sua loja WooCommerce. Este pacote inclui estes plug-ins YITH exclusivos:"
 
 #: build/index.js:9948
 #: build/index.js:11361
@@ -1408,7 +1408,7 @@ msgstr ""
 #: build/index.js:11751
 #: build/index.js:10471
 msgid "WonderCart"
-msgstr WonderCart"
+msgstr "WonderCart"
 
 #: build/index.js:11753
 #: build/index.js:10476
@@ -1432,7 +1432,8 @@ msgstr "Gerencie a locação ou reserva de serviços e itens para que os cliente
 
 #: build/index.js:11807
 #: build/index.js:10553
-msgid "Product Filter"
+#: build/index.js:11818
+msgid "Product Filters"
 msgstr "Filtros de Produtos"
 
 #: build/index.js:11808

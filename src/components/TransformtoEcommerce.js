@@ -30,7 +30,7 @@ export function TransformtoEcommerce() {
                         <div className="nfd-flex nfd-mt-8 nfd-self-end nfd-justify-end">
                         <Button
                             as="a"
-                            className="nfd-button nfd-button--upsell nfd-w-36"
+                            className="nfd-button nfd-button--upsell nfd-w-40"
                             variant="upsell"
                             data-ctb-id={"f95ccf1e-3028-4ea7-b2c2-847969348e8b"}   
                             data-action="load-nfd-ctb"

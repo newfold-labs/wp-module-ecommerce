@@ -1,6 +1,6 @@
 {
     "translation-revision-date": "2023-10-30 12:18+0530",
-    "generator": "WP-CLI\/2.9.0",
+    "generator": "WP-CLI\/2.10.0",
     "source": "build\/index.js",
     "domain": "messages",
     "locale_data": {
@@ -205,9 +205,6 @@
             "Intuitive reporting": [
                 "Relat\u00f3rios intuitivos"
             ],
-            " vs prior period": [
-                " vs per\u00edodo anterior"
-            ],
             "Shipping Options": [
                 "Op\u00e7\u00f5es de Envio"
             ],
@@ -231,12 +228,6 @@
             ],
             "Ready to go live?": [
                 "Tudo pronto para lan\u00e7ar?"
-            ],
-            "Preview your store before setting it live to make sure everything is how you want it.\nOnce you're ready, set your store live!": [
-                "Visualize sua loja antes de ir ao ar para garantir que tudo esteja ok. Depois de tudo pronto, coloque sua loja no ar!"
-            ],
-            "Preview your Site before setting it live to make sure everything is how you want it.\nOnce you're ready, set your site live!": [
-                "Visualize seu site antes de ir ao ar para garantir que tudo esteja ok. Depois de tudo pronto, coloque seu site no ar!"
             ],
             "Launch your store": [
                 "Coloque sua loja no ar"
@@ -277,9 +268,6 @@
             "Add Upsells, Cross-sells, and other Promotions to your store": [
                 "Adicione Upsell, Cross-sell e outras a\u00e7\u00f5es \u00e0 sua loja"
             ],
-            "Create and manage deals, sales promotions and upsell campaigns like Buy-One-Get-One and more.": [
-                "Crie e gerencie promo\u00e7\u00f5es e campanhas de upsell como pague 1 leve 2 e muito mais."
-            ],
             "Install now": [
                 "Instale agora"
             ],
@@ -291,9 +279,6 @@
             ],
             "Install WooCommerce": [
                 "Instale o WooCommerce"
-            ],
-            "Improve your store with these powerful add-ons.": [
-                "Aprimore sua loja com esses add-ons poderosos."
             ],
             "Please try again, or ": [
                 "Por favor tente novamente, ou "
@@ -382,80 +367,17 @@
             "Enable": [
                 "Habilitar"
             ],
-            "Manage bookings": [
-                "Gerencias reservas"
-            ],
-            "Create a booking": [
-                "Crie uma reserva"
-            ],
-            "Manage gift cards": [
-                "Gerencie cart\u00f5es-presente"
-            ],
-            "Create a gift card": [
-                "Crie um cart\u00e3o-presente"
-            ],
             "Total Sales": [
                 "Vendas Totais"
             ],
-            "Net Sales": [
-                "Vendas L\u00edquidas"
-            ],
             "Orders": [
                 "Pedidos"
-            ],
-            "Products Sold": [
-                "Produtos Vendidos"
             ],
             "Visitors": [
                 "Visitantes"
             ],
             "Views": [
                 "Visualiza\u00e7\u00f5es"
-            ],
-            "YITH Booking and Appointment for WooCommerce": [
-                "Reserva e Agendamentos YITH para WooCommerce"
-            ],
-            "Enable a booking\/appointment system to manage renting or booking of services, rooms, houses, cars, accommodation and more to make it easy for your customers to do business with you.": [
-                "Habilite um sistema de reservas\/agendamento para gerenciar aluguel ou reserva de servi\u00e7os, quartos, casas, carros, acomoda\u00e7\u00f5es e muito mais para facilitar aos seus clientes fazer neg\u00f3cios com voc\u00ea."
-            ],
-            "YITH WooCommerce AJAX Search": [
-                "YITH WooCommerce AJAX Search"
-            ],
-            "YITH WooCommerce AJAX Search is an effective and predictive real-time search engine on your store so users can quickly find products they want. Speed up your search and boost your sales.": [
-                "YITH WooCommerce AJAX Search \u00e9 um mecanismo de pesquisa eficaz e preditivo em tempo real na sua loja, para que usu\u00e1rios possam encontrar rapidamente os produtos que desejam. Acelere sua pesquisa e aumente suas vendas."
-            ],
-            "YITH WooCommerce Wishlist": [
-                "Lista de desejos YITH para WooCommerce"
-            ],
-            "Allow your customers to create lists of products they want and share them with family and friends.": [
-                "Permita que seus clientes criem listas de produtos que desejam e as compartilhem com familiares e amigos."
-            ],
-            "YITH WooCommerce AJAX Product Filter": [
-                "Filtro de Produto AJAX YITH para WooCommerce"
-            ],
-            "YITH WooCommerce Ajax Product Filter is the perfect way to add an advanced filter to all products in your store by size, color, price, and more to find the right product or gift with ease.": [
-                "Ajax YITH para WooCommerce \u00e9 a forma perfeita de ter um filtro avan\u00e7ado para os produtos da sua loja por tamanho, cor, pre\u00e7o e muito mais para encontrar o produto certo com facilidade."
-            ],
-            "YITH WooCommerce Gift Cards": [
-                "Cart\u00f5es-Presente YITH para WooCommerce"
-            ],
-            "Sell gift cards to increase your store's revenue and win new customers.": [
-                "Venda cart\u00f5es-presente para aumentar a receita da sua loja e conquistar novos clientes."
-            ],
-            "YITH WooCommerce Customize My Account Page": [
-                "Personaliza\u00e7\u00e3o da P\u00e1gina Minha Conta YITH para WooCommerce"
-            ],
-            "Customize the My Account page of your customers by creating custom sections with promotions and ad-hoc content based on your needs.": [
-                "Personalize a p\u00e1gina Minha conta de seus clientes criando se\u00e7\u00f5es personalizadas com promo\u00e7\u00f5es com base em suas necessidades."
-            ],
-            "Ecomdash": [
-                "Ecomdash"
-            ],
-            "All your sales channels and products, managed in one place. See how this dashboard puts selling, updating, and inventory all at your fingertips. Perfect for selling on Amazon, Etsy, eBay and more.": [
-                "Todos os seus canais de vendas e produtos gerenciados em um s\u00f3 lugar. Veja como este painel coloca vendas, atualiza\u00e7\u00e3o e estoque ao seu alcance. Perfeito para vender na Amazon, eBay e muito mais."
-            ],
-            "Complete Upsell, Cross sell & Promotions Solution": [
-                "Solu\u00e7\u00e3o completa de Upsell, Cross-sell e promo\u00e7\u00f5es"
             ],
             "Plugin failed to install": [
                 "Erro na instala\u00e7\u00e3o do plugin"
@@ -468,12 +390,6 @@
             ],
             "Home": [
                 "In\u00edcio"
-            ],
-            "Quick Look": [
-                "Resumo"
-            ],
-            "Once you launch your store, you'll see a snapshot of recent purchases and other customer activity.": [
-                "Quando publicar sua loja, voc\u00ea ter\u00e1 acesso as compras recentes e atividades de seus clientes."
             ],
             "* indicates a required field": [
                 "*campo obrigat\u00f3rio"
@@ -614,43 +530,40 @@
                 "Compre Agora"
             ],
             "Edit your site": [
-                ""
+                "Edite seu site"
             ],
             "Stripe": [
                 ""
             ],
             "Stripe provides all the tools that you need to accept payments online around the world, including support for Apple Pay and Google Pay.": [
-                "A Stripe fornece todas as ferramentas necessárias para aceitar pagamentos online ao redor do mundo, incluindo suporte para Apple Pay e Google Pay."
+                ""
             ],
             "A secure connection is required when running Stripe Payments in Live mode; plugin is currently enabled, but no gateway will be available until you secure connection to your site through a valid SSL certificate.             If you already have a valid SSL certificate, please change the url in": [
-                "Uma conexão segura é necessária ao executar o Stripe Payments em modo Live; o plugin está atualmente habilitado, mas nenhum gateway estará disponível até que você garanta uma conexão segura ao seu site através de um certificado SSL válido. Se você já possui um certificado SSL válido, por favor, altere a url nas"
+                ""
             ],
             "settings": [
-                "configurações"
+                ""
             ],
             "page": [
-                "da página"
+                ""
             ],
             "One-click refunds": [
-                "Reembolsos em um clique"
+                ""
             ],
             "Option to let customers save their credit card info securely": [
-                "Opção para permitir que clientes salvem suas informações de cartão de crédito de forma segura"
+                ""
             ],
             "Support ACH direct debt": [
-                "Suporte a débito direto ACH"
+                ""
             ],
             " Uses many popular payment methods": [
-                "Utiliza muitos métodos de pagamento populares"
+                ""
             ],
             "Sales & Promotions": [
                 "Vendas e Promo\u00e7\u00f5es"
             ],
             "Create and manage X-sell, Upsell, sales and promotions through campaigns to boost your sales": [
                 "Crie e gerencie vendas cruzadas, vendas adicionais, vendas e promo\u00e7\u00f5es atrav\u00e9s de campanhas para impulsionar suas vendas"
-            ],
-            "eCommerce Features": [
-                ""
             ],
             "New Order Received": [
                 ""
@@ -677,7 +590,7 @@
                 ""
             ],
             "Immediate capture or authorize and capture later": [
-                "Captura imediata ou autorize e capture mais tarde"
+                ""
             ],
             "Update your website nameservers": [
                 ""
@@ -696,6 +609,183 @@
             ],
             "Continue with store setup": [
                 ""
+            ],
+            "Hold on while we get things setup for you!": [
+                ""
+            ],
+            "View all analytics": [
+                ""
+            ],
+            "Once you launch your store, you'll see a snapshot of recent purchases and other \ncustomer activity here.": [
+                ""
+            ],
+            "Preview your store before setting it live to make sure everything \nis how you want it. Once you're ready, set your store live!": [
+                ""
+            ],
+            "Preview your Site before setting it live to make sure everything \nis how you want it. Once you're ready, set your site live!": [
+                ""
+            ],
+            "Transform your store!": [
+                "Transforme sua loja!"
+            ],
+            "Give your online store a boost with our all-in-one eCommerce bundle filled with exclusive plugins and tools designed to help you sell your products and services like a pro.": [
+                "Turbine sua loja online com nosso pacote completo de e-commerce repleto de plugins e ferramentas exclusivos projetados para te ajudar a vender seus produtos e servi\u00e7os de forma profissional."
+            ],
+            "Buy Now": [
+                "Comprar agora"
+            ],
+            "Exclusive YITH plugins and tools to help you sell online": [
+                "Plugins e ferramentas YITH exclusivos para te ajudar a vender online"
+            ],
+            "Our eCommerce bundle includes a comprehensive suite of advanced tools designed to boost the performance of your WooCommerce store. This bundle includes these exclusive YITH plugins:": [
+                "Nosso pacote de e-commerce inclui um conjunto abrangente de ferramentas avan\u00e7adas projetadas para aumentar o desempenho de sua loja WooCommerce. Este pacote inclui estes plug-ins YITH exclusivos:"
+            ],
+            "Gift Cards": [
+                "Cart\u00f5es-Presente"
+            ],
+            "Wishlists": [
+                "Listas de Desejos"
+            ],
+            "Custom 'My Account' Page": [
+                ""
+            ],
+            "Bookings & Appointments": [
+                "Agendamentos"
+            ],
+            "AJAX Product Filters": [
+                "Filtros de produto AJAX"
+            ],
+            "AJAX Product Search": [
+                "Pesquisa de produtos AJAX"
+            ],
+            "Add upsells, cross-sells, and other promotions with WonderCart": [
+                "Adicione up-sell, cross-sell e outras promo\u00e7\u00f5es com WonderCart"
+            ],
+            "Create and run effective promotional campaigns like BOGOs, free shipping offers, category discounts, and more to increase revenue and strengthen customer engagement.": [
+                "Crie e lance campanhas promocionais eficazes como BOGOs, ofertas de frete gr\u00e1tis, descontos por categoria e muito mais para aumentar a receita e fortalecer o envolvimento do cliente."
+            ],
+            "Buy One Get One": [
+                "Pague 1, Leve 2"
+            ],
+            "Cart Promotions": [
+                "Promo\u00e7\u00f5es de carrinho"
+            ],
+            "Related Items Discounts": [
+                "Descontos em Itens Relacionados"
+            ],
+            "Free Shipping Offers": [
+                "Ofertas de frete gr\u00e1tis"
+            ],
+            "Category Discounts": [
+                "Descontos por Categoria"
+            ],
+            "and more!": [
+                "e mais!"
+            ],
+            "Exclusive Tools Included in Your Plan": [
+                "Ferramentas exclusivas inclusas no seu plano"
+            ],
+            "Elevate Your Store with Exclusive WooCommerce Tools Included in Your Plan!": [
+                "Turbine sua loja com ferramentas WooCommerce exclusivas inclusas no seu plano!"
+            ],
+            "Unlock the full power of your plan with access to a range of exclusive WooCommerce tools powered by \nYITH. Enhance your store and keep your customers coming back for more!": [
+                "Tenha todo o poder do seu plano com acesso a ferramentas WooCommerce exclusivas desenvolvidas pela YITH. Turbine sua loja e fa\u00e7a que seus clientes voltem sempre!"
+            ],
+            "Setup Bookings & Appointments": [
+                "Configurar Agendamentos"
+            ],
+            "Manage Bookings & Appointments": [
+                "Gerenciar Reservas"
+            ],
+            "Create a Bookings & Appointments": [
+                "Crie reservas e compromissos\""
+            ],
+            "Create a Gift Card": [
+                "Crie um cart\u00e3o-presente"
+            ],
+            "Manage Gift Cards": [
+                "Gerenciar vales-presente"
+            ],
+            "Offer customizable gift cards with personalized messages for the recipient.": [
+                "Ofere\u00e7a cart\u00f5es-presente \u200b\u200bcom mensagens personalizadas para o destinat\u00e1rio."
+            ],
+            "Configure Gift Cards": [
+                "Configurar cart\u00f5es-presente"
+            ],
+            "Wishlist": [
+                "Listas de Desejos"
+            ],
+            "Let customers add products to lists and share them with family and friends.": [
+                "Permita que os clientes adicionem produtos \u00e0s listas e os compartilhem com familiares e amigos."
+            ],
+            "View Wishlists": [
+                "Ver listas de desejos"
+            ],
+            "Setup Wishlists": [
+                ""
+            ],
+            "WonderCart": [
+                "WonderCart"
+            ],
+            "Create custom upsell, cross-sell and other promotional campaigns to generate more sales.": [
+                "Crie campanhas personalizadas de up-sell, cross-sell e outras campanhas promocionais para gerar mais vendas."
+            ],
+            "Create a Campaign": [
+                "Criar Campanha"
+            ],
+            "Booking and Appointments": [
+                "Agendamentos"
+            ],
+            "Manage renting or booking of services and items so customers can do business with you.": [
+                "Gerencie a loca\u00e7\u00e3o ou reserva de servi\u00e7os e itens para que os clientes possam fazer neg\u00f3cios com voc\u00ea."
+            ],
+            "Product Filter": [
+                "Filtros de Produtos"
+            ],
+            "Add an advanced filter to help customers find the right product with ease.": [
+                "Adicione um filtro avan\u00e7ado para ajudar os clientes a encontrar o produto certo com facilidade."
+            ],
+            "Product Filter Settings": [
+                "Configura\u00e7\u00f5es de filtro de produto"
+            ],
+            "Setup Product Filters": [
+                "Configurar Filtros de Produtos\""
+            ],
+            "Product Search": [
+                "Busca de Produtos"
+            ],
+            "Speed up search for your customers with a predictive real-time search engine.": [
+                "Acelere a pesquisa de seus clientes com um motor de busca inteligente, em tempo real."
+            ],
+            "Product Search Settings": [
+                "Configura\u00e7\u00f5es de pesquisa de produtos"
+            ],
+            "Configure Product Search": [
+                "Configurar a pesquisa de produtos"
+            ],
+            "Customize My Account Page": [
+                "Configurar P\u00e1gina \"Minha Conta\""
+            ],
+            "Add custom content like videos, files, discount codes, and more to your customers account page.": [
+                "Adicione conte\u00fado personalizado como v\u00eddeos, arquivos, cupons de desconto e muito mais \u00e0 p\u00e1gina \"Minha Conta\" do seu cliente."
+            ],
+            "'My Account' Page Settings": [
+                "Configura\u00e7\u00f5es da p\u00e1gina 'Minha conta'"
+            ],
+            "Customize the 'My Account' Page": [
+                "Configurar P\u00e1gina \"Minha Conta\""
+            ],
+            "ecomdash": [
+                "ecomdash"
+            ],
+            "Boost sales by selling your products and services across multiple marketplaces.": [
+                "Aumente as vendas vendendo seus produtos e servi\u00e7os em v\u00e1rios marketplaces."
+            ],
+            "Manage Sales Channels": [
+                "Gerenciar Canais de Venda"
+            ],
+            "Setup Sales Channels": [
+                "Configurar Canais de Venda"
             ]
         }
     }
