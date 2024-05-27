@@ -1047,47 +1047,47 @@ msgstr "Edite seu site"
 #: build/index.js:9647
 #: build/index.js:8267
 msgid "Stripe"
-msgstr ""
+msgstr "Stripe"
 
 #: build/index.js:9648
 #: build/index.js:8268
 msgid "Stripe provides all the tools that you need to accept payments online around the world, including support for Apple Pay and Google Pay."
-msgstr ""
+msgstr "A Stripe fornece todas as ferramentas necessárias para aceitar pagamentos online ao redor do mundo, incluindo suporte para Apple Pay e Google Pay."
 
 #: build/index.js:9666
 #: build/index.js:8285
 msgid "A secure connection is required when running Stripe Payments in Live mode; plugin is currently enabled, but no gateway will be available until you secure connection to your site through a valid SSL certificate.             If you already have a valid SSL certificate, please change the url in"
-msgstr ""
+msgstr "Uma conexão segura é necessária ao executar o Stripe Payments em modo Live; o plugin está atualmente habilitado, mas nenhum gateway estará disponível até que você garanta uma conexão segura ao seu site através de um certificado SSL válido. Se você já possui um certificado SSL válido, por favor, altere a url nas"
 
 #: build/index.js:9669
 #: build/index.js:8286
 msgid "settings"
-msgstr ""
+msgstr "configurações"
 
 #: build/index.js:9669
 #: build/index.js:8286
 msgid "page"
-msgstr ""
+msgstr "da página"
 
 #: build/index.js:9700
 #: build/index.js:8348
 msgid "One-click refunds"
-msgstr ""
+msgstr "Reembolsos em um clique"
 
 #: build/index.js:9700
 #: build/index.js:8350
 msgid "Option to let customers save their credit card info securely"
-msgstr ""
+msgstr "Opção para permitir que clientes salvem suas informações de cartão de crédito de forma segura"
 
 #: build/index.js:9700
 #: build/index.js:8356
 msgid "Support ACH direct debt"
-msgstr ""
+msgstr "Suporte a débito direto ACH"
 
 #: build/index.js:9702
 #: build/index.js:8360
 msgid " Uses many popular payment methods"
-msgstr ""
+msgstr "Utiliza muitos métodos de pagamento populares"
 
 #: build/index.js:10080
 #: build/index.js:8705
@@ -1202,28 +1202,28 @@ msgstr ""
 #: build/index.js:8504
 #: build/index.js:7044
 msgid "View all analytics"
-msgstr ""
+msgstr "Ver todas as análises"
 
 #: build/index.js:8545
 #: build/index.js:7086
 msgid ""
 "Once you launch your store, you'll see a snapshot of recent purchases and other \n"
 "customer activity here."
-msgstr ""
+msgstr "Depois de lançar sua loja, você verá um resumo das compras recentes e de outras \natividades dos clientes aqui"
 
 #: build/index.js:9095
 #: build/index.js:7715
 msgid ""
 "Preview your store before setting it live to make sure everything \n"
 "is how you want it. Once you're ready, set your store live!"
-msgstr ""
+msgstr "Depois de lançar sua loja, você verá um resumo das compras recentes e outras \né como você quer. Quando estiver pronto, coloque sua loja no ar!"
 
 #: build/index.js:9095
 #: build/index.js:7719
 msgid ""
 "Preview your Site before setting it live to make sure everything \n"
 "is how you want it. Once you're ready, set your site live!"
-msgstr ""
+msgstr "Visualize seu site antes de colocá-lo no ar para ter certeza de tudo\n é como você deseja. Quando estiver pronto, coloque seu site no ar!"
 
 #: build/index.js:9917
 #: build/index.js:8555
@@ -1403,7 +1403,7 @@ msgstr "Ver listas de desejos"
 #: build/index.js:11727
 #: build/index.js:10441
 msgid "Setup Wishlists"
-msgstr ""
+msgstr "Configurar listas de desejos"
 
 #: build/index.js:11751
 #: build/index.js:10471
