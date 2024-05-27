@@ -112,7 +112,7 @@ export function YITHPlugins({ wpModules }) {
   }, [yithProducts])
 
   return (
-    <Section.Container id="ecommerce-features-wrapper" className={"nfd-border nfd-rounded-xl nfd-pt-0" + (anyPluginActive <= 0 ? " nfd-border-amber-300" : null) + + (!(NewfoldRuntime.isWoo) ? 'nfd--mt-12' : '')}>
+    <Section.Container id="ecommerce-features-wrapper" className={"nfd-border nfd-rounded-xl nfd-pt-0" + (anyPluginActive <= 0 ? " nfd-border-amber-300" : null) + (!(NewfoldRuntime.isWoo) ? 'nfd--mt-12' : '')}>
       <div className={(anyPluginActive <= 0 ? "nfd-p-4 " : "nfd-p-4 nfd-pb-0 ") + "nfd-flex  nfd-flex-col md:nfd-flex-row nfd-justify-between nfd-gap-6 nfd-items-center"}>
         {anyPluginActive <= 0 ? <img
           src={lightchest}
@@ -154,7 +154,7 @@ export function YITHPlugins({ wpModules }) {
                   setPluginName={setPluginName}
                   yithPluginsMap={yithPluginsMap}
                   cards={cards}
-                  wpModules = {wpModules}
+                  wpModules={wpModules}
                 />
               );
             })}
