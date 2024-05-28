@@ -192,16 +192,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ai",
-            "version": "1.1.8",
+            "version": "1.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ai.git",
-                "reference": "ffc1c06e69bcaf46e7ad10eda147d10a9574bcea"
+                "reference": "961dc65294b3b4a2c5cc4d2694bcff521cbd3ef8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ai/zipball/ffc1c06e69bcaf46e7ad10eda147d10a9574bcea",
-                "reference": "ffc1c06e69bcaf46e7ad10eda147d10a9574bcea",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ai/zipball/961dc65294b3b4a2c5cc4d2694bcff521cbd3ef8",
+                "reference": "961dc65294b3b4a2c5cc4d2694bcff521cbd3ef8",
                 "shasum": ""
             },
             "require": {
@@ -230,10 +230,10 @@
             ],
             "description": "A module for providing artificial intelligence capabilities.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ai/tree/1.1.8",
+                "source": "https://github.com/newfold-labs/wp-module-ai/tree/1.1.9",
                 "issues": "https://github.com/newfold-labs/wp-module-ai/issues"
             },
-            "time": "2024-04-08T16:04:32+00:00"
+            "time": "2024-05-20T17:10:20+00:00"
         },
         {
             "name": "newfold-labs/wp-module-coming-soon",
@@ -291,16 +291,16 @@
         },
         {
             "name": "newfold-labs/wp-module-context",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-context.git",
-                "reference": "0d852f83f353f1631309e5ae7da9cb1e046bc984"
+                "reference": "fb57e927df45ef33573fe7f429ef1e088b0a6df0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-context/zipball/0d852f83f353f1631309e5ae7da9cb1e046bc984",
-                "reference": "0d852f83f353f1631309e5ae7da9cb1e046bc984",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-context/zipball/fb57e927df45ef33573fe7f429ef1e088b0a6df0",
+                "reference": "fb57e927df45ef33573fe7f429ef1e088b0a6df0",
                 "shasum": ""
             },
             "require": {
@@ -338,10 +338,10 @@
             ],
             "description": "Newfold module to determine context for various brands and platforms.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-context/tree/1.0.0",
+                "source": "https://github.com/newfold-labs/wp-module-context/tree/1.0.1",
                 "issues": "https://github.com/newfold-labs/wp-module-context/issues"
             },
-            "time": "2024-02-22T18:22:13+00:00"
+            "time": "2024-05-23T20:34:28+00:00"
         },
         {
             "name": "newfold-labs/wp-module-data",
@@ -2584,16 +2584,16 @@
         },
         {
             "name": "react/promise",
-            "version": "v3.1.0",
+            "version": "v3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise.git",
-                "reference": "e563d55d1641de1dea9f5e84f3cccc66d2bfe02c"
+                "reference": "8a164643313c71354582dc850b42b33fa12a4b63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/e563d55d1641de1dea9f5e84f3cccc66d2bfe02c",
-                "reference": "e563d55d1641de1dea9f5e84f3cccc66d2bfe02c",
+                "url": "https://api.github.com/repos/reactphp/promise/zipball/8a164643313c71354582dc850b42b33fa12a4b63",
+                "reference": "8a164643313c71354582dc850b42b33fa12a4b63",
                 "shasum": ""
             },
             "require": {
@@ -2645,7 +2645,7 @@
             ],
             "support": {
                 "issues": "https://github.com/reactphp/promise/issues",
-                "source": "https://github.com/reactphp/promise/tree/v3.1.0"
+                "source": "https://github.com/reactphp/promise/tree/v3.2.0"
             },
             "funding": [
                 {
@@ -2653,7 +2653,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2023-11-16T16:21:57+00:00"
+            "time": "2024-05-24T10:39:05+00:00"
         },
         {
             "name": "seld/jsonlint",

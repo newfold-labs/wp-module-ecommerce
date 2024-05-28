@@ -19,7 +19,6 @@ import { formatMoney } from "../sdk/formatMoney";
 import { RuntimeSdk } from "../sdk/runtime";
 import { WooCommerceSdk } from "../sdk/woocommerce";
 import { Section } from "./Section";
-import { SiteStatus } from "./SiteStatus";
 import { TransformtoEcommerce } from "./TransformtoEcommerce";
 import { YITHPlugins } from "./YITHPlugins";
 import { useCardManager } from "./useCardManager";
@@ -259,18 +258,6 @@ export function QuickLook(props) {
           {NewfoldRuntime.hasCapability("isEcommerce") ? (<YITHPlugins {...props} />) : <TransformtoEcommerce />}
         </Section.Block>
       </Section.Content>
-      {NewfoldRuntime.hasCapability("isEcommerce") &&
-        props.state.wp.comingSoon &&
-        <Section.Content className={"nfd-pt-0"} subClassName={"nfd-pb-4"}>
-          <Section.Block>
-            <SiteStatus
-              comingSoon={props.state.wp.comingSoon}
-              notify={props.wpModules.notify}
-              toggleComingSoon={props.actions.toggleComingSoon}
-            />
-          </Section.Block>
-        </Section.Content>
-      }
     </FeatureUpsell>
   );
 }
