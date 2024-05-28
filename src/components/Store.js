@@ -10,8 +10,8 @@ export function Store(props) {
     if (document.querySelector(".nfd-feature-upsell")) {
       const child = document.querySelector(".nfd-feature-upsell > div");  
       child.classList.remove("nfd-grayscale") 
-    }
-    
+      document.querySelector(".nfd-feature-upsell .nfd-absolute.nfd-justify-center").style.backgroundColor = "rgba(255, 255, 255, .5)"
+    }    
   }, []);
 
   return (
