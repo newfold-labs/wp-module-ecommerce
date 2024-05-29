@@ -104,7 +104,8 @@ function RecentActivity() {
             className={classNames(
               "nfd-flex-1 nfd-grid nfd-gap-4",
               "sm:nfd-grid-cols-1",
-              "md:nfd-grid-cols-4"
+              "md:nfd-grid-cols-2",
+              "lg:nfd-grid-cols-4"
             )}
           >
             {cards.map((cardConfig) => {
