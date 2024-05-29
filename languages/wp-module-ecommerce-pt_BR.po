@@ -1199,9 +1199,8 @@ msgstr ""
 msgid ""
 "Preview your store before setting it live to make sure everything \n"
 "is how you want it. Once you're ready, set your store live!"
-msgstr ""
-"Depois de lançar sua loja, você verá um resumo das compras recentes e outras \n"
-"é como você quer. Quando estiver pronto, coloque sua loja no ar!"
+msgstr "Visualize sua loja antes de publicá-la para ter certeza de que tudo está como você deseja.\nQuando estiver pronto, publique seu site!"
+
 
 #: build/index.js:9095
 #: build/index.js:7724
