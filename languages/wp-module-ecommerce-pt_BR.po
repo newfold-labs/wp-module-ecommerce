@@ -1178,7 +1178,7 @@ msgstr ""
 #: build/index.js:7793
 #: build/index.js:6306
 msgid "Hold on while we get things setup for you!"
-msgstr ""
+msgstr "Espere enquanto preparamos as coisas para você!"
 
 #: build/index.js:8504
 #: build/index.js:7049
@@ -1488,7 +1488,7 @@ msgstr "Configurar Canais de Venda"
 #: build/index.js:7798
 #: build/index.js:6311
 msgid "Activating "
-msgstr "Ativando o plugin"
+msgstr "Ativando o plugin "
 
 #: build/index.js:7798
 #: build/index.js:6311
@@ -1498,7 +1498,7 @@ msgstr " ..."
 #: build/index.js:7798
 #: build/index.js:6313
 msgid "Activating the YITH "
-msgstr "Ativando o plugin YITH"
+msgstr "Ativando o plugin YITH "
 
 #: build/index.js:7798
 #: build/index.js:6313
