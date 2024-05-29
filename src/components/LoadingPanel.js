@@ -7,9 +7,14 @@ export function LoadingPanel({ pluginName }) {
   return <div className="nfd-flex nfd-flex-col nfd-items-center nfd-gap-5">
     <h1 className="nfd-text-2xl">{__("Hold on while we get things setup for you!", "wp-module-ecommerce")}</h1>
     <img src={movingfiles} className="nfd-w-50 nfd-h-50 nfd-text-[--nfd-ecommerce-text-dark]" />
-    <p className="nfd-text-base">{pluginName === 'ecomdash' ? __(`Activating ${pluginName} plugin...`, "wp-module-ecommerce")
-      : __(`Activating the YITH ${pluginName} plugin...`, "wp-module-ecommerce")}</p>
+    <p className="nfd-text-base">
+      {
+        pluginName === 'ecomdash' ? 
+        __("Activating ", "wp-module-ecommerce")+`${pluginName}`+__(" plugin...", "wp-module-ecommerce")
+        : 
+        __("Activating the YITH ", "wp-module-ecommerce")+`${pluginName}`+__("plugin...", "wp-module-ecommerce")
+      }
+    </p>
     <Spinner size="4" className="nfd-text-primary" />
   </div>
 }
-
