@@ -131,7 +131,7 @@ export const YITHPluginsDefinitions = (props) => ({
           'Create custom upsell, cross-sell and other promotional campaigns to generate more sales.',
           'wp-module-ecommerce'
         ),
-        actionName: isActive ? __('Create a Campaign', 'wp-module-ecommerce') : __('Create a Campaign', 'wp-module-ecommerce'),
+        actionName: __('Create a Campaign', 'wp-module-ecommerce'),
       }),
       state: {
         ...defineFeatureState(),

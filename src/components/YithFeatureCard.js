@@ -28,7 +28,6 @@ export function YithFeatureCard({
   }, [isInstalling])
 
   const handleWonderCart = () => {
-    console.log("called");
     installWonderCart();
   }
 
