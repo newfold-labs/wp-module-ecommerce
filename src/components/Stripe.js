@@ -110,7 +110,7 @@ const Stripe = ({ notify }) => {
                 </Title>
                 <ul className="nfd-pl-5 nfd-list-disc">
                   <li>
-                    {__("Immediate capture or authorize and capture later")}
+                    {__("Immediate capture or authorize and capture later", "wp-module-ecommerce")}
                   </li>
                   <li>{__("One-click refunds", "wp-module-ecommerce")}</li>
                   <li>

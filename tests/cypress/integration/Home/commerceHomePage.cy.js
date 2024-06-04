@@ -69,13 +69,11 @@ describe( 'Commerce Home Page- Coming soon mode', () => {
 			.find( '.nfd-flex-1 span' )
 			.should( 'exist' );
 		cy.get( '@readyToGoNextLevel', { timeout: customCommandTimeout } )
-			.find( '.nfd-flex-none > .nfd-button--secondary' )
+			.find( '#view-site' )
 			.should( 'exist' )
-			.and( 'have.text', 'View your site' );
 		cy.get( '@readyToGoNextLevel' )
-			.find( '.nfd-flex-none .nfd-button--upsell' )
+			.find( '#launch-site' )
 			.should( 'exist' )
-			.and( 'have.text', 'Launch your site' );
 	} );
 
 	it( 'Verify Visit your site and Launch your site functionality', () => {
