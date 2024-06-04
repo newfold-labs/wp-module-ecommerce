@@ -112,16 +112,16 @@ export function YITHPlugins({ wpModules }) {
   }, [yithProducts])
 
   return (
-    <Section.Container id="ecommerce-features-wrapper" className={"nfd-border nfd-rounded-xl nfd-pt-0" + (anyPluginActive <= 0 ? " nfd-border-amber-300" : null) + (!(NewfoldRuntime.isWoo) ? 'nfd--mt-12' : '')}>
+    <Section.Container id="ecommerce-features-wrapper" className={"nfd-border nfd-rounded-xl nfd-pt-0" + (cards.length !== 0 && anyPluginActive <= 0 ? " nfd-border-amber-300" : null) + (!(NewfoldRuntime.isWoo) ? 'nfd--mt-12' : '')}>
       <div className={(anyPluginActive <= 0 ? "nfd-p-4 " : "nfd-p-4 nfd-pb-0 ") + "nfd-flex  nfd-flex-col md:nfd-flex-row nfd-justify-between nfd-gap-6 nfd-items-center"}>
-        {anyPluginActive <= 0 ? <img
+        {cards.length !== 0 && anyPluginActive <= 0 ? <img
           src={lightchest}
           className="nfd-w-48 nfd-text-[--nfd-ecommerce-text-dark]"
         /> : null}
         <div className="nfd-flex nfd-flex-col nfd-gap-3">
           <h2 className="nfd-font-medium nfd-text-base">
-            {anyPluginActive > 0 ? __("Exclusive Tools Included in Your Plan", "wp-module-ecommerce")
-              : __("Elevate Your Store with Exclusive WooCommerce Tools Included in Your Plan!", "wp-module-ecommerce")}
+            {cards.length !== 0 && anyPluginActive <= 0 ? __("Elevate Your Store with Exclusive WooCommerce Tools Included in Your Plan!", "wp-module-ecommerce") :
+              __("Exclusive Tools Included in Your Plan", "wp-module-ecommerce")}
           </h2>
           {__(
             "Unlock the full power of your plan with access to a range of exclusive WooCommerce tools powered by \nYITH. Enhance your store and keep your customers coming back for more!",
