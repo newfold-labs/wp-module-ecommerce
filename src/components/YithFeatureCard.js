@@ -2,6 +2,7 @@ import { Button, Card, Title } from "@newfold/ui-component-library";
 import { useEffect } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import { useInstallWonderCart } from "./useInstallWonderCart";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 
 export function YithFeatureCard({
   setIsOpen,
@@ -29,6 +30,11 @@ export function YithFeatureCard({
 
   const handleWonderCart = () => {
     installWonderCart();
+  }
+
+  if (yithPluginsMap.get(id).title === "nfd_slug_ecomdash_wordpress_plugin") {
+    if (!NewfoldRuntime.hasCapability("hasEcomdash"))
+      return;
   }
 
   return (
