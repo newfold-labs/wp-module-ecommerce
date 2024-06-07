@@ -22,11 +22,11 @@ describe( 'Home page - post migration events with help center ', () => {
 			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ helpCenter }' --format=json`,
 			{ timeout: customCommandTimeout }
 		);
-		cy.reload();
+		cy.get( '.wp-menu-name ').eq( 0 ).click()
 	} );
 
 	beforeEach( () => {
-		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
+		// cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
 	} );
 
 	it( 'Verify when update nameserver clicked', () => {

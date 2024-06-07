@@ -55,9 +55,9 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ cTBAndYithTrue }' --format=json`,
 			{ timeout: customCommandTimeout }
 		);
-		cy.reload();
+		cy.visit( '/wp-admin/admin.php?page=' + pluginId )
 		cy.get( `.${ appId }-app-navitem-Store`, {
-			timeout: mediumWait,
+			timeout: customCommandTimeout,
 		} ).click();
 		cy.get( `.${ appId }-app-subnavitem-Sales` ).should( 'exist' );
 	} );
@@ -71,7 +71,6 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ cTBTrueYithFalse }' --format=json`,
 			{ timeout: customCommandTimeout }
 		);
-		// cy.reload();
 		cy.visit( '/wp-admin/admin.php?page=' + pluginId )
 		cy.get( `.${ appId }-app-navitem-Store`, {
 			timeout: customCommandTimeout,
@@ -115,7 +114,6 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ cTBAndYithTrue }' --format=json`,
 			{ timeout: customCommandTimeout }
 		);
-		// cy.reload();
 		cy.visit( '/wp-admin/admin.php?page=' + pluginId )
 		cy.get( `.${ appId }-app-navitem-Store`, {
 			timeout: customCommandTimeout,
