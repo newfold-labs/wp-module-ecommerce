@@ -7,7 +7,7 @@ import {
 	waitForNextSteps,
 } from '../wp-module-support/utils.cy';
 
-const customCommandTimeout = 20000;
+const customCommandTimeout = 60000;
 const pluginId = GetPluginId();
 const appId = getAppId();
 

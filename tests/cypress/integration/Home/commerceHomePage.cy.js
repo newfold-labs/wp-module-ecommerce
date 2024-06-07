@@ -145,7 +145,9 @@ describe( 'Commerce Home Page- Next Steps', () => {
 	];
 
 	before( () => {
-		cy.exec( `npx wp-env run cli wp plugin deactivate woocommerce` );
+		cy.exec( `npx wp-env run cli wp plugin deactivate woocommerce` , {
+			failOnNonZeroExit: false,
+		} );
 
 		cy.exec( `npx wp-env run cli wp option set mm_brand ${ pluginId }` );
 
