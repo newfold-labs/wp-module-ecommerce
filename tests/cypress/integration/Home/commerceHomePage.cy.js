@@ -70,10 +70,10 @@ describe( 'Commerce Home Page- Coming soon mode', () => {
 			.should( 'exist' );
 		cy.get( '@readyToGoNextLevel', { timeout: customCommandTimeout } )
 			.find( '#view-site' )
-			.should( 'exist' )
+			.should( 'exist' );
 		cy.get( '@readyToGoNextLevel' )
 			.find( '#launch-site' )
-			.should( 'exist' )
+			.should( 'exist' );
 	} );
 
 	it( 'Verify Visit your site and Launch your site functionality', () => {
@@ -145,9 +145,7 @@ describe( 'Commerce Home Page- Next Steps', () => {
 	];
 
 	before( () => {
-		cy.exec( `npx wp-env run cli wp plugin deactivate woocommerce`, {
-			failOnNonZeroExit: false,
-		} );
+		cy.exec( `npx wp-env run cli wp plugin deactivate woocommerce` );
 
 		cy.exec( `npx wp-env run cli wp option set mm_brand ${ pluginId }` );
 
@@ -202,10 +200,7 @@ describe( 'Commerce Home Page- Next Steps', () => {
 		} ).click( { force: true } );
 		cy.get( '.navigation-buttons_next' ).click( { force: true } );
 		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
-		cy.exec( `npx wp-env run cli wp plugin deactivate woocommerce`, {
-			failOnNonZeroExit: false,
-		} );
-		cy.wait( 2000 );
+		cy.reload();
 		cy.get( '#next-steps-section', { timeout: customCommandTimeout } )
 			.as( 'nextSteps' )
 			.should( 'exist' )
