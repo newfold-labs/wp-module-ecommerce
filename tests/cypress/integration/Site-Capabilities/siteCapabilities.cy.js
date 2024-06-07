@@ -71,7 +71,8 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ cTBTrueYithFalse }' --format=json`,
 			{ timeout: customCommandTimeout }
 		);
-		cy.reload();
+		// cy.reload();
+		cy.visit( '/wp-admin/admin.php?page=' + pluginId )
 		cy.get( `.${ appId }-app-navitem-Store`, {
 			timeout: customCommandTimeout,
 		} ).click();
@@ -85,7 +86,6 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 	} );
 
 	it( 'Verify clicking on Buy Now leads to cpanel login page', () => {
-		cy.reload();
 		cy.get( `.${ appId }-app-navitem-Store`, {
 			timeout: customCommandTimeout,
 		} ).should( 'exist' );
@@ -115,7 +115,8 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ cTBAndYithTrue }' --format=json`,
 			{ timeout: customCommandTimeout }
 		);
-		cy.reload();
+		// cy.reload();
+		cy.visit( '/wp-admin/admin.php?page=' + pluginId )
 		cy.get( `.${ appId }-app-navitem-Store`, {
 			timeout: customCommandTimeout,
 		} ).click();

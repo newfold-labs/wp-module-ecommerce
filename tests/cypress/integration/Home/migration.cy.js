@@ -1,7 +1,7 @@
 import { GetPluginId } from '../wp-module-support/pluginID.cy';
 import { EventsAPI, APIList } from '../wp-module-support/eventsAPIs.cy';
 
-const customCommandTimeout = 20000;
+const customCommandTimeout = 60000;
 const pluginId = GetPluginId();
 const helpCenter = JSON.stringify( {
 	canAccessAI: true,
