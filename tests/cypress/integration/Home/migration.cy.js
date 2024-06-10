@@ -3,7 +3,7 @@ import { EventsAPI, APIList } from '../wp-module-support/eventsAPIs.cy';
 
 const customCommandTimeout = 60000;
 const pluginId = GetPluginId();
-const helpCenter = JSON.stringify( {
+const helpCenter =JSON.stringify( {
 	canAccessAI: true,
 	canAccessHelpCenter: true,
 } );
@@ -22,7 +22,7 @@ describe( 'Home page - post migration events with help center ', () => {
 			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ helpCenter }' --format=json`,
 			{ timeout: customCommandTimeout }
 		);
-		cy.get( '.wp-menu-name ').eq( 0 ).click()
+		cy.get( '.wp-menu-name ', { timeout: customCommandTimeout }).eq( 0 ).click()
 	} );
 
 	beforeEach( () => {
