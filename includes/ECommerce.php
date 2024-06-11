@@ -106,8 +106,8 @@ class ECommerce {
 		add_filter( 'manage_edit-page_sortable_columns', array( $this, 'sortable_columns' ) );
 		add_action( 'wp_login', array( $this, 'show_store_setup' ) );
 		add_action( 'auth_cookie_expired', array( $this, 'show_store_setup' ) );
-
-		add_action('admin_enqueue_scripts', array( $this, 'set_wpnav_collapse_setting'));			
+		add_action('admin_head', array( $this, 'hide_wp_pointer_with_css' ) );
+		add_action('admin_enqueue_scripts', array( $this, 'set_wpnav_collapse_setting'));
 
 		if ( ( $container->plugin()->id === 'bluehost' && ( $canAccessGlobalCTB || $hasYithExtended ) ) || ( $container->plugin()->id === 'hostgator' && $hasYithExtended ) ) {
 			add_filter( 'admin_menu', array( $this, 'custom_add_promotion_menu_item' ) );
@@ -674,5 +674,17 @@ class ECommerce {
 		if ( check_url_match( $brand, $site_url ) ) {
 			update_option( 'showMigrationSteps', false );
 		}
+	}
+
+	/**
+	 * Suppress WP-Form Notice using css
+	 *
+	 * @return void
+	 */
+
+	public function hide_wp_pointer_with_css() {
+		echo '<style>
+			.wp-pointer { display: none !important; }
+		</style>';
 	}
 }
