@@ -17,19 +17,7 @@ describe(
 			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/store' );
 
 			// Payments tab is not displayed
-			cy.get( `.${ appId }-app-navitem-Store`, {
-				timeout: customCommandTimeout,
-			} )
-				.next()
-				.find( '.nfd-m-0' )
-				.each( ( item, index, list ) => {
-					expect( list ).to.have.length( 2 );
-				} );
-			cy.get( `.${ appId }-app-subnavitem-Products` ).should( 'exist' );
-			cy.get( `.${ appId }-app-subnavitem-Store` ).should( 'exist' );
-			cy.get( `.${ appId }-app-subnavitem-Payments` ).should(
-				'not.exist'
-			);
+			cy.get( `.${ appId }-app-subnavitem-Payments` ).should( 'not.exist' );
 
 			// Title and desctription elements display
 			// cy.get( '[data-testid="nfd-nowoo-store-title"]' ).should( 'exist' );

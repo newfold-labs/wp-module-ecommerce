@@ -5,10 +5,7 @@ const customCommandTimeout = 30000;
 const longWait = 120000;
 
 export const comingSoon = ( shouldBeComingSoon ) => {
-	cy.get( `.${ appId }-app-navitem-Settings`, {
-		timeout: customCommandTimeout,
-	} ).click();
-
+	cy.visit( '/wp-admin/admin.php?page=' + Cypress.env('pluginId') + '#/settings' );
 	cy.get( '[data-id="coming-soon-toggle"]', {
 		timeout: customCommandTimeout,
 	} ).as( 'comingSoonToggle' );

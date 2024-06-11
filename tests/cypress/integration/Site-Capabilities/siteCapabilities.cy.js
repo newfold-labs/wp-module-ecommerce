@@ -30,7 +30,7 @@ describe(
 			isJarvis: true,
 		} );
 
-		before( function () {
+		before( () => {
 			if ( pluginId !== 'bluehost' ) {
 				this.skip();
 			}
