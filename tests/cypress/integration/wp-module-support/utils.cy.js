@@ -39,14 +39,13 @@ export const comingSoon = ( shouldBeComingSoon ) => {
 };
 
 export const installWoo = () => {
-	cy.exec( `npx wp-env run cli wp plugin install woocommerce`, {
-		timeout: longWait,
-		log: true,
-	} );
-
-	cy.exec( `npx wp-env run cli wp plugin activate woocommerce`, {
-		timeout: longWait,
-	} );
+	cy.exec(
+		`npx wp-env run cli wp plugin install woocommerce --activate && npx wp-env run cli wp plugin deactivate wonder-cart yith-paypal-payments-for-woocommerce-extended yith-stripe-payments-for-woocommerce-extended`,
+		{
+			timeout: longWait,
+			log: true,
+		}
+	);
 };
 
 export const viewCompletedTasks = () => {
