@@ -138,8 +138,11 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 			.click();
 		cy.get( '.nfd-notification--success', {
 			timeout: customCommandTimeout,
+		}).should('exist');
+		cy.get( `.${ appId }-app-site-info`, {
+			timeout: customCommandTimeout,
 		} ).should( 'exist' );
-		cy.get( '#wonder-cart-init', { timeout: mediumWait } ).should(
+		cy.get( '#wonder-cart-init', { timeout: customCommandTimeout } ).should(
 			'exist'
 		);
 	} );
