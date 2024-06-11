@@ -37,10 +37,6 @@ describe(
 			installWoo();
 		} );
 
-		beforeEach( () => {
-			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/store' );
-		} );
-
 		after( () => {
 			cy.exec(
 				`npx wp-env run cli wp transient delete nfd_site_capabilities`,
