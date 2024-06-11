@@ -107,7 +107,9 @@ class ECommerce {
 		add_action( 'wp_login', array( $this, 'show_store_setup' ) );
 		add_action( 'auth_cookie_expired', array( $this, 'show_store_setup' ) );
 		add_action('admin_head', array( $this, 'hide_wp_pointer_with_css' ) );
-		add_action('admin_enqueue_scripts', array( $this, 'set_wpnav_collapse_setting'));
+		add_action('admin_enqueue_scripts', array( $this, 'set_wpnav_collapse_setting'));	
+		add_action('admin_footer', array( $this, 'disable_plugin_deactivate_link'));	
+		
 
 		if ( ( $container->plugin()->id === 'bluehost' && ( $canAccessGlobalCTB || $hasYithExtended ) ) || ( $container->plugin()->id === 'hostgator' && $hasYithExtended ) ) {
 			add_filter( 'admin_menu', array( $this, 'custom_add_promotion_menu_item' ) );
@@ -205,6 +207,27 @@ class ECommerce {
 		wp_enqueue_script( 'nfd_wpnavbar_setting', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/wpnavbar.js', array( 'jquery' ), '1.0', true );
 		$params = array( 'nfdbrandname' => $brandNameValue );
 		wp_localize_script( 'nfd_wpnavbar_setting', 'navBarParams', $params );
+	}
+
+	/**
+	 * Disable the wondercart deactivate link
+	 */
+	function disable_plugin_deactivate_link() {
+		?>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				// Replace 'your-plugin-folder/your-plugin-file.php' with your plugin's main file
+				var pluginSlug = 'wondercart';
+	
+				$('tr[data-slug="' + pluginSlug + '"] .deactivate a').removeAttr('href').css({
+					'color': 'gray',
+					'cursor': 'not-allowed'
+				}).click(function(e) {
+					e.preventDefault();
+				});
+			});
+		</script>
+		<?php
 	}
 
 	/**
