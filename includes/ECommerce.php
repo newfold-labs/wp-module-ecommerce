@@ -216,12 +216,13 @@ class ECommerce {
 		?>
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
-				// Replace 'your-plugin-folder/your-plugin-file.php' with your plugin's main file
 				var pluginSlug = 'wondercart';
 	
-				$('tr[data-slug="' + pluginSlug + '"] .deactivate a').removeAttr('href').css({
+				$('tr[data-slug="' + pluginSlug + '"] .deactivate').css({
+					'display': 'none',					
+				}).find('a').removeAttr('href').css({
 					'color': 'gray',
-					'cursor': 'not-allowed'
+                	'cursor': 'not-allowed'
 				}).click(function(e) {
 					e.preventDefault();
 				});
