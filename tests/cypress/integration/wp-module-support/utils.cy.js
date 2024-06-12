@@ -13,8 +13,9 @@ export const comingSoon = ( shouldBeComingSoon ) => {
 	if ( shouldBeComingSoon ) {
 		cy.get( '@comingSoonToggle' )
 			.invoke( 'attr', 'aria-checked' )
-			.then( ( area_checked ) => {
-				if ( area_checked == 'false' ) {
+			.then( ( aria_checked ) => {
+				if ( aria_checked == 'false' ) {
+					cy.log( 'Enable Coming Soon Mode' );
 					cy.get( '@comingSoonToggle' ).click();
 					cy.get( '.nfd-notification--success', {
 						timeout: customCommandTimeout,
@@ -24,8 +25,9 @@ export const comingSoon = ( shouldBeComingSoon ) => {
 	} else {
 		cy.get( '@comingSoonToggle' )
 			.invoke( 'attr', 'aria-checked' )
-			.then( ( area_checked ) => {
-				if ( area_checked == 'true' ) {
+			.then( ( aria_checked ) => {
+				if ( aria_checked == 'true' ) {
+					cy.log( 'Disable Coming Soon Mode' );
 					cy.get( '@comingSoonToggle' ).click();
 					cy.get( '.nfd-notification--success', {
 						timeout: customCommandTimeout,
@@ -36,6 +38,7 @@ export const comingSoon = ( shouldBeComingSoon ) => {
 };
 
 export const installWoo = () => {
+	cy.log( 'Installing WooCommerce' );
 	cy.exec(
 		`npx wp-env run cli wp plugin install woocommerce --activate && npx wp-env run cli wp plugin deactivate wonder-cart yith-paypal-payments-for-woocommerce-extended yith-stripe-payments-for-woocommerce-extended`,
 		{
