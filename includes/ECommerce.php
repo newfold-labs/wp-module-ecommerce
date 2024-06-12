@@ -108,6 +108,8 @@ class ECommerce {
 		add_action( 'auth_cookie_expired', array( $this, 'show_store_setup' ) );
 		add_action('admin_head', array( $this, 'hide_wp_pointer_with_css' ) );
 		add_action('admin_enqueue_scripts', array( $this, 'set_wpnav_collapse_setting'));
+		add_action( 'admin_init', array( $this, 'remove_woocommerce_ssl_notice' ) );
+
 
 		if ( ( $container->plugin()->id === 'bluehost' && ( $canAccessGlobalCTB || $hasYithExtended ) ) || ( $container->plugin()->id === 'hostgator' && $hasYithExtended ) ) {
 			add_filter( 'admin_menu', array( $this, 'custom_add_promotion_menu_item' ) );
@@ -583,6 +585,17 @@ class ECommerce {
 			if ( ! get_user_meta( get_current_user_id(), 'manageedit-postcolumnshidden' ) ) {
 				update_user_meta( get_current_user_id(), 'manageedit-postcolumnshidden', array( 'author', 'categories', 'tags', 'comments', 'date', 'wpseo-score', 'wpseo-score-readability', 'wpseo-title', 'wpseo-metadesc', 'wpseo-focuskw', 'wpseo-links' ) );
 			}
+		}
+	}
+
+	/**
+	 * Hide woocommerce ssl notice
+	 *
+	 * @return void
+	 */
+	public function remove_woocommerce_ssl_notice() {
+		if ( class_exists( 'WooCommerce' ) ) {
+			remove_action( 'admin_notices', array( 'WC_Admin_Notices', 'ssl_check' ) );
 		}
 	}
 
