@@ -23,3 +23,4 @@ cypress.env.json
 *.log
 *.sql
 *.zip
+.vscode/settings.json
