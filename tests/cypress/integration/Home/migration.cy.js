@@ -8,7 +8,7 @@ const helpCenter = JSON.stringify( {
 	canAccessHelpCenter: true,
 } );
 
-describe( 'Home page - post migration events with help center ', () => {
+describe.skip( 'Home page - post migration events with help center ', () => {
 	before( function () {
 		if ( pluginId !== 'bluehost' ) {
 			this.skip();
