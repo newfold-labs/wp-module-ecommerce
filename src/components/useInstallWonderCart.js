@@ -15,6 +15,7 @@ export function useInstallWonderCart({ wpModules }) {
         variant: "success",
       });
       await sleep(1000);
+      window.location.href = "admin.php?page=bluehost#/store/sales_discounts"
       window.location.reload();
     } else {
       notify.push("nfd_slug_wonder_cart-install-status", {
