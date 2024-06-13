@@ -218,6 +218,10 @@ class ECommerce {
 			jQuery(document).ready(function($) {
 				var pluginSlug = 'wondercart';
 	
+				$('tr[data-slug="' + pluginSlug + '"] input:checkbox').css({
+					'visibility': 'hidden'
+				}).prop("disabled", true)
+
 				$('tr[data-slug="' + pluginSlug + '"] .deactivate').css({
 					'display': 'none',					
 				}).find('a').removeAttr('href').css({
