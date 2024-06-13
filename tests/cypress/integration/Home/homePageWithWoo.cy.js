@@ -11,7 +11,7 @@ const customCommandTimeout = 20000;
 const pluginId = GetPluginId();
 const appId = getAppId();
 
-describe.skip( 'Commerce Home Page- When WooCommerce is installed', () => {
+describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 	before( () => {
 		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/store' );
 		installWoo();
