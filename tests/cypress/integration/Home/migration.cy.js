@@ -36,7 +36,7 @@ describe( 'Home page - post migration events with help center ', () => {
 		cy.intercept( APIList.update_nameserver ).as( 'events' );
 		cy.get( '.nfd-grid.nfd-gap-4 ul li a' ).eq( 0 ).click();
 		EventsAPI( APIList.update_nameserver, pluginId );
-		cy.get( '.nfd-help-center', { timeout: customCommandTimeout } ).should(
+		cy.get( '#nfd-help-center', { timeout: customCommandTimeout } ).should(
 			'be.visible'
 		);
 		cy.get( '.close-button' ).click();
@@ -49,7 +49,7 @@ describe( 'Home page - post migration events with help center ', () => {
 		cy.intercept( APIList.connect_domain ).as( 'events' );
 		cy.get( '.nfd-grid.nfd-gap-4 ul li a' ).eq( 1 ).click();
 		EventsAPI( APIList.connect_domain, pluginId );
-		cy.get( '.nfd-help-center', { timeout: customCommandTimeout } ).should(
+		cy.get( '#nfd-help-center', { timeout: customCommandTimeout } ).should(
 			'be.visible'
 		);
 		cy.get( '.close-button' ).click();
@@ -63,7 +63,7 @@ describe( 'Home page - post migration events with help center ', () => {
 		cy.get( '#next-steps-section', { timeout: customCommandTimeout } )
 			.scrollIntoView()
 			.should( 'exist' );
-		cy.get( '#add-a-product', { timeout: customCommandTimeout } ).should(
+		cy.get( '#upload-media-to-your-site', { timeout: customCommandTimeout } ).should(
 			'exist'
 		);
 	} );
