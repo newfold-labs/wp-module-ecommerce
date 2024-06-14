@@ -7,7 +7,6 @@ const customCommandTimeout = 30000;
 
 describe(
 	'Store Page - WooCommerce is deactivated/uninstalled',
-	{ testIsolation: true },
 	() => {
 		it( 'Verify Store Page renders properly without Woo', () => {
 			cy.exec( `npx wp-env run cli wp plugin deactivate woocommerce`, {
@@ -17,7 +16,9 @@ describe(
 			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/store' );
 
 			// Payments tab is not displayed
-			cy.get( `.${ appId }-app-subnavitem-Payments` ).should( 'not.exist' );
+			cy.get( `.${ appId }-app-subnavitem-Payments` ).should(
+				'not.exist'
+			);
 
 			// Title and desctription elements display
 			// cy.get( '[data-testid="nfd-nowoo-store-title"]' ).should( 'exist' );
