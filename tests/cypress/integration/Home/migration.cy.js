@@ -63,8 +63,8 @@ describe( 'Home page - post migration events with help center ', () => {
 		cy.get( '#next-steps-section', { timeout: customCommandTimeout } )
 			.scrollIntoView()
 			.should( 'exist' );
-		cy.get( '#upload-media-to-your-site', { timeout: customCommandTimeout } ).should(
-			'exist'
-		);
+		cy.get( '#upload-media-to-your-site', {
+			timeout: customCommandTimeout,
+		} ).should( 'exist' );
 	} );
 } );
