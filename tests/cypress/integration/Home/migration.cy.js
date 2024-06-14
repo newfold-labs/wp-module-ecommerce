@@ -22,10 +22,6 @@ describe( 'Home page - post migration events with help center ', () => {
 			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ helpCenter }' --format=json`,
 			{ timeout: customCommandTimeout }
 		);
-		cy.exec( `npx wp-env run cli wp plugin deactivate woocommerce`, {
-			failOnNonZeroExit: false,
-		});
-
 		cy.reload();
 	} );
 
