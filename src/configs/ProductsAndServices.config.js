@@ -5,9 +5,13 @@ import {
   CubeIcon,
   GiftIcon,
 } from "@heroicons/react/24/outline";
-import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { __ } from "@wordpress/i18n";
 import { FeatureCard } from "../components/FeatureCard";
+import {
+  YITH_WOOCOMMERCE_BOOKING_APPOINTMENTS,
+  YITH_WOOCOMMERCE_GIFT_CARDS
+} from "../constants";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { MarketplaceSdk } from "../sdk/marketplace";
 import { PluginsSdk } from "../sdk/plugins";
 import { WooCommerceSdk } from "../sdk/woocommerce";
@@ -17,10 +21,6 @@ import {
   wcPluginStatusParser,
   wcProductsParser,
 } from "./selectors";
-import {
-  YITH_WOOCOMMERCE_BOOKING_APPOINTMENTS,
-  YITH_WOOCOMMERCE_GIFT_CARDS
-} from "../constants";
 
 const getUrl = (href) => {
   let [page, qs] = href.split("?");
@@ -164,17 +164,13 @@ export const ProductsAndServicesDefinition = (props) => ({
       }),
       text: (state) => ({
         title: __(
-          "YITH Booking and Appointment for WooCommerce",
+          "Bookings & Appointments",
           "wp-module-ecommerce"
         ),
-        actionName: !state.isActive
-          ? __("Enable", "wp-module-ecommerce")
-          : state.hasUsedPlugin
-          ? __("Manage bookings", "wp-module-ecommerce")
-          : __("Create a booking", "wp-module-ecommerce"),
+        actionName: state.isActive ? __('Manage Bookings & Appointments', 'wp-module-ecommerce') : __('Setup Bookings & Appointments', 'wp-module-ecommerce'),
         slug: "yith_wcbk_panel",
       }),
-      state: defineFeatureState(),
+      state: {...defineFeatureState(), isUpsellNeeded: () => false, featureUrl: () => NewfoldRuntime.adminUrl("admin.php?page=yith_wcbk_panel")},
 
       actions: {
         installFeature: createPluginInstallAction(
@@ -219,15 +215,11 @@ export const ProductsAndServicesDefinition = (props) => ({
         learnMoreUrl: YITH_WOOCOMMERCE_GIFT_CARDS,
       }),
       text: (state) => ({
-        title: __("YITH WooCommerce Gift Cards", "wp-module-ecommerce"),
-        actionName: !state.isActive
-          ? __("Enable", "wp-module-ecommerce")
-          : state.hasUsedPlugin
-          ? __("Manage gift cards", "wp-module-ecommerce")
-          : __("Create a gift card", "wp-module-ecommerce"),
+        title: __("Gift Cards", "wp-module-ecommerce"),
+        actionName: state.isActive ? __('Manage Gift Cards', 'wp-module-ecommerce') : __('Create a Gift Card', 'wp-module-ecommerce'),
         slug: "yith_woocommerce_gift_cards_panel",
       }),
-      state: defineFeatureState(),
+      state: {...defineFeatureState(), isUpsellNeeded: () => false, featureUrl: () => NewfoldRuntime.adminUrl("admin.php?page=yith_woocommerce_gift_cards_panel")},
       actions: {
         installFeature: createPluginInstallAction(
           "nfd_slug_yith_woocommerce_gift_cards",
