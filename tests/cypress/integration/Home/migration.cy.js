@@ -13,6 +13,11 @@ describe(
 	{ testIsolation: true },
 	() => {
 		beforeEach( function () {
+			cy.login(
+				Cypress.env( 'wpUsername' ),
+				Cypress.env( 'wpPassword' )
+			);
+			
 			if ( pluginId !== 'bluehost' ) {
 				this.skip();
 			}
@@ -33,7 +38,9 @@ describe(
 
 		it( 'Verify when update nameserver clicked', () => {
 			cy.intercept( APIList.update_nameserver ).as( 'events' );
-			cy.get( '#onboarding-list [data-testid="nameservers"]', { timeout: customCommandTimeout } )
+			cy.get( '#onboarding-list [data-testid="nameservers"]', {
+				timeout: customCommandTimeout,
+			} )
 				.scrollIntoView()
 				.should( 'exist' )
 				.click();
@@ -46,7 +53,9 @@ describe(
 
 		it( 'Verify when connect domain to site clicked', () => {
 			cy.intercept( APIList.connect_domain ).as( 'events' );
-			cy.get( '#onboarding-list [data-testid="domain"]', { timeout: customCommandTimeout } )
+			cy.get( '#onboarding-list [data-testid="domain"]', {
+				timeout: customCommandTimeout,
+			} )
 				.scrollIntoView()
 				.should( 'exist' )
 				.click();
@@ -58,7 +67,9 @@ describe(
 		} );
 
 		it( 'Verify when continue with store setup clicked', () => {
-			cy.get( '#onboarding-list [data-testid="continue"]', { timeout: customCommandTimeout } )
+			cy.get( '#onboarding-list [data-testid="continue"]', {
+				timeout: customCommandTimeout,
+			} )
 				.scrollIntoView()
 				.should( 'exist' )
 				.click();

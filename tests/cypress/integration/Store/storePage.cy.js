@@ -10,8 +10,12 @@ describe(
 	{ testIsolation: true },
 	() => {
 		before( () => {
+			cy.login(
+				Cypress.env( 'wpUsername' ),
+				Cypress.env( 'wpPassword' )
+			);
 			uninstallPlugins();
-		});
+		} );
 
 		it( 'Verify Store Page renders properly without Woo', () => {
 			cy.exec( `npx wp-env run cli wp plugin deactivate woocommerce`, {
