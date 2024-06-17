@@ -1,5 +1,5 @@
 import { GetPluginId, getAppId } from '../wp-module-support/pluginID.cy';
-import { installWoo } from '../wp-module-support/utils.cy';
+import { uninstallPlugins, installWoo } from '../wp-module-support/utils.cy';
 
 const customCommandTimeout = 60000;
 const mediumWait = 30000;
@@ -35,13 +35,15 @@ describe(
 				Cypress.env( 'wpUsername' ),
 				Cypress.env( 'wpPassword' )
 			);
+			uninstallPlugins();
+			installWoo();
+			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
 		} );
 
 		before( () => {
 			if ( pluginId !== 'bluehost' ) {
 				this.skip();
 			}
-			installWoo();
 		} );
 
 		after( () => {
@@ -84,7 +86,7 @@ describe(
 
 		it( 'Verify Buy Now is shown when canAccessGlobalCTB is true and commerce addon is false', () => {
 			cy.exec(
-				`npx wp-env run cli wp transient delete nfd_site_capabilities && npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ cTBTrueYithFalse }' --format=json && npx wp-env run cli wp plugin deactivate wonder-cart yith-paypal-payments-for-woocommerce-extended yith-stripe-payments-for-woocommerce-extended`,
+				`npx wp-env run cli wp transient delete nfd_site_capabilities && npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ cTBTrueYithFalse }' --format=json`,
 				{ timeout: customCommandTimeout }
 			);
 			cy.reload();
