@@ -1,5 +1,5 @@
 import { GetPluginId, getAppId } from '../wp-module-support/pluginID.cy';
-import { comingSoon } from '../wp-module-support/utils.cy';
+import { comingSoon, uninstallPlugins } from '../wp-module-support/utils.cy';
 
 const pluginId = GetPluginId();
 const appId = getAppId();
@@ -7,7 +7,12 @@ const customCommandTimeout = 30000;
 
 describe(
 	'Store Page - WooCommerce is deactivated/uninstalled',
+	{ testIsolation: true },
 	() => {
+		before( () => {
+			uninstallPlugins();
+		});
+
 		it( 'Verify Store Page renders properly without Woo', () => {
 			cy.exec( `npx wp-env run cli wp plugin deactivate woocommerce`, {
 				failOnNonZeroExit: false,
@@ -20,17 +25,11 @@ describe(
 				'not.exist'
 			);
 
-			// Title and desctription elements display
-			// cy.get( '[data-testid="nfd-nowoo-store-title"]' ).should( 'exist' );
-			// cy.get( '[data-testid="nfd-nowoo-store-description"]' ).should(
-			// 	'exist'
-			// );
-			cy.get( '.nfd-app-section-header h2' ).should( 'exist' );
-			cy.get( '.nfd-app-section-header' )
-				.next()
-				.as( 'storeFlex' )
-				.should( 'exist' );
-			cy.get( '@storeFlex' ).find( 'span' ).should( 'exist' );
+			// Title and description elements display
+			cy.get( '[data-testid="nfd-nowoo-store-title"]' ).should( 'exist' );
+			cy.get( '[data-testid="nfd-nowoo-store-description"]' ).should(
+				'exist'
+			);
 
 			// Verify Store and its sub tabs should have Install WooCommerce buttons
 			const storeNavElements = [
