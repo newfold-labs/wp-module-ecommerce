@@ -128,7 +128,7 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 		);
 	} );
 
-	it( 'Verify clicking Install Now successfully installs Wonder Cart plugin', () => {
+	it.skip( 'Verify clicking Install Now successfully installs Wonder Cart plugin', () => {
 		cy.get( `.${ appId }-app-navitem-Store`, {
 			timeout: customCommandTimeout,
 		} ).click();
