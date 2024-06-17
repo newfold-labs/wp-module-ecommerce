@@ -1,5 +1,5 @@
 import { GetPluginId, getAppId } from '../wp-module-support/pluginID.cy';
-import { comingSoon, uninstallPlugins } from '../wp-module-support/utils.cy';
+import { uninstallPlugins } from '../wp-module-support/utils.cy';
 
 const pluginId = GetPluginId();
 const appId = getAppId();
@@ -19,6 +19,7 @@ describe(
 		} );
 
 		it( 'Verify Store Page renders properly without Woo', () => {
+			cy.reload();
 			// Payments tab is not displayed
 			cy.get( `.${ appId }-app-subnavitem-Payments` ).should(
 				'not.exist'
