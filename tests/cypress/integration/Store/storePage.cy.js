@@ -15,15 +15,10 @@ describe(
 				Cypress.env( 'wpPassword' )
 			);
 			uninstallPlugins();
+			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/store' );
 		} );
 
 		it( 'Verify Store Page renders properly without Woo', () => {
-			cy.exec( `npx wp-env run cli wp plugin deactivate woocommerce`, {
-				failOnNonZeroExit: false,
-			} );
-			comingSoon( false );
-			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/store' );
-
 			// Payments tab is not displayed
 			cy.get( `.${ appId }-app-subnavitem-Payments` ).should(
 				'not.exist'
