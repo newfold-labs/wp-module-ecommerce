@@ -24,7 +24,3 @@ Cypress.on( 'uncaught:exception', ( err ) => {
 		return false;
 	}
 } );
-
-before( () => {
-	cy.login( Cypress.env( 'wpUsername' ), Cypress.env( 'wpPassword' ) );
-} );

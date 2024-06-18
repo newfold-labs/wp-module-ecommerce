@@ -1,5 +1,6 @@
 import { GetPluginId } from '../wp-module-support/pluginID.cy';
 import {
+	wpLogin,
 	comingSoon,
 	viewCompletedTasks,
 	viewRemainingTasks,
@@ -30,6 +31,7 @@ describe( 'e-commerce Home Page- Next Steps', () => {
 	];
 
 	before( () => {
+		wpLogin();
 		cy.exec( `npx wp-env run cli wp plugin deactivate woocommerce`, {
 			failOnNonZeroExit: false,
 		} );
