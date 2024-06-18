@@ -1,5 +1,8 @@
 import { GetPluginId, getAppId } from '../wp-module-support/pluginID.cy';
-import { uninstallPlugins, installWoo } from '../wp-module-support/utils.cy';
+import {
+	uninstallPlugins,
+	installWoo,
+} from '../wp-module-support/utils.cy';
 
 const customCommandTimeout = 60000;
 const mediumWait = 30000;
@@ -7,10 +10,10 @@ const pluginId = GetPluginId();
 const appId = getAppId();
 
 describe(
-	'Verify Wondercart accessibility as per site capabilities',
+	'Verify Wondercart follows site capabilities',
 	{ testIsolation: true },
 	() => {
-		const cTBAndYithTrue = JSON.stringify( {
+		const CTBAndYithTrue = JSON.stringify( {
 			canAccessAI: true,
 			canAccessHelpCenter: true,
 			canAccessGlobalCTB: true,
@@ -20,7 +23,7 @@ describe(
 			isJarvis: true,
 		} );
 
-		const cTBTrueYithFalse = JSON.stringify( {
+		const CTBTrueYithFalse = JSON.stringify( {
 			canAccessAI: true,
 			canAccessHelpCenter: true,
 			canAccessGlobalCTB: true,
@@ -37,10 +40,6 @@ describe(
 			);
 			uninstallPlugins();
 			installWoo();
-			cy.exec(
-				`npx wp-env run cli wp transient delete nfd_site_capabilities`,
-				{ failOnNonZeroExit: false }
-			);
 			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
 		} );
 
@@ -50,16 +49,11 @@ describe(
 			}
 		} );
 
-		after( () => {
-			cy.exec(
-				`npx wp-env run cli wp transient delete nfd_site_capabilities`,
-				{ failOnNonZeroExit: false }
-			);
-		} );
-
 		it( 'Verify Sales and Discounts sub tab content and functionality', () => {
+			// Install button is displayed when capabilities are true
+			cy.log( 'Update capabilities transient: CTBAndYithTrue' );
 			cy.exec(
-				`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ cTBAndYithTrue }' --format=json`,
+				`npx wp-env run cli wp option update _transient_nfd_site_capabilities '${ CTBAndYithTrue }' --format=json`,
 				{ timeout: customCommandTimeout }
 			);
 			cy.reload();
@@ -89,8 +83,10 @@ describe(
 		} );
 
 		it( 'Verify Buy Now is shown when canAccessGlobalCTB is true and commerce addon is false', () => {
+			// Buy now button is displayed when capabilities are false.
+			cy.log( 'Update capabilities transient: CTBTrueYithFalse' );
 			cy.exec(
-				`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ cTBTrueYithFalse }' --format=json`,
+				`npx wp-env run cli wp option update _transient_nfd_site_capabilities '${ CTBTrueYithFalse }' --format=json`,
 				{ timeout: customCommandTimeout }
 			);
 			cy.reload();

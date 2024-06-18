@@ -77,3 +77,11 @@ export const waitForNextSteps = () => {
 		.scrollIntoView()
 		.should( 'exist' );
 };
+
+export const deleteCapabilitiesTransient = () => {
+	cy.log( 'Deleting capabilities transient' );
+	cy.exec(
+		`npx wp-env run cli wp transient delete nfd_site_capabilities`,
+		{ failOnNonZeroExit: false }
+	);
+};
