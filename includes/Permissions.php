@@ -10,7 +10,7 @@ final class Permissions {
 	/**
 	 * WordPress Admin capability string
 	 */
-	const ADMIN          = 'manage_options';
+	const ADMIN = 'manage_options';
 
 	/**
 	 * Confirm REST API caller has ADMIN user capabilities.
@@ -18,6 +18,6 @@ final class Permissions {
 	 * @return boolean
 	 */
 	public static function rest_is_authorized_admin() {
-		return \is_user_logged_in() && \current_user_can( Permissions::ADMIN );
+		return \is_user_logged_in() && \current_user_can( self::ADMIN );
 	}
 }
