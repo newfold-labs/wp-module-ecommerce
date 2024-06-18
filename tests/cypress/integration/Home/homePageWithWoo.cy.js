@@ -5,20 +5,20 @@ import {
 	viewCompletedTasks,
 	viewRemainingTasks,
 	waitForNextSteps,
+	uninstallPlugins,
 } from '../wp-module-support/utils.cy';
 
 const customCommandTimeout = 20000;
 const pluginId = GetPluginId();
 const appId = getAppId();
 
-describe( 'Commerce Home Page- When WooCommerce is installed', () => {
-	before( () => {
-		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/store' );
+describe( 'Commerce Home Page- When WooCommerce is installed',
+	{ testIsolation: true },
+	() => {
+	beforeEach( () => {
+		uninstallPlugins();
 		installWoo();
 		comingSoon( true );
-	} );
-
-	beforeEach( () => {
 		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
 	} );
 	
