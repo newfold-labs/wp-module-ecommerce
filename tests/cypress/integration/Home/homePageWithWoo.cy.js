@@ -130,7 +130,7 @@ describe(
 			);
 		} );
 
-		it( ' Verify next step "Set up Shipping options" ', () => {
+		it( 'Verify next step "Set up Shipping options"', () => {
 			if ( pluginId == 'bluehost' ) {
 				waitForNextSteps();
 				cy.get( '#setup-shipping-options a', {
