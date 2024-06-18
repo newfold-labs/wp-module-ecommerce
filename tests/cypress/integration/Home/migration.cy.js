@@ -76,7 +76,7 @@ describe(
 			cy.get( '#next-steps-section', { timeout: customCommandTimeout } )
 				.scrollIntoView()
 				.should( 'exist' );
-			cy.get( '#add-a-product', {
+			cy.get( '#upload-media-to-your-site', {
 				timeout: customCommandTimeout,
 			} ).should( 'exist' );
 		} );

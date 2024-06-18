@@ -37,6 +37,10 @@ describe(
 			);
 			uninstallPlugins();
 			installWoo();
+			cy.exec(
+				`npx wp-env run cli wp transient delete nfd_site_capabilities`,
+				{ failOnNonZeroExit: false }
+			);
 			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
 		} );
 
@@ -55,7 +59,7 @@ describe(
 
 		it( 'Verify Sales and Discounts sub tab content and functionality', () => {
 			cy.exec(
-				`npx wp-env run cli wp transient delete nfd_site_capabilities && npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ cTBAndYithTrue }' --format=json`,
+				`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ cTBAndYithTrue }' --format=json`,
 				{ timeout: customCommandTimeout }
 			);
 			cy.reload();
@@ -86,7 +90,7 @@ describe(
 
 		it( 'Verify Buy Now is shown when canAccessGlobalCTB is true and commerce addon is false', () => {
 			cy.exec(
-				`npx wp-env run cli wp transient delete nfd_site_capabilities && npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ cTBTrueYithFalse }' --format=json`,
+				`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ cTBTrueYithFalse }' --format=json`,
 				{ timeout: customCommandTimeout }
 			);
 			cy.reload();
