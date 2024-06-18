@@ -102,7 +102,9 @@ describe(
 			cy.get( '.nfd-notification--success', {
 				timeout: customCommandTimeout,
 			} ).should( 'exist' );
-			cy.get( '#wonder-cart-init', { timeout: mediumWait } ).should(
+			
+			// Verify wonder cart content displays
+			cy.get( '#wonder-cart-init', { timeout: customCommandTimeout } ).should(
 				'exist'
 			);
 		} );
