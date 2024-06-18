@@ -202,10 +202,7 @@ describe( 'Commerce Home Page- Next Steps', () => {
 		} ).click( { force: true } );
 		cy.get( '.navigation-buttons_next' ).click( { force: true } );
 		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
-		cy.exec( `npx wp-env run cli wp plugin deactivate woocommerce`, {
-			failOnNonZeroExit: false,
-		} );
-		cy.wait( 2000 );
+		cy.reload();
 		cy.get( '#next-steps-section', { timeout: customCommandTimeout } )
 			.as( 'nextSteps' )
 			.should( 'exist' )
