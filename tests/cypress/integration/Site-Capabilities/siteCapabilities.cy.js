@@ -56,8 +56,8 @@ describe(
 				`npx wp-env run cli wp option update _transient_nfd_site_capabilities '${ CTBAndYithTrue }' --format=json`,
 				{ timeout: customCommandTimeout }
 			);
-			cy.reload();
 			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/store' );
+			cy.reload();
 
 			// Verify Install Now exists when customer has ecommerce addon
 			cy.get( `.${ appId }-app-subnavitem-Sales`, {
@@ -89,8 +89,9 @@ describe(
 				`npx wp-env run cli wp option update _transient_nfd_site_capabilities '${ CTBTrueYithFalse }' --format=json`,
 				{ timeout: customCommandTimeout }
 			);
-			cy.reload();
 			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/store' );
+			cy.reload();
+			
 			cy.get( `.${ appId }-app-subnavitem-Sales` )
 				.as( 'salesTab' )
 				.should( 'exist' );
