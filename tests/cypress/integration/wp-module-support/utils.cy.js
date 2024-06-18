@@ -85,3 +85,7 @@ export const deleteCapabilitiesTransient = () => {
 		{ failOnNonZeroExit: false }
 	);
 };
+
+export const wpLogin = () => {
+	cy.login( Cypress.env( 'wpUsername' ), Cypress.env( 'wpPassword' ) );
+};

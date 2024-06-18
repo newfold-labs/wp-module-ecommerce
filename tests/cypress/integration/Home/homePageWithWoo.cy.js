@@ -1,5 +1,6 @@
 import { GetPluginId, getAppId } from '../wp-module-support/pluginID.cy';
 import {
+	wpLogin,
 	installWoo,
 	viewCompletedTasks,
 	viewRemainingTasks,
@@ -16,10 +17,7 @@ describe(
 	{ testIsolation: true },
 	() => {
 		beforeEach( () => {
-			cy.login(
-				Cypress.env( 'wpUsername' ),
-				Cypress.env( 'wpPassword' )
-			);
+			wpLogin();
 			uninstallPlugins();
 			installWoo();
 			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );

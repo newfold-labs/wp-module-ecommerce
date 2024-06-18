@@ -1,5 +1,5 @@
 import { GetPluginId, getAppId } from '../wp-module-support/pluginID.cy';
-import { uninstallPlugins } from '../wp-module-support/utils.cy';
+import { wpLogin, uninstallPlugins } from '../wp-module-support/utils.cy';
 
 const pluginId = GetPluginId();
 const appId = getAppId();
@@ -10,10 +10,7 @@ describe(
 	{ testIsolation: true },
 	() => {
 		before( () => {
-			cy.login(
-				Cypress.env( 'wpUsername' ),
-				Cypress.env( 'wpPassword' )
-			);
+			wpLogin();
 			uninstallPlugins();
 			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/store' );
 		} );

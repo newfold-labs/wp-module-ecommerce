@@ -1,5 +1,9 @@
 import { GetPluginId } from '../wp-module-support/pluginID.cy';
-import { comingSoon, uninstallPlugins } from '../wp-module-support/utils.cy';
+import {
+	wpLogin,
+	comingSoon,
+	uninstallPlugins,
+} from '../wp-module-support/utils.cy';
 import { EventsAPI, APIList } from '../wp-module-support/eventsAPIs.cy';
 
 const customCommandTimeout = 20000;
@@ -11,10 +15,7 @@ describe(
 	{ testIsolation: true },
 	() => {
 		beforeEach( () => {
-			cy.login(
-				Cypress.env( 'wpUsername' ),
-				Cypress.env( 'wpPassword' )
-			);
+			wpLogin();
 			uninstallPlugins();
 			comingSoon( true );
 			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );

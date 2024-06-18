@@ -1,5 +1,6 @@
 import { GetPluginId, getAppId } from '../wp-module-support/pluginID.cy';
 import {
+	wpLogin,
 	uninstallPlugins,
 	installWoo,
 } from '../wp-module-support/utils.cy';
@@ -34,19 +35,43 @@ describe(
 		} );
 
 		beforeEach( () => {
-			cy.login(
-				Cypress.env( 'wpUsername' ),
-				Cypress.env( 'wpPassword' )
-			);
+			wpLogin();
 			uninstallPlugins();
 			installWoo();
-			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
+			cy.visit( '/wp-admin/admin.php?page=' + pluginId );
 		} );
 
 		before( () => {
 			if ( pluginId !== 'bluehost' ) {
 				this.skip();
 			}
+		} );
+
+		it( 'Verify Buy Now is shown when canAccessGlobalCTB is true and commerce addon is false', () => {
+			// Buy now button is displayed when capabilities are false.
+			cy.log( 'Update capabilities transient: CTBTrueYithFalse' );
+			cy.exec(
+				`npx wp-env run cli wp option update _transient_nfd_site_capabilities '${ CTBTrueYithFalse }' --format=json`,
+				{ timeout: customCommandTimeout }
+			);
+			cy.reload();
+			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/store' );
+
+			cy.get( `.${ appId }-app-subnavitem-Sales` )
+				.as( 'salesTab' )
+				.should( 'exist' );
+			cy.get( '@salesTab' ).click();
+			cy.get( '#buynow-wondercart', { timeout: mediumWait } ).as(
+				'buyButton'
+			);
+			cy.get( '@buyButton' ).scrollIntoView().should( 'be.visible' );
+			// Verify Buy now button has correct link
+			cy.get( '@buyButton' )
+				.should( 'have.attr', 'href' )
+				.and(
+					'include',
+					'https://my.bluehost.com/hosting/app?utm_source=wp-marketplace&utm_medium=brand-plugin&utm_campaign=wordpress-ad&utm_content=buynow#/marketplace/product'
+				);
 		} );
 
 		it( 'Verify Sales and Discounts sub tab content and functionality', () => {
@@ -56,8 +81,8 @@ describe(
 				`npx wp-env run cli wp option update _transient_nfd_site_capabilities '${ CTBAndYithTrue }' --format=json`,
 				{ timeout: customCommandTimeout }
 			);
-			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/store' );
 			cy.reload();
+			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/store' );
 
 			// Verify Install Now exists when customer has ecommerce addon
 			cy.get( `.${ appId }-app-subnavitem-Sales`, {
@@ -80,33 +105,6 @@ describe(
 			cy.get( '#wonder-cart-init', { timeout: mediumWait } ).should(
 				'exist'
 			);
-		} );
-
-		it( 'Verify Buy Now is shown when canAccessGlobalCTB is true and commerce addon is false', () => {
-			// Buy now button is displayed when capabilities are false.
-			cy.log( 'Update capabilities transient: CTBTrueYithFalse' );
-			cy.exec(
-				`npx wp-env run cli wp option update _transient_nfd_site_capabilities '${ CTBTrueYithFalse }' --format=json`,
-				{ timeout: customCommandTimeout }
-			);
-			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/store' );
-			cy.reload();
-			
-			cy.get( `.${ appId }-app-subnavitem-Sales` )
-				.as( 'salesTab' )
-				.should( 'exist' );
-			cy.get( '@salesTab' ).click();
-			cy.get( '#buynow-wondercart', { timeout: mediumWait } ).as(
-				'buyButton'
-			);
-			cy.get( '@buyButton' ).scrollIntoView().should( 'be.visible' );
-			// Verify Buy now button has correct link
-			cy.get( '@buyButton' )
-				.should( 'have.attr', 'href' )
-				.and(
-					'include',
-					'https://my.bluehost.com/hosting/app?utm_source=wp-marketplace&utm_medium=brand-plugin&utm_campaign=wordpress-ad&utm_content=buynow#/marketplace/product'
-				);
 		} );
 	}
 );

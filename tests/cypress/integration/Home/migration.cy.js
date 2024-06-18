@@ -1,6 +1,6 @@
 import { GetPluginId } from '../wp-module-support/pluginID.cy';
 import { EventsAPI, APIList } from '../wp-module-support/eventsAPIs.cy';
-
+import { wpLogin } from '../wp-module-support/utils.cy';
 const customCommandTimeout = 20000;
 const pluginId = GetPluginId();
 const helpCenter = JSON.stringify( {
@@ -13,10 +13,7 @@ describe(
 	{ testIsolation: true },
 	() => {
 		beforeEach( function () {
-			cy.login(
-				Cypress.env( 'wpUsername' ),
-				Cypress.env( 'wpPassword' )
-			);
+			wpLogin();
 			
 			if ( pluginId !== 'bluehost' ) {
 				this.skip();
