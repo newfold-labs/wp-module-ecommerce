@@ -141,7 +141,7 @@ class CaptiveFlow {
 	public static function render_paypal() {
 		echo PHP_EOL;
 		echo '<div id="nfd-ecommerce" class="nfd-ecommerce-captive-flow">';
-		echo do_action( self::$paypal_captive_flow );
+		do_action( self::$paypal_captive_flow );
 		echo '</div>';
 		echo PHP_EOL;
 	}
@@ -154,7 +154,7 @@ class CaptiveFlow {
 	public static function render_shippo() {
 		echo PHP_EOL;
 		echo '<div id="nfd-ecommerce" class="nfd-ecommerce-captive-flow">';
-		echo do_action( self::$shippo_captive_flow );
+		do_action( self::$shippo_captive_flow );
 		echo '</div>';
 		echo PHP_EOL;
 	}

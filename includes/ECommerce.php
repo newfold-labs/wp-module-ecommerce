@@ -624,7 +624,7 @@ class ECommerce {
 				$label_text       = __( 'Published - Private', 'wp-module-ecommerce' );
 			} else {
 				$background_color = '#E8ECF0';
-				$label_text       = __( $post_status, 'wp-module-ecommerce' );
+				$label_text       = $post_status;
 			}
 			// Check if coming soon option is enabled
 			$coming_soon = get_option( 'nfd_coming_soon' );
