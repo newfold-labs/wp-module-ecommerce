@@ -1,6 +1,3 @@
-import { dateI18n } from "@wordpress/date";
-import { useState } from "@wordpress/element";
-import { __ } from "@wordpress/i18n";
 import {
   Badge,
   Card,
@@ -10,16 +7,20 @@ import {
   Spinner,
   Title,
 } from "@newfold/ui-component-library";
+import { dateI18n } from "@wordpress/date";
+import { useState } from "@wordpress/element";
+import { __ } from "@wordpress/i18n";
 import classNames from "classnames";
 import useSWR from "swr";
 import Reports from "../configs/Reports.config";
 import { ReactComponent as NoOrdersFallback } from "../icons/no-orders-fallback.svg";
-import { formatMoney } from "../sdk/formatMoney";
 import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
+import { formatMoney } from "../sdk/formatMoney";
 import { RuntimeSdk } from "../sdk/runtime";
 import { WooCommerceSdk } from "../sdk/woocommerce";
 import { Section } from "./Section";
-import { SiteStatus } from "./SiteStatus";
+import { TransformtoEcommerce } from "./TransformtoEcommerce";
+import { YITHPlugins } from "./YITHPlugins";
 import { useCardManager } from "./useCardManager";
 import { useInstallWoo } from "./useInstallWoo";
 
@@ -40,7 +41,7 @@ const individualOrderLink = (postId) =>
 
 function RecentReport({ title, divname, filter, onSelect, disabled, children }) {
   return (
-    <Card className={`nfd-flex-1`} id={`${divname}-report-wrapper`}>
+    <Card className={`nfd-flex-1 nfd-p-4`} id={`${divname}-report-wrapper`}>
       <Card.Content className={"nfd-flex nfd-flex-col nfd-gap-4"}>
         <div
           className={classNames(
@@ -51,6 +52,12 @@ function RecentReport({ title, divname, filter, onSelect, disabled, children }) 
           <Title className="nfd-flex-1" size="4">
             {title}
           </Title>
+          <Link
+            className="nfd-text-base nfd-no-underline nfd-w-fit nfd-mr-2 nfd-text-sm"
+            href={RuntimeSdk.adminUrl(recentActivityLink, true)}
+          >
+            {__("View all analytics", "wp-module-ecommerce")}
+          </Link>
           <Select
             id={title}
             className={classNames("lg:nfd-w-1/4", "sm:nfd-w-2/5")}
@@ -90,11 +97,15 @@ function RecentActivity() {
       )}
       {cards.length > 0 && (
         <>
+          <span className="nfd-whitespace-pre-wrap nfd-leading-tight">
+            {cards[0]?.state?.reportValue === "-" && __("Once you launch your store, you'll see a snapshot of recent purchases and other \ncustomer activity here.", "wp-module-ecommerce")}
+          </span>
           <div
             className={classNames(
               "nfd-flex-1 nfd-grid nfd-gap-4",
               "sm:nfd-grid-cols-1",
-              "md:nfd-grid-cols-2"
+              "md:nfd-grid-cols-2",
+              "lg:nfd-grid-cols-4"
             )}
           >
             {cards.map((cardConfig) => {
@@ -102,12 +113,6 @@ function RecentActivity() {
               return <Card key={name} {...props} />;
             })}
           </div>
-          <Link
-            className="nfd-text-base nfd-no-underline nfd-w-fit"
-            href={RuntimeSdk.adminUrl(recentActivityLink, true)}
-          >
-            {__("view all", "wp-module-ecommerce")}
-          </Link>
         </>
       )}
     </RecentReport>
@@ -228,7 +233,7 @@ export function QuickLook(props) {
   let [installWoo, isInstalling] = useInstallWoo(props);
   return (
     <FeatureUpsell
-      className={"nfd-p-0 hide-html"}
+      className={"hide-html nfd-p-0"}
       shouldUpsell={shouldUpsell}
       variant="card"
       cardText={__("Install WooCommerce to unlock", "wp-module-ecommerce")}
@@ -237,27 +242,21 @@ export function QuickLook(props) {
       onClick={installWoo}
       id="install-woocommerce-to-unlock-btn"
     >
-      <Section.Content>
-        <Section.Block
-          title={__("Quick Look", "wp-module-ecommerce")}
-          subtitle={__("Once you launch your store, you'll see a snapshot of recent purchases and other customer activity.", "wp-module-ecommerce")}
-        >
+      <Section.Content className={"nfd-pt-4"} subClassName={"nfd-pb-4"}>
+        <Section.Block>
           <div
             className={classNames(
-              "nfd-mt-10 nfd-gap-6",
               "nfd-flex nfd-flex-col",
               "xl:nfd-flex-row"
             )}
           >
             <RecentActivity />
-            {NewfoldRuntime.isWoo && <RecentOrders />}
           </div>
-          <div className="nfd-h-4" />
-          <SiteStatus
-            comingSoon={props.state.wp.comingSoon}
-            notify={props.wpModules.notify}
-            toggleComingSoon={props.actions.toggleComingSoon}
-          />
+        </Section.Block>
+      </Section.Content>
+      <Section.Content className={"nfd-pt-0"} subClassName={"nfd-pb-4"} >
+        <Section.Block>
+          {NewfoldRuntime.hasCapability("isEcommerce") ? (<YITHPlugins {...props} />) : <TransformtoEcommerce />}
         </Section.Block>
       </Section.Content>
     </FeatureUpsell>

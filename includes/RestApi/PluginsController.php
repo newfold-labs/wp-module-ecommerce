@@ -103,8 +103,9 @@ class PluginsController {
 		}
 		$plugins_queue = array_column( $this->get_plugin_queue(), 'slug' );
 		$plugin_being_installed = \get_option( InstallerOptions::get_option_name( 'plugins_init_status' ), false);
-		if ($plugin_being_installed !== false && $plugin_being_installed !== 'completed') {
-			$plugins_queue[] = $plugin_being_installed;
+		$plugin_being_installed_queue = \get_option( InstallerOptions::get_option_name( 'plugin_install_queue' ), array());
+    if ($plugin_being_installed !== false && $plugin_being_installed !== 'completed') {
+      $plugins_queue[] = $plugin_being_installed_queue;
 		}
 		return new \WP_REST_Response(
 			array(

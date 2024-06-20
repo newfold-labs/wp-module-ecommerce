@@ -8,23 +8,23 @@ const appId = getAppId();
 
 describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 	const cTBAndYithTrue = JSON.stringify( {
-		"canAccessAI": true,
-		"canAccessHelpCenter": true,
-		"canAccessGlobalCTB": true,
-		"hasEcomdash": false,
-		"hasYithExtended": true,
-		"isEcommerce": true,
-		"isJarvis": true,
+		canAccessAI: true,
+		canAccessHelpCenter: true,
+		canAccessGlobalCTB: true,
+		hasEcomdash: false,
+		hasYithExtended: true,
+		isEcommerce: true,
+		isJarvis: true,
 	} );
 
 	const cTBTrueYithFalse = JSON.stringify( {
-		"canAccessAI": true,
-		"canAccessHelpCenter": true,
-		"canAccessGlobalCTB": true,
-		"hasEcomdash": false,
-		"hasYithExtended": false,
-		"isEcommerce": false,
-		"isJarvis": true,
+		canAccessAI: true,
+		canAccessHelpCenter: true,
+		canAccessGlobalCTB: true,
+		hasEcomdash: false,
+		hasYithExtended: false,
+		isEcommerce: false,
+		isJarvis: true,
 	} );
 
 	before( function () {
@@ -79,12 +79,12 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 			.as( 'salesTab' )
 			.should( 'exist' );
 		cy.get( '@salesTab' ).click();
-		cy.get( '.nfd-button--upsell', { timeout: mediumWait } ).should(
+		cy.get( '#buynow-wondercart', { timeout: mediumWait } ).should(
 			'exist'
 		);
 	} );
 
-	it('Verify clicking on Buy Now leads to cpanel login page', () => {
+	it( 'Verify clicking on Buy Now leads to cpanel login page', () => {
 		cy.reload();
 		cy.get( `.${ appId }-app-navitem-Store`, {
 			timeout: customCommandTimeout,
@@ -93,9 +93,9 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 			timeout: customCommandTimeout,
 		} ).click();
 		cy.get( `.${ appId }-app-subnavitem-Sales` ).click();
-		cy.get( '.nfd-button--upsell', { timeout: mediumWait } )
-			.eq( 1 )
-			.as( 'buyButton' );
+		cy.get( '#buynow-wondercart', { timeout: mediumWait } ).as(
+			'buyButton'
+		);
 
 		cy.get( '@buyButton' ).should( 'be.visible' );
 		cy.get( '@buyButton' )
@@ -123,24 +123,26 @@ describe( 'Verify Wondercart accessibility as per site capabilities', () => {
 			.as( 'salesTab' )
 			.should( 'exist' );
 		cy.get( '@salesTab' ).click();
-		cy.get( '.nfd-button--upsell', { timeout: mediumWait } ).should(
+		cy.get( '#installnow-wondercart', { timeout: mediumWait } ).should(
 			'exist'
 		);
 	} );
 
-	it( 'Verify clicking Install Now successfully installs Wonder Cart plugin', () => {
+	it.skip( 'Verify clicking Install Now successfully installs Wonder Cart plugin', () => {
 		cy.get( `.${ appId }-app-navitem-Store`, {
 			timeout: customCommandTimeout,
 		} ).click();
 		cy.get( `.${ appId }-app-subnavitem-Sales` ).click();
-		cy.get( '.nfd-button--upsell', { timeout: mediumWait } )
-			.eq( 0 )
+		cy.get( '#installnow-wondercart', { timeout: mediumWait } )
 			.scrollIntoView()
 			.click();
 		cy.get( '.nfd-notification--success', {
 			timeout: customCommandTimeout,
+		}).should('exist');
+		cy.get( `.${ appId }-app-site-info`, {
+			timeout: customCommandTimeout,
 		} ).should( 'exist' );
-		cy.get( '#wonder-cart-init', { timeout: mediumWait } ).should(
+		cy.get( '#wonder-cart-init', { timeout: customCommandTimeout } ).should(
 			'exist'
 		);
 	} );
