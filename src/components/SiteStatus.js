@@ -44,6 +44,11 @@ export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
       $statusText.style.setProperty("color", "var(--nfd-ecommerce-text-dark-success)");
     }
   });
+
+  if (!comingSoon) {
+    return null;
+  }
+
   return (
     <div
       className={classNames(
