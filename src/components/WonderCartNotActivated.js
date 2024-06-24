@@ -6,7 +6,6 @@ import { ReactComponent as FreeShipping } from "../icons/wondercart/free-shippin
 import { ReactComponent as GiftCard } from "../icons/wondercart/gift-card.svg";
 import { ReactComponent as LastMinuteDeal } from "../icons/wondercart/last-minute-deal.svg";
 import { ReactComponent as ThankYouDiscount } from "../icons/wondercart/thank-you-discount.svg";
-import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { Section } from "./Section";
 
 export function WonderCarNotActivated() {    
@@ -16,10 +15,17 @@ export function WonderCarNotActivated() {
                     <Section.Header className="nfd-border nfd-border-[#FFFFFF] nfd-w-10/12 nfd-px-0" 
                     title={__('Create a campaign and boost your sales!', "wp-module-ecommerce")} 
                     subTitle={__("Create custom upsell, cross-sell and other promotional campaigns to generate more sales.", "wp-module-ecommerce")} 
-                    />                    
-                    <button type="button" className="nfd-button nfd-button--primary nfd-w-32 nfd-h-8 nfd-py-1 nfd-ml-auto">
-                            {__("Get Started", "wp-module-ecommerce")}
-                    </button>  
+                    />                                        
+                    <Button
+                        as="a"
+                        className="nfd-button nfd-button--primary nfd-w-32 nfd-h-8 nfd-py-1 nfd-ml-auto nfd-text-[#FFFFFF]"
+                        variant="upsell"
+                        target="_blank"
+                        rel="noopener"
+                        id="install-wondercart"
+                    >
+                        {__("Get Started", "wp-module-ecommerce")}
+                    </Button>
                 </div>                      
                 <Section.Content>    
                     
