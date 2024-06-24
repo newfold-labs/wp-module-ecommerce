@@ -51,6 +51,7 @@ export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
 
   return (
     <div
+      data-testid="siteStatus"
       className={classNames(
         "nfd-px-4 nfd-py-2 nfd-rounded-lg nfd-bg-canvas",
         "max-[1027px]:nfd-flex max-[1027px]:nfd-flex-col",
