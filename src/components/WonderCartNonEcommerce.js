@@ -67,7 +67,7 @@ export function WonderCartNonEcommerce() {
                                         </li>
                                         <li className="nfd-flex">
                                             <CheckMarkIcon className="nfd-mt-0.5 nfd-pt-px nfd-mr-1" />
-                                            <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("Related Items Discountsbnsmbvmnsbdmvb", "wp-module-ecommerce")}</span>
+                                            <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("Related Items Discounts", "wp-module-ecommerce")}</span>
                                         </li>
                                     </ul>
                                     <ul className="nfd-flex-1 nfd-text-black">

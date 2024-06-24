@@ -9,6 +9,7 @@ import { useInstallWonderCart } from "./useInstallWonderCart";
 import classNames from "classnames";
 import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { WonderCartNonEcommerce } from "./WonderCartNonEcommerce";
+import { WonderCarNotActivated } from "./WonderCartNotActivated";
 
 let wonderCartParser = wcPluginStatusParser("nfd_slug_wonder_cart");
 
@@ -21,6 +22,8 @@ export function WonderCart(props) {
         .then(wonderCartParser),
     { refreshInterval: 30 * 1000 }
   );
+
+  console.log("wonderCartStatus", wonderCartStatus);
 
   const canAccessGlobalCTB = NewfoldRuntime.hasCapability("canAccessGlobalCTB");
   const hasYithExtended = NewfoldRuntime.hasCapability("hasYithExtended");
@@ -35,7 +38,7 @@ export function WonderCart(props) {
   let showInProgress = isInstalling || wonderCartStatus.data?.isInstalling;
   return (
     <>
-      {NewfoldRuntime.hasCapability("isEcommerce") ? <>Test</> : <WonderCartNonEcommerce />}
+      {NewfoldRuntime.hasCapability("isEcommerce") ? <WonderCarNotActivated /> : <WonderCartNonEcommerce />}
     </>
     
     // <Section.Container>
