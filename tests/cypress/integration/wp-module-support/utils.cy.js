@@ -5,7 +5,9 @@ const customCommandTimeout = 30000;
 const longWait = 120000;
 
 export const comingSoon = ( shouldBeComingSoon ) => {
-	cy.visit( '/wp-admin/admin.php?page=' + Cypress.env('pluginId') + '#/settings' );
+	cy.visit(
+		'/wp-admin/admin.php?page=' + Cypress.env( 'pluginId' ) + '#/settings'
+	);
 	cy.get( '[data-id="coming-soon-toggle"]', {
 		timeout: customCommandTimeout,
 	} ).as( 'comingSoonToggle' );
@@ -39,13 +41,10 @@ export const comingSoon = ( shouldBeComingSoon ) => {
 
 export const installWoo = () => {
 	cy.log( 'Installing WooCommerce' );
-	cy.exec(
-		`npx wp-env run cli wp plugin install woocommerce --activate`,
-		{
-			timeout: longWait,
-			log: true,
-		}
-	);
+	cy.exec( `npx wp-env run cli wp plugin install woocommerce --activate`, {
+		timeout: longWait,
+		log: true,
+	} );
 };
 
 export const uninstallPlugins = () => {
@@ -80,10 +79,9 @@ export const waitForNextSteps = () => {
 
 export const deleteCapabilitiesTransient = () => {
 	cy.log( 'Deleting capabilities transient' );
-	cy.exec(
-		`npx wp-env run cli wp transient delete nfd_site_capabilities`,
-		{ failOnNonZeroExit: false }
-	);
+	cy.exec( `npx wp-env run cli wp transient delete nfd_site_capabilities`, {
+		failOnNonZeroExit: false,
+	} );
 };
 
 export const wpLogin = () => {
