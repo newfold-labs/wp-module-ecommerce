@@ -34,17 +34,17 @@ describe(
 			isJarvis: true,
 		} );
 
+		before( function () {
+			if ( pluginId !== 'bluehost' ) {
+				this.skip();
+			}
+		} );
+
 		beforeEach( () => {
 			wpLogin();
 			uninstallPlugins();
 			installWoo();
 			cy.visit( '/wp-admin/admin.php?page=' + pluginId );
-		} );
-
-		before( function () {
-			if ( pluginId !== 'bluehost' ) {
-				this.skip();
-			}
 		} );
 
 		it( 'Verify Buy Now is shown when canAccessGlobalCTB is true and commerce addon is false', () => {
