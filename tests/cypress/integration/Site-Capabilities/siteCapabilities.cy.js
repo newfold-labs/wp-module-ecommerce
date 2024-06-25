@@ -41,7 +41,7 @@ describe(
 			cy.visit( '/wp-admin/admin.php?page=' + pluginId );
 		} );
 
-		before( () => {
+		before( function () {
 			if ( pluginId !== 'bluehost' ) {
 				this.skip();
 			}
@@ -108,7 +108,7 @@ describe(
 				failOnNonZeroExit: false,
 			} ).then( ( result ) => {
 				cy.log( result.stdout );
-				expect(	result.stdout ).to.contains('wonder-cart');
+				expect( result.stdout ).to.contains( 'wonder-cart' );
 			} );
 			// Verify wonder cart content displays
 			// cy.get( '#wonder-cart-init', {
