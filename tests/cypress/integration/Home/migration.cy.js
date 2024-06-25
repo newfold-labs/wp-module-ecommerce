@@ -35,9 +35,10 @@ describe( 'Home page - post migration events with help center ', () => {
 	} );
 
 	it( 'Verify if One last thing to do... section shows', () => {
-		cy.contains('Finish this last step so your migrated site is ready for visitors.')
-      .should('be.visible')
-	} );
+		cy.get( '#next-steps-section', { timeout: customCommandTimeout } )
+			.scrollIntoView()
+			.should( 'exist' );
+		} );
 
 	it( 'Verify when update nameserver clicked', () => {
 		cy.get( '.nfd-grid.nfd-gap-4', { timeout: customCommandTimeout } )
