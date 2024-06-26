@@ -7,6 +7,15 @@ const customCommandTimeout = 30000;
 const longWait = 60000;
 
 describe( 'Store Page- WooCommerce is deactivated/uninstalled', () => {
+	const cTBAndYithTrue = JSON.stringify( {
+		canAccessAI: true,
+		canAccessHelpCenter: true,
+		canAccessGlobalCTB: true,
+		hasEcomdash: false,
+		hasYithExtended: true,
+		isEcommerce: true,
+		isJarvis: true,
+	} );
 	before( () => {
 		cy.exec( `npx wp-env run cli wp plugin deactivate woocommerce`, {
 			failOnNonZeroExit: false,
@@ -59,5 +68,22 @@ describe( 'Store Page- WooCommerce is deactivated/uninstalled', () => {
 				timeout: customCommandTimeout,
 			} ).should( 'exist' );
 		} );
+	} );
+
+	it( 'Verify Visit your site and Launch your site functionality', () => {
+		cy.exec(
+			`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ cTBAndYithTrue }' --format=json`,
+			{ timeout: customCommandTimeout }
+		);
+		cy.get( '.nfd-flex-none > .nfd-button--secondary', {
+			timeout: customCommandTimeout,
+		} )
+			.invoke( 'removeAttr', 'target' )
+			.click();
+		cy.url().should( 'eq', Cypress.config().baseUrl + '/' );
+		cy.go( 'back' );
+		cy.get( '.nfd-flex-none > .nfd-button--upsell' ).click();
+		cy.get('[data-testid="siteStatus"]').should('not.exist');
+		cy.get( '.nfd-notification--success' ).should( 'exist' );
 	} );
 } );
