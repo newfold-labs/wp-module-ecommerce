@@ -67,7 +67,7 @@ class ECommerce {
 		'woocommerce_cheque_settings',
 		'onboarding_experience_level',
 		'yoast_seo_signup_status',
-		'showMigrationSteps',
+		'nfd_show_migration_steps',
 		'update_site_server_clicked',
 	);
 
@@ -108,6 +108,7 @@ class ECommerce {
 		add_action( 'auth_cookie_expired', array( $this, 'show_store_setup' ) );
 		add_action( 'admin_head', array( $this, 'hide_wp_pointer_with_css' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'set_wpnav_collapse_setting' ) );
+		add_action('admin_footer', array( $this, 'remove_woocommerce_ssl_notice' ), 20);
 
 		if ( ( $container->plugin()->id === 'bluehost' && ( $canAccessGlobalCTB || $hasYithExtended ) ) || ( $container->plugin()->id === 'hostgator' && $hasYithExtended ) ) {
 			add_filter( 'admin_menu', array( $this, 'custom_add_promotion_menu_item' ) );
@@ -321,7 +322,7 @@ class ECommerce {
 		);
 		\register_setting(
 			'general',
-			'showMigrationSteps',
+			'nfd_show_migration_steps',
 			array(
 				'show_in_rest' => true,
 				'type'         => 'boolean',
@@ -587,6 +588,40 @@ class ECommerce {
 	}
 
 	/**
+	 * Hide WooCommerce SSL notice
+	 *
+	 * @return void
+	 */
+
+	public function remove_woocommerce_ssl_notice() {
+
+		// Check if WooCommerce is active.
+		if (!class_exists('WooCommerce')) {
+			return;
+		}
+
+		if (!is_ssl()) {
+			// Check if there are any WooCommerce admin notices, find the one with ssl notice link and hide it.
+			?>
+				<script type="text/javascript">
+					jQuery(document).ready(function($) {
+						if ($('.updated.woocommerce-message').length) {
+							$('.updated.woocommerce-message').each(function() {
+								var $message = $(this);
+								var $link = $message.find('a[href="https://woocommerce.com/document/ssl-and-https/"]');
+
+								if ($link.length > 0) {
+									$message.hide();
+								}
+							});
+						}
+					});
+				</script>
+			<?php
+		}
+	}
+
+	/**
 	 * Add custom column header for post/page/product screen
 	 *
 	 * @param array $columns Array of column names for posts/pages
@@ -672,7 +707,7 @@ class ECommerce {
 			}
 		}
 		if ( check_url_match( $brand, $site_url ) ) {
-			update_option( 'showMigrationSteps', false );
+			update_option( 'nfd_show_migration_steps', false );
 		}
 	}
 
