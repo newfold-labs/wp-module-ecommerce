@@ -22,9 +22,6 @@ export function WonderCart(props) {
         .then(wonderCartParser),
     { refreshInterval: 30 * 1000 }
   );
-
-  console.log("wonderCartStatus", wonderCartStatus);
-
   const canAccessGlobalCTB = NewfoldRuntime.hasCapability("canAccessGlobalCTB");
   const hasYithExtended = NewfoldRuntime.hasCapability("hasYithExtended");
 
@@ -32,13 +29,17 @@ export function WonderCart(props) {
   if (wonderCartStatus.isLoading) {
     return <span />;
   }
-  if (wonderCartStatus.data?.isInstalled) {
-    return <div id="wonder-cart-init" />;
-  }
+  // if (wonderCartStatus.data?.isInstalled) {
+  //   return <div id="wonder-cart-init" />;
+  // }
   let showInProgress = isInstalling || wonderCartStatus.data?.isInstalling;
   return (
     <>
-      {NewfoldRuntime.hasCapability("isEcommerce") ? <WonderCarNotActivated /> : <WonderCartNonEcommerce />}
+      {
+        NewfoldRuntime.hasCapability("isEcommerce") ? 
+        wonderCartStatus.data?.isInstalled ? <div id="wonder-cart-init" /> : <WonderCarNotActivated wonderCartStatus={wonderCartStatus} {...props} />
+        : 
+        <WonderCartNonEcommerce />}
     </>
     
     // <Section.Container>
