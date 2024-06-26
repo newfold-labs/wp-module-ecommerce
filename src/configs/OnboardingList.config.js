@@ -81,6 +81,7 @@ export function OnboardingListDefinition(props) {
     cards: [
       {
         name: "Update your website nameservers",
+        id: "nameservers",
         text: __(
           "Update your website nameservers",
           "wp-module-ecommerce"
@@ -104,6 +105,7 @@ export function OnboardingListDefinition(props) {
       },
       {
         name: "Connect this site to your domain",
+        id: "domain",
         text: __(
           "Connect this site to your domain",
           "wp-module-ecommerce"
@@ -127,6 +129,7 @@ export function OnboardingListDefinition(props) {
       },
       {
         name: "Need help with these steps?",
+        id: "help",
         text: __(
           "Need help with these steps?",
           "wp-module-ecommerce"
@@ -148,6 +151,7 @@ export function OnboardingListDefinition(props) {
       },
       {
         name: "Continue with store setup",
+        id: "continue",
         text: __(
           "Continue with store setup",
           "wp-module-ecommerce"
@@ -166,6 +170,7 @@ export function OnboardingListDefinition(props) {
       },
       {
         name: "Sign up for Bluehost WordPress Academy",
+        id: "academy",
         text: __(
           "Sign up for Bluehost WordPress Academy",
           "wp-module-ecommerce"
@@ -187,6 +192,7 @@ export function OnboardingListDefinition(props) {
       },
       {
         name: "New Order Received",
+        id: "neworder",
         text: __(
           "New Order Received",
           "wp-module-ecommerce"
@@ -204,6 +210,7 @@ export function OnboardingListDefinition(props) {
       },
       {
         name: "Add your store info",
+        id: "storeinfo",
         text: __("Add your store info", "wp-module-ecommerce"),
         state: {
           isAvailable: (queries) => queries?.plugins?.isWCActive,
@@ -219,6 +226,7 @@ export function OnboardingListDefinition(props) {
       },
       {
         name: "Connect a payment processor",
+        id: "paymentprocessor",
         text: __("Connect a payment processor", "wp-module-ecommerce"),
         state: {
           isAvailable: (queries) =>
@@ -243,6 +251,7 @@ export function OnboardingListDefinition(props) {
       },
       {
         name: "Setup shipping options",
+        id: "shipping",
         text: __("Setup shipping options", "wp-module-ecommerce"),
         state: {
           isAvailable: (queries) =>
@@ -263,6 +272,7 @@ export function OnboardingListDefinition(props) {
       },
       {
         name: "Configure tax settings",
+        id: "tax",
         text: __("Configure tax settings", "wp-module-ecommerce"),
         state: {
           isAvailable: (queries) => queries?.plugins?.isWCActive,
@@ -278,6 +288,7 @@ export function OnboardingListDefinition(props) {
       },
       {
         name: "Add a product",
+        id: "addproduct",
         text: __("Add a product", "wp-module-ecommerce"),
         state: {
           isActive: (queries) => queries?.plugins?.isWCActive,
@@ -294,6 +305,7 @@ export function OnboardingListDefinition(props) {
       },
       {
         name: "Sign up for Yoast SEO Academy",
+        id: "seoacademy",
         text: __("Sign up for Yoast SEO Academy", "wp-module-ecommerce"),
         state: {
           isAvailable: (queries) => queries?.settings?.isNovice,
@@ -310,6 +322,7 @@ export function OnboardingListDefinition(props) {
       },
       {
         name: "Add a new page to your site",
+        id: "newpage",
         text: NewfoldRuntime.hasCapability("isEcommerce")
           ? __("Add a new page to your store", "wp-module-ecommerce")
           : __("Add a new page to your site", "wp-module-ecommerce"),
@@ -332,6 +345,7 @@ export function OnboardingListDefinition(props) {
       },
       {
         name: "Upload media to your site",
+        id: "media",
         text: __("Upload media to your site", "wp-module-ecommerce"),
         state: {
           isCompleted: (queries) => queries?.media,
@@ -350,6 +364,7 @@ export function OnboardingListDefinition(props) {
       },
       {
         name: "Connect to your social media accounts",
+        id: "social",
         text: __(
           "Connect to your social media accounts",
           "wp-module-ecommerce"
@@ -374,6 +389,7 @@ export function OnboardingListDefinition(props) {
       },
       {
         name: "Enable Jetpack to connect to your social media accounts",
+        id: "jetpack",
         text: __(
           "Enable Jetpack to connect to your social media accounts",
           "wp-module-ecommerce"
