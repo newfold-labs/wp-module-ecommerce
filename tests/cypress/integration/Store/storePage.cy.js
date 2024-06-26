@@ -4,6 +4,7 @@ import { comingSoon } from '../wp-module-support/utils.cy';
 const pluginId = GetPluginId();
 const appId = getAppId();
 const customCommandTimeout = 30000;
+const longWait = 60000;
 
 describe( 'Store Page- WooCommerce is deactivated/uninstalled', () => {
 	before( () => {
@@ -11,6 +12,9 @@ describe( 'Store Page- WooCommerce is deactivated/uninstalled', () => {
 			failOnNonZeroExit: false,
 		} );
 		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
+		cy.get( `.${ appId }-app-site-info`, { timeout: longWait } ).should(
+			'exist'
+		);
 		comingSoon( false );
 	} );
 

@@ -21,6 +21,13 @@ describe( 'Commerce Home Page- When WooCommerce is installed', () => {
 	beforeEach( () => {
 		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
 	} );
+	
+	after( () => {
+		cy.exec(`npx wp-env run cli wp plugin deactivate woocommerce`, {
+			failOnNonZeroExit: false,
+		} );
+		cy.visit('/wp-admin/admin.php?page=' + pluginId + '#/home');
+	} );
 
 	it( 'Verify next steps "Add your store info"', () => {
 		waitForNextSteps();
