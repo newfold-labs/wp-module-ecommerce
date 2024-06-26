@@ -13,7 +13,7 @@ describe( 'Home page - post migration events with help center ', () => {
 		if ( pluginId !== 'bluehost' ) {
 			this.skip();
 		}
-		cy.exec( `npx wp-env run cli wp option set showMigrationSteps "true"` );
+		cy.exec( `npx wp-env run cli wp option set nfd_show_migration_steps "true"` );
 		cy.exec(
 			`npx wp-env run cli wp option delete _transient_nfd_site_capabilities`,
 			{ failOnNonZeroExit: false }
