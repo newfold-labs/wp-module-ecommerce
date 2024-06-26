@@ -44,8 +44,14 @@ export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
       $statusText.style.setProperty("color", "var(--nfd-ecommerce-text-dark-success)");
     }
   });
+
+  if (!comingSoon) {
+    return null;
+  }
+
   return (
     <div
+      data-testid="siteStatus"
       className={classNames(
         "nfd-px-4 nfd-py-2 nfd-rounded-lg nfd-bg-canvas",
         "max-[1027px]:nfd-flex max-[1027px]:nfd-flex-col",
