@@ -83,6 +83,7 @@ describe(
 			cy.url().should( 'eq', Cypress.config().baseUrl + '/' );
 			cy.go( 'back' );
 			cy.get( '.nfd-flex-none > .nfd-button--upsell' ).click();
+			cy.get('[data-testid="siteStatus"]').should('not.exist');
 			cy.get( '.nfd-notification--success' ).should( 'exist' );
 		} );
 	}

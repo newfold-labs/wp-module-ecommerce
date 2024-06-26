@@ -57,7 +57,7 @@ const updateMigrateViewGuide = () => {
 };
 
 const updateStoreSetup = (setIsMigrationCompleted) => {
-  WordPressSdk.settings.put({ showMigrationSteps: false }).then(() => {
+  WordPressSdk.settings.put({ nfd_show_migration_steps: false }).then(() => {
     WordPressSdk.settings.get();
     setIsMigrationCompleted(false);
   });
@@ -88,7 +88,7 @@ export function OnboardingListDefinition(props) {
         ),
         state: {
           isCompleted: (queries) => queries?.settings?.update_site_server_clicked || check_url_match(brandName),
-          isMigrated: (queries) => queries?.settings?.showMigrationSteps && props.isMigrationCompleted
+          isMigrated: (queries) => queries?.settings?.nfd_show_migration_steps && props.isMigrationCompleted
         },
         shouldRender: (state) => (state.isMigrated),
         actions: {
@@ -112,7 +112,7 @@ export function OnboardingListDefinition(props) {
         ),
         state: {
           isCompleted: () => check_url_match( brandName ),
-          isMigrated: (queries) => queries?.settings?.showMigrationSteps && props.isMigrationCompleted,
+          isMigrated: (queries) => queries?.settings?.nfd_show_migration_steps && props.isMigrationCompleted,
         },
 
         "data-nfdhelpcenterquery": __(
@@ -136,7 +136,7 @@ export function OnboardingListDefinition(props) {
         ),
         state: {
           isCompleted: (queries) => (queries?.settings?.update_site_server_clicked && check_url_match(brandName)) || check_url_match(brandName),
-          isMigrated: (queries) => queries?.settings?.showMigrationSteps,
+          isMigrated: (queries) => queries?.settings?.nfd_show_migration_steps,
           className: () => "nfd-bg-canvas",
           hideCheck: () => true,
           showText: () => <a className="nfd-underline" href={ VIEW_GUIDE_LINK[brandName] } target="_blank">View Guide</a>
@@ -158,7 +158,7 @@ export function OnboardingListDefinition(props) {
         ),
         state: {
           isCompleted: (queries) => !props.isMigrationCompleted,
-          isMigrated: (queries) => queries?.settings?.showMigrationSteps && (queries?.settings?.update_site_server_clicked || check_url_match(brandName)),
+          isMigrated: (queries) => queries?.settings?.nfd_show_migration_steps && (queries?.settings?.update_site_server_clicked || check_url_match(brandName)),
         },
         shouldRender: (state) => state.isMigrated && !state.isCompleted,
         actions: {
