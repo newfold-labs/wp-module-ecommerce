@@ -559,16 +559,16 @@
         },
         {
             "name": "newfold-labs/wp-module-onboarding-data",
-            "version": "1.1.12",
+            "version": "1.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding-data.git",
-                "reference": "efce79142be2deb7382b0c500a17be75fc9a5708"
+                "reference": "dd6784cd136ac687a373e27f2f51999d93e97788"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding-data/zipball/efce79142be2deb7382b0c500a17be75fc9a5708",
-                "reference": "efce79142be2deb7382b0c500a17be75fc9a5708",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding-data/zipball/dd6784cd136ac687a373e27f2f51999d93e97788",
+                "reference": "dd6784cd136ac687a373e27f2f51999d93e97788",
                 "shasum": ""
             },
             "require": {
@@ -580,6 +580,7 @@
                 "newfold-labs/wp-module-installer": "^1.1",
                 "newfold-labs/wp-module-patterns": "^1.0",
                 "newfold-labs/wp-module-performance": "^1.4",
+                "newfold-labs/wp-module-survey": "^1.0",
                 "wp-forge/wp-upgrade-handler": "^1.0"
             },
             "require-dev": {
@@ -603,10 +604,10 @@
             ],
             "description": "A non-toggleable module containing a standardized interface for interacting with Onboarding data.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-onboarding-data/tree/1.1.12",
+                "source": "https://github.com/newfold-labs/wp-module-onboarding-data/tree/1.1.13",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding-data/issues"
             },
-            "time": "2024-06-14T12:45:33+00:00"
+            "time": "2024-06-27T13:27:53+00:00"
         },
         {
             "name": "newfold-labs/wp-module-patterns",
@@ -703,6 +704,49 @@
                 "issues": "https://github.com/newfold-labs/wp-module-performance/issues"
             },
             "time": "2024-04-22T22:30:42+00:00"
+        },
+        {
+            "name": "newfold-labs/wp-module-survey",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newfold-labs/wp-module-survey.git",
+                "reference": "6c37264f2a607a330ac25e65555d99ec38972b2e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-survey/zipball/6c37264f2a607a330ac25e65555d99ec38972b2e",
+                "reference": "6c37264f2a607a330ac25e65555d99ec38972b2e",
+                "shasum": ""
+            },
+            "require-dev": {
+                "newfold-labs/wp-php-standards": "^1.2",
+                "wp-cli/i18n-command": "^2.4.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NewfoldLabs\\WP\\Module\\Survey\\": "includes"
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "arunshenoy99",
+                    "email": "devarunshenoy99@gmail.com"
+                }
+            ],
+            "description": "A Newfold module to collect customer satisfaction feedback via surveys in the WordPress admin dashboard.",
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-survey/tree/1.0.0",
+                "issues": "https://github.com/newfold-labs/wp-module-survey/issues"
+            },
+            "time": "2024-06-27T09:50:43+00:00"
         },
         {
             "name": "wp-forge/collection",
