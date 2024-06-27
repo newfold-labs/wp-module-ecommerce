@@ -29,14 +29,11 @@ export function WonderCart(props) {
   if (wonderCartStatus.isLoading) {
     return <span />;
   }
-  // if (wonderCartStatus.data?.isInstalled) {
-  //   return <div id="wonder-cart-init" />;
-  // }
-  let showInProgress = isInstalling || wonderCartStatus.data?.isInstalling;
+
   return (
     <>
       {
-        NewfoldRuntime.hasCapability("isEcommerce") ? 
+        hasYithExtended && canAccessGlobalCTB ? 
         wonderCartStatus.data?.isInstalled ? <div id="wonder-cart-init" /> : <WonderCarNotActivated wonderCartStatus={wonderCartStatus} {...props} />
         : 
         <WonderCartNonEcommerce />}
