@@ -577,7 +577,7 @@ class ECommerce {
 	 * @return void
 	 */
 	public function hide_columns() {
-		if ( 1 === get_option( 'onboarding_experience_level' ) ) {
+		if ( 1 == get_option( 'onboarding_experience_level' ) ) {
 			if ( ! get_user_meta( get_current_user_id(), 'manageedit-pagecolumnshidden' ) ) {
 				update_user_meta( get_current_user_id(), 'manageedit-pagecolumnshidden', array( 'author', 'comments', 'date', 'wpseo-score', 'wpseo-score-readability', 'wpseo-title', 'wpseo-metadesc', 'wpseo-focuskw', 'wpseo-links' ) );
 			}
@@ -627,7 +627,7 @@ class ECommerce {
 	 * @param array $columns Array of column names for posts/pages
 	 */
 	public function custom_status_column( $columns ) {
-		if ( 'product' !== get_post_type() && 1 === get_option( 'onboarding_experience_level' ) ) {
+		if ( 'product' !== get_post_type() && 1 == get_option( 'onboarding_experience_level' ) ) {
 			// Add 'Status' column after 'Title'
 			$columns['status'] = __( 'Status', 'wp-module-ecommerce' );
 		}
