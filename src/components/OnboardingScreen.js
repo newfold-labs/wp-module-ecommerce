@@ -65,7 +65,7 @@ export function OnboardingScreen({
 
   useEffect(() => {
     WordPressSdk.settings.get().then((res) => {
-      setIsMigrationCompleted( res.showMigrationSteps || false );
+      setIsMigrationCompleted( res.nfd_show_migration_steps || false );
       setWebServersUpdated( res.update_site_server_clicked );
       if (res?.page_on_front && res?.show_on_front === "page") {
         setEditUrl(

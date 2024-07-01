@@ -34,6 +34,7 @@ function OnboardingCheckListItem({ children, actions, state, ...props }) {
           "nfd-py-4 nfd-px-5",
           "nfd-text-sm nfd-no-underline"
         )}
+        data-testid={props.id}
         target={state?.target || "_self"}
         href={state.url}
         {...(actions.manage && !manageAction.isMutating
@@ -124,7 +125,7 @@ export function OnboardingList(props) {
         </div>
       )}
       {itemsToDisplay.length > 0 && (
-        <Card as="ul" className="nfd-p-0">
+        <Card as="ul" className="nfd-p-0" id="onboarding-list">
           {itemsToDisplay.map((item) => (
             <OnboardingCheckListItem key={item.name} {...item} />
           ))}
