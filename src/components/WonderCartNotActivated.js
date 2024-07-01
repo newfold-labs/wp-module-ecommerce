@@ -20,7 +20,7 @@ export function WonderCarNotActivated(props) {
     const [isOpen, setIsOpen] = useState(false);
     const canAccessGlobalCTB = NewfoldRuntime.hasCapability("canAccessGlobalCTB");
     const hasYithExtended = NewfoldRuntime.hasCapability("hasYithExtended");
-    const isWooActive = NewfoldRuntime.hasCapability("isEcommerce");
+    const isEcommerce = NewfoldRuntime.hasCapability("isEcommerce");
     
     let [installWonderCart, isInstalling] = useInstallWonderCart({ wpModules });
     let showInProgress = isInstalling || wonderCartStatus.data?.isInstalling;
@@ -34,7 +34,7 @@ export function WonderCarNotActivated(props) {
     }, [isInstalling])
 
     const handleWonderCart = () => {
-        installWonderCart();
+        return installWonderCart();
     }
     
     const renderCampaignIcon = (icon) => {
@@ -46,7 +46,7 @@ export function WonderCarNotActivated(props) {
           case 'GiftCard':
             return <GiftCard className="nfd-my-0 nfd-mx-auto" />;      
           case 'CategoryDiscount':
-            <CategoryDiscount className="nfd-my-0 nfd-mx-auto" />;
+            return <CategoryDiscount className="nfd-my-0 nfd-mx-auto" />;
           case 'ThankYouDiscount':
             return <ThankYouDiscount className="nfd-my-0 nfd-mx-auto" />  
           case 'LastMinuteDeal':
@@ -75,7 +75,7 @@ export function WonderCarNotActivated(props) {
                     as="a"
                     href=""
                     isLoading={showInProgress}
-                    disabled={!(canAccessGlobalCTB && hasYithExtended && isWooActive )}
+                    disabled={!(canAccessGlobalCTB && hasYithExtended && isEcommerce )}
                     id="install_activate_wondercart"
                     >
                     <span>
@@ -111,7 +111,7 @@ export function WonderCarNotActivated(props) {
                                         as="a"
                                         href=""
                                         isLoading={showInProgress}
-                                        disabled={!(canAccessGlobalCTB && hasYithExtended && isWooActive )}
+                                        disabled={!(canAccessGlobalCTB && hasYithExtended && isEcommerce )}
                                         id={`${campaign.icon}_install_activate_wondercart`}
                                         >
                                         <span>
