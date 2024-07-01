@@ -29,8 +29,7 @@ export const PluginsSdk = {
         method: "POST",
         headers: { "X-NFD-INSTALLER": INSTALL_TOKEN },
         data: { plugin, activate: true, queue: false },
-      }).catch((error) => { 
-        alert(JSON.stringify(error)+"error");
+      }).catch((error) => {         
         return "failed"
       });
     },

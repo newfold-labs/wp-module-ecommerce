@@ -12,6 +12,7 @@ import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { LoadingPanel } from "./LoadingPanel";
 import { Section } from "./Section";
 import { useInstallWonderCart } from "./useInstallWonderCart";
+import { wonderCartPopularCampaignsList } from "../constants";
 
 export function WonderCarNotActivated(props) {
     
@@ -34,7 +35,26 @@ export function WonderCarNotActivated(props) {
 
     const handleWonderCart = () => {
         installWonderCart();
-      }
+    }
+    
+    const renderCampaignIcon = (icon) => {
+        switch(icon) {
+          case 'FreeShipping':
+            return <FreeShipping className="nfd-my-0 nfd-mx-auto" />;
+          case 'BuyOndGetOne':
+            return <BuyOndGetOne className="nfd-my-0 nfd-mx-auto" />;
+          case 'GiftCard':
+            return <GiftCard className="nfd-my-0 nfd-mx-auto" />;      
+          case 'CategoryDiscount':
+            <CategoryDiscount className="nfd-my-0 nfd-mx-auto" />;
+          case 'ThankYouDiscount':
+            return <ThankYouDiscount className="nfd-my-0 nfd-mx-auto" />  
+          case 'LastMinuteDeal':
+            return <LastMinuteDeal className="nfd-my-0 nfd-mx-auto" />  
+          default:
+            return null;
+        }
+    }   
        
     return(
             <Section.Container>
@@ -69,194 +89,40 @@ export function WonderCarNotActivated(props) {
                     <p className="nfd-text-[#111729] nfd-text-base nfd-font-semibold nfd-mb-6 nfd--mt-10">
                         {__("Not sure where to start? Try one of these popular promotions:", "wp-module-ecommerce")}
                     </p>
-                    <div className={classNames("nfd-grid nfd-gap-6", "sm:nfd-grid-cols-1", "md:nfd-grid-cols-2", "lg:nfd-grid-cols-3")}>                        
-                        <div className="nfd-flex nfd-flex-col nfd-border nfd-border nfd-border-[#E5E7EB] nfd-pt-4 nfd-pb-3 nfd-px-6 nfd-rounded-lg nfd-card">
-                            <FreeShipping className="nfd-my-0 nfd-mx-auto" />
-                            <h2 className="nfd-font-medium nfd-text-base">{__("Free Shipping", "wp-module-ecommerce")}</h2>
-                            <p className="nfd-text-[#4A5567] nfd-mt-1 nfd-grow">
-                                {__("Attract and retain customers by offering free shipping based on cart amount, location or store category.", "wp-module-ecommerce")}
-                            </p>
-                            {/* <button type="button" id="freeshipping"  className="nfd-button nfd-button--secondary">
-                                {__("Create a Campaign", "wp-module-ecommerce")}
-                            </button>     */}
-                            <Button
-                            className="nfd-button nfd-button--secondary"
-                            variant="secondary"
-                            onClick={handleWonderCart}
-                            data-ctb-id={
-                                    canAccessGlobalCTB && !hasYithExtended
-                                        ? "f95ccf1e-3028-4ea7-b2c2-847969348e8b"
-                                        : null
-                                    }
-                            as="a"
-                            href=""
-                            isLoading={showInProgress}
-                            disabled={!(canAccessGlobalCTB && hasYithExtended && isWooActive )}
-                            id="freeshipping_install_activate_wondercart"
-                            >
-                            <span>
-                                {(wonderCartStatus.data.isInstalling && !wonderCartStatus.data.isInstalled)
-                                ? __("Installing...", "wp-module-ecommerce")
-                                : __("Create a Campaign", "wp-module-ecommerce")}
-                            </span>
-                            </Button>
-                        </div>                                     
-                        <div className="nfd-flex nfd-flex-col nfd-border nfd-border nfd-border-[#E5E7EB] nfd-pt-4 nfd-pb-3 nfd-px-6 nfd-rounded-lg nfd-card">
-                            <BuyOndGetOne className="nfd-my-0 nfd-mx-auto" />
-                            <h2 className="nfd-font-medium nfd-text-base">{__("Buy 1 Get 1", "wp-module-ecommerce")}</h2>
-                            <p className="nfd-text-[#4A5567] nfd-mt-1 nfd-grow">
-                                {__("Attract customers with a compelling deal where they can buy one product and get another product for free.", "wp-module-ecommerce")}
-                            </p>
-                            {/* <button type="button" id="bogo"  className="nfd-button nfd-button--secondary">
-                                {__("Create a Campaign", "wp-module-ecommerce")}
-                            </button>                             */}
-                            <Button
-                            className="nfd-button nfd-button--secondary"
-                            variant="secondary"
-                            onClick={handleWonderCart}
-                            data-ctb-id={
-                                    canAccessGlobalCTB && !hasYithExtended
-                                        ? "f95ccf1e-3028-4ea7-b2c2-847969348e8b"
-                                        : null
-                                    }
-                            as="a"
-                            href=""
-                            isLoading={showInProgress}
-                            disabled={!(canAccessGlobalCTB && hasYithExtended && isWooActive )}
-                            id="bogo_install_activate_wondercart"
-                            >
-                            <span>
-                                {(wonderCartStatus.data.isInstalling && !wonderCartStatus.data.isInstalled)
-                                ? __("Installing...", "wp-module-ecommerce")
-                                : __("Create a Campaign", "wp-module-ecommerce")}
-                            </span>
-                            </Button>
-                        </div>   
-                        <div className="nfd-flex nfd-flex-col nfd-border nfd-border nfd-border-[#E5E7EB] nfd-pt-4 nfd-pb-3 nfd-px-6 nfd-rounded-lg nfd-card">
-                            <GiftCard className="nfd-my-0 nfd-mx-auto" />
-                            <h2 className="nfd-font-medium nfd-text-base">{__("Gift Product in Cart", "wp-module-ecommerce")}</h2>
-                            <p className="nfd-text-[#4A5567] nfd-mt-1 nfd-grow">
-                                {__("Reward customers with a free gift in their cart based on total cart value, or specific products or categories.", "wp-module-ecommerce")}
-                            </p>
-                            {/* <button type="button" id="giftcard"  className="nfd-button nfd-button--secondary">
-                                {__("Create a Campaign", "wp-module-ecommerce")}
-                            </button>                             */}
-                            <Button
-                            className="nfd-button nfd-button--secondary"
-                            variant="secondary"
-                            onClick={handleWonderCart}
-                            data-ctb-id={
-                                    canAccessGlobalCTB && !hasYithExtended
-                                        ? "f95ccf1e-3028-4ea7-b2c2-847969348e8b"
-                                        : null
-                                    }
-                            as="a"
-                            href=""
-                            isLoading={showInProgress}
-                            disabled={!(canAccessGlobalCTB && hasYithExtended && isWooActive )}
-                            id="giftcard_install_activate_wondercart"
-                            >
-                            <span>
-                                {(wonderCartStatus.data.isInstalling && !wonderCartStatus.data.isInstalled)
-                                ? __("Installing...", "wp-module-ecommerce")
-                                : __("Create a Campaign", "wp-module-ecommerce")}
-                            </span>
-                            </Button>
-                        </div>
+                    <div className={classNames("nfd-grid nfd-gap-6", "sm:nfd-grid-cols-1", "md:nfd-grid-cols-2", "lg:nfd-grid-cols-3")}>  
+                        {                            
+                            wonderCartPopularCampaignsList.map((campaign) => {
 
-                        <div className="nfd-flex nfd-flex-col nfd-border nfd-border nfd-border-[#E5E7EB] nfd-pt-4 nfd-pb-3 nfd-px-6 nfd-rounded-lg nfd-card">
-                            <CategoryDiscount className="nfd-my-0 nfd-mx-auto" />
-                            <h2 className="nfd-font-medium nfd-text-base">{__("Category Discount", "wp-module-ecommerce")}</h2>
-                            <p className="nfd-text-[#4A5567] nfd-mt-1 nfd-grow">
-                                {__("Give your customers a discount on specific categories of products and boost sales for those categories.", "wp-module-ecommerce")}
-                            </p>
-                            {/* <button type="button" id="categorydiscount"  className="nfd-button nfd-button--secondary">
-                                {__("Create a Campaign", "wp-module-ecommerce")}
-                            </button>                             */}
-                            <Button
-                            className="nfd-button nfd-button--secondary"
-                            variant="secondary"
-                            onClick={handleWonderCart}
-                            data-ctb-id={
-                                    canAccessGlobalCTB && !hasYithExtended
-                                        ? "f95ccf1e-3028-4ea7-b2c2-847969348e8b"
-                                        : null
-                                    }
-                            as="a"
-                            href=""
-                            isLoading={showInProgress}
-                            disabled={!(canAccessGlobalCTB && hasYithExtended && isWooActive )}
-                            id="categorydiscount_install_activate_wondercart"
-                            >
-                            <span>
-                                {(wonderCartStatus.data.isInstalling && !wonderCartStatus.data.isInstalled)
-                                ? __("Installing...", "wp-module-ecommerce")
-                                : __("Create a Campaign", "wp-module-ecommerce")}
-                            </span>
-                            </Button>
-                        </div>
-                        <div className="nfd-flex nfd-flex-col nfd-border nfd-border nfd-border-[#E5E7EB] nfd-max-w-[370px] nfd-pt-4 nfd-pb-3 nfd-px-6 nfd-rounded-lg nfd-card">
-                            <ThankYouDiscount className="nfd-my-0 nfd-mx-auto" />
-                            <h2 className="nfd-font-medium nfd-text-base">{__("Upsell in Thank You Page", "wp-module-ecommerce")}</h2>
-                            <p className="nfd-text-[#4A5567] nfd-mt-1 nfd-grow">
-                                {__("Maximize sales by presenting relevant upsell options after customers have completed their purchase.", "wp-module-ecommerce")}
-                            </p>
-                            {/* <button type="button" id="thankyoudiscount"  className="nfd-button nfd-button--secondary nfd-mb-auto">
-                                {__("Create a Campaign", "wp-module-ecommerce")}
-                            </button>                             */}
-                            <Button
-                            className="nfd-button nfd-button--secondary"
-                            variant="secondary"
-                            onClick={handleWonderCart}
-                            data-ctb-id={
-                                    canAccessGlobalCTB && !hasYithExtended
-                                        ? "f95ccf1e-3028-4ea7-b2c2-847969348e8b"
-                                        : null
-                                    }
-                            as="a"
-                            href=""
-                            isLoading={showInProgress}
-                            disabled={!(canAccessGlobalCTB && hasYithExtended && isWooActive )}
-                            id="thankyoudiscount_install_activate_wondercart"
-                            >
-                            <span>
-                                {(wonderCartStatus.data.isInstalling && !wonderCartStatus.data.isInstalled)
-                                ? __("Installing...", "wp-module-ecommerce")
-                                : __("Create a Campaign", "wp-module-ecommerce")}
-                            </span>
-                            </Button>
-                        </div>
-                        <div className="nfd-flex nfd-flex-col nfd-border nfd-border nfd-border-[#E5E7EB] nfd-max-w-[370px] nfd-pt-4 nfd-pb-3 nfd-px-6 nfd-rounded-lg nfd-card">
-                            <LastMinuteDeal className="nfd-my-0 nfd-mx-auto" />
-                            <h2 className="nfd-font-medium nfd-text-base">{__("Last Minute Deal", "wp-module-ecommerce")}</h2>
-                            <p className="nfd-text-[#4A5567] nfd-mt-1 nfd-grow">
-                                {__("Create urgency with a special time-limited deal for customers on the cart and checkout pages.", "wp-module-ecommerce")}
-                            </p>
-                            {/* <button type="button" id="lastminutedeal"  className="nfd-button nfd-button--secondary">
-                                {__("Create a Campaign", "wp-module-ecommerce")}
-                            </button>                             */}
-                            <Button
-                            className="nfd-button nfd-button--secondary"
-                            variant="secondary"
-                            onClick={handleWonderCart}
-                            data-ctb-id={
-                                    canAccessGlobalCTB && !hasYithExtended
-                                        ? "f95ccf1e-3028-4ea7-b2c2-847969348e8b"
-                                        : null
-                                    }
-                            as="a"
-                            href=""
-                            isLoading={showInProgress}
-                            disabled={!(canAccessGlobalCTB && hasYithExtended && isWooActive )}
-                            id="lastminutedeal_install_activate_wondercart"
-                            >
-                            <span>
-                                {(wonderCartStatus.data.isInstalling && !wonderCartStatus.data.isInstalled)
-                                ? __("Installing...", "wp-module-ecommerce")
-                                : __("Create a Campaign", "wp-module-ecommerce")}
-                            </span>
-                            </Button>
-                        </div>
+                                return(<div className="nfd-flex nfd-flex-col nfd-border nfd-border nfd-border-[#E5E7EB] nfd-pt-4 nfd-pb-3 nfd-px-6 nfd-rounded-lg nfd-card">            
+                                        {renderCampaignIcon(campaign.icon)}            
+                                        <h2 className="nfd-font-medium nfd-text-base">{__(`${campaign.title}`, "wp-module-ecommerce")}</h2>
+                                        <p className="nfd-text-[#4A5567] nfd-mt-1 nfd-grow">
+                                            {__(`${campaign.description}`, "wp-module-ecommerce")}
+                                        </p>                            
+                                        <Button
+                                        className="nfd-button nfd-button--secondary"
+                                        variant="secondary"
+                                        onClick={handleWonderCart}
+                                        data-ctb-id={
+                                                canAccessGlobalCTB && !hasYithExtended
+                                                    ? "f95ccf1e-3028-4ea7-b2c2-847969348e8b"
+                                                    : null
+                                                }
+                                        as="a"
+                                        href=""
+                                        isLoading={showInProgress}
+                                        disabled={!(canAccessGlobalCTB && hasYithExtended && isWooActive )}
+                                        id={`${campaign.icon}_install_activate_wondercart`}
+                                        >
+                                        <span>
+                                            {(wonderCartStatus.data.isInstalling && !wonderCartStatus.data.isInstalled)
+                                            ? __("Installing...", "wp-module-ecommerce")
+                                            : __("Create a Campaign", "wp-module-ecommerce")}
+                                        </span>
+                                        </Button>
+                                    </div>)  
+                            })
+                        }
                     </div>                    
                 </Section.Content>
                 <Modal

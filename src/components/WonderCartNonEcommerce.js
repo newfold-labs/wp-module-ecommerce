@@ -1,12 +1,11 @@
 import { Button } from "@newfold/ui-component-library";
 import { __ } from "@wordpress/i18n";
-import { ReactComponent as CheckMarkIcon } from "../icons/check.svg";
 import { ReactComponent as LockIcon } from "../icons/lockicon.svg";
 import { ReactComponent as TransformStore } from "../icons/transform-store.svg";
-import { ReactComponent as WonderCartIcon } from "../icons/wondercart.svg";
-import { ReactComponent as YithPluginsIcon } from "../icons/yithplugins.svg";
 import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { Section } from "./Section";
+import { WonderCartCampaignDetails } from "./WonderCartCampaignDetails";
+import { YithPluginDetails } from "./YithPluginDetails";
 
 export function WonderCartNonEcommerce() {    
     return(
@@ -47,95 +46,12 @@ export function WonderCartNonEcommerce() {
                             </div>
                         </div>
                         
-                        <h2 className="nfd-text-lg nfd-font-medium nfd-mt-8 nfd-text-black">
-                            {__("Add upsells, cross-sells, and other promotions with WonderCart", "wp-module-ecommerce")}
-                        </h2>
-                        <p className="nfd-leading-5 nfd-w-4/5 nfd-text-[#4A5567]">
-                            {__("Create and run effective promotional campaigns like BOGOs, free shipping offers, category discounts, and more to increase revenue and strengthen customer engagement.", "wp-module-ecommerce")}
-                        </p>
-                        <div className="nfd-flex nfd-flex-wrap nfd-gap-6">
-                            <div className="nfd-flex-1">
-                                <div className="nfd-flex nfd-flex-wrap nfd-gap-x-10 nfd-mt-3 nfd-pt-0.5 nfd-w-3/4">
-                                    <ul className="nfd-flex-1 nfd-text-black">
-                                        <li className="nfd-flex">
-                                            <CheckMarkIcon className="nfd-mt-0.5 nfd-pt-px nfd-mr-1" />
-                                            <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("Buy One Get One", "wp-module-ecommerce")}</span>
-                                        </li>
-                                        <li className="nfd-flex">
-                                            <CheckMarkIcon className="nfd-mt-0.5 nfd-pt-px nfd-mr-1" />
-                                            <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("Cart Promotions", "wp-module-ecommerce")}</span>
-                                        </li>
-                                        <li className="nfd-flex">
-                                            <CheckMarkIcon className="nfd-mt-0.5 nfd-pt-px nfd-mr-1" />
-                                            <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("Related Items Discounts", "wp-module-ecommerce")}</span>
-                                        </li>
-                                    </ul>
-                                    <ul className="nfd-flex-1 nfd-text-black">
-                                        <li className="nfd-flex">
-                                            <CheckMarkIcon className="nfd-mt-0.5 nfd-pt-px nfd-mr-1" />
-                                            <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("Free Shipping Offers", "wp-module-ecommerce")}</span>
-                                        </li>
-                                        <li className="nfd-flex">
-                                            <CheckMarkIcon className="nfd-mt-0.5 nfd-pt-px nfd-mr-1" />
-                                            <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("Category Discounts", "wp-module-ecommerce")}</span>
-                                        </li>
-                                        <li className="nfd-flex">
-                                            <CheckMarkIcon className="nfd-mt-0.5 nfd-pt-px nfd-mr-1" />
-                                            <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("and more!", "wp-module-ecommerce")}</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="nfd-flex-none nfd-w-28 nfd-h-24 nfd-self-end">
-                                <WonderCartIcon />
-                            </div>
-                        </div>
+                        <WonderCartCampaignDetails />
 
                         <div className="nfd-h-px nfd-mx-4 nfd-mt-5 nfd-mb--1 nfd-pt-0.5 nfd-bg-[#E2E8F0]">&nbsp;</div>
 
-                        <h2 className="nfd-text-lg nfd-font-medium nfd-mt-8 nfd-text-black">
-                            {__("Exclusive YITH plugins and tools to help you sell online", "wp-module-ecommerce")}
-                        </h2>
-                        <p className="nfd-leading-5 nfd-w-4/5 nfd-text-[#4A5567]">
-                            {__("Our eCommerce bundle includes a comprehensive suite of advanced tools designed to boost the performance of your WooCommerce store. This bundle includes these exclusive YITH plugins:", "wp-module-ecommerce")}
-                        </p>
-                        <div className="nfd-flex nfd-flex-wrap nfd-gap-6">
-                            <div className="nfd-flex-1">
-                                <div className="nfd-flex nfd-flex-wrap nfd-gap-x-10 nfd-mt-3 nfd-pt-0.5 nfd-w-3/4">
-                                    <ul className="nfd-flex-1 nfd-text-black">
-                                        <li className="nfd-flex">
-                                            <CheckMarkIcon className="nfd-mt-0.5 nfd-pt-px nfd-mr-1" />
-                                            <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("Gift Cards", "wp-module-ecommerce")}</span>
-                                        </li>
-                                        <li className="nfd-flex">
-                                            <CheckMarkIcon className="nfd-mt-0.5 nfd-pt-px nfd-mr-1" />
-                                            <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("Wishlists", "wp-module-ecommerce")}</span>
-                                        </li>
-                                        <li className="nfd-flex">
-                                            <CheckMarkIcon className="nfd-mt-0.5 nfd-pt-px nfd-mr-1" />
-                                            <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("Custom 'My Account' Page", "wp-module-ecommerce")}</span>
-                                        </li>
-                                    </ul>
-                                    <ul className="nfd-flex-1 nfd-text-black">
-                                        <li className="nfd-flex">
-                                            <CheckMarkIcon className="nfd-mt-0.5 nfd-pt-px nfd-mr-1" />
-                                            <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("Bookings & Appointments", "wp-module-ecommerce")}</span>
-                                        </li>
-                                        <li className="nfd-flex">
-                                            <CheckMarkIcon className="nfd-mt-0.5 nfd-pt-px nfd-mr-1" />
-                                            <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("AJAX Product Filters", "wp-module-ecommerce")}</span>
-                                        </li>
-                                        <li className="nfd-flex">
-                                            <CheckMarkIcon className="nfd-mt-0.5 nfd-pt-px nfd-mr-1" />
-                                            <span className="nfd-text-black nfd-font-medium nfd-antialiased">{__("AJAX Product Search", "wp-module-ecommerce")}</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="nfd-flex-none nfd-w-28 nfd-h-24 nfd-self-end">
-                                <YithPluginsIcon />
-                            </div>
-                        </div>
+                        <YithPluginDetails />
+
                     </div>
                 </div>
                 </Section.Content>

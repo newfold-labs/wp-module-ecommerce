@@ -9,7 +9,6 @@ export function useInstallWonderCart({ wpModules }) {
   let { notify } = wpModules;
   let installWonderCart = useSWRMutation("install-nfd_slug_wonder_cart", async () => {
     let response = await PluginsSdk.actions.installSync("nfd_slug_wonder_cart");
-    alert(response);
     if (response !== "failed") {
       notify.push("nfd_slug_wonder_cart-install-status", {
         title: "Installed successfully",
