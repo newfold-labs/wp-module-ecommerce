@@ -17,19 +17,22 @@ export const NewfoldRuntime = {
   get siteUrl() {
     return window.NewfoldRuntime?.siteUrl;
   },
-  get isWoo(){
+  get isWoo() {
     return window.NewfoldRuntime?.isWoocommerceActive
   },
-  get isJet(){
+  get isJet() {
     return window.NewfoldRuntime?.isJetpackBoostActive
   },
-  get homeUrl(){
+  get homeUrl() {
     return window.NewfoldRuntime?.homeUrl
   },
-  get currentTheme(){
+  get currentTheme() {
     return (window.NewfoldRuntime?.currentTheme);
   },
-  get plugin(){
+  get plugin() {
     return (window.NewfoldRuntime?.plugin);
+  },
+  get ecommerce() {
+    return (window.NewfoldRuntime?.ecommerce);
   }
 };
