@@ -5,10 +5,9 @@ const customCommandTimeout = 30000;
 const longWait = 120000;
 
 export const comingSoon = ( shouldBeComingSoon ) => {
-	cy.get( `.${ appId }-app-navitem-Settings`, {
-		timeout: customCommandTimeout,
-	} ).click();
-
+	cy.visit(
+		'/wp-admin/admin.php?page=' + Cypress.env( 'pluginId' ) + '#/settings'
+	);
 	cy.get( '[data-id="coming-soon-toggle"]', {
 		timeout: customCommandTimeout,
 	} ).as( 'comingSoonToggle' );
@@ -16,8 +15,9 @@ export const comingSoon = ( shouldBeComingSoon ) => {
 	if ( shouldBeComingSoon ) {
 		cy.get( '@comingSoonToggle' )
 			.invoke( 'attr', 'aria-checked' )
-			.then( ( area_checked ) => {
-				if ( area_checked == 'false' ) {
+			.then( ( aria_checked ) => {
+				if ( aria_checked == 'false' ) {
+					cy.log( 'Enable Coming Soon Mode' );
 					cy.get( '@comingSoonToggle' ).click();
 					cy.get( '.nfd-notification--success', {
 						timeout: customCommandTimeout,
@@ -27,8 +27,9 @@ export const comingSoon = ( shouldBeComingSoon ) => {
 	} else {
 		cy.get( '@comingSoonToggle' )
 			.invoke( 'attr', 'aria-checked' )
-			.then( ( area_checked ) => {
-				if ( area_checked == 'true' ) {
+			.then( ( aria_checked ) => {
+				if ( aria_checked == 'true' ) {
+					cy.log( 'Disable Coming Soon Mode' );
 					cy.get( '@comingSoonToggle' ).click();
 					cy.get( '.nfd-notification--success', {
 						timeout: customCommandTimeout,
@@ -39,14 +40,18 @@ export const comingSoon = ( shouldBeComingSoon ) => {
 };
 
 export const installWoo = () => {
-	cy.exec( `npx wp-env run cli wp plugin install woocommerce`, {
+	cy.log( 'Installing WooCommerce' );
+	cy.exec( `npx wp-env run cli wp plugin install woocommerce --activate`, {
 		timeout: longWait,
 		log: true,
 	} );
+};
 
-	cy.exec( `npx wp-env run cli wp plugin activate woocommerce`, {
-		timeout: longWait,
-	} );
+export const uninstallPlugins = () => {
+	cy.log( 'Uninstalling plugins' );
+	cy.exec(
+		'npx wp-env run cli wp plugin uninstall --all --deactivate --exclude=bluehost-wordpress-plugin,wp-plugin-hostgator,wp-plugin-crazy-domains,wp-plugin-web,wp-plugin-mojo'
+	);
 };
 
 export const viewCompletedTasks = () => {
@@ -70,4 +75,15 @@ export const waitForNextSteps = () => {
 		.as( 'nextSteps' )
 		.scrollIntoView()
 		.should( 'exist' );
+};
+
+export const deleteCapabilitiesTransient = () => {
+	cy.log( 'Deleting capabilities transient' );
+	cy.exec( `npx wp-env run cli wp transient delete nfd_site_capabilities`, {
+		failOnNonZeroExit: false,
+	} );
+};
+
+export const wpLogin = () => {
+	cy.login( Cypress.env( 'wpUsername' ), Cypress.env( 'wpPassword' ) );
 };
