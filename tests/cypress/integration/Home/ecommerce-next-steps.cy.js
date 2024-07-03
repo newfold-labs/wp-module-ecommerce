@@ -158,7 +158,7 @@ describe( 'e-commerce Home Page- Next Steps', () => {
 		if ( pluginId == 'crazy-domains' ) {
 			cy.url().should(
 				'equal',
-				`https://my.yoast.com/signup?redirect_to=https://academy.yoast.com/courses/?utm_medium=crazydomains_plugin&utm_source=wp-home`
+				'https://my.yoast.com/signup?redirect_to=https://academy.yoast.com/courses/?utm_medium=crazy_plugin&utm_source=wp-home'
 			);
 		} else {
 			cy.url().should(

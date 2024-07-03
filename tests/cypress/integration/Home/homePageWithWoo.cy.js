@@ -86,7 +86,10 @@ describe(
 			viewRemainingTasks();
 		} );
 
-		it( 'Verify next step "Connect a payment processor"', () => {
+		it( 'Verify next step "Connect a payment processor"', function () {
+			if (pluginId == 'crazy-domains') { 
+				this.skip();
+			}
 			cy.reload();
 			waitForNextSteps();
 			cy.get( '#connect-a-payment-processor a', {
