@@ -11,6 +11,7 @@ import { PluginsSdk } from "./sdk/plugins";
 import { AllPayments } from "./components/AllPayments";
 import domReady from "@wordpress/dom-ready";
 import { AnalyticsSdk } from "./sdk/analytics";
+import { SalesChannel } from "./components/SalesChannel";
 
 const fetcher = (path) => apiFetch({ url: NewfoldRuntime.createApiUrl(path) });
 
@@ -23,6 +24,7 @@ const pages = [
   { key: "/store/products", Page: Products },
   { key: "/store/details", Page: StoreDetails },
   { key: "/store/sales_discounts", Page: WonderCart },
+  { key: "/store/sales_channel", Page: SalesChannel },
   { key: "/store/payments", Page: AllPayments },
 ];
 

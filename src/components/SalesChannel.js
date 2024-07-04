@@ -1,18 +1,18 @@
 import { __ } from "@wordpress/i18n";
 import { Button } from "@newfold/ui-component-library";
 import { Section } from "./Section";
-import { ReactComponent as Ecomdash } from "../icons/sales-channel/ecomdash";
-import { ReactComponent as Inventory } from "../icons/sales-channel/inventory-illustration";
-import { ReactComponent as InventoryBrands } from "../icons/sales-channel/inventory-brands";
-import { ReactComponent as OrdersTable } from "../icons/sales-channel/orders-table";
-import { ReactComponent as Amazon } from "../icons/sales-channel/amazon-icon";
-import { ReactComponent as Barcodes } from "../icons/sales-channel/barcodes";
-import { ReactComponent as CustomTemplates } from "../icons/sales-channel/custom-templates";
-import { ReactComponent as ShippingLabels } from "../icons/sales-channel/shipping-labels";
-import { ReactComponent as WarehouseFeeds } from "../icons/sales-channel/warehouse-feeds";
-import { ReactComponent as ListingPresets } from "../icons/sales-channel/listing-presets";
-import { ReactComponent as PurchaseOrders } from "../icons/sales-channel/purchase-orders";
-import { ReactComponent as Accounting } from "../icons/sales-channel/accounting";
+import { ReactComponent as Ecomdash } from "../icons/sales-channel/ecomdash.svg";
+import { ReactComponent as Inventory } from "../icons/sales-channel/inventory-illustration.svg";
+import { ReactComponent as InventoryBrands } from "../icons/sales-channel/inventory-brands.svg";
+import { ReactComponent as OrdersTable } from "../icons/sales-channel/orders-table.svg";
+import { ReactComponent as Amazon } from "../icons/sales-channel/amazon-icon.svg";
+import { ReactComponent as Barcodes } from "../icons/sales-channel/barcodes.svg";
+import { ReactComponent as CustomTemplates } from "../icons/sales-channel/custom-templates.svg";
+import { ReactComponent as ShippingLabels } from "../icons/sales-channel/shipping-labels.svg";
+import { ReactComponent as WarehouseFeeds } from "../icons/sales-channel/warehouse-feeds.svg";
+import { ReactComponent as ListingPresets } from "../icons/sales-channel/listing-presets.svg";
+import { ReactComponent as PurchaseOrders } from "../icons/sales-channel/purchase-orders.svg";
+import { ReactComponent as Accounting } from "../icons/sales-channel/accounting.svg";
 
 export function SalesChannel(){
     return(
