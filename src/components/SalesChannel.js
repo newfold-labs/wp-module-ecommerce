@@ -20,11 +20,12 @@ export function SalesChannel(){
             <Section.Container>
                 <Section.Header title={__("Sales Channels", "wp-module-ecommerce")} subTitle={__("Sell your products everywhere, confidently, with Ecomdash.", "wp-module-ecommerce")} />
                 <Section.Content>
-                    <h2 className="nfd-text-[#0F172A] nfd-text-lg nfd-font-medium nfd-pb-1.5">
-                        {__("Sell your products everywhere, confidently, with Ecomdash.", "wp-module-ecommerce")}
-                    </h2>
-                    <div className="nfd-flex  nfd-flex-row nfd-flex-wrap nfd-gap-6">                        
+                    
+                    <div className="nfd-flex  nfd-flex-row nfd-flex-wrap nfd-gap-6">                                             
                        <div className="nfd-flex-1">
+                            <h2 className="nfd-text-[#0F172A] nfd-text-lg nfd-font-medium nfd-pb-1.5">
+                                    {__("Sell your products everywhere, confidently, with Ecomdash.", "wp-module-ecommerce")}
+                            </h2>  
                             <p className="nfd-text-[#4A5567]">
                                 {__("With ecomdash, you can manage different sales channels all in one place.", "wp-module-ecommerce")}
                             </p>
