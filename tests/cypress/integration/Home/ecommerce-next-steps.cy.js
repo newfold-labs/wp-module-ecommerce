@@ -1,7 +1,6 @@
 import { GetPluginId } from '../wp-module-support/pluginID.cy';
 import {
 	wpLogin,
-	comingSoon,
 	viewCompletedTasks,
 	viewRemainingTasks,
 } from '../wp-module-support/utils.cy';
@@ -155,7 +154,9 @@ describe( 'e-commerce Home Page- Next Steps', () => {
 			.scrollIntoView()
 			.invoke( 'removeAttr', 'target' )
 			.click();
-			cy.url().contains(
+			cy.url()
+				.should(
+				'contain',
 				'https://my.yoast.com/signup?redirect_to=https://academy.yoast.com/courses/'
 			);
 		cy.go( 'back' );

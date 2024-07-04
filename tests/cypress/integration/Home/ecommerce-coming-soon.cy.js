@@ -14,7 +14,6 @@ describe(
 	() => {
 		beforeEach( () => {
 			wpLogin();
-			// uninstallPlugins();
 			comingSoon( true );
 			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
 		} );
