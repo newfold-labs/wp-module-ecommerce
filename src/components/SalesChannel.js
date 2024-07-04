@@ -20,15 +20,31 @@ export function SalesChannel(){
             <Section.Container>
                 <Section.Header title={__("Sales Channels", "wp-module-ecommerce")} subTitle={__("Sell your products everywhere, confidently, with Ecomdash.", "wp-module-ecommerce")} />
                 <Section.Content>
-                    <div className="nfd-flex nfd-flex-wrap">
-                        <h2>{__("Sell your products everywhere, confidently, with Ecomdash.", "wp-module-ecommerce")}</h2>
-                        <p>{__("With ecomdash, you can manage different sales channels all in one place. Simply connect your business accounts from Amazon, Etsy or Walmart  to your ecomdash platform and easily manage products, customer orders and more saving you valuable time.", "wp-module-ecommerce")}​</p>
-                        <Ecomdash />
-                        <Button
-                        id="install-ecomdash"
-                        >
-                            {__("Get Started Now", "wp-module-ecommerce")}
-                        </Button>
+                    <h2 className="nfd-text-[#0F172A] nfd-text-lg nfd-font-medium nfd-pb-1.5">
+                        {__("Sell your products everywhere, confidently, with Ecomdash.", "wp-module-ecommerce")}
+                    </h2>
+                    <div className="nfd-flex  nfd-flex-row nfd-flex-wrap nfd-gap-6">                        
+                       <div className="nfd-flex-1">
+                            <p className="nfd-text-[#4A5567]">
+                                {__("With ecomdash, you can manage different sales channels all in one place.", "wp-module-ecommerce")}
+                            </p>
+                            <p className="nfd-text-[#4A5567]">
+                                {__("Simply connect your business accounts from Amazon, Etsy or Walmart to", "wp-module-ecommerce")}
+                            </p>
+                            <p className="nfd-text-[#4A5567]">
+                                {__("your ecomdash platform and easily manage products, customer orders and", "wp-module-ecommerce")}
+                            </p>
+                            <p className="nfd-text-[#4A5567] nfd-pb-7">
+                                {__("more saving you valuable time.", "wp-module-ecommerce")}​
+                            </p>
+                            <Button
+                            id="install-ecomdash"
+                            variant="primary"
+                            >
+                                {__("Get Started Now", "wp-module-ecommerce")}
+                            </Button>
+                       </div>
+                       <Ecomdash className="nfd-flex-none nfd-self-start" />
                     </div>
 
                     <div className="">
