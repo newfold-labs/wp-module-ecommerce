@@ -16,10 +16,12 @@ describe(
 	'e-commerce Home Page - When WooCommerce is installed',
 	{ testIsolation: true },
 	() => {
+		before(() => {
+			installWoo();
+		});
+		
 		beforeEach( () => {
 			wpLogin();
-			uninstallPlugins();
-			installWoo();
 			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
 		} );
 
@@ -28,6 +30,7 @@ describe(
 		} );
 
 		it( 'Verify next steps "Add your store info"', () => {
+			cy.reload();
 			waitForNextSteps();
 			cy.get( '#add-your-store-info a', {
 				timeout: customCommandTimeout,
@@ -87,6 +90,7 @@ describe(
 		} );
 
 		it( 'Verify next step "Connect a payment processor"', function () {
+			// Razorpay is not enabled for crazy-domains, hense skipping
 			if (pluginId == 'crazy-domains') { 
 				this.skip();
 			}

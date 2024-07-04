@@ -4,11 +4,9 @@ import {
 	comingSoon,
 	uninstallPlugins,
 } from '../wp-module-support/utils.cy';
-import { EventsAPI, APIList } from '../wp-module-support/eventsAPIs.cy';
 
 const customCommandTimeout = 20000;
 const pluginId = GetPluginId();
-const hg_region = 'br';
 
 describe(
 	'e-commerce Home Page- Coming soon mode',
@@ -16,7 +14,7 @@ describe(
 	() => {
 		beforeEach( () => {
 			wpLogin();
-			uninstallPlugins();
+			// uninstallPlugins();
 			comingSoon( true );
 			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
 		} );

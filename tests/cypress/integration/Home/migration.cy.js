@@ -42,7 +42,7 @@ describe(
 				.should( 'exist' )
 				.click();
 			EventsAPI( APIList.update_nameserver, pluginId );
-			cy.get( '.nfd-help-center', {
+			cy.get( '.help-container', {
 				timeout: customCommandTimeout,
 			} ).should( 'be.visible' );
 			cy.get( '.close-button' ).click();
@@ -57,7 +57,7 @@ describe(
 				.should( 'exist' )
 				.click();
 			EventsAPI( APIList.connect_domain, pluginId );
-			cy.get( '.nfd-help-center', {
+			cy.get( '.help-container', {
 				timeout: customCommandTimeout,
 			} ).should( 'be.visible' );
 			cy.get( '.close-button' ).click();

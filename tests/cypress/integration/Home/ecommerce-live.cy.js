@@ -11,7 +11,7 @@ const pluginId = GetPluginId();
 describe( 'e-commerce Home Page- Live Mode', { testIsolation: true }, () => {
 	beforeEach( () => {
 		wpLogin();
-		uninstallPlugins();
+		// uninstallPlugins();
 		comingSoon( false );
 		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
 	} );

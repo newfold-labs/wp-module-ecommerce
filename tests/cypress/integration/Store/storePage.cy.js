@@ -11,7 +11,7 @@ describe(
 	() => {
 		before( () => {
 			wpLogin();
-			uninstallPlugins();
+			// uninstallPlugins();
 			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/store' );
 		} );
 
