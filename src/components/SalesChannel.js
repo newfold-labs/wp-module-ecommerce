@@ -13,6 +13,7 @@ import { ReactComponent as WarehouseFeeds } from "../icons/sales-channel/warehou
 import { ReactComponent as ListingPresets } from "../icons/sales-channel/listing-presets.svg";
 import { ReactComponent as PurchaseOrders } from "../icons/sales-channel/purchase-orders.svg";
 import { ReactComponent as Accounting } from "../icons/sales-channel/accounting.svg";
+import { ReactComponent as EcomdashBulletPoint} from "../icons/sales-channel/ecomdash-bullet-point.svg";
 
 export function SalesChannel(){
     return(
@@ -26,16 +27,13 @@ export function SalesChannel(){
                             <h2 className="nfd-text-[#0F172A] nfd-text-lg nfd-font-medium nfd-pb-1.5">
                                     {__("Sell your products everywhere, confidently, with Ecomdash.", "wp-module-ecommerce")}
                             </h2>  
-                            <p className="nfd-text-[#4A5567]">
-                                {__("With ecomdash, you can manage different sales channels all in one place.", "wp-module-ecommerce")}
-                            </p>
-                            <p className="nfd-text-[#4A5567]">
-                                {__("Simply connect your business accounts from Amazon, Etsy or Walmart to", "wp-module-ecommerce")}
-                            </p>
-                            <p className="nfd-text-[#4A5567]">
-                                {__("your ecomdash platform and easily manage products, customer orders and", "wp-module-ecommerce")}
-                            </p>
                             <p className="nfd-text-[#4A5567] nfd-pb-7">
+                                {__("With ecomdash, you can manage different sales channels all in one place.", "wp-module-ecommerce")}
+                                <br />
+                                {__("Simply connect your business accounts from Amazon, Etsy or Walmart to", "wp-module-ecommerce")}
+                                <br />
+                                {__("your ecomdash platform and easily manage products, customer orders and", "wp-module-ecommerce")}
+                                <br />
                                 {__("more saving you valuable time.", "wp-module-ecommerce")}​
                             </p>
                             <Button
@@ -48,16 +46,44 @@ export function SalesChannel(){
                        <Ecomdash className="nfd-flex-none nfd-self-start" />
                     </div>
 
-                    <div className="">
-                        <h2>{__("Manage inventory across multiple platforms", "wp-module-ecommerce")}</h2>
-                        <Inventory />
-                        <ul>
-                            <li>{__("Enjoy near real-time inventory updates for an unlimited number of channels with our inventory management software.", "wp-module-ecommerce")}</li>
-                            <li>{__("Manage product levels across multiple warehouses without the fear of overselling.", "wp-module-ecommerce")}</li>
-                            <li>{__("Accurately sync kits, multipacks, and components without any headaches.", "wp-module-ecommerce")}</li>
-                        </ul>
-                        <InventoryBrands />    
+                    <div className="nfd-border nfd-border-[#E2E8F0] nfd-bg-[#F9F9F9] nfd-rounded-lg nfd-p-4 nfd-mt-10">
+                        <div className="nfd-flex  nfd-flex-row nfd-flex-wrap nfd-gap-6"> 
+                            <div className="nfd-flex-none">                                            
+                                <h2 className="nfd-text-[#111729] nfd-font-medium nfd-text-base nfd-mb-11">
+                                    {__("Manage inventory across multiple platforms", "wp-module-ecommerce")}
+                                </h2>
+                                <Inventory className="nfd-mt-4" />
+                            </div>
+                            <ul className="nfd-flex-1 nfd-mt-16 nfd-ml-3.5">
+                                <li className="nfd-flex nfd-flex-row nfd-gap-6 nfd-mb-6">
+                                    <EcomdashBulletPoint className="nfd-flex-none" />
+                                    <span className="nfd-flex-1">
+                                        {__("Enjoy near real-time inventory updates for an unlimited number of", "wp-module-ecommerce")}
+                                        <br />
+                                        {__("number of channels with our inventory management software.", "wp-module-ecommerce")}
+                                    </span>
+                                </li>
+                                <li className="nfd-flex nfd-flex-row nfd-gap-6 nfd-mb-6">
+                                    <EcomdashBulletPoint className="nfd-flex-none" />
+                                    <span className="nfd-flex-1">
+                                        {__("Manage product levels across multiple warehouses without the fear of overselling.", "wp-module-ecommerce")}
+                                        <br />
+                                        {__("without the fear of overselling.", "wp-module-ecommerce")}
+                                    </span>
+                                </li>
+                                <li className="nfd-flex nfd-flex-row nfd-gap-6 nfd-mb-6">
+                                    <EcomdashBulletPoint className="nfd-flex-none" />
+                                    <span className="nfd-flex-1">
+                                        {__("Accurately sync kits, multipacks, and components without any headaches.", "wp-module-ecommerce")}
+                                        <br />
+                                        {__("headaches.", "wp-module-ecommerce")}
+                                    </span>
+                                </li>
+                            </ul>                            
+                        </div>
+                        <InventoryBrands />
                     </div>
+                    
 
                     <div className="">
                         <h2>{__("Order Management and Reporting", "wp-module-ecommerce")}</h2>
