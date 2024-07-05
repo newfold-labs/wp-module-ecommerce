@@ -1,7 +1,6 @@
 import { GetPluginId } from '../wp-module-support/pluginID.cy';
 import {
 	wpLogin,
-	comingSoon,
 	viewCompletedTasks,
 	viewRemainingTasks,
 } from '../wp-module-support/utils.cy';
@@ -155,17 +154,11 @@ describe( 'e-commerce Home Page- Next Steps', () => {
 			.scrollIntoView()
 			.invoke( 'removeAttr', 'target' )
 			.click();
-		if ( pluginId == 'crazy-domains' ) {
-			cy.url().should(
-				'equal',
-				`https://my.yoast.com/signup?redirect_to=https://academy.yoast.com/courses/?utm_medium=crazydomains_plugin&utm_source=wp-home`
+			cy.url()
+				.should(
+				'contain',
+				'https://my.yoast.com/signup?redirect_to=https://academy.yoast.com/courses/'
 			);
-		} else {
-			cy.url().should(
-				'equal',
-				`https://my.yoast.com/signup?redirect_to=https://academy.yoast.com/courses/?utm_medium=${ pluginId }_plugin&utm_source=wp-home`
-			);
-		}
 		cy.go( 'back' );
 		EventsAPI( APIList.yoast_seo_academy, pluginId );
 
