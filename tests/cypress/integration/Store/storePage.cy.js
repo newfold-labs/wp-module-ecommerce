@@ -11,7 +11,8 @@ describe(
 	() => {
 		before( () => {
 			wpLogin();
-			uninstallPlugins();
+			cy.exec( `npx wp-env run cli wp plugin deactivate woocommerce`,
+				{ failOnNonZeroExit: false });
 			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/store' );
 		} );
 
