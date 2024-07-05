@@ -1,19 +1,19 @@
-import { __ } from "@wordpress/i18n";
 import { Button } from "@newfold/ui-component-library";
-import { Section } from "./Section";
-import { ReactComponent as Ecomdash } from "../icons/sales-channel/ecomdash.svg";
-import { ReactComponent as Inventory } from "../icons/sales-channel/inventory-illustration.svg";
-import { ReactComponent as InventoryBrands } from "../icons/sales-channel/inventory-brands.svg";
-import { ReactComponent as OrdersTable } from "../icons/sales-channel/orders-table.svg";
+import { __ } from "@wordpress/i18n";
+import { ReactComponent as Accounting } from "../icons/sales-channel/accounting.svg";
 import { ReactComponent as Amazon } from "../icons/sales-channel/amazon-icon.svg";
 import { ReactComponent as Barcodes } from "../icons/sales-channel/barcodes.svg";
 import { ReactComponent as CustomTemplates } from "../icons/sales-channel/custom-templates.svg";
+import { ReactComponent as EcomdashBulletPoint } from "../icons/sales-channel/ecomdash-bullet-point.svg";
+import { ReactComponent as Ecomdash } from "../icons/sales-channel/ecomdash.svg";
+import { ReactComponent as InventoryBrands } from "../icons/sales-channel/inventory-brands.svg";
+import { ReactComponent as Inventory } from "../icons/sales-channel/inventory-illustration.svg";
+import { ReactComponent as ListingPresets } from "../icons/sales-channel/listing-presets.svg";
+import { ReactComponent as OrdersTable } from "../icons/sales-channel/orders-table.svg";
+import { ReactComponent as PurchaseOrders } from "../icons/sales-channel/purchase-orders.svg";
 import { ReactComponent as ShippingLabels } from "../icons/sales-channel/shipping-labels.svg";
 import { ReactComponent as WarehouseFeeds } from "../icons/sales-channel/warehouse-feeds.svg";
-import { ReactComponent as ListingPresets } from "../icons/sales-channel/listing-presets.svg";
-import { ReactComponent as PurchaseOrders } from "../icons/sales-channel/purchase-orders.svg";
-import { ReactComponent as Accounting } from "../icons/sales-channel/accounting.svg";
-import { ReactComponent as EcomdashBulletPoint} from "../icons/sales-channel/ecomdash-bullet-point.svg";
+import { Section } from "./Section";
 
 export function SalesChannel(){
     return(
@@ -27,7 +27,7 @@ export function SalesChannel(){
                             <h2 className="nfd-text-[#0F172A] nfd-text-lg nfd-font-medium nfd-pb-1.5">
                                     {__("Sell your products everywhere, confidently, with Ecomdash.", "wp-module-ecommerce")}
                             </h2>  
-                            <p className="nfd-text-[#4A5567] nfd-pb-7">
+                            <p className="nfd-text-[#4A5567] nfd-pb-7 nfd-leading-5  nfd-font-medium">
                                 {__("With ecomdash, you can manage different sales channels all in one place.", "wp-module-ecommerce")}
                                 <br />
                                 {__("Simply connect your business accounts from Amazon, Etsy or Walmart to", "wp-module-ecommerce")}
@@ -57,7 +57,7 @@ export function SalesChannel(){
                             <ul className="nfd-flex-1 nfd-mt-16 nfd-ml-3.5">
                                 <li className="nfd-flex nfd-flex-row nfd-gap-6 nfd-mb-6">
                                     <EcomdashBulletPoint className="nfd-flex-none" />
-                                    <span className="nfd-flex-1">
+                                    <span className="nfd-flex-1 nfd-text-[#4A5567] nfd-leading-5 nfd-font-medium">
                                         {__("Enjoy near real-time inventory updates for an unlimited number of", "wp-module-ecommerce")}
                                         <br />
                                         {__("number of channels with our inventory management software.", "wp-module-ecommerce")}
@@ -65,7 +65,7 @@ export function SalesChannel(){
                                 </li>
                                 <li className="nfd-flex nfd-flex-row nfd-gap-6 nfd-mb-6">
                                     <EcomdashBulletPoint className="nfd-flex-none" />
-                                    <span className="nfd-flex-1">
+                                    <span className="nfd-flex-1 nfd-text-[#4A5567] nfd-leading-5 nfd-font-medium">
                                         {__("Manage product levels across multiple warehouses without the fear of overselling.", "wp-module-ecommerce")}
                                         <br />
                                         {__("without the fear of overselling.", "wp-module-ecommerce")}
@@ -73,7 +73,7 @@ export function SalesChannel(){
                                 </li>
                                 <li className="nfd-flex nfd-flex-row nfd-gap-6 nfd-mb-6">
                                     <EcomdashBulletPoint className="nfd-flex-none" />
-                                    <span className="nfd-flex-1">
+                                    <span className="nfd-flex-1 nfd-text-[#4A5567] nfd-leading-5 nfd-font-medium">
                                         {__("Accurately sync kits, multipacks, and components without any headaches.", "wp-module-ecommerce")}
                                         <br />
                                         {__("headaches.", "wp-module-ecommerce")}
@@ -81,14 +81,20 @@ export function SalesChannel(){
                                 </li>
                             </ul>                            
                         </div>
-                        <InventoryBrands />
+                        <InventoryBrands />                                               
                     </div>
                     
 
-                    <div className="">
-                        <h2>{__("Order Management and Reporting", "wp-module-ecommerce")}</h2>
-                        <p>{__("With Ecomdash you can sit back and relax, knowing that all aspects of order fulfillment are under control. Easily track your top selling items, cost of goods sold, stale inventory and more with Ecomdash’s extensive reporting tools.", "wp-module-ecommerce")}</p>
-                        <OrdersTable />
+                    <div className="nfd-flex nfd-flex-wrap nfd-flex-col nfd-border nfd-rounded-lg nfd-border-[#E2E8F0] nfd-mt-6 nfd-p-4 nfd-pt-5">
+                        <h2 className="nfd-text-[#111729] nfd-font-medium nfd-text-base ">
+                            {__("Order Management and Reporting", "wp-module-ecommerce")}
+                        </h2>
+                        <p className="nfd-flex-1 nfd-text-[#4A5567] nfd-leading-5 nfd-font-medium nfd-mb-7 nfd-mt-3.5">
+                            {__("With Ecomdash you can sit back and relax, knowing that all aspects of order fulfillment are under control. Easily track your top selling", "wp-module-ecommerce")}
+                            <br />
+                            {__("items, cost of goods sold, stale inventory and more with Ecomdash's extensive reporting tools.", "wp-module-ecommerce")}
+                        </p>
+                        <OrdersTable className="nfd-mx-auto" />                                            
                     </div>
 
                     <div className="">
