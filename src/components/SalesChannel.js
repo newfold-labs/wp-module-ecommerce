@@ -81,7 +81,7 @@ export function SalesChannel(){
                                 </li>
                             </ul>                            
                         </div>
-                        <InventoryBrands />                                               
+                        <InventoryBrands />                        
                     </div>
                     
 
@@ -97,52 +97,148 @@ export function SalesChannel(){
                         <OrdersTable className="nfd-mx-auto" />                                            
                     </div>
 
-                    <div className="">
-                        <h2>{__("Powerful Add-ons", "wp-module-ecommerce")}</h2>
-                        <p>{__("Ecomdash contains a variety of powerful add-ons that will help you handle everything from creating barcodes and inventory templates, to managing warehouse feeds, Fulfillment By Amazon and even accounting.", "wp-module-ecommerce")}</p>
-                        <div className="">
-                            <Amazon />
-                            <h2>{__("Fullfillment By Amazon (FBA)", "wp-module-ecommerce")}</h2>
-                            <p>{__("Auto-export non-Amazon orders to FBA. Import the tracking and pass it to the originating sales channel, marking it as shipped.", "wp-module-ecommerce")}</p>
-                        </div>
-                        <ul>
-                            <li>
-                                <Barcodes />
-                                <span>{__("Barcodes", "wp-module-ecommerce")}</span>
-                                <span>{__("Print barcodes for your products that can be used for labeling and scanning your products", "wp-module-ecommerce")}</span>
-                            </li>
-                            <li>
-                                <CustomTemplates />
-                                <span>{__("Custom Inventory Templates", "wp-module-ecommerce")}</span>
-                                <span>{__("Creating a custom file template allows you to upload and/or export files with product data for thousands of products at once.", "wp-module-ecommerce")}</span>
-                            </li>
-                            <li>
-                                <ShippingLabels />
-                                <span>{__("Shipping Labels", "wp-module-ecommerce")}</span>
-                                <span>{__("Print shipping labels with a preferred carrier right from your ecomdash account and save on postage.", "wp-module-ecommerce")}</span>
-                            </li>
 
-                            <li>
-                                <WarehouseFeeds />
-                                <span>{__("Warehouse Feeds", "wp-module-ecommerce")}</span>
-                                <span>{__("Setup feeds to export your sales orders via email or FTP sites to third parties such as Dropshippers, Suppliers, or 3PL systems.", "wp-module-ecommerce")}</span>
-                            </li>
-                            <li>
-                                <ListingPresets />
-                                <span>{__("Listing Presets", "wp-module-ecommerce")}</span>
-                                <span>{__("Create listing presets to cut down most of the manual data entry needed when creating new listings. ", "wp-module-ecommerce")}</span>
-                            </li>
-                            <li>
-                                <PurchaseOrders />
-                                <span>{__("Purchase Orders", "wp-module-ecommerce")}</span>
-                                <span>{__("Quickly create new orders and have inventory quantities adjusted and synced out to listings as units are received.", "wp-module-ecommerce")}</span>
-                            </li>
-                            <li>
-                                <Accounting />
-                                <span>{__("Accounting", "wp-module-ecommerce")}</span>
-                                <span>{__("Seamlessly communicate your sales and purchase order information directly to your accounting software.", "wp-module-ecommerce")}</span>
-                            </li>
-                        </ul>
+
+                    <div className="nfd-border nfd-border-[#E2E8F0] nfd-rounded-lg nfd-mt-6 nfd-p-4">
+                        <h2 className="nfd-text-[#111729] nfd-text-base nfd-font-medium nfd-mb-4">
+                            {__("Powerful Add-ons", "wp-module-ecommerce")}
+                        </h2>
+                        <p className="nfd-text-[#4A5567] nfd-leading-5  nfd-font-medium">
+                            {__("Ecomdash contains a variety of powerful add-ons that will help you handle everything from creating barcodes and inventory templates, to", "wp-module-ecommerce")}
+                            <br />
+                            {__("managing warehouse feeds, Fulfillment By Amazon and even accounting.", "wp-module-ecommerce")}
+                        </p>
+
+                        <div className="nfd-mx-auto nfd-bg-[#F8F8F8] nfd-rounded-lg nfd-mx-auto nfd-max-w-[650px] nfd-flex nfd-flex-row nfd-p-6 nfd-mt-4 nfd-mb-8">
+                            <Amazon className="nfd-flex-none nfd-mr-6" />
+                            <div className="nfd-flex-1">
+                                <h2 className="nfd-text-[#111729] nfd-text-base nfd-leading-6 nfd-font-medium">
+                                    {__("Fullfillment By Amazon (FBA)", "wp-module-ecommerce")}
+                                </h2>
+                                <p className="nfd-text[#000000]">
+                                    {__("Auto-export non-Amazon orders to FBA. Import the tracking and pass it to the", "wp-module-ecommerce")}
+                                <br />
+                                {__("originating sales channel, marking it as shipped.", "wp-module-ecommerce")}
+                                </p>
+                            </div>                            
+                        </div>
+
+                        <div className="nfd-flex nfd-flex-wrap nfd-flex-row nfd-min-w-[315px] nfd-max-w-[646px] nfd-mx-auto">
+
+                            <div className="nfd-flex-1 nfd-mr-14">
+                                <div>
+                                    <div className="nfd-flex nfd-flex-row">
+                                        <Barcodes className="nfd-mr-4" />
+                                        <h3 className="nfd-text-[#111729] nfd-text-base nfd-leading-6 nfd-font-medium">
+                                            {__("Barcodes", "wp-module-ecommerce")}
+                                        </h3>
+                                    </div>
+                                    <div className="nfd-text-[#000000] nfd-leading-5 nfd-font-medium nfd-mt-5 nfd-mb-11">
+                                        {__("Print barcodes for your products that can be", "wp-module-ecommerce")}
+                                        <br />
+                                        {__("used for labedivng and scanning your", "wp-module-ecommerce")}
+                                        <br />
+                                        {__("products", "wp-module-ecommerce")}
+                                    </div>
+                                </div>
+                                <div>
+                                    <div className="nfd-flex nfd-flex-row">
+                                        <ShippingLabels className="nfd-mr-4" />
+                                        <h3 className="nfd-text-[#111729] nfd-text-base nfd-leading-6 nfd-font-medium">
+                                            {__("Shipping Labels", "wp-module-ecommerce")}
+                                        </h3>
+                                    </div>
+                                    <div className="nfd-text-[#000000] nfd-leading-5 nfd-font-medium nfd-mt-5 nfd-mb-11">
+                                        {__("Print shipping labels with a preferred carrier right from your ecomdash account and save on postage.", "wp-module-ecommerce")}
+                                        <br />
+                                        {__("right from your ecomdash account and save", "wp-module-ecommerce")}
+                                        <br />
+                                        {__("on postage.", "wp-module-ecommerce")}
+                                    </div>
+                                </div>
+                                <div>
+                                    <div className="nfd-flex nfd-flex-row">
+                                        <ListingPresets className="nfd-mr-4" />                                    
+                                        <h3 className="nfd-text-[#111729] nfd-text-base nfd-leading-6 nfd-font-medium">
+                                            {__("Listing Presets", "wp-module-ecommerce")}
+                                        </h3>
+                                    </div>
+                                    <div className="nfd-text-[#000000] nfd-leading-5 nfd-font-medium nfd-mt-5 nfd-mb-11">
+                                        {__("Create listing presets to cut down most of the manual data entry needed when creating new listings. ", "wp-module-ecommerce")}
+                                        <br />
+                                        {__("the manual data entry needed when creating", "wp-module-ecommerce")}
+                                        <br />
+                                        {__("new listings.", "wp-module-ecommerce")}
+                                    </div>
+                                </div>
+                                <div>
+                                    <div className="nfd-flex nfd-flex-row">
+                                        <Accounting className="nfd-mr-4" />
+                                        <h3 className="nfd-text-[#111729] nfd-text-base nfd-leading-6 nfd-font-medium">
+                                            {__("Accounting", "wp-module-ecommerce")}
+                                        </h3>
+                                    </div>
+                                    <div className="nfd-text-[#000000] nfd-leading-5 nfd-font-medium nfd-mt-5 nfd-mb-11">
+                                        {__("Seamlessly communicate your sales and", "wp-module-ecommerce")}
+                                        <br />
+                                        {__("purchase order information directly to your", "wp-module-ecommerce")}
+                                        <br />
+                                        {__("accounting software.", "wp-module-ecommerce")}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="nfd-flex-1">                            
+                                <div>
+                                    <div className="nfd-flex nfd-flex-row">
+                                        <CustomTemplates className="nfd-mr-4" />
+                                        <h3 className="nfd-text-[#111729] nfd-text-base nfd-leading-6 nfd-font-medium">
+                                            {__("Custom Inventory Templates", "wp-module-ecommerce")}
+                                        </h3>
+                                    </div>
+                                    <div className="nfd-text-[#000000] nfd-leading-5 nfd-font-medium nfd-mt-5 nfd-mb-11">
+                                        {__("Creating a custom file template allows you to", "wp-module-ecommerce")}
+                                        <br />
+                                        {__("upload and/or export files with product data", "wp-module-ecommerce")}
+                                        <br />
+                                        {__("for thousands of products at once.", "wp-module-ecommerce")}
+                                    </div>
+                                </div>                            
+                                <div>
+                                    <div className="nfd-flex nfd-flex-row">
+                                        <WarehouseFeeds className="nfd-mr-4" />
+                                        <h3 className="nfd-text-[#111729] nfd-text-base nfd-leading-6 nfd-font-medium">
+                                            {__("Warehouse Feeds", "wp-module-ecommerce")}
+                                        </h3>
+                                    </div>
+                                    <div className="nfd-text-[#000000] nfd-leading-5 nfd-font-medium nfd-mt-5 nfd-mb-11">
+                                        {__("Setup feeds to export your sales orders via", "wp-module-ecommerce")}
+                                        <br />
+                                        {__("email or FTP sites to third parties such as", "wp-module-ecommerce")}
+                                        <br />
+                                        {__("Dropshippers, Suppliers, or 3PL systems.", "wp-module-ecommerce")}
+                                    </div>
+                                </div>                            
+                                <div>
+                                    <div className="nfd-flex nfd-flex-row">
+                                        <PurchaseOrders className="nfd-mr-4" />
+                                        <h3 className="nfd-text-[#111729] nfd-text-base nfd-leading-6 nfd-font-medium">
+                                            {__("Purchase Orders", "wp-module-ecommerce")}
+                                        </h3>
+                                    </div>
+                                    <div className="nfd-text-[#000000] nfd-leading-5 nfd-font-medium nfd-mt-5 nfd-mb-11">
+                                        {__("Quickly create new orders and have", "wp-module-ecommerce")}
+                                        <br />
+                                        {__("inventory quantities adjusted and synced out", "wp-module-ecommerce")}
+                                        <br />
+                                        {__("to listings as units are received.", "wp-module-ecommerce")}
+                                    </div>
+                                </div>                            
+                            </div>
+
+                        </div>
+
+                        
                     </div>
 
                 </Section.Content>
