@@ -90,10 +90,13 @@ export function SalesChannel(){
                             {__("Order Management and Reporting", "wp-module-ecommerce")}
                         </h2>
                         <p className="nfd-flex-1 nfd-text-[#4A5567] nfd-leading-5 nfd-font-medium nfd-mb-7 nfd-mt-3.5">
+                            {__("With Ecomdash you can sit back and relax, knowing that all aspects of order fulfillment are under control. Easily track your top selling items, cost of goods sold, stale inventory and more with Ecomdash's extensive reporting tools.", "wp-module-ecommerce")}                            
+                        </p>
+                        {/* <p className="nfd-flex-1 nfd-text-[#4A5567] nfd-leading-5 nfd-font-medium nfd-mb-7 nfd-mt-3.5">
                             {__("With Ecomdash you can sit back and relax, knowing that all aspects of order fulfillment are under control. Easily track your top selling", "wp-module-ecommerce")}
                             <br />
                             {__("items, cost of goods sold, stale inventory and more with Ecomdash's extensive reporting tools.", "wp-module-ecommerce")}
-                        </p>
+                        </p> */}
                         <OrdersTable className="nfd-mx-auto" />                                            
                     </div>
 
@@ -104,10 +107,13 @@ export function SalesChannel(){
                             {__("Powerful Add-ons", "wp-module-ecommerce")}
                         </h2>
                         <p className="nfd-text-[#4A5567] nfd-leading-5  nfd-font-medium">
+                            {__("Ecomdash contains a variety of powerful add-ons that will help you handle everything from creating barcodes and inventory templates, to managing warehouse feeds, Fulfillment By Amazon and even accounting.", "wp-module-ecommerce")}                            
+                        </p>
+                        {/* <p className="nfd-text-[#4A5567] nfd-leading-5  nfd-font-medium">
                             {__("Ecomdash contains a variety of powerful add-ons that will help you handle everything from creating barcodes and inventory templates, to", "wp-module-ecommerce")}
                             <br />
                             {__("managing warehouse feeds, Fulfillment By Amazon and even accounting.", "wp-module-ecommerce")}
-                        </p>
+                        </p> */}
 
                         <div className="nfd-mx-auto nfd-bg-[#F8F8F8] nfd-rounded-lg nfd-mx-auto nfd-max-w-[650px] nfd-flex nfd-flex-row nfd-p-6 nfd-mt-4 nfd-mb-8">
                             <Amazon className="nfd-flex-none nfd-mr-6" />
