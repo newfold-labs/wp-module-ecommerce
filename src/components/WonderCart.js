@@ -15,8 +15,7 @@ export function WonderCart(props) {
         .status("woocommerce", "nfd_slug_wonder_cart")
         .then(wonderCartParser),
     { refreshInterval: 30 * 1000 }
-  );
-  console.log("wonderCartStatus", wonderCartStatus);
+  );  
   const canAccessGlobalCTB = NewfoldRuntime.hasCapability("canAccessGlobalCTB");
   const hasYithExtended = NewfoldRuntime.hasCapability("hasYithExtended");
   

@@ -37,7 +37,7 @@ export function WonderCartNonEcommerce() {
                                     data-action="load-nfd-ctb"
                                     target="_blank"
                                     rel="noopener"
-                                    id="buy-ecommerce-addon-btn"
+                                    id="buynow-wondercart"
                                 >
                                     <LockIcon className="nfd-w-5 nfd-h-5 nfd--ml-1 nfd-shrink-0" />
                                     {__("Buy Now", "wp-module-ecommerce")}
