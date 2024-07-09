@@ -50,7 +50,10 @@ export const installWoo = () => {
 export const uninstallPlugins = () => {
 	cy.log( 'Uninstalling plugins' );
 	cy.exec(
-		'npx wp-env run cli wp plugin uninstall --all --deactivate --exclude=bluehost-wordpress-plugin,wp-plugin-hostgator,wp-plugin-crazy-domains,wp-plugin-web,wp-plugin-mojo'
+		'npx wp-env run cli wp plugin uninstall --all --deactivate --exclude=bluehost-wordpress-plugin,wp-plugin-hostgator,wp-plugin-crazy-domains,wp-plugin-web,wp-plugin-mojo',
+		{
+			failOnNonZeroExit: false
+		}
 	);
 };
 
