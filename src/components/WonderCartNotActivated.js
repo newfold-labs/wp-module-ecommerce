@@ -32,11 +32,7 @@ export function WonderCarNotActivated(props) {
     useEffect(() => {
         isInstalling ? setIsOpen(true) : setIsOpen(false)
     }, [isInstalling])
-
-    const handleWonderCart = () => {
-        return installWonderCart();
-    }
-    
+        
     const renderCampaignIcon = (icon) => {
         switch(icon) {
           case 'FreeShipping':
@@ -55,35 +51,39 @@ export function WonderCarNotActivated(props) {
             return null;
         }
     }   
-       
+           
     return(
             <Section.Container>
                 <div className="nfd-flex nfd-flex-row nfd-flex-wrap nfd-items-center nfd-mx-8">
                     <Section.Header className="nfd-border nfd-border-[#FFFFFF] nfd-w-10/12 nfd-px-0" 
                     title={__('Create a campaign and boost your sales!', "wp-module-ecommerce")} 
                     subTitle={__("Create custom upsell, cross-sell and other promotional campaigns to generate more sales.", "wp-module-ecommerce")} 
-                    />                                        
+                    />                                                            
                     <Button
-                    className="nfd-button nfd-button--primary nfd-w-32 nfd-h-8 nfd-py-1 nfd-ml-auto nfd-text-[#FFFFFF]"
-                    variant="primary"
-                    onClick={handleWonderCart}
-                    data-ctb-id={
-                              canAccessGlobalCTB && !hasYithExtended
-                                ? "f95ccf1e-3028-4ea7-b2c2-847969348e8b"
-                                : null
-                            }
-                    as="a"
-                    href=""
-                    isLoading={showInProgress}
-                    disabled={!(canAccessGlobalCTB && hasYithExtended && isEcommerce )}
-                    id="install_activate_wondercart"
+                        className="nfd-button nfd-button--primary nfd-w-32 nfd-h-8 nfd-py-1 nfd-ml-auto nfd-text-[#FFFFFF]"
+                        type="button"
+                        as={canAccessGlobalCTB && !hasYithExtended ? "a" : "button"}
+                        data-ctb-id={
+                        canAccessGlobalCTB && !hasYithExtended
+                            ? "f95ccf1e-3028-4ea7-b2c2-847969348e8b"
+                            : null
+                        }
+                        href={
+                        (canAccessGlobalCTB &&
+                            !hasYithExtended &&
+                            NewfoldRuntime.sdk.ecommerce.brand_settings.wondercartBuyNow) || ''
+                        }
+                        variant="upsell"
+                        isLoading={showInProgress}
+                        disabled={!(canAccessGlobalCTB && hasYithExtended && isEcommerce )}
+                        onClick={hasYithExtended ? installWonderCart : null}
+                        id={canAccessGlobalCTB && !hasYithExtended
+                        ? "buynow-wondercart"
+                        : "installnow-wondercart"}
                     >
-                    <span>
-                        {(wonderCartStatus.data.isInstalling && !wonderCartStatus.data.isInstalled)
-                        ? __("Installing...", "wp-module-ecommerce")
-                        : __("Get Started", "wp-module-ecommerce")}
-                    </span>
-                    </Button>
+                        {__('Get Started', "wp-module-ecommerce")}
+                    </Button>    
+
                 </div>                      
                 <Section.Content>                        
                     <p className="nfd-text-[#111729] nfd-text-base nfd-font-semibold nfd-mb-6 nfd--mt-10">
@@ -98,28 +98,30 @@ export function WonderCarNotActivated(props) {
                                         <h2 className="nfd-font-medium nfd-text-base">{__(`${campaign.title}`, "wp-module-ecommerce")}</h2>
                                         <p className="nfd-text-[#4A5567] nfd-mt-1 nfd-grow">
                                             {__(`${campaign.description}`, "wp-module-ecommerce")}
-                                        </p>                            
+                                        </p>     
+
                                         <Button
                                         className="nfd-button nfd-button--secondary"
                                         variant="secondary"
-                                        onClick={handleWonderCart}
+                                        type="button"
+                                        as={canAccessGlobalCTB && !hasYithExtended ? "a" : "button"}
                                         data-ctb-id={
-                                                canAccessGlobalCTB && !hasYithExtended
-                                                    ? "f95ccf1e-3028-4ea7-b2c2-847969348e8b"
-                                                    : null
-                                                }
-                                        as="a"
-                                        href=""
+                                        canAccessGlobalCTB && !hasYithExtended
+                                            ? "f95ccf1e-3028-4ea7-b2c2-847969348e8b"
+                                            : null
+                                        }
+                                        href={
+                                        (canAccessGlobalCTB &&
+                                            !hasYithExtended &&
+                                            NewfoldRuntime.sdk.ecommerce.brand_settings.wondercartBuyNow) || ''
+                                        }
                                         isLoading={showInProgress}
                                         disabled={!(canAccessGlobalCTB && hasYithExtended && isEcommerce )}
+                                        onClick={hasYithExtended ? installWonderCart : null}
                                         id={`${campaign.icon}_install_activate_wondercart`}
                                         >
-                                        <span>
-                                            {(wonderCartStatus.data.isInstalling && !wonderCartStatus.data.isInstalled)
-                                            ? __("Installing...", "wp-module-ecommerce")
-                                            : __("Create a Campaign", "wp-module-ecommerce")}
-                                        </span>
-                                        </Button>
+                                            {__("Create a Campaign", "wp-module-ecommerce")}
+                                        </Button>    
                                     </div>)  
                             })
                         }
