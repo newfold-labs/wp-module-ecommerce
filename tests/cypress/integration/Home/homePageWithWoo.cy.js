@@ -5,7 +5,7 @@ import {
 	viewCompletedTasks,
 	viewRemainingTasks,
 	waitForNextSteps,
-	uninstallPlugins
+	uninstallPlugins,
 } from '../wp-module-support/utils.cy';
 
 const customCommandTimeout = 20000;
