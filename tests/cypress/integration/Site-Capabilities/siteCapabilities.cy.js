@@ -67,10 +67,10 @@ describe(
 			cy.get( '@buyButton' ).scrollIntoView().should( 'be.visible' );
 			// Verify Buy now button has correct link
 			cy.get( '@buyButton' )
-				.should( 'have.attr', 'href' )
+				.should( 'have.attr', 'data-ctb-id' )
 				.and(
 					'include',
-					'https://my.bluehost.com/hosting/app?utm_source=wp-marketplace&utm_medium=brand-plugin&utm_campaign=wordpress-ad&utm_content=buynow#/marketplace/product'
+					'f95ccf1e-3028-4ea7-b2c2-847969348e8b'
 				);
 		} );
 
