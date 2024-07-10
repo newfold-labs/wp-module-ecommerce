@@ -2,7 +2,6 @@ import { GetPluginId } from '../wp-module-support/pluginID.cy';
 import {
 	wpLogin,
 	comingSoon,
-	uninstallPlugins,
 } from '../wp-module-support/utils.cy';
 
 const customCommandTimeout = 20000;
@@ -11,7 +10,6 @@ const pluginId = GetPluginId();
 describe( 'e-commerce Home Page- Live Mode', { testIsolation: true }, () => {
 	beforeEach( () => {
 		wpLogin();
-		uninstallPlugins();
 		comingSoon( false );
 		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
 	} );
