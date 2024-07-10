@@ -34,7 +34,7 @@ describe(
 		} );
 
 		it( 'Verify if Welcome home! section shows', () => {
-			cy.get( '#nfd-validation-message', {
+			cy.get( '.nfd-validation-message', {
 				timeout: customCommandTimeout,
 			} ).should( 'exist' );
 		} );
