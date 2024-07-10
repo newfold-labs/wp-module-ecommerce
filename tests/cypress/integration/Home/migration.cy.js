@@ -34,7 +34,7 @@ describe(
 		} );
 
 		it( 'Verify if Welcome home! section shows', () => {
-			cy.get( '#nfd-justify-start', { timeout: customCommandTimeout } )
+			cy.get( '.nfd-justify-start', { timeout: customCommandTimeout } )
 				.scrollIntoView()
 				.should( 'exist' );
 			} );
