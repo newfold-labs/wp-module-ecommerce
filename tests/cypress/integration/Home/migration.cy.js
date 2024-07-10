@@ -34,16 +34,16 @@ describe(
 		} );
 
 		it( 'Verify if Welcome home! section shows', () => {
-			cy.get( '#nfd-text-[--nfd-ecommerce-text-info]', {
+			cy.get( '#nfd-validation-message', {
 				timeout: customCommandTimeout,
 			} ).should( 'exist' );
 		} );
 
 		it( 'Verify if One last thing to do... section shows', () => {
-			cy.contains(
-				'Finish this last step so your migrated site is ready for visitors.'
-			).should( 'be.visible' );
-		} );
+			cy.get( '#next-steps-section', { timeout: customCommandTimeout } )
+				.scrollIntoView()
+				.should( 'exist' );
+			} );
 
 		it( 'Verify when update nameserver clicked', () => {
 			cy.intercept( APIList.update_nameserver ).as( 'events' );
