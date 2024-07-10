@@ -1,13 +1,9 @@
-import { __ } from "@wordpress/i18n";
-import { Button, FeatureUpsell, Title } from "@newfold/ui-component-library";
 import useSWR from "swr";
 import { wcPluginStatusParser } from "../configs/selectors";
-import { ReactComponent as WonderCartUpsell } from "../icons/wonder-cart-upsell.svg";
-import { PluginsSdk } from "../sdk/plugins";
-import { Section } from "./Section";
-import { useInstallWonderCart } from "./useInstallWonderCart";
-import classNames from "classnames";
 import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
+import { PluginsSdk } from "../sdk/plugins";
+import { WonderCartNonEcommerce } from "./WonderCartNonEcommerce";
+import { WonderCarNotActivated } from "./WonderCartNotActivated";
 
 let wonderCartParser = wcPluginStatusParser("nfd_slug_wonder_cart");
 
@@ -19,100 +15,25 @@ export function WonderCart(props) {
         .status("woocommerce", "nfd_slug_wonder_cart")
         .then(wonderCartParser),
     { refreshInterval: 30 * 1000 }
-  );
-
+  );  
   const canAccessGlobalCTB = NewfoldRuntime.hasCapability("canAccessGlobalCTB");
   const hasYithExtended = NewfoldRuntime.hasCapability("hasYithExtended");
-
-  let [installWonderCart, isInstalling] = useInstallWonderCart(props);
+  
   if (wonderCartStatus.isLoading) {
     return <span />;
   }
+
   if (wonderCartStatus.data?.isInstalled) {
     return <div id="wonder-cart-init" />;
   }
-  let showInProgress = isInstalling || wonderCartStatus.data?.isInstalling;
+
   return (
-    <Section.Container>
-      <Section.Header title={__('Sales & Promotions', "wp-module-ecommerce")} />
-      <Section.Content>
-        <div className="nfd-bg-canvas nfd-rounded-lg nfd-border nfd-border-solid nfd-border-line">
-          <div
-            className={classNames(
-              "nfd-px-4 nfd-py-2 nfd-rounded-lg",
-              "max-[425px]:nfd-flex max-[425px]:nfd-flex-col",
-              "min-[426px]:nfd-flex min-[426px]:nfd-items-center"
-            )}
-          >
-            <div className="nfd-flex-1">
-              <Title size="4" className="nfd-leading-normal">
-                {__(
-                  'Add Upsells, Cross-sells, and other Promotions to your store',
-                  "wp-module-ecommerce"
-                )}
-              </Title>
-              <span className="nfd-whitespace-pre-wrap">
-                {__(
-                  'Create and manage X-sell, Upsell, sales and promotions through campaigns to boost your sales',
-                  "wp-module-ecommerce"
-                )}
-              </span>
-            </div>
-            <div className="nfd-flex-none">
-              <Button
-                type="button"
-                as={canAccessGlobalCTB && !hasYithExtended ? "a" : "button"}
-                data-ctb-id={
-                  canAccessGlobalCTB && !hasYithExtended
-                    ? "f95ccf1e-3028-4ea7-b2c2-847969348e8b"
-                    : null
-                }
-                href={
-                  (canAccessGlobalCTB &&
-                    !hasYithExtended &&
-                    NewfoldRuntime.ecommerce.brand_settings.wondercartBuyNow) || ''
-                }
-                variant="upsell"
-                isLoading={showInProgress}
-                onClick={hasYithExtended ? installWonderCart : null}
-                id={canAccessGlobalCTB && !hasYithExtended
-                  ? "buynow-wondercart"
-                  : "installnow-wondercart"}
-              >
-                {canAccessGlobalCTB && !hasYithExtended
-                  ? __('Buy now', "wp-module-ecommerce")
-                  : __('Install now', "wp-module-ecommerce")}
-              </Button>
-            </div>
-          </div>
-        </div>
-      </Section.Content>
-      <FeatureUpsell
-        className="hide-html"
-        shouldUpsell
-        variant="card"
-        cardLink={
-          (canAccessGlobalCTB &&
-            !hasYithExtended &&
-            NewfoldRuntime.ecommerce.brand_settings.wondercartBuyNow) || ''
-        }
-        target="_blank"
-        cardText={
-          canAccessGlobalCTB && !hasYithExtended
-            ? __('Buy now', "wp-module-ecommerce")
-            : __('Install now', "wp-module-ecommerce")
-        }
-        as={canAccessGlobalCTB && !hasYithExtended ? "a" : "button"}
-        disabled={showInProgress}
-        data-ctb-id={
-          canAccessGlobalCTB && !hasYithExtended
-            ? "f95ccf1e-3028-4ea7-b2c2-847969348e8b"
-            : null
-        }
-        onClick={hasYithExtended ? installWonderCart : null}
-      >
-        <WonderCartUpsell />
-      </FeatureUpsell>
-    </Section.Container>
+    <>
+      {
+        hasYithExtended && canAccessGlobalCTB ? 
+        !wonderCartStatus.data?.isInstalled ? <WonderCarNotActivated wonderCartStatus={wonderCartStatus} {...props} /> : null
+        : 
+        <WonderCartNonEcommerce />}
+    </>
   );
 }
