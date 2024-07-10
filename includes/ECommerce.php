@@ -164,7 +164,7 @@ class ECommerce {
 				'single'       => true,
 			)
 		);
-		add_filter( 'newfold-runtime', array( $this, 'add_to_runtime' ) );
+		add_filter( 'newfold_runtime', array( $this, 'add_to_runtime' ) );
 		$this->add_filters(
 			array( 'postbox_classes_page_wpseo_meta', 'postbox_classes_post_wpseo_meta', 'postbox_classes_product_wpseo_meta' ),
 			function ( $classes ) {

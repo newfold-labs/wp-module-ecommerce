@@ -165,7 +165,7 @@ export function OnboardingScreen({
                     }}
                     as="a"
                     className="nfd-bg-canvas "
-                    href={NewfoldRuntime.siteDetails.url}
+                    href={NewfoldRuntime.siteUrl}
                     target="_blank"
                     variant="secondary"
                     data-cy="view-site"
