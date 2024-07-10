@@ -26,6 +26,10 @@ export function WonderCarNotActivated(props) {
     let showInProgress = isInstalling || wonderCartStatus.data?.isInstalling;
 
     useEffect(() => {
+        document.querySelector(".nfd-app-section-header").classList.remove("nfd-border-line")
+    },[])
+
+    useEffect(() => {
         (wonderCartStatus.data?.isInstalling && !wonderCartStatus.data.isInstalled) ? setIsOpen(true) : setIsOpen(false)
       }, [wonderCartStatus.data?.isInstalling])
     
