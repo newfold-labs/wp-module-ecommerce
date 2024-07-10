@@ -106,8 +106,8 @@ class ECommerce {
 		add_filter( 'manage_edit-page_sortable_columns', array( $this, 'sortable_columns' ) );
 		add_action( 'wp_login', array( $this, 'show_store_setup' ) );
 		add_action( 'auth_cookie_expired', array( $this, 'show_store_setup' ) );
-		add_action('admin_head', array( $this, 'hide_wp_pointer_with_css' ) );
-		add_action('admin_enqueue_scripts', array( $this, 'set_wpnav_collapse_setting'));
+		add_action( 'admin_head', array( $this, 'hide_wp_pointer_with_css' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'set_wpnav_collapse_setting' ) );
 		add_action('admin_footer', array( $this, 'remove_woocommerce_ssl_notice' ), 20);
 
 		if ( ( $container->plugin()->id === 'bluehost' && ( $canAccessGlobalCTB || $hasYithExtended ) ) || ( $container->plugin()->id === 'hostgator' && $hasYithExtended ) ) {
@@ -164,7 +164,7 @@ class ECommerce {
 				'single'       => true,
 			)
 		);
-		add_filter( 'newfold-runtime', array( $this, 'add_to_runtime' ) );
+		add_filter( 'newfold_runtime', array( $this, 'add_to_runtime' ) );
 		$this->add_filters(
 			array( 'postbox_classes_page_wpseo_meta', 'postbox_classes_post_wpseo_meta', 'postbox_classes_product_wpseo_meta' ),
 			function ( $classes ) {
@@ -198,7 +198,7 @@ class ECommerce {
 	}
 
 	/**
-	 * Set the wpnav_collapse setting	 
+	 * Set the wpnav_collapse setting
 	 */
 	public function set_wpnav_collapse_setting() {
 
@@ -461,7 +461,7 @@ class ECommerce {
 		wp_enqueue_style( 'Create_a_Promotion', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Promotions.css', array(), '1.0', 'all' );
 		echo '<div class="options_group">
             <p class="form-field custom-button-field">
-						  <a id="Create_a_Promotion" href="' . esc_url( $redirect_url ) . '" class="promotion">' . __( 'Create a Promotion', 'wp-module-ecommerce' ) . '</a>
+						  <a id="Create_a_Promotion" href="' . esc_url( $redirect_url ) . '" class="promotion">' . esc_html( __( 'Create a Promotion', 'wp-module-ecommerce' ) ) . '</a>
 					  </p>
           </div>';
 	}
@@ -627,7 +627,7 @@ class ECommerce {
 	 * @param array $columns Array of column names for posts/pages
 	 */
 	public function custom_status_column( $columns ) {
-		if ( 'product' != get_post_type() && 1 == get_option( 'onboarding_experience_level' ) ) {
+		if ( 'product' !== get_post_type() && 1 == get_option( 'onboarding_experience_level' ) ) {
 			// Add 'Status' column after 'Title'
 			$columns['status'] = __( 'Status', 'wp-module-ecommerce' );
 		}
@@ -659,14 +659,14 @@ class ECommerce {
 				$label_text       = __( 'Published - Private', 'wp-module-ecommerce' );
 			} else {
 				$background_color = '#E8ECF0';
-				$label_text       = __( $post_status, 'wp-module-ecommerce' );
+				$label_text       = $post_status;
 			}
 			// Check if coming soon option is enabled
 			$coming_soon = get_option( 'nfd_coming_soon' );
 			if ( $coming_soon ) {
 				$background_color = '#E8ECF0';
 			}
-			echo '<span style="background-color: ' . $background_color . '; ' . $common_style . '">' . $label_text . '</span><br>' . __( 'Last Modified', 'wp-module-ecommerce' ) . ' : ' . mysql2date( 'Y/m/d \a\t g:i a', $post_date );
+			echo '<span style="background-color: ' . esc_attr( $background_color ) . '; ' . esc_attr( $common_style ) . '">' . esc_html( $label_text ) . '</span><br>' . esc_html( __( 'Last Modified', 'wp-module-ecommerce' ) ) . ' : ' . esc_html( mysql2date( 'Y/m/d \a\t g:i a', $post_date ) );
 		}
 	}
 
@@ -680,8 +680,8 @@ class ECommerce {
 		return $columns;
 	}
 
-	/*
-	 *  On login, it checks whether to show the migration steps, post migration to user
+	/**
+	 * On login, it checks whether to show the migration steps, post migration to user
 	 */
 	public function show_store_setup() {
 		$site_url         = get_option( 'siteurl', false );
@@ -716,7 +716,6 @@ class ECommerce {
 	 *
 	 * @return void
 	 */
-
 	public function hide_wp_pointer_with_css() {
 		echo '<style>
 			.wp-pointer { display: none !important; }

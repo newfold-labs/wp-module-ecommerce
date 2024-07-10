@@ -9,7 +9,7 @@ const Endpoints = {
   PLUGIN_INSTALL: NewfoldRuntime.createApiUrl("/newfold-installer/v1/plugins/install"),
 };
 
-const INSTALL_TOKEN = NewfoldRuntime.sdk.ecommerce.install_token;
+const INSTALL_TOKEN = NewfoldRuntime.ecommerce.install_token;
 
 export const PluginsSdk = {
   queries: {
@@ -29,7 +29,9 @@ export const PluginsSdk = {
         method: "POST",
         headers: { "X-NFD-INSTALLER": INSTALL_TOKEN },
         data: { plugin, activate: true, queue: false },
-      }).catch((error) => "failed");
+      }).catch((error) => {         
+        return "failed"
+      });
     },
     async queueInstall(plugin, priority = 10) {
       return apiFetch({

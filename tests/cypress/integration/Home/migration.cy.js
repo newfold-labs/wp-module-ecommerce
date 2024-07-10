@@ -14,7 +14,7 @@ describe(
 	() => {
 		beforeEach( function () {
 			wpLogin();
-			
+
 			if ( pluginId !== 'bluehost' ) {
 				this.skip();
 			}
@@ -32,6 +32,18 @@ describe(
 			cy.reload();
 			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
 		} );
+
+		it( 'Verify if Welcome home! section shows', () => {
+			cy.get( '.nfd-justify-start', { timeout: customCommandTimeout } )
+				.scrollIntoView()
+				.should( 'exist' );
+			} );
+
+		it( 'Verify if One last thing to do... section shows', () => {
+			cy.get( '#next-steps-section', { timeout: customCommandTimeout } )
+				.scrollIntoView()
+				.should( 'exist' );
+			} );
 
 		it( 'Verify when update nameserver clicked', () => {
 			cy.intercept( APIList.update_nameserver ).as( 'events' );
