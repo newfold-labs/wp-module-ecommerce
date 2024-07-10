@@ -34,10 +34,10 @@ describe(
 		} );
 
 		it( 'Verify if Welcome home! section shows', () => {
-			cy.get( '.nfd-validation-message', {
-				timeout: customCommandTimeout,
-			} ).should( 'exist' );
-		} );
+			cy.get( '#nfd-justify-start', { timeout: customCommandTimeout } )
+				.scrollIntoView()
+				.should( 'exist' );
+			} );
 
 		it( 'Verify if One last thing to do... section shows', () => {
 			cy.get( '#next-steps-section', { timeout: customCommandTimeout } )
