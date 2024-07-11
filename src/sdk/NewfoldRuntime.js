@@ -6,33 +6,33 @@ export const NewfoldRuntime = {
     return window.NewfoldRuntime?.capabilities[name] === true;
   },
   adminUrl(path) {
-    return window.NewfoldRuntime?.admin_url + path;
+    return window.NewfoldRuntime?.adminUrl + path;
   },
   createApiUrl(url, qs = {}) {
-    return addQueryArgs(window.NewfoldRuntime?.base_url, {
+    return addQueryArgs(window.NewfoldRuntime?.homeUrl, {
       rest_route: url,
       ...qs,
     });
   },
-  get siteDetails() {
-    return window.NewfoldRuntime?.site;
+  get siteUrl() {
+    return window.NewfoldRuntime?.siteUrl;
   },
-  get sdk() {
-    return window.NewfoldRuntime?.sdk;
-  },
-  get isWoo(){
+  get isWoo() {
     return window.NewfoldRuntime?.isWoocommerceActive
   },
-  get isJet(){
+  get isJet() {
     return window.NewfoldRuntime?.isJetpackBoostActive
   },
-  get homeUrl(){
+  get homeUrl() {
     return window.NewfoldRuntime?.homeUrl
   },
-  get currentTheme(){
+  get currentTheme() {
     return (window.NewfoldRuntime?.currentTheme);
   },
-  get plugin(){
+  get plugin() {
     return (window.NewfoldRuntime?.plugin);
+  },
+  get ecommerce() {
+    return (window.NewfoldRuntime?.ecommerce);
   }
 };

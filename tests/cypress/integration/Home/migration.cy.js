@@ -14,7 +14,7 @@ describe(
 	() => {
 		beforeEach( function () {
 			wpLogin();
-			
+
 			if ( pluginId !== 'bluehost' ) {
 				this.skip();
 			}
@@ -33,6 +33,18 @@ describe(
 			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
 		} );
 
+		it( 'Verify if Welcome home! section shows', () => {
+			cy.get( '.nfd-justify-start', { timeout: customCommandTimeout } )
+				.scrollIntoView()
+				.should( 'exist' );
+			} );
+
+		it( 'Verify if One last thing to do... section shows', () => {
+			cy.get( '#next-steps-section', { timeout: customCommandTimeout } )
+				.scrollIntoView()
+				.should( 'exist' );
+			} );
+
 		it( 'Verify when update nameserver clicked', () => {
 			cy.intercept( APIList.update_nameserver ).as( 'events' );
 			cy.get( '#onboarding-list [data-testid="nameservers"]', {
@@ -42,7 +54,7 @@ describe(
 				.should( 'exist' )
 				.click();
 			EventsAPI( APIList.update_nameserver, pluginId );
-			cy.get( '.nfd-help-center', {
+			cy.get( '.help-container', {
 				timeout: customCommandTimeout,
 			} ).should( 'be.visible' );
 			cy.get( '.close-button' ).click();
@@ -57,7 +69,7 @@ describe(
 				.should( 'exist' )
 				.click();
 			EventsAPI( APIList.connect_domain, pluginId );
-			cy.get( '.nfd-help-center', {
+			cy.get( '.help-container', {
 				timeout: customCommandTimeout,
 			} ).should( 'be.visible' );
 			cy.get( '.close-button' ).click();

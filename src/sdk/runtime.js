@@ -1,7 +1,7 @@
 import { NewfoldRuntime } from "./NewfoldRuntime";
 
 export const RuntimeSdk = {
-  brandSettings: NewfoldRuntime.sdk.ecommerce?.brand_settings,
+  brandSettings: NewfoldRuntime.ecommerce?.brand_settings,
   adminUrl(path, backToNfd = false) {
     let href = NewfoldRuntime.adminUrl(path);
     if (backToNfd === false) {
@@ -13,6 +13,6 @@ export const RuntimeSdk = {
     return `${page}?${query}`;
   },
   nonce(name) {
-    return NewfoldRuntime.sdk.ecommerce.nonces?.[name];
+    return NewfoldRuntime.ecommerce.nonces?.[name];
   },
 };
