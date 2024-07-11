@@ -14,8 +14,33 @@ import { ReactComponent as PurchaseOrders } from "../icons/sales-channel/purchas
 import { ReactComponent as ShippingLabels } from "../icons/sales-channel/shipping-labels.svg";
 import { ReactComponent as WarehouseFeeds } from "../icons/sales-channel/warehouse-feeds.svg";
 import { Section } from "./Section";
+import { useEffect, useState } from "@wordpress/element";
+import apiFetch from "@wordpress/api-fetch";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
+
 
 export function SalesChannel(){
+
+    const [ecomdashStatus, setEcomdashStatus] = useState("");
+
+    const apiUrl = NewfoldRuntime.createApiUrl("/newfold-ecommerce/v1/plugins/status", {
+        plugins: "nfd_slug_ecomdash_wordpress_plugin",
+    })
+
+    useEffect(() => {
+        const fecthApi = async () => {
+            const data = await apiFetch({
+            url: apiUrl,
+            });
+            setEcomdashStatus(data?.details?.nfd_slug_ecomdash_wordpress_plugin?.status);
+        }
+        fecthApi()
+    }, []);
+
+    console.log("ecomDashStatus", ecomdashStatus)
+
+    let showInstallButton = ecomdashStatus === "need_to_install" ? true : false;
+
     return(
         <>
             <Section.Container>
@@ -37,11 +62,11 @@ export function SalesChannel(){
                                 {__("more saving you valuable time.", "wp-module-ecommerce")}​
                             </p>
                             <Button
-                            id="install-ecomdash"
-                            variant="primary"
-                            >
-                                {__("Get Started Now", "wp-module-ecommerce")}
-                            </Button>
+                                id={showInstallButton ? "install-ecomdash" : "manage-ecomdash"}
+                                variant="primary"
+                                >
+                                    {showInstallButton ? __("Get Started Now", "wp-module-ecommerce") : __("Go to Ecomdash", "wp-module-ecommerce")}
+                            </Button>                                                        
                        </div>
                        <Ecomdash className="nfd-flex-none nfd-self-start" />
                     </div>
