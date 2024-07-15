@@ -1,5 +1,8 @@
-import { Button } from "@newfold/ui-component-library";
+import { Button, Modal } from "@newfold/ui-component-library";
+import { useEffect, useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
+import useSWR from "swr";
+import { ecomdashPluginStatusParser } from "../configs/selectors";
 import { ReactComponent as Accounting } from "../icons/sales-channel/accounting.svg";
 import { ReactComponent as Amazon } from "../icons/sales-channel/amazon-icon.svg";
 import { ReactComponent as Barcodes } from "../icons/sales-channel/barcodes.svg";
@@ -13,35 +16,47 @@ import { ReactComponent as OrdersTable } from "../icons/sales-channel/orders-tab
 import { ReactComponent as PurchaseOrders } from "../icons/sales-channel/purchase-orders.svg";
 import { ReactComponent as ShippingLabels } from "../icons/sales-channel/shipping-labels.svg";
 import { ReactComponent as WarehouseFeeds } from "../icons/sales-channel/warehouse-feeds.svg";
-import { Section } from "./Section";
-import { useEffect, useState } from "@wordpress/element";
-import apiFetch from "@wordpress/api-fetch";
 import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
+import { PluginsSdk } from "../sdk/plugins";
+import { LoadingPanel } from "./LoadingPanel";
+import { Section } from "./Section";
+import { useInstallEcomdash } from "./useInstallEcomdash";
+
+let ecomdashParser = ecomdashPluginStatusParser("nfd_slug_ecomdash_wordpress_plugin");
 
 
-export function SalesChannel(){
+export function SalesChannel(props){
+    
+    let ecomdashStatus = useSWR(
+        "nfd_slug_ecomdash_wordpress_plugin-status",
+        () =>
+          PluginsSdk.queries
+            .status("woocommerce", "nfd_slug_ecomdash_wordpress_plugin")
+            .then(ecomdashParser),
+        { refreshInterval: 30 * 1000 }
+      );
 
-    const [ecomdashStatus, setEcomdashStatus] = useState("");
-
-    const apiUrl = NewfoldRuntime.createApiUrl("/newfold-ecommerce/v1/plugins/status", {
-        plugins: "nfd_slug_ecomdash_wordpress_plugin",
-    })
-
-    useEffect(() => {
-        const fecthApi = async () => {
-            const data = await apiFetch({
-            url: apiUrl,
-            });
-            setEcomdashStatus(data?.details?.nfd_slug_ecomdash_wordpress_plugin?.status);
-        }
-        fecthApi()
-    }, []);
-
-    console.log("ecomDashStatus", ecomdashStatus)
-
-    let showInstallButton = ecomdashStatus === "need_to_install" ? true : false;
-
+      const {wpModules} = props;
+      const [isOpen, setIsOpen] = useState(false);
+      const canAccessGlobalCTB = NewfoldRuntime.hasCapability("canAccessGlobalCTB");
+      const hasYithExtended = NewfoldRuntime.hasCapability("hasYithExtended");
+      const isEcommerce = NewfoldRuntime.hasCapability("isEcommerce");
+      const hasEcomdash = NewfoldRuntime.hasCapability("hasEcomdash")
+      
+      let [installEcomdash, isInstalling] = useInstallEcomdash({ wpModules });
+      let showInProgress = isInstalling || ecomdashStatus.data?.isInstalling;
+          
+      useEffect(() => {
+          (ecomdashStatus.data?.isInstalling && !ecomdashStatus.data.isInstalled) ? setIsOpen(true) : setIsOpen(false)
+        }, [ecomdashStatus.data?.isInstalling])
+      
+      useEffect(() => {
+          isInstalling ? setIsOpen(true) : setIsOpen(false)
+      }, [isInstalling])
+  
     return(
+
+        hasYithExtended && canAccessGlobalCTB && hasEcomdash && (ecomdashStatus?.data?.isInstalled || ecomdashStatus?.data?.isNeedToInstall) ?
         <>
             <Section.Container>
                 <Section.Header title={__("Sales Channels", "wp-module-ecommerce")} subTitle={__("Sell your products everywhere, confidently, with Ecomdash.", "wp-module-ecommerce")} />
@@ -62,11 +77,22 @@ export function SalesChannel(){
                                 {__("more saving you valuable time.", "wp-module-ecommerce")}​
                             </p>
                             <Button
-                                id={showInstallButton ? "install-ecomdash" : "manage-ecomdash"}
-                                variant="primary"
-                                >
-                                    {showInstallButton ? __("Get Started Now", "wp-module-ecommerce") : __("Go to Ecomdash", "wp-module-ecommerce")}
-                            </Button>                                                        
+                                    className="nfd-button nfd-button--primary"
+                                    variant="primary" 
+                                    type="button"
+                                    as={canAccessGlobalCTB && !hasYithExtended && !hasEcomdash ? "a" : "button"}
+                                    data-ctb-id={
+                                    canAccessGlobalCTB && hasYithExtended && !hasEcomdash
+                                        ? "3edcf593-dbbe-4994-b5c0-a6718bb819c4"
+                                        : null
+                                    }
+                                    href={ (canAccessGlobalCTB && !hasYithExtended && ecomdashStatus.data.isInstalled && ecomdashStatus.data.pluginUrl) || '' }
+                                    isLoading={showInProgress}
+                                    onClick={hasEcomdash && ecomdashStatus.data.isNeedToInstall ? installEcomdash : null}
+                                    id={ecomdashStatus.data.isInstalled ? "manage-ecomdash" : "install-ecomdash" }
+                                    >
+                                    {ecomdashStatus.data.isInstalled ? __("Go to Ecomdash", "wp-module-ecommerce") : __("Get Started Now", "wp-module-ecommerce") }
+                            </Button>        
                        </div>
                        <Ecomdash className="nfd-flex-none nfd-self-start" />
                     </div>
@@ -117,11 +143,6 @@ export function SalesChannel(){
                         <p className="nfd-flex-1 nfd-text-[#4A5567] nfd-leading-5 nfd-font-medium nfd-mb-7 nfd-mt-3.5">
                             {__("With Ecomdash you can sit back and relax, knowing that all aspects of order fulfillment are under control. Easily track your top selling items, cost of goods sold, stale inventory and more with Ecomdash's extensive reporting tools.", "wp-module-ecommerce")}                            
                         </p>
-                        {/* <p className="nfd-flex-1 nfd-text-[#4A5567] nfd-leading-5 nfd-font-medium nfd-mb-7 nfd-mt-3.5">
-                            {__("With Ecomdash you can sit back and relax, knowing that all aspects of order fulfillment are under control. Easily track your top selling", "wp-module-ecommerce")}
-                            <br />
-                            {__("items, cost of goods sold, stale inventory and more with Ecomdash's extensive reporting tools.", "wp-module-ecommerce")}
-                        </p> */}
                         <OrdersTable className="nfd-mx-auto" />                                            
                     </div>
 
@@ -133,13 +154,7 @@ export function SalesChannel(){
                         </h2>
                         <p className="nfd-text-[#4A5567] nfd-leading-5  nfd-font-medium">
                             {__("Ecomdash contains a variety of powerful add-ons that will help you handle everything from creating barcodes and inventory templates, to managing warehouse feeds, Fulfillment By Amazon and even accounting.", "wp-module-ecommerce")}                            
-                        </p>
-                        {/* <p className="nfd-text-[#4A5567] nfd-leading-5  nfd-font-medium">
-                            {__("Ecomdash contains a variety of powerful add-ons that will help you handle everything from creating barcodes and inventory templates, to", "wp-module-ecommerce")}
-                            <br />
-                            {__("managing warehouse feeds, Fulfillment By Amazon and even accounting.", "wp-module-ecommerce")}
-                        </p> */}
-
+                        </p>                        
                         <div className="nfd-mx-auto nfd-bg-[#F8F8F8] nfd-rounded-lg nfd-mx-auto nfd-max-w-[650px] nfd-flex nfd-flex-row nfd-p-6 nfd-mt-4 nfd-mb-8">
                             <Amazon className="nfd-flex-none nfd-mr-6" />
                             <div className="nfd-flex-1">
@@ -155,7 +170,6 @@ export function SalesChannel(){
                         </div>
 
                         <div className="nfd-flex nfd-flex-wrap nfd-flex-row nfd-min-w-[315px] nfd-max-w-[646px] nfd-mx-auto">
-
                             <div className="nfd-flex-1 nfd-mr-14">
                                 <div>
                                     <div className="nfd-flex nfd-flex-row">
@@ -267,13 +281,23 @@ export function SalesChannel(){
                                 </div>                            
                             </div>
 
-                        </div>
-
-                        
+                        </div>                        
                     </div>
-
                 </Section.Content>
+                <Modal
+                    isOpen={isOpen}
+                    onClose={() => setIsOpen(false)}
+                    className="wppbh-app-sidenav-mobile nfd-z-40"
+                    initialFocus
+                    >
+                    <Modal.Panel className="nfd-p-0 nfd-overflow-visible" hasCloseButton={false}>
+                        <div className="wppbh-app-sidenav nfd-p-5 nfd-max-h-[70vh] nfd-overflow-y-auto">
+                            <LoadingPanel pluginName="ecomdash" />
+                        </div>
+                    </Modal.Panel>
+                </Modal>
            </Section.Container> 
         </>
+        : null
     )
 }
