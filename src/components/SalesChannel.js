@@ -2,6 +2,7 @@ import { Button, Modal } from "@newfold/ui-component-library";
 import { useEffect, useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import useSWR from "swr";
+import { createPluginInstallAction } from '../configs/actions';
 import { ecomdashPluginStatusParser } from "../configs/selectors";
 import { ReactComponent as Accounting } from "../icons/sales-channel/accounting.svg";
 import { ReactComponent as Amazon } from "../icons/sales-channel/amazon-icon.svg";
@@ -20,7 +21,6 @@ import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { PluginsSdk } from "../sdk/plugins";
 import { LoadingPanel } from "./LoadingPanel";
 import { Section } from "./Section";
-import { useInstallEcomdash } from "./useInstallEcomdash";
 
 let ecomdashParser = ecomdashPluginStatusParser("nfd_slug_ecomdash_wordpress_plugin");
 
@@ -38,12 +38,12 @@ export function SalesChannel(props){
 
       const {wpModules} = props;
       const [isOpen, setIsOpen] = useState(false);
+      const [isInstalling, setInstalling] = useState(ecomdashStatus.isInstalling);
       const canAccessGlobalCTB = NewfoldRuntime.hasCapability("canAccessGlobalCTB");
       const hasYithExtended = NewfoldRuntime.hasCapability("hasYithExtended");
       const isEcommerce = NewfoldRuntime.hasCapability("isEcommerce");
       const hasEcomdash = NewfoldRuntime.hasCapability("hasEcomdash")
-      
-      let [installEcomdash, isInstalling] = useInstallEcomdash({ wpModules });
+            
       let showInProgress = isInstalling || ecomdashStatus.data?.isInstalling;
           
       useEffect(() => {
@@ -80,15 +80,22 @@ export function SalesChannel(props){
                                     className="nfd-button nfd-button--primary"
                                     variant="primary" 
                                     type="button"
-                                    as={canAccessGlobalCTB && !hasYithExtended && !hasEcomdash ? "a" : "button"}
+                                    as={canAccessGlobalCTB ? 
+                                        hasEcomdash ?  ecomdashStatus.data.isInstalled ?  "a" :  "button"  : "button" 
+                                        : ""
+                                    }
                                     data-ctb-id={
-                                    canAccessGlobalCTB && hasYithExtended && !hasEcomdash
+                                    canAccessGlobalCTB && !hasEcomdash
                                         ? "3edcf593-dbbe-4994-b5c0-a6718bb819c4"
                                         : null
                                     }
-                                    href={ (canAccessGlobalCTB && !hasYithExtended && ecomdashStatus.data.isInstalled && ecomdashStatus.data.pluginUrl) || '' }
+                                    href={ (canAccessGlobalCTB && hasYithExtended && ecomdashStatus.data.isInstalled && ecomdashStatus.data.pluginUrl) || '' }
                                     isLoading={showInProgress}
-                                    onClick={hasEcomdash && ecomdashStatus.data.isNeedToInstall ? installEcomdash : null}
+                                    onClick={hasEcomdash && ecomdashStatus.data.isNeedToInstall ? createPluginInstallAction(
+                                        'nfd_slug_ecomdash_wordpress_plugin',
+                                        16,
+                                        wpModules
+                                    ) : null}
                                     id={ecomdashStatus.data.isInstalled ? "manage-ecomdash" : "install-ecomdash" }
                                     >
                                     {ecomdashStatus.data.isInstalled ? __("Go to Ecomdash", "wp-module-ecommerce") : __("Get Started Now", "wp-module-ecommerce") }
