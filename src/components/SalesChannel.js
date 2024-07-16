@@ -150,7 +150,7 @@ export function SalesChannel(props){
                                 </li>
                             </ul>                            
                         </div>
-                        <InventoryBrands className="nfd-object-contain" />                        
+                        <InventoryBrands />                        
                     </div>
                     
 
