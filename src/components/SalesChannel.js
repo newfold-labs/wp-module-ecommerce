@@ -93,23 +93,27 @@ export function SalesChannel(props){
                                     className="nfd-button nfd-button--primary"
                                     variant="primary" 
                                     type="button"                                    
-                                    as={ canAccessGlobalCTB ?  hasEcomdash ? ecomdashStatus.data.isInstalled ? "a" : "button" : "button" : null }
+                                    as={  canAccessGlobalCTB ? ( hasEcomdash ? ( ecomdashStatus.data.isInstalled ? "a" : "button" ) : "button" ) : null }
                                     data-ctb-id={
                                     canAccessGlobalCTB && hasYithExtended && !hasEcomdash
                                         ? "3edcf593-dbbe-4994-b5c0-a6718bb819c4"
                                         : null
                                     }
-                                    href= { (ecomdashStatus.data.isInstalled && ecomdashSetupStatus && ecomdashStatus?.data?.pluginUrl) || (ecomdashStatus.data.isInstalled && !ecomdashSetupStatus && "https://app.svc.ecomdash.com/ecom/dashboard") }
+                                    href= { 
+                                            (ecomdashStatus.data.isInstalled && ecomdashSetupStatus && ecomdashStatus?.data?.pluginUrl) 
+                                            || 
+                                            (ecomdashStatus.data.isInstalled && !ecomdashSetupStatus && "https://app.svc.ecomdash.com/ecom/dashboard") 
+                                        }
                                     target="_blank"
                                     isLoading={ecomdashStatus.data?.isInstalling}
                                     onClick={hasEcomdash && ecomdashStatus.data.isNeedToInstall ? createPluginInstallAction(
                                         'nfd_slug_ecomdash_wordpress_plugin',
                                         16,
                                         wpModules
-                                    ) : null}
+                                    ) : null}                                    
                                     id={ecomdashStatus.data.isInstalled ? "manage-ecomdash" : "install-ecomdash" }                                    
                                     >
-                                    {ecomdashStatus.data.isInstalled ? ecomdashSetupStatus ? __("Get Started Now", "wp-module-ecommerce") : __("Go to Ecomdash", "wp-module-ecommerce") : __("Get Started Now", "wp-module-ecommerce") }
+                                    {ecomdashStatus.data.isInstalled ?  ( ecomdashSetupStatus ? __("Get Started Now", "wp-module-ecommerce") : __("Go to Ecomdash", "wp-module-ecommerce") ) : __("Install Now", "wp-module-ecommerce") }
                             </Button>        
                        </div>
                        <Ecomdash className="nfd-flex-none nfd-self-start" />
@@ -143,7 +147,7 @@ export function SalesChannel(props){
                                 <li className="nfd-flex nfd-flex-row nfd-gap-6 nfd-mb-6">
                                     <EcomdashBulletPoint className="nfd-flex-none" />
                                     <span className="nfd-flex-1 nfd-text-[#4A5567] nfd-leading-5 nfd-font-medium">
-                                        {__("Accurately sync kits, multipacks, and components without any headaches.", "wp-module-ecommerce")}
+                                        {__("Accurately sync kits, multipacks, and components without any", "wp-module-ecommerce")}
                                         <br />
                                         {__("headaches.", "wp-module-ecommerce")}
                                     </span>
@@ -199,7 +203,7 @@ export function SalesChannel(props){
                                     <div className="nfd-text-[#000000] nfd-leading-5 nfd-font-medium nfd-mt-5 nfd-mb-11">
                                         {__("Print barcodes for your products that can be", "wp-module-ecommerce")}
                                         <br />
-                                        {__("used for labedivng and scanning your", "wp-module-ecommerce")}
+                                        {__("used for labeling and scanning your", "wp-module-ecommerce")}
                                         <br />
                                         {__("products", "wp-module-ecommerce")}
                                     </div>
@@ -212,7 +216,7 @@ export function SalesChannel(props){
                                         </h3>
                                     </div>
                                     <div className="nfd-text-[#000000] nfd-leading-5 nfd-font-medium nfd-mt-5 nfd-mb-11">
-                                        {__("Print shipping labels with a preferred carrier right from your ecomdash account and save on postage.", "wp-module-ecommerce")}
+                                        {__("Print shipping labels with a preferred carrier", "wp-module-ecommerce")}
                                         <br />
                                         {__("right from your ecomdash account and save", "wp-module-ecommerce")}
                                         <br />
@@ -227,7 +231,7 @@ export function SalesChannel(props){
                                         </h3>
                                     </div>
                                     <div className="nfd-text-[#000000] nfd-leading-5 nfd-font-medium nfd-mt-5 nfd-mb-11">
-                                        {__("Create listing presets to cut down most of the manual data entry needed when creating new listings. ", "wp-module-ecommerce")}
+                                        {__("Create listing presets to cut down most of", "wp-module-ecommerce")}
                                         <br />
                                         {__("the manual data entry needed when creating", "wp-module-ecommerce")}
                                         <br />
