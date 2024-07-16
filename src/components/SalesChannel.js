@@ -21,7 +21,7 @@ import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { PluginsSdk } from "../sdk/plugins";
 import { LoadingPanel } from "./LoadingPanel";
 import { Section } from "./Section";
-
+ 
 let ecomdashParser = ecomdashPluginStatusParser("nfd_slug_ecomdash_wordpress_plugin");
 
 
@@ -36,27 +36,40 @@ export function SalesChannel(props){
         { refreshInterval: 30 * 1000 }
       );
 
-      const {wpModules} = props;
+      const {wpModules} = props;      
       const [isOpen, setIsOpen] = useState(false);
-      const [isInstalling, setInstalling] = useState(ecomdashStatus.isInstalling);
       const canAccessGlobalCTB = NewfoldRuntime.hasCapability("canAccessGlobalCTB");
       const hasYithExtended = NewfoldRuntime.hasCapability("hasYithExtended");
-      const isEcommerce = NewfoldRuntime.hasCapability("isEcommerce");
       const hasEcomdash = NewfoldRuntime.hasCapability("hasEcomdash")
+      const [ecomdashSetupStatus, setEcomdashSetupStatus] = useState("")
             
-      let showInProgress = isInstalling || ecomdashStatus.data?.isInstalling;
           
       useEffect(() => {
           (ecomdashStatus.data?.isInstalling && !ecomdashStatus.data.isInstalled) ? setIsOpen(true) : setIsOpen(false)
         }, [ecomdashStatus.data?.isInstalling])
       
       useEffect(() => {
-          isInstalling ? setIsOpen(true) : setIsOpen(false)
-      }, [isInstalling])
-  
+        let pluginConnectionStatus = async () => {
+            try {
+              const response = await fetch("/wp-admin/admin.php?page=newfold-ecomdash-settings");
+              const text = await response.text();
+              const parser = new DOMParser();
+              const doc = parser.parseFromString(text, 'text/html');
+              const element = doc.querySelector('#disconnect-instance');
+              setEcomdashSetupStatus(element === null);
+              return element === null 
+            } catch (error) {
+              console.error('Error fetching HTML:', error);
+            }
+        } 
+        if(ecomdashStatus?.data?.isInstalled){
+            pluginConnectionStatus()
+        }        
+      }, [ecomdashStatus?.data?.isInstalled])
+        
     return(
 
-        hasYithExtended && canAccessGlobalCTB && hasEcomdash && (ecomdashStatus?.data?.isInstalled || ecomdashStatus?.data?.isNeedToInstall) ?
+        hasYithExtended && canAccessGlobalCTB && hasEcomdash && (ecomdashStatus?.data?.isInstalled || ecomdashStatus?.data?.isNeedToInstall || ecomdashStatus.data?.isInstalling) ?
         <>
             <Section.Container>
                 <Section.Header title={__("Sales Channels", "wp-module-ecommerce")} subTitle={__("Sell your products everywhere, confidently, with Ecomdash.", "wp-module-ecommerce")} />
@@ -79,26 +92,24 @@ export function SalesChannel(props){
                             <Button
                                     className="nfd-button nfd-button--primary"
                                     variant="primary" 
-                                    type="button"
-                                    as={canAccessGlobalCTB ? 
-                                        hasEcomdash ?  ecomdashStatus.data.isInstalled ?  "a" :  "button"  : "button" 
-                                        : ""
-                                    }
+                                    type="button"                                    
+                                    as={ canAccessGlobalCTB ?  hasEcomdash ? ecomdashStatus.data.isInstalled ? "a" : "button" : "button" : null }
                                     data-ctb-id={
-                                    canAccessGlobalCTB && !hasEcomdash
+                                    canAccessGlobalCTB && hasYithExtended && !hasEcomdash
                                         ? "3edcf593-dbbe-4994-b5c0-a6718bb819c4"
                                         : null
                                     }
-                                    href={ (canAccessGlobalCTB && hasYithExtended && ecomdashStatus.data.isInstalled && ecomdashStatus.data.pluginUrl) || '' }
-                                    isLoading={showInProgress}
+                                    href= { (ecomdashStatus.data.isInstalled && ecomdashSetupStatus && ecomdashStatus?.data?.pluginUrl) || (ecomdashStatus.data.isInstalled && !ecomdashSetupStatus && "https://app.svc.ecomdash.com/ecom/dashboard") }
+                                    target="_blank"
+                                    isLoading={ecomdashStatus.data?.isInstalling}
                                     onClick={hasEcomdash && ecomdashStatus.data.isNeedToInstall ? createPluginInstallAction(
                                         'nfd_slug_ecomdash_wordpress_plugin',
                                         16,
                                         wpModules
                                     ) : null}
-                                    id={ecomdashStatus.data.isInstalled ? "manage-ecomdash" : "install-ecomdash" }
+                                    id={ecomdashStatus.data.isInstalled ? "manage-ecomdash" : "install-ecomdash" }                                    
                                     >
-                                    {ecomdashStatus.data.isInstalled ? __("Go to Ecomdash", "wp-module-ecommerce") : __("Get Started Now", "wp-module-ecommerce") }
+                                    {ecomdashStatus.data.isInstalled ? ecomdashSetupStatus ? __("Get Started Now", "wp-module-ecommerce") : __("Go to Ecomdash", "wp-module-ecommerce") : __("Get Started Now", "wp-module-ecommerce") }
                             </Button>        
                        </div>
                        <Ecomdash className="nfd-flex-none nfd-self-start" />
@@ -139,7 +150,7 @@ export function SalesChannel(props){
                                 </li>
                             </ul>                            
                         </div>
-                        <InventoryBrands />                        
+                        <InventoryBrands className="nfd-object-contain" />                        
                     </div>
                     
 
