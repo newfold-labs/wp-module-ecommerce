@@ -1,4 +1,4 @@
-import { Button, Modal } from "@newfold/ui-component-library";
+import { Button, Modal, Spinner } from "@newfold/ui-component-library";
 import { useEffect, useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import useSWR from "swr";
@@ -42,6 +42,7 @@ export function SalesChannel(props) {
     const hasYithExtended = NewfoldRuntime.hasCapability("hasYithExtended");
     const hasEcomdash = NewfoldRuntime.hasCapability("hasEcomdash")
     const [ecomdashSetupStatus, setEcomdashSetupStatus] = useState("")
+    const [ecomdashLoading, setEcomdashLoading] = useState(false);
 
 
     useEffect(() => {
@@ -51,14 +52,17 @@ export function SalesChannel(props) {
     useEffect(() => {
         let pluginConnectionStatus = async () => {
             try {
+                setEcomdashLoading(true);
                 const response = await fetch("/wp-admin/admin.php?page=newfold-ecomdash-settings");
                 const text = await response.text();
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(text, 'text/html');
                 const element = doc.querySelector('#disconnect-instance');
                 setEcomdashSetupStatus(element === null);
+                setEcomdashLoading(false);
                 return element === null
             } catch (error) {
+                setEcomdashLoading(false);
                 console.error('Error fetching HTML:', error);
             }
         }
@@ -113,7 +117,7 @@ export function SalesChannel(props) {
                                     ) : null}
                                     id={ecomdashStatus.data.isInstalled ? "manage-ecomdash" : "install-ecomdash"}
                                 >
-                                    {ecomdashStatus.data.isInstalled ? (ecomdashSetupStatus ? __("Get Started Now", "wp-module-ecommerce") : __("Go to Ecomdash", "wp-module-ecommerce")) : __("Install Now", "wp-module-ecommerce")}
+                                    {ecomdashStatus.data.isInstalled ? (ecomdashLoading ? <><Spinner /> __("Loading...", "wp-module-ecommerce") </> : ecomdashSetupStatus ? __("Get Started Now", "wp-module-ecommerce") : __("Go to Ecomdash", "wp-module-ecommerce")) : __("Install Now", "wp-module-ecommerce")}
                                 </Button>
                             </div>
                             <Ecomdash className="nfd-flex-none nfd-self-start" />
