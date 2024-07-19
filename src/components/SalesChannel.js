@@ -84,7 +84,7 @@ export function SalesChannel(props) {
                                 <h2 className="nfd-text-[#0F172A] nfd-text-lg nfd-font-medium nfd-pb-1.5">
                                     {__("Sell your products everywhere, confidently, with Ecomdash.", "wp-module-ecommerce")}
                                 </h2>
-                                <p className="nfd-text-[#4A5567] nfd-pb-7 nfd-leading-5  nfd-font-medium">
+                                <p className="nfd-text-[#4A5567] nfd-pb-7 nfd-leading-5 nfd-text-sm nfd-font-medium">
                                     {__("With ecomdash, you can manage different sales channels all in one place.", "wp-module-ecommerce")}
                                     <br />
                                     {__("Simply connect your business accounts from Amazon, Etsy or Walmart to", "wp-module-ecommerce")}
