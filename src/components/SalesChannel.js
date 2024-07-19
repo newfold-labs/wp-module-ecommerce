@@ -117,7 +117,7 @@ export function SalesChannel(props) {
                                     ) : null}
                                     id={ecomdashStatus.data.isInstalled ? "manage-ecomdash" : "install-ecomdash"}
                                 >
-                                    {ecomdashStatus.data.isInstalled ? (ecomdashLoading ? <><Spinner /> __("Loading...", "wp-module-ecommerce") </> : ecomdashSetupStatus ? __("Get Started Now", "wp-module-ecommerce") : __("Go to Ecomdash", "wp-module-ecommerce")) : __("Install Now", "wp-module-ecommerce")}
+                                    {ecomdashStatus.data.isInstalled ? (ecomdashLoading ? <><Spinner /> {__("Loading...", "wp-module-ecommerce")} </> : ecomdashSetupStatus ? __("Get Started Now", "wp-module-ecommerce") : __("Go to Ecomdash", "wp-module-ecommerce")) : __("Install Now", "wp-module-ecommerce")}
                                 </Button>
                             </div>
                             <Ecomdash className="nfd-flex-none nfd-self-start" />
