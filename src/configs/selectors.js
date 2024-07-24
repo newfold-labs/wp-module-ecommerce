@@ -39,6 +39,16 @@ export const wcPluginStatusParser = (slug) => (data) => {
   return { isInstalled, isInstalling, isQueueEmpty, isWCActive, pluginUrl };
 };
 
+export const ecomdashPluginStatusParser = (slug) => (data) => {
+  const isNeedToInstall = data?.details?.[slug].status === "need_to_install";
+  const isInstalled = data?.details?.[slug].status === "active";
+  const isQueueEmpty = data?.queue[0] ? data?.queue[0]?.length === 0 ? true : false : data?.queue?.length === 0;
+  const isInstalling = data?.queue?.includes(slug);
+  const isWCActive = data?.details?.woocommerce.status === "active";
+  const pluginUrl = data?.details?.[slug].url;
+  return { isNeedToInstall, isInstalled, isInstalling, isQueueEmpty, isWCActive, pluginUrl };
+};
+
 export const findUpsellWithName = (name) => (upsellOptions) => {
   return upsellOptions?.find((option) => option.name === name);
 };

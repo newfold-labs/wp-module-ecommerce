@@ -12,7 +12,7 @@ export function LoadingPanel({ pluginName }) {
         pluginName === 'ecomdash' ? 
         __("Activating ", "wp-module-ecommerce")+`${pluginName}`+__(" plugin...", "wp-module-ecommerce")
         : 
-        __("Activating the YITH ", "wp-module-ecommerce")+`${pluginName}`+__("plugin...", "wp-module-ecommerce")
+        __("Activating the YITH ", "wp-module-ecommerce")+`${pluginName}`+__(" plugin...", "wp-module-ecommerce")
       }
     </p>
     <Spinner size="4" className="nfd-text-primary" />
