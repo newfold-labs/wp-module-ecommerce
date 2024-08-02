@@ -9,7 +9,7 @@ export const NewfoldRuntime = {
     return window.NewfoldRuntime?.adminUrl + path;
   },
   createApiUrl(url, qs = {}) {
-    return addQueryArgs(window.NewfoldRuntime?.homeUrl, {
+    return addQueryArgs(window.NewfoldRuntime?.base_url, {
       rest_route: url,
       ...qs,
     });
