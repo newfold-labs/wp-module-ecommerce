@@ -1,10 +1,11 @@
+import { useEffect } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
+import { onAnchorNavigate, onButtonNavigate } from "../sdk/hiiveEventsTracking";
 import { QuickLook } from "./QuickLook";
 import { Section } from "./Section";
-import { WooCommerceUnavailable } from "./WooCommerceUnavailable";
-import { useEffect } from "@wordpress/element";
 import { SiteStatus } from "./SiteStatus";
-import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
+import { WooCommerceUnavailable } from "./WooCommerceUnavailable";
 
 export function Store(props) {
 
@@ -13,8 +14,31 @@ export function Store(props) {
       const child = document.querySelector(".nfd-feature-upsell > div");  
       child.classList.remove("nfd-grayscale") 
       document.querySelector(".nfd-feature-upsell .nfd-absolute.nfd-justify-center").style.backgroundColor = "rgba(255, 255, 255, .5)"
-    }    
+    }  
+
+    const storeContainer = document.querySelector('#ecommerce-features-wrapper');
+
+    const storeButtons = Array.from(
+      storeContainer.querySelectorAll( 'button' )
+    );
+    const storeAnchors = Array.from( storeContainer.querySelectorAll( 'a' ) );
+
+    if ( storeButtons.length ) {
+      storeButtons.forEach( ( button ) => {
+        button.addEventListener( 'click', onButtonNavigate );
+        button.addEventListener( 'onkeydown', onButtonNavigate );      
+      } );
+    }
+
+    if ( storeAnchors.length ) {
+      storeAnchors.forEach( ( link ) => {
+          link.addEventListener( 'click', onAnchorNavigate );
+          link.addEventListener( 'onkeydown', onAnchorNavigate );      
+      } );
+    }
+  
   }, []);
+
 
   return (
     <>

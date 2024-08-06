@@ -1,3 +1,4 @@
+import apiFetch from "@wordpress/api-fetch";
 import { NewfoldRuntime } from "./NewfoldRuntime";
 
 /**
@@ -5,10 +6,10 @@ import { NewfoldRuntime } from "./NewfoldRuntime";
  *
  * @param {Object} event The event data to be tracked.
  */
-export const sendEvent = ( event ) => {
+const sendEvent = ( event ) => {
     event.data = event.data || {};
     event.data.page = window.location.href;
-    methods.apiFetch( {
+    apiFetch( {
         url: NewfoldRuntime.createApiUrl( '/newfold-data/v1/events/' ),
         method: 'POST',
         data: event,
