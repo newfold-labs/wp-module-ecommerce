@@ -32,6 +32,9 @@ export function YithFeatureCard({
     installWonderCart();
   }
 
+  const pluginTitleString = cardsInfo?.text(state)?.title.toLowerCase().replace(/ /g, "-")
+  
+
   if (yithPluginsMap.get(id).title === "nfd_slug_ecomdash_wordpress_plugin") {
     if (!NewfoldRuntime.hasCapability("hasEcomdash"))
       return;
@@ -76,6 +79,8 @@ export function YithFeatureCard({
             : state?.isActive
               ? "manage_" + yithPluginsMap.get(id).title
               : "enable_" + yithPluginsMap.get(id).title}
+          data-provider={pluginTitleString === "ecomdash" ? "newfold" : "yith"}
+          data-event-action={`ecommerce-exclusive-tools-${pluginTitleString}-clicked`}
         >
           <span>
             {(state?.isInstalling && !state?.isActive)
