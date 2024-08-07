@@ -3,6 +3,7 @@ import { __ } from "@wordpress/i18n";
 import { ReactComponent as LockIcon } from "../icons/lockicon.svg";
 import { ReactComponent as TransformStore } from "../icons/transform-store.svg";
 import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
+import { AnalyticsSdk } from "../sdk/analytics";
 import { WonderCartCampaignDetails } from "./WonderCartCampaignDetails";
 import { YithPluginDetails } from "./YithPluginDetails";
 
@@ -34,6 +35,14 @@ export function TransformtoEcommerce() {
                             target="_blank"
                             rel="noopener"
                             id="buy-ecommerce-addon-btn"
+                            onClick={() =>
+                                AnalyticsSdk.track("Store", "buy-ecommerce-plan-clicked", {
+                                  element:"a",
+                                  ctbID:"f95ccf1e-3028-4ea7-b2c2-847969348e8b",
+                                  label: "Buy Now",
+                                  provider: "Newfold",    
+                                })
+                            }   
                         >
                             <LockIcon className="nfd-w-5 nfd-h-5 nfd--ml-1 nfd-shrink-0" />
                             {__("Buy Now", "wp-module-ecommerce")}

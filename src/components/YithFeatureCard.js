@@ -3,6 +3,7 @@ import { useEffect } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import { useInstallWonderCart } from "./useInstallWonderCart";
 import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
+import { AnalyticsSdk } from "../sdk/analytics";
 
 export function YithFeatureCard({
   setIsOpen,
@@ -32,9 +33,28 @@ export function YithFeatureCard({
     installWonderCart();
   }
 
-  const pluginTitleString = cardsInfo?.text(state)?.title.toLowerCase().replace(/ /g, "-")
-  
+  const clickExclusiveToolsCTA = (action, url, ele, btnLabel, pluginProvider) => {  
+    const elementUrl = url ?? "" 
+    AnalyticsSdk.track("Store", action, {
+      href: elementUrl,
+      element: ele,
+      label: btnLabel,
+      provider: pluginProvider,    
+    }) 
+    return yithPluginsMap.get(id).title === "nfd_slug_wonder_cart" && !state?.isActive ? handleWonderCart() :
+                state?.isActive
+                  ? cardsInfo?.actions?.manageFeature?.(
+                    cardsInfo?.state,
+                    cardsInfo
+                  )
+                  : cardsInfo?.actions?.installFeature?.(
+                    cardsInfo?.state,
+                    cardsInfo
+                  )
+  }
 
+  const pluginTitleString = cardsInfo?.text(state)?.title.toLowerCase().replace(/ /g, "-") === "ecomdash" ? "newfold" : "yith"
+  
   if (yithPluginsMap.get(id).title === "nfd_slug_ecomdash_wordpress_plugin") {
     if (!NewfoldRuntime.hasCapability("hasEcomdash"))
       return;
@@ -58,18 +78,13 @@ export function YithFeatureCard({
         <Button
           className="nfd-w-full nfd-h-9 nfd-border nfd-flex nfd-items-center nfd-gap-2"
           variant="secondary"
-          onClick={() =>
-            yithPluginsMap.get(id).title === "nfd_slug_wonder_cart" && !state?.isActive ? handleWonderCart() :
-              state?.isActive
-                ? cardsInfo?.actions?.manageFeature?.(
-                  cardsInfo?.state,
-                  cardsInfo
-                )
-                : cardsInfo?.actions?.installFeature?.(
-                  cardsInfo?.state,
-                  cardsInfo
-                )
-          }
+          onClick={(e) => clickExclusiveToolsCTA(`ecommerce-exclusive-tools-${pluginTitleString}-clicked`, 
+                                                  state?.featureUrl,
+                                                  "a",
+                                                  cardsInfo?.text(state).actionName,
+                                                  pluginTitleString
+                                                ) 
+                  }
           as="a"
           href={state?.featureUrl}
           isLoading={state?.isInstalling && !state?.isActive}
@@ -79,8 +94,6 @@ export function YithFeatureCard({
             : state?.isActive
               ? "manage_" + yithPluginsMap.get(id).title
               : "enable_" + yithPluginsMap.get(id).title}
-          data-provider={pluginTitleString === "ecomdash" ? "newfold" : "yith"}
-          data-event-action={`ecommerce-exclusive-tools-${pluginTitleString}-clicked`}
         >
           <span>
             {(state?.isInstalling && !state?.isActive)

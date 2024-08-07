@@ -23,6 +23,7 @@ import { TransformtoEcommerce } from "./TransformtoEcommerce";
 import { YITHPlugins } from "./YITHPlugins";
 import { useCardManager } from "./useCardManager";
 import { useInstallWoo } from "./useInstallWoo";
+import { AnalyticsSdk } from "../sdk/analytics";
 
 let recentActivityLink = `admin.php?${new URLSearchParams({
   page: "wc-admin",
@@ -55,6 +56,14 @@ function RecentReport({ title, divname, filter, onSelect, disabled, children }) 
           <Link
             className="nfd-text-base nfd-no-underline nfd-w-fit nfd-mr-2 nfd-text-sm"
             href={RuntimeSdk.adminUrl(recentActivityLink, true)}
+            onClick={() =>
+              AnalyticsSdk.track("Store", "woocommerce-analytics-clicked", {
+                href: RuntimeSdk.adminUrl(recentActivityLink, true),
+                element:"a",
+                label: "View all analytics",
+                provider: "WooCommerce",    
+              })
+            }           
           >
             {__("View all analytics", "wp-module-ecommerce")}
           </Link>
@@ -63,6 +72,12 @@ function RecentReport({ title, divname, filter, onSelect, disabled, children }) 
             className={classNames("lg:nfd-w-1/4", "sm:nfd-w-2/5")}
             disabled={disabled}
             onChange={(newFilter) => {
+              AnalyticsSdk.track("Store", "woocommerce-analytics-time-period-changed", {
+                element:"select",
+                label: "analytics time period selected",
+                value: newFilter,
+                provider: "WooCommerce",    
+              })
               if (newFilter !== filter) {
                 onSelect(newFilter);
               }
