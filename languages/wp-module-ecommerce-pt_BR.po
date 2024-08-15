@@ -275,8 +275,8 @@ msgstr "Quando um cliente escolher um método de pagamento manual, você precisa
 
 #: build/index.js:8269
 #: build/index.js:6786
-msgid "Paypal"
-msgstr "Paypal"
+msgid "PayPal"
+msgstr "PayPal"
 
 #: build/index.js:8270
 #: build/index.js:6787

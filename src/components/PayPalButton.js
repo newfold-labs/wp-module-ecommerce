@@ -1,6 +1,6 @@
 import {useEffect, useRef} from '@wordpress/element';
 
-const PaypalButton = () => {
+const PayPalButton = () => {
   const ppButton = useRef();
 
   useEffect(() => {
@@ -18,4 +18,4 @@ const PaypalButton = () => {
   );
 };
 
-export default PaypalButton;
+export default PayPalButton;

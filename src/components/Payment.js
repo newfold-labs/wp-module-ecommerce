@@ -3,7 +3,7 @@ import { CheckboxGroup, Link } from "@newfold/ui-component-library";
 import { RuntimeSdk } from "../sdk/runtime";
 import Razorpay from "./Razorpay";
 import { Section } from "./Section";
-import Paypal from "./Paypal";
+import PayPal from "./PayPal";
 import Stripe from "./Stripe";
 
 const Payment = ({ notify, pushChanges, values, controls }) => {
@@ -12,9 +12,9 @@ const Payment = ({ notify, pushChanges, values, controls }) => {
   }
   return (
     <Section.Container>
-      {RuntimeSdk.brandSettings.setup.payment.includes("Paypal") && (
+      {RuntimeSdk.brandSettings.setup.payment.includes("PayPal") && (
         <Section.Content className="paypal-section" separator>
-          <Paypal notify={notify} />
+          <PayPal notify={notify} />
         </Section.Content>
       )}
 

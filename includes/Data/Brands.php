@@ -34,7 +34,7 @@ final class Brands {
 					'support'          => 'https://www.crazydomains.in/contact',
 					'adminPage'        => 'admin.php?page=crazy-domains',
 					'setup'            => array(
-						'payment'  => array( 'Paypal' ),
+						'payment'  => array( 'PayPal' ),
 						'shipping' => array( 'Shippo' ),
 					),
 					'defaultContact'   => array(
@@ -53,7 +53,7 @@ final class Brands {
 					'support'          => 'https://helpchat.bluehost.in',
 					'adminPage'        => 'admin.php?page=bluehost',
 					'setup'            => array(
-						'payment'  => array( 'Paypal', 'Razorpay', 'Stripe' ),
+						'payment'  => array( 'PayPal', 'Razorpay', 'Stripe' ),
 						'shipping' => array(),
 					),
 					'defaultContact'   => array(
@@ -72,7 +72,7 @@ final class Brands {
 					'support'          => 'https://www.hostgator.com/contact',
 					'adminPage'        => 'admin.php?page=hostgator',
 					'setup'            => array(
-						'payment'  => array( 'Paypal', 'Razorpay', 'Stripe' ),
+						'payment'  => array( 'PayPal', 'Razorpay', 'Stripe' ),
 						'shipping' => array(),
 					),
 					'defaultContact'   => array(
@@ -91,7 +91,7 @@ final class Brands {
 					'support'          => 'https://www.bluehost.com/contact',
 					'adminPage'        => 'admin.php?page=bluehost',
 					'setup'            => array(
-						'payment'  => array( 'Paypal', 'Razorpay', 'Stripe' ),
+						'payment'  => array( 'PayPal', 'Razorpay', 'Stripe' ),
 						'shipping' => array( 'Shippo' ),
 					),
 					'defaultContact'   => array(
