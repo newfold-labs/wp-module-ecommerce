@@ -3,7 +3,7 @@ import { CheckboxGroup, Link } from "@newfold/ui-component-library";
 import { RuntimeSdk } from "../sdk/runtime";
 import Razorpay from "./Razorpay";
 import { Section } from "./Section";
-import PayPal from "./PayPal";
+import PayPal from "./PaypalPayment";
 import Stripe from "./Stripe";
 
 const Payment = ({ notify, pushChanges, values, controls }) => {
