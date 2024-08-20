@@ -6,19 +6,19 @@ import { ReactComponent as DiscoverBrand } from "../icons/brands/discover.svg";
 import { ReactComponent as GiroPayBrand } from "../icons/brands/giropay.svg";
 import { ReactComponent as IdealBrand } from "../icons/brands/ideal.svg";
 import { ReactComponent as MasterCardBrand } from "../icons/brands/mastercard.svg";
-import { ReactComponent as PaypalBrand } from "../icons/brands/paypal.svg";
+import { ReactComponent as PayPalBrand } from "../icons/brands/paypal.svg";
 import { ReactComponent as SofortBrand } from "../icons/brands/sofort.svg";
 import { ReactComponent as VenmoBrand } from "../icons/brands/venmo.svg";
 import { ReactComponent as VisaBrand } from "../icons/brands/visa.svg";
 import { ThirdPartyIntegration } from "./ThirdPartyIntegration";
 import PayPalButton from "./PayPalButton";
 
-const Paypal = ({ notify }) => {
+const PayPal = ({ notify }) => {
 
   return (
     <ThirdPartyIntegration
       id="paypal"
-      title={__("Paypal", "wp-module-ecommerce")}
+      title={__("PayPal", "wp-module-ecommerce")}
       description={__(
         "Online payments built for success. We help you do business in 200+ markets and 100+ currencies—even if your customers don't have PayPal.",
         "wp-module-ecommerce",
@@ -36,7 +36,7 @@ const Paypal = ({ notify }) => {
                 "min-[360px]:nfd-flex nfd-justify-between nfd-items-center min-[360px]:nfd-mb-8",
               )}
             >
-              <PaypalBrand />
+              <PayPalBrand />
               {isInstalling ? (
                 <Button
                   variant="secondary"
@@ -132,4 +132,4 @@ const Paypal = ({ notify }) => {
     </ThirdPartyIntegration>
   );
 };
-export default Paypal;
+export default PayPal;
