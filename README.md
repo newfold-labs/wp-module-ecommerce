@@ -96,7 +96,7 @@ function EcommercePage(props) {
 }
 ```
 
-[More on NewFold WordPress Modules](https://github.com/newfold-labs/wp-module-loader)
+[More on Newfold WordPress Modules](https://github.com/newfold-labs/wp-module-loader)
 
 ## Steps to create new release for Ecommerce module
 
@@ -146,7 +146,7 @@ In rare scenarios, like UI redesign where the change is bigger or a major refact
 
 18. On successful completion you can see latest package here https://github.com/newfold-labs/wp-module-ecommerce/pkgs/npm/wp-module-ecommerce 
 
-#### Changes to BlueHost plugin repo
+#### Changes to Bluehost plugin repo
 
 1. In composer.json file, update version of newfold-labs/wp-module-ecommerce 
 
