@@ -476,7 +476,7 @@ msgstr ""
 
 #: build/index.js:8269
 #: build/index.js:6786
-msgid "Paypal"
+msgid "PayPal"
 msgstr ""
 
 #: build/index.js:8270

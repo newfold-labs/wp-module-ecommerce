@@ -552,7 +552,7 @@ class ECommerce {
 	}
 
 	/**
-	 *  Activates yith payment plugins (Paypal, Stripe) when woocommerce is activated
+	 *  Activates yith payment plugins (PayPal, Stripe) when woocommerce is activated
 	 *
 	 * @param string $plugin Path to the plugin file relative
 	 *
