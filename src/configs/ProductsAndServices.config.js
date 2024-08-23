@@ -170,7 +170,7 @@ export const ProductsAndServicesDefinition = (props) => ({
         actionName: state.isActive ? __('Manage Bookings & Appointments', 'wp-module-ecommerce') : __('Setup Bookings & Appointments', 'wp-module-ecommerce'),
         slug: "yith_wcbk_panel",
       }),
-      state: {...defineFeatureState(), isUpsellNeeded: () => false, featureUrl: () => NewfoldRuntime.adminUrl("admin.php?page=yith_wcbk_panel")},
+      state: {...defineFeatureState(), featureUrl: () => NewfoldRuntime.adminUrl("admin.php?page=yith_wcbk_panel")},
 
       actions: {
         installFeature: createPluginInstallAction(
@@ -219,7 +219,7 @@ export const ProductsAndServicesDefinition = (props) => ({
         actionName: state.isActive ? __('Manage Gift Cards', 'wp-module-ecommerce') : __('Create a Gift Card', 'wp-module-ecommerce'),
         slug: "yith_woocommerce_gift_cards_panel",
       }),
-      state: {...defineFeatureState(), isUpsellNeeded: () => false, featureUrl: () => NewfoldRuntime.adminUrl("admin.php?page=yith_woocommerce_gift_cards_panel")},
+      state: {...defineFeatureState(), featureUrl: () => NewfoldRuntime.adminUrl("admin.php?page=yith_woocommerce_gift_cards_panel")},
       actions: {
         installFeature: createPluginInstallAction(
           "nfd_slug_yith_woocommerce_gift_cards",
