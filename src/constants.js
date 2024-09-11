@@ -44,3 +44,116 @@ export const wonderCartPopularCampaignsList = [
           description: "Create urgency with a special time-limited deal for customers on the cart and checkout pages."
       }
 ];
+
+
+export const wpSolutionsPluginsList = [
+    {
+        "creator": [
+                        {
+                            title: "WEBPAGE CREATION",
+                            description: "Build webpages fast with tailored block patterns and page templates included in your hosting package.",
+                            buttonText: "Add a Page to Your Site",
+                            href: ""
+                        },
+                        {
+                            title: "SEARCH ENGINE OPTIMIZATION",
+                            description: "Start increasing your search result rankings today.",
+                            buttonText: "Improve Your Search Ranking",
+                            href: ""
+                        },
+                        {
+                            title: "OFFER CONTENT COURSES",
+                            description: "Create beautiful and engaging online courses, lessons, and quizzes.",
+                            buttonText: "Create a Course",
+                            href: "" 
+                        },
+                        {
+                            title: "ADD AN AFFILIATE PROGRAM",
+                            description: "Grant your affiliates earnings each time someone purchases from their link.",
+                            buttonText: "Create an Affiliate Program",
+                            href: ""
+                        }
+                    ],
+        "services": [
+                        {
+                            title: "SETUP BOOKINGS",
+                            description: "Manage the renting or booking of services and items that you offer your customers.",
+                            buttonText: "Setup Bookings",
+                            href: ""
+                        },
+                        {
+                            title: "WEBPAGE CREATION",
+                            description: "Build webpages fast with tailored block patterns and page templates.",
+                            buttonText: "Add a Page to Your Site",
+                            href: ""
+                        },
+                        {
+                            title: "SEARCH ENGINE OPTIMIZATION",
+                            description: "Start increasing your search result rankings today.",
+                            buttonText: "Improve Your Search Ranking",
+                            href: ""
+                        },
+                        {
+                            title: "SETUP A LOYALTY PROGRAM",
+                            description: "Reward customer loyalty with an effective points program.",
+                            buttonText: "Configure Points & Rewards",
+                            href: ""
+                        },
+
+                    ],
+        "ecommerce": [
+                        {
+                            title: "SETUP WISHLISTS",
+                            description: "Let customers add products to lists and share them with family and friends.",
+                            buttonText: "Setup Wishilsts",
+                            href: ""
+                        },
+                        {
+                            title: "ENABLE PRODUCT REVIEWS",
+                            description: "Get positive product reviews and use social proof to drive more sales.",
+                            buttonText: "Enable Product Reviews",
+                            href: ""
+                        },
+                        {
+                            title: "CREATE A SALES CAMPAIGN",
+                            description: "Create custom upsell, cross-sell and other promotional campaigns to generate more sales.",
+                            buttonText: "Create a Campaign",
+                            href: ""
+                        },
+                        {
+                            title: "SEARCH ENGINE OPTIMIZATION",
+                            description: "Start increasing your search result rankings today.",
+                            buttonText: "Improve Your Search Ranking",
+                            href: ""
+                        },
+
+                    ],                    
+        "none":     [
+                        {
+                            title: "SETUP WISHLISTS",
+                            description: "Let customers add products to lists and share them with family and friends.",
+                            buttonText: "Setup Wishilsts",
+                            href: ""
+                        },
+                        {
+                            title: "ENABLE PRODUCT REVIEWS",
+                            description: "Get positive product reviews and use social proof to drive more sales.",
+                            buttonText: "Enable Product Reviews",
+                            href: ""
+                        },
+                        {
+                            title: "CREATE A SALES CAMPAIGN",
+                            description: "Create custom upsell, cross-sell and other promotional campaigns to generate more sales.",
+                            buttonText: "Create a Campaign",
+                            href: ""
+                        },
+                        {
+                            title: "SEARCH ENGINE OPTIMIZATION",
+                            description: "Start increasing your search result rankings today.",
+                            buttonText: "Improve Your Search Ranking",
+                            href: ""
+                        },
+                    ],           
+        
+    }
+]

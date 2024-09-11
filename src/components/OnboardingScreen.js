@@ -10,6 +10,7 @@ import { OnboardingList } from "./OnboardingList";
 import { Section } from "./Section";
 import { SiteStatus } from "./SiteStatus";
 import { WordPressSdk } from "../sdk/wordpress";
+import { WPSolutionsBanner } from "./WPSolutionsBanner";
 
 const Text = {
   Pending: {
@@ -200,6 +201,7 @@ export function OnboardingScreen({
             notify={notify}
             toggleComingSoon={toggleComingSoon}
           />
+          <WPSolutionsBanner />
         </div>
       </Section.Content>
     </Section.Container>
