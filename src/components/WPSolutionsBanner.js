@@ -7,12 +7,10 @@ import { Section } from "./Section";
 
 
 export function WPSolutionsBanner() {
-
-
     /*
     *
     * This is static mock value added only for coding purpose
-    * Actual value of purchased solution will be retrived from API call, discussed with @Diwanshu, @Vara to work on it.
+    * Actual value of "purchased solution" will be retrived from API call, @Vara to work on the API.
     * 
     */
     let purchasedSolution = "creator";   
@@ -44,20 +42,20 @@ export function WPSolutionsBanner() {
             <Section.Header 
                 title={__("Explore Your Plugins and Tools", "wp-module-ecommerce")} 
                 subTitle={__("Improve your site with the tools and services included in your plan.", "wp-module-ecommerce")} 
-                secondaryAction={{title : "View all your plugins and tools" }} 
+                secondaryAction={{title : __( "View all your plugins and tools", "wp-module-ecommerce" ) }} 
             />
             <Section.Content className="nfd-app-section-home">     
-                <div className="nfd-flex nfd-flex-col">                
+                <div className="nfd-flex nfd-flex-row nfd-flex-wrap">                
                     {
-                        solutionsCards.map((details) => {
-                            return (<div className="nfd-bg-[#F1F5F7] nfd-w-96 nfd-m-3 nfd-p-6 nfd-rounded-lg nfd-border nfd-border-[#E2E8F0] nfd-box-content">                        
+                        solutionsCards.map((details, index) => {
+                            return (<div className={"nfd-flex nfd-flex-col nfd-bg-[#F1F5F7] nfd-m-3 nfd-p-6 nfd-rounded-lg nfd-border nfd-border-[#E2E8F0] nfd-box-content "+ (index === 0 || index === 3 ? "nfd-w-[474px]" : "nfd-w-[300px]") }>                        
                                         <h2 className="nfd-text-[#0F172A] nfd-text-lg nfd-leading-5 nfd-font-semibold nfd-mb-4">
                                             {details['title']}
                                         </h2>
-                                        <p className="nfd-text-[#0F172A] nfd-text-lg nfd-leading-5 nfd-font-normal">
+                                        <p className="nfd-text-[#0F172A] nfd-text-lg nfd-leading-5 nfd-font-normal nfd-mb-10">
                                             {details['description']}
                                         </p>
-                                        <Button className="nfd-button nfd-button--primary nfd-mt-9">
+                                        <Button className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="a" href="">
                                             {details['buttonText']}
                                             <RightArrow className="nfd-mt-2.5" />
                                         </Button>
