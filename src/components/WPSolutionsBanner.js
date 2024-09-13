@@ -4,6 +4,7 @@ import { __ } from "@wordpress/i18n";
 import { wpSolutionsPluginsList } from "../constants";
 import { ReactComponent as RightArrow } from "../icons/right-arrow.svg";
 import { Section } from "./Section";
+import { NoExistingPlan } from "./NoExistingPlan";
 
 
 export function WPSolutionsBanner() {
@@ -13,7 +14,11 @@ export function WPSolutionsBanner() {
     * Actual value of "purchased solution" will be retrived from API call, @Vara to work on the API.
     * 
     */
-    let purchasedSolution = "creator";   
+    let purchasedSolution = "";   
+
+    if (purchasedSolution === "") {
+        return (<NoExistingPlan />);
+    }
     
     let [solutionsCards, setSolutionsCards] = useState([{}]);
     let currentSolution = [];
