@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { Modal, Spinner } from "@newfold/ui-component-library";
+import { Button, Modal, Spinner } from "@newfold/ui-component-library";
 import { YITHPluginsDefinitions } from "../configs/YITHPlugins.config";
 import { Section } from "./Section";
 import { useCardManager } from "./useCardManager";
@@ -127,6 +127,9 @@ export function YITHPlugins({ wpModules }) {
             "Unlock the full power of your plan with access to a range of exclusive WooCommerce tools powered by \nYITH. Enhance your store and keep your customers coming back for more!",
             "wp-module-ecommerce"
           )}
+          <Button as="a" href="" className="nfd-button nfd-button--secondary nfd-flex  nfd-self-end nfd-ml-auto">
+            {__( "View all your plugin and tools", "wp-module-ecommerce" )}
+          </Button>
         </div>
       </div>
       <Section.Content className={"nfd-pt-4 nfd-pl-4 nfd-pr-4"}>
