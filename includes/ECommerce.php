@@ -107,7 +107,7 @@ class ECommerce {
 		add_action( 'admin_enqueue_scripts', array( $this, 'set_wpnav_collapse_setting' ) );
 		add_action('admin_footer', array( $this, 'remove_woocommerce_ssl_notice' ), 20);
 
-		add_action( 'init', array( $this, 'admin_init_conditional_on_capabilities' ) );
+		add_action( 'admin_init', array( $this, 'admin_init_conditional_on_capabilities' ) );
 
 		// Handle WonderCart Integrations
 		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
