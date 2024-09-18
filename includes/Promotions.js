@@ -1,5 +1,5 @@
-var node = document.getElementById('promotion_product_data');
-node.innerHTML = `<div style="width: 100%;height:350px">
+var promotion_product_data = document.getElementById('promotion_product_data');
+promotion_product_data.innerHTML = `<div style="width: 100%;height:350px">
     <p style=" text-align: center;padding-top:40px;line-height: 20px; font-size: 16px; font-weight: 600;">${promotionData.boostYourOnline}</p>
     <p style=" text-align: center;line-height: 20px; font-size: 13px;">${promotionData.maximizeYourSales} <br /> ${promotionData.promotionsAndCampaigns}</p>
     <div style="text-align: center;">
