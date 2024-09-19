@@ -105,9 +105,9 @@ class ECommerce {
 		add_action( 'auth_cookie_expired', array( $this, 'show_store_setup' ) );
 		add_action( 'admin_head', array( $this, 'hide_wp_pointer_with_css' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'set_wpnav_collapse_setting' ) );
-		add_action('admin_footer', array( $this, 'remove_woocommerce_ssl_notice' ), 20);
+		add_action( 'admin_footer', array( $this, 'remove_woocommerce_ssl_notice' ), 20 );
 
-		add_action( 'admin_init', array( $this, 'admin_init_conditional_on_capabilities' ) );
+		add_action( 'init', array( $this, 'admin_init_conditional_on_capabilities' ) );
 
 		// Handle WonderCart Integrations
 		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
@@ -582,15 +582,14 @@ class ECommerce {
 	 *
 	 * @return void
 	 */
-
 	public function remove_woocommerce_ssl_notice() {
 
 		// Check if WooCommerce is active.
-		if (!class_exists('WooCommerce')) {
+		if ( ! class_exists( 'WooCommerce' ) ) {
 			return;
 		}
 
-		if (!is_ssl()) {
+		if ( ! is_ssl() ) {
 			// Check if there are any WooCommerce admin notices, find the one with ssl notice link and hide it.
 			?>
 				<script type="text/javascript">
@@ -624,7 +623,7 @@ class ECommerce {
 	 */
 	public function admin_init_conditional_on_capabilities() {
 
-		if ( ! is_admin() ) {
+		if ( ! ( is_admin() && current_user_can( 'manage_options' ) ) ) {
 			return;
 		}
 
