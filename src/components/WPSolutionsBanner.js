@@ -14,7 +14,13 @@ export function WPSolutionsBanner() {
     * Actual value of "purchased solution" will be retrived from API call, @Vara to work on the API.
     * 
     */
-    let purchasedSolution = "";   
+    let purchasedSolution = "creator";   
+
+    const myPluginsAndToolsPageLink = `${window.location.href.split('#')[0]}#/my_plugins_and_tools`;
+
+    const routeChange = () =>{ 
+        location.href = myPluginsAndToolsPageLink;
+    }
 
     if (purchasedSolution === "") {
         return (<NoExistingPlan />);
@@ -47,7 +53,7 @@ export function WPSolutionsBanner() {
             <Section.Header 
                 title={__("Explore Your Plugins and Tools", "wp-module-ecommerce")} 
                 subTitle={__("Improve your site with the tools and services included in your plan.", "wp-module-ecommerce")} 
-                secondaryAction={{title : __( "View all your plugins and tools", "wp-module-ecommerce" ) }} 
+                secondaryAction={{title : __( "View all your plugins and tools", "wp-module-ecommerce" ), className: false, onClick: routeChange }} 
             />
             <Section.Content className="nfd-app-section-home">     
                 <div className="nfd-flex nfd-flex-row nfd-flex-wrap">                
@@ -68,7 +74,7 @@ export function WPSolutionsBanner() {
                         })
                     }
                 </div>   
-                <Button as="a" href="" className="nfd-button nfd-button--secondary nfd-flex nfd-w-56 nfd-mx-auto nfd-mt-3">
+                <Button as="a" href={myPluginsAndToolsPageLink} className="nfd-button nfd-button--secondary nfd-flex nfd-w-56 nfd-mx-auto nfd-mt-3">
                     {__("View all your plugins and tools", "wp-module-ecommerce")}
                 </Button>     
             </Section.Content>

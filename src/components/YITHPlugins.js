@@ -15,6 +15,7 @@ export function YITHPlugins({ wpModules }) {
   const [isOpen, setIsOpen] = useState(false);
   const [pluginName, setPluginName] = useState("");
   const [yithProducts, setYithProducts] = useState([]);
+  const myPluginsAndToolsPageLink = `${window.location.href.split('#')[0]}#/my_plugins_and_tools`;
   let anyPluginActive = 0;
   const [yithPluginsMap, setYithPluginsMap] = useState(new Map([
     [
@@ -127,7 +128,7 @@ export function YITHPlugins({ wpModules }) {
             "Unlock the full power of your plan with access to a range of exclusive WooCommerce tools powered by \nYITH. Enhance your store and keep your customers coming back for more!",
             "wp-module-ecommerce"
           )}
-          <Button as="a" href="" className="nfd-button nfd-button--secondary nfd-flex  nfd-self-end nfd-ml-auto">
+          <Button as="a" href={myPluginsAndToolsPageLink} className="nfd-button nfd-button--secondary nfd-flex  nfd-self-end nfd-ml-auto">
             {__( "View all your plugin and tools", "wp-module-ecommerce" )}
           </Button>
         </div>

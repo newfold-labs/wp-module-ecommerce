@@ -16,7 +16,8 @@ import {
   yithOnboardingStoreParser,
   getOrderList,
   get_tax_configured,
-  get_settings_list
+  get_settings_list,
+  getMyPluginAndToolsDetails
 } from "./selectors";
 import { brandName, check_url_match } from "./Utility";
 import { VIEW_GUIDE_LINK } from "../constants";
@@ -67,6 +68,10 @@ const signUpYoastSEOAcademy = () => {
   AnalyticsSdk.track("next_step", "next_step_yoast_academy_clicked", data);
 };
 
+const clickMyPluginAndTools = () => {
+  AnalyticsSdk.track("next_step", "next_step_my_plugins_and_tools_clicked", data);
+};
+
 export function OnboardingListDefinition(props) {
   const installJetpack = createPluginInstallAction("jetpack", 20, props);
   return {
@@ -79,6 +84,23 @@ export function OnboardingListDefinition(props) {
       orders: WooCommerceSdk.orders.get
     },
     cards: [
+      {
+        name:"Explore the features included with your solution",
+        id: "mypluginsandtools",
+        text: __("Explore the features included with your solution", "wp-module-ecommerce"),
+        state: {
+          isAvailable: (queries) => queries?.settings?.hasBrandSignedUp,
+          isCompleted: (queries) => !(queries?.settings?.hasBrandSignedUp),
+          url: () =>
+            `${window.location.href.split('#')[0]}#/my_plugins_and_tools`,
+          target: () => "_blank",
+        },
+        shouldRender: () => (state) => state.isAvailable,
+        actions: {
+          manage: () => clickMyPluginAndTools(),
+        },
+        queries: [{ key: "settings", selector: getMyPluginAndToolsDetails() }],
+      },
       {
         name: "Update your website nameservers",
         id: "nameservers",
