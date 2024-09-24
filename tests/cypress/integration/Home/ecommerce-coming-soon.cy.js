@@ -15,7 +15,9 @@ describe(
 		beforeEach( () => {
 			wpLogin();
 			comingSoon( true );
-			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
+			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home', {
+				timeout:customCommandTimeout,
+			});
 		} );
 
 		it( 'Verify Congrats on your new site message, coming soon alert', () => {

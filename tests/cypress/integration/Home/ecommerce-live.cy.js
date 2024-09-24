@@ -11,7 +11,9 @@ describe( 'e-commerce Home Page- Live Mode', { testIsolation: true }, () => {
 	beforeEach( () => {
 		wpLogin();
 		comingSoon( false );
-		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
+		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home', {
+			timeout: customCommandTimeout,
+		} );
 	} );
 
 	it( 'Verify presense of Ready to go to next level? canvas', () => {
