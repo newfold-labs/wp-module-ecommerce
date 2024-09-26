@@ -78,9 +78,6 @@ class ECommerce {
 	 * @param Container $container Container loaded from the brand plugin.
 	 */
 	public function __construct( Container $container ) {
-		$capability         = new SiteCapabilities();
-		$hasYithExtended    = $capability->get( 'hasYithExtended' );
-		$canAccessGlobalCTB = $capability->get( 'canAccessGlobalCTB' );
 
 		$this->container = $container;
 		// Module functionality goes here
@@ -108,16 +105,9 @@ class ECommerce {
 		add_action( 'auth_cookie_expired', array( $this, 'show_store_setup' ) );
 		add_action( 'admin_head', array( $this, 'hide_wp_pointer_with_css' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'set_wpnav_collapse_setting' ) );
-		add_action('admin_footer', array( $this, 'remove_woocommerce_ssl_notice' ), 20);
+		add_action( 'admin_footer', array( $this, 'remove_woocommerce_ssl_notice' ), 20 );
 
-		if ( ( $container->plugin()->id === 'bluehost' && ( $canAccessGlobalCTB || $hasYithExtended ) ) || ( $container->plugin()->id === 'hostgator' && $hasYithExtended ) ) {
-			add_filter( 'admin_menu', array( $this, 'custom_add_promotion_menu_item' ) );
-			add_action( 'woocommerce_product_options_general_product_data', array( $this, 'custom_product_general_options' ) );
-			add_action( 'woocommerce_product_options_related', array( $this, 'custom_product_general_options' ) );
-			add_action( 'woocommerce_product_data_tabs', array( $this, 'custom_product_write_panel_tabs' ) );
-			add_action( 'woocommerce_product_data_panels', array( $this, 'promotion_product_data' ) );
-			add_action( 'admin_head', array( $this, 'action_admin_head' ) );
-		}
+		add_action( 'init', array( $this, 'admin_init_conditional_on_capabilities' ) );
 
 		// Handle WonderCart Integrations
 		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
@@ -592,15 +582,14 @@ class ECommerce {
 	 *
 	 * @return void
 	 */
-
 	public function remove_woocommerce_ssl_notice() {
 
 		// Check if WooCommerce is active.
-		if (!class_exists('WooCommerce')) {
+		if ( ! class_exists( 'WooCommerce' ) ) {
 			return;
 		}
 
-		if (!is_ssl()) {
+		if ( ! is_ssl() ) {
 			// Check if there are any WooCommerce admin notices, find the one with ssl notice link and hide it.
 			?>
 				<script type="text/javascript">
@@ -618,6 +607,40 @@ class ECommerce {
 					});
 				</script>
 			<?php
+		}
+	}
+
+	/**
+	 * Add actions and filters that are conditionally added depending on the Site's capabilities.
+	 *
+	 * Running the capabilities check after `admin_init` with `is_admin()` `true` ensures no HTTP requests are made
+	 * for frontend page loads.
+	 *
+	 * `admin_init` runs in `wp-admin/admin.php:175`, `wp-admin/admin-ajax.php:45`, and `wp-admin/admin-post:30`.
+	 * Each of the hooks in this function are UI (HTML) related, so only need to run inside `is_admin()`.
+	 *
+	 * @hooked admin_init
+	 */
+	public function admin_init_conditional_on_capabilities() {
+
+		if ( ! ( is_admin() && current_user_can( 'manage_options' ) ) ) {
+			return;
+		}
+
+		$capability         = new SiteCapabilities();
+		$hasYithExtended    = $capability->get( 'hasYithExtended' );
+		$canAccessGlobalCTB = $capability->get( 'canAccessGlobalCTB' );
+
+		if (
+				( $this->container->plugin()->id === 'bluehost' && ( $canAccessGlobalCTB || $hasYithExtended ) )
+				|| ( $this->container->plugin()->id === 'hostgator' && $hasYithExtended )
+		) {
+			add_filter( 'admin_menu', array( $this, 'custom_add_promotion_menu_item' ) );
+			add_action( 'woocommerce_product_options_general_product_data', array( $this, 'custom_product_general_options' ) );
+			add_action( 'woocommerce_product_options_related', array( $this, 'custom_product_general_options' ) );
+			add_action( 'woocommerce_product_data_tabs', array( $this, 'custom_product_write_panel_tabs' ) );
+			add_action( 'woocommerce_product_data_panels', array( $this, 'promotion_product_data' ) );
+			add_action( 'admin_head', array( $this, 'action_admin_head' ) );
 		}
 	}
 
