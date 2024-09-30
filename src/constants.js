@@ -48,7 +48,7 @@ export const wonderCartPopularCampaignsList = [
 
 export const wpSolutionsPluginsList = [
     {
-        "creator": [
+        "Creator": [
                         {
                             title: "WEBPAGE CREATION",
                             description: "Build webpages fast with tailored block patterns and page templates included in your hosting package.",
@@ -74,7 +74,7 @@ export const wpSolutionsPluginsList = [
                             href: ""
                         }
                     ],
-        "services": [
+        "Agency": [
                         {
                             title: "SETUP BOOKINGS",
                             description: "Manage the renting or booking of services and items that you offer your customers.",
@@ -101,7 +101,7 @@ export const wpSolutionsPluginsList = [
                         },
 
                     ],
-        "ecommerce": [
+        "Commerce": [
                         {
                             title: "SETUP WISHLISTS",
                             description: "Let customers add products to lists and share them with family and friends.",
@@ -157,3 +157,42 @@ export const wpSolutionsPluginsList = [
         
     }
 ]
+
+
+const solutionsMockAPIResponse = {
+    "solution": null,
+    "entitlements": [],
+    "categories": [],
+    "solutions": [
+        {
+            "name": "Commerce",
+            "sku": "SOLUTIONS_COMMERCE",
+            "description": "Incidunt deleniti veritatis consectetur odio beatae dolores voluptatem. Temporibus eaque sunt aut consequuntur. Aut magni voluptatem minus temporibus distinctio et voluptatem.",
+            "price": "22.92",
+            "fullPrice": "35.08",
+            "url": "http://www.schumm.info/quaerat-asperiores-velit-consequuntur-iure-sequi-aut-deleniti",
+            "ctbId": null,
+            "features": null
+        },
+        {
+            "name": "Agency",
+            "sku": "SOLUTIONS_SERVICE",
+            "description": "Qui saepe et sunt dignissimos autem nam. Quo occaecati ea iste ducimus. Hic mollitia sequi rerum eum error. Quo at sed suscipit tempore qui sequi.",
+            "price": "24.09",
+            "fullPrice": "33.30",
+            "url": "http://boyer.com/odit-nobis-ut-est",
+            "ctbId": null,
+            "features": null
+        },
+        {
+            "name": "Creator",
+            "sku": "SOLUTIONS_CONTENT",
+            "description": "Consequatur accusantium incidunt quod aut earum vero. Velit rerum sit quibusdam eligendi esse placeat. Molestias aperiam doloremque quo id accusantium ut et sapiente. Ut neque fugiat dolores.",
+            "price": "27.29",
+            "fullPrice": "39.76",
+            "url": "https://www.hegmann.com/maxime-odit-blanditiis-cumque-qui",
+            "ctbId": null,
+            "features": null
+        }
+    ]
+}

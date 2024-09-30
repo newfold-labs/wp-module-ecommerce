@@ -1,83 +1,118 @@
-import { Button } from "@newfold/ui-component-library";
+import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
+import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
+import { Button, Spinner } from "@newfold/ui-component-library";
+import apiFetch from '@wordpress/api-fetch';
 import { useEffect, useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import { wpSolutionsPluginsList } from "../constants";
 import { ReactComponent as RightArrow } from "../icons/right-arrow.svg";
-import { Section } from "./Section";
 import { NoExistingPlan } from "./NoExistingPlan";
+import { Section } from "./Section";
 
 
 export function WPSolutionsBanner() {
-    /*
-    *
-    * This is static mock value added only for coding purpose
-    * Actual value of "purchased solution" will be retrived from API call, @Vara to work on the API.
-    * 
-    */
-    let purchasedSolution = "creator";   
+    /**
+     * 
+     * TODO: To be tested with actual API call response. 
+     * Code built using sample API response shared in this PR - https://github.com/newfold-labs/wp-module-solutions/pull/2
+     * 
+     **/
+        
+    const entitlementsEndPoint = NewfoldRuntime.createApiUrl("/newfold-solutions/v1/entitlements");
+    const [ error, setError ] = useState(null);
+    const [ mySolution, setMySolution ] = useState(null);
+    const [ isLoaded, setIsLoaded ] = useState( false );
+    const [ purchasedSolution, setPurchasedSolution] = useState("Creator")
+    const [ availableSolutions, setAvailableSolutions] = useState([]);
+    const [solutionsCards, setSolutionsCards] = useState([{}]);
+    let currentSolution = [];
+
 
     const myPluginsAndToolsPageLink = `${window.location.href.split('#')[0]}#/my_plugins_and_tools`;
-
     const routeChange = () =>{ 
         location.href = myPluginsAndToolsPageLink;
     }
 
-    if (purchasedSolution === "") {
-        return (<NoExistingPlan />);
+    useEffect( () => {
+        apiFetch( { path: `${ entitlementsEndPoint }` } ).then(
+            ( result ) => {
+                setIsLoaded( true );
+                setMySolution( result );
+            },
+            ( error ) => {
+                setIsLoaded( true );
+                setError( error );
+            }
+        );
+    }, [] );
+
+    if ( error ) {
+        console.log(error.message, "error");
+        return (
+            <div className="nfd-flex nfd-p-6 nfd-bg-white nfd-w-full nfd-rounded-lg nfd-text-[#FF0000]">
+              <ExclamationTriangleIcon className="nfd-w-[24px] nfd-h-[24px]" />
+              <span className="nfd-ml-1.5">{__("Oops! something went wrong. Please try again later", "wp-module-ecommerce")}</span>
+            </div>
+          );
+    } else if (!isLoaded){
+        return (
+            <div className="nfd-flex nfd-items-center nfd-text-center nfd-justify-center nfd-h-full">
+              <Spinner size="8" className="nfd-text-primary" />
+            </div>
+          );
+    } else if (mySolution) {
+        setPurchasedSolution(mySolution.solution)        
+        if (purchasedSolution === null) {
+            setAvailableSolutions(mySolution.solutions)
+            return (<NoExistingPlan availableSolutions={availableSolutions} />);
+        }
+        else{
+                currentSolution = purchasedSolution === "Creator" ? 
+                wpSolutionsPluginsList[0]['Creator'] : 
+                purchasedSolution === "Agency" ? 
+                wpSolutionsPluginsList[0]['Agency'] : 
+                purchasedSolution === "Commerce" ?
+                wpSolutionsPluginsList[0]['Commerce'] : wpSolutionsPluginsList[0]['none'];
+
+                //console.log(Object.values(currentSolution), "currentSolution"); 
+
+                let tempSolutionsCards = Object.values(currentSolution);
+                //console.log(tempSolutionsCards, "tempSolutionsCards");     
+
+                setSolutionsCards(tempSolutionsCards);                          
+                return(   
+                            <Section.Container className="nfd-container">
+                                <Section.Header 
+                                    title={__("Explore Your Plugins and Tools", "wp-module-ecommerce")} 
+                                    subTitle={__("Improve your site with the tools and services included in your plan.", "wp-module-ecommerce")} 
+                                    secondaryAction={{title : __( "View all your plugins and tools", "wp-module-ecommerce" ), className: false, onClick: routeChange }} 
+                                />
+                                <Section.Content className="nfd-app-section-home">     
+                                    <div className="nfd-flex nfd-flex-row nfd-flex-wrap">                
+                                        {
+                                            solutionsCards.map((details, index) => {
+                                                return (<div className={"nfd-flex nfd-flex-col nfd-bg-[#F1F5F7] nfd-m-3 nfd-p-6 nfd-rounded-lg nfd-border nfd-border-[#E2E8F0] nfd-box-content "+ (index === 0 || index === 3 ? "nfd-w-[474px]" : "nfd-w-[300px]") }>                        
+                                                            <h2 className="nfd-text-[#0F172A] nfd-text-lg nfd-leading-5 nfd-font-semibold nfd-mb-4">
+                                                                { __(`${details['title']}`,"wp-module-ecommerce") }
+                                                            </h2>
+                                                            <p className="nfd-text-[#0F172A] nfd-text-lg nfd-leading-5 nfd-font-normal nfd-mb-10">
+                                                                { __(`${details['description']}`,"wp-module-ecommerce") }                                                                
+                                                            </p>
+                                                            <Button className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="a" href="">
+                                                                { __(`${details['buttonText']}`,"wp-module-ecommerce") }                                                               
+                                                                <RightArrow className="nfd-mt-2.5" />
+                                                            </Button>
+                                                        </div>)   
+                                            })
+                                        }
+                                    </div>   
+                                    <Button as="a" href={myPluginsAndToolsPageLink} className="nfd-button nfd-button--secondary nfd-flex nfd-w-56 nfd-mx-auto nfd-mt-3">
+                                        {__("View all your plugins and tools", "wp-module-ecommerce")}
+                                    </Button>     
+                                </Section.Content>
+                            </Section.Container>
+                        )
+        }
+        
     }
-    
-    let [solutionsCards, setSolutionsCards] = useState([{}]);
-    let currentSolution = [];
-
-    useEffect(() => {    
-
-        currentSolution = purchasedSolution === "creator" ? 
-        wpSolutionsPluginsList[0]['creator'] : 
-        purchasedSolution === "services" ? 
-        wpSolutionsPluginsList[0]['services'] : 
-        purchasedSolution === "ecommerce" ?
-        wpSolutionsPluginsList[0]['ecommerce'] : wpSolutionsPluginsList[0]['none'];
-
-        //console.log(Object.values(currentSolution), "currentSolution"); 
-
-        let tempSolutionsCards = Object.values(currentSolution);
-        //console.log(tempSolutionsCards, "tempSolutionsCards");     
-
-        setSolutionsCards(tempSolutionsCards);           
-    }, [purchasedSolution]);
-
-    //console.log(solutionsCards, Array.isArray(solutionsCards), "solutionsCards");
-
-    return(   
-        <Section.Container className="nfd-container">
-            <Section.Header 
-                title={__("Explore Your Plugins and Tools", "wp-module-ecommerce")} 
-                subTitle={__("Improve your site with the tools and services included in your plan.", "wp-module-ecommerce")} 
-                secondaryAction={{title : __( "View all your plugins and tools", "wp-module-ecommerce" ), className: false, onClick: routeChange }} 
-            />
-            <Section.Content className="nfd-app-section-home">     
-                <div className="nfd-flex nfd-flex-row nfd-flex-wrap">                
-                    {
-                        solutionsCards.map((details, index) => {
-                            return (<div className={"nfd-flex nfd-flex-col nfd-bg-[#F1F5F7] nfd-m-3 nfd-p-6 nfd-rounded-lg nfd-border nfd-border-[#E2E8F0] nfd-box-content "+ (index === 0 || index === 3 ? "nfd-w-[474px]" : "nfd-w-[300px]") }>                        
-                                        <h2 className="nfd-text-[#0F172A] nfd-text-lg nfd-leading-5 nfd-font-semibold nfd-mb-4">
-                                            {details['title']}
-                                        </h2>
-                                        <p className="nfd-text-[#0F172A] nfd-text-lg nfd-leading-5 nfd-font-normal nfd-mb-10">
-                                            {details['description']}
-                                        </p>
-                                        <Button className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="a" href="">
-                                            {details['buttonText']}
-                                            <RightArrow className="nfd-mt-2.5" />
-                                        </Button>
-                                    </div>)   
-                        })
-                    }
-                </div>   
-                <Button as="a" href={myPluginsAndToolsPageLink} className="nfd-button nfd-button--secondary nfd-flex nfd-w-56 nfd-mx-auto nfd-mt-3">
-                    {__("View all your plugins and tools", "wp-module-ecommerce")}
-                </Button>     
-            </Section.Content>
-        </Section.Container>
-    )
 }
