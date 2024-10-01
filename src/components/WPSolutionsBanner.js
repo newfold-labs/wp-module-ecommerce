@@ -58,7 +58,7 @@ export function WPSolutionsBanner() {
     if ( error ) {
         console.log(error.message, "error");
         return (
-            <div className="nfd-flex nfd-p-6 nfd-bg-white nfd-w-full nfd-rounded-lg nfd-text-[#FF0000]">
+            <div className="nfd-flex nfd-p-6 nfd-bg-white nfd-w-full nfd-rounded-lg nfd-text-red-700">
               <ExclamationTriangleIcon className="nfd-w-[24px] nfd-h-[24px]" />
               <span className="nfd-ml-1.5">{__("Oops! something went wrong. Please try again later", "wp-module-ecommerce")}</span>
             </div>
