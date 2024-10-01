@@ -199,7 +199,7 @@ export function OnboardingScreen({
             comingSoon={comingSoon}
             notify={notify}
             toggleComingSoon={toggleComingSoon}
-          />          
+          />
         </div>
       </Section.Content>
     </Section.Container>
