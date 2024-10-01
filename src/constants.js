@@ -158,7 +158,7 @@ export const wpSolutionsPluginsList = [
     }
 ]
 
-
+//TODO: Will be removed once actual API response is available for testing.
 export const solutionsMockAPIResponse = {
     "solution": null,
     "entitlements": [],
