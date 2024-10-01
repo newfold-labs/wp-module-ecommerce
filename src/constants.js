@@ -159,7 +159,7 @@ export const wpSolutionsPluginsList = [
 ]
 
 
-const solutionsMockAPIResponse = {
+export const solutionsMockAPIResponse = {
     "solution": null,
     "entitlements": [],
     "categories": [],
@@ -167,32 +167,32 @@ const solutionsMockAPIResponse = {
         {
             "name": "Commerce",
             "sku": "SOLUTIONS_COMMERCE",
-            "description": "Incidunt deleniti veritatis consectetur odio beatae dolores voluptatem. Temporibus eaque sunt aut consequuntur. Aut magni voluptatem minus temporibus distinctio et voluptatem.",
-            "price": "22.92",
-            "fullPrice": "35.08",
+            "description": "Promote, sell, and grow your online store with powerful eCommerce tools.",
+            "price": "$22.92",
+            "fullPrice": "$35.08",
             "url": "http://www.schumm.info/quaerat-asperiores-velit-consequuntur-iure-sequi-aut-deleniti",
             "ctbId": null,
-            "features": null
+            "features": ["Monetize Content with Ease", "4 Exclusive Social Media Plugins", "6 Exclusive Marketing Plugins", "Secure Payment Gateway Included"]
         },
         {
             "name": "Agency",
             "sku": "SOLUTIONS_SERVICE",
-            "description": "Qui saepe et sunt dignissimos autem nam. Quo occaecati ea iste ducimus. Hic mollitia sequi rerum eum error. Quo at sed suscipit tempore qui sequi.",
-            "price": "24.09",
-            "fullPrice": "33.30",
+            "description": "Boost local visibility and streamline your business operations with specialized tools.",
+            "price": "$24.09",
+            "fullPrice": "$33.30",
             "url": "http://boyer.com/odit-nobis-ut-est",
             "ctbId": null,
-            "features": null
+            "features": ["Includes the Content Creator bundle", "8 Exclusive Local Business Plugins", "Integrated Invoicing", "Local Social Media and SEO Plugins"]
         },
         {
             "name": "Creator",
             "sku": "SOLUTIONS_CONTENT",
-            "description": "Consequatur accusantium incidunt quod aut earum vero. Velit rerum sit quibusdam eligendi esse placeat. Molestias aperiam doloremque quo id accusantium ut et sapiente. Ut neque fugiat dolores.",
-            "price": "27.29",
-            "fullPrice": "39.76",
+            "description": "Manage your site, build your brand, and monetize your content with essential tools.",
+            "price": "$27.29",
+            "fullPrice": "$39.76",
             "url": "https://www.hegmann.com/maxime-odit-blanditiis-cumque-qui",
             "ctbId": null,
-            "features": null
+            "features": ["Includes the Service Business bundle", "Express 1-Click Checkout", "24 Exclusive eCommerce Plugins", "Customizable Customer Account Creation"]
         }
     ]
 }

@@ -9,6 +9,9 @@ import { ReactComponent as RightArrow } from "../icons/right-arrow.svg";
 import { NoExistingPlan } from "./NoExistingPlan";
 import { Section } from "./Section";
 
+//TODO: To removed once actual API response is available.
+import { solutionsMockAPIResponse } from "../constants";
+
 
 export function WPSolutionsBanner() {
     /**
@@ -22,7 +25,7 @@ export function WPSolutionsBanner() {
     const [ error, setError ] = useState(null);
     const [ mySolution, setMySolution ] = useState(null);
     const [ isLoaded, setIsLoaded ] = useState( false );
-    const [ purchasedSolution, setPurchasedSolution] = useState("Creator")
+    const [ purchasedSolution, setPurchasedSolution] = useState(null)
     const [ availableSolutions, setAvailableSolutions] = useState([]);
     const [solutionsCards, setSolutionsCards] = useState([{}]);
     let currentSolution = [];
@@ -36,12 +39,18 @@ export function WPSolutionsBanner() {
     useEffect( () => {
         apiFetch( { path: `${ entitlementsEndPoint }` } ).then(
             ( result ) => {
-                setIsLoaded( true );
-                setMySolution( result );
+                setIsLoaded(true);
+                setMySolution(result);
+                setPurchasedSolution(mySolution.solution) 
+                if (purchasedSolution === null) {
+                    //TODO: Once actual API response is available, remove line nos. 47 & uncomment line nos. 48
+                    setAvailableSolutions(solutionsMockAPIResponse?.solutions)
+                    //setAvailableSolutions(mysolutions.solutions)
+                }                
             },
             ( error ) => {
-                setIsLoaded( true );
-                setError( error );
+                setIsLoaded(true);                
+                setError(error);
             }
         );
     }, [] );
@@ -53,7 +62,7 @@ export function WPSolutionsBanner() {
               <ExclamationTriangleIcon className="nfd-w-[24px] nfd-h-[24px]" />
               <span className="nfd-ml-1.5">{__("Oops! something went wrong. Please try again later", "wp-module-ecommerce")}</span>
             </div>
-          );
+        );
     } else if (!isLoaded){
         return (
             <div className="nfd-flex nfd-items-center nfd-text-center nfd-justify-center nfd-h-full">
@@ -61,9 +70,7 @@ export function WPSolutionsBanner() {
             </div>
           );
     } else if (mySolution) {
-        setPurchasedSolution(mySolution.solution)        
         if (purchasedSolution === null) {
-            setAvailableSolutions(mySolution.solutions)
             return (<NoExistingPlan availableSolutions={availableSolutions} />);
         }
         else{
@@ -74,11 +81,7 @@ export function WPSolutionsBanner() {
                 purchasedSolution === "Commerce" ?
                 wpSolutionsPluginsList[0]['Commerce'] : wpSolutionsPluginsList[0]['none'];
 
-                //console.log(Object.values(currentSolution), "currentSolution"); 
-
                 let tempSolutionsCards = Object.values(currentSolution);
-                //console.log(tempSolutionsCards, "tempSolutionsCards");     
-
                 setSolutionsCards(tempSolutionsCards);                          
                 return(   
                             <Section.Container className="nfd-container">
