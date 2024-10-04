@@ -7,7 +7,7 @@ import { ReactComponent as FiftyOff } from "../icons/fifty-off.svg";
 
 
 export function NoExistingPlan(props){
-    const { available } = props;
+    const { availableSolutions } = props;
     return(   
         <Section.Container className="nfd-container">
             <Section.Header 
@@ -16,7 +16,7 @@ export function NoExistingPlan(props){
             />
             <Section.Content className="nfd-app-section-home">     
             {
-                available?.map((solution) => {
+                availableSolutions?.map((solution) => {
                     return(
                                 <div className="nfd-border nfd-border-[#E2E8F0] nfd-p-6 nfd-rounded-lg nfd-mb-6 nfd-relative">
                                     <FiftyOff className="nfd-absolute nfd-top-0 nfd-right-0 nfd-hidden" />
@@ -43,7 +43,7 @@ export function NoExistingPlan(props){
                                     <div  className="nfd-flex nfd-flex-row nfd--mt-8">   
                                         <ul className="nfd-mr-6 nfd-grid nfd-grid-cols-2 nfd-gap-x-6 nfd-mt-6">
                                         {
-                                            solution.features.map((feat, index) => {
+                                            solution?.features.map((feat, index) => {
                                                 return(
                                                     <li className={classNames( "nfd-flex", "nfd-flex-row", "nfd-items-center",
                                                         { 'nfd-border-b nfd-border-[#cccccc] nfd-mb-3 nfd-pb-3': (index === 0 || index === 1) })}

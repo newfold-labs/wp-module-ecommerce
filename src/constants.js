@@ -46,9 +46,9 @@ export const wonderCartPopularCampaignsList = [
 ];
 
 
-export const wpSolutionsPluginsList = [
+export const wpSolutionsPromotedPluginsList = [
     {
-        "Creator": [
+        "WP_SOLUTION_CREATOR": [
                         {
                             title: "WEBPAGE CREATION",
                             description: "Build webpages fast with tailored block patterns and page templates included in your hosting package.",
@@ -74,7 +74,7 @@ export const wpSolutionsPluginsList = [
                             href: ""
                         }
                     ],
-        "Agency": [
+        "WP_SOLUTION_SERVICE": [
                         {
                             title: "SETUP BOOKINGS",
                             description: "Manage the renting or booking of services and items that you offer your customers.",
@@ -101,7 +101,7 @@ export const wpSolutionsPluginsList = [
                         },
 
                     ],
-        "Commerce": [
+        "WP_SOLUTION_COMMERCE": [
                         {
                             title: "SETUP WISHLISTS",
                             description: "Let customers add products to lists and share them with family and friends.",
@@ -157,42 +157,3 @@ export const wpSolutionsPluginsList = [
         
     }
 ]
-
-//TODO: Will be removed once actual API response is available for testing.
-export const solutionsMockAPIResponse = {
-    "solution": null,
-    "entitlements": [],
-    "categories": [],
-    "solutions": [
-        {
-            "name": "Commerce",
-            "sku": "SOLUTIONS_COMMERCE",
-            "description": "Promote, sell, and grow your online store with powerful eCommerce tools.",
-            "price": "$22.92",
-            "fullPrice": "$35.08",
-            "url": "http://www.schumm.info/quaerat-asperiores-velit-consequuntur-iure-sequi-aut-deleniti",
-            "ctbId": null,
-            "features": ["Monetize Content with Ease", "4 Exclusive Social Media Plugins", "6 Exclusive Marketing Plugins", "Secure Payment Gateway Included"]
-        },
-        {
-            "name": "Agency",
-            "sku": "SOLUTIONS_SERVICE",
-            "description": "Boost local visibility and streamline your business operations with specialized tools.",
-            "price": "$24.09",
-            "fullPrice": "$33.30",
-            "url": "http://boyer.com/odit-nobis-ut-est",
-            "ctbId": null,
-            "features": ["Includes the Content Creator bundle", "8 Exclusive Local Business Plugins", "Integrated Invoicing", "Local Social Media and SEO Plugins"]
-        },
-        {
-            "name": "Creator",
-            "sku": "SOLUTIONS_CONTENT",
-            "description": "Manage your site, build your brand, and monetize your content with essential tools.",
-            "price": "$27.29",
-            "fullPrice": "$39.76",
-            "url": "https://www.hegmann.com/maxime-odit-blanditiis-cumque-qui",
-            "ctbId": null,
-            "features": ["Includes the Service Business bundle", "Express 1-Click Checkout", "24 Exclusive eCommerce Plugins", "Customizable Customer Account Creation"]
-        }
-    ]
-}
