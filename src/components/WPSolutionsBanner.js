@@ -1,11 +1,11 @@
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
-import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { Button, Spinner } from "@newfold/ui-component-library";
 import apiFetch from '@wordpress/api-fetch';
 import { useEffect, useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import { wpSolutionsPromotedPluginsList } from "../constants";
 import { ReactComponent as RightArrow } from "../icons/right-arrow.svg";
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { NoExistingPlan } from "./NoExistingPlan";
 import { Section } from "./Section";
 

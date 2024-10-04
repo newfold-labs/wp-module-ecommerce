@@ -1,9 +1,8 @@
 import { Button } from "@newfold/ui-component-library";
-import { useEffect, useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
-import { Section } from "./Section";
-import { ReactComponent as GreenTick } from "../icons/green-tick.svg";
 import { ReactComponent as FiftyOff } from "../icons/fifty-off.svg";
+import { ReactComponent as GreenTick } from "../icons/green-tick.svg";
+import { Section } from "./Section";
 
 
 export function NoExistingPlan(props){
