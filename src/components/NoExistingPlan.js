@@ -8,6 +8,16 @@ import { ReactComponent as FiftyOff } from "../icons/fifty-off.svg";
 
 export function NoExistingPlan(props){
     const { availableSolutions } = props;
+
+    const HtmlContent = ({ htmlString }) => {
+        return (
+          <div
+            dangerouslySetInnerHTML={{ __html: htmlString }}
+          />
+        );
+    };
+      
+
     return(   
         <Section.Container className="nfd-container">
             <Section.Header 
@@ -50,7 +60,7 @@ export function NoExistingPlan(props){
                                                     >
                                                             <GreenTick className="nfd-mt-1.5 nfd-mr-2" />
                                                             <span className="nfd-text-[#404040] nfd-text-base">
-                                                                {__(`${feat}`, "wp-module-ecommerce")}
+                                                                <HtmlContent htmlString={__(`${feat}`, "wp-module-ecommerce")} />
                                                             </span>
                                                     </li>                                                                                                  
                                                 )
