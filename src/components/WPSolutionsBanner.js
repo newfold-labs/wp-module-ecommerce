@@ -30,7 +30,7 @@ export function WPSolutionsBanner() {
             ( result ) => {
                 setIsLoaded(true);                
                 setApiResponse(result)
-                //setPurchasedSolution(result['solution']) 
+                setPurchasedSolution(result['solution']) 
                 setAvailableSolutions(result['solutions'])
             },
             ( error ) => {
