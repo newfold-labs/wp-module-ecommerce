@@ -127,35 +127,14 @@ export const wpSolutionsPromotedPluginsList = [
                             href: ""
                         },
 
-                    ],                    
-        "none":     [
-                        {
-                            title: "SETUP WISHLISTS",
-                            description: "Let customers add products to lists and share them with family and friends.",
-                            buttonText: "Setup Wishilsts",
-                            href: ""
-                        },
-                        {
-                            title: "ENABLE PRODUCT REVIEWS",
-                            description: "Get positive product reviews and use social proof to drive more sales.",
-                            buttonText: "Enable Product Reviews",
-                            href: ""
-                        },
-                        {
-                            title: "CREATE A SALES CAMPAIGN",
-                            description: "Create custom upsell, cross-sell and other promotional campaigns to generate more sales.",
-                            buttonText: "Create a Campaign",
-                            href: ""
-                        },
-                        {
-                            title: "SEARCH ENGINE OPTIMIZATION",
-                            description: "Start increasing your search result rankings today.",
-                            buttonText: "Improve Your Search Ranking",
-                            href: ""
-                        },
-                    ],           
-        
+                    ],                                               
     }
 ]
 
 export const myPluginsAndToolsPageLink = `${window.location.href.split('#')[0]}#/my_plugins_and_tools`;
+
+export const solutionButtonTextObject = {
+    "WP_SOLUTION_COMMERCE" : "Commerce",
+    "WP_SOLUTION_SERVICE": "Service Business",
+    "WP_SOLUTION_CREATOR": "Content Creator"
+}

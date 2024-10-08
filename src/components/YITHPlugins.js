@@ -129,7 +129,7 @@ export function YITHPlugins({ wpModules }) {
             "wp-module-ecommerce"
           )}
           <Button as="a" href={myPluginsAndToolsPageLink} className="nfd-button nfd-button--secondary nfd-flex  nfd-self-end nfd-ml-auto">
-            {__( "View all your plugin and tools", "wp-module-ecommerce" )}
+            {__( "View all Commerce tools", "wp-module-ecommerce" )}
           </Button>
         </div>
       </div>
