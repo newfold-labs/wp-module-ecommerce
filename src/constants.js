@@ -157,3 +157,5 @@ export const wpSolutionsPromotedPluginsList = [
         
     }
 ]
+
+export const myPluginsAndToolsPageLink = `${window.location.href.split('#')[0]}#/my_plugins_and_tools`;

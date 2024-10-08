@@ -20,7 +20,7 @@ import {
   getMyPluginAndToolsDetails
 } from "./selectors";
 import { brandName, check_url_match } from "./Utility";
-import { VIEW_GUIDE_LINK } from "../constants";
+import { myPluginsAndToolsPageLink, VIEW_GUIDE_LINK } from "../constants";
 
 const parsePluginStatus = (plugins) => ({
   isWCActive: PluginsSdk.queries.isPlugin(plugins, ["woocommerce"], "active"),
@@ -92,8 +92,8 @@ export function OnboardingListDefinition(props) {
           isAvailable: (queries) => queries?.settings?.hasBrandSignedUp,
           isCompleted: (queries) => !(queries?.settings?.hasBrandSignedUp),
           url: () =>
-            `${window.location.href.split('#')[0]}#/my_plugins_and_tools`,
-          target: () => "_blank",
+            `${myPluginsAndToolsPageLink}`,
+          target: () => "_self",
         },
         shouldRender: () => (state) => state.isAvailable,
         actions: {

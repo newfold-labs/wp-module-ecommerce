@@ -1,21 +1,21 @@
-import { __ } from "@wordpress/i18n";
 import { Button, Modal, Spinner } from "@newfold/ui-component-library";
+import apiFetch from "@wordpress/api-fetch";
+import { useEffect, useState } from "@wordpress/element";
+import { __ } from "@wordpress/i18n";
+import classNames from "classnames";
 import { YITHPluginsDefinitions } from "../configs/YITHPlugins.config";
+import { myPluginsAndToolsPageLink } from "../constants";
+import lightchest from '../icons/light-chest.svg';
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
+import { LoadingPanel } from "./LoadingPanel";
 import { Section } from "./Section";
 import { useCardManager } from "./useCardManager";
-import classNames from "classnames";
-import { useEffect, useState } from "@wordpress/element";
-import apiFetch from "@wordpress/api-fetch";
-import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { YithFeatureCard } from "./YithFeatureCard";
-import lightchest from '../icons/light-chest.svg';
-import { LoadingPanel } from "./LoadingPanel";
 
 export function YITHPlugins({ wpModules }) {
   const [isOpen, setIsOpen] = useState(false);
   const [pluginName, setPluginName] = useState("");
   const [yithProducts, setYithProducts] = useState([]);
-  const myPluginsAndToolsPageLink = `${window.location.href.split('#')[0]}#/my_plugins_and_tools`;
   let anyPluginActive = 0;
   const [yithPluginsMap, setYithPluginsMap] = useState(new Map([
     [

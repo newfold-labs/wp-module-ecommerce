@@ -3,7 +3,7 @@ import { Button, Spinner } from "@newfold/ui-component-library";
 import apiFetch from '@wordpress/api-fetch';
 import { useEffect, useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
-import { wpSolutionsPromotedPluginsList } from "../constants";
+import { myPluginsAndToolsPageLink, wpSolutionsPromotedPluginsList } from "../constants";
 import { ReactComponent as RightArrow } from "../icons/right-arrow.svg";
 import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { NoExistingPlan } from "./NoExistingPlan";
@@ -18,9 +18,7 @@ export function WPSolutionsBanner() {
     const [ purchasedSolution, setPurchasedSolution] = useState(null)
     const [ availableSolutions, setAvailableSolutions] = useState([]);
     let currentSolution = [];
-
-
-    const myPluginsAndToolsPageLink = `${window.location.href.split('#')[0]}#/my_plugins_and_tools`;
+    
     const routeChange = () =>{ 
         location.href = myPluginsAndToolsPageLink;
     }
@@ -41,7 +39,7 @@ export function WPSolutionsBanner() {
     }, [] );
         
     if ( error ) {
-        console.log(error.message, "error");
+        //console.log(error.message, "error");
         return (
             <div className="nfd-flex nfd-p-6 nfd-bg-white nfd-w-full nfd-rounded-lg nfd-text-red-700">
               <ExclamationTriangleIcon className="nfd-w-[24px] nfd-h-[24px]" />
@@ -86,6 +84,7 @@ export function WPSolutionsBanner() {
                                                             <p className="nfd-text-[#0F172A] nfd-text-lg nfd-leading-5 nfd-font-normal nfd-mb-10">
                                                                 { __(`${details['description']}`,"wp-module-ecommerce") }                                                                
                                                             </p>
+                                                            {/* TODO: Waiting for confirmation on https://jira.newfold.com/browse/PRESS0-2259 */}
                                                             <Button className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="a" href="">
                                                                 { __(`${details['buttonText']}`,"wp-module-ecommerce") }                                                               
                                                                 <RightArrow className="nfd-mt-2.5" />
