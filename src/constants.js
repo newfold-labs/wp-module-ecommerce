@@ -44,3 +44,109 @@ export const wonderCartPopularCampaignsList = [
           description: "Create urgency with a special time-limited deal for customers on the cart and checkout pages."
       }
 ];
+
+//TODO: To add slug & providerName information for all plugins once it is available
+export const wpSolutionsPromotedPluginsList = [
+    {
+        "WP_SOLUTION_CREATOR": [
+                        {
+                            title: "WEBPAGE CREATION",
+                            description: "Build webpages fast with tailored block patterns and page templates included in your hosting package.",
+                            buttonText: "Add a Page to Your Site",
+                            slug: "",
+                            providerName: ""
+                        },
+                        {
+                            title: "SEARCH ENGINE OPTIMIZATION",
+                            description: "Start increasing your search result rankings today.",
+                            buttonText: "Improve Your Search Ranking",
+                            slug: "wp-seo",
+                            providerName: ""
+                        },
+                        {
+                            title: "OFFER CONTENT COURSES",
+                            description: "Create beautiful and engaging online courses, lessons, and quizzes.",
+                            buttonText: "Create a Course",
+                            slug: "sensei-lms",
+                            providerName: "" 
+                        },
+                        {
+                            title: "ADD AN AFFILIATE PROGRAM",
+                            description: "Grant your affiliates earnings each time someone purchases from their link.",
+                            buttonText: "Create an Affiliate Program",
+                            slug: "",
+                            providerName: ""
+                        }
+                    ],
+        "WP_SOLUTION_SERVICE": [
+                        {
+                            title: "SETUP BOOKINGS",
+                            description: "Manage the renting or booking of services and items that you offer your customers.",
+                            buttonText: "Setup Bookings",
+                            slug: "",
+                            providerName: ""
+                        },
+                        {
+                            title: "WEBPAGE CREATION",
+                            description: "Build webpages fast with tailored block patterns and page templates.",
+                            buttonText: "Add a Page to Your Site",
+                            slug: "",
+                            providerName: ""
+                        },
+                        {
+                            title: "SEARCH ENGINE OPTIMIZATION",
+                            description: "Start increasing your search result rankings today.",
+                            buttonText: "Improve Your Search Ranking",
+                            slug: "wp-seo",
+                            providerName: ""
+                        },
+                        {
+                            title: "SETUP A LOYALTY PROGRAM",
+                            description: "Reward customer loyalty with an effective points program.",
+                            buttonText: "Configure Points & Rewards",
+                            slug: "",
+                            providerName: ""
+                        },
+
+                    ],
+        "WP_SOLUTION_COMMERCE": [
+                        {
+                            title: "SETUP WISHLISTS",
+                            description: "Let customers add products to lists and share them with family and friends.",
+                            buttonText: "Setup Wishilsts",
+                            slug: "",
+                            providerName: ""
+                        },
+                        {
+                            title: "ENABLE PRODUCT REVIEWS",
+                            description: "Get positive product reviews and use social proof to drive more sales.",
+                            buttonText: "Enable Product Reviews",
+                            slug: "",
+                            providerName: ""
+                        },
+                        {
+                            title: "CREATE A SALES CAMPAIGN",
+                            description: "Create custom upsell, cross-sell and other promotional campaigns to generate more sales.",
+                            buttonText: "Create a Campaign",
+                            slug: "nfd_slug_wonder_cart",
+                            providerName: ""
+                        },
+                        {
+                            title: "SEARCH ENGINE OPTIMIZATION",
+                            description: "Start increasing your search result rankings today.",
+                            buttonText: "Improve Your Search Ranking",
+                            slug: "wp-seo",
+                            providerName: ""
+                        },
+
+                    ],                                               
+    }
+]
+
+export const myPluginsAndToolsPageLink = `${window.location.href.split('#')[0]}#/my_plugins_and_tools`;
+
+export const solutionButtonTextObject = {
+    "WP_SOLUTION_COMMERCE" : "Commerce",
+    "WP_SOLUTION_SERVICE": "Service Business",
+    "WP_SOLUTION_CREATOR": "Content Creator"
+}
