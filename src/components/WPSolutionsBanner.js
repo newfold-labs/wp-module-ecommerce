@@ -79,9 +79,7 @@ export function WPSolutionsBanner() {
                 currentSolution = purchasedSolution === "WP_SOLUTION_CREATOR" ? 
                 wpSolutionsPromotedPluginsList[0]['WP_SOLUTION_CREATOR'] : 
                 purchasedSolution === "WP_SOLUTION_SERVICE" ? 
-                wpSolutionsPromotedPluginsList[0]['WP_SOLUTION_SERVICE'] : 
-                purchasedSolution === "WP_SOLUTION_COMMERCE" ?
-                wpSolutionsPromotedPluginsList[0]['WP_SOLUTION_COMMERCE'] : wpSolutionsPromotedPluginsList[0]['none'];
+                wpSolutionsPromotedPluginsList[0]['WP_SOLUTION_SERVICE'] :  wpSolutionsPromotedPluginsList[0]['WP_SOLUTION_COMMERCE'];
                 let solutionsCards = Object.values(currentSolution);                           
                 return(   
                             <Section.Container className="nfd-container">
@@ -114,7 +112,8 @@ export function WPSolutionsBanner() {
                                                                         status === "need_to_install" || "installing" ? 
                                                                         <Button 
                                                                         className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" 
-                                                                        as="button" data-nfd-installer-plugin-slug={slug} 
+                                                                        as="button" 
+                                                                        data-nfd-installer-plugin-slug={slug} 
                                                                         data-nfd-installer-plugin-provider={details.providerName} 
                                                                         data-nfd-installer-plugin-activate={true}
                                                                         isLoading={status==="installing"}
@@ -126,12 +125,10 @@ export function WPSolutionsBanner() {
                                                                     null
                                                                 ))
                                                                 : 
-                                                                <div className="nfd-flex nfd-p-6 nfd-text-red-700">
-                                                                    <ExclamationTriangleIcon className="nfd-w-[24px] nfd-h-[24px]" />
-                                                                    <span className="nfd-ml-1.5">
-                                                                        {__("Please try installing later", "wp-module-ecommerce")}
-                                                                    </span>
-                                                                </div>
+                                                                <Button className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="button" disabled={true}>
+                                                                    { __(`${details['buttonText']}`,"wp-module-ecommerce") }                                                               
+                                                                    <RightArrow className="nfd-mt-2.5" />
+                                                                </Button>
                                                             }
                                                         </div>)   
                                             })
