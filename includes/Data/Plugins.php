@@ -57,6 +57,10 @@ final class Plugins {
 			'url' => 'wp-admin/admin.php?page=wpseo_dashboard#top#first-time-configuration',
 			'file' => 'sensei-lms/sensei-lms.php'
 		),
+		'yith-woocommerce-affiliates' =>array(
+			'url' => 'wp-admin/admin.php?page=bluehost#/wonderblocks-example',
+			'file' => 'yith-woocommerce-affiliates-premium/init.php'
+		)
 	);
 
 	/**

@@ -113,8 +113,8 @@ export function WPSolutionsBanner() {
                                                                         <Button 
                                                                         className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" 
                                                                         as="button" 
-                                                                        data-nfd-installer-plugin-slug={slug} 
-                                                                        data-nfd-installer-plugin-provider={details.providerName} 
+                                                                        data-nfd-installer-plugin-slug={details.plsSlug} 
+                                                                        data-nfd-installer-plugin-provider={details.plsProviderName} 
                                                                         data-nfd-installer-plugin-activate={true}
                                                                         isLoading={status==="installing"}
                                                                         >
