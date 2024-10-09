@@ -43,6 +43,23 @@ final class Plugins {
 	);
 
 	/**
+	 * An associative array of premium plugins with their corresponding admin page URLs and file paths.
+	 *
+	 * @var array<string, array<string, string>> $free_plugins
+	 */
+	public static $premium_plugins = array(
+		// TODO: More plugins to be added here as once their data is available
+		'wp-seo' => array(
+			'url' => 'wp-admin/admin.php?page=wpseo_dashboard#top#first-time-configuration',
+			'file' => 'wordpress-seo/wp-seo.php' 
+		),
+		'sensei-lms' => array(
+			'url' => 'wp-admin/admin.php?page=wpseo_dashboard#top#first-time-configuration',
+			'file' => 'sensei-lms/sensei-lms.php'
+		),
+	);
+
+	/**
 	 * An associative array of supported plugins with their corresponding file paths and admin page URLs.
 	 *
 	 *  @var array<string, array<string, string>> $supported_plugins
@@ -120,6 +137,6 @@ final class Plugins {
 	 * @return array<string, array<string, string>> A combined array of supported and free plugins.
 	 */
 	public static function supported_plugins() {
-		return array_merge( self::$supported_plugins, self::$free_plugins );
+		return array_merge( self::$supported_plugins, self::$free_plugins, self::$premium_plugins );
 	}
 }

@@ -3,11 +3,14 @@ import { Button, Spinner } from "@newfold/ui-component-library";
 import apiFetch from '@wordpress/api-fetch';
 import { useEffect, useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
+import useSWR from "swr";
 import { myPluginsAndToolsPageLink, solutionButtonTextObject, wpSolutionsPromotedPluginsList } from "../constants";
 import { ReactComponent as RightArrow } from "../icons/right-arrow.svg";
 import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
+import { PluginsSdk } from "../sdk/plugins";
 import { NoExistingPlan } from "./NoExistingPlan";
 import { Section } from "./Section";
+
 
 export function WPSolutionsBanner() {
         
@@ -17,8 +20,20 @@ export function WPSolutionsBanner() {
     const [ isLoaded, setIsLoaded ] = useState( false );
     const [ purchasedSolution, setPurchasedSolution] = useState(null)
     const [ availableSolutions, setAvailableSolutions] = useState([]);
-    const [ buttonTxtSolutionName, setButtonTxtSolutionName] = useState(null);
+    const [ pluginActiveStatusArray, setPluginActiveStatusArray] = useState([]);
     let currentSolution = [];    
+
+    //TODO: To add slug information for all premium plugins once data is available
+    let premiumPluginStatus = useSWR(
+        "nfd_slug_wonder_cart",
+        () =>
+          PluginsSdk.queries
+            .status("nfd_slug_wonder_cart", "sensei-lms", "wp-seo")
+            .then(res => {                
+                setPluginActiveStatusArray(res?.details)
+            }),
+        { refreshInterval: 30 * 1000 }
+      );  
     
     const routeChange = () =>{ 
         location.href = myPluginsAndToolsPageLink;
@@ -40,6 +55,7 @@ export function WPSolutionsBanner() {
     }, [] );
         
     if ( error ) {
+        //Uncomment below line, to debug error in API response
         //console.log(error.message, "error");
         return (
             <div className="nfd-flex nfd-p-6 nfd-bg-white nfd-w-full nfd-rounded-lg nfd-text-red-700">
@@ -78,22 +94,50 @@ export function WPSolutionsBanner() {
                                     <div className="nfd-flex nfd-flex-row nfd-flex-wrap">                
                                         {
                                             solutionsCards?.map((details, index) => {                                                
-                                                return (<div className={"nfd-flex nfd-flex-col nfd-bg-[#F1F5F7] nfd-m-3 nfd-p-6 nfd-rounded-lg nfd-border nfd-border-[#E2E8F0] nfd-box-content "+ (index === 0 || index === 3 ? "nfd-w-[474px]" : "nfd-w-[300px]") }>                        
+                                                return (<div key="index" className={"nfd-flex nfd-flex-col nfd-bg-[#F1F5F7] nfd-p-6 nfd-rounded-lg nfd-border nfd-border-[#E2E8F0] nfd-box-content "+ (index === 0 ? "nfd-w-[38.33%] nfd-mr-6 nfd-mb-6" : index === 1 ? "nfd-w-6/12 nfd-mb-6" : index === 2 ? "nfd-w-6/12 nfd-mr-6" : "nfd-w-[38.33%]") }>                        
                                                             <h2 className="nfd-text-[#0F172A] nfd-text-lg nfd-leading-5 nfd-font-semibold nfd-mb-4">
                                                                 { __(`${details['title']}`,"wp-module-ecommerce") }
                                                             </h2>
                                                             <p className="nfd-text-[#0F172A] nfd-text-lg nfd-leading-5 nfd-font-normal nfd-mb-10">
                                                                 { __(`${details['description']}`,"wp-module-ecommerce") }                                                                
-                                                            </p>
-                                                            {/* TODO: Waiting for confirmation on https://jira.newfold.com/browse/PRESS0-2259 */}
-                                                            <Button className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="a" href="">
-                                                                { __(`${details['buttonText']}`,"wp-module-ecommerce") }                                                               
-                                                                <RightArrow className="nfd-mt-2.5" />
-                                                            </Button>
+                                                            </p>                                                            
+                                                            {   
+                                                                details.slug !== "" ? 
+                                                                Object.entries(pluginActiveStatusArray).map(([slug, { status, url }]) => (
+                                                                    details.slug === slug ?
+                                                                        status === "active" ?                                                                         
+                                                                        <Button className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="a" href={url}>
+                                                                            { __(`${details['buttonText']}`,"wp-module-ecommerce") }                                                               
+                                                                            <RightArrow className="nfd-mt-2.5" />
+                                                                        </Button>        
+                                                                        :
+                                                                        status === "need_to_install" || "installing" ? 
+                                                                        <Button 
+                                                                        className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" 
+                                                                        as="button" data-nfd-installer-plugin-slug={slug} 
+                                                                        data-nfd-installer-plugin-provider={details.providerName} 
+                                                                        data-nfd-installer-plugin-activate={true}
+                                                                        isLoading={status==="installing"}
+                                                                        >
+                                                                            { status==="installing" ? __("Installing","wp-module-ecommerce") :  __("Install","wp-module-ecommerce") }                                                               
+                                                                            <RightArrow className="nfd-mt-2.5" />
+                                                                        </Button>  : null
+                                                                    :
+                                                                    null
+                                                                ))
+                                                                : 
+                                                                <div className="nfd-flex nfd-p-6 nfd-text-red-700">
+                                                                    <ExclamationTriangleIcon className="nfd-w-[24px] nfd-h-[24px]" />
+                                                                    <span className="nfd-ml-1.5">
+                                                                        {__("Please try installing later", "wp-module-ecommerce")}
+                                                                    </span>
+                                                                </div>
+                                                            }
                                                         </div>)   
                                             })
                                         }
                                     </div>   
+
                                     <Button as="a" href={myPluginsAndToolsPageLink} className="nfd-button nfd-button--secondary nfd-flex nfd-w-56 nfd-mx-auto nfd-mt-3">
                                         {__(`View all ${solutionButtonTextObject[purchasedSolution]} tools`, "wp-module-ecommerce")}
                                     </Button>     
