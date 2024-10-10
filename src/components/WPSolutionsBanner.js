@@ -10,6 +10,7 @@ import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { PluginsSdk } from "../sdk/plugins";
 import { NoExistingPlan } from "./NoExistingPlan";
 import { Section } from "./Section";
+import classNames from 'classnames';
 
 
 export function WPSolutionsBanner() {
@@ -23,7 +24,6 @@ export function WPSolutionsBanner() {
     const [ pluginActiveStatusArray, setPluginActiveStatusArray] = useState([]);
     let currentSolution = [];    
 
-    //TODO: To add slug information for all premium plugins once data is available
     let premiumPluginStatus = useSWR(
         "nfd_slug_wonder_cart",
         () =>
@@ -86,13 +86,13 @@ export function WPSolutionsBanner() {
                                 <Section.Header 
                                     title={__("Explore Your Plugins and Tools", "wp-module-ecommerce")} 
                                     subTitle={__("Improve your site with the tools and services included in your plan.", "wp-module-ecommerce")} 
-                                    secondaryAction={{title : __( `View ${solutionButtonTextObject[purchasedSolution]} tools`, "wp-module-ecommerce" ), className: false, onClick: routeChange }} 
+                                    secondaryAction={{title : __( `View all your plugins and tools`, "wp-module-ecommerce" ), className: false, onClick: routeChange }}
                                 />
                                 <Section.Content className="nfd-app-section-home">     
-                                    <div className="nfd-flex nfd-flex-row nfd-flex-wrap">                
+                                    <div className={classNames('nfd-grid nfd-grid-flow-row-dense nfd-grid-cols-3 nfd-grid-rows-2 nfd-gap-6')}>
                                         {
                                             solutionsCards?.map((details, index) => {                                                
-                                                return (<div key="index" className={"nfd-flex nfd-flex-col nfd-bg-[#F1F5F7] nfd-p-6 nfd-rounded-lg nfd-border nfd-border-[#E2E8F0] nfd-box-content "+ (index === 0 ? "nfd-w-[38.33%] nfd-mr-6 nfd-mb-6" : index === 1 ? "nfd-w-6/12 nfd-mb-6" : index === 2 ? "nfd-w-6/12 nfd-mr-6" : "nfd-w-[38.33%]") }>                        
+                                                return (<div key={index} className={classNames("max-[950px]:nfd-col-span-3", "nfd-flex nfd-flex-col nfd-bg-[#F1F5F7] nfd-p-6 nfd-rounded-lg nfd-border nfd-border-[#E2E8F0] nfd-box-content", `${ index === 0 || index === 3 ? 'nfd-col-span-1': 'nfd-col-span-2'}`)}>                        
                                                             <h2 className="nfd-text-[#0F172A] nfd-text-lg nfd-leading-5 nfd-font-semibold nfd-mb-4">
                                                                 { __(`${details['title']}`,"wp-module-ecommerce") }
                                                             </h2>
@@ -139,7 +139,7 @@ export function WPSolutionsBanner() {
                                     </div>   
 
                                     <Button as="a" href={myPluginsAndToolsPageLink} className="nfd-button nfd-button--secondary nfd-flex nfd-w-56 nfd-mx-auto nfd-mt-3">
-                                        {__(`View all ${solutionButtonTextObject[purchasedSolution]} tools`, "wp-module-ecommerce")}
+                                        {__(`View all your plugins and tools`, "wp-module-ecommerce")}
                                     </Button>     
                                 </Section.Content>
                             </Section.Container>
