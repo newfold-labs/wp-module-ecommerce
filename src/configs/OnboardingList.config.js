@@ -89,13 +89,13 @@ export function OnboardingListDefinition(props) {
         id: "mypluginsandtools",
         text: __("Explore the features included with your solution", "wp-module-ecommerce"),
         state: {
-          isAvailable: (queries) => queries?.settings?.hasBrandSignedUp,
-          isCompleted: (queries) => !(queries?.settings?.hasBrandSignedUp),
+          isAvailable: () => NewfoldRuntime.hasCapability("hasSolution"),
+          isCompleted: () => false,
           url: () =>
             `${myPluginsAndToolsPageLink}`,
           target: () => "_self",
         },
-        shouldRender: () => (state) => state.isAvailable,
+        shouldRender: ( state ) => state.isAvailable,
         actions: {
           manage: () => clickMyPluginAndTools(),
         },
