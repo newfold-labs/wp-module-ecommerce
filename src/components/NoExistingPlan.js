@@ -8,6 +8,8 @@ import { Section } from "./Section";
 export function NoExistingPlan(props){
     const { availableSolutions } = props;
 
+    availableSolutions?.sort((a, b) => a.priority - b.priority);
+
     const HtmlContent = ({ htmlString }) => {
         return (
           <div
