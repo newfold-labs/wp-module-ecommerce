@@ -36,7 +36,7 @@ function defineFeatureState() {
     isInstalling: (data) => data?.plugins?.isInstalling,
     isQueueEmpty: (data) => data?.plugins?.isQueueEmpty,
     hasUsedPlugin: (data) => data?.products.length > 0,
-    isUpsellNeeded: () => !NewfoldRuntime.hasCapability("hasYithExtended"),
+    isUpsellNeeded: () => !(NewfoldRuntime.hasCapability("hasYithExtended") && NewfoldRuntime.hasCapability("hasSolution")),
     featureUrl: (data) =>
       data?.products.length > 0 ? data.plugins?.pluginUrl : null,
     upsellOptions: (data) => data?.upsellOptions,
