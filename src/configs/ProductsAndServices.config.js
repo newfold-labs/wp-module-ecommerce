@@ -171,7 +171,7 @@ export const ProductsAndServicesDefinition = (props) => ({
         slug: "yith_wcbk_panel",
       }),
       state: {...defineFeatureState(), featureUrl: () => NewfoldRuntime.adminUrl("admin.php?page=yith_wcbk_panel")},
-      
+
       actions: {
         installFeature: createPluginInstallAction(
           "nfd_slug_yith_woocommerce_booking",
