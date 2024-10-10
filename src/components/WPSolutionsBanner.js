@@ -28,7 +28,7 @@ export function WPSolutionsBanner() {
         "nfd_slug_wonder_cart",
         () =>
           PluginsSdk.queries
-            .status("nfd_slug_wonder_cart", "sensei-lms", "wp-seo")
+            .status("nfd_slug_wonder_cart", "sensei-lms", "wp-seo", "yith-woocommerce-affiliates", "yith-woocommerce-booking", "yith-woocommerce-points-and-rewards", "yith-woocommerce-wishlist", "yith-woocommerce-advanced-reviews", "yith-woocommerce-dynamic-pricing-and-discounts")
             .then(res => {                
                 setPluginActiveStatusArray(res?.details)
             }),
@@ -100,9 +100,9 @@ export function WPSolutionsBanner() {
                                                                 { __(`${details['description']}`,"wp-module-ecommerce") }                                                                
                                                             </p>                                                            
                                                             {   
-                                                                details.slug !== "" ? 
+                                                                details.plsSlug !== "" ? 
                                                                 Object.entries(pluginActiveStatusArray).map(([slug, { status, url }]) => (
-                                                                    details.slug === slug ?
+                                                                    details.plsSlug === slug ?
                                                                         status === "active" ?                                                                         
                                                                         <Button className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="a" href={url}>
                                                                             { __(`${details['buttonText']}`,"wp-module-ecommerce") }                                                               
@@ -114,8 +114,11 @@ export function WPSolutionsBanner() {
                                                                         className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" 
                                                                         as="button" 
                                                                         data-nfd-installer-plugin-slug={slug} 
-                                                                        data-nfd-installer-plugin-provider={details.providerName} 
+                                                                        data-nfd-installer-plugin-provider={details.plsProviderName} 
                                                                         data-nfd-installer-plugin-activate={true}
+                                                                        data-nfd-installer-plugin-name={details.name}
+                                                                        data-nfd-installer-plugin-url={url}
+                                                                        data-nfd-installer-plugin-storage-key={details.storageKey}
                                                                         isLoading={status==="installing"}
                                                                         >
                                                                             { status==="installing" ? __("Installing","wp-module-ecommerce") :  __("Install","wp-module-ecommerce") }                                                               
