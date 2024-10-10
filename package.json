@@ -2,7 +2,7 @@
   "name": "@newfold-labs/wp-module-ecommerce",
   "description": "Brand Agnostic eCommerce Experience",
   "license": "GPL-2.0-or-later",
-  "version": "1.4.0-beta",
+  "version": "1.4.0-beta.2",
   "main": "build/index.js",
   "files": [
     "build/",
