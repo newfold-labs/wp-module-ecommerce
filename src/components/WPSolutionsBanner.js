@@ -86,9 +86,7 @@ export function WPSolutionsBanner() {
                                 <Section.Header 
                                     title={__("Explore Your Plugins and Tools", "wp-module-ecommerce")} 
                                     subTitle={__("Improve your site with the tools and services included in your plan.", "wp-module-ecommerce")} 
-                                    //TODO: Uncomment line nos. 91 and remove line nos. 90 to make secondary title value dynamically update as per purchased solution
-                                    secondaryAction={{title : __( `View all your plugins and tools`, "wp-module-ecommerce" ), className: false, onClick: routeChange }} 
-                                    // secondaryAction={{title : __( `View ${solutionButtonTextObject[purchasedSolution]} tools`, "wp-module-ecommerce" ), className: false, onClick: routeChange }} 
+                                    secondaryAction={{title : __( `View all your plugins and tools`, "wp-module-ecommerce" ), className: false, onClick: routeChange }}
                                 />
                                 <Section.Content className="nfd-app-section-home">     
                                     <div className={classNames('nfd-grid nfd-grid-flow-row-dense nfd-grid-cols-3 nfd-grid-rows-2 nfd-gap-6')}>
@@ -141,9 +139,7 @@ export function WPSolutionsBanner() {
                                     </div>   
 
                                     <Button as="a" href={myPluginsAndToolsPageLink} className="nfd-button nfd-button--secondary nfd-flex nfd-w-56 nfd-mx-auto nfd-mt-3">
-                                        {/* TODO: Uncomment line nos. 146 and remove line nos. 145 to make button text value dynamically update as per purchased solution */}
                                         {__(`View all your plugins and tools`, "wp-module-ecommerce")}
-                                        {/* {__(`View all ${solutionButtonTextObject[purchasedSolution]} tools`, "wp-module-ecommerce")} */}
                                     </Button>     
                                 </Section.Content>
                             </Section.Container>
