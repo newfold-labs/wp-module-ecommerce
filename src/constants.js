@@ -45,7 +45,7 @@ export const wonderCartPopularCampaignsList = [
       }
 ];
 
-//TODO: To add storageKey & plsProviderName information for all plugins once it is available
+//TODO: To add storageKey, plsProviderName, download, basename information for all plugins once it is available
 export const wpSolutionsPromotedPluginsList = [
     {
         "WP_SOLUTION_CREATOR": [
@@ -53,19 +53,25 @@ export const wpSolutionsPromotedPluginsList = [
                             title: "WEBPAGE CREATION",
                             description: "Build webpages fast with tailored block patterns and page templates included in your hosting package.",
                             buttonText: "Add a Page to Your Site",
-                            name: " ",
-                            plsSlug: " ",
-                            storageKey: " ",
-                            plsProviderName: " "
+                            name: "",
+                            plsSlug: "",
+                            storageKey: "",
+                            plsProviderName: "",
+                            download: null,
+                            basename: "",
+                            url: "post-new.php?post_type=page"
                         },
                         {
                             title: "SEARCH ENGINE OPTIMIZATION",
                             description: "Start increasing your search result rankings today.",
                             buttonText: "Improve Your Search Ranking",
-                            name:"Yoast SEO",
+                            name:"WordPress SEO",
                             plsSlug: "wp-seo",
                             storageKey: "",
-                            plsProviderName: ""
+                            plsProviderName: "yoast",
+                            download: "https://downloads.wordpress.org/plugin/wordpress-seo.latest-stable.zip",
+                            basename: "wordpress-seo/wp-seo.php",
+                            url: "admin.php?page=wpseo_dashboard#top#first-time-configuration"
                         },
                         {
                             title: "OFFER CONTENT COURSES",
@@ -74,7 +80,11 @@ export const wpSolutionsPromotedPluginsList = [
                             name: "",
                             plsSlug: "sensei-lms",
                             storageKey: "",
-                            plsProviderName: "" 
+                            plsProviderName: "",
+                            download: null,
+                            basename: "sensei-lms/sensei-lms.php",
+                            url: "post-new.php?post_type=course"
+                             
                         },
                         {
                             title: "ADD AN AFFILIATE PROGRAM",
@@ -83,7 +93,10 @@ export const wpSolutionsPromotedPluginsList = [
                             name: "Affiliate Programs",
                             plsSlug: "yith-woocommerce-affiliates",
                             storageKey: "",
-                            plsProviderName: "yith"
+                            plsProviderName: "yith",
+                            download: null,
+                            basename: "commerce-entitlement/commerce-entitlement.php",
+                            url: "admin.php?page=yith_wcaf_panel&tab=settings&sub_tab=settings-general"
                         }
                     ],
         "WP_SOLUTION_SERVICE": [
@@ -94,16 +107,22 @@ export const wpSolutionsPromotedPluginsList = [
                             name: "",
                             plsSlug: "yith-woocommerce-booking",
                             storageKey: "",
-                            plsProviderName: "yith"
+                            plsProviderName: "yith",
+                            download: null,
+                            basename: "",
+                            url: "edit.php?post_type=yith_booking&yith-plugin-fw-panel-skip-redirect=1"
                         },
                         {
                             title: "WEBPAGE CREATION",
                             description: "Build webpages fast with tailored block patterns and page templates.",
                             buttonText: "Add a Page to Your Site",
-                            name: " ",
-                            plsSlug: " ",
-                            storageKey: " ",
-                            plsProviderName: " "
+                            name: "",
+                            plsSlug: "",
+                            storageKey: "",
+                            plsProviderName: "",
+                            download: null,
+                            basename: "",
+                            url: "post-new.php?post_type=page"
                         },
                         {
                             title: "SEARCH ENGINE OPTIMIZATION",
@@ -112,7 +131,10 @@ export const wpSolutionsPromotedPluginsList = [
                             name: "Yoast SEO",
                             plsSlug: "wp-seo",
                             storageKey: "",
-                            plsProviderName: ""
+                            plsProviderName: "yoast",
+                            download: "https://downloads.wordpress.org/plugin/wordpress-seo.latest-stable.zip",
+                            basename: "wordpress-seo/wp-seo.php",
+                            url: "admin.php?page=wpseo_dashboard#top#first-time-configuration"
                         },
                         {
                             title: "SETUP A LOYALTY PROGRAM",
@@ -121,7 +143,10 @@ export const wpSolutionsPromotedPluginsList = [
                             name: "Bookings & Appointments",
                             plsSlug: "yith-woocommerce-points-and-rewards",
                             storageKey: "",
-                            plsProviderName: "yith"
+                            plsProviderName: "yith",
+                            download: null,
+                            basename: "",
+                            url:"admin.php?page=yith_woocommerce_points_and_rewards&tab=points&sub_tab=points-standard"
                         },
 
                     ],
@@ -133,7 +158,10 @@ export const wpSolutionsPromotedPluginsList = [
                             name: "Wishlists",
                             plsSlug: "yith-woocommerce-wishlist",
                             storageKey: "",
-                            plsProviderName: "yith"
+                            plsProviderName: "yith",
+                            download: null,
+                            basename: "",
+                            url: "admin.php?page=yith_wcwl_panel&tab=settings&sub_tab=settings-general"
                         },
                         {
                             title: "ENABLE PRODUCT REVIEWS",
@@ -142,7 +170,10 @@ export const wpSolutionsPromotedPluginsList = [
                             name: "Advanced Reviews",
                             plsSlug: "yith-woocommerce-advanced-reviews",
                             storageKey: "",
-                            plsProviderName: "yith"
+                            plsProviderName: "yith",
+                            download: null,
+                            basename: "",
+                            url: "admin.php?page=yith_ywar_panel"
                         },
                         {
                             title: "CREATE A SALES CAMPAIGN",
@@ -151,7 +182,10 @@ export const wpSolutionsPromotedPluginsList = [
                             name: "SALES CAMPAIGN",
                             plsSlug: "yith-woocommerce-dynamic-pricing-and-discounts",
                             storageKey: "",
-                            plsProviderName: "yith"
+                            plsProviderName: "yith",
+                            download: null,
+                            basename: "",
+                            url: "edit.php?post_type=ywdpd_discount&yith-plugin-fw-panel-skip-redirect=1"
                         },
                         {
                             title: "SEARCH ENGINE OPTIMIZATION",
@@ -160,7 +194,10 @@ export const wpSolutionsPromotedPluginsList = [
                             name: "Yoast SEO",
                             plsSlug: "wp-seo",
                             storageKey: "",
-                            plsProviderName: ""
+                            plsProviderName: "yoast",
+                            download: "https://downloads.wordpress.org/plugin/wordpress-seo.latest-stable.zip",
+                            basename: "wordpress-seo/wp-seo.php",
+                            url: "admin.php?page=wpseo_dashboard#top#first-time-configuration"
                         },
 
                     ],                                               

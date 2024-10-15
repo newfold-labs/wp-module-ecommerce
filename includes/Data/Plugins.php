@@ -51,42 +51,42 @@ final class Plugins {
 		
 		//Search Engine Optimization
 		'wp-seo' => array(
-			'url' => 'wp-admin/admin.php?page=wpseo_dashboard#top#first-time-configuration',
+			'url' => 'admin.php?page=wpseo_dashboard#top#first-time-configuration',
 			'file' => 'wordpress-seo/wp-seo.php' 
 		),
 		//Offer Content Courses
 		'sensei-lms' => array(
-			'url' => 'wp-admin/post-new.php?post_type=course',
+			'url' => 'post-new.php?post_type=course',
 			'file' => 'sensei-lms/sensei-lms.php'
 		),
 		//Add An Affiliate Program
 		'yith-woocommerce-affiliates' => array(
-			'url' => 'wp-admin/admin.php?page=yith_wcaf_panel&tab=settings&sub_tab=settings-general',
+			'url' => 'admin.php?page=yith_wcaf_panel&tab=settings&sub_tab=settings-general',
 			'file' => 'yith-woocommerce-affiliates-premium/init.php'
 		),
 		//Setup Bookings
 		'yith-woocommerce-booking' => array(
-			'url' => 'wp-admin/edit.php?post_type=yith_booking&yith-plugin-fw-panel-skip-redirect=1',
+			'url' => 'edit.php?post_type=yith_booking&yith-plugin-fw-panel-skip-redirect=1',
 			'file' => 'yith-woocommerce-booking/init.php'
 		),
 		//Setup A Loyalty Program
 		'yith-woocommerce-points-and-rewards' => array(
-			'url' => 'wp-admin/admin.php?page=yith_woocommerce_points_and_rewards&tab=points&sub_tab=points-standard',
+			'url' => 'admin.php?page=yith_woocommerce_points_and_rewards&tab=points&sub_tab=points-standard',
 			'file' => 'yith-woocommerce-points-and-rewards/init.php'
 		),
 		//Setup WishList
 		'yith-woocommerce-wishlist' => array(
-			'url' => 'wp-admin/admin.php?page=yith_wcwl_panel&tab=settings&sub_tab=settings-general',
+			'url' => 'admin.php?page=yith_wcwl_panel&tab=settings&sub_tab=settings-general',
 			'file' => 'yith-woocommerce-wishlist/init.php'
 		),
 		//Enable Product Reviews
 		'yith-woocommerce-advanced-reviews' => array(
-			'url' => 'wp-admin/admin.php?page=yith_ywar_panel',
+			'url' => 'admin.php?page=yith_ywar_panel',
 			'file' => 'yith-woocommerce-advanced-reviews/init.php'
 		),
 		//Create a Sales Campaign
 		'yith-woocommerce-dynamic-pricing-and-discounts' => array(
-			'url' => 'wp-admin/edit.php?post_type=ywdpd_discount&yith-plugin-fw-panel-skip-redirect=1',
+			'url' => 'edit.php?post_type=ywdpd_discount&yith-plugin-fw-panel-skip-redirect=1',
 			'file' => 'yith-woocommerce-dynamic-pricing-and-discounts/init.php'
 		)
 	);

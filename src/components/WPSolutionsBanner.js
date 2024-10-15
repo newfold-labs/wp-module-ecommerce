@@ -100,39 +100,82 @@ export function WPSolutionsBanner() {
                                                                 { __(`${details['description']}`,"wp-module-ecommerce") }                                                                
                                                             </p>                                                            
                                                             {   
+                                                                //For type plugin
                                                                 details.plsSlug !== "" ? 
-                                                                Object.entries(pluginActiveStatusArray).map(([slug, { status, url }]) => (
-                                                                    details.plsSlug === slug ?
-                                                                        status === "active" ?                                                                         
-                                                                        <Button className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="a" href={url}>
-                                                                            { __(`${details['buttonText']}`,"wp-module-ecommerce") }                                                               
-                                                                            <RightArrow className="nfd-mt-2.5" />
-                                                                        </Button>        
-                                                                        :
-                                                                        status === "need_to_install" || "installing" ? 
-                                                                        <Button 
-                                                                        className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" 
-                                                                        as="button" 
-                                                                        data-nfd-installer-plugin-slug={slug} 
-                                                                        data-nfd-installer-plugin-provider={details.plsProviderName} 
-                                                                        data-nfd-installer-plugin-activate={true}
-                                                                        data-nfd-installer-plugin-name={details.name}
-                                                                        data-nfd-installer-plugin-url={url}
-                                                                        data-nfd-installer-plugin-storage-key={details.storageKey}
-                                                                        isLoading={status==="installing"}
-                                                                        >
-                                                                            { status==="installing" ? __("Installing","wp-module-ecommerce") :  __("Install","wp-module-ecommerce") }                                                               
-                                                                            <RightArrow className="nfd-mt-2.5" />
-                                                                        </Button>  : null
+
+                                                                    Object.entries(pluginActiveStatusArray).map(([slug, { status, url }]) => (
+                                                                        details.plsSlug === slug ?
+                                                                        (
+                                                                            //installed & active
+                                                                            status === "active" ? 
+                                                                            (
+                                                                                <Button className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="a" href={url}>
+                                                                                    { __(`${details['buttonText']}`,"wp-module-ecommerce") }                                                               
+                                                                                    <RightArrow className="nfd-mt-2.5" />
+                                                                                </Button>   
+                                                                            ) 
+                                                                            : 
+                                                                            //installed but not active
+                                                                            status === "need_to_activate" ? 
+                                                                            (
+                                                                                <Button className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="button" data-plugin={details.basename}>
+                                                                                    { __(`${details['buttonText']}`,"wp-module-ecommerce") }                                                               
+                                                                                    <RightArrow className="nfd-mt-2.5" />
+                                                                                </Button>   
+                                                                            ) 
+                                                                            : 
+                                                                            //need to install
+                                                                            status === "need_to_install" ?
+                                                                            //premium
+                                                                            details.plsProviderName && details.plsSlug ? 
+                                                                            (
+                                                                                <Button 
+                                                                                className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" 
+                                                                                as="button" 
+                                                                                data-nfd-installer-plugin-activate={true}
+                                                                                data-nfd-installer-plugin-slug={slug} 
+                                                                                data-nfd-installer-plugin-provider={details.plsProviderName}                                                                             
+                                                                                data-nfd-installer-plugin-name={details.name}
+                                                                                data-nfd-installer-plugin-url={url}
+                                                                                data-nfd-installer-plugin-storage-key={details.storageKey}
+                                                                                isLoading={status==="installing"}
+                                                                                >
+                                                                                    { __(`${details['buttonText']}`,"wp-module-ecommerce") }                                                               
+                                                                                    <RightArrow className="nfd-mt-2.5" />
+                                                                                </Button>
+                                                                            ) 
+                                                                            :
+                                                                            //free
+                                                                            details.download ?
+                                                                            (
+                                                                                <Button 
+                                                                                className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" 
+                                                                                as="button" 
+                                                                                data-nfd-installer-plugin-activate={true}
+                                                                                data-nfd-installer-plugin-name={details.name}
+                                                                                data-nfd-installer-download-url={details.download}
+                                                                                data-nfd-installer-plugin-url={url}
+                                                                                data-nfd-installer-plugin-storage-key={details.storageKey}
+                                                                                isLoading={status==="installing"}
+                                                                                >
+                                                                                    { __(`${details['buttonText']}`,"wp-module-ecommerce") }                                                               
+                                                                                    <RightArrow className="nfd-mt-2.5" />
+                                                                                </Button>
+                                                                            ) : null
+                                                                            :
+                                                                            null     
+                                                                        )  
+                                                                        : null                                                        
+                                                                    ))
                                                                     :
-                                                                    null
-                                                                ))
-                                                                : 
-                                                                <Button className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="button" disabled={true}>
-                                                                    { __(`${details['buttonText']}`,"wp-module-ecommerce") }                                                               
-                                                                    <RightArrow className="nfd-mt-2.5" />
-                                                                </Button>
+                                                                    //For type not plugin
+                                                                    (<Button className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="a" href={details.url+"89538934954"}>
+                                                                        { __(`${details['buttonText']}`,"wp-module-ecommerce") }                                                               
+                                                                        <RightArrow className="nfd-mt-2.5" />
+                                                                    </Button>)  
+
                                                             }
+                                                            
                                                         </div>)   
                                             })
                                         }
