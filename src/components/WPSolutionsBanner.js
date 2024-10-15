@@ -44,7 +44,7 @@ export function WPSolutionsBanner() {
             ( result ) => {
                 setIsLoaded(true);                
                 setApiResponse(result)
-                setPurchasedSolution(result['solution']) 
+                result['solution'] && setPurchasedSolution(result['solution']) 
                 setAvailableSolutions(result['solutions'])                                
             },
             ( error ) => {
@@ -138,7 +138,7 @@ export function WPSolutionsBanner() {
                                         }
                                     </div>   
 
-                                    <Button as="a" href={myPluginsAndToolsPageLink} className="nfd-button nfd-button--secondary nfd-flex nfd-w-56 nfd-mx-auto nfd-mt-3">
+                                    <Button as="a" href={myPluginsAndToolsPageLink} className="nfd-button nfd-button--secondary nfd-flex nfd-w-56 nfd-mx-auto nfd-mt-6">
                                         {__(`View all your plugins and tools`, "wp-module-ecommerce")}
                                     </Button>     
                                 </Section.Content>
