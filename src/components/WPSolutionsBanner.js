@@ -136,11 +136,10 @@ export function WPSolutionsBanner() {
                                                                                 className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" 
                                                                                 as="button" 
                                                                                 data-nfd-installer-plugin-activate={true}
-                                                                                data-nfd-installer-plugin-slug={slug} 
-                                                                                data-nfd-installer-plugin-provider={details.plsProviderName}                                                                             
+                                                                                data-nfd-installer-pls-slug={slug} 
+                                                                                data-nfd-installer-pls-provider={details.plsProviderName}                                                                             
                                                                                 data-nfd-installer-plugin-name={details.name}
                                                                                 data-nfd-installer-plugin-url={url}
-                                                                                data-nfd-installer-plugin-storage-key={details.storageKey}
                                                                                 isLoading={status==="installing"}
                                                                                 >
                                                                                     { __(`${details['buttonText']}`,"wp-module-ecommerce") }                                                               
@@ -159,7 +158,6 @@ export function WPSolutionsBanner() {
                                                                                 data-nfd-installer-plugin-name={details.name}
                                                                                 data-nfd-installer-download-url={details.download}
                                                                                 data-nfd-installer-plugin-url={url}
-                                                                                data-nfd-installer-plugin-storage-key={details.storageKey}
                                                                                 isLoading={status==="installing"}
                                                                                 >
                                                                                     { __(`${details['buttonText']}`,"wp-module-ecommerce") }                                                               
