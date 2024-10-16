@@ -23,6 +23,7 @@ export function WPSolutionsBanner() {
     const [ availableSolutions, setAvailableSolutions] = useState([]);
     const [ pluginActiveStatusArray, setPluginActiveStatusArray] = useState([]);
     let currentSolution = [];    
+    const hasSolution = NewfoldRuntime.hasCapability("hasSolution");
 
     let premiumPluginStatus = useSWR(
         "nfd_slug_wonder_cart",
@@ -82,7 +83,8 @@ export function WPSolutionsBanner() {
                 wpSolutionsPromotedPluginsList[0]['WP_SOLUTION_SERVICE'] :  wpSolutionsPromotedPluginsList[0]['WP_SOLUTION_COMMERCE'];
                 let solutionsCards = Object.values(currentSolution);                           
                 return(   
-                            <Section.Container className="nfd-container">
+                            hasSolution && 
+                            (<Section.Container className="nfd-container">
                                 <Section.Header 
                                     title={__("Explore Your Plugins and Tools", "wp-module-ecommerce")} 
                                     subTitle={__("Improve your site with the tools and services included in your plan.", "wp-module-ecommerce")} 
@@ -92,7 +94,7 @@ export function WPSolutionsBanner() {
                                     <div className={classNames('nfd-grid nfd-grid-flow-row-dense nfd-grid-cols-3 nfd-grid-rows-2 nfd-gap-6')}>
                                         {
                                             solutionsCards?.map((details, index) => {                                                
-                                                return (<div key={index} className={classNames("max-[950px]:nfd-col-span-3", "nfd-flex nfd-flex-col nfd-bg-[#F1F5F7] nfd-p-6 nfd-rounded-lg nfd-border nfd-border-[#E2E8F0] nfd-box-content", `${ index === 0 || index === 3 ? 'nfd-col-span-1': 'nfd-col-span-2'}`)}>                        
+                                                return (<div key={`card-${index}`} className={classNames("max-[950px]:nfd-col-span-3", "nfd-flex nfd-flex-col nfd-bg-[#F1F5F7] nfd-p-6 nfd-rounded-lg nfd-border nfd-border-[#E2E8F0] nfd-box-content", `${ index === 0 || index === 3 ? 'nfd-col-span-1': 'nfd-col-span-2'}`)}>                        
                                                             <h2 className="nfd-text-[#0F172A] nfd-text-lg nfd-leading-5 nfd-font-semibold nfd-mb-4">
                                                                 { __(`${details['title']}`,"wp-module-ecommerce") }
                                                             </h2>
@@ -109,7 +111,7 @@ export function WPSolutionsBanner() {
                                                                             //installed & active
                                                                             status === "active" ? 
                                                                             (
-                                                                                <Button className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="a" href={url}>
+                                                                                <Button key={`btn-${index}`} className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="a" href={url}>
                                                                                     { __(`${details['buttonText']}`,"wp-module-ecommerce") }                                                               
                                                                                     <RightArrow className="nfd-mt-2.5" />
                                                                                 </Button>   
@@ -118,7 +120,7 @@ export function WPSolutionsBanner() {
                                                                             //installed but not active
                                                                             status === "need_to_activate" ? 
                                                                             (
-                                                                                <Button className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="button" data-plugin={details.basename}>
+                                                                                <Button key={`btn-${index}`} className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="button" data-plugin={details.basename}>
                                                                                     { __(`${details['buttonText']}`,"wp-module-ecommerce") }                                                               
                                                                                     <RightArrow className="nfd-mt-2.5" />
                                                                                 </Button>   
@@ -130,6 +132,7 @@ export function WPSolutionsBanner() {
                                                                             details.plsProviderName && details.plsSlug ? 
                                                                             (
                                                                                 <Button 
+                                                                                key={`btn-${index}`}
                                                                                 className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" 
                                                                                 as="button" 
                                                                                 data-nfd-installer-plugin-activate={true}
@@ -149,6 +152,7 @@ export function WPSolutionsBanner() {
                                                                             details.download ?
                                                                             (
                                                                                 <Button 
+                                                                                key={`btn-${index}`}
                                                                                 className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" 
                                                                                 as="button" 
                                                                                 data-nfd-installer-plugin-activate={true}
@@ -169,7 +173,7 @@ export function WPSolutionsBanner() {
                                                                     ))
                                                                     :
                                                                     //For type not plugin
-                                                                    (<Button className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="a" href={details.url+"89538934954"}>
+                                                                    (<Button key={`btn-${index}`} className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="a" href={details.url+"89538934954"}>
                                                                         { __(`${details['buttonText']}`,"wp-module-ecommerce") }                                                               
                                                                         <RightArrow className="nfd-mt-2.5" />
                                                                     </Button>)  
@@ -185,7 +189,7 @@ export function WPSolutionsBanner() {
                                         {__(`View all your plugins and tools`, "wp-module-ecommerce")}
                                     </Button>     
                                 </Section.Content>
-                            </Section.Container>
+                            </Section.Container>)
                         )                    
         }    
        
