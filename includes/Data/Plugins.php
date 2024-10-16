@@ -60,29 +60,29 @@ final class Plugins {
 			'file' => 'sensei-lms/sensei-lms.php'
 		),
 		//Add An Affiliate Program
-		'yith-woocommerce-affiliates' => array(
+		'yith-woocommerce-affiliates-premium' => array(
 			'url' => 'admin.php?page=yith_wcaf_panel&tab=settings&sub_tab=settings-general',
 			'file' => 'yith-woocommerce-affiliates-premium/init.php'
 		),
 		//Setup Bookings
-		'yith-woocommerce-booking' => array(
+		'yith-woocommerce-booking-premium' => array(
 			'url' => 'edit.php?post_type=yith_booking&yith-plugin-fw-panel-skip-redirect=1',
-			'file' => 'yith-woocommerce-booking/init.php'
+			'file' => 'yith-woocommerce-booking-premium/init.php'
 		),
 		//Setup A Loyalty Program
-		'yith-woocommerce-points-and-rewards' => array(
+		'yith-woocommerce-points-and-rewards-premium' => array(
 			'url' => 'admin.php?page=yith_woocommerce_points_and_rewards&tab=points&sub_tab=points-standard',
-			'file' => 'yith-woocommerce-points-and-rewards/init.php'
+			'file' => 'yith-woocommerce-points-and-rewards-premium/init.php'
 		),
 		//Setup WishList
-		'yith-woocommerce-wishlist' => array(
+		'yith-woocommerce-wishlist-premium' => array(
 			'url' => 'admin.php?page=yith_wcwl_panel&tab=settings&sub_tab=settings-general',
-			'file' => 'yith-woocommerce-wishlist/init.php'
+			'file' => 'yith-woocommerce-wishlist-premium/init.php'
 		),
 		//Enable Product Reviews
-		'yith-woocommerce-advanced-reviews' => array(
+		'yith-woocommerce-advanced-reviews-premium' => array(
 			'url' => 'admin.php?page=yith_ywar_panel',
-			'file' => 'yith-woocommerce-advanced-reviews/init.php'
+			'file' => 'yith-woocommerce-advanced-reviews-premium/init.php'
 		),
 		//Create a Sales Campaign
 		'yith-woocommerce-dynamic-pricing-and-discounts' => array(

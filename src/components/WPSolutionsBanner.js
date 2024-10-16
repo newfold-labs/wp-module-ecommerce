@@ -29,7 +29,7 @@ export function WPSolutionsBanner() {
         "nfd_slug_wonder_cart",
         () =>
           PluginsSdk.queries
-            .status("nfd_slug_wonder_cart", "sensei-lms", "wp-seo", "yith-woocommerce-affiliates", "yith-woocommerce-booking", "yith-woocommerce-points-and-rewards", "yith-woocommerce-wishlist", "yith-woocommerce-advanced-reviews", "yith-woocommerce-dynamic-pricing-and-discounts")
+            .status("nfd_slug_wonder_cart", "sensei-lms", "wp-seo", "yith-woocommerce-affiliates-premium", "yith-woocommerce-booking-premium", "yith-woocommerce-points-and-rewards-premium", "yith-woocommerce-wishlist-premium", "yith-woocommerce-advanced-reviews-premium", "yith-woocommerce-dynamic-pricing-and-discounts")
             .then(res => {                
                 setPluginActiveStatusArray(res?.details)
             }),
@@ -129,7 +129,7 @@ export function WPSolutionsBanner() {
                                                                             //need to install
                                                                             status === "need_to_install" ?
                                                                             //premium
-                                                                            details.plsProviderName && details.plsSlug ? 
+                                                                            details.plsProviderName && details.plsSlug && !details.download ? 
                                                                             (
                                                                                 <Button 
                                                                                 key={`btn-${index}`}
