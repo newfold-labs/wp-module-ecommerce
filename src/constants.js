@@ -79,8 +79,7 @@ export const wpSolutionsPromotedPluginsList = [
                             plsProviderName: "automattic",
                             download: "https://downloads.wordpress.org/plugin/sensei-lms.latest-stable.zip",
                             basename: "sensei-lms/sensei-lms.php",
-                            url: "post-new.php?post_type=course"
-                             
+                            url: "post-new.php?post_type=course"                             
                         },
                         {
                             title: "ADD AN AFFILIATE PROGRAM",
