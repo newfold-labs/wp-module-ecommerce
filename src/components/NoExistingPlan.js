@@ -68,7 +68,7 @@ export function NoExistingPlan(props){
                                             })
                                         }
                                         </ul>
-                                        <Button as="a" href={solution.url} className="nfd-button nfd-button--secondary nfd-self-end nfd-ml-auto">
+                                        <Button as="a" href={solution.url} data-action="load-nfd-ctb" data-ctb-id="{solution.ctbId}" className="nfd-button nfd-button--secondary nfd-self-end nfd-ml-auto">
                                             {__("Learn more", "wp-module-ecommerce")}
                                         </Button>     
                                     </div>
