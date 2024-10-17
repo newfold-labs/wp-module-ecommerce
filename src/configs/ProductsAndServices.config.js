@@ -36,7 +36,7 @@ function defineFeatureState() {
     isInstalling: (data) => data?.plugins?.isInstalling,
     isQueueEmpty: (data) => data?.plugins?.isQueueEmpty,
     hasUsedPlugin: (data) => data?.products.length > 0,
-    isUpsellNeeded: () => !NewfoldRuntime.hasCapability("hasYithExtended"),
+    isUpsellNeeded: () => !(NewfoldRuntime.hasCapability("hasYithExtended") && NewfoldRuntime.hasCapability("hasSolution")),
     featureUrl: (data) =>
       data?.products.length > 0 ? data.plugins?.pluginUrl : null,
     upsellOptions: (data) => data?.upsellOptions,
@@ -155,7 +155,7 @@ export const ProductsAndServicesDefinition = (props) => ({
     },
     {
       Card: FeatureCard,
-      shouldRender: () => true,
+      shouldRender: () => NewfoldRuntime.hasCapability("hasSolution"),
       name: "booking",
       assets: ({ isActive }) => ({
         Image: CalendarIcon,
@@ -207,7 +207,7 @@ export const ProductsAndServicesDefinition = (props) => ({
     },
     {
       Card: FeatureCard,
-      shouldRender: () => true,
+      shouldRender: () => NewfoldRuntime.hasCapability("hasSolution"),
       name: "gifts",
       assets: ({ isActive }) => ({
         Image: GiftIcon,
