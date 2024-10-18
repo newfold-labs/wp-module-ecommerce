@@ -103,7 +103,7 @@ export function NoExistingPlan( props ) {
 									as="a"
 									href={ solution.url }
 									data-action="load-nfd-ctb"
-									data-ctb-id="{solution.ctbId}"
+									data-ctb-id={ solution.ctbId }
 									className="nfd-button nfd-button--secondary nfd-self-end nfd-ml-auto"
 								>
 									{ __(
