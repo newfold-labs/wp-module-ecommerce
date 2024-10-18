@@ -93,3 +93,4 @@ export function NewfoldECommerce(props) {
 
 export * from "./components/FreePlugins";
 export * from "./components/OnboardingScreen";
+export * from "./components/WPSolutionsBanner";
