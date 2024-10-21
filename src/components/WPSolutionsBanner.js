@@ -94,7 +94,7 @@ export function WPSolutionsBanner() {
                                     <div className={classNames('nfd-grid nfd-grid-flow-row-dense nfd-grid-cols-3 nfd-grid-rows-2 nfd-gap-6')}>
                                         {
                                             solutionsCards?.map((details, index) => {                                                
-                                                return (<div key={`card-${index}`} className={classNames("max-[950px]:nfd-col-span-3", "nfd-flex nfd-flex-col nfd-bg-[#F1F5F7] nfd-p-6 nfd-rounded-lg nfd-border nfd-border-[#E2E8F0] nfd-box-content", `${ index === 0 || index === 3 ? 'nfd-col-span-1': 'nfd-col-span-2'}`)}>                        
+                                                return (<div key={`card-${index}`} className={classNames("max-[950px]:nfd-col-span-3", "nfd-flex nfd-flex-col nfd-bg-[#F1F5F7] nfd-p-6 nfd-rounded-lg nfd-border nfd-border-[#E2E8F0] nfd-box-content", `${ index === 0 || index === 3 ? 'nfd-col-span-2': 'nfd-col-span-1'}`)}>                        
                                                             <h2 className="nfd-text-[#0F172A] nfd-text-lg nfd-leading-5 nfd-font-semibold nfd-mb-4">
                                                                 { __(`${details['title']}`,"wp-module-ecommerce") }
                                                             </h2>
@@ -171,7 +171,7 @@ export function WPSolutionsBanner() {
                                                                     ))
                                                                     :
                                                                     //For type not plugin
-                                                                    (<Button key={`btn-${index}`} className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="a" href={details.url+"89538934954"}>
+                                                                    (<Button key={`btn-${index}`} className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="a" href={details.url}>
                                                                         { __(`${details['buttonText']}`,"wp-module-ecommerce") }                                                               
                                                                         <RightArrow className="nfd-mt-2.5" />
                                                                     </Button>)  
