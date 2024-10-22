@@ -21,6 +21,8 @@ import {
   wcPluginStatusParser,
   wcProductsParser,
 } from "./selectors";
+import apiFetch from '@wordpress/api-fetch';
+
 
 const getUrl = (href) => {
   let [page, qs] = href.split("?");
@@ -39,11 +41,37 @@ function defineFeatureState() {
     isUpsellNeeded: () => !(NewfoldRuntime.hasCapability("hasYithExtended") && NewfoldRuntime.hasCapability("hasSolution")),
     featureUrl: (data) =>
       data?.products.length > 0 ? data.plugins?.pluginUrl : null,
+    purchasedSolution: () => getPurchasedSolution(),
     upsellOptions: (data) => data?.upsellOptions,
   };
 }
 
-export const ProductsAndServicesDefinition = (props) => ({
+async function getPurchasedSolution() {
+  const url = NewfoldRuntime.createApiUrl("/newfold-solutions/v1/entitlements")
+  let purchasedSolution;
+  
+  // apiFetch( { url: `${ url }` } ).then(
+  //   ( result ) => {
+  //     console.log(result['solution'], result, "result")
+  //     purchasedSolution = result['solution']
+  //   },
+  //   ( error ) => console.log(error)
+  // );
+  // console.log(purchasedSolution, "purchasedSolution")
+  // return purchasedSolution !== "WP_SOLUTION_COMMERCE";  
+
+
+  const res = await apiFetch( { url: `${ url }` } )
+  
+  purchasedSolution = await res.json();
+
+  console.log( purchasedSolution, "*******")
+
+  return purchasedSolution
+}
+
+export const ProductsAndServicesDefinition = (props) => (
+  {
   dataDependencies: {
     plugins: async () =>
       PluginsSdk.queries.status(
@@ -155,7 +183,7 @@ export const ProductsAndServicesDefinition = (props) => ({
     },
     {
       Card: FeatureCard,
-      shouldRender: () => NewfoldRuntime.hasCapability("hasSolution"),
+      shouldRender: (state) => NewfoldRuntime.hasCapability("hasSolution") && state.purchasedSolution,
       name: "booking",
       assets: ({ isActive }) => ({
         Image: CalendarIcon,
@@ -207,7 +235,7 @@ export const ProductsAndServicesDefinition = (props) => ({
     },
     {
       Card: FeatureCard,
-      shouldRender: () => NewfoldRuntime.hasCapability("hasSolution"),
+      shouldRender: (state) => NewfoldRuntime.hasCapability("hasSolution") && state.purchasedSolution,
       name: "gifts",
       assets: ({ isActive }) => ({
         Image: GiftIcon,
