@@ -120,7 +120,7 @@ export function WPSolutionsBanner() {
                                                                             status === "active" ? 
                                                                             (
                                                                                 <Button key={`btn-${index}`} className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="a" href={url}>
-                                                                                    { __(`${details['buttonText']}`,"wp-module-ecommerce") }                                                               
+                                                                                    { __(`${details['cta']['text']}`,"wp-module-ecommerce") }                                                               
                                                                                     <RightArrow className="nfd-mt-2.5" />
                                                                                 </Button>   
                                                                             ) 
@@ -129,7 +129,7 @@ export function WPSolutionsBanner() {
                                                                             status === "need_to_activate" ? 
                                                                             (
                                                                                 <Button key={`btn-${index}`} className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="button" data-plugin={details.basename}>
-                                                                                    { __(`${details['buttonText']}`,"wp-module-ecommerce") }                                                               
+                                                                                    { __(`${details['cta']['text']}`,"wp-module-ecommerce") }                                                               
                                                                                     <RightArrow className="nfd-mt-2.5" />
                                                                                 </Button>   
                                                                             ) 
@@ -150,7 +150,7 @@ export function WPSolutionsBanner() {
                                                                                 data-nfd-installer-plugin-url={url}
                                                                                 isLoading={status==="installing"}
                                                                                 >
-                                                                                    { __(`${details['buttonText']}`,"wp-module-ecommerce") }                                                               
+                                                                                    { __(`${details['cta']['text']}`,"wp-module-ecommerce") }                                                               
                                                                                     <RightArrow className="nfd-mt-2.5" />
                                                                                 </Button>
                                                                             ) 
@@ -168,7 +168,7 @@ export function WPSolutionsBanner() {
                                                                                 data-nfd-installer-plugin-url={url}
                                                                                 isLoading={status==="installing"}
                                                                                 >
-                                                                                    { __(`${details['buttonText']}`,"wp-module-ecommerce") }                                                               
+                                                                                    { __(`${details['cta']['text']}`,"wp-module-ecommerce") }                                                               
                                                                                     <RightArrow className="nfd-mt-2.5" />
                                                                                 </Button>
                                                                             ) : null
@@ -179,8 +179,8 @@ export function WPSolutionsBanner() {
                                                                     ))
                                                                     :
                                                                     //For type not plugin
-                                                                    (<Button key={`btn-${index}`} className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="a" href={details.url}>
-                                                                        { __(`${details['buttonText']}`,"wp-module-ecommerce") }                                                               
+                                                                    (<Button key={`btn-${index}`} className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="a" href={details.cta.url}>
+                                                                        { __(`${details['cta']['text']}`,"wp-module-ecommerce") }                                                               
                                                                         <RightArrow className="nfd-mt-2.5" />
                                                                     </Button>)  
 
