@@ -41,33 +41,15 @@ function defineFeatureState() {
     isUpsellNeeded: () => !(NewfoldRuntime.hasCapability("hasYithExtended") && NewfoldRuntime.hasCapability("hasSolution")),
     featureUrl: (data) =>
       data?.products.length > 0 ? data.plugins?.pluginUrl : null,
-    purchasedSolution: () => getPurchasedSolution(),
+    purchasedSolution: ( data ) => data.isEcomSolution !== 'WP_SOLUTION_COMMERCE',
     upsellOptions: (data) => data?.upsellOptions,
   };
 }
 
 async function getPurchasedSolution() {
   const url = NewfoldRuntime.createApiUrl("/newfold-solutions/v1/entitlements")
-  let purchasedSolution;
-  
-  // apiFetch( { url: `${ url }` } ).then(
-  //   ( result ) => {
-  //     console.log(result['solution'], result, "result")
-  //     purchasedSolution = result['solution']
-  //   },
-  //   ( error ) => console.log(error)
-  // );
-  // console.log(purchasedSolution, "purchasedSolution")
-  // return purchasedSolution !== "WP_SOLUTION_COMMERCE";  
-
-
   const res = await apiFetch( { url: `${ url }` } )
-  
-  purchasedSolution = await res.json();
-
-  console.log( purchasedSolution, "*******")
-
-  return purchasedSolution
+  return res
 }
 
 export const ProductsAndServicesDefinition = (props) => (
@@ -81,6 +63,7 @@ export const ProductsAndServicesDefinition = (props) => (
       ),
     products: WooCommerceSdk.products.list,
     upsellOptions: MarketplaceSdk.eCommerceOptions,
+    isEcomSolution: () => getPurchasedSolution()
   },
   cards: [
     {
@@ -231,6 +214,10 @@ export const ProductsAndServicesDefinition = (props) => (
             "YITH Booking and Appointment for WooCommerce"
           ),
         },
+        {
+          key: "isEcomSolution",
+          selector: (data) => data?.solution
+        }
       ],
     },
     {
@@ -279,6 +266,10 @@ export const ProductsAndServicesDefinition = (props) => (
           key: "upsellOptions",
           selector: findUpsellWithName("YITH WooCommerce Gift Cards"),
         },
+        {
+          key: "isEcomSolution",
+          selector: (data) => data?.solution
+        }
       ],
     },
   ],
