@@ -142,17 +142,6 @@ export const wpSolutionsPromotedPluginsList = [
                     ],
         "WP_SOLUTION_COMMERCE": [
                         {
-                            title: "SETUP WISHLISTS",
-                            description: "Let customers add products to lists and share them with family and friends.",
-                            buttonText: "Setup Wishilsts",
-                            name: "Wishlists",
-                            plsSlug: "yith-woocommerce-wishlist",                            
-                            plsProviderName: "yith",
-                            download: null,
-                            basename: "yith-woocommerce-wishlist-premium/init.php",
-                            url: "admin.php?page=yith_wcwl_panel&tab=settings&sub_tab=settings-general"
-                        },
-                        {
                             title: "ENABLE PRODUCT REVIEWS",
                             description: "Get positive product reviews and use social proof to drive more sales.",
                             buttonText: "Enable Product Reviews",
@@ -164,15 +153,15 @@ export const wpSolutionsPromotedPluginsList = [
                             url: "admin.php?page=yith_ywar_panel"
                         },
                         {
-                            title: "CREATE A SALES CAMPAIGN",
-                            description: "Create custom upsell, cross-sell and other promotional campaigns to generate more sales.",
-                            buttonText: "Create a Campaign",
-                            name: "SALES CAMPAIGN",
-                            plsSlug: "yith-woocommerce-dynamic-pricing-and-discounts",                        
+                            title: "SETUP WISHLISTS",
+                            description: "Let customers add products to lists and share them with family and friends.",
+                            buttonText: "Setup Wishilsts",
+                            name: "Wishlists",
+                            plsSlug: "yith-woocommerce-wishlist",
                             plsProviderName: "yith",
                             download: null,
-                            basename: "yith-woocommerce-dynamic-pricing-and-discounts/init.php",
-                            url: "edit.php?post_type=ywdpd_discount&yith-plugin-fw-panel-skip-redirect=1"
+                            basename: "yith-woocommerce-wishlist-premium/init.php",
+                            url: "admin.php?page=yith_wcwl_panel&tab=settings&sub_tab=settings-general"
                         },
                         {
                             title: "SEARCH ENGINE OPTIMIZATION",
@@ -185,7 +174,17 @@ export const wpSolutionsPromotedPluginsList = [
                             basename: "wordpress-seo/wp-seo.php",
                             url: "admin.php?page=wpseo_dashboard#top#first-time-configuration"
                         },
-
+                        {
+                            title: "CREATE A SALES CAMPAIGN",
+                            description: "Create custom upsell, cross-sell and other promotional campaigns to generate more sales.",
+                            buttonText: "Create a Campaign",
+                            name: "SALES CAMPAIGN",
+                            plsSlug: "yith-woocommerce-dynamic-pricing-and-discounts",
+                            plsProviderName: "yith",
+                            download: null,
+                            basename: "yith-woocommerce-dynamic-pricing-and-discounts/init.php",
+                            url: "edit.php?post_type=ywdpd_discount&yith-plugin-fw-panel-skip-redirect=1"
+                        }
                     ],                                               
     }
 ]
