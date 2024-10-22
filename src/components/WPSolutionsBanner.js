@@ -81,7 +81,7 @@ export function WPSolutionsBanner() {
           );
     } 
     else if (apiResponse) {
-        if (purchasedSolution === null) {
+        if (purchasedSolution === null || !hasSolution) {
             return (<NoExistingPlan availableSolutions={availableSolutions} />);
         }    
         else{
