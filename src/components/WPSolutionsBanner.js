@@ -128,7 +128,15 @@ export function WPSolutionsBanner() {
                                                                             //installed but not active
                                                                             status === "need_to_activate" ? 
                                                                             (
-                                                                                <Button key={`btn-${index}`} className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start" as="button" data-plugin={details.basename}>
+                                                                                <Button key={`btn-${index}`}
+																				className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start"
+																				as="button"
+																				data-nfd-installer-plugin-activate={true}
+                                                                                data-nfd-installer-pls-slug={slug} 
+                                                                                data-nfd-installer-pls-provider={details.plsProviderName}                                                                             
+                                                                                data-nfd-installer-plugin-name={details.name}
+                                                                                data-nfd-installer-plugin-url={url}
+																				>
                                                                                     { __(`${details['cta']['text']}`,"wp-module-ecommerce") }                                                               
                                                                                     <RightArrow className="nfd-mt-2.5" />
                                                                                 </Button>   
