@@ -6,7 +6,6 @@ import { __ } from '@wordpress/i18n';
 import useSWR from 'swr';
 import {
 	myPluginsAndToolsPageLink,
-	solutionButtonTextObject,
 	wpSolutionsPromotedPluginsList,
 } from '../constants';
 import { ReactComponent as RightArrow } from '../icons/right-arrow.svg';
