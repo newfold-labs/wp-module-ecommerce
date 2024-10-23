@@ -67,9 +67,9 @@ export function WPSolutionsBanner() {
 				result.solution && setPurchasedSolution( result.solution );
 				setAvailableSolutions( result.solutions );
 			},
-			( error ) => {
+			( e ) => {
 				setIsLoaded( true );
-				setError( error );
+				setError( e );
 			}
 		);
 	}, [] );
