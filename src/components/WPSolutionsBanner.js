@@ -63,7 +63,10 @@ export function WPSolutionsBanner() {
             }
         );
     }, [] );
-    canSolution &&
+
+    if ( !canSolution ) {
+		return;
+	}
     if ( error ) {
         //Uncomment below line, to debug error in API response
         //console.log(error.message, "error");
