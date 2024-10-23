@@ -21,6 +21,8 @@ import {
   wcPluginStatusParser,
   wcProductsParser,
 } from "./selectors";
+import apiFetch from '@wordpress/api-fetch';
+
 
 const getUrl = (href) => {
   let [page, qs] = href.split("?");
@@ -36,14 +38,22 @@ function defineFeatureState() {
     isInstalling: (data) => data?.plugins?.isInstalling,
     isQueueEmpty: (data) => data?.plugins?.isQueueEmpty,
     hasUsedPlugin: (data) => data?.products.length > 0,
-    isUpsellNeeded: () => !NewfoldRuntime.hasCapability("hasYithExtended"),
+    isUpsellNeeded: () => !(NewfoldRuntime.hasCapability("hasYithExtended") && NewfoldRuntime.hasCapability("hasSolution")),
     featureUrl: (data) =>
       data?.products.length > 0 ? data.plugins?.pluginUrl : null,
+    purchasedSolution: ( data ) => data.isEcomSolution !== 'WP_SOLUTION_COMMERCE',
     upsellOptions: (data) => data?.upsellOptions,
   };
 }
 
-export const ProductsAndServicesDefinition = (props) => ({
+async function getPurchasedSolution() {
+  const url = NewfoldRuntime.createApiUrl("/newfold-solutions/v1/entitlements")
+  const res = await apiFetch( { url: `${ url }` } )
+  return res
+}
+
+export const ProductsAndServicesDefinition = (props) => (
+  {
   dataDependencies: {
     plugins: async () =>
       PluginsSdk.queries.status(
@@ -53,6 +63,7 @@ export const ProductsAndServicesDefinition = (props) => ({
       ),
     products: WooCommerceSdk.products.list,
     upsellOptions: MarketplaceSdk.eCommerceOptions,
+    isEcomSolution: () => getPurchasedSolution()
   },
   cards: [
     {
@@ -155,7 +166,7 @@ export const ProductsAndServicesDefinition = (props) => ({
     },
     {
       Card: FeatureCard,
-      shouldRender: () => true,
+      shouldRender: (state) => NewfoldRuntime.hasCapability("hasSolution") && state.purchasedSolution,
       name: "booking",
       assets: ({ isActive }) => ({
         Image: CalendarIcon,
@@ -203,11 +214,15 @@ export const ProductsAndServicesDefinition = (props) => ({
             "YITH Booking and Appointment for WooCommerce"
           ),
         },
+        {
+          key: "isEcomSolution",
+          selector: (data) => data?.solution
+        }
       ],
     },
     {
       Card: FeatureCard,
-      shouldRender: () => true,
+      shouldRender: (state) => NewfoldRuntime.hasCapability("hasSolution") && state.purchasedSolution,
       name: "gifts",
       assets: ({ isActive }) => ({
         Image: GiftIcon,
@@ -251,6 +266,10 @@ export const ProductsAndServicesDefinition = (props) => ({
           key: "upsellOptions",
           selector: findUpsellWithName("YITH WooCommerce Gift Cards"),
         },
+        {
+          key: "isEcomSolution",
+          selector: (data) => data?.solution
+        }
       ],
     },
   ],

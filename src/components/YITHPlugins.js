@@ -1,21 +1,23 @@
+import { Button, Modal, Spinner } from "@newfold/ui-component-library";
+import apiFetch from "@wordpress/api-fetch";
+import { useEffect, useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
-import { Modal, Spinner } from "@newfold/ui-component-library";
+import classNames from "classnames";
 import { YITHPluginsDefinitions } from "../configs/YITHPlugins.config";
+import { myPluginsAndToolsPageLink } from "../constants";
+import lightchest from '../icons/light-chest.svg';
+import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
+import { LoadingPanel } from "./LoadingPanel";
 import { Section } from "./Section";
 import { useCardManager } from "./useCardManager";
-import classNames from "classnames";
-import { useEffect, useState } from "@wordpress/element";
-import apiFetch from "@wordpress/api-fetch";
-import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { YithFeatureCard } from "./YithFeatureCard";
-import lightchest from '../icons/light-chest.svg';
-import { LoadingPanel } from "./LoadingPanel";
 
 export function YITHPlugins({ wpModules }) {
   const [isOpen, setIsOpen] = useState(false);
   const [pluginName, setPluginName] = useState("");
   const [yithProducts, setYithProducts] = useState([]);
   let anyPluginActive = 0;
+  const hasSolution = NewfoldRuntime.hasCapability("hasSolution");
   const [yithPluginsMap, setYithPluginsMap] = useState(new Map([
     [
       "f7834881-f5df-43ab-9c7e-c4e6969f5606",
@@ -127,6 +129,11 @@ export function YITHPlugins({ wpModules }) {
             "Unlock the full power of your plan with access to a range of exclusive WooCommerce tools powered by \nYITH. Enhance your store and keep your customers coming back for more!",
             "wp-module-ecommerce"
           )}
+          {
+            hasSolution && (<Button as="a" href={myPluginsAndToolsPageLink} className="nfd-button nfd-button--secondary nfd-flex  nfd-self-end nfd-ml-auto">
+            {__( "View all your plugins and tools", "wp-module-ecommerce" )}
+            </Button>)
+          }
         </div>
       </div>
       <Section.Content className={"nfd-pt-4 nfd-pl-4 nfd-pr-4"}>

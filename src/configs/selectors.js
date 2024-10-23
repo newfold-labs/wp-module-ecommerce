@@ -1,3 +1,5 @@
+import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
+
 export const wcTasksParser = (title) => (data) => {
   const isCompleted = (data?.[0]?.tasks ?? []).find(
     (task) => task.id === title
@@ -62,6 +64,12 @@ export const getAcademyEnrollmentDetails = () => (data) => {
     isNovice: data.onboarding_experience_level == "1",
     BH_signed_up: data.bluehost_academy_signup_clicked,
     Yoast_signed_up: data.yoast_seo_signup_status,
+  };
+};
+
+export const getMyPluginAndToolsDetails = () => (data) => {
+  return {
+    hasBrandSignedUp: NewfoldRuntime['plugin']['brand'].includes('bluehost'),
   };
 };
 
