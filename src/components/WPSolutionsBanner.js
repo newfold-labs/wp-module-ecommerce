@@ -78,8 +78,6 @@ export function WPSolutionsBanner() {
 		return;
 	}
 	if ( error ) {
-		//Uncomment below line, to debug error in API response
-		//console.log(error.message, "error");
 		return (
 			<div className="nfd-flex nfd-p-6 nfd-bg-white nfd-w-full nfd-rounded-lg nfd-text-red-700">
 				<ExclamationTriangleIcon className="nfd-w-[24px] nfd-h-[24px]" />
@@ -102,12 +100,20 @@ export function WPSolutionsBanner() {
 			return <NoExistingPlan availableSolutions={ availableSolutions } />;
 		}
 
-		currentSolution =
-			purchasedSolution === 'WP_SOLUTION_CREATOR'
-				? wpSolutionsPromotedPluginsList[ 0 ].WP_SOLUTION_CREATOR
-				: purchasedSolution === 'WP_SOLUTION_SERVICE'
-				? wpSolutionsPromotedPluginsList[ 0 ].WP_SOLUTION_SERVICE
-				: wpSolutionsPromotedPluginsList[ 0 ].WP_SOLUTION_COMMERCE;
+		switch ( purchasedSolution ) {
+			case 'WP_SOLUTION_CREATOR':
+				currentSolution =
+					wpSolutionsPromotedPluginsList[ 0 ].WP_SOLUTION_CREATOR;
+				break;
+			case 'WP_SOLUTION_SERVICE':
+				currentSolution =
+					wpSolutionsPromotedPluginsList[ 0 ].WP_SOLUTION_SERVICE;
+				break;
+			case 'WP_SOLUTION_COMMERCE':
+			default:
+				currentSolution =
+					wpSolutionsPromotedPluginsList[ 0 ].WP_SOLUTION_COMMERCE;
+		}
 		const solutionsCards = Object.values( currentSolution );
 		return (
 			hasSolution && (
