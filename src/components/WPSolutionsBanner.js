@@ -157,16 +157,10 @@ export function WPSolutionsBanner() {
 										) }
 									>
 										<h2 className="nfd-text-[#0F172A] nfd-text-lg nfd-leading-5 nfd-font-semibold nfd-mb-4">
-											{ __(
-												`${ details.title }`,
-												'wp-module-ecommerce'
-											) }
+											{ details.title }
 										</h2>
 										<p className="nfd-text-[#0F172A] nfd-text-base nfd-leading-5 nfd-font-normal nfd-mb-10">
-											{ __(
-												`${ details.description }`,
-												'wp-module-ecommerce'
-											) }
+											{ details.description }
 										</p>
 										{
 											//For type plugin
@@ -189,10 +183,7 @@ export function WPSolutionsBanner() {
 																	as="a"
 																	href={ url }
 																>
-																	{ __(
-																		`${ details.cta.text }`,
-																		'wp-module-ecommerce'
-																	) }
+																	{ details.cta.text }
 																	<RightArrow className="nfd-mt-2.5" />
 																</Button>
 															) : //installed but not active
@@ -218,10 +209,7 @@ export function WPSolutionsBanner() {
 																		url
 																	}
 																>
-																	{ __(
-																		`${ details.cta.text }`,
-																		'wp-module-ecommerce'
-																	) }
+																	{ details.cta.text }
 																	<RightArrow className="nfd-mt-2.5" />
 																</Button>
 															) : //need to install
@@ -255,10 +243,7 @@ export function WPSolutionsBanner() {
 																			'installing'
 																		}
 																	>
-																		{ __(
-																			`${ details.cta.text }`,
-																			'wp-module-ecommerce'
-																		) }
+																		{ details.cta.text }
 																		<RightArrow className="nfd-mt-2.5" />
 																	</Button>
 																) : //free
@@ -284,10 +269,7 @@ export function WPSolutionsBanner() {
 																			'installing'
 																		}
 																	>
-																		{ __(
-																			`${ details.cta.text }`,
-																			'wp-module-ecommerce'
-																		) }
+																		{ details.cta.text }
 																		<RightArrow className="nfd-mt-2.5" />
 																	</Button>
 																) : null
@@ -302,10 +284,7 @@ export function WPSolutionsBanner() {
 													as="a"
 													href={ details.cta.url }
 												>
-													{ __(
-														`${ details.cta.text }`,
-														'wp-module-ecommerce'
-													) }
+													{ details.cta.text }
 													<RightArrow className="nfd-mt-2.5" />
 												</Button>
 											)
