@@ -24,6 +24,7 @@ export function WPSolutionsBanner() {
     const [ pluginActiveStatusArray, setPluginActiveStatusArray] = useState([]);
     let currentSolution = [];    
     const hasSolution = NewfoldRuntime.hasCapability("hasSolution");
+	const canSolution = NewfoldRuntime.hasCapability( "abTestSolutionsLaunched" );
 
     let premiumPluginStatus = useSWR(
         "nfd_slug_wonder_cart",
@@ -62,7 +63,7 @@ export function WPSolutionsBanner() {
             }
         );
     }, [] );
-        
+    canSolution &&
     if ( error ) {
         //Uncomment below line, to debug error in API response
         //console.log(error.message, "error");
