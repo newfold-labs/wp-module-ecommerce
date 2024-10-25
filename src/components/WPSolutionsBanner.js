@@ -29,9 +29,6 @@ export function WPSolutionsBanner() {
 	);
 	let currentSolution = [];
 	const hasSolution = NewfoldRuntime.hasCapability( 'hasSolution' );
-	const canSolution = NewfoldRuntime.hasCapability(
-		'abTestSolutionsLaunched'
-	);
 
 	const premiumPluginStatus = useSWR(
 		'nfd_slug_wonder_cart',
@@ -73,9 +70,6 @@ export function WPSolutionsBanner() {
 		);
 	}, [] );
 
-	if ( ! canSolution ) {
-		return;
-	}
 	if ( error ) {
 		return (
 			<div className="nfd-flex nfd-p-6 nfd-bg-white nfd-w-full nfd-rounded-lg nfd-text-red-700">
