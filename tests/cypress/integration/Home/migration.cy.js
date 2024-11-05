@@ -57,8 +57,9 @@ describe(
 			cy.get( '.help-container', {
 				timeout: customCommandTimeout,
 			} ).should( 'be.visible' );
-			cy.wait( 1000 );
-			cy.get( '.help-container button.close-button' ).click();
+			cy.get( '.help-container button.close-button', {
+				timeout: 5000,
+			} ).click();
 		} );
 
 		it( 'Verify when connect domain to site clicked', () => {
@@ -73,8 +74,9 @@ describe(
 			cy.get( '.help-container', {
 				timeout: customCommandTimeout,
 			} ).should( 'be.visible' );
-			cy.wait( 1000 );
-			cy.get( '.help-container button.close-button' ).click();
+			cy.get( '.help-container button.close-button', {
+				timeout: 5000,
+			} ).click();
 		} );
 
 		it( 'Verify when continue with store setup clicked', () => {
