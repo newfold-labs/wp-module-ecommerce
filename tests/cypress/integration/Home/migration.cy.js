@@ -1,6 +1,6 @@
 import { GetPluginId } from '../wp-module-support/pluginID.cy';
 import { EventsAPI, APIList } from '../wp-module-support/eventsAPIs.cy';
-import { wpLogin } from '../wp-module-support/utils.cy';
+import { wpLogin, wpCli } from '../wp-module-support/utils.cy';
 const customCommandTimeout = 20000;
 const pluginId = GetPluginId();
 const helpCenter = JSON.stringify( {
@@ -18,19 +18,20 @@ describe(
 			if ( pluginId !== 'bluehost' ) {
 				this.skip();
 			}
-			cy.exec(
-				`npx wp-env run cli wp option set nfd_show_migration_steps "true"`
+			wpCli( `option set nfd_show_migration_steps "true"` );
+			wpCli(
+				`option set _transient_nfd_site_capabilities '${ helpCenter }' --format=json`
 			);
-			cy.exec(
-				`npx wp-env run cli wp option delete _transient_nfd_site_capabilities`,
-				{ failOnNonZeroExit: false }
+			const expiry = Math.floor( new Date().getTime() / 1000.0 ) + 3600;
+			wpCli(
+				`option set _transient_timeout_nfd_site_capabilities ${ expiry }`
 			);
-			cy.exec(
-				`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ helpCenter }' --format=json`,
-				{ timeout: customCommandTimeout }
-			);
-			cy.reload();
+
 			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
+		} );
+
+		after( () => {
+			wpCli( `transient delete nfd_site_capabilities` );
 		} );
 
 		it( 'Verify if Welcome home! section shows', () => {
@@ -57,9 +58,6 @@ describe(
 			cy.get( '.help-container', {
 				timeout: customCommandTimeout,
 			} ).should( 'be.visible' );
-			cy.get( '.help-container button.close-button', {
-				timeout: 5000,
-			} ).click();
 		} );
 
 		it( 'Verify when connect domain to site clicked', () => {
@@ -74,9 +72,6 @@ describe(
 			cy.get( '.help-container', {
 				timeout: customCommandTimeout,
 			} ).should( 'be.visible' );
-			cy.get( '.help-container button.close-button', {
-				timeout: 5000,
-			} ).click();
 		} );
 
 		it( 'Verify when continue with store setup clicked', () => {
