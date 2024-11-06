@@ -37,13 +37,13 @@ describe(
 			cy.get( '.nfd-justify-start', { timeout: customCommandTimeout } )
 				.scrollIntoView()
 				.should( 'exist' );
-			} );
+		} );
 
 		it( 'Verify if One last thing to do... section shows', () => {
 			cy.get( '#next-steps-section', { timeout: customCommandTimeout } )
 				.scrollIntoView()
 				.should( 'exist' );
-			} );
+		} );
 
 		it( 'Verify when update nameserver clicked', () => {
 			cy.intercept( APIList.update_nameserver ).as( 'events' );
@@ -57,7 +57,9 @@ describe(
 			cy.get( '.help-container', {
 				timeout: customCommandTimeout,
 			} ).should( 'be.visible' );
-			cy.get( '.close-button' ).click();
+			cy.get( '.help-container button.close-button', {
+				timeout: 5000,
+			} ).click();
 		} );
 
 		it( 'Verify when connect domain to site clicked', () => {
@@ -72,7 +74,9 @@ describe(
 			cy.get( '.help-container', {
 				timeout: customCommandTimeout,
 			} ).should( 'be.visible' );
-			cy.get( '.close-button' ).click();
+			cy.get( '.help-container button.close-button', {
+				timeout: 5000,
+			} ).click();
 		} );
 
 		it( 'Verify when continue with store setup clicked', () => {
