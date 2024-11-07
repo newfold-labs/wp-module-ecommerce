@@ -12,7 +12,7 @@ describe(
 	'Home page - post migration events with help center ',
 	{ testIsolation: true },
 	() => {
-		beforeEach( function () {
+		beforeEach( () => {
 			wpLogin();
 
 			if ( pluginId !== 'bluehost' ) {
@@ -31,6 +31,9 @@ describe(
 		} );
 
 		after( () => {
+			if ( pluginId !== 'bluehost' ) {
+				this.skip();
+			}
 			wpCli( `transient delete nfd_site_capabilities` );
 			wpCli( `option delete nfd_show_migration_steps` );
 		} );
@@ -56,10 +59,10 @@ describe(
 				.should( 'exist' )
 				.click();
 			EventsAPI( APIList.update_nameserver, pluginId );
+			cy.wait( 1000 );
 			cy.get( '.help-container', {
 				timeout: customCommandTimeout,
 			} ).should( 'be.visible' );
-			cy.wait( 1000 );
 			cy.get( '#search-input-box' )
 				.should( 'have.attr', 'value' )
 				.then( ( value ) => {
@@ -76,10 +79,10 @@ describe(
 				.should( 'exist' )
 				.click();
 			EventsAPI( APIList.connect_domain, pluginId );
+			cy.wait( 1000 );
 			cy.get( '.help-container', {
 				timeout: customCommandTimeout,
 			} ).should( 'be.visible' );
-			cy.wait( 1000 );
 			cy.get( '#search-input-box' )
 				.should( 'have.attr', 'value' )
 				.then( ( value ) => {
