@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8e3c503db192108a08c5dde42e87e08b",
+    "content-hash": "78178b7e45fc8d0d13a790ed3e36b1af",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -541,16 +541,16 @@
         },
         {
             "name": "newfold-labs/wp-module-installer",
-            "version": "1.2.0",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-installer.git",
-                "reference": "1d7cb9d6f35107f409bb38e31c469c8a87ccd55b"
+                "reference": "4b994a784f1de5c80dcf274e51ab34f083e4a26d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/1d7cb9d6f35107f409bb38e31c469c8a87ccd55b",
-                "reference": "1d7cb9d6f35107f409bb38e31c469c8a87ccd55b",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/4b994a784f1de5c80dcf274e51ab34f083e4a26d",
+                "reference": "4b994a784f1de5c80dcf274e51ab34f083e4a26d",
                 "shasum": ""
             },
             "require": {
@@ -580,10 +580,10 @@
             ],
             "description": "An installer for WordPress plugins and themes.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-installer/tree/1.2.0",
+                "source": "https://github.com/newfold-labs/wp-module-installer/tree/1.2.2",
                 "issues": "https://github.com/newfold-labs/wp-module-installer/issues"
             },
-            "time": "2024-10-23T09:22:01+00:00"
+            "time": "2024-10-25T14:26:52+00:00"
         },
         {
             "name": "newfold-labs/wp-module-loader",
