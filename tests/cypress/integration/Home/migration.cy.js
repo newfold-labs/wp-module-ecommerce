@@ -12,12 +12,14 @@ describe(
 	'Home page - post migration events with help center ',
 	{ testIsolation: true },
 	() => {
-		beforeEach( () => {
-			wpLogin();
-
+		before( function () {
 			if ( pluginId !== 'bluehost' ) {
 				this.skip();
 			}
+		} );
+
+		beforeEach( () => {
+			wpLogin();
 			wpCli( `option set nfd_show_migration_steps "true"` );
 			wpCli(
 				`option set _transient_nfd_site_capabilities '${ helpCenter }' --format=json`
@@ -31,9 +33,6 @@ describe(
 		} );
 
 		after( () => {
-			if ( pluginId !== 'bluehost' ) {
-				this.skip();
-			}
 			wpCli( `transient delete nfd_site_capabilities` );
 			wpCli( `option delete nfd_show_migration_steps` );
 		} );
