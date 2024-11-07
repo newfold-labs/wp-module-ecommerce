@@ -1,6 +1,10 @@
 import { GetPluginId } from '../wp-module-support/pluginID.cy';
 import { EventsAPI, APIList } from '../wp-module-support/eventsAPIs.cy';
-import { wpLogin } from '../wp-module-support/utils.cy';
+import {
+	wpLogin,
+	wpCli,
+	uninstallPlugins,
+} from '../wp-module-support/utils.cy';
 const customCommandTimeout = 20000;
 const pluginId = GetPluginId();
 const helpCenter = JSON.stringify( {
@@ -12,25 +16,31 @@ describe(
 	'Home page - post migration events with help center ',
 	{ testIsolation: true },
 	() => {
-		beforeEach( function () {
-			wpLogin();
-
+		before( function () {
 			if ( pluginId !== 'bluehost' ) {
 				this.skip();
 			}
-			cy.exec(
-				`npx wp-env run cli wp option set nfd_show_migration_steps "true"`
+			uninstallPlugins();
+		} );
+
+		beforeEach( () => {
+			wpLogin();
+			wpCli(
+				`option update _transient_nfd_site_capabilities '${ helpCenter }' --format=json`
 			);
-			cy.exec(
-				`npx wp-env run cli wp option delete _transient_nfd_site_capabilities`,
-				{ failOnNonZeroExit: false }
+			const expiry = Math.floor( new Date().getTime() / 1000.0 ) + 3600;
+			wpCli(
+				`option update _transient_timeout_nfd_site_capabilities ${ expiry }`
 			);
-			cy.exec(
-				`npx wp-env run cli wp option set _transient_nfd_site_capabilities '${ helpCenter }' --format=json`,
-				{ timeout: customCommandTimeout }
-			);
-			cy.reload();
+			// this resets on longin, so must be reset to true here
+			wpCli( 'option update nfd_show_migration_steps 1' );
+
 			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
+		} );
+
+		after( () => {
+			wpCli( `transient delete nfd_site_capabilities` );
+			wpCli( `option delete nfd_show_migration_steps` );
 		} );
 
 		it( 'Verify if Welcome home! section shows', () => {
@@ -47,6 +57,7 @@ describe(
 
 		it( 'Verify when update nameserver clicked', () => {
 			cy.intercept( APIList.update_nameserver ).as( 'events' );
+			cy.reload();
 			cy.get( '#onboarding-list [data-testid="nameservers"]', {
 				timeout: customCommandTimeout,
 			} )
@@ -54,16 +65,20 @@ describe(
 				.should( 'exist' )
 				.click();
 			EventsAPI( APIList.update_nameserver, pluginId );
+			cy.wait( 1000 );
 			cy.get( '.help-container', {
 				timeout: customCommandTimeout,
 			} ).should( 'be.visible' );
-			cy.get( '.help-container button.close-button', {
-				timeout: 5000,
-			} ).click();
+			cy.get( '#search-input-box' )
+				.should( 'have.attr', 'value' )
+				.then( ( value ) => {
+					expect( value.toLowerCase() ).to.contain( 'nameserver' );
+				} );
 		} );
 
 		it( 'Verify when connect domain to site clicked', () => {
 			cy.intercept( APIList.connect_domain ).as( 'events' );
+			cy.reload();
 			cy.get( '#onboarding-list [data-testid="domain"]', {
 				timeout: customCommandTimeout,
 			} )
@@ -71,15 +86,19 @@ describe(
 				.should( 'exist' )
 				.click();
 			EventsAPI( APIList.connect_domain, pluginId );
+			cy.wait( 1000 );
 			cy.get( '.help-container', {
 				timeout: customCommandTimeout,
 			} ).should( 'be.visible' );
-			cy.get( '.help-container button.close-button', {
-				timeout: 5000,
-			} ).click();
+			cy.get( '#search-input-box' )
+				.should( 'have.attr', 'value' )
+				.then( ( value ) => {
+					expect( value.toLowerCase() ).to.contain( 'domain' );
+				} );
 		} );
 
 		it( 'Verify when continue with store setup clicked', () => {
+			cy.reload();
 			cy.get( '#onboarding-list [data-testid="continue"]', {
 				timeout: customCommandTimeout,
 			} )
