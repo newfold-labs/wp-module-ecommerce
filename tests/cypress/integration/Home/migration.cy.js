@@ -32,6 +32,7 @@ describe(
 
 		after( () => {
 			wpCli( `transient delete nfd_site_capabilities` );
+			wpCli( `option delete nfd_show_migration_steps` );
 		} );
 
 		it( 'Verify if Welcome home! section shows', () => {
@@ -58,6 +59,12 @@ describe(
 			cy.get( '.help-container', {
 				timeout: customCommandTimeout,
 			} ).should( 'be.visible' );
+			cy.wait( 1000 );
+			cy.get( '#search-input-box' )
+				.should( 'have.attr', 'value' )
+				.then( ( value ) => {
+					expect( value.toLowerCase() ).to.contain( 'nameserver' );
+				} );
 		} );
 
 		it( 'Verify when connect domain to site clicked', () => {
@@ -72,6 +79,12 @@ describe(
 			cy.get( '.help-container', {
 				timeout: customCommandTimeout,
 			} ).should( 'be.visible' );
+			cy.wait( 1000 );
+			cy.get( '#search-input-box' )
+				.should( 'have.attr', 'value' )
+				.then( ( value ) => {
+					expect( value.toLowerCase() ).to.contain( 'domain' );
+				} );
 		} );
 
 		it( 'Verify when continue with store setup clicked', () => {
