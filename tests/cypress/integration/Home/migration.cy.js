@@ -1,6 +1,10 @@
 import { GetPluginId } from '../wp-module-support/pluginID.cy';
 import { EventsAPI, APIList } from '../wp-module-support/eventsAPIs.cy';
-import { wpLogin, wpCli } from '../wp-module-support/utils.cy';
+import {
+	wpLogin,
+	wpCli,
+	uninstallPlugins,
+} from '../wp-module-support/utils.cy';
 const customCommandTimeout = 20000;
 const pluginId = GetPluginId();
 const helpCenter = JSON.stringify( {
@@ -16,18 +20,20 @@ describe(
 			if ( pluginId !== 'bluehost' ) {
 				this.skip();
 			}
+			uninstallPlugins();
 		} );
 
 		beforeEach( () => {
 			wpLogin();
-			wpCli( `option set nfd_show_migration_steps "true"` );
 			wpCli(
-				`option set _transient_nfd_site_capabilities '${ helpCenter }' --format=json`
+				`option update _transient_nfd_site_capabilities '${ helpCenter }' --format=json`
 			);
 			const expiry = Math.floor( new Date().getTime() / 1000.0 ) + 3600;
 			wpCli(
-				`option set _transient_timeout_nfd_site_capabilities ${ expiry }`
+				`option update _transient_timeout_nfd_site_capabilities ${ expiry }`
 			);
+			// this resets on longin, so must be reset to true here
+			wpCli( 'option update nfd_show_migration_steps 1' );
 
 			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
 		} );
@@ -51,6 +57,7 @@ describe(
 
 		it( 'Verify when update nameserver clicked', () => {
 			cy.intercept( APIList.update_nameserver ).as( 'events' );
+			cy.reload();
 			cy.get( '#onboarding-list [data-testid="nameservers"]', {
 				timeout: customCommandTimeout,
 			} )
@@ -71,6 +78,7 @@ describe(
 
 		it( 'Verify when connect domain to site clicked', () => {
 			cy.intercept( APIList.connect_domain ).as( 'events' );
+			cy.reload();
 			cy.get( '#onboarding-list [data-testid="domain"]', {
 				timeout: customCommandTimeout,
 			} )
@@ -90,6 +98,7 @@ describe(
 		} );
 
 		it( 'Verify when continue with store setup clicked', () => {
+			cy.reload();
 			cy.get( '#onboarding-list [data-testid="continue"]', {
 				timeout: customCommandTimeout,
 			} )
