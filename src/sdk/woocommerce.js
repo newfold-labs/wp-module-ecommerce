@@ -7,7 +7,7 @@ import { WordPressSdk } from "./wordpress";
 const Endpoints = {
   ORDERS: (period) => NewfoldRuntime.createApiUrl("/wc/v3/orders", period),
   ALL_TIME_ORDERS: NewfoldRuntime.createApiUrl("/wc/v3/orders"),
-  PRODUCTS: NewfoldRuntime.createApiUrl("/wc/store/products"),
+  PRODUCTS: NewfoldRuntime.createApiUrl("/wc/v3/products"),
   Analytics: {
     JETPACK: (range) =>
       NewfoldRuntime.createApiUrl("/jetpack/v4/module/stats/data", { range }),
