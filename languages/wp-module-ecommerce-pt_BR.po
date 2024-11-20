@@ -838,7 +838,6 @@ msgstr "Você está a apenas alguns passos de compartilhar seu site com o mundo!
 msgid "Welcome home!"
 msgstr "Bem-vindo ao lar!"
 
-
 #: build/index.js:1
 msgid "Your site has been successfully migrated."
 msgstr "Seu site foi migrado com sucesso."
@@ -1205,7 +1204,6 @@ msgstr "Melhore seu site com as ferramentas e serviços incluídos em seu plano.
 msgid "Sales Channels"
 msgstr "Canais de vendas"
 
-
 #: build/index.js:1
 msgid "Sell your products everywhere, confidently, with Ecomdash."
 msgstr "Venda seus produtos em qualquer lugar, com confiança, com o Ecomdash."
@@ -1365,7 +1363,6 @@ msgstr "Modelos de inventário personalizados"
 #: build/index.js:1
 msgid "Creating a custom file template allows you to"
 msgstr "Criar um modelo de arquivo personalizado permite que você"
-
 
 #: build/index.js:1
 msgid "upload and/or export files with product data"
