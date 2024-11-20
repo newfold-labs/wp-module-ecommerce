@@ -1184,8 +1184,8 @@ msgid "Choose the set of plugins and services that's right for your needs. You'r
 msgstr "Elija el conjunto de complementos y servicios que se ajuste a sus necesidades. Está cubierto por nuestra garantía de devolución de dinero de 30 días sin objeciones."
 
 #: build/index.js:1
+msgid "/mo"
 msgstr "/mes"
-msgstr ""
 
 #: build/index.js:1
 msgid "Original price"

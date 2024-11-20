@@ -857,9 +857,10 @@
                 "Actualice su plan para el éxito."
             ],
             "Choose the set of plugins and services that's right for your needs. You're covered by our no-quibble, 30 day money back guarantee.": [
-                "Elija el conjunto de complementos y servicios que se ajuste a sus necesidades. Está cubierto por nuestra garantía de devolución de dinero de 30 días sin objeciones.",
-                "/mes",
-                ""
+                "Elija el conjunto de complementos y servicios que se ajuste a sus necesidades. Está cubierto por nuestra garantía de devolución de dinero de 30 días sin objeciones."
+            ],
+            "/mo": [
+                "/mes"
             ],
             "Original price": [
                 "Precio original"
