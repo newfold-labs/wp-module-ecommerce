@@ -17,1176 +17,868 @@ msgstr ""
 msgid "eCommerce"
 msgstr "E-commerce"
 
-#: includes/ECommerce.php:281
+#: includes/ECommerce.php:272
+#: includes/ECommerce.php:283
 #: includes/ECommerce.php:292
 #: includes/ECommerce.php:301
 #: includes/ECommerce.php:310
 #: includes/ECommerce.php:319
-#: includes/ECommerce.php:328
-#: includes/ECommerce.php:357
+#: includes/ECommerce.php:348
 msgid "NFD eCommerce Options"
 msgstr "Opções NFD E-commerce"
 
-#: build/index.js:9081
-#: build/index.js:7702
+#: build/index.js:1
 msgid "Live"
 msgstr "No ar"
 
-#: includes/Partials/CaptiveFlow.php:59
+#: includes/Partials/CaptiveFlow.php:90
 msgid "NFD eCommerce RazorPay Options"
 msgstr "Opções RazorPay NFD E-commerce"
 
-#: build/index.js:7341
-#: build/index.js:5831
+#: build/index.js:1
 msgid "Payments"
 msgstr "Pagamentos"
 
-#: build/index.js:7379
-#: build/index.js:5875
+#: build/index.js:1
 msgid "yes"
 msgstr "sim"
 
-#: build/index.js:7380
-#: build/index.js:5876
+#: build/index.js:1
 msgid "Credit Card/Debit Card/NetBanking"
 msgstr "Cartão de Crédito/Cartão de Débito/Débito em Conta"
 
-#: build/index.js:7381
-#: build/index.js:5880
+#: build/index.js:1
 msgid "Pay securely by Credit or Debit card or Internet Banking through Razorpay."
 msgstr "Pague com segurança em Cartões de Crédito, Débito ou Débito em Conta via Razorpay."
 
-#: build/index.js:7382
-#: build/index.js:5884
+#: build/index.js:1
 msgid "capture"
 msgstr "capturar"
 
-#: build/index.js:7383
-#: build/index.js:5885
+#: build/index.js:1
 msgid "Thank you for shopping with us. Your account has been charged and your transaction is successful. We will be processing your order soon."
 msgstr "Obrigado por comprar conosco. Seu pagamento foi feito com sucesso. Enviaremos sua compra em breve."
 
-#: build/index.js:7392
-#: build/index.js:5897
+#: build/index.js:1
 msgid "Successfully saved the Payment Details"
 msgstr "Dados de Pagamento Salvos com Sucesso"
 
-#: build/index.js:7427
-#: build/index.js:9383
-#: build/index.js:5943
-#: build/index.js:7999
+#: build/index.js:1
 msgid "Discard Changes"
 msgstr "Descartar Alterações"
 
-#: build/index.js:7432
-#: build/index.js:9388
-#: build/index.js:5946
-#: build/index.js:8002
+#: build/index.js:1
 msgid "Save Changes"
 msgstr "Salvar Alterações"
 
-#: build/index.js:7470
-#: build/index.js:5967
+#: build/index.js:1
 msgid "Key ID *"
 msgstr "ID da Chave *"
 
-#: build/index.js:7471
-#: build/index.js:5968
+#: build/index.js:1
 msgid "Test Key ID *"
 msgstr "ID da Chave Teste *"
 
-#: build/index.js:7472
-#: build/index.js:5969
+#: build/index.js:1
 msgid "Key Secret *"
 msgstr "Segredo da Chave *"
 
-#: build/index.js:7473
-#: build/index.js:5970
+#: build/index.js:1
 msgid "Test Key Secret *"
 msgstr "Segredo da Chave Teste *"
 
-#: build/index.js:7474
-#: build/index.js:5972
+#: build/index.js:1
 msgid "The key ID can be found in the \"%1$sAPI Keys%2$s\" section of your Razorpay dashboard."
 msgstr "O ID da chave pode ser encontrado na seção \"%1$sAPI Keys%2$s\" de seu “ painel RazorPay."
 
-#: build/index.js:7475
-#: build/index.js:5979
+#: build/index.js:1
 msgid "That is not a valid test key ID. Please check your key ID and enter it again."
 msgstr "ID da Chave Teste inválido. Verifique o ID e tente novamente."
 
-#: build/index.js:7476
-#: build/index.js:5983
+#: build/index.js:1
 msgid "That is not a valid production key ID. Please check your key ID and enter it again."
 msgstr "ID da Chave inválido. Verifique  o ID e tente novamente."
 
-#: build/index.js:7477
-#: build/index.js:5988
+#: build/index.js:1
 msgid "The key secret can be found in the \"%1$sAPI Keys%2$s\" section of your Razorpay dashboard."
 msgstr "O segredo da chave pode ser encontrado na seção \"%1$sAPI Keys%2$s\" de “ seu painel RazorPay."
 
-#: build/index.js:7515
-#: build/index.js:6039
+#: build/index.js:1
 msgid "Create an Account"
 msgstr "Crie uma Conta"
 
-#: build/index.js:7517
-#: build/index.js:6044
+#: build/index.js:1
 msgid "Already have an account? "
 msgstr "Já possui uma conta? "
 
-#: build/index.js:7520
-#: build/index.js:6049
+#: build/index.js:1
 msgid "Login"
 msgstr "Login"
 
-#: build/index.js:7522
-#: build/index.js:6053
+#: build/index.js:1
 msgid "After you login to Razorpay, you will need to generate your key ID and key secret codes, you will then need to switch back to this tab in your browser and paste your codes into the fields below."
 msgstr ""
 "Após fazer login no Razorpay, você precisará gerar seus códigos de ID da \n"
 "chave e segredo da chave. Na sequência, volte para esta guia do seu \n"
 "navegador e informe os códigos nos campos abaixo."
 
-#: build/index.js:7527
-#: build/index.js:6064
+#: build/index.js:1
 msgid "Enable Test Mode"
 msgstr "Habilite o Modo Teste"
 
-#: build/index.js:7674
-#: build/index.js:6189
+#: build/index.js:1
 msgid "Learn More"
 msgstr "Saber Mais"
 
-#: build/index.js:7676
-#: build/index.js:6197
+#: build/index.js:1
 msgid "please wait while other features are installed..."
 msgstr "aguarde enquanto outros recursos são instalados…"
 
-#: build/index.js:7689
-#: build/index.js:6226
+#: build/index.js:1
 msgid "Purchase"
 msgstr "Comprar"
 
-#: build/index.js:7695
-#: build/index.js:8288
-#: build/index.js:8739
-#: build/index.js:9012
-#: build/index.js:9701
-#: build/index.js:10429
-#: build/index.js:6245
-#: build/index.js:6815
-#: build/index.js:7323
-#: build/index.js:7625
-#: build/index.js:8332
-#: build/index.js:9106
+#: build/index.js:1
 msgid "Installing..."
 msgstr "Instalando…"
 
-#: build/index.js:7730
-#: build/index.js:6265
+#: build/index.js:1
 msgid "Improve your store with these free add-ons included in your plan."
 msgstr "Aprimore sua loja com esses adicionais gratuitos inclusos em seu plano."
 
-#: build/index.js:7730
-#: build/index.js:6269
+#: build/index.js:1
 msgid "Improve your site with these free add-ons included in your plan."
 msgstr "Aprimore seu site com esses adicionais gratuitos inclusos em seu plano."
 
-#: build/index.js:7741
-#: build/index.js:6279
+#: build/index.js:1
 msgid "Additional Features"
 msgstr "Recursos Adicionais"
 
-#: build/index.js:7902
-#: build/index.js:6407
+#: build/index.js:1
 msgid "Next steps for your store"
 msgstr "Próximos passos para sua loja"
 
-#: build/index.js:7902
-#: build/index.js:6408
+#: build/index.js:1
 msgid "Next steps for your site"
 msgstr "Próximos passos para seu site"
 
-#: build/index.js:7902
-#: build/index.js:6426
+#: build/index.js:1
 msgid "Great job! You've completed all the current tasks to get your store up and running successfully!"
 msgstr "Ótimo! Você completou todas as tarefas para colocar sua loja no ar com sucesso!"
 
-#: build/index.js:7902
-#: build/index.js:6430
+#: build/index.js:1
 msgid "Great job! You've completed all the current tasks to get your site up and running successfully!"
 msgstr "Ótimo! Você completou todas as tarefas para colocar seu site no ar com sucesso!"
 
-#: build/index.js:7902
-#: build/index.js:6437
+#: build/index.js:1
 msgid "If you want to edit any of the info from the steps you've completed, simply click on the \"View completed tasks\" link below."
 msgstr "Se quiser editar qualquer informação dos passos anteriores, clique em “Ver tarefas concluídas” abaixo."
 
-#: build/index.js:7913
-#: build/index.js:6461
+#: build/index.js:1
 msgid "View remaining tasks"
 msgstr "Ver tarefas restantes"
 
-#: build/index.js:7913
-#: build/index.js:6462
+#: build/index.js:1
 msgid "View completed tasks"
 msgstr "Ver tarefas concluídas"
 
-#: build/index.js:7963
-#: build/index.js:6485
+#: build/index.js:1
 msgid "Congrats on your new store!"
 msgstr "Parabéns por sua nova loja!"
 
-#: build/index.js:7963
-#: build/index.js:6486
+#: build/index.js:1
 msgid "Congrats on your new site!"
 msgstr "Parabéns por seu novo site!"
 
-#: build/index.js:7902
-#: build/index.js:6412
+#: build/index.js:1
 msgid "You're just a few steps away from sharing your store with the world!"
 msgstr "Você está há poucos passos de mostrar sua loja com ao mundo!"
 
-#: build/index.js:7968
-#: build/index.js:6494
+#: build/index.js:1
 msgid "Ready to go to the next level?"
 msgstr "Que tal subir de nível?"
 
-#: build/index.js:8189
-#: build/index.js:6731
+#: build/index.js:1
 msgid "Offline Payments"
 msgstr "Pagamentos Offline"
 
-#: build/index.js:8190
-#: build/index.js:6731
+#: build/index.js:1
 msgid "Accept payments (money orders, bank transfers or C.O.D.) that are made outside your online store. "
 msgstr "Aceite pagamentos (pix, transferências bancárias ou outros) feitos fora de sua loja virtual. "
 
-#: build/index.js:8195
-#: build/index.js:6735
+#: build/index.js:1
 msgid "Manual Payment methods"
 msgstr "Métodos de Pagamento Manuais"
 
-#: build/index.js:8197
-#: build/index.js:6737
+#: build/index.js:1
 msgid "When a customer selects a manual payment method, you'll need to approve their order before it can be fulfilled."
 msgstr "Quando um cliente escolher um método de pagamento manual, você precisará aprovar a compra para que ela seja efetivada."
 
-#: build/index.js:8269
-#: build/index.js:6786
+#: build/index.js:1
 msgid "PayPal"
 msgstr "PayPal"
 
-#: build/index.js:8270
-#: build/index.js:6787
+#: build/index.js:1
 msgid "Online payments built for success. We help you do business in 200+ markets and 100+ currencies—even if your customers don't have PayPal."
 msgstr "Pagamentos online criados para o sucesso. Ajudamos você a fazer negócios em 200+ mercados e 100+ moedas."
 
-#: build/index.js:8294
-#: build/index.js:8730
-#: build/index.js:9003
-#: build/index.js:9689
-#: build/index.js:10728
-#: build/index.js:10750
-#: build/index.js:10772
-#: build/index.js:10794
-#: build/index.js:10816
-#: build/index.js:10838
-#: build/index.js:6828
-#: build/index.js:7298
-#: build/index.js:7600
-#: build/index.js:8314
-#: build/index.js:9345
-#: build/index.js:9374
-#: build/index.js:9403
-#: build/index.js:9433
-#: build/index.js:9462
-#: build/index.js:9492
+#: build/index.js:1
 msgid "Manage"
 msgstr "Gerenciar"
 
-#: build/index.js:8734
-#: build/index.js:9007
-#: build/index.js:9697
-#: build/index.js:7309
-#: build/index.js:7611
-#: build/index.js:8324
+#: build/index.js:1
 msgid "Connect"
 msgstr "Conectar"
 
-#: build/index.js:8300
-#: build/index.js:8747
-#: build/index.js:9014
-#: build/index.js:9703
-#: build/index.js:6848
-#: build/index.js:7354
-#: build/index.js:7637
-#: build/index.js:8338
+#: build/index.js:1
 msgid "Environment:"
 msgstr "Ambiente:"
 
-#: build/index.js:8310
-#: build/index.js:6868
+#: build/index.js:1
 msgid "White-Labeling"
 msgstr "White-Label"
 
-#: build/index.js:8310
-#: build/index.js:6870
+#: build/index.js:1
 msgid "Country-specific payment methods"
 msgstr "Meios de pagamento por país"
 
-#: build/index.js:8372
-#: build/index.js:6925
+#: build/index.js:1
 msgid "Products & Services"
 msgstr "Produtos & Serviços"
 
-#: build/index.js:8373
-#: build/index.js:6926
+#: build/index.js:1
 msgid "Come here to manage products and services or add new ones to your store."
 msgstr "Gerencie aqui seus produtos e serviços ou adicione novos à sua loja."
 
-#: build/index.js:8381
-#: build/index.js:6941
+#: build/index.js:1
 msgid "Want help adding products?"
 msgstr "Precisa de ajuda para adicionar produtos?"
 
-#: build/index.js:8383
-#: build/index.js:6944
+#: build/index.js:1
 msgid ""
 "Read this helpful knowledge base article to understand how to\n"
 "add different products to your store"
 msgstr "Acesse a base de conhecimento para saber como” adicionar diferentes produtos à sua loja"
 
-#: build/index.js:8392
-#: build/index.js:6964
+#: build/index.js:1
 msgid " How to add products"
 msgstr " Como adicionar produtos"
 
-#: build/index.js:8622
-#: build/index.js:7160
-msgid "No orders yet. When you start getting orders, they will show up here."
-msgstr "Sem vendas ainda. Quando chegarem, elas aparecerão aqui."
-
-#: build/index.js:8709
-#: build/index.js:7265
+#: build/index.js:1
 msgid "Razorpay"
 msgstr "Razorpay"
 
-#: build/index.js:8710
-#: build/index.js:7266
+#: build/index.js:1
 msgid "Build specifically for companies based in India, manage all your payments and financial operations from a consolidated dashboard"
 msgstr "Criado especialmente para empresas da India, gerencie seus pagamentos e operações financeiras em um relatório consolidado"
 
-#: build/index.js:8743
-#: build/index.js:9711
-#: build/index.js:7330
-#: build/index.js:8354
+#: build/index.js:1
 msgid "Complete control over the receiving and managing payments"
 msgstr "Controle completo sobre recebimento e gerenciamento de pagamentos"
 
-#: build/index.js:8745
-#: build/index.js:7337
+#: build/index.js:1
 msgid "Immediate capture of funds"
 msgstr "Recebimento imediato"
 
-#: build/index.js:8745
-#: build/index.js:7340
+#: build/index.js:1
 msgid "Instant refunds and settlements"
 msgstr "Reembolso & acordos"
 
-#: build/index.js:8745
-#: build/index.js:7346
+#: build/index.js:1
 msgid "Fight fraud with Thirdwatch"
 msgstr "Combata a fraude com Thirdwatch"
 
-#: build/index.js:8745
-#: build/index.js:7348
+#: build/index.js:1
 msgid "Intuitive reporting"
 msgstr "Relatórios intuitivos"
 
-#: build/index.js:8983
-#: build/index.js:7568
+#: build/index.js:1
 msgid "Shipping Options"
 msgstr "Opções de Envio"
 
-#: build/index.js:8984
-#: build/index.js:7569
+#: build/index.js:1
 msgid "Setup a shipping account for delivering products to your customers"
 msgstr "Crie uma conta para enviar produtos para seus clientes"
 
-#: build/index.js:9012
-#: build/index.js:7630
+#: build/index.js:1
 msgid "The best multi-carrier shipping software for e-commerce businesses."
 msgstr "A melhor plataforma multi-transportadoras para lojas virtuais."
 
-#: build/index.js:9054
-#: build/index.js:7669
+#: build/index.js:1
 msgid "Coming Soon activated"
 msgstr "Em Breve ativado"
 
-#: build/index.js:9054
-#: build/index.js:7671
+#: build/index.js:1
 msgid "Your store is online and ready for business!"
 msgstr "Sua loja virtual está no ar e pronta para vender!"
 
-#: build/index.js:9054
-#: build/index.js:7672
+#: build/index.js:1
 msgid "Your site is online now!"
 msgstr "Seu site está no ar!"
 
-#: build/index.js:9055
-#: build/index.js:7677
+#: build/index.js:1
 msgid "You can re-enable the 'Coming Soon' mode in “Settings”."
 msgstr "Você pode habilitar o modo “Em Breve” novamente em “Configurações”."
 
-#: build/index.js:9093
-#: build/index.js:7716
+#: build/index.js:1
 msgid "Ready to go live?"
 msgstr "Pronto para publicar?"
 
-#: build/index.js:9110
-#: build/index.js:7759
+#: build/index.js:1
 msgid "Launch your store"
 msgstr "Coloque sua loja no ar"
 
-#: build/index.js:9110
-#: build/index.js:7760
+#: build/index.js:1
 msgid "Launch your site"
 msgstr "Coloque seu site no ar"
 
-#: build/index.js:9154
-#: build/index.js:7788
+#: build/index.js:1
 msgid "Store"
 msgstr "Loja"
 
-#: build/index.js:9300
-#: build/index.js:7912
+#: build/index.js:1
 msgid "Store Details"
 msgstr "Detalhes da Loja"
 
-#: build/index.js:9301
-#: build/index.js:7913
+#: build/index.js:1
 msgid "This is the place for all your general store details and setup."
 msgstr "Este é o local para todos os detalhes e configurações gerais da sua loja."
 
-#: build/index.js:9457
-#: build/index.js:8052
+#: build/index.js:1
 msgid "Store Info"
 msgstr "Informações da Loja"
 
-#: build/index.js:9458
-#: build/index.js:8053
+#: build/index.js:1
 msgid "We'll use this information to help you setup your online store"
 msgstr "Usaremos essas informações para te ajudar a configurar sua loja virtual"
 
-#: build/index.js:9747
-#: build/index.js:8405
+#: build/index.js:1
 msgid "Yes, enable sales tax."
 msgstr "Sim, habilitar imposto sobre vendas."
 
-#: build/index.js:9750
-#: build/index.js:8409
+#: build/index.js:1
 msgid "No, don't enable sales tax."
 msgstr "Não, não habilitar imposto sobre vendas."
 
-#: build/index.js:9759
-#: build/index.js:8419
+#: build/index.js:1
 msgid "Tax Settings"
 msgstr "Configurações de Impostos"
 
-#: build/index.js:9760
-#: build/index.js:8420
+#: build/index.js:1
 msgid "Decide whether you want to collect sales tax on items you sell. You can change this setting at anytime"
 msgstr "Decida se deseja coletar imposto sobre vendas dos itens da sua loja. Você. Pode alterar essa configuração a qualquer momento"
 
-#: build/index.js:9761
-#: build/index.js:8426
+#: build/index.js:1
 msgid "Would you like to enable sales tax?"
 msgstr "Gostaria de ativar o imposto sobre vendas?"
 
-#: build/index.js:10122
-#: build/index.js:8738
-msgid "Add Upsells, Cross-sells, and other Promotions to your store"
-msgstr "Adicione Upsell, Cross-sell e outras ações à sua loja"
-
-#: build/index.js:10135
-#: build/index.js:10141
-#: build/index.js:8773
-#: build/index.js:8792
-msgid "Install now"
-msgstr "Instale agora"
-
-#: build/index.js:10200
-#: build/index.js:8843
+#: build/index.js:1
 msgid "Install WooCommerce"
 msgstr "Instale o WooCommerce"
 
-#: build/index.js:10600
-#: build/index.js:10652
-#: build/index.js:11960
-#: build/index.js:9240
-#: build/index.js:9273
-#: build/index.js:10707
+#: build/index.js:1
 msgid "Please try again, or "
 msgstr "Por favor tente novamente, ou "
 
-#: build/index.js:10603
-#: build/index.js:10655
-#: build/index.js:11963
-#: build/index.js:9242
-#: build/index.js:9275
-#: build/index.js:10709
+#: build/index.js:1
 msgid "contact support"
 msgstr "contatar suporte"
 
-#: build/index.js:10726
-#: build/index.js:9337
+#: build/index.js:1
 msgid "Jetpack Boost - Website Speed, Performance and Critical CSS"
 msgstr "Jetpack Boost – Velocidade do Site, Performance e CSS"
 
-#: build/index.js:10727
-#: build/index.js:9341
+#: build/index.js:1
 msgid "Speed up your WordPress site by optimizing page performance with Jetpack Boost."
 msgstr "Acelere seu site WordPress otimizando a performance das páginas com Jetpack Boost."
 
-#: build/index.js:10748
-#: build/index.js:9366
+#: build/index.js:1
 msgid "Contact Form by WPForms - Drag & Drop Form Builder for WordPress"
 msgstr "Formulário de Contato by WPForms – Criador de Formulário Arraste & Solte para WP"
 
-#: build/index.js:10749
-#: build/index.js:9370
+#: build/index.js:1
 msgid "The best WordPress contact form plugin. Drag & Drop online form builder to create beautiful contact forms, payment forms, & other custom forms."
 msgstr "O melhor plugin de formulários para WordPress. Criador de formulários arraste & solte para obter lindos formulários de contato, pagamento e personalizados."
 
-#: build/index.js:10770
-#: build/index.js:9395
+#: build/index.js:1
 msgid "MonsterInsights - Google Analytics Dashboard for WordPress (Website Stats Made Easy)"
 msgstr "MonsterInsights - Painel do Google Analytics para WordPress (Estatísticas do Site Facilitadas)"
 
-#: build/index.js:10771
-#: build/index.js:9399
+#: build/index.js:1
 msgid "The best free Google Analytics plugin for WordPress. See how visitors find and use your website, so you can grow your business."
 msgstr "O melhor plugin gratuito do Google Analytics para WP. Veja como visitantes encontram e usam seu site para expandir seus negócios."
 
-#: build/index.js:10792
-#: build/index.js:9428
+#: build/index.js:1
 msgid "Yoast SEO"
 msgstr "Yoast SEO"
 
-#: build/index.js:10793
-#: build/index.js:9429
+#: build/index.js:1
 msgid "Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the Yoast SEO plugin."
 msgstr "Aprimore o SEO do seu WordPress: Escreva conteúdo melhor e tenha um site totalmente otimizado usando o Yoast SEO."
 
-#: build/index.js:10814
-#: build/index.js:9454
+#: build/index.js:1
 msgid "Creative Mail - Easier WordPress & WooCommerce Email Marketing"
 msgstr "Creative Mail – E-mail Marketing fácil para WordPress & WooCommerce"
 
-#: build/index.js:10815
-#: build/index.js:9458
+#: build/index.js:1
 msgid "Creative Mail was designed specifically for WordPress and WooCommerce. Our intelligent (and super fun) email editor simplifies email marketing campaign."
 msgstr "Creative Mail foi projetado especificamente para WordPress e WooCommerce. Nosso editor de e-mail inteligente (e divertido) simplifica a campanha de e-mail marketing."
 
-#: build/index.js:10836
-#: build/index.js:9487
+#: build/index.js:1
 msgid "OptinMonster - Lead Generation"
 msgstr "OptinMonster – Gerador de Leads"
 
-#: build/index.js:10837
-#: build/index.js:9488
+#: build/index.js:1
 msgid "OptinMonster is the best WordPress popup builder plugin that helps you grow your email newsletter list and sales with email popups, exit intent popups, floating bars and more!"
 msgstr "OptinMonster é o melhor plugin de criação de pop-up para WP que ajuda você a aumentar suas listas de e-mail e suas vendas com pop-ups de e-mail, de saída, barras flutuantes e muito mais!"
 
-#: build/index.js:11055
-#: build/index.js:9714
+#: build/index.js:1
 msgid "Add your store info"
 msgstr "Adicione as informações da sua loja"
 
-#: build/index.js:11072
-#: build/index.js:9729
+#: build/index.js:1
 msgid "Connect a payment processor"
 msgstr "Conecte uma plataforma de pagamento"
 
-#: build/index.js:11089
-#: build/index.js:9753
+#: build/index.js:1
 msgid "Setup shipping options"
 msgstr "Configure opções de envio"
 
-#: build/index.js:11106
-#: build/index.js:9773
+#: build/index.js:1
 msgid "Configure tax settings"
 msgstr "Configure impostos"
 
-#: build/index.js:11123
-#: build/index.js:11298
-#: build/index.js:9788
-#: build/index.js:9969
+#: build/index.js:1
 msgid "Add a product"
 msgstr "Adicione produtos"
 
-#: build/index.js:11156
-#: build/index.js:9821
+#: build/index.js:1
 msgid "Add a new page to your store"
 msgstr "Adicione uma nova página à sua loja"
 
-#: build/index.js:11156
-#: build/index.js:9822
+#: build/index.js:1
 msgid "Add a new page to your site"
 msgstr "Adicione uma nova página ao seu site"
 
-#: build/index.js:11188
-#: build/index.js:9860
+#: build/index.js:1
 msgid "Connect to your social media accounts"
 msgstr "Conecte suas redes sociais"
 
-#: build/index.js:11209
-#: build/index.js:9884
+#: build/index.js:1
 msgid "Enable Jetpack to connect to your social media accounts"
 msgstr "Habilite o Jetpack para se conectar às suas redes sociais"
 
-#: build/index.js:11297
-#: build/index.js:9968
+#: build/index.js:1
 msgid "Add a Product"
 msgstr "Adicione produtos"
 
-#: build/index.js:11321
-#: build/index.js:9997
+#: build/index.js:1
 msgid "Manage Your Products"
 msgstr "Gerencie Seus Produtos"
 
-#: build/index.js:11322
-#: build/index.js:9998
+#: build/index.js:1
 msgid "Manage products"
 msgstr "Importe produtos"
 
-#: build/index.js:11349
-#: build/index.js:10032
+#: build/index.js:1
 msgid "Import Products via CSV"
 msgstr "Importe produtos via CSV"
 
-#: build/index.js:11350
-#: build/index.js:10033
+#: build/index.js:1
 msgid "Import products"
 msgstr "Importe produtos"
 
-#: build/index.js:10728
-#: build/index.js:10750
-#: build/index.js:10772
-#: build/index.js:10794
-#: build/index.js:10816
-#: build/index.js:10838
-#: build/index.js:9345
-#: build/index.js:9374
-#: build/index.js:9403
-#: build/index.js:9433
-#: build/index.js:9462
-#: build/index.js:9492
+#: build/index.js:1
 msgid "Enable"
 msgstr "Habilitar"
 
-#: build/index.js:11591
-#: build/index.js:10296
+#: build/index.js:1
 msgid "Total Sales"
 msgstr "Vendas Totais"
 
-#: build/index.js:11573
-#: build/index.js:10273
+#: build/index.js:1
 msgid "Orders"
 msgstr "Pedidos"
 
-#: build/index.js:11555
-#: build/index.js:10246
+#: build/index.js:1
 msgid "Visitors"
 msgstr "Visitantes"
 
-#: build/index.js:11537
-#: build/index.js:10219
+#: build/index.js:1
 msgid "Views"
 msgstr "Visualizações"
 
-#: build/index.js:11959
-#: build/index.js:10704
+#: build/index.js:1
 msgid "Plugin failed to install"
 msgstr "Erro na instalação do plugin"
 
-#: build/index.js:11969
-#: build/index.js:10718
+#: build/index.js:1
 msgid "Plugin installation is in progress"
 msgstr "Instalação do plugin em andamento"
 
-#: build/index.js:11970
-#: build/index.js:10719
+#: build/index.js:1
 msgid "We'll be done in sometime"
 msgstr "Finalizaremos em alguns instantes"
 
-#: build/index.js:8018
-#: build/index.js:6556
+#: build/index.js:1
 msgid "Home"
 msgstr "Início"
 
-#: build/index.js:7579
-#: build/index.js:9587
-#: build/index.js:6125
-#: build/index.js:8239
+#: build/index.js:1
 msgid "* indicates a required field"
 msgstr "*campo obrigatório"
 
-#: build/index.js:8308
-#: build/index.js:6864
+#: build/index.js:1
 msgid "Provides flexible checkout options"
 msgstr "Oferece opções de checkout flexíveis"
 
-#: build/index.js:8514
-#: build/index.js:7061
+#: build/index.js:1
 msgid "Today"
 msgstr "Hoje"
 
-#: build/index.js:8517
-#: build/index.js:7062
+#: build/index.js:1
 msgid "Week to date"
 msgstr "Semana até agora"
 
-#: build/index.js:8520
-#: build/index.js:7063
+#: build/index.js:1
 msgid "Month to date"
 msgstr "Do mês até a data"
 
-#: build/index.js:8534
-#: build/index.js:7082
+#: build/index.js:1
 msgid "Recent Activity"
 msgstr "Atividade Recente"
 
-#: build/index.js:8647
-#: build/index.js:7212
-msgid "view all"
-msgstr "ver tudo"
-
-#: build/index.js:8561
-#: build/index.js:7112
+#: build/index.js:1
 msgid "Pending Payment"
 msgstr "Pagamento Pendente"
 
-#: build/index.js:8565
-#: build/index.js:7113
+#: build/index.js:1
 msgid "Processing"
 msgstr "Processando"
 
-#: build/index.js:8569
-#: build/index.js:7114
+#: build/index.js:1
 msgid "On hold"
 msgstr "Em espera"
 
-#: build/index.js:8573
-#: build/index.js:7115
+#: build/index.js:1
 msgid "Completed"
 msgstr "Concluído"
 
-#: build/index.js:8577
-#: build/index.js:7117
+#: build/index.js:1
 msgid "Cancelled"
 msgstr "Cancelado"
 
-#: build/index.js:8581
-#: build/index.js:7121
+#: build/index.js:1
 msgid "Refunded"
 msgstr "Devolveu"
 
-#: build/index.js:8585
-#: build/index.js:7124
+#: build/index.js:1
 msgid "Failed"
 msgstr "Fracassado"
 
-#: build/index.js:8607
-#: build/index.js:7144
-msgid "Recent Orders"
-msgstr "Pedidos Recentes"
-
-#: build/index.js:8656
-#: build/index.js:7228
+#: build/index.js:1
 msgid "Install WooCommerce to unlock"
 msgstr "Instalar WooCommerce para desbloquear"
 
-#: build/index.js:8298
-#: build/index.js:8734
-#: build/index.js:9007
-#: build/index.js:9692
-#: build/index.js:6842
-#: build/index.js:7309
-#: build/index.js:7611
-#: build/index.js:8320
+#: build/index.js:1
 msgid "Install"
 msgstr "Instalar"
 
-#: build/index.js:18041
-#: build/index.js:14726
+#: build/index.js:1
 msgid "WooCommerce has been installed successfully"
 msgstr "WooCommerce foi instalado com sucesso"
 
-#: build/index.js:10651
-#: build/index.js:9270
+#: build/index.js:1
 msgid "WooCommerce failed to install"
 msgstr "WooCommerce falhou ao instalar"
 
-#: build/index.js:9332
-#: build/index.js:7949
+#: build/index.js:1
 msgid "Successfully saved the Store Details"
 msgstr "Os detalhes da loja foram salvos com sucesso"
 
-#: build/index.js:7537
-#: build/index.js:6076
+#: build/index.js:1
 msgid "enter your \"%1$s\" key ID here."
 msgstr "insira o ID da sua chave de \"%1$s\" aqui."
 
-#: build/index.js:7537
-#: build/index.js:7571
-#: build/index.js:6080
-#: build/index.js:6117
+#: build/index.js:1
 msgid "test"
 msgstr "teste"
 
-#: build/index.js:7537
-#: build/index.js:7571
-#: build/index.js:6080
-#: build/index.js:6117
+#: build/index.js:1
 msgid "production"
 msgstr "produção"
 
-#: build/index.js:7571
-#: build/index.js:6113
+#: build/index.js:1
 msgid "enter your \"%1$s\" key secret here."
 msgstr "insira o segredo da sua chave de \"%1$s\" aqui."
 
-#: build/index.js:8202
-#: build/index.js:6743
+#: build/index.js:1
 msgid "Check payments"
 msgstr "Verifique pagamentos"
 
-#: build/index.js:8205
-#: build/index.js:6747
+#: build/index.js:1
 msgid "Bank transfer payments"
 msgstr "Pagamentos por transferência bancária"
 
-#: build/index.js:8208
-#: build/index.js:6751
+#: build/index.js:1
 msgid "Cash on delivery (C.O.D.)"
 msgstr "Pagamento na entrega (C.O.D.)"
 
-#: build/index.js:9464
-#: build/index.js:8065
+#: build/index.js:1
 msgid "Where is your store based? *"
 msgstr "Onde fica sua loja? *"
 
-#: build/index.js:9501
-#: build/index.js:8110
+#: build/index.js:1
 msgid "Address Line 1 *"
 msgstr "Endereço Linha 1 *"
 
-#: build/index.js:9510
-#: build/index.js:8120
+#: build/index.js:1
 msgid "Address Line 2 (optional)"
 msgstr "Endereço linha 2 (opcional)"
 
-#: build/index.js:9520
-#: build/index.js:8136
+#: build/index.js:1
 msgid "City *"
 msgstr "Cidade *"
 
-#: build/index.js:9525
-#: build/index.js:8143
+#: build/index.js:1
 msgid "State *"
 msgstr "Estado *"
 
-#: build/index.js:9551
-#: build/index.js:8177
+#: build/index.js:1
 msgid "Postal Code *"
 msgstr "Código postal *"
 
-#: build/index.js:9561
-#: build/index.js:8189
+#: build/index.js:1
 msgid "Email"
 msgstr "E-mail"
 
-#: build/index.js:9565
-#: build/index.js:8195
+#: build/index.js:1
 msgid "What currency do you want to display in your store?"
 msgstr "Qual moeda você deseja exibir em sua loja?"
 
-#: build/index.js:8310
-#: build/index.js:6867
+#: build/index.js:1
 msgid "PayPal Buy Now Pay Later"
 msgstr "Compre Agora Com PayPal E Pague Mais Tarde"
 
-#: build/index.js:8312
-#: build/index.js:6877
+#: build/index.js:1
 msgid " Supports many popular payment methods"
 msgstr " Suporta vários métodos de pagamento populares"
 
-#: build/index.js:11022
-#: build/index.js:9676
+#: build/index.js:1
 msgid "Sign up for Bluehost WordPress Academy"
 msgstr "Inscreva-se na Bluehost WordPress Academy"
 
-#: build/index.js:11139
-#: build/index.js:9804
+#: build/index.js:1
 msgid "Sign up for Yoast SEO Academy"
 msgstr "Inscreva-se na Yoast SEO Academy"
 
-#: build/index.js:11173
-#: build/index.js:9842
+#: build/index.js:1
 msgid "Upload media to your site"
 msgstr "Carregar mídia para seu site"
 
-#: build/index.js:7964
-#: build/index.js:6487
+#: build/index.js:1
 msgid "Your site is currently displaying a \"Coming Soon\" page."
 msgstr "Seu site está exibindo uma página temporária \"Em breve\"."
 
-#: build/index.js:7969
-#: build/index.js:6495
+#: build/index.js:1
 msgid "Your site is live to the world!"
 msgstr "Parabéns! Seu site já está online!"
 
-#: build/index.js:8044
-#: build/index.js:6592
+#: build/index.js:1
 msgid "SITE PREVIEW"
 msgstr "SITE VISUALIZANDO"
 
-#: build/index.js:8070
-#: build/index.js:6641
+#: build/index.js:1
 msgid "View your site"
 msgstr "Visualize seu site"
 
-#: build/index.js:10135
-#: build/index.js:10141
-#: build/index.js:8772
-#: build/index.js:8791
-msgid "Buy now"
-msgstr "Compre Agora"
-
-#: includes/ECommerce.php:446
-#: includes/ECommerce.php:475
+#: includes/ECommerce.php:437
+#: includes/ECommerce.php:466
 msgid "Promotions"
 msgstr "Promoções"
 
-#: includes/ECommerce.php:463
-#: includes/ECommerce.php:496
+#: includes/ECommerce.php:454
+#: includes/ECommerce.php:487
 msgid "Create a Promotion"
 msgstr "Crie uma promoção"
 
-#: includes/ECommerce.php:493
+#: includes/ECommerce.php:484
 msgid "Boost Your Online Store Sales"
 msgstr "Aumente as vendas da sua loja online"
 
-#: includes/ECommerce.php:494
+#: includes/ECommerce.php:485
 msgid "Maximize your sales by creating effective"
 msgstr "Maximize suas vendas criando soluções eficazes"
 
-#: includes/ECommerce.php:495
+#: includes/ECommerce.php:486
 msgid "promotions and campaigns like:"
 msgstr "promoções e campanhas como:"
 
-#: includes/ECommerce.php:497
+#: includes/ECommerce.php:488
 msgid "Free"
 msgstr "Livre"
 
-#: includes/ECommerce.php:498
+#: includes/ECommerce.php:489
 msgid "Shipping"
 msgstr "Envio"
 
-#: includes/ECommerce.php:499
+#: includes/ECommerce.php:490
 msgid "Buy One"
 msgstr "Pague 1"
 
-#: includes/ECommerce.php:500
+#: includes/ECommerce.php:491
 msgid "Get One"
 msgstr "Leve 2\"\""
 
-#: includes/ECommerce.php:501
+#: includes/ECommerce.php:492
 msgid "Free Gift"
 msgstr "Presente gratuito"
 
-#: includes/ECommerce.php:502
+#: includes/ECommerce.php:493
 msgid "in Cart"
 msgstr "no carrinho"
 
-#: includes/ECommerce.php:503
+#: includes/ECommerce.php:494
 msgid "Frequently"
 msgstr "Freqüentemente"
 
-#: includes/ECommerce.php:504
+#: includes/ECommerce.php:495
 msgid "Bought Together"
 msgstr "Comprados juntos"
 
-#: build/index.js:8080
-#: build/index.js:6654
+#: build/index.js:1
 msgid "Edit your site"
 msgstr "Edite seu site"
 
-#: build/index.js:9660
-#: build/index.js:8282
+#: build/index.js:1
 msgid "Stripe"
 msgstr "Stripe"
 
-#: build/index.js:9661
-#: build/index.js:8283
+#: build/index.js:1
 msgid "Stripe provides all the tools that you need to accept payments online around the world, including support for Apple Pay and Google Pay."
 msgstr "A Stripe fornece todas as ferramentas necessárias para aceitar pagamentos online ao redor do mundo, incluindo suporte para Apple Pay e Google Pay."
 
-#: build/index.js:9679
-#: build/index.js:8300
+#: build/index.js:1
 msgid "A secure connection is required when running Stripe Payments in Live mode; plugin is currently enabled, but no gateway will be available until you secure connection to your site through a valid SSL certificate.             If you already have a valid SSL certificate, please change the url in"
 msgstr "Uma conexão segura é necessária ao executar o Stripe Payments em modo Live; o plugin está atualmente habilitado, mas nenhum gateway estará disponível até que você garanta uma conexão segura ao seu site através de um certificado SSL válido. Se você já possui um certificado SSL válido, por favor, altere a url nas"
 
-#: build/index.js:9682
-#: build/index.js:8301
+#: build/index.js:1
 msgid "settings"
 msgstr "configurações"
 
-#: build/index.js:9682
-#: build/index.js:8301
+#: build/index.js:1
 msgid "page"
 msgstr "da página"
 
-#: build/index.js:9713
-#: build/index.js:8363
+#: build/index.js:1
 msgid "One-click refunds"
 msgstr "Reembolsos em um clique"
 
-#: build/index.js:9713
-#: build/index.js:8365
+#: build/index.js:1
 msgid "Option to let customers save their credit card info securely"
 msgstr "Opção para permitir que clientes salvem suas informações de cartão de crédito de forma segura"
 
-#: build/index.js:9713
-#: build/index.js:8371
+#: build/index.js:1
 msgid "Support ACH direct debt"
 msgstr "Suporte a débito direto ACH"
 
-#: build/index.js:9715
-#: build/index.js:8375
+#: build/index.js:1
 msgid " Uses many popular payment methods"
 msgstr "Utiliza muitos métodos de pagamento populares"
 
-#: build/index.js:10112
-#: build/index.js:8726
+#: build/index.js:1
 msgid "Sales & Promotions"
 msgstr "Vendas e Promoções"
 
-#: build/index.js:10124
-#: build/index.js:8744
-msgid "Create and manage X-sell, Upsell, sales and promotions through campaigns to boost your sales"
-msgstr "Crie e gerencie vendas cruzadas, vendas adicionais, vendas e promoções através de campanhas para impulsionar suas vendas"
-
-#: build/index.js:11039
-#: build/index.js:9697
+#: build/index.js:1
 msgid "New Order Received"
-msgstr ""
+msgstr "Novo pedido recebido"
 
-#: includes/ECommerce.php:597
+#: includes/ECommerce.php:655
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
-#: includes/ECommerce.php:621
+#: includes/ECommerce.php:679
 msgid "Published - Public"
-msgstr ""
+msgstr "Publicado - Público"
 
-#: includes/ECommerce.php:621
+#: includes/ECommerce.php:679
 msgid "Published - Password Protected"
-msgstr ""
+msgstr "Publicado - Protegido por senha"
 
-#: includes/ECommerce.php:624
+#: includes/ECommerce.php:682
 msgid "Published - Private"
-msgstr ""
+msgstr "Publicado - Privado"
 
-#: includes/ECommerce.php:634
+#: includes/ECommerce.php:692
 msgid "Last Modified"
-msgstr ""
+msgstr "Última modificação"
 
-#: build/index.js:7894
-#: build/index.js:6399
+#: build/index.js:1
 msgid "Good job!"
-msgstr ""
+msgstr "Bom trabalho!"
 
-#: build/index.js:7894
-#: build/index.js:6399
+#: build/index.js:1
 msgid "One last thing to do..."
-msgstr ""
+msgstr "Uma última coisa a fazer..."
 
-#: build/index.js:7895
-#: build/index.js:6400
+#: build/index.js:1
 msgid "Your site is now ready for public visitors!"
-msgstr ""
+msgstr "Seu site agora está pronto para visitantes públicos!"
 
-#: build/index.js:7895
-#: build/index.js:6400
+#: build/index.js:1
 msgid "Finish this last step so your migrated site is ready for visitors."
-msgstr ""
+msgstr "Conclua esta última etapa para que seu site migrado esteja pronto para visitantes."
 
-#: build/index.js:7902
-#: build/index.js:6416
+#: build/index.js:1
 msgid "You're just a few steps away from sharing your site with the world!"
-msgstr ""
+msgstr "Você está a apenas alguns passos de compartilhar seu site com o mundo!"
 
-#: build/index.js:7973
-#: build/index.js:6499
+#: build/index.js:1
 msgid "Welcome home!"
-msgstr ""
+msgstr "Bem-vindo ao lar!"
 
-#: build/index.js:7974
-#: build/index.js:6500
+#: build/index.js:1
 msgid "Your site has been successfully migrated."
-msgstr ""
+msgstr "Seu site foi migrado com sucesso."
 
-#: build/index.js:9713
-#: build/index.js:8361
+#: build/index.js:1
 msgid "Immediate capture or authorize and capture later"
-msgstr ""
+msgstr "Captura imediata ou autorizar e capturar mais tarde"
 
-#: build/index.js:10953
-#: build/index.js:9591
+#: build/index.js:1
 msgid "Update your website nameservers"
-msgstr ""
+msgstr "Atualize os servidores de nomes do seu site"
 
-#: build/index.js:10962
-#: build/index.js:9604
+#: build/index.js:1
 msgid "How do I update my nameserver to BH?"
-msgstr ""
+msgstr "Como atualizo meu servidor de nomes para BH?"
 
-#: build/index.js:10969
-#: build/index.js:9614
+#: build/index.js:1
 msgid "Connect this site to your domain"
-msgstr ""
+msgstr "Conecte este site ao seu domínio"
 
-#: build/index.js:10974
-#: build/index.js:9623
+#: build/index.js:1
 msgid "How do I connect my site to the Domain ?"
-msgstr ""
+msgstr "Como conecto meu site ao Domínio?"
 
-#: build/index.js:10985
-#: build/index.js:9637
+#: build/index.js:1
 msgid "Need help with these steps?"
-msgstr ""
+msgstr "Precisa de ajuda com estas etapas?"
 
-#: build/index.js:11007
-#: build/index.js:9658
+#: build/index.js:1
 msgid "Continue with store setup"
-msgstr ""
+msgstr "Continue com a configuração da loja"
 
-#: build/index.js:7793
-#: build/index.js:6306
+#: build/index.js:1
 msgid "Hold on while we get things setup for you!"
 msgstr "Espere enquanto preparamos as coisas para você!"
 
-#: build/index.js:8504
-#: build/index.js:7049
+#: build/index.js:1
 msgid "View all analytics"
 msgstr "Ver todas as análises"
 
-#: build/index.js:8545
-#: build/index.js:7091
+#: build/index.js:1
 msgid ""
 "Once you launch your store, you'll see a snapshot of recent purchases and other \n"
 "customer activity here."
@@ -1194,16 +886,15 @@ msgstr ""
 "Depois de lançar sua loja, você verá um resumo das compras recentes e outras  \n"
 "atividades do cliente aqui."
 
-#: build/index.js:9095
-#: build/index.js:7720
+#: build/index.js:1
 msgid ""
 "Preview your store before setting it live to make sure everything \n"
 "is how you want it. Once you're ready, set your store live!"
-msgstr "Visualize sua loja antes de publicá-la para ter certeza de que tudo está como você deseja.\nQuando estiver pronto, publique seu site!"
+msgstr ""
+"Visualize sua loja antes de publicá-la para ter certeza de que tudo está como você deseja.\n"
+"Quando estiver pronto, publique seu site!"
 
-
-#: build/index.js:9095
-#: build/index.js:7724
+#: build/index.js:1
 msgid ""
 "Preview your Site before setting it live to make sure everything \n"
 "is how you want it. Once you're ready, set your site live!"
@@ -1211,317 +902,504 @@ msgstr ""
 "Visualize seu site antes de colocá-lo no ar para ter certeza de tudo\n"
 " é como você deseja. Quando estiver pronto, coloque seu site no ar!"
 
-#: build/index.js:9930
-#: build/index.js:8572
+#: build/index.js:1
 msgid "Transform your store!"
 msgstr "Transforme sua loja!"
 
-#: build/index.js:9932
-#: build/index.js:8575
+#: build/index.js:1
 msgid "Give your online store a boost with our all-in-one eCommerce bundle filled with exclusive plugins and tools designed to help you sell your products and services like a pro."
 msgstr "Turbine sua loja online com nosso pacote completo de e-commerce repleto de plugins e ferramentas exclusivos projetados para te ajudar a vender seus produtos e serviços de forma profissional."
 
-#: build/index.js:9945
-#: build/index.js:8590
+#: build/index.js:1
 msgid "Buy Now"
 msgstr "Comprar agora"
 
-#: build/index.js:9947
-#: build/index.js:8597
+#: build/index.js:1
 msgid "Exclusive YITH plugins and tools to help you sell online"
 msgstr "Plugins e ferramentas YITH exclusivos para te ajudar a vender online"
 
-#: build/index.js:9949
-#: build/index.js:8600
+#: build/index.js:1
 msgid "Our eCommerce bundle includes a comprehensive suite of advanced tools designed to boost the performance of your WooCommerce store. This bundle includes these exclusive YITH plugins:"
 msgstr "Nosso pacote de e-commerce inclui um conjunto abrangente de ferramentas avançadas projetadas para aumentar o desempenho de sua loja WooCommerce. Este pacote inclui estes plug-ins YITH exclusivos:"
 
-#: build/index.js:9963
-#: build/index.js:11417
-#: build/index.js:11712
-#: build/index.js:8608
-#: build/index.js:10118
-#: build/index.js:10384
+#: build/index.js:1
 msgid "Gift Cards"
 msgstr "Cartões-Presente"
 
-#: build/index.js:9969
-#: build/index.js:11739
-#: build/index.js:8612
-#: build/index.js:10422
+#: build/index.js:1
 msgid "Wishlists"
 msgstr "Listas de Desejos"
 
-#: build/index.js:9975
-#: build/index.js:8616
+#: build/index.js:1
 msgid "Custom 'My Account' Page"
 msgstr "Página personalizada 'Minha conta'"
 
-#: build/index.js:9983
-#: build/index.js:11376
-#: build/index.js:8622
-#: build/index.js:10066
+#: build/index.js:1
 msgid "Bookings & Appointments"
 msgstr "Agendamentos"
 
-#: build/index.js:9989
-#: build/index.js:8626
+#: build/index.js:1
 msgid "AJAX Product Filters"
 msgstr "Filtros de produto AJAX"
 
-#: build/index.js:9995
-#: build/index.js:8630
+#: build/index.js:1
 msgid "AJAX Product Search"
 msgstr "Pesquisa de produtos AJAX"
 
-#: build/index.js:10001
-#: build/index.js:8643
+#: build/index.js:1
 msgid "Add upsells, cross-sells, and other promotions with WonderCart"
 msgstr "Adicione up-sell, cross-sell e outras promoções com WonderCart"
 
-#: build/index.js:10003
-#: build/index.js:8646
+#: build/index.js:1
 msgid "Create and run effective promotional campaigns like BOGOs, free shipping offers, category discounts, and more to increase revenue and strengthen customer engagement."
 msgstr "Crie e lance campanhas promocionais eficazes como BOGOs, ofertas de frete grátis, descontos por categoria e muito mais para aumentar a receita e fortalecer o envolvimento do cliente."
 
-#: build/index.js:10017
-#: build/index.js:8654
+#: build/index.js:1
 msgid "Buy One Get One"
 msgstr "Pague 1, Leve 2"
 
-#: build/index.js:10023
-#: build/index.js:8658
+#: build/index.js:1
 msgid "Cart Promotions"
 msgstr "Promoções de carrinho"
 
-#: build/index.js:10029
-#: build/index.js:8662
+#: build/index.js:1
 msgid "Related Items Discounts"
 msgstr "Descontos em Itens Relacionados"
 
-#: build/index.js:10037
-#: build/index.js:8668
+#: build/index.js:1
 msgid "Free Shipping Offers"
 msgstr "Ofertas de frete grátis"
 
-#: build/index.js:10043
-#: build/index.js:8672
+#: build/index.js:1
 msgid "Category Discounts"
 msgstr "Descontos por Categoria"
 
-#: build/index.js:10049
-#: build/index.js:8676
+#: build/index.js:1
 msgid "and more!"
 msgstr "e mais!"
 
-#: build/index.js:10318
-#: build/index.js:8974
+#: build/index.js:1
 msgid "Exclusive Tools Included in Your Plan"
 msgstr "Ferramentas exclusivas inclusas no seu plano"
 
-#: build/index.js:10318
-#: build/index.js:8975
+#: build/index.js:1
 msgid "Elevate Your Store with Exclusive WooCommerce Tools Included in Your Plan!"
 msgstr "Turbine sua loja com ferramentas WooCommerce exclusivas inclusas no seu plano!"
 
-#: build/index.js:10318
-#: build/index.js:8977
+#: build/index.js:1
 msgid ""
 "Unlock the full power of your plan with access to a range of exclusive WooCommerce tools powered by \n"
 "YITH. Enhance your store and keep your customers coming back for more!"
 msgstr "Tenha todo o poder do seu plano com acesso a ferramentas WooCommerce exclusivas desenvolvidas pela YITH. Turbine sua loja e faça que seus clientes voltem sempre!"
 
-#: build/index.js:11377
-#: build/index.js:11797
-#: build/index.js:10070
-#: build/index.js:10507
+#: build/index.js:1
 msgid "Setup Bookings & Appointments"
 msgstr "Configurar Agendamentos"
 
-#: build/index.js:11377
-#: build/index.js:11797
-#: build/index.js:10070
-#: build/index.js:10507
+#: build/index.js:1
 msgid "Manage Bookings & Appointments"
 msgstr "Gerenciar Reservas"
 
-#: build/index.js:11418
-#: build/index.js:11714
-#: build/index.js:10119
-#: build/index.js:10389
+#: build/index.js:1
 msgid "Create a Gift Card"
 msgstr "Crie um cartão-presente"
 
-#: build/index.js:11418
-#: build/index.js:11714
-#: build/index.js:10119
-#: build/index.js:10389
+#: build/index.js:1
 msgid "Manage Gift Cards"
 msgstr "Gerenciar vales-presente"
 
-#: build/index.js:11713
-#: build/index.js:10385
+#: build/index.js:1
 msgid "Offer customizable gift cards with personalized messages for the recipient."
 msgstr "Ofereça cartões-presente ​​com mensagens personalizadas para o destinatário."
 
-#: build/index.js:11740
-#: build/index.js:10423
+#: build/index.js:1
 msgid "Let customers add products to lists and share them with family and friends."
 msgstr "Permita que os clientes adicionem produtos às listas e os compartilhem com familiares e amigos."
 
-#: build/index.js:11741
-#: build/index.js:10427
+#: build/index.js:1
 msgid "View Wishlists"
 msgstr "Ver listas de desejos"
 
-#: build/index.js:11741
-#: build/index.js:10427
+#: build/index.js:1
 msgid "Setup Wishlists"
 msgstr "Configurar listas de desejos"
 
-#: build/index.js:11765
-#: build/index.js:10457
+#: build/index.js:1
 msgid "WonderCart"
 msgstr "WonderCart"
 
-#: build/index.js:11767
-#: build/index.js:10462
+#: build/index.js:1
 msgid "Create custom upsell, cross-sell and other promotional campaigns to generate more sales."
 msgstr "Crie campanhas personalizadas de up-sell, cross-sell e outras campanhas promocionais para gerar mais vendas."
 
-#: build/index.js:11768
-#: build/index.js:10466
+#: build/index.js:1
 msgid "Create a Campaign"
 msgstr "Criar Campanha"
 
-#: build/index.js:11795
-#: build/index.js:10499
+#: build/index.js:1
 msgid "Booking and Appointments"
 msgstr "Agendamentos"
 
-#: build/index.js:11796
-#: build/index.js:10503
+#: build/index.js:1
 msgid "Manage renting or booking of services and items so customers can do business with you."
 msgstr "Gerencie a locação ou reserva de serviços e itens para que os clientes possam fazer negócios com você."
 
-#: build/index.js:11821
-#: build/index.js:10539
+#: build/index.js:1
 msgid "Product Filters"
 msgstr "Filtros de Produtos"
 
-#: build/index.js:11822
-#: build/index.js:10543
+#: build/index.js:1
 msgid "Add an advanced filter to help customers find the right product with ease."
 msgstr "Adicione um filtro avançado para ajudar os clientes a encontrar o produto certo com facilidade."
 
-#: build/index.js:11823
-#: build/index.js:10547
+#: build/index.js:1
 msgid "Product Filter Settings"
 msgstr "Configurações de filtro de produto"
 
-#: build/index.js:11823
-#: build/index.js:10547
+#: build/index.js:1
 msgid "Setup Product Filters"
 msgstr "Configurar Filtros de Produtos"
 
-#: build/index.js:11847
-#: build/index.js:10579
+#: build/index.js:1
 msgid "Product Search"
 msgstr "Busca de Produtos"
 
-#: build/index.js:11848
-#: build/index.js:10580
+#: build/index.js:1
 msgid "Speed up search for your customers with a predictive real-time search engine."
 msgstr "Acelere a pesquisa de seus clientes com um motor de busca inteligente, em tempo real."
 
-#: build/index.js:11849
-#: build/index.js:10584
+#: build/index.js:1
 msgid "Product Search Settings"
 msgstr "Configurações de pesquisa de produtos"
 
-#: build/index.js:11849
-#: build/index.js:10584
+#: build/index.js:1
 msgid "Configure Product Search"
 msgstr "Configurar Busca de Produtos"
 
-#: build/index.js:11874
-#: build/index.js:10615
+#: build/index.js:1
 msgid "Customize My Account Page"
 msgstr "Configurar Página \"Minha Conta\""
 
-#: build/index.js:11875
-#: build/index.js:10619
+#: build/index.js:1
 msgid "Add custom content like videos, files, discount codes, and more to your customers account page."
 msgstr "Adicione conteúdo personalizado como vídeos, arquivos, cupons de desconto e muito mais à página \"Minha Conta\" do seu cliente."
 
-#: build/index.js:11876
-#: build/index.js:10623
+#: build/index.js:1
 msgid "'My Account' Page Settings"
 msgstr "Configurações da página 'Minha conta'"
 
-#: build/index.js:11876
-#: build/index.js:10623
+#: build/index.js:1
 msgid "Customize the 'My Account' Page"
 msgstr "Configurar Página \"Minha Conta\""
 
-#: build/index.js:11900
-#: build/index.js:10655
+#: build/index.js:1
 msgid "ecomdash"
 msgstr "ecomdash"
 
-#: build/index.js:11901
-#: build/index.js:10656
+#: build/index.js:1
 msgid "Boost sales by selling your products and services across multiple marketplaces."
 msgstr "Aumente as vendas vendendo seus produtos e serviços em vários marketplaces."
 
-#: build/index.js:11902
-#: build/index.js:10660
+#: build/index.js:1
 msgid "Manage Sales Channels"
 msgstr "Gerenciar Canais de Venda"
 
-#: build/index.js:11902
-#: build/index.js:10660
+#: build/index.js:1
 msgid "Setup Sales Channels"
 msgstr "Configurar Canais de Venda"
 
-#: build/index.js:7798
-#: build/index.js:6311
+#: build/index.js:1
 msgid "Activating "
 msgstr "Ativando o plugin "
 
-#: build/index.js:7798
-#: build/index.js:6311
+#: build/index.js:1
 msgid " plugin..."
 msgstr " ..."
 
-#: build/index.js:7798
-#: build/index.js:6313
+#: build/index.js:1
 msgid "Activating the YITH "
 msgstr "Ativando o plugin YITH "
 
-#: build/index.js:7798
-#: build/index.js:6313
-msgid "plugin..."
-msgstr " ..."
-
-#: build/index.js:9104
-#: build/index.js:7747
+#: build/index.js:1
 msgid "Preview your store"
 msgstr "Visualize sua loja"
 
-#: build/index.js:9104
-#: build/index.js:7748
+#: build/index.js:1
 msgid "Preview your site"
 msgstr "Visualize seu site"
 
-#: build/index.js:10190
-#: build/index.js:8826
+#: build/index.js:1
 msgid "Add a store to your site for FREE!"
 msgstr "Adicione uma loja ao seu site GRATUITAMENTE!"
 
-#: build/index.js:10192
-#: build/index.js:8829
+#: build/index.js:1
 msgid ""
 "Adding a store to your website is quick and easy! \n"
 "Just install the free WooCommerce plugin and get ready to start making money!"
-msgstr "Adicionar uma loja ao seu site é rápido e fácil!\nBasta instalar o plugin WooCommerce gratuito e se preparar para começar a ganhar dinheiro!"
+msgstr ""
+"Adicionar uma loja ao seu site é rápido e fácil!\n"
+"Basta instalar o plugin WooCommerce gratuito e se preparar para começar a ganhar dinheiro!"
+
+#: build/index.js:1
+msgid "View all your plugins and tools"
+msgstr "Veja todos os seus plugins e ferramentas"
+
+#: build/index.js:1
+msgid "Start selling like a Pro!"
+msgstr "Comece a vender como um profissional!"
+
+#: build/index.js:1
+msgid "Give your online store a boost with our all-in-one eCommerce bundle filled with exclusive plugins and tools designed to help you sell your products and services like never before. "
+msgstr "Dê um impulso à sua loja online com nosso pacote de comércio eletrônico completo, repleto de plugins e ferramentas exclusivos, projetados para ajudar você a vender seus produtos e serviços como nunca antes. "
+
+#: build/index.js:1
+msgid "Create a campaign and boost your sales!"
+msgstr "Crie uma campanha e aumente suas vendas!"
+
+#: build/index.js:1
+msgid "Get Started"
+msgstr "Comece"
+
+#: build/index.js:1
+msgid "Not sure where to start? Try one of these popular promotions:"
+msgstr "Não sabe por onde começar? Experimente uma destas promoções populares:"
+
+#: build/index.js:1
+msgid "Explore the features included with your solution"
+msgstr "Explore os recursos incluídos na sua solução"
+
+#: build/index.js:1
+msgid "Upgrade your plan for success."
+msgstr "Atualize seu plano para o sucesso."
+
+#: build/index.js:1
+msgid "Choose the set of plugins and services that's right for your needs. You're covered by our no-quibble, 30 day money back guarantee."
+msgstr "Escolha o conjunto de plugins e serviços que é certo para suas necessidades. Você está coberto pela nossa garantia de reembolso de 30 dias sem complicações."
+
+#: build/index.js:1
+msgid "/mo"
+msgstr "/mês"
+
+#: build/index.js:1
+msgid "Original price"
+msgstr "Preço original"
+
+#: build/index.js:1
+msgid "Learn more"
+msgstr "Saiba mais"
+
+#: build/index.js:1
+msgid "Oops! something went wrong. Please try again later"
+msgstr "Ops! Algo deu errado. Tente novamente mais tarde"
+
+#: build/index.js:1
+msgid "Explore Your Plugins and Tools"
+msgstr "Explore seus plugins e ferramentas"
+
+#: build/index.js:1
+msgid "Improve your site with the tools and services included in your plan."
+msgstr "Melhore seu site com as ferramentas e serviços incluídos em seu plano."
+
+#: build/index.js:1
+msgid "Sales Channels"
+msgstr "Canais de vendas"
+
+#: build/index.js:1
+msgid "Sell your products everywhere, confidently, with Ecomdash."
+msgstr "Venda seus produtos em qualquer lugar, com confiança, com o Ecomdash."
+
+#: build/index.js:1
+msgid "With ecomdash, you can manage different sales channels all in one place."
+msgstr "Com o ecomdash, você pode gerenciar diferentes canais de vendas em um só lugar."
+
+#: build/index.js:1
+msgid "Simply connect your business accounts from Amazon, Etsy or Walmart to"
+msgstr "Basta conectar suas contas comerciais da Amazon, Etsy ou Walmart à"
+
+#: build/index.js:1
+msgid "your ecomdash platform and easily manage products, customer orders and"
+msgstr "sua plataforma ecomdash e gerenciar facilmente produtos, pedidos de clientes e"
+
+#: build/index.js:1
+msgid "more saving you valuable time."
+msgstr "mais, economizando seu tempo valioso."
+
+#: build/index.js:1
+msgid "Get Started Now"
+msgstr "Comece agora"
+
+#: build/index.js:1
+msgid "Go to Ecomdash"
+msgstr "Vá para o Ecomdash"
+
+#: build/index.js:1
+msgid "Install Now"
+msgstr "Instale agora"
+
+#: build/index.js:1
+msgid "Manage inventory across multiple platforms"
+msgstr "Gerencie o inventário em várias plataformas"
+
+#: build/index.js:1
+msgid "Enjoy near real-time inventory updates for an unlimited number of"
+msgstr "Aproveite atualizações de inventário quase em tempo real para um número ilimitado de"
+
+#: build/index.js:1
+msgid "channels with our inventory management software."
+msgstr "canais com nosso software de gerenciamento de inventário."
+
+#: build/index.js:1
+msgid "Manage product levels across multiple warehouses "
+msgstr "Gerencie níveis de produtos em vários depósitos "
+
+#: build/index.js:1
+msgid "without the fear of overselling."
+msgstr "sem medo de vender demais."
+
+#: build/index.js:1
+msgid "Accurately sync kits, multipacks, and components without any"
+msgstr "Sincronize kits, multipacks e componentes com precisão, sem"
+
+#: build/index.js:1
+msgid "headaches."
+msgstr "dores de cabeça."
+
+#: build/index.js:1
+msgid "Order Management and Reporting"
+msgstr "Gerenciamento de pedidos e relatórios"
+
+#: build/index.js:1
+msgid "With Ecomdash you can sit back and relax, knowing that all aspects of order fulfillment are under control. Easily track your top selling items, cost of goods sold, stale inventory and more with Ecomdash's extensive reporting tools."
+msgstr "Com o Ecomdash, você pode sentar e relaxar, sabendo que todos os aspectos do atendimento de pedidos estão sob controle. Rastreie facilmente seus itens mais vendidos, custo dos produtos vendidos, estoque obsoleto e muito mais com as ferramentas de relatórios abrangentes do Ecomdash."
+
+#: build/index.js:1
+msgid "Powerful Add-ons"
+msgstr "Complementos poderosos"
+
+#: build/index.js:1
+msgid "Ecomdash contains a variety of powerful add-ons that will help you handle everything from creating barcodes and inventory templates, to managing warehouse feeds, Fulfillment By Amazon and even accounting."
+msgstr "O Ecomdash contém uma variedade de complementos poderosos que ajudarão você a lidar com tudo, desde a criação de códigos de barras e modelos de inventário até o gerenciamento de feeds de depósito, Fulfillment By Amazon e até mesmo contabilidade."
+
+#: build/index.js:1
+msgid "Fullfillment By Amazon (FBA)"
+msgstr "Atendimento pela Amazon (FBA)"
+
+#: build/index.js:1
+msgid "Auto-export non-Amazon orders to FBA. Import the tracking and pass it to the"
+msgstr "Exportação automática de pedidos que não sejam da Amazon para FBA. Importe o rastreamento e passe para o"
+
+#: build/index.js:1
+msgid "originating sales channel, marking it as shipped."
+msgstr "canal de vendas de origem, marcando-o como enviado."
+
+#: build/index.js:1
+msgid "Barcodes"
+msgstr "Códigos de barras"
+
+#: build/index.js:1
+msgid "Print barcodes for your products that can be"
+msgstr "Imprima códigos de barras para seus produtos que podem ser"
+
+#: build/index.js:1
+msgid "used for labeling and scanning your"
+msgstr "usados ​​para etiquetar e escanear seus"
+
+#: build/index.js:1
+msgid "products"
+msgstr "produtos"
+
+#: build/index.js:1
+msgid "Shipping Labels"
+msgstr "Etiquetas de envio"
+
+#: build/index.js:1
+msgid "Print shipping labels with a preferred carrier"
+msgstr "Imprima etiquetas de envio com uma transportadora preferida"
+
+#: build/index.js:1
+msgid "right from your ecomdash account and save"
+msgstr "diretamente da sua conta ecomdash e economize"
+
+#: build/index.js:1
+msgid "on postage."
+msgstr "sobre postagem."
+
+#: build/index.js:1
+msgid "Listing Presets"
+msgstr "Predefinições de listagem"
+
+#: build/index.js:1
+msgid "Create listing presets to cut down most of"
+msgstr "Criar predefinições de listagem para reduzir a maioria"
+
+#: build/index.js:1
+msgid "the manual data entry needed when creating"
+msgstr "a entrada manual de dados necessária ao criar"
+
+#: build/index.js:1
+msgid "new listings."
+msgstr "novas listagens."
+
+#: build/index.js:1
+msgid "Accounting"
+msgstr "Contabilidade"
+
+#: build/index.js:1
+msgid "Seamlessly communicate your sales and"
+msgstr "Comunique perfeitamente suas vendas e"
+
+#: build/index.js:1
+msgid "purchase order information directly to your"
+msgstr "informações do pedido de compra diretamente para seu"
+
+#: build/index.js:1
+msgid "accounting software."
+msgstr "software de contabilidade."
+
+#: build/index.js:1
+msgid "Custom Inventory Templates"
+msgstr "Modelos de inventário personalizados"
+
+#: build/index.js:1
+msgid "Creating a custom file template allows you to"
+msgstr "Criar um modelo de arquivo personalizado permite que você"
+
+#: build/index.js:1
+msgid "upload and/or export files with product data"
+msgstr "carregue e/ou exporte arquivos com dados do produto"
+
+#: build/index.js:1
+msgid "for thousands of products at once."
+msgstr "para milhares de produtos de uma só vez."
+
+#: build/index.js:1
+msgid "Warehouse Feeds"
+msgstr "Feeds do depósito"
+
+#: build/index.js:1
+msgid "Setup feeds to export your sales orders via"
+msgstr "Configurar feeds para exportar seus pedidos de vendas via"
+
+#: build/index.js:1
+msgid "email or FTP sites to third parties such as"
+msgstr "e-mail ou sites FTP para terceiros, como"
+
+#: build/index.js:1
+msgid "Dropshippers, Suppliers, or 3PL systems."
+msgstr "Dropshippers, fornecedores ou sistemas 3PL."
+
+#: build/index.js:1
+msgid "Purchase Orders"
+msgstr "Pedidos de compra"
+
+#: build/index.js:1
+msgid "Quickly create new orders and have"
+msgstr "Criar novos pedidos rapidamente e ter"
+
+#: build/index.js:1
+msgid "inventory quantities adjusted and synced out"
+msgstr "quantidades de estoque ajustadas e sincronizadas"
+
+#: build/index.js:1
+msgid "to listings as units are received."
+msgstr "para listagens conforme as unidades são recebidas."
