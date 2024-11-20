@@ -237,60 +237,6 @@
             "time": "2024-09-19T07:47:50+00:00"
         },
         {
-            "name": "newfold-labs/wp-module-coming-soon",
-            "version": "1.2.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/newfold-labs/wp-module-coming-soon.git",
-                "reference": "3b43b08f02348e4d016392247dc4503df5d48b39"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-coming-soon/zipball/3b43b08f02348e4d016392247dc4503df5d48b39",
-                "reference": "3b43b08f02348e4d016392247dc4503df5d48b39",
-                "shasum": ""
-            },
-            "require": {
-                "newfold-labs/wp-module-data": ">=2.6.2",
-                "wp-forge/wp-upgrade-handler": "^1.0"
-            },
-            "require-dev": {
-                "newfold-labs/wp-php-standards": "^1.2.4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "NewfoldLabs\\WP\\Module\\ComingSoon\\": "includes"
-                },
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "scripts": {
-                "fix": [
-                    "vendor/bin/phpcbf . --standard=phpcs.xml"
-                ],
-                "lint": [
-                    "vendor/bin/phpcs . --standard=phpcs.xml -s"
-                ]
-            },
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Evan Mullins",
-                    "homepage": "https://evanmullins.com"
-                }
-            ],
-            "description": "Coming Soon module for WordPress sites.",
-            "support": {
-                "source": "https://github.com/newfold-labs/wp-module-coming-soon/tree/1.2.6",
-                "issues": "https://github.com/newfold-labs/wp-module-coming-soon/issues"
-            },
-            "time": "2024-08-30T20:32:49+00:00"
-        },
-        {
             "name": "newfold-labs/wp-module-context",
             "version": "1.0.1",
             "source": {
@@ -346,16 +292,16 @@
         },
         {
             "name": "newfold-labs/wp-module-data",
-            "version": "2.6.5",
+            "version": "2.6.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "002cc3da70565af1708408f7d7604396d2af55e3"
+                "reference": "4e06582959bbf8ebdfe053d7be27dc3e2dcba69a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/002cc3da70565af1708408f7d7604396d2af55e3",
-                "reference": "002cc3da70565af1708408f7d7604396d2af55e3",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/4e06582959bbf8ebdfe053d7be27dc3e2dcba69a",
+                "reference": "4e06582959bbf8ebdfe053d7be27dc3e2dcba69a",
                 "shasum": ""
             },
             "require": {
@@ -368,15 +314,17 @@
                 "wpscholar/url": "^1.2.2"
             },
             "require-dev": {
-                "10up/wp_mock": "^0.4.2",
+                "10up/wp_mock": "^0.5.0|^1.0.0",
                 "bluehost/bluehost-wordpress-plugin": ">=3.1",
                 "brianhenryie/composer-phpstorm": ">=0.4",
                 "johnpbloch/wordpress": ">=6.5.3",
                 "kporras07/composer-symlinks": "^1.2",
                 "lucatume/wp-browser": "^3.5.8",
                 "newfold-labs/wp-php-standards": "^1.2.3",
-                "phpunit/phpcov": "^5.0",
-                "wpackagist-plugin/woocommerce": ">=9"
+                "phpunit/phpcov": "^8.2.1",
+                "wpackagist-plugin/jetpack": "^14.0",
+                "wpackagist-plugin/woocommerce": ">=9",
+                "wpackagist-theme/twentytwentyfive": "*"
             },
             "type": "library",
             "extra": {
@@ -408,7 +356,7 @@
                     "vendor/bin/phpcbf . --standard=phpcs.xml"
                 ],
                 "cs-changes": [
-                    "updated_files=$( git status | grep '\\(new file\\|modified\\):\\s.*.php$' | cut -c14- | awk '{ printf(\"%s \", $0) }' ); echo \"\\nChecking\"$(git status | grep '\\(new file\\|modified\\):\\s.*.php$' | tail -n+2 | wc -l)\" files\"; phpcbf $(echo $updated_files); phpcs $(echo $updated_files);"
+                    "updated_files=$(echo $(git diff --name-only `git merge-base origin/main HEAD` | grep php)); if [ -n \"$updated_files\" ]; then phpcbf $(echo $updated_files); phpcs $(echo $updated_files); else echo \"No modified .php files for PHPCS.\"; fi;"
                 ],
                 "lint": [
                     "vendor/bin/phpcs . --standard=phpcs.xml -s"
@@ -421,6 +369,7 @@
                     "codecept run wpunit"
                 ],
                 "test-coverage": [
+                    "if [ -d \"tests/_output/merged.cov\" ]; then rm -rf tests/_output/merged.cov; fi;",
                     "phpunit --bootstrap tests/phpunit/bootstrap.php --coverage-php tests/_output/unit.cov --coverage-text",
                     "codecept run wpunit --coverage wpunit.cov",
                     "phpcov merge --php tests/_output/merged.cov --html tests/_output/html tests/_output;",
@@ -438,10 +387,10 @@
             ],
             "description": "Newfold Data Module",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.6.5",
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.6.7",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2024-10-18T19:30:28+00:00"
+            "time": "2024-11-19T20:09:13+00:00"
         },
         {
             "name": "newfold-labs/wp-module-features",
@@ -541,16 +490,16 @@
         },
         {
             "name": "newfold-labs/wp-module-installer",
-            "version": "1.2.0",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-installer.git",
-                "reference": "1d7cb9d6f35107f409bb38e31c469c8a87ccd55b"
+                "reference": "4b994a784f1de5c80dcf274e51ab34f083e4a26d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/1d7cb9d6f35107f409bb38e31c469c8a87ccd55b",
-                "reference": "1d7cb9d6f35107f409bb38e31c469c8a87ccd55b",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/4b994a784f1de5c80dcf274e51ab34f083e4a26d",
+                "reference": "4b994a784f1de5c80dcf274e51ab34f083e4a26d",
                 "shasum": ""
             },
             "require": {
@@ -580,10 +529,10 @@
             ],
             "description": "An installer for WordPress plugins and themes.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-installer/tree/1.2.0",
+                "source": "https://github.com/newfold-labs/wp-module-installer/tree/1.2.2",
                 "issues": "https://github.com/newfold-labs/wp-module-installer/issues"
             },
-            "time": "2024-10-23T09:22:01+00:00"
+            "time": "2024-10-25T14:26:52+00:00"
         },
         {
             "name": "newfold-labs/wp-module-loader",
@@ -633,33 +582,32 @@
         },
         {
             "name": "newfold-labs/wp-module-onboarding-data",
-            "version": "1.2.0",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding-data.git",
-                "reference": "0667cf1768dee0baabe785145ba64d97e718a0b5"
+                "reference": "354c91711c48bc38a8982af396c78bd8d801d873"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding-data/zipball/0667cf1768dee0baabe785145ba64d97e718a0b5",
-                "reference": "0667cf1768dee0baabe785145ba64d97e718a0b5",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding-data/zipball/354c91711c48bc38a8982af396c78bd8d801d873",
+                "reference": "354c91711c48bc38a8982af396c78bd8d801d873",
                 "shasum": ""
             },
             "require": {
-                "mustache/mustache": "^2.14",
-                "newfold-labs/wp-module-ai": "^1.1",
-                "newfold-labs/wp-module-coming-soon": "^1.2",
-                "newfold-labs/wp-module-data": "^2.6",
-                "newfold-labs/wp-module-install-checker": "^1.0",
-                "newfold-labs/wp-module-installer": "^1.2.0-beta",
-                "newfold-labs/wp-module-patterns": "^2.5",
-                "newfold-labs/wp-module-performance": "^2.0",
-                "newfold-labs/wp-module-survey": "^1.0",
+                "mustache/mustache": "^2.14.2",
+                "newfold-labs/wp-module-ai": "^1.1.12",
+                "newfold-labs/wp-module-data": "^2.6.5",
+                "newfold-labs/wp-module-install-checker": "^1.0.3",
+                "newfold-labs/wp-module-installer": "^1.2.0",
+                "newfold-labs/wp-module-patterns": "^2.6",
+                "newfold-labs/wp-module-performance": "^2.0.1",
+                "newfold-labs/wp-module-survey": "^1.0.1",
                 "wp-forge/wp-upgrade-handler": "^1.0"
             },
             "require-dev": {
-                "newfold-labs/wp-php-standards": "^1.2",
-                "wp-cli/i18n-command": "^2.4.3"
+                "newfold-labs/wp-php-standards": "^1.2.4",
+                "wp-cli/i18n-command": "^2.6.2"
             },
             "type": "library",
             "autoload": {
@@ -678,23 +626,23 @@
             ],
             "description": "A non-toggleable module containing a standardized interface for interacting with Onboarding data.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-onboarding-data/tree/1.2.0",
+                "source": "https://github.com/newfold-labs/wp-module-onboarding-data/tree/1.2.3",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding-data/issues"
             },
-            "time": "2024-10-09T09:26:26+00:00"
+            "time": "2024-11-12T02:04:21+00:00"
         },
         {
             "name": "newfold-labs/wp-module-patterns",
-            "version": "2.6.0",
+            "version": "2.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-patterns.git",
-                "reference": "df06479f0715d40e4aadfc299e77c9062c9165db"
+                "reference": "d1dde5f33ca4032b1efd56214be2f66380cc7512"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-patterns/zipball/df06479f0715d40e4aadfc299e77c9062c9165db",
-                "reference": "df06479f0715d40e4aadfc299e77c9062c9165db",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-patterns/zipball/d1dde5f33ca4032b1efd56214be2f66380cc7512",
+                "reference": "d1dde5f33ca4032b1efd56214be2f66380cc7512",
                 "shasum": ""
             },
             "require": {
@@ -733,10 +681,10 @@
             ],
             "description": "WordPress Cloud Patterns",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-patterns/tree/2.6.0",
+                "source": "https://github.com/newfold-labs/wp-module-patterns/tree/2.7.1",
                 "issues": "https://github.com/newfold-labs/wp-module-patterns/issues"
             },
-            "time": "2024-10-18T16:33:56+00:00"
+            "time": "2024-11-15T18:35:27+00:00"
         },
         {
             "name": "newfold-labs/wp-module-performance",
@@ -1198,16 +1146,16 @@
     "packages-dev": [
         {
             "name": "composer/ca-bundle",
-            "version": "1.5.2",
+            "version": "1.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "48a792895a2b7a6ee65dd5442c299d7b835b6137"
+                "reference": "3b1fc3f0be055baa7c6258b1467849c3e8204eb2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/48a792895a2b7a6ee65dd5442c299d7b835b6137",
-                "reference": "48a792895a2b7a6ee65dd5442c299d7b835b6137",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/3b1fc3f0be055baa7c6258b1467849c3e8204eb2",
+                "reference": "3b1fc3f0be055baa7c6258b1467849c3e8204eb2",
                 "shasum": ""
             },
             "require": {
@@ -1254,7 +1202,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/composer",
                 "issues": "https://github.com/composer/ca-bundle/issues",
-                "source": "https://github.com/composer/ca-bundle/tree/1.5.2"
+                "source": "https://github.com/composer/ca-bundle/tree/1.5.3"
             },
             "funding": [
                 {
@@ -1270,7 +1218,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-09-25T07:49:53+00:00"
+            "time": "2024-11-04T10:15:26+00:00"
         },
         {
             "name": "composer/class-map-generator",
@@ -1347,16 +1295,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "2.8.1",
+            "version": "2.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "e52b8672276cf436670cdd6bd5de4353740e83b2"
+                "reference": "2a7c71266b2545a3bed9f4860734081963f6e688"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/e52b8672276cf436670cdd6bd5de4353740e83b2",
-                "reference": "e52b8672276cf436670cdd6bd5de4353740e83b2",
+                "url": "https://api.github.com/repos/composer/composer/zipball/2a7c71266b2545a3bed9f4860734081963f6e688",
+                "reference": "2a7c71266b2545a3bed9f4860734081963f6e688",
                 "shasum": ""
             },
             "require": {
@@ -1370,7 +1318,7 @@
                 "justinrainbow/json-schema": "^5.3",
                 "php": "^7.2.5 || ^8.0",
                 "psr/log": "^1.0 || ^2.0 || ^3.0",
-                "react/promise": "^3.2",
+                "react/promise": "^2.11 || ^3.2",
                 "seld/jsonlint": "^1.4",
                 "seld/phar-utils": "^1.2",
                 "seld/signal-handler": "^2.0",
@@ -1441,7 +1389,7 @@
                 "irc": "ircs://irc.libera.chat:6697/composer",
                 "issues": "https://github.com/composer/composer/issues",
                 "security": "https://github.com/composer/composer/security/policy",
-                "source": "https://github.com/composer/composer/tree/2.8.1"
+                "source": "https://github.com/composer/composer/tree/2.8.3"
             },
             "funding": [
                 {
@@ -1457,7 +1405,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-10-04T09:31:01+00:00"
+            "time": "2024-11-17T12:13:04+00:00"
         },
         {
             "name": "composer/metadata-minifier",
@@ -1530,16 +1478,16 @@
         },
         {
             "name": "composer/pcre",
-            "version": "2.3.1",
+            "version": "2.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/pcre.git",
-                "reference": "26859a860a7f140fc08422c3cc14ad9c2a287d79"
+                "reference": "ebb81df8f52b40172d14062ae96a06939d80a069"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/pcre/zipball/26859a860a7f140fc08422c3cc14ad9c2a287d79",
-                "reference": "26859a860a7f140fc08422c3cc14ad9c2a287d79",
+                "url": "https://api.github.com/repos/composer/pcre/zipball/ebb81df8f52b40172d14062ae96a06939d80a069",
+                "reference": "ebb81df8f52b40172d14062ae96a06939d80a069",
                 "shasum": ""
             },
             "require": {
@@ -1549,8 +1497,8 @@
                 "phpstan/phpstan": "<1.11.10"
             },
             "require-dev": {
-                "phpstan/phpstan": "^1.11.10",
-                "phpstan/phpstan-strict-rules": "^1.1",
+                "phpstan/phpstan": "^1.12 || ^2",
+                "phpstan/phpstan-strict-rules": "^1 || ^2",
                 "phpunit/phpunit": "^8 || ^9"
             },
             "type": "library",
@@ -1589,7 +1537,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/pcre/issues",
-                "source": "https://github.com/composer/pcre/tree/2.3.1"
+                "source": "https://github.com/composer/pcre/tree/2.3.2"
             },
             "funding": [
                 {
@@ -1605,7 +1553,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-27T12:02:26+00:00"
+            "time": "2024-11-12T16:24:47+00:00"
         },
         {
             "name": "composer/semver",
@@ -3037,16 +2985,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.10.3",
+            "version": "3.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "62d32998e820bddc40f99f8251958aed187a5c9c"
+                "reference": "19473c30efe4f7b3cd42522d0b2e6e7f243c6f87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/62d32998e820bddc40f99f8251958aed187a5c9c",
-                "reference": "62d32998e820bddc40f99f8251958aed187a5c9c",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/19473c30efe4f7b3cd42522d0b2e6e7f243c6f87",
+                "reference": "19473c30efe4f7b3cd42522d0b2e6e7f243c6f87",
                 "shasum": ""
             },
             "require": {
@@ -3113,20 +3061,20 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-09-18T10:38:58+00:00"
+            "time": "2024-11-16T12:02:36+00:00"
         },
         {
             "name": "symfony/console",
-            "version": "v5.4.44",
+            "version": "v5.4.47",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "5b5a0aa66e3296e303e22490f90f521551835a83"
+                "reference": "c4ba980ca61a9eb18ee6bcc73f28e475852bb1ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/5b5a0aa66e3296e303e22490f90f521551835a83",
-                "reference": "5b5a0aa66e3296e303e22490f90f521551835a83",
+                "url": "https://api.github.com/repos/symfony/console/zipball/c4ba980ca61a9eb18ee6bcc73f28e475852bb1ed",
+                "reference": "c4ba980ca61a9eb18ee6bcc73f28e475852bb1ed",
                 "shasum": ""
             },
             "require": {
@@ -3196,7 +3144,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v5.4.44"
+                "source": "https://github.com/symfony/console/tree/v5.4.47"
             },
             "funding": [
                 {
@@ -3212,7 +3160,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-09-20T07:56:40+00:00"
+            "time": "2024-11-06T11:30:55+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -3283,16 +3231,16 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v5.4.44",
+            "version": "v5.4.45",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "76c3818964e9d32be3862c9318ae3ba9aa280ddc"
+                "reference": "57c8294ed37d4a055b77057827c67f9558c95c54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/76c3818964e9d32be3862c9318ae3ba9aa280ddc",
-                "reference": "76c3818964e9d32be3862c9318ae3ba9aa280ddc",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/57c8294ed37d4a055b77057827c67f9558c95c54",
+                "reference": "57c8294ed37d4a055b77057827c67f9558c95c54",
                 "shasum": ""
             },
             "require": {
@@ -3330,7 +3278,7 @@
             "description": "Provides basic utilities for the filesystem",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/filesystem/tree/v5.4.44"
+                "source": "https://github.com/symfony/filesystem/tree/v5.4.45"
             },
             "funding": [
                 {
@@ -3346,20 +3294,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-09-16T14:52:48+00:00"
+            "time": "2024-10-22T13:05:35+00:00"
         },
         {
             "name": "symfony/finder",
-            "version": "v5.4.43",
+            "version": "v5.4.45",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "ae25a9145a900764158d439653d5630191155ca0"
+                "reference": "63741784cd7b9967975eec610b256eed3ede022b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/ae25a9145a900764158d439653d5630191155ca0",
-                "reference": "ae25a9145a900764158d439653d5630191155ca0",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/63741784cd7b9967975eec610b256eed3ede022b",
+                "reference": "63741784cd7b9967975eec610b256eed3ede022b",
                 "shasum": ""
             },
             "require": {
@@ -3393,7 +3341,7 @@
             "description": "Finds files and directories via an intuitive fluent interface",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/finder/tree/v5.4.43"
+                "source": "https://github.com/symfony/finder/tree/v5.4.45"
             },
             "funding": [
                 {
@@ -3409,7 +3357,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-13T14:03:51+00:00"
+            "time": "2024-09-28T13:32:08+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -3963,16 +3911,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v5.4.44",
+            "version": "v5.4.47",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "1b9fa82b5c62cd49da8c9e3952dd8531ada65096"
+                "reference": "5d1662fb32ebc94f17ddb8d635454a776066733d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/1b9fa82b5c62cd49da8c9e3952dd8531ada65096",
-                "reference": "1b9fa82b5c62cd49da8c9e3952dd8531ada65096",
+                "url": "https://api.github.com/repos/symfony/process/zipball/5d1662fb32ebc94f17ddb8d635454a776066733d",
+                "reference": "5d1662fb32ebc94f17ddb8d635454a776066733d",
                 "shasum": ""
             },
             "require": {
@@ -4005,7 +3953,7 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/process/tree/v5.4.44"
+                "source": "https://github.com/symfony/process/tree/v5.4.47"
             },
             "funding": [
                 {
@@ -4021,7 +3969,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-09-17T12:46:43+00:00"
+            "time": "2024-11-06T11:36:42+00:00"
         },
         {
             "name": "symfony/service-contracts",
@@ -4108,16 +4056,16 @@
         },
         {
             "name": "symfony/string",
-            "version": "v5.4.44",
+            "version": "v5.4.47",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "832caa16b6d9aac6bf11747315225f5aba384c24"
+                "reference": "136ca7d72f72b599f2631aca474a4f8e26719799"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/832caa16b6d9aac6bf11747315225f5aba384c24",
-                "reference": "832caa16b6d9aac6bf11747315225f5aba384c24",
+                "url": "https://api.github.com/repos/symfony/string/zipball/136ca7d72f72b599f2631aca474a4f8e26719799",
+                "reference": "136ca7d72f72b599f2631aca474a4f8e26719799",
                 "shasum": ""
             },
             "require": {
@@ -4174,7 +4122,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/v5.4.44"
+                "source": "https://github.com/symfony/string/tree/v5.4.47"
             },
             "funding": [
                 {
@@ -4190,7 +4138,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-09-20T07:56:40+00:00"
+            "time": "2024-11-10T20:33:58+00:00"
         },
         {
             "name": "wp-cli/cache-command",
