@@ -74,6 +74,7 @@ export function NoExistingPlan( props ) {
 										( feat, index ) => {
 											return (
 												<li
+													key={ index }
 													className={ classNames(
 														'nfd-flex',
 														'nfd-flex-row',
