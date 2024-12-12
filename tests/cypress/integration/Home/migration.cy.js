@@ -69,6 +69,7 @@ describe(
 			cy.get( '.help-container', {
 				timeout: customCommandTimeout,
 			} ).should( 'be.visible' );
+			cy.wait( 1000 );
 			cy.get( 'div.helpcenter-question-block' )
 				.children()
 				.last()
@@ -92,6 +93,7 @@ describe(
 			cy.get( '.help-container', {
 				timeout: customCommandTimeout,
 			} ).should( 'be.visible' );
+			cy.wait( 1000 );
 			cy.get( 'div.helpcenter-question-block' )
 				.children()
 				.last()
