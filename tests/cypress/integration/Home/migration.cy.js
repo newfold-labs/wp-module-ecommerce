@@ -76,7 +76,7 @@ describe(
 				.then( ( text ) => {
 					expect( text.toLowerCase() ).to.contain( 'nameserver' );
 				} );
-			} );
+		} );
 
 		it( 'Verify when connect domain to site clicked', () => {
 			cy.intercept( APIList.connect_domain ).as( 'events' );
@@ -99,7 +99,6 @@ describe(
 				.then( ( text ) => {
 					expect( text.toLowerCase() ).to.contain( 'domain' );
 				} );
-			} );
 		} );
 
 		it( 'Verify when continue with store setup clicked', () => {
