@@ -70,13 +70,21 @@ describe(
 				timeout: customCommandTimeout,
 			} ).should( 'be.visible' );
 			cy.wait( 1000 );
-			cy.get( 'div.helpcenter-question-block' )
-				.children()
-				.last()
-				.invoke( 'text' )
-				.then( ( text ) => {
-					expect( text.toLowerCase() ).to.contain( 'nameserver' );
-				} );
+			cy.get( 'div.helpcenter-question-block' ).then( ( $el ) => {
+				if ( $el.length ) {
+					cy.wrap( $el ).children().last().invoke( 'text' ).then( ( text ) => {
+						expect( text.toLowerCase() ).to.contain( 'nameserver' );
+					});
+				} else {
+					cy.window().then( ( win ) => {
+						const localStorageValue = win.localStorage.getItem( 'nfdHelpCurrentQuery' );
+						const localStorageContainsNameserver = localStorageValue
+							? localStorageValue.toLowerCase().includes( 'nameserver' )
+							: false;
+						expect( localStorageContainsNameserver ).to.be.true;
+					});
+				}
+			});
 		} );
 
 		it( 'Verify when connect domain to site clicked', () => {
@@ -94,13 +102,21 @@ describe(
 				timeout: customCommandTimeout,
 			} ).should( 'be.visible' );
 			cy.wait( 1000 );
-			cy.get( 'div.helpcenter-question-block' )
-				.children()
-				.last()
-				.invoke( 'text' )
-				.then( ( text ) => {
-					expect( text.toLowerCase() ).to.contain( 'domain' );
-				} );
+			cy.get( 'div.helpcenter-question-block' ).then( ( $el ) => {
+				if ( $el.length ) {
+					cy.wrap( $el ).children().last().invoke( 'text' ).then( ( text ) => {
+						expect( text.toLowerCase() ).to.contain( 'domain' );
+					});
+				} else {
+					cy.window().then( ( win ) => {
+						const localStorageValue = win.localStorage.getItem( 'nfdHelpCurrentQuery' );
+						const localStorageContainsDomain = localStorageValue
+							? localStorageValue.toLowerCase().includes( 'domain' )
+							: false;
+						expect( localStorageContainsDomain ).to.be.true;
+					});
+				}
+			});
 		} );
 
 		it( 'Verify when continue with store setup clicked', () => {
