@@ -69,11 +69,14 @@ describe(
 			cy.get( '.help-container', {
 				timeout: customCommandTimeout,
 			} ).should( 'be.visible' );
-			cy.get( '#search-input-box' )
-				.should( 'have.attr', 'value' )
-				.then( ( value ) => {
-					expect( value.toLowerCase() ).to.contain( 'nameserver' );
-				} );
+			cy.wait( 1000 );
+			cy.get( 'div.helpcenter-question-block' ).then( ( $el ) => {
+				if ( $el.length ) {
+					cy.wrap( $el ).children().last().invoke( 'text' ).then( ( text ) => {
+						expect( text.toLowerCase() ).to.contain( 'nameserver' );
+					});
+				}
+			});
 		} );
 
 		it( 'Verify when connect domain to site clicked', () => {
@@ -90,11 +93,14 @@ describe(
 			cy.get( '.help-container', {
 				timeout: customCommandTimeout,
 			} ).should( 'be.visible' );
-			cy.get( '#search-input-box' )
-				.should( 'have.attr', 'value' )
-				.then( ( value ) => {
-					expect( value.toLowerCase() ).to.contain( 'domain' );
-				} );
+			cy.wait( 1000 );
+			cy.get( 'div.helpcenter-question-block' ).then( ( $el ) => {
+				if ( $el.length ) {
+					cy.wrap( $el ).children().last().invoke( 'text' ).then( ( text ) => {
+						expect( text.toLowerCase() ).to.contain( 'domain' );
+					});
+				}
+			});
 		} );
 
 		it( 'Verify when continue with store setup clicked', () => {
