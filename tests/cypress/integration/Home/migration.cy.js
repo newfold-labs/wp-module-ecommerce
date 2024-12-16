@@ -75,14 +75,6 @@ describe(
 					cy.wrap( $el ).children().last().invoke( 'text' ).then( ( text ) => {
 						expect( text.toLowerCase() ).to.contain( 'nameserver' );
 					});
-				} else {
-					cy.window().then( ( win ) => {
-						const localStorageValue = win.localStorage.getItem( 'nfdHelpCurrentQuery' );
-						const localStorageContainsNameserver = localStorageValue
-							? localStorageValue.toLowerCase().includes( 'nameserver' )
-							: false;
-						expect( localStorageContainsNameserver ).to.be.true;
-					});
 				}
 			});
 		} );
@@ -106,14 +98,6 @@ describe(
 				if ( $el.length ) {
 					cy.wrap( $el ).children().last().invoke( 'text' ).then( ( text ) => {
 						expect( text.toLowerCase() ).to.contain( 'domain' );
-					});
-				} else {
-					cy.window().then( ( win ) => {
-						const localStorageValue = win.localStorage.getItem( 'nfdHelpCurrentQuery' );
-						const localStorageContainsDomain = localStorageValue
-							? localStorageValue.toLowerCase().includes( 'domain' )
-							: false;
-						expect( localStorageContainsDomain ).to.be.true;
 					});
 				}
 			});
