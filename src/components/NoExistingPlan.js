@@ -70,10 +70,11 @@ export function NoExistingPlan( props ) {
 							</div>
 							<div className="nfd-flex nfd-flex-row nfd--mt-8">
 								<ul className="nfd-mr-6 nfd-grid nfd-grid-cols-2 nfd-gap-x-6 nfd-mt-6">
-									{ solution?.features.map(
+									{ solution?.features?.map(
 										( feat, index ) => {
 											return (
 												<li
+													key={ index }
 													className={ classNames(
 														'nfd-flex',
 														'nfd-flex-row',

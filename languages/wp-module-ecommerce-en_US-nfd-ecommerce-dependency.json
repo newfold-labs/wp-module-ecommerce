@@ -1,7 +1,7 @@
 {
-    "translation-revision-date": "YEAR-MO-DA HO:MI+ZONE",
-    "generator": "WP-CLI\/2.10.0",
-    "source": "build\/index.js",
+    "translation-revision-date": "2024-11-18 12:18+0530",
+    "generator": "WP-CLI/2.11.0",
+    "source": "build/index.js",
     "domain": "messages",
     "locale_data": {
         "messages": {
@@ -10,7 +10,16 @@
                 "lang": "en_US",
                 "plural-forms": "nplurals=2; plural=(n != 1);"
             },
+            "eCommerce": [
+                ""
+            ],
+            "NFD eCommerce Options": [
+                ""
+            ],
             "Live": [
+                ""
+            ],
+            "NFD eCommerce RazorPay Options": [
                 ""
             ],
             "Payments": [
@@ -19,7 +28,7 @@
             "yes": [
                 ""
             ],
-            "Credit Card\/Debit Card\/NetBanking": [
+            "Credit Card/Debit Card/NetBanking": [
                 ""
             ],
             "Pay securely by Credit or Debit card or Internet Banking through Razorpay.": [
@@ -148,7 +157,7 @@
             "PayPal": [
                 ""
             ],
-            "Online payments built for success. We help you do business in 200+ markets and 100+ currencies\u2014even if your customers don't have PayPal.": [
+            "Online payments built for success. We help you do business in 200+ markets and 100+ currencies—even if your customers don't have PayPal.": [
                 ""
             ],
             "Manage": [
@@ -179,9 +188,6 @@
                 ""
             ],
             " How to add products": [
-                ""
-            ],
-            "No orders yet. When you start getting orders, they will show up here.": [
                 ""
             ],
             "Razorpay": [
@@ -223,7 +229,7 @@
             "Your site is online now!": [
                 ""
             ],
-            "You can re-enable the 'Coming Soon' mode in \u201cSettings\u201d.": [
+            "You can re-enable the 'Coming Soon' mode in “Settings”.": [
                 ""
             ],
             "Ready to go live?": [
@@ -263,12 +269,6 @@
                 ""
             ],
             "Would you like to enable sales tax?": [
-                ""
-            ],
-            "Add Upsells, Cross-sells, and other Promotions to your store": [
-                ""
-            ],
-            "Install now": [
                 ""
             ],
             "Install WooCommerce": [
@@ -403,9 +403,6 @@
             "Recent Activity": [
                 ""
             ],
-            "view all": [
-                ""
-            ],
             "Pending Payment": [
                 ""
             ],
@@ -425,9 +422,6 @@
                 ""
             ],
             "Failed": [
-                ""
-            ],
-            "Recent Orders": [
                 ""
             ],
             "Install WooCommerce to unlock": [
@@ -517,7 +511,43 @@
             "View your site": [
                 ""
             ],
-            "Buy now": [
+            "Promotions": [
+                ""
+            ],
+            "Create a Promotion": [
+                ""
+            ],
+            "Boost Your Online Store Sales": [
+                ""
+            ],
+            "Maximize your sales by creating effective": [
+                ""
+            ],
+            "promotions and campaigns like:": [
+                ""
+            ],
+            "Free": [
+                ""
+            ],
+            "Shipping": [
+                ""
+            ],
+            "Buy One": [
+                ""
+            ],
+            "Get One": [
+                ""
+            ],
+            "Free Gift": [
+                ""
+            ],
+            "in Cart": [
+                ""
+            ],
+            "Frequently": [
+                ""
+            ],
+            "Bought Together": [
                 ""
             ],
             "Edit your site": [
@@ -553,10 +583,22 @@
             "Sales & Promotions": [
                 ""
             ],
-            "Create and manage X-sell, Upsell, sales and promotions through campaigns to boost your sales": [
+            "New Order Received": [
                 ""
             ],
-            "New Order Received": [
+            "Status": [
+                ""
+            ],
+            "Published - Public": [
+                ""
+            ],
+            "Published - Password Protected": [
+                ""
+            ],
+            "Published - Private": [
+                ""
+            ],
+            "Last Modified": [
                 ""
             ],
             "Good job!": [
@@ -775,9 +817,6 @@
             "Activating the YITH ": [
                 ""
             ],
-            "plugin...": [
-                ""
-            ],
             "Preview your store": [
                 ""
             ],
@@ -791,6 +830,204 @@
                 ""
             ],
             "Product Filters": [
+                ""
+            ],
+            "View all your plugins and tools": [
+                ""
+            ],
+            "Start selling like a Pro!": [
+                ""
+            ],
+            "Give your online store a boost with our all-in-one eCommerce bundle filled with exclusive plugins and tools designed to help you sell your products and services like never before. ": [
+                ""
+            ],
+            "Create a campaign and boost your sales!": [
+                ""
+            ],
+            "Get Started": [
+                ""
+            ],
+            "Not sure where to start? Try one of these popular promotions:": [
+                ""
+            ],
+            "Explore the features included with your solution": [
+                ""
+            ],
+            "Upgrade your plan for success.": [
+                ""
+            ],
+            "Choose the set of plugins and services that's right for your needs. You're covered by our no-quibble, 30 day money back guarantee.": [
+                ""
+            ],
+            "/mo": [
+                ""
+            ],
+            "Original price": [
+                ""
+            ],
+            "Learn more": [
+                ""
+            ],
+            "Oops! something went wrong. Please try again later": [
+                ""
+            ],
+            "Explore Your Plugins and Tools": [
+                ""
+            ],
+            "Improve your site with the tools and services included in your plan.": [
+                ""
+            ],
+            "Sales Channels": [
+                ""
+            ],
+            "Sell your products everywhere, confidently, with Ecomdash.": [
+                ""
+            ],
+            "With ecomdash, you can manage different sales channels all in one place.": [
+                ""
+            ],
+            "Simply connect your business accounts from Amazon, Etsy or Walmart to": [
+                ""
+            ],
+            "your ecomdash platform and easily manage products, customer orders and": [
+                ""
+            ],
+            "more saving you valuable time.": [
+                ""
+            ],
+            "Get Started Now": [
+                ""
+            ],
+            "Go to Ecomdash": [
+                ""
+            ],
+            "Install Now": [
+                ""
+            ],
+            "Manage inventory across multiple platforms": [
+                ""
+            ],
+            "Enjoy near real-time inventory updates for an unlimited number of": [
+                ""
+            ],
+            "channels with our inventory management software.": [
+                ""
+            ],
+            "Manage product levels across multiple warehouses ": [
+                ""
+            ],
+            "without the fear of overselling.": [
+                ""
+            ],
+            "Accurately sync kits, multipacks, and components without any": [
+                ""
+            ],
+            "headaches.": [
+                ""
+            ],
+            "Order Management and Reporting": [
+                ""
+            ],
+            "With Ecomdash you can sit back and relax, knowing that all aspects of order fulfillment are under control. Easily track your top selling items, cost of goods sold, stale inventory and more with Ecomdash's extensive reporting tools.": [
+                ""
+            ],
+            "Powerful Add-ons": [
+                ""
+            ],
+            "Ecomdash contains a variety of powerful add-ons that will help you handle everything from creating barcodes and inventory templates, to managing warehouse feeds, Fulfillment By Amazon and even accounting.": [
+                ""
+            ],
+            "Fullfillment By Amazon (FBA)": [
+                ""
+            ],
+            "Auto-export non-Amazon orders to FBA. Import the tracking and pass it to the": [
+                ""
+            ],
+            "originating sales channel, marking it as shipped.": [
+                ""
+            ],
+            "Barcodes": [
+                ""
+            ],
+            "Print barcodes for your products that can be": [
+                ""
+            ],
+            "used for labeling and scanning your": [
+                ""
+            ],
+            "products": [
+                ""
+            ],
+            "Shipping Labels": [
+                ""
+            ],
+            "Print shipping labels with a preferred carrier": [
+                ""
+            ],
+            "right from your ecomdash account and save": [
+                ""
+            ],
+            "on postage.": [
+                ""
+            ],
+            "Listing Presets": [
+                ""
+            ],
+            "Create listing presets to cut down most of": [
+                ""
+            ],
+            "the manual data entry needed when creating": [
+                ""
+            ],
+            "new listings.": [
+                ""
+            ],
+            "Accounting": [
+                ""
+            ],
+            "Seamlessly communicate your sales and": [
+                ""
+            ],
+            "purchase order information directly to your": [
+                ""
+            ],
+            "accounting software.": [
+                ""
+            ],
+            "Custom Inventory Templates": [
+                ""
+            ],
+            "Creating a custom file template allows you to": [
+                ""
+            ],
+            "upload and/or export files with product data": [
+                ""
+            ],
+            "for thousands of products at once.": [
+                ""
+            ],
+            "Warehouse Feeds": [
+                ""
+            ],
+            "Setup feeds to export your sales orders via": [
+                ""
+            ],
+            "email or FTP sites to third parties such as": [
+                ""
+            ],
+            "Dropshippers, Suppliers, or 3PL systems.": [
+                ""
+            ],
+            "Purchase Orders": [
+                ""
+            ],
+            "Quickly create new orders and have": [
+                ""
+            ],
+            "inventory quantities adjusted and synced out": [
+                ""
+            ],
+            "to listings as units are received.": [
                 ""
             ]
         }
