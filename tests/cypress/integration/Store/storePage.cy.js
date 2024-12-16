@@ -1,5 +1,5 @@
 import { GetPluginId, getAppId } from '../wp-module-support/pluginID.cy';
-import { wpLogin, uninstallPlugins } from '../wp-module-support/utils.cy';
+import { wpLogin } from '../wp-module-support/utils.cy';
 
 const pluginId = GetPluginId();
 const appId = getAppId();

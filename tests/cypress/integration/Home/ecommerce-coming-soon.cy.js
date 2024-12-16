@@ -1,9 +1,5 @@
 import { GetPluginId } from '../wp-module-support/pluginID.cy';
-import {
-	wpLogin,
-	comingSoon,
-	uninstallPlugins,
-} from '../wp-module-support/utils.cy';
+import { wpLogin, comingSoon } from '../wp-module-support/utils.cy';
 
 const customCommandTimeout = 20000;
 const pluginId = GetPluginId();
@@ -80,7 +76,7 @@ describe(
 			cy.url().should( 'eq', Cypress.config().baseUrl + '/' );
 			cy.go( 'back' );
 			cy.get( '.nfd-flex-none > .nfd-button--upsell' ).click();
-			cy.get('[data-testid="siteStatus"]').should('not.exist');
+			cy.get( '[data-testid="siteStatus"]' ).should( 'not.exist' );
 			cy.get( '.nfd-notification--success' ).should( 'exist' );
 		} );
 	}
