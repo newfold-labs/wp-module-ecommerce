@@ -1,8 +1,8 @@
 import { GetPluginId, getAppId } from '../wp-module-support/pluginID.cy';
 import {
 	wpLogin,
-	uninstallPlugins,
 	installWoo,
+	uninstallWoo,
 } from '../wp-module-support/utils.cy';
 
 const customCommandTimeout = 60000;
@@ -38,12 +38,15 @@ describe(
 			if ( pluginId !== 'bluehost' ) {
 				this.skip();
 			}
+			installWoo();
+		} );
+
+		after( () => {
+			uninstallWoo();
 		} );
 
 		beforeEach( () => {
 			wpLogin();
-			uninstallPlugins();
-			installWoo();
 			cy.visit( '/wp-admin/admin.php?page=' + pluginId );
 		} );
 
@@ -68,10 +71,7 @@ describe(
 			// Verify Buy now button has correct link
 			cy.get( '@buyButton' )
 				.should( 'have.attr', 'data-ctb-id' )
-				.and(
-					'include',
-					'f95ccf1e-3028-4ea7-b2c2-847969348e8b'
-				);
+				.and( 'include', 'f95ccf1e-3028-4ea7-b2c2-847969348e8b' );
 		} );
 
 		it( 'Verify Sales and Discounts sub tab content and functionality', () => {

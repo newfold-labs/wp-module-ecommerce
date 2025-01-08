@@ -1,10 +1,6 @@
 import { GetPluginId } from '../wp-module-support/pluginID.cy';
 import { EventsAPI, APIList } from '../wp-module-support/eventsAPIs.cy';
-import {
-	wpLogin,
-	wpCli,
-	uninstallPlugins,
-} from '../wp-module-support/utils.cy';
+import { wpLogin, wpCli, uninstallWoo } from '../wp-module-support/utils.cy';
 const customCommandTimeout = 20000;
 const pluginId = GetPluginId();
 const helpCenter = JSON.stringify( {
@@ -20,7 +16,7 @@ describe(
 			if ( pluginId !== 'bluehost' ) {
 				this.skip();
 			}
-			uninstallPlugins();
+			uninstallWoo();
 		} );
 
 		beforeEach( () => {

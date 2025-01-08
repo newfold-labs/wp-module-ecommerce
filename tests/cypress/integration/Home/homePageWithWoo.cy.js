@@ -5,7 +5,7 @@ import {
 	viewCompletedTasks,
 	viewRemainingTasks,
 	waitForNextSteps,
-	uninstallPlugins,
+	uninstallWoo,
 } from '../wp-module-support/utils.cy';
 
 const customCommandTimeout = 20000;
@@ -26,7 +26,7 @@ describe(
 		} );
 
 		after( () => {
-			uninstallPlugins();
+			uninstallWoo();
 		} );
 
 		it( 'Verify next steps "Add your store info"', () => {

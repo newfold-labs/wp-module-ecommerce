@@ -47,10 +47,10 @@ export const installWoo = () => {
 	} );
 };
 
-export const uninstallPlugins = () => {
-	cy.log( 'Uninstalling plugins' );
+export const uninstallWoo = () => {
+	cy.log( 'Uninstalling WooCommerce and Yith Extended Plugins' );
 	cy.exec(
-		'npx wp-env run cli wp plugin uninstall --all --deactivate --exclude=bluehost-wordpress-plugin,wp-plugin-hostgator,wp-plugin-crazy-domains,wp-plugin-web,wp-plugin-mojo',
+		'npx wp-env run cli wp plugin uninstall woocommerce yith-stripe-payments-for-woocommerce-extended yith-paypal-payments-for-woocommerce-extended --deactivate',
 		{
 			failOnNonZeroExit: false,
 			timeout: longWait,
