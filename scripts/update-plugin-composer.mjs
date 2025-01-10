@@ -11,7 +11,7 @@ let absPath = path.resolve(composerPath);
 
 let rawComposerContents = fs.readFileSync(absPath, { encoding: "utf-8" });
 
-const moduleName = "newfold-labs/wp-module-ecommerce";
+const moduleName = "newfold/wp-module-ecommerce";
 
 let repository = {
   type: "path",

@@ -78,10 +78,10 @@ Next-generation WordPress eCommerce Experience for WordPress sites at Newfold Di
 
 Follow instructions at [GH Packages Setup](https://gist.github.com/aulisius/1a6e4961f17039d82275a6941331b021).
 
-### 4. Install the `@newfold-labs/wp-module-ecommerce` npm package.
+### 4. Install the `@newfold/wp-module-ecommerce` npm package.
 
  ```bash
- npm install @newfold-labs/wp-module-ecommerce
+ npm install @newfold/wp-module-ecommerce
  ```
  
 ## Usage
@@ -89,7 +89,7 @@ Follow instructions at [GH Packages Setup](https://gist.github.com/aulisius/1a6e
 In your React component you can import the eCommerce module as so,
 
 ```jsx
-import { NewfoldECommerce } from "@newfold-labs/wp-module-ecommerce";
+import { NewfoldECommerce } from "@newfold/wp-module-ecommerce";
 
 function EcommercePage(props) {
   return <NewfoldECommerce {...props} />;
@@ -100,13 +100,13 @@ function EcommercePage(props) {
 
 ## Steps to create new release for Ecommerce module
 
-We have switched to GH packages for publishing newer versions of the ecommerce module. 
+We have switched to npmjs packages for publishing newer versions of the ecommerce module.
 
-if you're doing something that will not break anything or not adding any new dependency. But, only doing basic stuff like bug fixes, copy changes etc. Change which doesn't really impact the plugin in bigger way you can put them under the last number of versions. 
+If you're doing something that will not break anything or not adding any new dependency. But, only doing basic stuff like bug fixes, copy changes etc. Change which doesn't really impact the plugin in bigger way you can put them under the last number of versions.
 
-If you're doing something, like adding a new library, or changing something in the way the plugin can use our module then it's better to upgrade the minor version which is the 2nd digit of version. 
+If you're doing something, like adding a new library, or changing something in the way the plugin can use our module then it's better to upgrade the minor version which is the 2nd digit of version.
 
-In rare scenarios, like UI redesign where the change is bigger or a major refactor, we update the 1st digit of version. 
+In rare scenarios, like UI redesign where the change is bigger or a major refactor, we update the 1st digit of version.
 
 #### Changes to Ecommerce Module
 
@@ -150,7 +150,7 @@ In rare scenarios, like UI redesign where the change is bigger or a major refact
 
 1. In composer.json file, update version of newfold-labs/wp-module-ecommerce 
 
-2. In package.json file, newfold-labs/wp-module-ecommerce : version number 
+2. In package.json file, newfold/wp-module-ecommerce : version number 
 
 3. Run command, 
 ```npm i --legacy-peer-deps```  
