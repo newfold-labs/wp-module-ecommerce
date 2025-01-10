@@ -112,56 +112,52 @@ In rare scenarios, like UI redesign where the change is bigger or a major refact
 
 1. Merge approved PRs into trunk branch
 
-2. Do version update to new one in package.json 
+2. Run, `npm run set-version-bump` (this will auto update version in package and bootstrap file, perform a build, and update translation files) 
 
-3. Run, npm install (this will auto update version in package-lock.json) 
+3. Commit above change in separate commit (commit message: Bump to new version value) 
 
-4. Commit above change in separate commit (commit message: Bump to new version value) 
+4. Go to https://github.com/newfold-labs/wp-module-ecommerce/releases 
 
-5. Go to https://github.com/newfold-labs/wp-module-ecommerce/releases 
+5. Click on Draft a new release button (Note: Saving as draft, pipeline is not running.)
 
-6. Click on Draft a new release button (Note: Saving as draft, pipeline is not running.)
+6. By default, you'll always create a release from target: trunk branch. In case we are making changes to crazydomains then we must switch to the legacy branch do the fixes there and create a release from target: legacy branch as it currently runs older version 
 
-7. By default, you'll always create a release from target: trunk branch. In case we are making changes to crazydomains then we must switch to the legacy branch do the fixes there and create a release from target: legacy branch as it currently runs older version 
+7. Give V dot version that you want to release and click on create a new tag. 
 
-8. Give V dot version that you want to release and click on create a new tag. 
+8. Click Generate release notes button it will basically collect all the pull requests that came in from the previous release to now and then just create a summary. (It won't track any direct comments to the trunk. It will just only track pull request) 
 
-9. Click Generate release notes button it will basically collect all the pull requests that came in from the previous release to now and then just create a summary. (It won't track any direct comments to the trunk. It will just only track pull request) 
+9. Keep Set as the latest release checkbox `checked` as it is by default. 
 
-10. Keep Set as the latest release checkbox `checked` as it is by default. 
+10. Click Publish a release button. 
 
-11. Click Publish a release button. 
+11. Go to https://newfold-labs.github.io/satis/ Satis is a PHP registry for our packages. 
 
-12. Go to https://newfold-labs.github.io/satis/ Satis is a PHP registry for our packages. 
+12. We have set up an integration within our workflow itself so once workflow completes, we trigger alert to Satis that newer version of ecommerce module is released and rebuild Satis so that it can show newer version in packages (Repo: https://github.com/newfold-labs/satis/actions) 
 
-13. On above URL in `package` filter, you can search for ecommerce 
+13. The newer version will appear in 5 to 10 minutes of rebuilding. 
 
-14. We have set up an integration within our workflow itself so once workflow completes, we trigger alert to Satis that newer version of ecommerce module is released and rebuild Satis so that it can show newer version in packages (Repo: https://github.com/newfold-labs/satis/actions) 
+14. We do not have permission to rerun Satis build, so in case it fails PRESS1 team can help. 
 
-15. The newer version will appear in 5 to 10 minutes of rebuilding. 
+15. You can check the status of Statis build & Publish workflow here https://github.com/newfold-labs/wp-module-ecommerce/actions 
 
-16. We do not have permission to rerun Satis build, so in case it fails PRESS1 team can help. 
-
-17. You can check the status of Statis build & Publish workflow here https://github.com/newfold-labs/wp-module-ecommerce/actions 
-
-18. On successful completion you can see latest package here https://github.com/newfold-labs/wp-module-ecommerce/pkgs/npm/wp-module-ecommerce 
+16. On successful completion you can see latest js package here https://www.npmjs.com/package/@newfold/wp-module-ecommerce 
 
 #### Changes to Bluehost plugin repo
 
-1. In composer.json file, update version of newfold-labs/wp-module-ecommerce 
+Note: if no plugin changes are required we can let dependabot create a PR for the php module and the js package. If any plugin changs are required, please do the following in a branch on the respective plugin repo:
 
-2. In package.json file, newfold/wp-module-ecommerce : version number 
+1. In composer.json file, update version of `newfold-labs/wp-module-ecommerce` to latest
 
-3. Run command, 
-```npm i --legacy-peer-deps```  
+2. In package.json file, `@newfold/wp-module-ecommerce` version number to latest
 
-4. Package-lock.json should auto update. 
+3. Run command, `npm i --legacy-peer-deps`
 
-5. Once Satis starts showing updated version run below command for composer update, 
-```$ composer update newfold-labs/wp-module-ecommerce -W``` 
+4. Package-lock.json should auto update.
+
+5. Once Satis starts showing updated version run below command for composer update, `$ composer update newfold-labs/wp-module-ecommerce -W`
 
 6. We need to create a branch (naming convention: dependencies/newfold-labs/wp-module-ecommerce-version_number). 
 
-7. Currently we don't have the permission to publish directly to the BlueHost plugin So, we need to create a fork basically of the repo then push it to that fork and then create a pull request against the develop branch. 
+7. Currently we don't have the permission to publish directly to the BlueHost plugin so, we need to create a fork basically of the repo then push it to that fork and then create a pull request against the develop branch. 
 
 8. The new release process is thus completed. 
