@@ -46,7 +46,7 @@ type BrandSettings = {
   };
 };
 
-declare module "@newfold-labs/wp-module-runtime" {
+declare module "@newfold/wp-module-runtime" {
   export interface DefaultSdk {
     ecommerce: {
       brand_settings: BrandSettings;
