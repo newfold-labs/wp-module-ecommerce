@@ -74,11 +74,9 @@ Next-generation WordPress eCommerce Experience for WordPress sites at Newfold Di
  composer require newfold-labs/wp-module-ecommerce
  ```
 
-### 3. Setup GitHub registry
+### 3. Install the `@newfold/wp-module-ecommerce` npm package.
 
-Follow instructions at [GH Packages Setup](https://gist.github.com/aulisius/1a6e4961f17039d82275a6941331b021).
-
-### 4. Install the `@newfold/wp-module-ecommerce` npm package.
+Previously, this module's package was hosted at github and these instructions were required [GH Packages Setup](https://gist.github.com/aulisius/1a6e4961f17039d82275a6941331b021). Now the package is hosted at npmjs and this referenced setup is no longer relevant. Find the npmjs package at https://www.npmjs.com/package/@newfold/wp-module-ecommerce and install just as any other public package. Note the `newfold` org namespace for npmjs and the `newfold-labs` org namespace for github and satis.
 
  ```bash
  npm install @newfold/wp-module-ecommerce
