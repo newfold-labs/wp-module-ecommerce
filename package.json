@@ -40,7 +40,7 @@
     "@testing-library/cypress": "^10.0.2",
     "@wordpress/dom-ready": "^4.15.0",
     "@wordpress/env": "^10.15.0",
-    "@wordpress/scripts": "30.8.0",
+    "@wordpress/scripts": "30.8.1",
     "ajv": "^7.2.4",
     "cypress": "^13.17.0",
     "cypress-axe": "^1.5.0",
