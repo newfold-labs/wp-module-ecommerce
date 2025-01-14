@@ -2,7 +2,7 @@ import {
   HiiveAnalytics,
   HiiveEvent,
 } from "@newfold-labs/js-utility-ui-analytics";
-import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
+import { NewfoldRuntime } from "@newfold/wp-module-runtime";
 
 export const AnalyticsSdk = {
   track(category, action, value) {
