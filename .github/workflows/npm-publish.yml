@@ -24,7 +24,10 @@ jobs:
         run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.NEWFOLD_ACCESS_TOKEN }}" >> .npmrc
         
       - name: Install Dependencies
-        run: npm i && npm run build
+        run: npm ci
+
+      - name: Build
+        run: npm run build
 
       - name: Publish
         run: npm publish
