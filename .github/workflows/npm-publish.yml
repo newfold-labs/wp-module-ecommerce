@@ -21,7 +21,7 @@ jobs:
           scope: '@newfold'
 
       - name: Install Dependencies
-        run: npm i && npm run build
+        run: npm ci && npm run build
 
       - name: Publish
         run: npm publish
