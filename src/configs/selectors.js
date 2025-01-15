@@ -1,4 +1,4 @@
-import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
+import { NewfoldRuntime } from "@newfold/wp-module-runtime";
 
 export const wcTasksParser = (title) => (data) => {
   const isCompleted = (data?.[0]?.tasks ?? []).find(
