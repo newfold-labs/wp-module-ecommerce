@@ -61,11 +61,9 @@ describe(
 				.should( 'exist' )
 				.click();
 			EventsAPI( APIList.update_nameserver, pluginId );
-			cy.wait( 1000 );
 			cy.get( '.help-container', {
 				timeout: customCommandTimeout,
 			} ).should( 'be.visible' );
-			cy.wait( 1000 );
 			cy.get( 'div.helpcenter-question-block' ).then( ( $el ) => {
 				if ( $el.length ) {
 					cy.wrap( $el ).children().last().invoke( 'text' ).then( ( text ) => {
