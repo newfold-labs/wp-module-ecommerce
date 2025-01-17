@@ -32,7 +32,7 @@ jobs:
       module-repo: ${{ github.repository }}
       module-branch: ${{ needs.setup.outputs.branch }}
       plugin-repo: 'bluehost/bluehost-wordpress-plugin'
-      plugin-branch: 'update/runtime-npmjs'
+      plugin-branch: 'release/3.16.0'
       sync-npm-package: true
       sync-npm-package-name: 'newfold/wp-module-ecommerce'
     secrets: inherit
@@ -45,6 +45,7 @@ jobs:
       module-repo: ${{ github.repository }}
       module-branch: ${{ needs.setup.outputs.branch }}
       plugin-repo: 'newfold-labs/wp-plugin-hostgator'
+      plugin-branch: 'release/2.13.0'
       sync-npm-package: true
       sync-npm-package-name: 'newfold/wp-module-ecommerce'
     secrets: inherit
@@ -57,6 +58,7 @@ jobs:
       module-repo: ${{ github.repository }}
       module-branch: ${{ needs.setup.outputs.branch }}
       plugin-repo: 'newfold-labs/wp-plugin-crazy-domains'
+      plugin-branch: 'release/2.2.0'
       sync-npm-package: true
       sync-npm-package-name: 'newfold/wp-module-ecommerce'
     secrets: inherit
