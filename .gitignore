@@ -13,12 +13,6 @@ cypress.env.json
 /tests/cypress/screenshots
 /tests/cypress/videos
 
-# Built-app files
-/.docs
-/assets/*
-/build/index.js*
-/dist/*
-
 # File Types
 *.log
 *.sql
