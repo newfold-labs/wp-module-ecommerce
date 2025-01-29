@@ -10,7 +10,7 @@ const customCommandTimeout = 20000;
 const pluginId = GetPluginId();
 const hg_region = 'br';
 
-describe( 'e-commerce Home Page- Next Steps', () => {
+describe( 'e-commerce Home Page- Next Steps', { testIsolation: true }, () => {
 	const step_id = [
 		'add-a-new-page-to-your-site',
 		'upload-media-to-your-site',
@@ -29,7 +29,7 @@ describe( 'e-commerce Home Page- Next Steps', () => {
 		...novice_step_id,
 	];
 
-	before( () => {
+	beforeEach( () => {
 		wpLogin();
 		cy.exec( `npx wp-env run cli wp plugin deactivate woocommerce`, {
 			failOnNonZeroExit: false,
