@@ -1,8 +1,9 @@
 import {
   HiiveAnalytics,
   HiiveEvent,
-} from "@newfold-labs/js-utility-ui-analytics";
+} from "@newfold/js-utility-ui-analytics";
 import { NewfoldRuntime } from "@newfold/wp-module-runtime";
+import data from "@wordpress/data"; // added to keep dependency for js-utility-ui-analytics
 
 export const AnalyticsSdk = {
   track(category, action, value) {
