@@ -3,7 +3,7 @@ import {
   HiiveEvent,
 } from "@newfold/js-utility-ui-analytics";
 import { NewfoldRuntime } from "@newfold/wp-module-runtime";
-import data from "@wordpress/data"; // added to keep dependency for js-utility-ui-analytics
+import data from "@wordpress/data";
 
 export const AnalyticsSdk = {
   track(category, action, value) {
@@ -27,6 +27,7 @@ export const AnalyticsSdk = {
           time: 3000,
         },
       },
+      data
     });
   },
 };
