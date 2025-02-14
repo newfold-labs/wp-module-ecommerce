@@ -1,0 +1,1531 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: Vara Prasad Maruboina <varaprasad.maruboina@newfold.com>\n"
+"Language-Team: Dutch <vertaling@vrijschrift.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-02-13T11:49:18+00:00\n"
+"PO-Revision-Date: 2025-02-13 18:45+0530\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: wp-module-ecommerce\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: bootstrap.php:51
+msgid "eCommerce"
+msgstr ""
+
+#: includes/ECommerce.php:272 includes/ECommerce.php:283
+#: includes/ECommerce.php:292 includes/ECommerce.php:301
+#: includes/ECommerce.php:310 includes/ECommerce.php:319
+#: includes/ECommerce.php:348
+msgid "NFD eCommerce Options"
+msgstr ""
+
+#: includes/ECommerce.php:437 includes/ECommerce.php:466
+msgid "Promotions"
+msgstr ""
+
+#: includes/ECommerce.php:454 includes/ECommerce.php:487
+msgid "Create a Promotion"
+msgstr ""
+
+#: includes/ECommerce.php:484
+msgid "Boost Your Online Store Sales"
+msgstr ""
+
+#: includes/ECommerce.php:485
+msgid "Maximize your sales by creating effective"
+msgstr ""
+
+#: includes/ECommerce.php:486
+msgid "promotions and campaigns like:"
+msgstr ""
+
+#: includes/ECommerce.php:488
+msgid "Free"
+msgstr ""
+
+#: includes/ECommerce.php:489
+msgid "Shipping"
+msgstr ""
+
+#: includes/ECommerce.php:490
+msgid "Buy One"
+msgstr ""
+
+#: includes/ECommerce.php:491
+msgid "Get One"
+msgstr ""
+
+#: includes/ECommerce.php:492
+msgid "Free Gift"
+msgstr ""
+
+#: includes/ECommerce.php:493
+msgid "in Cart"
+msgstr ""
+
+#: includes/ECommerce.php:494
+msgid "Frequently"
+msgstr ""
+
+#: includes/ECommerce.php:495
+msgid "Bought Together"
+msgstr ""
+
+#: includes/ECommerce.php:655
+msgid "Status"
+msgstr ""
+
+#: includes/ECommerce.php:679
+msgid "Published - Public"
+msgstr ""
+
+#: includes/ECommerce.php:679
+msgid "Published - Password Protected"
+msgstr ""
+
+#: includes/ECommerce.php:682
+msgid "Published - Private"
+msgstr ""
+
+#: includes/ECommerce.php:692
+msgid "Last Modified"
+msgstr ""
+
+#: includes/Partials/CaptiveFlow.php:90
+msgid "NFD eCommerce RazorPay Options"
+msgstr ""
+
+#: build/index.js:1 src/components/FeatureCard.js:59
+msgid "Learn More"
+msgstr ""
+
+#: build/index.js:1 src/components/FeatureCard.js:67
+msgid "please wait while other features are installed..."
+msgstr ""
+
+#: build/index.js:1 src/components/FeatureCard.js:96
+msgid "Purchase"
+msgstr ""
+
+#: build/index.js:1 src/components/FeatureCard.js:115
+#: src/components/PaypalPayment.js:50 src/components/Razorpay.js:69
+#: src/components/SalesChannel.js:124 src/components/Shipping.js:74
+#: src/components/Stripe.js:84 src/components/YithFeatureCard.js:100
+msgid "Installing..."
+msgstr ""
+
+#: build/index.js:1 src/configs/actions.js:19
+msgid "Plugin failed to install"
+msgstr ""
+
+#: build/index.js:1 src/components/useInstallWonderCart.js:25
+#: src/components/useInstallWoo.js:20 src/configs/actions.js:22
+msgid "Please try again, or "
+msgstr ""
+
+#: build/index.js:1 src/components/useInstallWonderCart.js:27
+#: src/components/useInstallWoo.js:22 src/configs/actions.js:24
+msgid "contact support"
+msgstr ""
+
+#: build/index.js:1 src/configs/actions.js:33
+msgid "Plugin installation is in progress"
+msgstr ""
+
+#: build/index.js:1 src/configs/actions.js:34
+msgid "We'll be done in sometime"
+msgstr ""
+
+#: build/index.js:1 src/configs/Reports.config.js:61
+msgid "Views"
+msgstr ""
+
+#: build/index.js:1 src/configs/Reports.config.js:88
+msgid "Visitors"
+msgstr ""
+
+#: build/index.js:1 src/configs/Reports.config.js:115
+msgid "Orders"
+msgstr ""
+
+#: build/index.js:1 src/configs/Reports.config.js:138
+msgid "Total Sales"
+msgstr ""
+
+#: build/index.js:1 src/components/WonderCartCampaignDetails.js:10
+msgid "Add upsells, cross-sells, and other promotions with WonderCart"
+msgstr ""
+
+#: build/index.js:1 src/components/WonderCartCampaignDetails.js:13
+msgid ""
+"Create and run effective promotional campaigns like BOGOs, free shipping "
+"offers, category discounts, and more to increase revenue and strengthen "
+"customer engagement."
+msgstr ""
+
+#: build/index.js:1 src/components/WonderCartCampaignDetails.js:21
+msgid "Buy One Get One"
+msgstr ""
+
+#: build/index.js:1 src/components/WonderCartCampaignDetails.js:25
+msgid "Cart Promotions"
+msgstr ""
+
+#: build/index.js:1 src/components/WonderCartCampaignDetails.js:29
+msgid "Related Items Discounts"
+msgstr ""
+
+#: build/index.js:1 src/components/WonderCartCampaignDetails.js:35
+msgid "Free Shipping Offers"
+msgstr ""
+
+#: build/index.js:1 src/components/WonderCartCampaignDetails.js:39
+msgid "Category Discounts"
+msgstr ""
+
+#: build/index.js:1 src/components/WonderCartCampaignDetails.js:43
+msgid "and more!"
+msgstr ""
+
+#: build/index.js:1 src/components/YithPluginDetails.js:9
+msgid "Exclusive YITH plugins and tools to help you sell online"
+msgstr ""
+
+#: build/index.js:1 src/components/YithPluginDetails.js:12
+msgid ""
+"Our eCommerce bundle includes a comprehensive suite of advanced tools "
+"designed to boost the performance of your WooCommerce store. This bundle "
+"includes these exclusive YITH plugins:"
+msgstr ""
+
+#: build/index.js:1 src/components/YithPluginDetails.js:20
+#: src/configs/ProductsAndServices.config.js:233
+#: src/configs/YITHPlugins.config.js:52
+msgid "Gift Cards"
+msgstr ""
+
+#: build/index.js:1 src/components/YithPluginDetails.js:24
+#: src/configs/YITHPlugins.config.js:90
+msgid "Wishlists"
+msgstr ""
+
+#: build/index.js:1 src/components/YithPluginDetails.js:28
+msgid "Custom 'My Account' Page"
+msgstr ""
+
+#: build/index.js:1 src/components/YithPluginDetails.js:34
+#: src/configs/ProductsAndServices.config.js:177
+msgid "Bookings & Appointments"
+msgstr ""
+
+#: build/index.js:1 src/components/YithPluginDetails.js:38
+msgid "AJAX Product Filters"
+msgstr ""
+
+#: build/index.js:1 src/components/YithPluginDetails.js:42
+msgid "AJAX Product Search"
+msgstr ""
+
+#: build/index.js:1 src/components/TransformtoEcommerce.js:22
+msgid "Transform your store!"
+msgstr ""
+
+#: build/index.js:1 src/components/TransformtoEcommerce.js:25
+msgid ""
+"Give your online store a boost with our all-in-one eCommerce bundle filled "
+"with exclusive plugins and tools designed to help you sell your products and "
+"services like a pro."
+msgstr ""
+
+#: build/index.js:1 src/components/TransformtoEcommerce.js:48
+#: src/components/WonderCartNonEcommerce.js:43
+msgid "Buy Now"
+msgstr ""
+
+#: build/index.js:1 src/configs/YITHPlugins.config.js:53
+msgid ""
+"Offer customizable gift cards with personalized messages for the recipient."
+msgstr ""
+
+#: build/index.js:1 src/configs/ProductsAndServices.config.js:234
+#: src/configs/YITHPlugins.config.js:57
+msgid "Manage Gift Cards"
+msgstr ""
+
+#: build/index.js:1 src/configs/ProductsAndServices.config.js:234
+#: src/configs/YITHPlugins.config.js:57
+msgid "Create a Gift Card"
+msgstr ""
+
+#: build/index.js:1 src/configs/YITHPlugins.config.js:91
+msgid ""
+"Let customers add products to lists and share them with family and friends."
+msgstr ""
+
+#: build/index.js:1 src/configs/YITHPlugins.config.js:95
+msgid "View Wishlists"
+msgstr ""
+
+#: build/index.js:1 src/configs/YITHPlugins.config.js:95
+msgid "Setup Wishlists"
+msgstr ""
+
+#: build/index.js:1 src/configs/YITHPlugins.config.js:125
+msgid "WonderCart"
+msgstr ""
+
+#: build/index.js:1 src/components/WonderCartNonEcommerce.js:13
+#: src/components/WonderCartNotActivated.js:64
+#: src/configs/YITHPlugins.config.js:130
+msgid ""
+"Create custom upsell, cross-sell and other promotional campaigns to generate "
+"more sales."
+msgstr ""
+
+#: build/index.js:1 src/components/WonderCartNotActivated.js:127
+#: src/configs/YITHPlugins.config.js:134
+msgid "Create a Campaign"
+msgstr ""
+
+#: build/index.js:1 src/configs/YITHPlugins.config.js:167
+msgid "Booking and Appointments"
+msgstr ""
+
+#: build/index.js:1 src/configs/YITHPlugins.config.js:171
+msgid ""
+"Manage renting or booking of services and items so customers can do business "
+"with you."
+msgstr ""
+
+#: build/index.js:1 src/configs/ProductsAndServices.config.js:181
+#: src/configs/YITHPlugins.config.js:175
+msgid "Manage Bookings & Appointments"
+msgstr ""
+
+#: build/index.js:1 src/configs/ProductsAndServices.config.js:181
+#: src/configs/YITHPlugins.config.js:175
+msgid "Setup Bookings & Appointments"
+msgstr ""
+
+#: build/index.js:1 src/configs/YITHPlugins.config.js:207
+msgid "Product Filters"
+msgstr ""
+
+#: build/index.js:1 src/configs/YITHPlugins.config.js:211
+msgid ""
+"Add an advanced filter to help customers find the right product with ease."
+msgstr ""
+
+#: build/index.js:1 src/configs/YITHPlugins.config.js:215
+msgid "Product Filter Settings"
+msgstr ""
+
+#: build/index.js:1 src/configs/YITHPlugins.config.js:215
+msgid "Setup Product Filters"
+msgstr ""
+
+#: build/index.js:1 src/configs/YITHPlugins.config.js:247
+msgid "Product Search"
+msgstr ""
+
+#: build/index.js:1 src/configs/YITHPlugins.config.js:248
+msgid ""
+"Speed up search for your customers with a predictive real-time search engine."
+msgstr ""
+
+#: build/index.js:1 src/configs/YITHPlugins.config.js:252
+msgid "Product Search Settings"
+msgstr ""
+
+#: build/index.js:1 src/configs/YITHPlugins.config.js:252
+msgid "Configure Product Search"
+msgstr ""
+
+#: build/index.js:1 src/configs/YITHPlugins.config.js:283
+msgid "Customize My Account Page"
+msgstr ""
+
+#: build/index.js:1 src/configs/YITHPlugins.config.js:287
+msgid ""
+"Add custom content like videos, files, discount codes, and more to your "
+"customers account page."
+msgstr ""
+
+#: build/index.js:1 src/configs/YITHPlugins.config.js:291
+msgid "'My Account' Page Settings"
+msgstr ""
+
+#: build/index.js:1 src/configs/YITHPlugins.config.js:291
+msgid "Customize the 'My Account' Page"
+msgstr ""
+
+#: build/index.js:1 src/configs/YITHPlugins.config.js:323
+msgid "ecomdash"
+msgstr ""
+
+#: build/index.js:1 src/configs/YITHPlugins.config.js:324
+msgid ""
+"Boost sales by selling your products and services across multiple "
+"marketplaces."
+msgstr ""
+
+#: build/index.js:1 src/configs/YITHPlugins.config.js:328
+msgid "Manage Sales Channels"
+msgstr ""
+
+#: build/index.js:1 src/configs/YITHPlugins.config.js:328
+msgid "Setup Sales Channels"
+msgstr ""
+
+#: build/index.js:1 src/components/LoadingPanel.js:8
+msgid "Hold on while we get things setup for you!"
+msgstr ""
+
+#: build/index.js:1 src/components/LoadingPanel.js:13
+msgid "Activating "
+msgstr ""
+
+#: build/index.js:1 src/components/LoadingPanel.js:13
+#: src/components/LoadingPanel.js:15
+msgid " plugin..."
+msgstr ""
+
+#: build/index.js:1 src/components/LoadingPanel.js:15
+msgid "Activating the YITH "
+msgstr ""
+
+#: build/index.js:1 src/components/YITHPlugins.js:125
+msgid ""
+"Elevate Your Store with Exclusive WooCommerce Tools Included in Your Plan!"
+msgstr ""
+
+#: build/index.js:1 src/components/YITHPlugins.js:126
+msgid "Exclusive Tools Included in Your Plan"
+msgstr ""
+
+#: build/index.js:1 src/components/YITHPlugins.js:128
+msgid ""
+"Unlock the full power of your plan with access to a range of exclusive "
+"WooCommerce tools powered by \n"
+"YITH. Enhance your store and keep your customers coming back for more!"
+msgstr ""
+
+#: build/index.js:1 src/components/WPSolutionsBanner.js:124
+#: src/components/WPSolutionsBanner.js:295 src/components/YITHPlugins.js:134
+msgid "View all your plugins and tools"
+msgstr ""
+
+#: build/index.js:1 src/components/useInstallWoo.js:17
+msgid "WooCommerce failed to install"
+msgstr ""
+
+#: build/index.js:1 src/components/QuickLook.js:68
+msgid "View all analytics"
+msgstr ""
+
+#: build/index.js:1 src/components/QuickLook.js:86
+msgid "Today"
+msgstr ""
+
+#: build/index.js:1 src/components/QuickLook.js:87
+msgid "Week to date"
+msgstr ""
+
+#: build/index.js:1 src/components/QuickLook.js:88
+msgid "Month to date"
+msgstr ""
+
+#: build/index.js:1 src/components/QuickLook.js:107
+msgid "Recent Activity"
+msgstr ""
+
+#: build/index.js:1 src/components/QuickLook.js:116
+msgid ""
+"Once you launch your store, you'll see a snapshot of recent purchases and "
+"other \n"
+"customer activity here."
+msgstr ""
+
+#: build/index.js:1 src/components/QuickLook.js:254
+msgid "Install WooCommerce to unlock"
+msgstr ""
+
+#: build/index.js:1 src/components/WooCommerceUnavailable.js:18
+msgid "Add a store to your site for FREE!"
+msgstr ""
+
+#: build/index.js:1 src/components/WooCommerceUnavailable.js:21
+msgid ""
+"Adding a store to your website is quick and easy! \n"
+"Just install the free WooCommerce plugin and get ready to start making money!"
+msgstr ""
+
+#: build/index.js:1 src/components/WooCommerceUnavailable.js:35
+msgid "Install WooCommerce"
+msgstr ""
+
+#: build/index.js:1 src/components/QuickLook.js:138
+msgid "Pending Payment"
+msgstr ""
+
+#: build/index.js:1 src/components/QuickLook.js:139
+msgid "Processing"
+msgstr ""
+
+#: build/index.js:1 src/components/QuickLook.js:140
+msgid "On hold"
+msgstr ""
+
+#: build/index.js:1 src/components/QuickLook.js:141
+msgid "Completed"
+msgstr ""
+
+#: build/index.js:1 src/components/QuickLook.js:143
+msgid "Cancelled"
+msgstr ""
+
+#: build/index.js:1 src/components/QuickLook.js:147
+msgid "Refunded"
+msgstr ""
+
+#: build/index.js:1 src/components/QuickLook.js:150
+msgid "Failed"
+msgstr ""
+
+#: build/index.js:1 src/components/SiteStatus.js:10
+msgid "Coming Soon activated"
+msgstr ""
+
+#: build/index.js:1 src/components/SiteStatus.js:12
+msgid "Your store is online and ready for business!"
+msgstr ""
+
+#: build/index.js:1 src/components/SiteStatus.js:13
+msgid "Your site is online now!"
+msgstr ""
+
+#: build/index.js:1 src/components/SiteStatus.js:18
+msgid "You can re-enable the 'Coming Soon' mode in “Settings”."
+msgstr ""
+
+#: build/index.js:1 src/components/SiteStatus.js:43
+msgid "Live"
+msgstr ""
+
+#: build/index.js:1 src/components/SiteStatus.js:63
+msgid "Ready to go live?"
+msgstr ""
+
+#: build/index.js:1 src/components/SiteStatus.js:67
+msgid ""
+"Preview your store before setting it live to make sure everything \n"
+"is how you want it. Once you're ready, set your store live!"
+msgstr ""
+
+#: build/index.js:1 src/components/SiteStatus.js:71
+msgid ""
+"Preview your Site before setting it live to make sure everything \n"
+"is how you want it. Once you're ready, set your site live!"
+msgstr ""
+
+#: build/index.js:1 src/components/SiteStatus.js:94
+msgid "Preview your store"
+msgstr ""
+
+#: build/index.js:1 src/components/SiteStatus.js:95
+msgid "Preview your site"
+msgstr ""
+
+#: build/index.js:1 src/components/SiteStatus.js:106
+msgid "Launch your store"
+msgstr ""
+
+#: build/index.js:1 src/components/SiteStatus.js:107
+msgid "Launch your site"
+msgstr ""
+
+#: build/index.js:1 src/components/Store.js:22
+msgid "Store"
+msgstr ""
+
+#: build/index.js:1 src/components/CaptiveRazorpay.js:14
+msgid "Key ID *"
+msgstr ""
+
+#: build/index.js:1 src/components/CaptiveRazorpay.js:15
+msgid "Test Key ID *"
+msgstr ""
+
+#: build/index.js:1 src/components/CaptiveRazorpay.js:16
+msgid "Key Secret *"
+msgstr ""
+
+#: build/index.js:1 src/components/CaptiveRazorpay.js:17
+msgid "Test Key Secret *"
+msgstr ""
+
+#: build/index.js:1 src/components/CaptiveRazorpay.js:19
+msgid ""
+"The key ID can be found in the \"%1$sAPI Keys%2$s\" section of your Razorpay "
+"dashboard."
+msgstr ""
+
+#: build/index.js:1 src/components/CaptiveRazorpay.js:26
+msgid ""
+"That is not a valid test key ID. Please check your key ID and enter it again."
+msgstr ""
+
+#: build/index.js:1 src/components/CaptiveRazorpay.js:30
+msgid ""
+"That is not a valid production key ID. Please check your key ID and enter it "
+"again."
+msgstr ""
+
+#: build/index.js:1 src/components/CaptiveRazorpay.js:35
+msgid ""
+"The key secret can be found in the \"%1$sAPI Keys%2$s\" section of your "
+"Razorpay dashboard."
+msgstr ""
+
+#: build/index.js:1 src/components/CaptiveRazorpay.js:86
+msgid "Create an Account"
+msgstr ""
+
+#: build/index.js:1 src/components/CaptiveRazorpay.js:91
+msgid "Already have an account? "
+msgstr ""
+
+#: build/index.js:1 src/components/CaptiveRazorpay.js:96
+msgid "Login"
+msgstr ""
+
+#: build/index.js:1 src/components/CaptiveRazorpay.js:100
+msgid ""
+"After you login to Razorpay, you will need to generate your key ID and key "
+"secret codes, you will then need to switch back to this tab in your browser "
+"and paste your codes into the fields below."
+msgstr ""
+
+#: build/index.js:1 src/components/CaptiveRazorpay.js:111
+msgid "Enable Test Mode"
+msgstr ""
+
+#: build/index.js:1 src/components/CaptiveRazorpay.js:123
+msgid "enter your \"%1$s\" key ID here."
+msgstr ""
+
+#: build/index.js:1 src/components/CaptiveRazorpay.js:127
+#: src/components/CaptiveRazorpay.js:164
+msgid "test"
+msgstr ""
+
+#: build/index.js:1 src/components/CaptiveRazorpay.js:127
+#: src/components/CaptiveRazorpay.js:164
+msgid "production"
+msgstr ""
+
+#: build/index.js:1 src/components/CaptiveRazorpay.js:160
+msgid "enter your \"%1$s\" key secret here."
+msgstr ""
+
+#: build/index.js:1 src/components/CaptiveRazorpay.js:172
+#: src/components/StoreInfo.js:230
+msgid "* indicates a required field"
+msgstr ""
+
+#: build/index.js:1 src/components/Shipping.js:17
+msgid "Shipping Options"
+msgstr ""
+
+#: build/index.js:1 src/components/Shipping.js:18
+msgid "Setup a shipping account for delivering products to your customers"
+msgstr ""
+
+#: build/index.js:1 src/components/PaypalPayment.js:63
+#: src/components/Razorpay.js:44 src/components/Shipping.js:49
+#: src/components/Stripe.js:66 src/configs/FreePlugins.config.js:57
+#: src/configs/FreePlugins.config.js:86 src/configs/FreePlugins.config.js:115
+#: src/configs/FreePlugins.config.js:145 src/configs/FreePlugins.config.js:174
+#: src/configs/FreePlugins.config.js:204
+msgid "Manage"
+msgstr ""
+
+#: build/index.js:1 src/components/Razorpay.js:55 src/components/Shipping.js:60
+#: src/components/Stripe.js:76
+msgid "Connect"
+msgstr ""
+
+#: build/index.js:1 src/components/PaypalPayment.js:77
+#: src/components/Razorpay.js:55 src/components/Shipping.js:60
+#: src/components/Stripe.js:72
+msgid "Install"
+msgstr ""
+
+#: build/index.js:1 src/components/Shipping.js:79
+msgid "The best multi-carrier shipping software for e-commerce businesses."
+msgstr ""
+
+#: build/index.js:1 src/components/PaypalPayment.js:83
+#: src/components/Razorpay.js:100 src/components/Shipping.js:86
+#: src/components/Stripe.js:90
+msgid "Environment:"
+msgstr ""
+
+#: build/index.js:1 src/components/StoreInfo.js:43
+msgid "Store Info"
+msgstr ""
+
+#: build/index.js:1 src/components/StoreInfo.js:44
+msgid "We'll use this information to help you setup your online store"
+msgstr ""
+
+#: build/index.js:1 src/components/StoreInfo.js:56
+msgid "Where is your store based? *"
+msgstr ""
+
+#: build/index.js:1 src/components/StoreInfo.js:101
+msgid "Address Line 1 *"
+msgstr ""
+
+#: build/index.js:1 src/components/StoreInfo.js:111
+msgid "Address Line 2 (optional)"
+msgstr ""
+
+#: build/index.js:1 src/components/StoreInfo.js:127
+msgid "City *"
+msgstr ""
+
+#: build/index.js:1 src/components/StoreInfo.js:134
+msgid "State *"
+msgstr ""
+
+#: build/index.js:1 src/components/StoreInfo.js:168
+msgid "Postal Code *"
+msgstr ""
+
+#: build/index.js:1 src/components/StoreInfo.js:180
+msgid "Email"
+msgstr ""
+
+#: build/index.js:1 src/components/StoreInfo.js:186
+msgid "What currency do you want to display in your store?"
+msgstr ""
+
+#: build/index.js:1 src/components/TaxSettings.js:6
+msgid "Yes, enable sales tax."
+msgstr ""
+
+#: build/index.js:1 src/components/TaxSettings.js:10
+msgid "No, don't enable sales tax."
+msgstr ""
+
+#: build/index.js:1 src/components/TaxSettings.js:20
+msgid "Tax Settings"
+msgstr ""
+
+#: build/index.js:1 src/components/TaxSettings.js:21
+msgid ""
+"Decide whether you want to collect sales tax on items you sell. You can "
+"change this setting at anytime"
+msgstr ""
+
+#: build/index.js:1 src/components/TaxSettings.js:27
+msgid "Would you like to enable sales tax?"
+msgstr ""
+
+#: build/index.js:1 src/components/WonderCartNonEcommerce.js:13
+msgid "Sales & Promotions"
+msgstr ""
+
+#: build/index.js:1 src/components/WonderCartNonEcommerce.js:25
+msgid "Start selling like a Pro!"
+msgstr ""
+
+#: build/index.js:1 src/components/WonderCartNonEcommerce.js:28
+msgid ""
+"Give your online store a boost with our all-in-one eCommerce bundle filled "
+"with exclusive plugins and tools designed to help you sell your products and "
+"services like never before. "
+msgstr ""
+
+#: build/index.js:1 src/components/WonderCartNotActivated.js:63
+msgid "Create a campaign and boost your sales!"
+msgstr ""
+
+#: build/index.js:1 src/components/WonderCartNotActivated.js:88
+msgid "Get Started"
+msgstr ""
+
+#: build/index.js:1 src/components/WonderCartNotActivated.js:94
+msgid "Not sure where to start? Try one of these popular promotions:"
+msgstr ""
+
+#: build/index.js:1 src/components/Razorpay.js:11
+msgid "Razorpay"
+msgstr ""
+
+#: build/index.js:1 src/components/Razorpay.js:12
+msgid ""
+"Build specifically for companies based in India, manage all your payments "
+"and financial operations from a consolidated dashboard"
+msgstr ""
+
+#: build/index.js:1 src/components/Razorpay.js:76 src/components/Stripe.js:106
+msgid "Complete control over the receiving and managing payments"
+msgstr ""
+
+#: build/index.js:1 src/components/Razorpay.js:83
+msgid "Immediate capture of funds"
+msgstr ""
+
+#: build/index.js:1 src/components/Razorpay.js:86
+msgid "Instant refunds and settlements"
+msgstr ""
+
+#: build/index.js:1 src/components/Razorpay.js:92
+msgid "Fight fraud with Thirdwatch"
+msgstr ""
+
+#: build/index.js:1 src/components/Razorpay.js:94
+msgid "Intuitive reporting"
+msgstr ""
+
+#: build/index.js:1 src/components/PaypalPayment.js:21
+msgid "PayPal"
+msgstr ""
+
+#: build/index.js:1 src/components/PaypalPayment.js:22
+msgid ""
+"Online payments built for success. We help you do business in 200+ markets "
+"and 100+ currencies—even if your customers don't have PayPal."
+msgstr ""
+
+#: build/index.js:1 src/components/PaypalPayment.js:99
+msgid "Provides flexible checkout options"
+msgstr ""
+
+#: build/index.js:1 src/components/PaypalPayment.js:102
+msgid "PayPal Buy Now Pay Later"
+msgstr ""
+
+#: build/index.js:1 src/components/PaypalPayment.js:103
+msgid "White-Labeling"
+msgstr ""
+
+#: build/index.js:1 src/components/PaypalPayment.js:105
+msgid "Country-specific payment methods"
+msgstr ""
+
+#: build/index.js:1 src/components/PaypalPayment.js:112
+msgid " Supports many popular payment methods"
+msgstr ""
+
+#: build/index.js:1 src/components/Stripe.js:34
+msgid "Stripe"
+msgstr ""
+
+#: build/index.js:1 src/components/Stripe.js:35
+msgid ""
+"Stripe provides all the tools that you need to accept payments online around "
+"the world, including support for Apple Pay and Google Pay."
+msgstr ""
+
+#: build/index.js:1 src/components/Stripe.js:52
+msgid ""
+"A secure connection is required when running Stripe Payments in Live mode; "
+"plugin is currently enabled, but no gateway will be available until you "
+"secure connection to your site through a valid SSL certificate.             "
+"If you already have a valid SSL certificate, please change the url in"
+msgstr ""
+
+#: build/index.js:1 src/components/Stripe.js:53
+msgid "settings"
+msgstr ""
+
+#: build/index.js:1 src/components/Stripe.js:53
+msgid "page"
+msgstr ""
+
+#: build/index.js:1 src/components/Stripe.js:113
+msgid "Immediate capture or authorize and capture later"
+msgstr ""
+
+#: build/index.js:1 src/components/Stripe.js:115
+msgid "One-click refunds"
+msgstr ""
+
+#: build/index.js:1 src/components/Stripe.js:117
+msgid "Option to let customers save their credit card info securely"
+msgstr ""
+
+#: build/index.js:1 src/components/Stripe.js:123
+msgid "Support ACH direct debt"
+msgstr ""
+
+#: build/index.js:1 src/components/Stripe.js:127
+msgid " Uses many popular payment methods"
+msgstr ""
+
+#: build/index.js:1 src/components/Payment.js:34
+msgid "Offline Payments"
+msgstr ""
+
+#: build/index.js:1 src/components/Payment.js:34
+msgid ""
+"Accept payments (money orders, bank transfers or C.O.D.) that are made "
+"outside your online store. "
+msgstr ""
+
+#: build/index.js:1 src/components/Payment.js:38
+msgid "Manual Payment methods"
+msgstr ""
+
+#: build/index.js:1 src/components/Payment.js:40
+msgid ""
+"When a customer selects a manual payment method, you'll need to approve "
+"their order before it can be fulfilled."
+msgstr ""
+
+#: build/index.js:1 src/components/Payment.js:46
+msgid "Check payments"
+msgstr ""
+
+#: build/index.js:1 src/components/Payment.js:50
+msgid "Bank transfer payments"
+msgstr ""
+
+#: build/index.js:1 src/components/Payment.js:54
+msgid "Cash on delivery (C.O.D.)"
+msgstr ""
+
+#: build/index.js:1 src/configs/FreePlugins.config.js:49
+msgid "Jetpack Boost - Website Speed, Performance and Critical CSS"
+msgstr ""
+
+#: build/index.js:1 src/configs/FreePlugins.config.js:53
+msgid ""
+"Speed up your WordPress site by optimizing page performance with Jetpack "
+"Boost."
+msgstr ""
+
+#: build/index.js:1 src/configs/FreePlugins.config.js:57
+#: src/configs/FreePlugins.config.js:86 src/configs/FreePlugins.config.js:115
+#: src/configs/FreePlugins.config.js:145 src/configs/FreePlugins.config.js:174
+#: src/configs/FreePlugins.config.js:204
+msgid "Enable"
+msgstr ""
+
+#: build/index.js:1 src/configs/FreePlugins.config.js:78
+msgid "Contact Form by WPForms - Drag & Drop Form Builder for WordPress"
+msgstr ""
+
+#: build/index.js:1 src/configs/FreePlugins.config.js:82
+msgid ""
+"The best WordPress contact form plugin. Drag & Drop online form builder to "
+"create beautiful contact forms, payment forms, & other custom forms."
+msgstr ""
+
+#: build/index.js:1 src/configs/FreePlugins.config.js:107
+msgid ""
+"MonsterInsights - Google Analytics Dashboard for WordPress (Website Stats "
+"Made Easy)"
+msgstr ""
+
+#: build/index.js:1 src/configs/FreePlugins.config.js:111
+msgid ""
+"The best free Google Analytics plugin for WordPress. See how visitors find "
+"and use your website, so you can grow your business."
+msgstr ""
+
+#: build/index.js:1 src/configs/FreePlugins.config.js:140
+msgid "Yoast SEO"
+msgstr ""
+
+#: build/index.js:1 src/configs/FreePlugins.config.js:141
+msgid ""
+"Improve your WordPress SEO: Write better content and have a fully optimized "
+"WordPress site using the Yoast SEO plugin."
+msgstr ""
+
+#: build/index.js:1 src/configs/FreePlugins.config.js:166
+msgid "Creative Mail - Easier WordPress & WooCommerce Email Marketing"
+msgstr ""
+
+#: build/index.js:1 src/configs/FreePlugins.config.js:170
+msgid ""
+"Creative Mail was designed specifically for WordPress and WooCommerce. Our "
+"intelligent (and super fun) email editor simplifies email marketing campaign."
+msgstr ""
+
+#: build/index.js:1 src/configs/FreePlugins.config.js:199
+msgid "OptinMonster - Lead Generation"
+msgstr ""
+
+#: build/index.js:1 src/configs/FreePlugins.config.js:200
+msgid ""
+"OptinMonster is the best WordPress popup builder plugin that helps you grow "
+"your email newsletter list and sales with email popups, exit intent popups, "
+"floating bars and more!"
+msgstr ""
+
+#: build/index.js:1 src/components/FreePlugins.js:10
+msgid "Improve your store with these free add-ons included in your plan."
+msgstr ""
+
+#: build/index.js:1 src/components/FreePlugins.js:14
+msgid "Improve your site with these free add-ons included in your plan."
+msgstr ""
+
+#: build/index.js:1 src/components/FreePlugins.js:24
+msgid "Additional Features"
+msgstr ""
+
+#: build/index.js:1 src/configs/OnboardingList.config.js:90
+msgid "Explore the features included with your solution"
+msgstr ""
+
+#: build/index.js:1 src/configs/OnboardingList.config.js:107
+msgid "Update your website nameservers"
+msgstr ""
+
+#: build/index.js:1 src/configs/OnboardingList.config.js:120
+msgid "How do I update my nameserver to BH?"
+msgstr ""
+
+#: build/index.js:1 src/configs/OnboardingList.config.js:131
+msgid "Connect this site to your domain"
+msgstr ""
+
+#: build/index.js:1 src/configs/OnboardingList.config.js:140
+msgid "How do I connect my site to the Domain ?"
+msgstr ""
+
+#: build/index.js:1 src/configs/OnboardingList.config.js:155
+msgid "Need help with these steps?"
+msgstr ""
+
+#: build/index.js:1 src/configs/OnboardingList.config.js:177
+msgid "Continue with store setup"
+msgstr ""
+
+#: build/index.js:1 src/configs/OnboardingList.config.js:196
+msgid "Sign up for Bluehost WordPress Academy"
+msgstr ""
+
+#: build/index.js:1 src/configs/OnboardingList.config.js:218
+msgid "New Order Received"
+msgstr ""
+
+#: build/index.js:1 src/configs/OnboardingList.config.js:236
+msgid "Add your store info"
+msgstr ""
+
+#: build/index.js:1 src/configs/OnboardingList.config.js:252
+msgid "Connect a payment processor"
+msgstr ""
+
+#: build/index.js:1 src/configs/OnboardingList.config.js:277
+msgid "Setup shipping options"
+msgstr ""
+
+#: build/index.js:1 src/configs/OnboardingList.config.js:298
+msgid "Configure tax settings"
+msgstr ""
+
+#: build/index.js:1 src/configs/OnboardingList.config.js:314
+#: src/configs/ProductsAndServices.config.js:80
+msgid "Add a product"
+msgstr ""
+
+#: build/index.js:1 src/configs/OnboardingList.config.js:331
+msgid "Sign up for Yoast SEO Academy"
+msgstr ""
+
+#: build/index.js:1 src/configs/OnboardingList.config.js:349
+msgid "Add a new page to your store"
+msgstr ""
+
+#: build/index.js:1 src/configs/OnboardingList.config.js:350
+msgid "Add a new page to your site"
+msgstr ""
+
+#: build/index.js:1 src/configs/OnboardingList.config.js:371
+msgid "Upload media to your site"
+msgstr ""
+
+#: build/index.js:1 src/configs/OnboardingList.config.js:390
+msgid "Connect to your social media accounts"
+msgstr ""
+
+#: build/index.js:1 src/configs/OnboardingList.config.js:415
+msgid "Enable Jetpack to connect to your social media accounts"
+msgstr ""
+
+#: build/index.js:1 src/components/OnboardingList.js:82
+msgid "Good job!"
+msgstr ""
+
+#: build/index.js:1 src/components/OnboardingList.js:82
+msgid "One last thing to do..."
+msgstr ""
+
+#: build/index.js:1 src/components/OnboardingList.js:83
+msgid "Your site is now ready for public visitors!"
+msgstr ""
+
+#: build/index.js:1 src/components/OnboardingList.js:83
+msgid "Finish this last step so your migrated site is ready for visitors."
+msgstr ""
+
+#: build/index.js:1 src/components/OnboardingList.js:90
+msgid "Next steps for your store"
+msgstr ""
+
+#: build/index.js:1 src/components/OnboardingList.js:91
+msgid "Next steps for your site"
+msgstr ""
+
+#: build/index.js:1 src/components/OnboardingList.js:95
+msgid "You're just a few steps away from sharing your store with the world!"
+msgstr ""
+
+#: build/index.js:1 src/components/OnboardingList.js:99
+msgid "You're just a few steps away from sharing your site with the world!"
+msgstr ""
+
+#: build/index.js:1 src/components/OnboardingList.js:109
+msgid ""
+"Great job! You've completed all the current tasks to get your store up and "
+"running successfully!"
+msgstr ""
+
+#: build/index.js:1 src/components/OnboardingList.js:113
+msgid ""
+"Great job! You've completed all the current tasks to get your site up and "
+"running successfully!"
+msgstr ""
+
+#: build/index.js:1 src/components/OnboardingList.js:120
+msgid ""
+"If you want to edit any of the info from the steps you've completed, simply "
+"click on the \"View completed tasks\" link below."
+msgstr ""
+
+#: build/index.js:1 src/components/OnboardingList.js:144
+msgid "View remaining tasks"
+msgstr ""
+
+#: build/index.js:1 src/components/OnboardingList.js:145
+msgid "View completed tasks"
+msgstr ""
+
+#: build/index.js:1 src/components/OnboardingScreen.js:17
+msgid "Congrats on your new store!"
+msgstr ""
+
+#: build/index.js:1 src/components/OnboardingScreen.js:18
+msgid "Congrats on your new site!"
+msgstr ""
+
+#: build/index.js:1 src/components/OnboardingScreen.js:19
+msgid "Your site is currently displaying a \"Coming Soon\" page."
+msgstr ""
+
+#: build/index.js:1 src/components/OnboardingScreen.js:26
+msgid "Ready to go to the next level?"
+msgstr ""
+
+#: build/index.js:1 src/components/OnboardingScreen.js:27
+msgid "Your site is live to the world!"
+msgstr ""
+
+#: build/index.js:1 src/components/OnboardingScreen.js:31
+msgid "Welcome home!"
+msgstr ""
+
+#: build/index.js:1 src/components/OnboardingScreen.js:32
+msgid "Your site has been successfully migrated."
+msgstr ""
+
+#: build/index.js:1 src/components/OnboardingScreen.js:88
+msgid "Home"
+msgstr ""
+
+#: build/index.js:1 src/components/OnboardingScreen.js:124
+msgid "SITE PREVIEW"
+msgstr ""
+
+#: build/index.js:1 src/components/OnboardingScreen.js:173
+msgid "View your site"
+msgstr ""
+
+#: build/index.js:1 src/components/OnboardingScreen.js:186
+msgid "Edit your site"
+msgstr ""
+
+#: build/index.js:1 src/components/NoExistingPlan.js:19
+msgid "Upgrade your plan for success."
+msgstr ""
+
+#: build/index.js:1 src/components/NoExistingPlan.js:23
+msgid ""
+"Choose the set of plugins and services that's right for your needs. You're "
+"covered by our no-quibble, 30 day money back guarantee."
+msgstr ""
+
+#: build/index.js:1 src/components/NoExistingPlan.js:49
+#: src/components/NoExistingPlan.js:63
+msgid "/mo"
+msgstr ""
+
+#: build/index.js:1 src/components/NoExistingPlan.js:54
+msgid "Original price"
+msgstr ""
+
+#: build/index.js:1 src/components/NoExistingPlan.js:110
+msgid "Learn more"
+msgstr ""
+
+#: build/index.js:1 src/components/WPSolutionsBanner.js:78
+msgid "Oops! something went wrong. Please try again later"
+msgstr ""
+
+#: build/index.js:1 src/components/WPSolutionsBanner.js:115
+msgid "Explore Your Plugins and Tools"
+msgstr ""
+
+#: build/index.js:1 src/components/WPSolutionsBanner.js:119
+msgid "Improve your site with the tools and services included in your plan."
+msgstr ""
+
+#: build/index.js:1 src/configs/ProductsAndServices.config.js:79
+msgid "Add a Product"
+msgstr ""
+
+#: build/index.js:1 src/configs/ProductsAndServices.config.js:108
+msgid "Manage Your Products"
+msgstr ""
+
+#: build/index.js:1 src/configs/ProductsAndServices.config.js:109
+msgid "Manage products"
+msgstr ""
+
+#: build/index.js:1 src/configs/ProductsAndServices.config.js:143
+msgid "Import Products via CSV"
+msgstr ""
+
+#: build/index.js:1 src/configs/ProductsAndServices.config.js:144
+msgid "Import products"
+msgstr ""
+
+#: build/index.js:1 src/components/ProductsAndServices.js:24
+msgid "Products & Services"
+msgstr ""
+
+#: build/index.js:1 src/components/ProductsAndServices.js:25
+msgid ""
+"Come here to manage products and services or add new ones to your store."
+msgstr ""
+
+#: build/index.js:1 src/components/ProductsAndServices.js:40
+msgid "Want help adding products?"
+msgstr ""
+
+#: build/index.js:1 src/components/ProductsAndServices.js:43
+msgid ""
+"Read this helpful knowledge base article to understand how to\n"
+"add different products to your store"
+msgstr ""
+
+#: build/index.js:1 src/components/ProductsAndServices.js:63
+msgid " How to add products"
+msgstr ""
+
+#: build/index.js:1 src/components/StoreDetails.js:105
+msgid "Store Details"
+msgstr ""
+
+#: build/index.js:1 src/components/StoreDetails.js:106
+msgid "This is the place for all your general store details and setup."
+msgstr ""
+
+#: build/index.js:1 src/components/StoreDetails.js:142
+msgid "Successfully saved the Store Details"
+msgstr ""
+
+#: build/index.js:1 src/components/AllPayments.js:212
+#: src/components/StoreDetails.js:192
+msgid "Discard Changes"
+msgstr ""
+
+#: build/index.js:1 src/components/AllPayments.js:215
+#: src/components/StoreDetails.js:195
+msgid "Save Changes"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:79
+msgid "Sales Channels"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:79
+#: src/components/SalesChannel.js:85
+msgid "Sell your products everywhere, confidently, with Ecomdash."
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:88
+msgid ""
+"With ecomdash, you can manage different sales channels all in one place."
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:90
+msgid "Simply connect your business accounts from Amazon, Etsy or Walmart to"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:92
+msgid "your ecomdash platform and easily manage products, customer orders and"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:94
+msgid "more saving you valuable time."
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:128
+msgid "Get Started Now"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:130
+msgid "Go to Ecomdash"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:133
+msgid "Install Now"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:144
+msgid "Manage inventory across multiple platforms"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:152
+msgid "Enjoy near real-time inventory updates for an unlimited number of"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:154
+msgid "channels with our inventory management software."
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:160
+msgid "Manage product levels across multiple warehouses "
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:162
+msgid "without the fear of overselling."
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:168
+msgid "Accurately sync kits, multipacks, and components without any"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:170
+msgid "headaches."
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:181
+msgid "Order Management and Reporting"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:184
+msgid ""
+"With Ecomdash you can sit back and relax, knowing that all aspects of order "
+"fulfillment are under control. Easily track your top selling items, cost of "
+"goods sold, stale inventory and more with Ecomdash's extensive reporting "
+"tools."
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:193
+msgid "Powerful Add-ons"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:196
+msgid ""
+"Ecomdash contains a variety of powerful add-ons that will help you handle "
+"everything from creating barcodes and inventory templates, to managing "
+"warehouse feeds, Fulfillment By Amazon and even accounting."
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:202
+msgid "Fullfillment By Amazon (FBA)"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:205
+msgid ""
+"Auto-export non-Amazon orders to FBA. Import the tracking and pass it to the"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:207
+msgid "originating sales channel, marking it as shipped."
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:218
+msgid "Barcodes"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:222
+msgid "Print barcodes for your products that can be"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:224
+msgid "used for labeling and scanning your"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:226
+msgid "products"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:233
+msgid "Shipping Labels"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:237
+msgid "Print shipping labels with a preferred carrier"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:239
+msgid "right from your ecomdash account and save"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:241
+msgid "on postage."
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:248
+msgid "Listing Presets"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:252
+msgid "Create listing presets to cut down most of"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:254
+msgid "the manual data entry needed when creating"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:256
+msgid "new listings."
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:263
+msgid "Accounting"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:267
+msgid "Seamlessly communicate your sales and"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:269
+msgid "purchase order information directly to your"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:271
+msgid "accounting software."
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:281
+msgid "Custom Inventory Templates"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:285
+msgid "Creating a custom file template allows you to"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:287
+msgid "upload and/or export files with product data"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:289
+msgid "for thousands of products at once."
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:296
+msgid "Warehouse Feeds"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:300
+msgid "Setup feeds to export your sales orders via"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:302
+msgid "email or FTP sites to third parties such as"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:304
+msgid "Dropshippers, Suppliers, or 3PL systems."
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:311
+msgid "Purchase Orders"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:315
+msgid "Quickly create new orders and have"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:317
+msgid "inventory quantities adjusted and synced out"
+msgstr ""
+
+#: build/index.js:1 src/components/SalesChannel.js:319
+msgid "to listings as units are received."
+msgstr ""
+
+#: build/index.js:1 src/components/AllPayments.js:100
+msgid "Payments"
+msgstr ""
+
+#: build/index.js:1 src/components/AllPayments.js:144
+msgid "yes"
+msgstr ""
+
+#: build/index.js:1 src/components/AllPayments.js:145
+msgid "Credit Card/Debit Card/NetBanking"
+msgstr ""
+
+#: build/index.js:1 src/components/AllPayments.js:149
+msgid ""
+"Pay securely by Credit or Debit card or Internet Banking through Razorpay."
+msgstr ""
+
+#: build/index.js:1 src/components/AllPayments.js:153
+msgid "capture"
+msgstr ""
+
+#: build/index.js:1 src/components/AllPayments.js:154
+msgid ""
+"Thank you for shopping with us. Your account has been charged and your "
+"transaction is successful. We will be processing your order soon."
+msgstr ""
+
+#: build/index.js:1 src/components/AllPayments.js:166
+msgid "Successfully saved the Payment Details"
+msgstr ""
+
+#: build/index.js:1 src/index.js:54
+msgid "WooCommerce has been installed successfully"
+msgstr ""
+
+#: src/components/QuickLook.js:170
+msgid "Recent Orders"
+msgstr ""
+
+#: src/components/QuickLook.js:186
+msgid "No orders yet. When you start getting orders, they will show up here."
+msgstr ""
+
+#: src/components/QuickLook.js:238
+msgid "view all"
+msgstr ""
