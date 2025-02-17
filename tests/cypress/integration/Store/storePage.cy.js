@@ -19,7 +19,7 @@ describe(
 		it( 'Verify Store Page renders properly without Woo', () => {
 			cy.reload();
 			// Payments tab is not displayed
-			cy.get( `.${ appId }-app-subnavitem-Payments` ).should(
+			cy.get( `.${ appId }-app-subnavitem-payments` ).should(
 				'not.exist'
 			);
 
@@ -31,9 +31,9 @@ describe(
 
 			// Verify Store and its sub tabs should have Install WooCommerce buttons
 			const storeNavElements = [
-				`.${ appId }-app-navitem-Store`,
-				`.${ appId }-app-subnavitem-Products`,
-				`.${ appId }-app-subnavitem-Store`,
+				`.${ appId }-app-navitem-store`,
+				`.${ appId }-app-subnavitem-products-services`,
+				`.${ appId }-app-subnavitem-store-details`,
 			];
 
 			storeNavElements.forEach( ( ele ) => {
