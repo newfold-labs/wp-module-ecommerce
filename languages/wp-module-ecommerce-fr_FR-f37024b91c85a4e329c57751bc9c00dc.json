@@ -1,0 +1,30 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/ProductsAndServices.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "fr_FR",
+                "plural-forms": "nplurals=2; plural=(n > 1);"
+            },
+            "Products & Services": [
+                "Produits & Services"
+            ],
+            "Come here to manage products and services or add new ones to your store.": [
+                "Venez ici pour g\u00e9rer vos produits et services ou ajouter de nouveaux produits \u00e0 votre boutique."
+            ],
+            "Want help adding products?": [
+                "Vous voulez aider \u00e0 ajouter des produits ?"
+            ],
+            "Read this helpful knowledge base article to understand how to\nadd different products to your store": [
+                "Lisez cet article de base de connaissances utile pour comprendre comment\najouter des produits diff\u00e9rents \u00e0 votre boutique"
+            ],
+            " How to add products": [
+                " Comment ajouter des produits"
+            ]
+        }
+    }
+}

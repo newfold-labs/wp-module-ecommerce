@@ -1,0 +1,24 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/WooCommerceUnavailable.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "nl_NL",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Add a store to your site for FREE!": [
+                "Voeg een winkel toe aan uw site GRATIS!"
+            ],
+            "Adding a store to your website is quick and easy! \nJust install the free WooCommerce plugin and get ready to start making money!": [
+                "Een winkel toevoegen aan je website is snel en eenvoudig! \nInstalleer gewoon de gratis WooCommerce-plugin en begin met geld verdienen!"
+            ],
+            "Install WooCommerce": [
+                "Installeer WooCommerce"
+            ]
+        }
+    }
+}

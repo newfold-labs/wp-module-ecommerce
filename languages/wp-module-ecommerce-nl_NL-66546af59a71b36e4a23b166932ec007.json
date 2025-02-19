@@ -1,0 +1,63 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/Stripe.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "nl_NL",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Installing...": [
+                "Installeren..."
+            ],
+            "Manage": [
+                "Beheren"
+            ],
+            "Connect": [
+                "Verbinden"
+            ],
+            "Install": [
+                "Installeren"
+            ],
+            "Environment:": [
+                "Omgeving:"
+            ],
+            "Complete control over the receiving and managing payments": [
+                "Volledige controle over het ontvangen en beheren van betalingen"
+            ],
+            "Stripe": [
+                "Stripe"
+            ],
+            "Stripe provides all the tools that you need to accept payments online around the world, including support for Apple Pay and Google Pay.": [
+                "Stripe biedt alle tools die je nodig hebt om online betalingen over de hele wereld te accepteren, inclusief ondersteuning voor Apple Pay en Google Pay."
+            ],
+            "A secure connection is required when running Stripe Payments in Live mode; plugin is currently enabled, but no gateway will be available until you secure connection to your site through a valid SSL certificate.             If you already have a valid SSL certificate, please change the url in": [
+                "Een beveiligde verbinding is vereist bij het uitvoeren van Stripe Betalingen in de Live modus; plugin is momenteel ingeschakeld, maar geen gateway beschikbaar totdat u een beveiligde verbinding met uw site via een geldig SSL-certificaat heeft. Als u al een geldig SSL-certificaat heeft, wijzig dan de url in"
+            ],
+            "settings": [
+                "Instellingen"
+            ],
+            "page": [
+                "pagina"
+            ],
+            "Immediate capture or authorize and capture later": [
+                "Direct vastleggen of toestaan en vastleggen later"
+            ],
+            "One-click refunds": [
+                "Terugbetalingen in \u00e9\u00e9n klik"
+            ],
+            "Option to let customers save their credit card info securely": [
+                "Optie om klanten hun creditcardinformatie veilig te laten opslaan"
+            ],
+            "Support ACH direct debt": [
+                "Ondersteun ACH directe schuld"
+            ],
+            " Uses many popular payment methods": [
+                " Gebruikt veel populaire betaalmethoden"
+            ]
+        }
+    }
+}

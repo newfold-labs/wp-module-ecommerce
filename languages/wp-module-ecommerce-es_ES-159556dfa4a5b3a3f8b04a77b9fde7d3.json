@@ -1,0 +1,36 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/Payment.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "es_ES",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Offline Payments": [
+                "Pagos sin conexi\u00f3n"
+            ],
+            "Accept payments (money orders, bank transfers or C.O.D.) that are made outside your online store. ": [
+                "Acepte pagos (\u00f3rdenes de pago, transferencias bancarias o C.O.D.) que se realicen fuera de su tienda en l\u00ednea. "
+            ],
+            "Manual Payment methods": [
+                "M\u00e9todos de pago manual"
+            ],
+            "When a customer selects a manual payment method, you'll need to approve their order before it can be fulfilled.": [
+                "Cuando un cliente selecciona un m\u00e9todo de pago manual, deber\u00e1 aprobar su pedido antes de poder cumplirlo."
+            ],
+            "Check payments": [
+                "Verificar pagos"
+            ],
+            "Bank transfer payments": [
+                "Pagos de transferencia bancaria"
+            ],
+            "Cash on delivery (C.O.D.)": [
+                "Efectivo de entrega (C.O.D.)"
+            ]
+        }
+    }
+}

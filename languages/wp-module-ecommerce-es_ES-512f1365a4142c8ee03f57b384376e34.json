@@ -1,0 +1,48 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/PaypalPayment.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "es_ES",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Installing...": [
+                "Instalando..."
+            ],
+            "Manage": [
+                "Gestionar"
+            ],
+            "Install": [
+                "Instalar"
+            ],
+            "Environment:": [
+                "Entorno :"
+            ],
+            "PayPal": [
+                "PayPal"
+            ],
+            "Online payments built for success. We help you do business in 200+ markets and 100+ currencies\u2014even if your customers don't have PayPal.": [
+                "Pagos en l\u00ednea dise\u00f1ados para el \u00e9xito. Le ayudamos a hacer negocios en m\u00e1s de 200 mercados y m\u00e1s de 100 monedas, incluso si sus clientes no tienen PayPal."
+            ],
+            "Provides flexible checkout options": [
+                "Proporciona opciones de pago flexibles"
+            ],
+            "PayPal Buy Now Pay Later": [
+                "Comprar PayPal ahora paga m\u00e1s tarde"
+            ],
+            "White-Labeling": [
+                "Etiquetado blanco"
+            ],
+            "Country-specific payment methods": [
+                "M\u00e9todos de pago espec\u00edficos del pa\u00eds"
+            ],
+            " Supports many popular payment methods": [
+                " Soporta muchos m\u00e9todos de pago populares"
+            ]
+        }
+    }
+}

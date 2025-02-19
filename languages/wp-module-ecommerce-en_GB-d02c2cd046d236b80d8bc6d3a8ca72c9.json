@@ -1,0 +1,51 @@
+{
+    "translation-revision-date": "2025-02-13 18:45+0530",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/Razorpay.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "en_GB",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Installing...": [
+                "Installing..."
+            ],
+            "Manage": [
+                "Manage"
+            ],
+            "Connect": [
+                "Connect"
+            ],
+            "Install": [
+                "Install"
+            ],
+            "Environment:": [
+                "Environment:"
+            ],
+            "Razorpay": [
+                "Razorpay"
+            ],
+            "Build specifically for companies based in India, manage all your payments and financial operations from a consolidated dashboard": [
+                "Build specifically for companies based in India, manage all your payments and financial operations from a consolidated dashboard"
+            ],
+            "Complete control over the receiving and managing payments": [
+                "Complete control over the receiving and managing payments"
+            ],
+            "Immediate capture of funds": [
+                "Immediate capture of funds"
+            ],
+            "Instant refunds and settlements": [
+                "Instant refunds and settlements"
+            ],
+            "Fight fraud with Thirdwatch": [
+                "Fight fraud with Thirdwatch"
+            ],
+            "Intuitive reporting": [
+                "Intuitive reporting"
+            ]
+        }
+    }
+}

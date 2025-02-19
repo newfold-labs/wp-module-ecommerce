@@ -1,0 +1,66 @@
+{
+    "translation-revision-date": "2025-02-13 18:45+0530",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/QuickLook.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "en_GB",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "View all analytics": [
+                "View all analytics"
+            ],
+            "Today": [
+                "Today"
+            ],
+            "Week to date": [
+                "Week to date"
+            ],
+            "Month to date": [
+                "Month to date"
+            ],
+            "Recent Activity": [
+                "Recent Activity"
+            ],
+            "Once you launch your store, you'll see a snapshot of recent purchases and other \ncustomer activity here.": [
+                "Once you launch your store, you'll see a snapshot of recent purchases and other \ncustomer activity here."
+            ],
+            "Install WooCommerce to unlock": [
+                "Install WooCommerce to unlock"
+            ],
+            "Pending Payment": [
+                "Pending Payment"
+            ],
+            "Processing": [
+                "Processing"
+            ],
+            "On hold": [
+                "On hold"
+            ],
+            "Completed": [
+                "Completed"
+            ],
+            "Cancelled": [
+                "Cancelled"
+            ],
+            "Refunded": [
+                "Refunded"
+            ],
+            "Failed": [
+                "Failed"
+            ],
+            "Recent Orders": [
+                "Recent Orders"
+            ],
+            "No orders yet. When you start getting orders, they will show up here.": [
+                "No orders yet. When you start getting orders, they will show up here."
+            ],
+            "view all": [
+                "view all"
+            ]
+        }
+    }
+}

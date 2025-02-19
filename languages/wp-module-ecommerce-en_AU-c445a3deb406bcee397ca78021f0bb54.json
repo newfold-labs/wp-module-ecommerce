@@ -1,0 +1,69 @@
+{
+    "translation-revision-date": "2025-02-13 18:45+0530",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/CaptiveRazorpay.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "en_AU",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Key ID *": [
+                "Key ID *"
+            ],
+            "Test Key ID *": [
+                "Test Key ID *"
+            ],
+            "Key Secret *": [
+                "Key Secret *"
+            ],
+            "Test Key Secret *": [
+                "Test Key Secret *"
+            ],
+            "The key ID can be found in the \"%1$sAPI Keys%2$s\" section of your Razorpay dashboard.": [
+                "The key ID can be found in the \"%1$sAPI Keys%2$s\" section of your Razorpay dashboard."
+            ],
+            "That is not a valid test key ID. Please check your key ID and enter it again.": [
+                "That is not a valid test key ID. Please check your key ID and enter it again."
+            ],
+            "That is not a valid production key ID. Please check your key ID and enter it again.": [
+                "That is not a valid production key ID. Please check your key ID and enter it again."
+            ],
+            "The key secret can be found in the \"%1$sAPI Keys%2$s\" section of your Razorpay dashboard.": [
+                "The key secret can be found in the \"%1$sAPI Keys%2$s\" section of your Razorpay dashboard."
+            ],
+            "Create an Account": [
+                "Create an Account"
+            ],
+            "Already have an account? ": [
+                "Already have an account? "
+            ],
+            "Login": [
+                "Login"
+            ],
+            "After you login to Razorpay, you will need to generate your key ID and key secret codes, you will then need to switch back to this tab in your browser and paste your codes into the fields below.": [
+                "After you login to Razorpay, you will need to generate your key ID and key secret codes, you will then need to switch back to this tab in your browser and paste your codes into the fields below."
+            ],
+            "Enable Test Mode": [
+                "Enable Test Mode"
+            ],
+            "enter your \"%1$s\" key ID here.": [
+                "enter your \"%1$s\" key ID here."
+            ],
+            "test": [
+                "test"
+            ],
+            "production": [
+                "production"
+            ],
+            "enter your \"%1$s\" key secret here.": [
+                "enter your \"%1$s\" key secret here."
+            ],
+            "* indicates a required field": [
+                "* indicates a required field"
+            ]
+        }
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/useInstallWoo.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "es_ES",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Please try again, or ": [
+                "Int\u00e9ntalo de nuevo, o "
+            ],
+            "contact support": [
+                "contacta con soporte"
+            ],
+            "WooCommerce failed to install": [
+                "WooCommerce fall\u00f3 al instalar"
+            ]
+        }
+    }
+}

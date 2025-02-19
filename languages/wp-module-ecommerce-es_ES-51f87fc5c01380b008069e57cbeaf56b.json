@@ -1,0 +1,171 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/SalesChannel.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "es_ES",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Installing...": [
+                "Instalando..."
+            ],
+            "Sales Channels": [
+                "Canales de ventas"
+            ],
+            "Sell your products everywhere, confidently, with Ecomdash.": [
+                "Venda sus productos en todas partes, con seguridad, con Ecomdash."
+            ],
+            "With ecomdash, you can manage different sales channels all in one place.": [
+                "Con ecomdash, usted puede administrar diferentes canales de ventas en un solo lugar."
+            ],
+            "Simply connect your business accounts from Amazon, Etsy or Walmart to": [
+                "Simplemente conecta tus cuentas de negocios desde Amazon, Etsy o Walmart a"
+            ],
+            "your ecomdash platform and easily manage products, customer orders and": [
+                "tu plataforma ecomdash y administra f\u00e1cilmente productos, pedidos de clientes y"
+            ],
+            "more saving you valuable time.": [
+                "m\u00e1s le ahorrar\u00e1 tiempo valioso."
+            ],
+            "Get Started Now": [
+                "Comencemos ahora"
+            ],
+            "Go to Ecomdash": [
+                "Ir a Ecomdash"
+            ],
+            "Install Now": [
+                "Instalar ahora"
+            ],
+            "Manage inventory across multiple platforms": [
+                "Administrar inventario a trav\u00e9s de m\u00faltiples plataformas"
+            ],
+            "Enjoy near real-time inventory updates for an unlimited number of": [
+                "Disfruta cerca de actualizaciones de inventario en tiempo real para un n\u00famero ilimitado de"
+            ],
+            "channels with our inventory management software.": [
+                "con nuestro software de gesti\u00f3n de inventarios."
+            ],
+            "Manage product levels across multiple warehouses ": [
+                "Administrar niveles de producto a trav\u00e9s de m\u00faltiples almacenes "
+            ],
+            "without the fear of overselling.": [
+                "sin temor a la venta excesiva."
+            ],
+            "Accurately sync kits, multipacks, and components without any": [
+                "Kits sincronizados con exactitud, multipaquetes y componentes sin ning\u00fan tipo de"
+            ],
+            "headaches.": [
+                "dolores de cabeza."
+            ],
+            "Order Management and Reporting": [
+                "Gesti\u00f3n y Reporte de Pedidos"
+            ],
+            "With Ecomdash you can sit back and relax, knowing that all aspects of order fulfillment are under control. Easily track your top selling items, cost of goods sold, stale inventory and more with Ecomdash's extensive reporting tools.": [
+                "Con Ecomdash puedes sentarte y descansar, sabiendo que todos los aspectos de la realizaci\u00f3n del pedido est\u00e1n bajo control. Registre f\u00e1cilmente sus art\u00edculos m\u00e1s vendidos, el coste de los bienes vendidos, el inventario obsoleto y mucho m\u00e1s con las extensas herramientas de reporte de Ecomdash."
+            ],
+            "Powerful Add-ons": [
+                "Potentes complementos"
+            ],
+            "Ecomdash contains a variety of powerful add-ons that will help you handle everything from creating barcodes and inventory templates, to managing warehouse feeds, Fulfillment By Amazon and even accounting.": [
+                "Ecomdash contiene una variedad de poderosos complementos que le ayudar\u00e1n a manejar todo desde la creaci\u00f3n de c\u00f3digos de barras y plantillas de inventario, para administrar los alimentos de almac\u00e9n, el cumplimiento por Amazon e incluso la contabilidad."
+            ],
+            "Fullfillment By Amazon (FBA)": [
+                "Completado por Amazon (FBA)"
+            ],
+            "Auto-export non-Amazon orders to FBA. Import the tracking and pass it to the": [
+                "Auto-exportar pedidos que no sean de Amazon a FBA. Importar el seguimiento y pasarlo al"
+            ],
+            "originating sales channel, marking it as shipped.": [
+                "origen del canal de ventas, marc\u00e1ndolo como enviado."
+            ],
+            "Barcodes": [
+                "Barcodes"
+            ],
+            "Print barcodes for your products that can be": [
+                "Imprime c\u00f3digos de barras para tus productos que pueden ser"
+            ],
+            "used for labeling and scanning your": [
+                "usado para etiquetar y escanear tu"
+            ],
+            "products": [
+                "productos"
+            ],
+            "Shipping Labels": [
+                "Etiquetas de env\u00edo"
+            ],
+            "Print shipping labels with a preferred carrier": [
+                "Imprimir etiquetas de env\u00edo con un transportista preferido"
+            ],
+            "right from your ecomdash account and save": [
+                "desde tu cuenta ecomdash y guarda"
+            ],
+            "on postage.": [
+                "en el env\u00edo."
+            ],
+            "Listing Presets": [
+                "Lista de ajustes"
+            ],
+            "Create listing presets to cut down most of": [
+                "Crear presets de listados para cortar la mayor\u00eda de"
+            ],
+            "the manual data entry needed when creating": [
+                "la entrada de datos manual necesaria al crear"
+            ],
+            "new listings.": [
+                "nuevos listados."
+            ],
+            "Accounting": [
+                "Contabilidad"
+            ],
+            "Seamlessly communicate your sales and": [
+                "Comun\u00edquese sin problemas sus ventas y"
+            ],
+            "purchase order information directly to your": [
+                "informaci\u00f3n del pedido de compra directamente a su"
+            ],
+            "accounting software.": [
+                "software de contabilidad."
+            ],
+            "Custom Inventory Templates": [
+                "Plantillas de inventario personalizadas"
+            ],
+            "Creating a custom file template allows you to": [
+                "Crear una plantilla de archivo personalizada le permite"
+            ],
+            "upload and\/or export files with product data": [
+                "subir y\/o exportar archivos con datos de producto"
+            ],
+            "for thousands of products at once.": [
+                "para miles de productos a la vez."
+            ],
+            "Warehouse Feeds": [
+                "Almacenes"
+            ],
+            "Setup feeds to export your sales orders via": [
+                "Configurar canales para exportar sus pedidos a trav\u00e9s de"
+            ],
+            "email or FTP sites to third parties such as": [
+                "correo electr\u00f3nico o sitios FTP a terceros como"
+            ],
+            "Dropshippers, Suppliers, or 3PL systems.": [
+                "Sistemas Dropshipshippers, Proveedores o 3PL."
+            ],
+            "Purchase Orders": [
+                "Pedidos de compra"
+            ],
+            "Quickly create new orders and have": [
+                "Crear r\u00e1pidamente nuevos pedidos y tener"
+            ],
+            "inventory quantities adjusted and synced out": [
+                "cantidades de inventario ajustadas y sincronizadas"
+            ],
+            "to listings as units are received.": [
+                "a los listados como unidades son recibidos."
+            ]
+        }
+    }
+}

@@ -1,0 +1,48 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/StoreInfo.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "nl_NL",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "* indicates a required field": [
+                "* Geeft een verplicht veld aan"
+            ],
+            "Store Info": [
+                "Winkel informatie"
+            ],
+            "We'll use this information to help you setup your online store": [
+                "We zullen deze informatie gebruiken om u te helpen bij het opzetten van uw webwinkel"
+            ],
+            "Where is your store based? *": [
+                "Waar is uw winkel op gebaseerd? *"
+            ],
+            "Address Line 1 *": [
+                "Adresregel 1 *"
+            ],
+            "Address Line 2 (optional)": [
+                "Adresregel 2 (optioneel)"
+            ],
+            "City *": [
+                "Woonplaats *"
+            ],
+            "State *": [
+                "Staat *"
+            ],
+            "Postal Code *": [
+                "Postcode *"
+            ],
+            "Email": [
+                "E-mailadres"
+            ],
+            "What currency do you want to display in your store?": [
+                "Welke valuta wilt u weergeven in uw winkel?"
+            ]
+        }
+    }
+}

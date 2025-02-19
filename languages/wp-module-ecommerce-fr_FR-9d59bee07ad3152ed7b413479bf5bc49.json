@@ -1,0 +1,30 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/TaxSettings.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "fr_FR",
+                "plural-forms": "nplurals=2; plural=(n > 1);"
+            },
+            "Yes, enable sales tax.": [
+                "Oui, activer la taxe de vente."
+            ],
+            "No, don't enable sales tax.": [
+                "Non, n'activez pas la taxe de vente."
+            ],
+            "Tax Settings": [
+                "Param\u00e8tres de taxe"
+            ],
+            "Decide whether you want to collect sales tax on items you sell. You can change this setting at anytime": [
+                "D\u00e9cidez si vous souhaitez percevoir une taxe de vente sur les articles que vous vendez. Vous pouvez modifier ce param\u00e8tre \u00e0 tout moment"
+            ],
+            "Would you like to enable sales tax?": [
+                "Souhaitez-vous activer la taxe de vente ?"
+            ]
+        }
+    }
+}

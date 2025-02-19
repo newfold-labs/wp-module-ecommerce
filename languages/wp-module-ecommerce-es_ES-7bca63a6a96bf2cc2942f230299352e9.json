@@ -1,0 +1,30 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/StoreDetails.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "es_ES",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Store Details": [
+                "Detalles de la tienda"
+            ],
+            "This is the place for all your general store details and setup.": [
+                "Este es el lugar para todos los detalles generales de su tienda y configuraci\u00f3n."
+            ],
+            "Successfully saved the Store Details": [
+                "Guardado correctamente los detalles de la tienda"
+            ],
+            "Discard Changes": [
+                "Descartar cambios"
+            ],
+            "Save Changes": [
+                "Guardar Cambios"
+            ]
+        }
+    }
+}

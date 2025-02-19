@@ -1,0 +1,972 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "build\/index.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "it_IT",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Learn More": [
+                "Scopri Di Pi\u00f9"
+            ],
+            "please wait while other features are installed...": [
+                "attendere che siano installate altre funzionalit\u00e0..."
+            ],
+            "Purchase": [
+                "Acquista"
+            ],
+            "Installing...": [
+                "Installazione..."
+            ],
+            "Plugin failed to install": [
+                "Installazione del plugin non riuscita"
+            ],
+            "Please try again, or ": [
+                "Per favore riprovare, o "
+            ],
+            "contact support": [
+                "contattare il supporto"
+            ],
+            "Plugin installation is in progress": [
+                "Installazione del plugin in corso"
+            ],
+            "We'll be done in sometime": [
+                "Noi faremo in qualche momento"
+            ],
+            "Views": [
+                "Viste"
+            ],
+            "Visitors": [
+                "Visitatori"
+            ],
+            "Orders": [
+                "Ordini"
+            ],
+            "Total Sales": [
+                "Totale Vendite"
+            ],
+            "Add upsells, cross-sells, and other promotions with WonderCart": [
+                "Aggiungi upsells, cross-sells, e altre promozioni con WonderCart"
+            ],
+            "Create and run effective promotional campaigns like BOGOs, free shipping offers, category discounts, and more to increase revenue and strengthen customer engagement.": [
+                "Creare ed eseguire efficaci campagne promozionali come BOGO, offerte di spedizione gratuita, sconti di categoria e molto altro per aumentare le entrate e rafforzare l'impegno dei clienti."
+            ],
+            "Buy One Get One": [
+                "Acquista Uno Ottenere Uno"
+            ],
+            "Cart Promotions": [
+                "Promozioni Carrello"
+            ],
+            "Related Items Discounts": [
+                "Sconti Articoli Correlati"
+            ],
+            "Free Shipping Offers": [
+                "Offerte Di Spedizione Gratuite"
+            ],
+            "Category Discounts": [
+                "Sconti Categoria"
+            ],
+            "and more!": [
+                "e altro ancora!"
+            ],
+            "Exclusive YITH plugins and tools to help you sell online": [
+                "Plugin e strumenti YITH esclusivi per aiutarti a vendere online"
+            ],
+            "Our eCommerce bundle includes a comprehensive suite of advanced tools designed to boost the performance of your WooCommerce store. This bundle includes these exclusive YITH plugins:": [
+                "Il nostro pacchetto eCommerce include una suite completa di strumenti avanzati progettati per migliorare le prestazioni del tuo negozio WooCommerce. Questo pacchetto include questi plugin YITH esclusivi:"
+            ],
+            "Gift Cards": [
+                "Carte Regalo"
+            ],
+            "Wishlists": [
+                "Lista Desideri"
+            ],
+            "Custom 'My Account' Page": [
+                "Pagina Personalizzata 'Mio Account'"
+            ],
+            "Bookings & Appointments": [
+                "Prenotazioni E Appuntamenti"
+            ],
+            "AJAX Product Filters": [
+                "Filtri Prodotto AJAX"
+            ],
+            "AJAX Product Search": [
+                "Ricerca Prodotti AJAX"
+            ],
+            "Transform your store!": [
+                "Trasforma il tuo negozio!"
+            ],
+            "Give your online store a boost with our all-in-one eCommerce bundle filled with exclusive plugins and tools designed to help you sell your products and services like a pro.": [
+                "Dai una spinta al tuo negozio online con il nostro pacchetto eCommerce all-in-one pieno di plugin e strumenti esclusivi progettati per aiutarti a vendere i tuoi prodotti e servizi come un professionista."
+            ],
+            "Buy Now": [
+                "Acquista Ora"
+            ],
+            "Offer customizable gift cards with personalized messages for the recipient.": [
+                "Offri carte regalo personalizzabili con messaggi personalizzati per il destinatario."
+            ],
+            "Manage Gift Cards": [
+                "Gestisci Carte Regalo"
+            ],
+            "Create a Gift Card": [
+                "Crea una Gift Card"
+            ],
+            "Let customers add products to lists and share them with family and friends.": [
+                "Lasciate che i clienti aggiungano prodotti alle liste e li condividano con la famiglia e gli amici."
+            ],
+            "View Wishlists": [
+                "Visualizza Lista Desideri"
+            ],
+            "Setup Wishlists": [
+                "Imposta Lista Desideri"
+            ],
+            "WonderCart": [
+                "WonderCart"
+            ],
+            "Create custom upsell, cross-sell and other promotional campaigns to generate more sales.": [
+                "Crea campagne personalizzate di upsell, cross-sell e altre campagne promozionali per generare pi\u00f9 vendite."
+            ],
+            "Create a Campaign": [
+                "Crea una campagna"
+            ],
+            "Booking and Appointments": [
+                "Prenotazione e Appuntamenti"
+            ],
+            "Manage renting or booking of services and items so customers can do business with you.": [
+                "Gestisci il noleggio o la prenotazione di servizi e articoli in modo che i clienti possano fare affari con te."
+            ],
+            "Manage Bookings & Appointments": [
+                "Gestisci Prenotazioni E Appuntamenti"
+            ],
+            "Setup Bookings & Appointments": [
+                "Imposta Prenotazioni E Appuntamenti"
+            ],
+            "Product Filters": [
+                "Filtri Prodotto"
+            ],
+            "Add an advanced filter to help customers find the right product with ease.": [
+                "Aggiungi un filtro avanzato per aiutare i clienti a trovare il prodotto giusto con facilit\u00e0."
+            ],
+            "Product Filter Settings": [
+                "Impostazioni Filtro Prodotto"
+            ],
+            "Setup Product Filters": [
+                "Imposta Filtri Prodotto"
+            ],
+            "Product Search": [
+                "Ricerca Prodotti"
+            ],
+            "Speed up search for your customers with a predictive real-time search engine.": [
+                "Accelera la ricerca dei tuoi clienti con un motore di ricerca predittivo in tempo reale."
+            ],
+            "Product Search Settings": [
+                "Impostazioni Ricerca Prodotto"
+            ],
+            "Configure Product Search": [
+                "Configura Ricerca Prodotto"
+            ],
+            "Customize My Account Page": [
+                "Personalizza La Pagina Del Mio Account"
+            ],
+            "Add custom content like videos, files, discount codes, and more to your customers account page.": [
+                "Aggiungi contenuti personalizzati come video, file, codici di sconto, e altro alla pagina del tuo account clienti."
+            ],
+            "'My Account' Page Settings": [
+                "Impostazioni Pagina 'Mio Account'"
+            ],
+            "Customize the 'My Account' Page": [
+                "Personalizza la pagina 'Il mio account'"
+            ],
+            "ecomdash": [
+                "ecomdash"
+            ],
+            "Boost sales by selling your products and services across multiple marketplaces.": [
+                "Migliora le vendite vendendo i tuoi prodotti e servizi su pi\u00f9 mercati."
+            ],
+            "Manage Sales Channels": [
+                "Gestisci Canali Di Vendita"
+            ],
+            "Setup Sales Channels": [
+                "Imposta Canali Di Vendita"
+            ],
+            "Hold on while we get things setup for you!": [
+                "Tieni premuto mentre riceviamo le cose impostate per te!"
+            ],
+            "Activating ": [
+                "Attivazione "
+            ],
+            " plugin...": [
+                " plugin..."
+            ],
+            "Activating the YITH ": [
+                "Attivazione dello YITH "
+            ],
+            "Elevate Your Store with Exclusive WooCommerce Tools Included in Your Plan!": [
+                "Eleva il tuo negozio con esclusivi strumenti di WooCommerce inclusi nel tuo piano!"
+            ],
+            "Exclusive Tools Included in Your Plan": [
+                "Strumenti esclusivi inclusi nel tuo piano"
+            ],
+            "Unlock the full power of your plan with access to a range of exclusive WooCommerce tools powered by \nYITH. Enhance your store and keep your customers coming back for more!": [
+                "Sblocca tutta la potenza del tuo piano con l'accesso a una gamma di strumenti WooCommerce esclusivi alimentati da \nYITH. Migliora il tuo negozio e mantieni i tuoi clienti tornati per saperne di pi\u00f9!"
+            ],
+            "View all your plugins and tools": [
+                "Visualizza tutti i tuoi plugin e strumenti"
+            ],
+            "WooCommerce failed to install": [
+                "Installazione di WooCommerce non riuscita"
+            ],
+            "View all analytics": [
+                "Mostra tutti gli analytics"
+            ],
+            "Today": [
+                "Oggi"
+            ],
+            "Week to date": [
+                "Settimana fino ad oggi"
+            ],
+            "Month to date": [
+                "Mese fino ad oggi"
+            ],
+            "Recent Activity": [
+                "Attivit\u00e0 Recenti"
+            ],
+            "Once you launch your store, you'll see a snapshot of recent purchases and other \ncustomer activity here.": [
+                "Una volta lanciato il tuo negozio, vedrai qui un'istantanea degli acquisti recenti e di altre attivit\u00e0 dei clienti \n."
+            ],
+            "Install WooCommerce to unlock": [
+                "Installa WooCommerce per sbloccare"
+            ],
+            "Add a store to your site for FREE!": [
+                "Aggiungi un negozio al tuo sito GRATIS!"
+            ],
+            "Adding a store to your website is quick and easy! \nJust install the free WooCommerce plugin and get ready to start making money!": [
+                "Aggiungere un negozio al tuo sito web \u00e8 facile e veloce! \nBasta installare il plugin gratuito di WooCommerce e prepararsi a fare soldi!"
+            ],
+            "Install WooCommerce": [
+                "Installa WooCommerce"
+            ],
+            "Pending Payment": [
+                "Pagamento In Attesa"
+            ],
+            "Processing": [
+                "Elaborazione"
+            ],
+            "On hold": [
+                "In attesa"
+            ],
+            "Completed": [
+                "Completato"
+            ],
+            "Cancelled": [
+                "Annullato"
+            ],
+            "Refunded": [
+                "Rimborsato"
+            ],
+            "Failed": [
+                "Fallito"
+            ],
+            "Coming Soon activated": [
+                "Prossimamente attivato"
+            ],
+            "Your store is online and ready for business!": [
+                "Il tuo negozio \u00e8 online e pronto per gli affari!"
+            ],
+            "Your site is online now!": [
+                "Il tuo sito \u00e8 online ora!"
+            ],
+            "You can re-enable the 'Coming Soon' mode in \u201cSettings\u201d.": [
+                "\u00c8 possibile riattivare la modalit\u00e0 'In arrivo' in \u201cImpostazioni\u201d."
+            ],
+            "Live": [
+                "Live"
+            ],
+            "Ready to go live?": [
+                "Pronto ad andare in diretta?"
+            ],
+            "Preview your store before setting it live to make sure everything \nis how you want it. Once you're ready, set your store live!": [
+                "Anteprima del tuo negozio prima di impostarlo dal vivo per assicurarsi che tutto \n\u00e8 come lo vuoi. Una volta pronto, imposta il tuo negozio dal vivo!"
+            ],
+            "Preview your Site before setting it live to make sure everything \nis how you want it. Once you're ready, set your site live!": [
+                "Anteprima del sito prima di impostarlo in tempo reale per assicurarsi che tutto \n\u00e8 come lo vuoi. Una volta pronto, imposta il tuo sito dal vivo!"
+            ],
+            "Preview your store": [
+                "Anteprima del tuo negozio"
+            ],
+            "Preview your site": [
+                "Anteprima del tuo sito"
+            ],
+            "Launch your store": [
+                "Avvia il tuo negozio"
+            ],
+            "Launch your site": [
+                "Avvia il tuo sito"
+            ],
+            "Store": [
+                "Negozio"
+            ],
+            "Key ID *": [
+                "Id Chiave *"
+            ],
+            "Test Key ID *": [
+                "Test Id Chiave *"
+            ],
+            "Key Secret *": [
+                "Chiave Segreta *"
+            ],
+            "Test Key Secret *": [
+                "Chiave Di Prova Segreta *"
+            ],
+            "The key ID can be found in the \"%1$sAPI Keys%2$s\" section of your Razorpay dashboard.": [
+                "L'ID chiave pu\u00f2 essere trovato nella sezione \"%1$sAPI Keys%2$s\" della tua dashboard Razorpay."
+            ],
+            "That is not a valid test key ID. Please check your key ID and enter it again.": [
+                "Questo non \u00e8 un ID di chiave di prova valido. Controlla il tuo ID chiave e inseriscilo di nuovo."
+            ],
+            "That is not a valid production key ID. Please check your key ID and enter it again.": [
+                "Questo non \u00e8 un ID chiave di produzione valido. Si prega di controllare il tuo ID chiave e inserirlo di nuovo."
+            ],
+            "The key secret can be found in the \"%1$sAPI Keys%2$s\" section of your Razorpay dashboard.": [
+                "Il segreto chiave pu\u00f2 essere trovato nella sezione \"%1$sAPI Keys%2$s\" della tua dashboard Razorpay."
+            ],
+            "Create an Account": [
+                "Crea un account"
+            ],
+            "Already have an account? ": [
+                "Hai gi\u00e0 un account? "
+            ],
+            "Login": [
+                "Accedi"
+            ],
+            "After you login to Razorpay, you will need to generate your key ID and key secret codes, you will then need to switch back to this tab in your browser and paste your codes into the fields below.": [
+                "Dopo aver effettuato l'accesso a Razorpay, dovrai generare il tuo ID chiave e codici segreti chiave, sar\u00e0 quindi necessario tornare a questa scheda nel browser e incollare i codici nei campi qui sotto."
+            ],
+            "Enable Test Mode": [
+                "Abilita Modalit\u00e0 Test"
+            ],
+            "enter your \"%1$s\" key ID here.": [
+                "inserisci qui il tuo ID chiave \"%1$s\"."
+            ],
+            "test": [
+                "prova"
+            ],
+            "production": [
+                "produzione"
+            ],
+            "enter your \"%1$s\" key secret here.": [
+                "inserisci qui il tuo segreto chiave \"%1$s\"."
+            ],
+            "* indicates a required field": [
+                "* indica un campo obbligatorio"
+            ],
+            "Shipping Options": [
+                "Opzioni Di Spedizione"
+            ],
+            "Setup a shipping account for delivering products to your customers": [
+                "Imposta un account di spedizione per consegnare i prodotti ai tuoi clienti"
+            ],
+            "Manage": [
+                "Gestisci"
+            ],
+            "Connect": [
+                "Connetti"
+            ],
+            "Install": [
+                "Installa"
+            ],
+            "The best multi-carrier shipping software for e-commerce businesses.": [
+                "Il miglior software di spedizione multi-carrier per le imprese di e-commerce."
+            ],
+            "Environment:": [
+                "Ambiente:"
+            ],
+            "Store Info": [
+                "Informazioni Negozio"
+            ],
+            "We'll use this information to help you setup your online store": [
+                "Useremo queste informazioni per aiutarti a configurare il tuo negozio online"
+            ],
+            "Where is your store based? *": [
+                "Dove si trova il tuo negozio? *"
+            ],
+            "Address Line 1 *": [
+                "Indirizzo Riga 1 *"
+            ],
+            "Address Line 2 (optional)": [
+                "Indirizzo 2 (facoltativo)"
+            ],
+            "City *": [
+                "Citt\u00e0 *"
+            ],
+            "State *": [
+                "Stato *"
+            ],
+            "Postal Code *": [
+                "Codice Postale *"
+            ],
+            "Email": [
+                "Email"
+            ],
+            "What currency do you want to display in your store?": [
+                "Quale valuta vuoi visualizzare nel tuo negozio?"
+            ],
+            "Yes, enable sales tax.": [
+                "S\u00ec, abilita l'imposta sulle vendite."
+            ],
+            "No, don't enable sales tax.": [
+                "No, non abilitare l'imposta sulle vendite."
+            ],
+            "Tax Settings": [
+                "Impostazioni Tasse"
+            ],
+            "Decide whether you want to collect sales tax on items you sell. You can change this setting at anytime": [
+                "Decidi se vuoi raccogliere l'imposta sulle vendite sugli articoli che vendi. Puoi modificare questa impostazione in qualsiasi momento"
+            ],
+            "Would you like to enable sales tax?": [
+                "Vuoi abilitare l'imposta sulle vendite?"
+            ],
+            "Sales & Promotions": [
+                "Vendite E Promozioni"
+            ],
+            "Start selling like a Pro!": [
+                "Inizia a vendere come un Pro!"
+            ],
+            "Give your online store a boost with our all-in-one eCommerce bundle filled with exclusive plugins and tools designed to help you sell your products and services like never before. ": [
+                "Dai una spinta al tuo negozio online con il nostro pacchetto eCommerce all-in-one pieno di plugin e strumenti esclusivi progettati per aiutarti a vendere i tuoi prodotti e servizi come mai prima d'ora. "
+            ],
+            "Create a campaign and boost your sales!": [
+                "Crea una campagna e aumenta le tue vendite!"
+            ],
+            "Get Started": [
+                "Per Iniziare"
+            ],
+            "Not sure where to start? Try one of these popular promotions:": [
+                "Non sei sicuro di dove iniziare? Prova una di queste popolari promozioni:"
+            ],
+            "Razorpay": [
+                "Razorpay"
+            ],
+            "Build specifically for companies based in India, manage all your payments and financial operations from a consolidated dashboard": [
+                "Costruisci appositamente per aziende con sede in India, gestisci tutti i tuoi pagamenti e operazioni finanziarie da un dashboard consolidato"
+            ],
+            "Complete control over the receiving and managing payments": [
+                "Controllo completo sulla ricezione e la gestione dei pagamenti"
+            ],
+            "Immediate capture of funds": [
+                "Cattura immediata dei fondi"
+            ],
+            "Instant refunds and settlements": [
+                "Rimborsi istantanei e regolamenti"
+            ],
+            "Fight fraud with Thirdwatch": [
+                "Lotta alla frode con Thirdwatch"
+            ],
+            "Intuitive reporting": [
+                "Segnalazione intuitiva"
+            ],
+            "PayPal": [
+                "PayPal"
+            ],
+            "Online payments built for success. We help you do business in 200+ markets and 100+ currencies\u2014even if your customers don't have PayPal.": [
+                "Pagamenti online costruiti per il successo. Ti aiutiamo a fare affari in oltre 200 mercati e oltre 100 valute, anche se i tuoi clienti non hanno PayPal."
+            ],
+            "Provides flexible checkout options": [
+                "Fornisce opzioni di checkout flessibili"
+            ],
+            "PayPal Buy Now Pay Later": [
+                "PayPal Acquista Ora Paga Pi\u00f9 Tardi"
+            ],
+            "White-Labeling": [
+                "White-Labeling"
+            ],
+            "Country-specific payment methods": [
+                "Metodi di pagamento specifici per paese"
+            ],
+            " Supports many popular payment methods": [
+                " Supporta molti metodi di pagamento popolari"
+            ],
+            "Stripe": [
+                "Stripe"
+            ],
+            "Stripe provides all the tools that you need to accept payments online around the world, including support for Apple Pay and Google Pay.": [
+                "Stripe fornisce tutti gli strumenti necessari per accettare pagamenti online in tutto il mondo, compreso il supporto per Apple Pay e Google Pay."
+            ],
+            "A secure connection is required when running Stripe Payments in Live mode; plugin is currently enabled, but no gateway will be available until you secure connection to your site through a valid SSL certificate.             If you already have a valid SSL certificate, please change the url in": [
+                "\u00c8 necessaria una connessione sicura quando si esegue Stripe Payments in modalit\u00e0 Live; il plugin \u00e8 attualmente abilitato, ma nessun gateway sar\u00e0 disponibile fino a quando non sarai connesso al tuo sito tramite un certificato SSL valido. Se hai gi\u00e0 un certificato SSL valido, cambia l'URL in"
+            ],
+            "settings": [
+                "impostazioni"
+            ],
+            "page": [
+                "pagina"
+            ],
+            "Immediate capture or authorize and capture later": [
+                "Cattura o autorizzazione immediata e cattura in seguito"
+            ],
+            "One-click refunds": [
+                "Rimborsi con un click"
+            ],
+            "Option to let customers save their credit card info securely": [
+                "Opzione per consentire ai clienti di salvare le informazioni della carta di credito in modo sicuro"
+            ],
+            "Support ACH direct debt": [
+                "Supporta debito diretto ACH"
+            ],
+            " Uses many popular payment methods": [
+                " Utilizza molti metodi di pagamento popolari"
+            ],
+            "Offline Payments": [
+                "Pagamenti Offline"
+            ],
+            "Accept payments (money orders, bank transfers or C.O.D.) that are made outside your online store. ": [
+                "Accetta pagamenti (ordini di denaro, bonifici bancari o C.O.D.) che vengono effettuati al di fuori del tuo negozio online. "
+            ],
+            "Manual Payment methods": [
+                "Metodi di pagamento manuale"
+            ],
+            "When a customer selects a manual payment method, you'll need to approve their order before it can be fulfilled.": [
+                "Quando un cliente seleziona un metodo di pagamento manuale, dovrai approvare il suo ordine prima che possa essere eseguito."
+            ],
+            "Check payments": [
+                "Controlla i pagamenti"
+            ],
+            "Bank transfer payments": [
+                "Trasferimenti bancari"
+            ],
+            "Cash on delivery (C.O.D.)": [
+                "Contrassegno (C.O.D.)"
+            ],
+            "Jetpack Boost - Website Speed, Performance and Critical CSS": [
+                "Jetpack Boost - Velocit\u00e0 del sito web, prestazioni e CSS critici"
+            ],
+            "Speed up your WordPress site by optimizing page performance with Jetpack Boost.": [
+                "Accelera il tuo sito WordPress ottimizzando le prestazioni della pagina con Jetpack Boost."
+            ],
+            "Enable": [
+                "Abilita"
+            ],
+            "Contact Form by WPForms - Drag & Drop Form Builder for WordPress": [
+                "Modulo di contatto di WPForms - Drag & Drop Form Builder per WordPress"
+            ],
+            "The best WordPress contact form plugin. Drag & Drop online form builder to create beautiful contact forms, payment forms, & other custom forms.": [
+                "Il miglior plugin del modulo di contatto WordPress. Trascina e rilascia il costruttore di moduli online per creare bellissimi moduli di contatto, moduli di pagamento e altri moduli personalizzati."
+            ],
+            "MonsterInsights - Google Analytics Dashboard for WordPress (Website Stats Made Easy)": [
+                "MonsterInsights - Google Analytics Dashboard per WordPress (Statistiche del sito web rese facili)"
+            ],
+            "The best free Google Analytics plugin for WordPress. See how visitors find and use your website, so you can grow your business.": [
+                "Il miglior plugin gratuito di Google Analytics per WordPress. Guarda come i visitatori trovano e utilizzano il tuo sito web, in modo da poter far crescere il tuo business."
+            ],
+            "Yoast SEO": [
+                "Yoast SEO"
+            ],
+            "Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the Yoast SEO plugin.": [
+                "Migliora il tuo sistema WordPress SEO: Scrivere contenuti migliori e avere un sito WordPress completamente ottimizzato utilizzando il plugin Yoast SEO."
+            ],
+            "Creative Mail - Easier WordPress & WooCommerce Email Marketing": [
+                "Creative Mail - Pi\u00f9 Facile WordPress & WooCommerce Email Marketing"
+            ],
+            "Creative Mail was designed specifically for WordPress and WooCommerce. Our intelligent (and super fun) email editor simplifies email marketing campaign.": [
+                "Creative Mail \u00e8 stato progettato specificamente per WordPress e WooCommerce. Il nostro editor di email intelligente (e super divertente) semplifica la campagna di email marketing."
+            ],
+            "OptinMonster - Lead Generation": [
+                "OptinMonster - Generazione Di Piombo"
+            ],
+            "OptinMonster is the best WordPress popup builder plugin that helps you grow your email newsletter list and sales with email popups, exit intent popups, floating bars and more!": [
+                "OptinMonster \u00e8 il miglior plugin generatore di popup WordPress che ti aiuta a far crescere la tua lista di newsletter email e le vendite con i popup e-mail, esci i popup d'intento, bar galleggianti e altro ancora!"
+            ],
+            "Improve your store with these free add-ons included in your plan.": [
+                "Migliora il tuo negozio con questi add-on gratuiti inclusi nel tuo piano."
+            ],
+            "Improve your site with these free add-ons included in your plan.": [
+                "Migliora il tuo sito con questi add-on gratuiti inclusi nel tuo piano."
+            ],
+            "Additional Features": [
+                "Funzionalit\u00e0 Aggiuntive"
+            ],
+            "Explore the features included with your solution": [
+                "Esplora le caratteristiche incluse nella tua soluzione"
+            ],
+            "Update your website nameservers": [
+                "Aggiorna i nomi del tuo sito"
+            ],
+            "How do I update my nameserver to BH?": [
+                "Come faccio ad aggiornare il mio nameserver a BH?"
+            ],
+            "Connect this site to your domain": [
+                "Collega questo sito al tuo dominio"
+            ],
+            "How do I connect my site to the Domain ?": [
+                "Come faccio a collegare il mio sito al Dominio?"
+            ],
+            "Need help with these steps?": [
+                "Hai bisogno di aiuto con questi passi?"
+            ],
+            "Continue with store setup": [
+                "Continua con la configurazione del negozio"
+            ],
+            "Sign up for Bluehost WordPress Academy": [
+                "Iscriviti a Bluehost WordPress Academy"
+            ],
+            "New Order Received": [
+                "Nuovo Ordine Ricevuto"
+            ],
+            "Add your store info": [
+                "Aggiungi le informazioni del tuo negozio"
+            ],
+            "Connect a payment processor": [
+                "Collega un processore di pagamento"
+            ],
+            "Setup shipping options": [
+                "Impostazioni opzioni di spedizione"
+            ],
+            "Configure tax settings": [
+                "Configura le impostazioni fiscali"
+            ],
+            "Add a product": [
+                "Aggiungi un prodotto"
+            ],
+            "Sign up for Yoast SEO Academy": [
+                "Iscriviti a Yoast SEO Academy"
+            ],
+            "Add a new page to your store": [
+                "Aggiungi una nuova pagina al tuo negozio"
+            ],
+            "Add a new page to your site": [
+                "Aggiungi una nuova pagina al tuo sito"
+            ],
+            "Upload media to your site": [
+                "Carica media sul tuo sito"
+            ],
+            "Connect to your social media accounts": [
+                "Connettiti ai tuoi account social media"
+            ],
+            "Enable Jetpack to connect to your social media accounts": [
+                "Abilita Jetpack per connettersi ai tuoi account social media"
+            ],
+            "Good job!": [
+                "Ottimo lavoro!"
+            ],
+            "One last thing to do...": [
+                "Un'ultima cosa da fare..."
+            ],
+            "Your site is now ready for public visitors!": [
+                "Il tuo sito \u00e8 ora pronto per i visitatori pubblici!"
+            ],
+            "Finish this last step so your migrated site is ready for visitors.": [
+                "Termina questo ultimo passo in modo che il tuo sito migrato sia pronto per i visitatori."
+            ],
+            "Next steps for your store": [
+                "Prossimi passi per il tuo negozio"
+            ],
+            "Next steps for your site": [
+                "Prossimi passi per il tuo sito"
+            ],
+            "You're just a few steps away from sharing your store with the world!": [
+                "Sei a pochi passi da condividere il tuo negozio con il mondo!"
+            ],
+            "You're just a few steps away from sharing your site with the world!": [
+                "Sei a pochi passi da condividere il tuo sito con il mondo!"
+            ],
+            "Great job! You've completed all the current tasks to get your store up and running successfully!": [
+                "Ottimo lavoro! Hai completato tutte le attivit\u00e0 correnti per ottenere il tuo negozio in esecuzione con successo!"
+            ],
+            "Great job! You've completed all the current tasks to get your site up and running successfully!": [
+                "Ottimo lavoro! Hai completato tutte le attivit\u00e0 correnti per ottenere il tuo sito in esecuzione con successo!"
+            ],
+            "If you want to edit any of the info from the steps you've completed, simply click on the \"View completed tasks\" link below.": [
+                "Se si desidera modificare una qualsiasi delle informazioni dai passaggi che hai completato, basta cliccare sul link \"Visualizza attivit\u00e0 completate\" qui sotto."
+            ],
+            "View remaining tasks": [
+                "Visualizza le attivit\u00e0 rimanenti"
+            ],
+            "View completed tasks": [
+                "Visualizza attivit\u00e0 completate"
+            ],
+            "Congrats on your new store!": [
+                "Complimenti per il tuo nuovo negozio!"
+            ],
+            "Congrats on your new site!": [
+                "Congratulazioni sul tuo nuovo sito!"
+            ],
+            "Your site is currently displaying a \"Coming Soon\" page.": [
+                "Il tuo sito sta attualmente visualizzando una pagina \"Prossimamente\"."
+            ],
+            "Ready to go to the next level?": [
+                "Pronto ad andare al livello successivo?"
+            ],
+            "Your site is live to the world!": [
+                "Il tuo sito \u00e8 in diretta al mondo!"
+            ],
+            "Welcome home!": [
+                "Benvenuto a casa!"
+            ],
+            "Your site has been successfully migrated.": [
+                "Il tuo sito \u00e8 stato migrato con successo."
+            ],
+            "Home": [
+                "Home"
+            ],
+            "SITE PREVIEW": [
+                "PREVISIONE DEL SITO"
+            ],
+            "View your site": [
+                "Visualizza il tuo sito"
+            ],
+            "Edit your site": [
+                "Modifica il tuo sito"
+            ],
+            "Upgrade your plan for success.": [
+                "Aggiorna il tuo piano per successo."
+            ],
+            "Choose the set of plugins and services that's right for your needs. You're covered by our no-quibble, 30 day money back guarantee.": [
+                "Scegli il set di plugin e servizi adatti alle tue esigenze. Sei coperto dalla nostra garanzia di rimborso di 30 giorni."
+            ],
+            "\/mo": [
+                "\/mo"
+            ],
+            "Original price": [
+                "Prezzo originale"
+            ],
+            "Learn more": [
+                "Scopri di pi\u00f9"
+            ],
+            "Oops! something went wrong. Please try again later": [
+                "Oops! qualcosa \u00e8 andato storto. Riprova pi\u00f9 tardi"
+            ],
+            "Explore Your Plugins and Tools": [
+                "Esplora i tuoi plugin e strumenti"
+            ],
+            "Improve your site with the tools and services included in your plan.": [
+                "Migliora il tuo sito con gli strumenti e i servizi inclusi nel tuo piano."
+            ],
+            "Add a Product": [
+                "Aggiungi un prodotto"
+            ],
+            "Manage Your Products": [
+                "Gestione Dei Tuoi Prodotti"
+            ],
+            "Manage products": [
+                "Gestisci prodotti"
+            ],
+            "Import Products via CSV": [
+                "Importa prodotti tramite CSV"
+            ],
+            "Import products": [
+                "Importa prodotti"
+            ],
+            "Products & Services": [
+                "Prodotti E Servizi"
+            ],
+            "Come here to manage products and services or add new ones to your store.": [
+                "Vieni qui per gestire prodotti e servizi o aggiungerne di nuovi al tuo negozio."
+            ],
+            "Want help adding products?": [
+                "Vuoi aiutare ad aggiungere prodotti?"
+            ],
+            "Read this helpful knowledge base article to understand how to\nadd different products to your store": [
+                "Leggi questo utile articolo di base della conoscenza per capire come\naggiungere prodotti diversi al tuo negozio"
+            ],
+            " How to add products": [
+                " Come aggiungere prodotti"
+            ],
+            "Store Details": [
+                "Dettagli Negozio"
+            ],
+            "This is the place for all your general store details and setup.": [
+                "Questo \u00e8 il posto per tutti i dettagli generali del negozio e la configurazione."
+            ],
+            "Successfully saved the Store Details": [
+                "Salvato con successo i dettagli del negozio"
+            ],
+            "Discard Changes": [
+                "Scarta Modifiche"
+            ],
+            "Save Changes": [
+                "Salva Modifiche"
+            ],
+            "Sales Channels": [
+                "Canali Di Vendita"
+            ],
+            "Sell your products everywhere, confidently, with Ecomdash.": [
+                "Vendi i tuoi prodotti ovunque, con fiducia, con Ecomdash."
+            ],
+            "With ecomdash, you can manage different sales channels all in one place.": [
+                "Con ecomdash, \u00e8 possibile gestire diversi canali di vendita tutti in un unico posto."
+            ],
+            "Simply connect your business accounts from Amazon, Etsy or Walmart to": [
+                "Collega semplicemente i tuoi account aziendali da Amazon, Etsy o Walmart a"
+            ],
+            "your ecomdash platform and easily manage products, customer orders and": [
+                "la vostra piattaforma ecomdash e facilmente gestire i prodotti, gli ordini dei clienti e"
+            ],
+            "more saving you valuable time.": [
+                "pi\u00f9 risparmiando tempo prezioso."
+            ],
+            "Get Started Now": [
+                "Per Iniziare Ora"
+            ],
+            "Go to Ecomdash": [
+                "Vai a Ecomdash"
+            ],
+            "Install Now": [
+                "Installa Ora"
+            ],
+            "Manage inventory across multiple platforms": [
+                "Gestisci l'inventario su pi\u00f9 piattaforme"
+            ],
+            "Enjoy near real-time inventory updates for an unlimited number of": [
+                "Goditi quasi gli aggiornamenti dell'inventario in tempo reale per un numero illimitato di"
+            ],
+            "channels with our inventory management software.": [
+                "canali con il nostro software di gestione dell'inventario."
+            ],
+            "Manage product levels across multiple warehouses ": [
+                "Gestisci i livelli di prodotto in pi\u00f9 magazzini "
+            ],
+            "without the fear of overselling.": [
+                "senza la paura di sopravvalutare."
+            ],
+            "Accurately sync kits, multipacks, and components without any": [
+                "Sincronizza esattamente kit, multipack e componenti senza alcun"
+            ],
+            "headaches.": [
+                "mal di testa."
+            ],
+            "Order Management and Reporting": [
+                "Gestione e rendicontazione degli ordini"
+            ],
+            "With Ecomdash you can sit back and relax, knowing that all aspects of order fulfillment are under control. Easily track your top selling items, cost of goods sold, stale inventory and more with Ecomdash's extensive reporting tools.": [
+                "Con Ecomdash puoi sederti e rilassarti, sapendo che tutti gli aspetti della realizzazione dell'ordine sono sotto controllo. Traccia facilmente i tuoi articoli pi\u00f9 venduti, il costo delle merci vendute, l'inventario stabile e altro ancora con gli ampi strumenti di segnalazione di Ecomdash."
+            ],
+            "Powerful Add-ons": [
+                "Componenti Aggiuntivi Potenti"
+            ],
+            "Ecomdash contains a variety of powerful add-ons that will help you handle everything from creating barcodes and inventory templates, to managing warehouse feeds, Fulfillment By Amazon and even accounting.": [
+                "Ecomdash contiene una variet\u00e0 di potenti componenti aggiuntivi che ti aiuteranno a gestire tutto, dalla creazione di codici a barre e modelli di inventario, per gestire i feed del magazzino, Fulfillment da Amazon e anche contabilit\u00e0."
+            ],
+            "Fullfillment By Amazon (FBA)": [
+                "Completamento Da Amazon (FBA)"
+            ],
+            "Auto-export non-Amazon orders to FBA. Import the tracking and pass it to the": [
+                "Esportazione automatica di ordini non Amazon in FBA. Importa il tracciamento e passalo al"
+            ],
+            "originating sales channel, marking it as shipped.": [
+                "canale di vendita originario, contrassegnandolo come spedito."
+            ],
+            "Barcodes": [
+                "Barcodes"
+            ],
+            "Print barcodes for your products that can be": [
+                "Stampa codici a barre per i tuoi prodotti che possono essere"
+            ],
+            "used for labeling and scanning your": [
+                "utilizzato per l'etichettatura e la scansione"
+            ],
+            "products": [
+                "prodotti"
+            ],
+            "Shipping Labels": [
+                "Etichette Di Spedizione"
+            ],
+            "Print shipping labels with a preferred carrier": [
+                "Stampa le etichette di spedizione con un corriere preferito"
+            ],
+            "right from your ecomdash account and save": [
+                "direttamente dal tuo account ecomdash e salvare"
+            ],
+            "on postage.": [
+                "sulla spedizione."
+            ],
+            "Listing Presets": [
+                "Elenco Predefiniti"
+            ],
+            "Create listing presets to cut down most of": [
+                "Crea un elenco di preset per tagliare la maggior parte di"
+            ],
+            "the manual data entry needed when creating": [
+                "l'inserimento manuale dei dati necessario durante la creazione"
+            ],
+            "new listings.": [
+                "nuovi elenchi."
+            ],
+            "Accounting": [
+                "Contabilit\u00e0"
+            ],
+            "Seamlessly communicate your sales and": [
+                "Comunicare senza problemi le vendite e"
+            ],
+            "purchase order information directly to your": [
+                "acquisto informazioni ordine direttamente al tuo"
+            ],
+            "accounting software.": [
+                "software di contabilit\u00e0."
+            ],
+            "Custom Inventory Templates": [
+                "Modelli Di Inventario Personalizzati"
+            ],
+            "Creating a custom file template allows you to": [
+                "La creazione di un modello di file personalizzato consente di"
+            ],
+            "upload and\/or export files with product data": [
+                "caricare e\/o esportare file con i dati del prodotto"
+            ],
+            "for thousands of products at once.": [
+                "per migliaia di prodotti contemporaneamente."
+            ],
+            "Warehouse Feeds": [
+                "Feeds Magazzino"
+            ],
+            "Setup feeds to export your sales orders via": [
+                "Imposta feed per esportare i tuoi ordini di vendita tramite"
+            ],
+            "email or FTP sites to third parties such as": [
+                "siti email o FTP a terze parti come"
+            ],
+            "Dropshippers, Suppliers, or 3PL systems.": [
+                "Dropshipper, fornitori o sistemi 3PL."
+            ],
+            "Purchase Orders": [
+                "Ordini Di Acquisto"
+            ],
+            "Quickly create new orders and have": [
+                "Crea rapidamente nuovi ordini e hai"
+            ],
+            "inventory quantities adjusted and synced out": [
+                "quantit\u00e0 di inventario adeguate e sincronizzate"
+            ],
+            "to listings as units are received.": [
+                "agli elenchi come unit\u00e0 ricevute."
+            ],
+            "Payments": [
+                "Pagamenti"
+            ],
+            "yes": [
+                "s\u00ec"
+            ],
+            "Credit Card\/Debit Card\/NetBanking": [
+                "Carta Di Credito\/Carta Di Debito\/NetBanking"
+            ],
+            "Pay securely by Credit or Debit card or Internet Banking through Razorpay.": [
+                "Paga in modo sicuro con carta di credito o di debito o Internet Banking tramite Razorpay."
+            ],
+            "capture": [
+                "cattura"
+            ],
+            "Thank you for shopping with us. Your account has been charged and your transaction is successful. We will be processing your order soon.": [
+                "Grazie per aver fatto acquisti con noi. Il tuo account \u00e8 stato addebitato e la tua transazione \u00e8 riuscita. Stiamo elaborando il tuo ordine al pi\u00f9 presto."
+            ],
+            "Successfully saved the Payment Details": [
+                "Dettagli di pagamento salvati con successo"
+            ],
+            "WooCommerce has been installed successfully": [
+                "WooCommerce \u00e8 stato installato con successo"
+            ]
+        }
+    }
+}

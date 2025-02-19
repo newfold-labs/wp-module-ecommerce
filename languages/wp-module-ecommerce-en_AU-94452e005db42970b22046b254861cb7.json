@@ -1,0 +1,48 @@
+{
+    "translation-revision-date": "2025-02-13 18:45+0530",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/OnboardingScreen.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "en_AU",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Congrats on your new store!": [
+                "Congrats on your new store!"
+            ],
+            "Congrats on your new site!": [
+                "Congrats on your new site!"
+            ],
+            "Your site is currently displaying a \"Coming Soon\" page.": [
+                "Your site is currently displaying a \"Coming Soon\" page."
+            ],
+            "Ready to go to the next level?": [
+                "Ready to go to the next level?"
+            ],
+            "Your site is live to the world!": [
+                "Your site is live to the world!"
+            ],
+            "Welcome home!": [
+                "Welcome home!"
+            ],
+            "Your site has been successfully migrated.": [
+                "Your site has been successfully migrated."
+            ],
+            "Home": [
+                "Home"
+            ],
+            "SITE PREVIEW": [
+                "SITE PREVIEW"
+            ],
+            "View your site": [
+                "View your site"
+            ],
+            "Edit your site": [
+                "Edit your site"
+            ]
+        }
+    }
+}

@@ -1,0 +1,63 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/Stripe.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "it_IT",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Installing...": [
+                "Installazione..."
+            ],
+            "Manage": [
+                "Gestisci"
+            ],
+            "Connect": [
+                "Connetti"
+            ],
+            "Install": [
+                "Installa"
+            ],
+            "Environment:": [
+                "Ambiente:"
+            ],
+            "Complete control over the receiving and managing payments": [
+                "Controllo completo sulla ricezione e la gestione dei pagamenti"
+            ],
+            "Stripe": [
+                "Stripe"
+            ],
+            "Stripe provides all the tools that you need to accept payments online around the world, including support for Apple Pay and Google Pay.": [
+                "Stripe fornisce tutti gli strumenti necessari per accettare pagamenti online in tutto il mondo, compreso il supporto per Apple Pay e Google Pay."
+            ],
+            "A secure connection is required when running Stripe Payments in Live mode; plugin is currently enabled, but no gateway will be available until you secure connection to your site through a valid SSL certificate.             If you already have a valid SSL certificate, please change the url in": [
+                "\u00c8 necessaria una connessione sicura quando si esegue Stripe Payments in modalit\u00e0 Live; il plugin \u00e8 attualmente abilitato, ma nessun gateway sar\u00e0 disponibile fino a quando non sarai connesso al tuo sito tramite un certificato SSL valido. Se hai gi\u00e0 un certificato SSL valido, cambia l'URL in"
+            ],
+            "settings": [
+                "impostazioni"
+            ],
+            "page": [
+                "pagina"
+            ],
+            "Immediate capture or authorize and capture later": [
+                "Cattura o autorizzazione immediata e cattura in seguito"
+            ],
+            "One-click refunds": [
+                "Rimborsi con un click"
+            ],
+            "Option to let customers save their credit card info securely": [
+                "Opzione per consentire ai clienti di salvare le informazioni della carta di credito in modo sicuro"
+            ],
+            "Support ACH direct debt": [
+                "Supporta debito diretto ACH"
+            ],
+            " Uses many popular payment methods": [
+                " Utilizza molti metodi di pagamento popolari"
+            ]
+        }
+    }
+}

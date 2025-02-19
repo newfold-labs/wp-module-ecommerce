@@ -1,0 +1,39 @@
+{
+    "translation-revision-date": "2025-02-13 18:45+0530",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/WonderCartCampaignDetails.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "en_GB",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Add upsells, cross-sells, and other promotions with WonderCart": [
+                "Add upsells, cross-sells, and other promotions with WonderCart"
+            ],
+            "Create and run effective promotional campaigns like BOGOs, free shipping offers, category discounts, and more to increase revenue and strengthen customer engagement.": [
+                "Create and run effective promotional campaigns like BOGOs, free shipping offers, category discounts, and more to increase revenue and strengthen customer engagement."
+            ],
+            "Buy One Get One": [
+                "Buy One Get One"
+            ],
+            "Cart Promotions": [
+                "Cart Promotions"
+            ],
+            "Related Items Discounts": [
+                "Related Items Discounts"
+            ],
+            "Free Shipping Offers": [
+                "Free Shipping Offers"
+            ],
+            "Category Discounts": [
+                "Category Discounts"
+            ],
+            "and more!": [
+                "and more!"
+            ]
+        }
+    }
+}

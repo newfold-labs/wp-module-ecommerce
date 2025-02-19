@@ -1,0 +1,27 @@
+{
+    "translation-revision-date": "2025-02-13 18:45+0530",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/LoadingPanel.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "en_GB",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Hold on while we get things setup for you!": [
+                "Hold on while we get things setup for you!"
+            ],
+            "Activating ": [
+                "Activating "
+            ],
+            " plugin...": [
+                " plugin..."
+            ],
+            "Activating the YITH ": [
+                "Activating the YITH "
+            ]
+        }
+    }
+}

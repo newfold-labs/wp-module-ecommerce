@@ -1,0 +1,36 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/Payment.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "nl_NL",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Offline Payments": [
+                "Offline betalingen"
+            ],
+            "Accept payments (money orders, bank transfers or C.O.D.) that are made outside your online store. ": [
+                "Accepteer betalingen (geldorders, bankoverschrijvingen of C.O.D.) die worden gemaakt buiten uw online winkel. "
+            ],
+            "Manual Payment methods": [
+                "Handmatige betaalmethodes"
+            ],
+            "When a customer selects a manual payment method, you'll need to approve their order before it can be fulfilled.": [
+                "Wanneer een klant een handmatige betaalmethode selecteert, moet hij zijn bestelling goedkeuren voordat deze kan worden uitgevoerd."
+            ],
+            "Check payments": [
+                "Betalingen controleren"
+            ],
+            "Bank transfer payments": [
+                "Bankoverschrijving betalingen"
+            ],
+            "Cash on delivery (C.O.D.)": [
+                "Contant geld op levering (C.O.D.)"
+            ]
+        }
+    }
+}

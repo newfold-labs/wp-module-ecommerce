@@ -1,0 +1,51 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/SiteStatus.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "fr_FR",
+                "plural-forms": "nplurals=2; plural=(n > 1);"
+            },
+            "Coming Soon activated": [
+                "Bient\u00f4t activ\u00e9"
+            ],
+            "Your store is online and ready for business!": [
+                "Votre boutique est en ligne et pr\u00eate pour les affaires !"
+            ],
+            "Your site is online now!": [
+                "Votre site est en ligne maintenant!"
+            ],
+            "You can re-enable the 'Coming Soon' mode in \u201cSettings\u201d.": [
+                "Vous pouvez r\u00e9activer le mode \u00ab Bient\u00f4t \u00bb dans \u00ab R\u00e9glages \u00bb."
+            ],
+            "Live": [
+                "En direct"
+            ],
+            "Ready to go live?": [
+                "Pr\u00eat \u00e0 vivre ?"
+            ],
+            "Preview your store before setting it live to make sure everything \nis how you want it. Once you're ready, set your store live!": [
+                "Aper\u00e7u de votre boutique avant de la configurer en direct pour vous assurer que tout \nest comme vous le souhaitez. Une fois que vous \u00eates pr\u00eat, d\u00e9finissez votre boutique en direct !"
+            ],
+            "Preview your Site before setting it live to make sure everything \nis how you want it. Once you're ready, set your site live!": [
+                "Pr\u00e9visualisez votre site avant de le configurer en direct pour vous assurer que tout \nest comme vous le souhaitez. Une fois que vous \u00eates pr\u00eat, mettez votre site en ligne !"
+            ],
+            "Preview your store": [
+                "Aper\u00e7u de votre boutique"
+            ],
+            "Preview your site": [
+                "Aper\u00e7u de votre site"
+            ],
+            "Launch your store": [
+                "Lancez votre boutique"
+            ],
+            "Launch your site": [
+                "Lancez votre site"
+            ]
+        }
+    }
+}

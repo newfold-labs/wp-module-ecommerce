@@ -1,0 +1,30 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/WonderCartNonEcommerce.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "nl_NL",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Buy Now": [
+                "Koop nu"
+            ],
+            "Create custom upsell, cross-sell and other promotional campaigns to generate more sales.": [
+                "Maak aangepaste upsell, cross-sell en andere promotionele campagnes om meer verkopen te genereren."
+            ],
+            "Sales & Promotions": [
+                "Verkoop & Promoties"
+            ],
+            "Start selling like a Pro!": [
+                "Begin te verkopen als een Pro!"
+            ],
+            "Give your online store a boost with our all-in-one eCommerce bundle filled with exclusive plugins and tools designed to help you sell your products and services like never before. ": [
+                "Geef uw online winkel een boost met onze eCommerce bundel gevuld met exclusieve plug-ins en gereedschappen ontworpen om u te helpen uw producten en diensten als nooit tevoren te verkopen. "
+            ]
+        }
+    }
+}

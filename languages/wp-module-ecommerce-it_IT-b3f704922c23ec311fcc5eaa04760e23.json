@@ -1,0 +1,108 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/configs\/YITHPlugins.config.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "it_IT",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Gift Cards": [
+                "Carte Regalo"
+            ],
+            "Wishlists": [
+                "Lista Desideri"
+            ],
+            "Offer customizable gift cards with personalized messages for the recipient.": [
+                "Offri carte regalo personalizzabili con messaggi personalizzati per il destinatario."
+            ],
+            "Manage Gift Cards": [
+                "Gestisci Carte Regalo"
+            ],
+            "Create a Gift Card": [
+                "Crea una Gift Card"
+            ],
+            "Let customers add products to lists and share them with family and friends.": [
+                "Lasciate che i clienti aggiungano prodotti alle liste e li condividano con la famiglia e gli amici."
+            ],
+            "View Wishlists": [
+                "Visualizza Lista Desideri"
+            ],
+            "Setup Wishlists": [
+                "Imposta Lista Desideri"
+            ],
+            "WonderCart": [
+                "WonderCart"
+            ],
+            "Create custom upsell, cross-sell and other promotional campaigns to generate more sales.": [
+                "Crea campagne personalizzate di upsell, cross-sell e altre campagne promozionali per generare pi\u00f9 vendite."
+            ],
+            "Create a Campaign": [
+                "Crea una campagna"
+            ],
+            "Booking and Appointments": [
+                "Prenotazione e Appuntamenti"
+            ],
+            "Manage renting or booking of services and items so customers can do business with you.": [
+                "Gestisci il noleggio o la prenotazione di servizi e articoli in modo che i clienti possano fare affari con te."
+            ],
+            "Manage Bookings & Appointments": [
+                "Gestisci Prenotazioni E Appuntamenti"
+            ],
+            "Setup Bookings & Appointments": [
+                "Imposta Prenotazioni E Appuntamenti"
+            ],
+            "Product Filters": [
+                "Filtri Prodotto"
+            ],
+            "Add an advanced filter to help customers find the right product with ease.": [
+                "Aggiungi un filtro avanzato per aiutare i clienti a trovare il prodotto giusto con facilit\u00e0."
+            ],
+            "Product Filter Settings": [
+                "Impostazioni Filtro Prodotto"
+            ],
+            "Setup Product Filters": [
+                "Imposta Filtri Prodotto"
+            ],
+            "Product Search": [
+                "Ricerca Prodotti"
+            ],
+            "Speed up search for your customers with a predictive real-time search engine.": [
+                "Accelera la ricerca dei tuoi clienti con un motore di ricerca predittivo in tempo reale."
+            ],
+            "Product Search Settings": [
+                "Impostazioni Ricerca Prodotto"
+            ],
+            "Configure Product Search": [
+                "Configura Ricerca Prodotto"
+            ],
+            "Customize My Account Page": [
+                "Personalizza La Pagina Del Mio Account"
+            ],
+            "Add custom content like videos, files, discount codes, and more to your customers account page.": [
+                "Aggiungi contenuti personalizzati come video, file, codici di sconto, e altro alla pagina del tuo account clienti."
+            ],
+            "'My Account' Page Settings": [
+                "Impostazioni Pagina 'Mio Account'"
+            ],
+            "Customize the 'My Account' Page": [
+                "Personalizza la pagina 'Il mio account'"
+            ],
+            "ecomdash": [
+                "ecomdash"
+            ],
+            "Boost sales by selling your products and services across multiple marketplaces.": [
+                "Migliora le vendite vendendo i tuoi prodotti e servizi su pi\u00f9 mercati."
+            ],
+            "Manage Sales Channels": [
+                "Gestisci Canali Di Vendita"
+            ],
+            "Setup Sales Channels": [
+                "Imposta Canali Di Vendita"
+            ]
+        }
+    }
+}

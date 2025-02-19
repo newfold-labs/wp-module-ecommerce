@@ -1,0 +1,57 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/configs\/FreePlugins.config.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "nl_NL",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Manage": [
+                "Beheren"
+            ],
+            "Jetpack Boost - Website Speed, Performance and Critical CSS": [
+                "Jetpack Boost - Website Snelheid, Prestaties en Kritieke CSS"
+            ],
+            "Speed up your WordPress site by optimizing page performance with Jetpack Boost.": [
+                "Versnel uw WordPress-site door de pagina-prestaties met Jetpack boost te optimaliseren."
+            ],
+            "Enable": [
+                "Inschakelen"
+            ],
+            "Contact Form by WPForms - Drag & Drop Form Builder for WordPress": [
+                "Contact formulier door WPForms - Sleep & Drop Form Builder voor WordPress"
+            ],
+            "The best WordPress contact form plugin. Drag & Drop online form builder to create beautiful contact forms, payment forms, & other custom forms.": [
+                "De beste WordPress contactformulier plugin. Sleep & Drop online formulierbouwer om prachtige contactformulieren, betaalformulieren en andere aangepaste formulieren te maken."
+            ],
+            "MonsterInsights - Google Analytics Dashboard for WordPress (Website Stats Made Easy)": [
+                "MonsterInsights - Google Analytics Dashboard voor WordPress (Website Stats Made Easy)"
+            ],
+            "The best free Google Analytics plugin for WordPress. See how visitors find and use your website, so you can grow your business.": [
+                "De beste gratis Google Analytics plugin voor WordPress. Bekijk hoe bezoekers uw website vinden en gebruiken, zodat u uw bedrijf kunt laten groeien."
+            ],
+            "Yoast SEO": [
+                "Yoast SEO"
+            ],
+            "Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the Yoast SEO plugin.": [
+                "Verbeter uw WordPress SEO: Schrijf betere inhoud en heb een volledig geoptimaliseerde WordPress site met de Yoast SEO plugin."
+            ],
+            "Creative Mail - Easier WordPress & WooCommerce Email Marketing": [
+                "Creative Mail - Makkelijker WordPress & WooCommerce E-mail Marketing"
+            ],
+            "Creative Mail was designed specifically for WordPress and WooCommerce. Our intelligent (and super fun) email editor simplifies email marketing campaign.": [
+                "Creative Mail is specifiek ontworpen voor WordPress en WooCommerce. Onze intelligente (en super leuke) e-mail editor vereenvoudigt de marketing campagne."
+            ],
+            "OptinMonster - Lead Generation": [
+                "OptinMonster - Leider Generatie"
+            ],
+            "OptinMonster is the best WordPress popup builder plugin that helps you grow your email newsletter list and sales with email popups, exit intent popups, floating bars and more!": [
+                "OptinMonster is de beste WordPress pop-up builder plugin die u helpt om uw e-mail nieuwsbrief lijst en verkoop met e-mail popups te laten groeien, vertrek intentie pop-ups, zwevende bars en meer!"
+            ]
+        }
+    }
+}

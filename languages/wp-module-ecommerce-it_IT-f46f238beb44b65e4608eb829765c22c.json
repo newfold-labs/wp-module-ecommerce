@@ -1,0 +1,48 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/StoreInfo.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "it_IT",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "* indicates a required field": [
+                "* indica un campo obbligatorio"
+            ],
+            "Store Info": [
+                "Informazioni Negozio"
+            ],
+            "We'll use this information to help you setup your online store": [
+                "Useremo queste informazioni per aiutarti a configurare il tuo negozio online"
+            ],
+            "Where is your store based? *": [
+                "Dove si trova il tuo negozio? *"
+            ],
+            "Address Line 1 *": [
+                "Indirizzo Riga 1 *"
+            ],
+            "Address Line 2 (optional)": [
+                "Indirizzo 2 (facoltativo)"
+            ],
+            "City *": [
+                "Citt\u00e0 *"
+            ],
+            "State *": [
+                "Stato *"
+            ],
+            "Postal Code *": [
+                "Codice Postale *"
+            ],
+            "Email": [
+                "Email"
+            ],
+            "What currency do you want to display in your store?": [
+                "Quale valuta vuoi visualizzare nel tuo negozio?"
+            ]
+        }
+    }
+}

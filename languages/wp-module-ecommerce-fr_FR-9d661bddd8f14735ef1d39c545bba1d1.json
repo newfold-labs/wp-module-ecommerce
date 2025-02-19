@@ -1,0 +1,57 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/configs\/FreePlugins.config.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "fr_FR",
+                "plural-forms": "nplurals=2; plural=(n > 1);"
+            },
+            "Manage": [
+                "G\u00e9rer"
+            ],
+            "Jetpack Boost - Website Speed, Performance and Critical CSS": [
+                "Jetpack Boost - Vitesse du site, performances et CSS critiques"
+            ],
+            "Speed up your WordPress site by optimizing page performance with Jetpack Boost.": [
+                "Acc\u00e9l\u00e9rez votre site WordPress en optimisant les performances des pages avec Jetpack Boost."
+            ],
+            "Enable": [
+                "Activer"
+            ],
+            "Contact Form by WPForms - Drag & Drop Form Builder for WordPress": [
+                "Formulaire de contact par WPForms - Outil de cr\u00e9ation de formulaire de glisser-d\u00e9poser pour WordPress"
+            ],
+            "The best WordPress contact form plugin. Drag & Drop online form builder to create beautiful contact forms, payment forms, & other custom forms.": [
+                "Le meilleur plugin de formulaire de contact WordPress. Glissez et d\u00e9posez le constructeur de formulaire en ligne pour cr\u00e9er de beaux formulaires de contact, des formulaires de paiement et d'autres formulaires personnalis\u00e9s."
+            ],
+            "MonsterInsights - Google Analytics Dashboard for WordPress (Website Stats Made Easy)": [
+                "MonsterInsights - Tableau de bord Google Analytics pour WordPress (Statistiques de site Web rendues faciles)"
+            ],
+            "The best free Google Analytics plugin for WordPress. See how visitors find and use your website, so you can grow your business.": [
+                "Le meilleur plugin Google Analytics gratuit pour WordPress. Voyez comment les visiteurs trouvent et utilisent votre site Web, afin que vous puissiez d\u00e9velopper votre entreprise."
+            ],
+            "Yoast SEO": [
+                "Yoast SEO"
+            ],
+            "Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the Yoast SEO plugin.": [
+                "Am\u00e9liorez votre r\u00e9f\u00e9rencement WordPress : \u00c9crivez un meilleur contenu et avez un site WordPress enti\u00e8rement optimis\u00e9 en utilisant le plugin Yoast SEO."
+            ],
+            "Creative Mail - Easier WordPress & WooCommerce Email Marketing": [
+                "Creative Mail - Emails marketing facile pour WordPress et WooCommerce"
+            ],
+            "Creative Mail was designed specifically for WordPress and WooCommerce. Our intelligent (and super fun) email editor simplifies email marketing campaign.": [
+                "Creative Mail a \u00e9t\u00e9 con\u00e7u sp\u00e9cifiquement pour WordPress et WooCommerce. Notre \u00e9diteur de courriel intelligent (et super amusant) simplifie la campagne de marketing par e-mail."
+            ],
+            "OptinMonster - Lead Generation": [
+                "OptinMonster - G\u00e9n\u00e9ration de plomb"
+            ],
+            "OptinMonster is the best WordPress popup builder plugin that helps you grow your email newsletter list and sales with email popups, exit intent popups, floating bars and more!": [
+                "OptinMonster est le meilleur plugin de cr\u00e9ation de popup WordPress qui vous aide \u00e0 d\u00e9velopper votre liste de newsletters et vos ventes avec des popups par courriel, les fen\u00eatres pop-up d'intention de sortie, les barres flottantes et plus encore !"
+            ]
+        }
+    }
+}

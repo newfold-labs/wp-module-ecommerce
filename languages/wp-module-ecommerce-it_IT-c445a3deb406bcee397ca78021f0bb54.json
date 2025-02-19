@@ -1,0 +1,69 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/CaptiveRazorpay.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "it_IT",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Key ID *": [
+                "Id Chiave *"
+            ],
+            "Test Key ID *": [
+                "Test Id Chiave *"
+            ],
+            "Key Secret *": [
+                "Chiave Segreta *"
+            ],
+            "Test Key Secret *": [
+                "Chiave Di Prova Segreta *"
+            ],
+            "The key ID can be found in the \"%1$sAPI Keys%2$s\" section of your Razorpay dashboard.": [
+                "L'ID chiave pu\u00f2 essere trovato nella sezione \"%1$sAPI Keys%2$s\" della tua dashboard Razorpay."
+            ],
+            "That is not a valid test key ID. Please check your key ID and enter it again.": [
+                "Questo non \u00e8 un ID di chiave di prova valido. Controlla il tuo ID chiave e inseriscilo di nuovo."
+            ],
+            "That is not a valid production key ID. Please check your key ID and enter it again.": [
+                "Questo non \u00e8 un ID chiave di produzione valido. Si prega di controllare il tuo ID chiave e inserirlo di nuovo."
+            ],
+            "The key secret can be found in the \"%1$sAPI Keys%2$s\" section of your Razorpay dashboard.": [
+                "Il segreto chiave pu\u00f2 essere trovato nella sezione \"%1$sAPI Keys%2$s\" della tua dashboard Razorpay."
+            ],
+            "Create an Account": [
+                "Crea un account"
+            ],
+            "Already have an account? ": [
+                "Hai gi\u00e0 un account? "
+            ],
+            "Login": [
+                "Accedi"
+            ],
+            "After you login to Razorpay, you will need to generate your key ID and key secret codes, you will then need to switch back to this tab in your browser and paste your codes into the fields below.": [
+                "Dopo aver effettuato l'accesso a Razorpay, dovrai generare il tuo ID chiave e codici segreti chiave, sar\u00e0 quindi necessario tornare a questa scheda nel browser e incollare i codici nei campi qui sotto."
+            ],
+            "Enable Test Mode": [
+                "Abilita Modalit\u00e0 Test"
+            ],
+            "enter your \"%1$s\" key ID here.": [
+                "inserisci qui il tuo ID chiave \"%1$s\"."
+            ],
+            "test": [
+                "prova"
+            ],
+            "production": [
+                "produzione"
+            ],
+            "enter your \"%1$s\" key secret here.": [
+                "inserisci qui il tuo segreto chiave \"%1$s\"."
+            ],
+            "* indicates a required field": [
+                "* indica un campo obbligatorio"
+            ]
+        }
+    }
+}

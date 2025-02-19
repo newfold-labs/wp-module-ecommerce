@@ -1,0 +1,51 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/Razorpay.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "fr_FR",
+                "plural-forms": "nplurals=2; plural=(n > 1);"
+            },
+            "Installing...": [
+                "Installation en cours..."
+            ],
+            "Manage": [
+                "G\u00e9rer"
+            ],
+            "Connect": [
+                "Connecter"
+            ],
+            "Install": [
+                "Installer"
+            ],
+            "Environment:": [
+                "Environnement:"
+            ],
+            "Razorpay": [
+                "Razorpay"
+            ],
+            "Build specifically for companies based in India, manage all your payments and financial operations from a consolidated dashboard": [
+                "Construire sp\u00e9cifiquement pour les entreprises bas\u00e9es en Inde, g\u00e9rer tous vos paiements et op\u00e9rations financi\u00e8res \u00e0 partir d'un tableau de bord consolid\u00e9"
+            ],
+            "Complete control over the receiving and managing payments": [
+                "Contr\u00f4le complet de la r\u00e9ception et de la gestion des paiements"
+            ],
+            "Immediate capture of funds": [
+                "Capturer imm\u00e9diatement les fonds"
+            ],
+            "Instant refunds and settlements": [
+                "Remboursements et r\u00e8glements instantan\u00e9s"
+            ],
+            "Fight fraud with Thirdwatch": [
+                "Lutte contre la fraude avec Thirdwatch"
+            ],
+            "Intuitive reporting": [
+                "Rapports intuitifs"
+            ]
+        }
+    }
+}

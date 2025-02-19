@@ -1,0 +1,24 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/TransformtoEcommerce.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "es_ES",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Transform your store!": [
+                "\u00a1Transforma tu tienda!"
+            ],
+            "Give your online store a boost with our all-in-one eCommerce bundle filled with exclusive plugins and tools designed to help you sell your products and services like a pro.": [
+                "Dale un impulso a su tienda online con nuestro paquete de eCommerce todo en uno lleno de plugins exclusivos y herramientas dise\u00f1adas para ayudarle a vender sus productos y servicios como un profesional."
+            ],
+            "Buy Now": [
+                "Comprar ahora"
+            ]
+        }
+    }
+}

@@ -1,0 +1,66 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/QuickLook.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "it_IT",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "View all analytics": [
+                "Mostra tutti gli analytics"
+            ],
+            "Today": [
+                "Oggi"
+            ],
+            "Week to date": [
+                "Settimana fino ad oggi"
+            ],
+            "Month to date": [
+                "Mese fino ad oggi"
+            ],
+            "Recent Activity": [
+                "Attivit\u00e0 Recenti"
+            ],
+            "Once you launch your store, you'll see a snapshot of recent purchases and other \ncustomer activity here.": [
+                "Una volta lanciato il tuo negozio, vedrai qui un'istantanea degli acquisti recenti e di altre attivit\u00e0 dei clienti \n."
+            ],
+            "Install WooCommerce to unlock": [
+                "Installa WooCommerce per sbloccare"
+            ],
+            "Pending Payment": [
+                "Pagamento In Attesa"
+            ],
+            "Processing": [
+                "Elaborazione"
+            ],
+            "On hold": [
+                "In attesa"
+            ],
+            "Completed": [
+                "Completato"
+            ],
+            "Cancelled": [
+                "Annullato"
+            ],
+            "Refunded": [
+                "Rimborsato"
+            ],
+            "Failed": [
+                "Fallito"
+            ],
+            "Recent Orders": [
+                "Ordini Recenti"
+            ],
+            "No orders yet. When you start getting orders, they will show up here.": [
+                "Ancora nessun ordine. Quando si inizia a ottenere gli ordini, verranno visualizzati qui."
+            ],
+            "view all": [
+                "visualizza tutti"
+            ]
+        }
+    }
+}

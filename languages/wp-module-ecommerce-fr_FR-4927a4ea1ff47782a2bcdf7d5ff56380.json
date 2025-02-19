@@ -1,0 +1,39 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/Shipping.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "fr_FR",
+                "plural-forms": "nplurals=2; plural=(n > 1);"
+            },
+            "Installing...": [
+                "Installation en cours..."
+            ],
+            "Shipping Options": [
+                "Options d'exp\u00e9dition"
+            ],
+            "Setup a shipping account for delivering products to your customers": [
+                "Configurez un compte d'exp\u00e9dition pour la livraison de produits \u00e0 vos clients"
+            ],
+            "Manage": [
+                "G\u00e9rer"
+            ],
+            "Connect": [
+                "Connecter"
+            ],
+            "Install": [
+                "Installer"
+            ],
+            "The best multi-carrier shipping software for e-commerce businesses.": [
+                "Le meilleur logiciel d'exp\u00e9dition multi-transporteurs pour les entreprises de commerce \u00e9lectronique."
+            ],
+            "Environment:": [
+                "Environnement:"
+            ]
+        }
+    }
+}

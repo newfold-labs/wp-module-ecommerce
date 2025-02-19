@@ -1,0 +1,36 @@
+{
+    "translation-revision-date": "2025-02-13 18:45+0530",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/Payment.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "en_AU",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Offline Payments": [
+                "Offline Payments"
+            ],
+            "Accept payments (money orders, bank transfers or C.O.D.) that are made outside your online store. ": [
+                "Accept payments (money orders, bank transfers or C.O.D.) that are made outside your online store. "
+            ],
+            "Manual Payment methods": [
+                "Manual Payment methods"
+            ],
+            "When a customer selects a manual payment method, you'll need to approve their order before it can be fulfilled.": [
+                "When a customer selects a manual payment method, you'll need to approve their order before it can be fulfilled."
+            ],
+            "Check payments": [
+                "Check payments"
+            ],
+            "Bank transfer payments": [
+                "Bank transfer payments"
+            ],
+            "Cash on delivery (C.O.D.)": [
+                "Cash on delivery (C.O.D.)"
+            ]
+        }
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/WonderCartNotActivated.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "nl_NL",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Create custom upsell, cross-sell and other promotional campaigns to generate more sales.": [
+                "Maak aangepaste upsell, cross-sell en andere promotionele campagnes om meer verkopen te genereren."
+            ],
+            "Create a Campaign": [
+                "Campagne maken"
+            ],
+            "Create a campaign and boost your sales!": [
+                "Maak een campagne en stimuleer uw verkopen!"
+            ],
+            "Get Started": [
+                "Nu inschrijven"
+            ],
+            "Not sure where to start? Try one of these popular promotions:": [
+                "Weet je niet waar je moet beginnen? Probeer een van deze populaire promoties:"
+            ]
+        }
+    }
+}

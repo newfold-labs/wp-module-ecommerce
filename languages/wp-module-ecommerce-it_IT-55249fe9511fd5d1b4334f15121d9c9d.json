@@ -1,0 +1,30 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/WonderCartNonEcommerce.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "it_IT",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Buy Now": [
+                "Acquista Ora"
+            ],
+            "Create custom upsell, cross-sell and other promotional campaigns to generate more sales.": [
+                "Crea campagne personalizzate di upsell, cross-sell e altre campagne promozionali per generare pi\u00f9 vendite."
+            ],
+            "Sales & Promotions": [
+                "Vendite E Promozioni"
+            ],
+            "Start selling like a Pro!": [
+                "Inizia a vendere come un Pro!"
+            ],
+            "Give your online store a boost with our all-in-one eCommerce bundle filled with exclusive plugins and tools designed to help you sell your products and services like never before. ": [
+                "Dai una spinta al tuo negozio online con il nostro pacchetto eCommerce all-in-one pieno di plugin e strumenti esclusivi progettati per aiutarti a vendere i tuoi prodotti e servizi come mai prima d'ora. "
+            ]
+        }
+    }
+}

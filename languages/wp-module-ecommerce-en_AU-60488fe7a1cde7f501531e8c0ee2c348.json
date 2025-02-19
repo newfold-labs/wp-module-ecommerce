@@ -1,0 +1,27 @@
+{
+    "translation-revision-date": "2025-02-13 18:45+0530",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/FeatureCard.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "en_AU",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Learn More": [
+                "Learn More"
+            ],
+            "please wait while other features are installed...": [
+                "please wait while other features are installed..."
+            ],
+            "Purchase": [
+                "Purchase"
+            ],
+            "Installing...": [
+                "Installing..."
+            ]
+        }
+    }
+}

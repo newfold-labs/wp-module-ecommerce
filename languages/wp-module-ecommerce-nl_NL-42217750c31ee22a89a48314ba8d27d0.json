@@ -1,0 +1,42 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/AllPayments.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "nl_NL",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Discard Changes": [
+                "Wijzigingen ongedaan maken"
+            ],
+            "Save Changes": [
+                "Wijzigingen opslaan"
+            ],
+            "Payments": [
+                "Betalingen"
+            ],
+            "yes": [
+                "Ja"
+            ],
+            "Credit Card\/Debit Card\/NetBanking": [
+                "Credit Card\/Debit Card\/NetBanking"
+            ],
+            "Pay securely by Credit or Debit card or Internet Banking through Razorpay.": [
+                "Betaal veilig via Credit of Debit card of Internet Banking via Razorpay."
+            ],
+            "capture": [
+                "vastleggen"
+            ],
+            "Thank you for shopping with us. Your account has been charged and your transaction is successful. We will be processing your order soon.": [
+                "Dank u voor het winkelen bij ons. Uw account is in rekening gebracht en uw transactie is succesvol. We zullen uw bestelling binnenkort verwerken."
+            ],
+            "Successfully saved the Payment Details": [
+                "De betalingsgegevens zijn succesvol opgeslagen"
+            ]
+        }
+    }
+}

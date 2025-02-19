@@ -1,0 +1,24 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/WooCommerceUnavailable.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "fr_FR",
+                "plural-forms": "nplurals=2; plural=(n > 1);"
+            },
+            "Add a store to your site for FREE!": [
+                "Ajouter un magasin \u00e0 votre site GRATUITEMENT !"
+            ],
+            "Adding a store to your website is quick and easy! \nJust install the free WooCommerce plugin and get ready to start making money!": [
+                "Ajouter une boutique \u00e0 votre site web est rapide et facile ! \nInstallez juste le plugin WooCommerce gratuit et pr\u00e9parez-vous \u00e0 gagner de l'argent !"
+            ],
+            "Install WooCommerce": [
+                "Installer WooCommerce"
+            ]
+        }
+    }
+}

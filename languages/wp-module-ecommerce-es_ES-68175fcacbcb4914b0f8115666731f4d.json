@@ -1,0 +1,66 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/QuickLook.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "es_ES",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "View all analytics": [
+                "Ver todos los an\u00e1lisis"
+            ],
+            "Today": [
+                "Hoy"
+            ],
+            "Week to date": [
+                "Semana hasta la fecha"
+            ],
+            "Month to date": [
+                "Mes hasta la fecha"
+            ],
+            "Recent Activity": [
+                "Actividad reciente"
+            ],
+            "Once you launch your store, you'll see a snapshot of recent purchases and other \ncustomer activity here.": [
+                "Una vez que lances tu tienda, ver\u00e1s una instant\u00e1nea de compras recientes y otra actividad \ncliente aqu\u00ed."
+            ],
+            "Install WooCommerce to unlock": [
+                "Instalar WooCommerce para desbloquear"
+            ],
+            "Pending Payment": [
+                "Pago pendiente"
+            ],
+            "Processing": [
+                "Procesando"
+            ],
+            "On hold": [
+                "En espera"
+            ],
+            "Completed": [
+                "Completado"
+            ],
+            "Cancelled": [
+                "Cancelado"
+            ],
+            "Refunded": [
+                "Reembolsado"
+            ],
+            "Failed": [
+                "Fallo"
+            ],
+            "Recent Orders": [
+                "Pedidos recientes"
+            ],
+            "No orders yet. When you start getting orders, they will show up here.": [
+                "A\u00fan no hay pedidos. Cuando empieces a obtener pedidos, se mostrar\u00e1n aqu\u00ed."
+            ],
+            "view all": [
+                "ver todos"
+            ]
+        }
+    }
+}

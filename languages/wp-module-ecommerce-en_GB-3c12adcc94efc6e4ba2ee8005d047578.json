@@ -1,0 +1,39 @@
+{
+    "translation-revision-date": "2025-02-13 18:45+0530",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/YithPluginDetails.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "en_GB",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Exclusive YITH plugins and tools to help you sell online": [
+                "Exclusive YITH plugins and tools to help you sell online"
+            ],
+            "Our eCommerce bundle includes a comprehensive suite of advanced tools designed to boost the performance of your WooCommerce store. This bundle includes these exclusive YITH plugins:": [
+                "Our eCommerce bundle includes a comprehensive suite of advanced tools designed to boost the performance of your WooCommerce store. This bundle includes these exclusive YITH plugins:"
+            ],
+            "Gift Cards": [
+                "Gift Cards"
+            ],
+            "Wishlists": [
+                "Wishlists"
+            ],
+            "Custom 'My Account' Page": [
+                "Custom 'My Account' Page"
+            ],
+            "Bookings & Appointments": [
+                "Bookings & Appointments"
+            ],
+            "AJAX Product Filters": [
+                "AJAX Product Filters"
+            ],
+            "AJAX Product Search": [
+                "AJAX Product Search"
+            ]
+        }
+    }
+}

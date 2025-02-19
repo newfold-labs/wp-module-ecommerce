@@ -1,0 +1,51 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/SiteStatus.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "es_ES",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Coming Soon activated": [
+                "Pr\u00f3ximamente activado"
+            ],
+            "Your store is online and ready for business!": [
+                "\u00a1Su tienda est\u00e1 online y lista para el negocio!"
+            ],
+            "Your site is online now!": [
+                "\u00a1Su sitio est\u00e1 conectado ahora!"
+            ],
+            "You can re-enable the 'Coming Soon' mode in \u201cSettings\u201d.": [
+                "Puede volver a activar el modo 'Pr\u00f3ximamente' en \u201cConfiguraci\u00f3n\u201d."
+            ],
+            "Live": [
+                "Vivo"
+            ],
+            "Ready to go live?": [
+                "\u00bfListo para ir en vivo?"
+            ],
+            "Preview your store before setting it live to make sure everything \nis how you want it. Once you're ready, set your store live!": [
+                "Previsualice su tienda antes de configurarla en vivo para asegurarse de que todo \nes como lo desea. \u00a1Una vez que est\u00e9 listo, configure su tienda en vivo!"
+            ],
+            "Preview your Site before setting it live to make sure everything \nis how you want it. Once you're ready, set your site live!": [
+                "Previsualiza tu sitio antes de configurarlo en vivo para asegurarte de que todo \nsea como lo deseas. Una vez que est\u00e9s listo, configura tu sitio en vivo!"
+            ],
+            "Preview your store": [
+                "Vista previa de su tienda"
+            ],
+            "Preview your site": [
+                "Vista previa de su sitio"
+            ],
+            "Launch your store": [
+                "Lanza tu tienda"
+            ],
+            "Launch your site": [
+                "Lanzar tu sitio"
+            ]
+        }
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/WonderCartNotActivated.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "es_ES",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Create custom upsell, cross-sell and other promotional campaigns to generate more sales.": [
+                "Crear campa\u00f1as promocionales y de venta cruzada personalizadas para generar m\u00e1s ventas."
+            ],
+            "Create a Campaign": [
+                "Crear una campa\u00f1a"
+            ],
+            "Create a campaign and boost your sales!": [
+                "\u00a1Crea una campa\u00f1a y aumenta tus ventas!"
+            ],
+            "Get Started": [
+                "Empezar"
+            ],
+            "Not sure where to start? Try one of these popular promotions:": [
+                "\u00bfNo est\u00e1s seguro de d\u00f3nde empezar? Prueba una de estas promociones populares:"
+            ]
+        }
+    }
+}

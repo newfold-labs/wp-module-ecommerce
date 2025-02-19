@@ -1,0 +1,30 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/configs\/actions.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "nl_NL",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Plugin failed to install": [
+                "Plugin kan niet worden ge\u00efnstalleerd"
+            ],
+            "Please try again, or ": [
+                "Probeer het opnieuw, of "
+            ],
+            "contact support": [
+                "contact support"
+            ],
+            "Plugin installation is in progress": [
+                "Plugin installatie is bezig"
+            ],
+            "We'll be done in sometime": [
+                "We zullen af en toe klaar zijn"
+            ]
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "translation-revision-date": "2025-02-13 18:45+0530",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/configs\/Reports.config.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "en_AU",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Views": [
+                "Views"
+            ],
+            "Visitors": [
+                "Visitors"
+            ],
+            "Orders": [
+                "Orders"
+            ],
+            "Total Sales": [
+                "Total Sales"
+            ]
+        }
+    }
+}

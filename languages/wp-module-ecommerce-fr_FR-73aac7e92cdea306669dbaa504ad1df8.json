@@ -1,0 +1,54 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/OnboardingList.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "fr_FR",
+                "plural-forms": "nplurals=2; plural=(n > 1);"
+            },
+            "Good job!": [
+                "Bravo !"
+            ],
+            "One last thing to do...": [
+                "Une derni\u00e8re chose \u00e0 faire..."
+            ],
+            "Your site is now ready for public visitors!": [
+                "Votre site est maintenant pr\u00eat pour les visiteurs publics !"
+            ],
+            "Finish this last step so your migrated site is ready for visitors.": [
+                "Terminez cette derni\u00e8re \u00e9tape pour que votre site migr\u00e9 soit pr\u00eat pour les visiteurs."
+            ],
+            "Next steps for your store": [
+                "Prochaines \u00e9tapes pour votre boutique"
+            ],
+            "Next steps for your site": [
+                "Prochaines \u00e9tapes pour votre site"
+            ],
+            "You're just a few steps away from sharing your store with the world!": [
+                "Vous \u00eates \u00e0 quelques pas de partager votre boutique avec le monde !"
+            ],
+            "You're just a few steps away from sharing your site with the world!": [
+                "Vous \u00eates \u00e0 quelques pas de partager votre site avec le monde entier!"
+            ],
+            "Great job! You've completed all the current tasks to get your store up and running successfully!": [
+                "Bravo ! Vous avez termin\u00e9 toutes les t\u00e2ches actuelles pour faire fonctionner votre boutique avec succ\u00e8s !"
+            ],
+            "Great job! You've completed all the current tasks to get your site up and running successfully!": [
+                "Bravo ! Vous avez termin\u00e9 toutes les t\u00e2ches en cours pour faire fonctionner votre site avec succ\u00e8s !"
+            ],
+            "If you want to edit any of the info from the steps you've completed, simply click on the \"View completed tasks\" link below.": [
+                "Si vous voulez modifier les informations des \u00e9tapes que vous avez termin\u00e9es, cliquez simplement sur le lien \"Voir les t\u00e2ches termin\u00e9es\" ci-dessous."
+            ],
+            "View remaining tasks": [
+                "Voir les t\u00e2ches restantes"
+            ],
+            "View completed tasks": [
+                "Voir les t\u00e2ches termin\u00e9es"
+            ]
+        }
+    }
+}

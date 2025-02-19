@@ -1,0 +1,30 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/configs\/actions.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "es_ES",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Plugin failed to install": [
+                "Error al instalar el plugin"
+            ],
+            "Please try again, or ": [
+                "Int\u00e9ntalo de nuevo, o "
+            ],
+            "contact support": [
+                "contacta con soporte"
+            ],
+            "Plugin installation is in progress": [
+                "La instalaci\u00f3n del plugin est\u00e1 en progreso"
+            ],
+            "We'll be done in sometime": [
+                "Nos haremos en alg\u00fan momento"
+            ]
+        }
+    }
+}

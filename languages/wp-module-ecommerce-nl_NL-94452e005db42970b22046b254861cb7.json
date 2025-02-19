@@ -1,0 +1,48 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/OnboardingScreen.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "nl_NL",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Congrats on your new store!": [
+                "Gefeliciteerd met uw nieuwe winkel!"
+            ],
+            "Congrats on your new site!": [
+                "Gefeliciteerd met uw nieuwe site!"
+            ],
+            "Your site is currently displaying a \"Coming Soon\" page.": [
+                "Je site wordt momenteel een \"Binnenkort beschikbaar\" pagina weergegeven."
+            ],
+            "Ready to go to the next level?": [
+                "Klaar om naar het volgende niveau te gaan?"
+            ],
+            "Your site is live to the world!": [
+                "Je site is live naar de wereld!"
+            ],
+            "Welcome home!": [
+                "Welkom thuis!"
+            ],
+            "Your site has been successfully migrated.": [
+                "Uw site is succesvol gemigreerd."
+            ],
+            "Home": [
+                "Startpagina"
+            ],
+            "SITE PREVIEW": [
+                "SITE VOORBEELD"
+            ],
+            "View your site": [
+                "Bekijk uw site"
+            ],
+            "Edit your site": [
+                "Bewerk uw site"
+            ]
+        }
+    }
+}

@@ -1,0 +1,51 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/configs\/ProductsAndServices.config.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "de_DE",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Gift Cards": [
+                "Geschenkkarten"
+            ],
+            "Bookings & Appointments": [
+                "Buchungen & Termine"
+            ],
+            "Manage Gift Cards": [
+                "Geschenkkarten verwalten"
+            ],
+            "Create a Gift Card": [
+                "Geschenkkarte erstellen"
+            ],
+            "Manage Bookings & Appointments": [
+                "Buchungen & Termine verwalten"
+            ],
+            "Setup Bookings & Appointments": [
+                "Buchungen & Termine einrichten"
+            ],
+            "Add a product": [
+                "Produkt hinzuf\u00fcgen"
+            ],
+            "Add a Product": [
+                "Produkt hinzuf\u00fcgen"
+            ],
+            "Manage Your Products": [
+                "Ihre Produkte verwalten"
+            ],
+            "Manage products": [
+                "Produkte verwalten"
+            ],
+            "Import Products via CSV": [
+                "Produkte via CSV importieren"
+            ],
+            "Import products": [
+                "Produkte importieren"
+            ]
+        }
+    }
+}

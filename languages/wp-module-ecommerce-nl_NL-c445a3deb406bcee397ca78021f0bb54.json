@@ -1,0 +1,69 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/CaptiveRazorpay.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "nl_NL",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Key ID *": [
+                "Sleutel ID *"
+            ],
+            "Test Key ID *": [
+                "Testsleutel ID *"
+            ],
+            "Key Secret *": [
+                "Sleutel geheim *"
+            ],
+            "Test Key Secret *": [
+                "Testsleutel geheim *"
+            ],
+            "The key ID can be found in the \"%1$sAPI Keys%2$s\" section of your Razorpay dashboard.": [
+                "De sleutel-ID kan worden gevonden in de \"%1$sAPI-sleutels%2$s\" sectie van uw Razorpay dashboard."
+            ],
+            "That is not a valid test key ID. Please check your key ID and enter it again.": [
+                "Dit is geen geldige testsleutel-ID. Controleer uw sleutel-ID en voer het opnieuw in."
+            ],
+            "That is not a valid production key ID. Please check your key ID and enter it again.": [
+                "Dit is geen geldige productie key ID. Controleer uw key ID en voer het opnieuw in."
+            ],
+            "The key secret can be found in the \"%1$sAPI Keys%2$s\" section of your Razorpay dashboard.": [
+                "Het sleutelgeheim kan gevonden worden in de sectie \"%1$sAPI-sleutels%2$s\" van uw Razorpay dashboard."
+            ],
+            "Create an Account": [
+                "Account aanmaken"
+            ],
+            "Already have an account? ": [
+                "Heeft u al een account? "
+            ],
+            "Login": [
+                "Aanmelden"
+            ],
+            "After you login to Razorpay, you will need to generate your key ID and key secret codes, you will then need to switch back to this tab in your browser and paste your codes into the fields below.": [
+                "Nadat u zich heeft aangemeld bij Razorpay, moet u uw sleutel-ID en sleutel-geheime codes genereren, vervolgens moet u terugschakelen naar dit tabblad in uw browser en uw codes in de onderstaande velden plakken."
+            ],
+            "Enable Test Mode": [
+                "Testmodus inschakelen"
+            ],
+            "enter your \"%1$s\" key ID here.": [
+                "voer uw \"%1$s\" sleutel-ID hier in."
+            ],
+            "test": [
+                "test"
+            ],
+            "production": [
+                "productie"
+            ],
+            "enter your \"%1$s\" key secret here.": [
+                "Voer uw \"%1$s\" sleutel hier in."
+            ],
+            "* indicates a required field": [
+                "* Geeft een verplicht veld aan"
+            ]
+        }
+    }
+}

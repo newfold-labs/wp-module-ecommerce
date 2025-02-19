@@ -1,0 +1,54 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/OnboardingList.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "it_IT",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Good job!": [
+                "Ottimo lavoro!"
+            ],
+            "One last thing to do...": [
+                "Un'ultima cosa da fare..."
+            ],
+            "Your site is now ready for public visitors!": [
+                "Il tuo sito \u00e8 ora pronto per i visitatori pubblici!"
+            ],
+            "Finish this last step so your migrated site is ready for visitors.": [
+                "Termina questo ultimo passo in modo che il tuo sito migrato sia pronto per i visitatori."
+            ],
+            "Next steps for your store": [
+                "Prossimi passi per il tuo negozio"
+            ],
+            "Next steps for your site": [
+                "Prossimi passi per il tuo sito"
+            ],
+            "You're just a few steps away from sharing your store with the world!": [
+                "Sei a pochi passi da condividere il tuo negozio con il mondo!"
+            ],
+            "You're just a few steps away from sharing your site with the world!": [
+                "Sei a pochi passi da condividere il tuo sito con il mondo!"
+            ],
+            "Great job! You've completed all the current tasks to get your store up and running successfully!": [
+                "Ottimo lavoro! Hai completato tutte le attivit\u00e0 correnti per ottenere il tuo negozio in esecuzione con successo!"
+            ],
+            "Great job! You've completed all the current tasks to get your site up and running successfully!": [
+                "Ottimo lavoro! Hai completato tutte le attivit\u00e0 correnti per ottenere il tuo sito in esecuzione con successo!"
+            ],
+            "If you want to edit any of the info from the steps you've completed, simply click on the \"View completed tasks\" link below.": [
+                "Se si desidera modificare una qualsiasi delle informazioni dai passaggi che hai completato, basta cliccare sul link \"Visualizza attivit\u00e0 completate\" qui sotto."
+            ],
+            "View remaining tasks": [
+                "Visualizza le attivit\u00e0 rimanenti"
+            ],
+            "View completed tasks": [
+                "Visualizza attivit\u00e0 completate"
+            ]
+        }
+    }
+}

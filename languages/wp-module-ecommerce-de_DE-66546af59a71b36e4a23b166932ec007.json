@@ -1,0 +1,63 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/Stripe.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "de_DE",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Installing...": [
+                "Installieren..."
+            ],
+            "Manage": [
+                "Verwalten"
+            ],
+            "Connect": [
+                "Verbinden"
+            ],
+            "Install": [
+                "Installieren"
+            ],
+            "Environment:": [
+                "Umgebung:"
+            ],
+            "Complete control over the receiving and managing payments": [
+                "Vollst\u00e4ndige Kontrolle \u00fcber empfangene und verwaltete Zahlungen"
+            ],
+            "Stripe": [
+                "Stripe"
+            ],
+            "Stripe provides all the tools that you need to accept payments online around the world, including support for Apple Pay and Google Pay.": [
+                "Stripe stellt alle Tools zur Verf\u00fcgung, die Sie ben\u00f6tigen, um Online-Zahlungen auf der ganzen Welt zu akzeptieren, einschlie\u00dflich Unterst\u00fctzung f\u00fcr Apple Pay und Google Pay."
+            ],
+            "A secure connection is required when running Stripe Payments in Live mode; plugin is currently enabled, but no gateway will be available until you secure connection to your site through a valid SSL certificate.             If you already have a valid SSL certificate, please change the url in": [
+                "Eine sichere Verbindung ist erforderlich, wenn Stripe Payments im Live-Modus ausgef\u00fchrt werden; -Plugin ist derzeit aktiviert, aber es wird kein Gateway verf\u00fcgbar sein, bis Sie die Verbindung zu Ihrer Website \u00fcber ein g\u00fcltiges SSL-Zertifikat gesichert haben. Wenn Sie bereits ein g\u00fcltiges SSL-Zertifikat haben, \u00e4ndern Sie bitte die URL in"
+            ],
+            "settings": [
+                "einstellen"
+            ],
+            "page": [
+                "seite"
+            ],
+            "Immediate capture or authorize and capture later": [
+                "Sofort erfassen oder sp\u00e4ter erfassen und aufnehmen"
+            ],
+            "One-click refunds": [
+                "Ein-Klick-R\u00fcckerstattungen"
+            ],
+            "Option to let customers save their credit card info securely": [
+                "Option um Kunden ihre Kreditkarteninformationen sicher speichern zu lassen"
+            ],
+            "Support ACH direct debt": [
+                "Unterst\u00fctze ACH direkte Schulden"
+            ],
+            " Uses many popular payment methods": [
+                " Verwendet viele g\u00e4ngige Zahlungsmethoden"
+            ]
+        }
+    }
+}

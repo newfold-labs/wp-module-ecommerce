@@ -1,0 +1,30 @@
+{
+    "translation-revision-date": "2025-02-13 18:45+0530",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/ProductsAndServices.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "en_AU",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Products & Services": [
+                "Products & Services"
+            ],
+            "Come here to manage products and services or add new ones to your store.": [
+                "Come here to manage products and services or add new ones to your store."
+            ],
+            "Want help adding products?": [
+                "Want help adding products?"
+            ],
+            "Read this helpful knowledge base article to understand how to\nadd different products to your store": [
+                "Read this helpful knowledge base article to understand how to\nadd different products to your store"
+            ],
+            " How to add products": [
+                " How to add products"
+            ]
+        }
+    }
+}

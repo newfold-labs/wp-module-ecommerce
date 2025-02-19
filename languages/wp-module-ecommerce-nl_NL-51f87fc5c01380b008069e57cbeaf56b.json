@@ -1,0 +1,171 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/SalesChannel.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "nl_NL",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Installing...": [
+                "Installeren..."
+            ],
+            "Sales Channels": [
+                "Verkoop kanalen"
+            ],
+            "Sell your products everywhere, confidently, with Ecomdash.": [
+                "Verkoop uw producten overal, vertrouwelijk met Ecomdash."
+            ],
+            "With ecomdash, you can manage different sales channels all in one place.": [
+                "Met ecomdash, kunt u verschillende verkoopkanalen op \u00e9\u00e9n plek beheren."
+            ],
+            "Simply connect your business accounts from Amazon, Etsy or Walmart to": [
+                "Verbind je zakelijke rekeningen van Amazon, Etsy of Walexceeds aan"
+            ],
+            "your ecomdash platform and easily manage products, customer orders and": [
+                "uw ecomdash platform en beheer eenvoudig producten, klantbestellingen en"
+            ],
+            "more saving you valuable time.": [
+                "meer bespaart u kostbare tijd."
+            ],
+            "Get Started Now": [
+                "Nu aan de slag"
+            ],
+            "Go to Ecomdash": [
+                "Ga naar Ecomdash"
+            ],
+            "Install Now": [
+                "Nu installeren"
+            ],
+            "Manage inventory across multiple platforms": [
+                "Beheer voorraad op meerdere platforms"
+            ],
+            "Enjoy near real-time inventory updates for an unlimited number of": [
+                "Geniet van nabije real-time inventarisupdates voor een onbeperkt aantal"
+            ],
+            "channels with our inventory management software.": [
+                "kanalen met onze voorraadbeheer software."
+            ],
+            "Manage product levels across multiple warehouses ": [
+                "Beheer productniveaus in meerdere magazijnen "
+            ],
+            "without the fear of overselling.": [
+                "zonder angst voor overseling."
+            ],
+            "Accurately sync kits, multipacks, and components without any": [
+                "Synchroniseer uitrustingen, multipacks en componenten zonder enige"
+            ],
+            "headaches.": [
+                "hoofdpijn."
+            ],
+            "Order Management and Reporting": [
+                "Orderbeheer en rapportage"
+            ],
+            "With Ecomdash you can sit back and relax, knowing that all aspects of order fulfillment are under control. Easily track your top selling items, cost of goods sold, stale inventory and more with Ecomdash's extensive reporting tools.": [
+                "Met Ecomdash kunt u achterover leunen en ontspannen in de wetenschap dat alle aspecten van de orderverwerking onder controle zijn. Volg eenvoudig uw best verkopende artikelen, kosten van verkochte goederen, verouderde voorraad en meer met de uitgebreide rapportagegereedschappen van Ecomdash."
+            ],
+            "Powerful Add-ons": [
+                "Krachtige add-ons"
+            ],
+            "Ecomdash contains a variety of powerful add-ons that will help you handle everything from creating barcodes and inventory templates, to managing warehouse feeds, Fulfillment By Amazon and even accounting.": [
+                "Ecomdash bevat een aantal krachtige add-ons die u helpen om alles aan te pakken door barcodes en voorraadsjablonen, te maken voor het beheren van de magazijnfeeds, Fulfillment By Amazon en zelfs boekhouding."
+            ],
+            "Fullfillment By Amazon (FBA)": [
+                "Fullfillment By Amazon (FBA)"
+            ],
+            "Auto-export non-Amazon orders to FBA. Import the tracking and pass it to the": [
+                "Exporteer automatisch niet-Amazon orders naar FBA. Importeer de tracking en geef deze door aan de"
+            ],
+            "originating sales channel, marking it as shipped.": [
+                "verkoop kanaal, markeert het als verzonden."
+            ],
+            "Barcodes": [
+                "Barcodes"
+            ],
+            "Print barcodes for your products that can be": [
+                "Print streepjescodes voor jouw producten die kunnen zijn"
+            ],
+            "used for labeling and scanning your": [
+                "gebruikt voor het labelen en scannen van uw"
+            ],
+            "products": [
+                "producten"
+            ],
+            "Shipping Labels": [
+                "Verzend labels"
+            ],
+            "Print shipping labels with a preferred carrier": [
+                "Verzendlabels drukken met een geprefereerde vervoerder"
+            ],
+            "right from your ecomdash account and save": [
+                "rechtstreeks vanuit uw ecomdash account en sla op"
+            ],
+            "on postage.": [
+                "op poda."
+            ],
+            "Listing Presets": [
+                "Aanbieding voorinstellingen"
+            ],
+            "Create listing presets to cut down most of": [
+                "Maak lijst voorinstellingen om het grootste deel van te knippen"
+            ],
+            "the manual data entry needed when creating": [
+                "de handmatige gegevensinvoer die nodig is bij aanmaken"
+            ],
+            "new listings.": [
+                "nieuwe aanbiedingen."
+            ],
+            "Accounting": [
+                "Boekhouding"
+            ],
+            "Seamlessly communicate your sales and": [
+                "Naadloos communiceren van uw verkopen en"
+            ],
+            "purchase order information directly to your": [
+                "inkooporder informatie rechtstreeks naar uw"
+            ],
+            "accounting software.": [
+                "boekhoudkundig software."
+            ],
+            "Custom Inventory Templates": [
+                "Aangepaste voorraadsjablonen"
+            ],
+            "Creating a custom file template allows you to": [
+                "Met het maken van een aangepaste bestandstemplate kunt u"
+            ],
+            "upload and\/or export files with product data": [
+                "bestanden uploaden en\/of exporteren met productgegevens"
+            ],
+            "for thousands of products at once.": [
+                "voor duizenden producten tegelijk."
+            ],
+            "Warehouse Feeds": [
+                "Magazijn Feeds"
+            ],
+            "Setup feeds to export your sales orders via": [
+                "Configureer feeds om uw verkooporders via"
+            ],
+            "email or FTP sites to third parties such as": [
+                "e-mail of FTP-websites naar derde partijen zoals"
+            ],
+            "Dropshippers, Suppliers, or 3PL systems.": [
+                "Dropshippers, leveranciers of 3PL-systemen."
+            ],
+            "Purchase Orders": [
+                "Inkooporders"
+            ],
+            "Quickly create new orders and have": [
+                "Snel nieuwe bestellingen maken en hebben"
+            ],
+            "inventory quantities adjusted and synced out": [
+                "voorraad hoeveelheid aangepast en gesynchroniseerd"
+            ],
+            "to listings as units are received.": [
+                "voor de lijsten als eenheden ontvangen."
+            ]
+        }
+    }
+}

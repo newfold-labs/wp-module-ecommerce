@@ -1,0 +1,27 @@
+{
+    "translation-revision-date": "2025-02-13 18:45+0530",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/YITHPlugins.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "en_AU",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Elevate Your Store with Exclusive WooCommerce Tools Included in Your Plan!": [
+                "Elevate Your Store with Exclusive WooCommerce Tools Included in Your Plan!"
+            ],
+            "Exclusive Tools Included in Your Plan": [
+                "Exclusive Tools Included in Your Plan"
+            ],
+            "Unlock the full power of your plan with access to a range of exclusive WooCommerce tools powered by \nYITH. Enhance your store and keep your customers coming back for more!": [
+                "Unlock the full power of your plan with access to a range of exclusive WooCommerce tools powered by \nYITH. Enhance your store and keep your customers coming back for more!"
+            ],
+            "View all your plugins and tools": [
+                "View all your plugins and tools"
+            ]
+        }
+    }
+}

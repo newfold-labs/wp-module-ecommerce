@@ -1,0 +1,30 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/ProductsAndServices.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "nl_NL",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Products & Services": [
+                "Producten en Diensten"
+            ],
+            "Come here to manage products and services or add new ones to your store.": [
+                "Kom hier om producten en diensten te beheren of voeg nieuwe toe aan uw winkel."
+            ],
+            "Want help adding products?": [
+                "Wilt u hulp bij het toevoegen van producten?"
+            ],
+            "Read this helpful knowledge base article to understand how to\nadd different products to your store": [
+                "Lees dit handige kennisbankartikel om te begrijpen hoe\nverschillende producten aan uw winkel toevoegt"
+            ],
+            " How to add products": [
+                " Hoe producten toe te voegen"
+            ]
+        }
+    }
+}

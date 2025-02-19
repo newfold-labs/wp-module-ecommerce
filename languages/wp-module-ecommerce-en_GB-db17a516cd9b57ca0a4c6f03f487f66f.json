@@ -1,0 +1,27 @@
+{
+    "translation-revision-date": "2025-02-13 18:45+0530",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/WPSolutionsBanner.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "en_GB",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "View all your plugins and tools": [
+                "View all your plugins and tools"
+            ],
+            "Oops! something went wrong. Please try again later": [
+                "Oops! something went wrong. Please try again later"
+            ],
+            "Explore Your Plugins and Tools": [
+                "Explore Your Plugins and Tools"
+            ],
+            "Improve your site with the tools and services included in your plan.": [
+                "Improve your site with the tools and services included in your plan."
+            ]
+        }
+    }
+}

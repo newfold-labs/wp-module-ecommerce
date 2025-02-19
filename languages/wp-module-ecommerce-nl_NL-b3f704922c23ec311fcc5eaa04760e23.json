@@ -1,0 +1,108 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/configs\/YITHPlugins.config.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "nl_NL",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Gift Cards": [
+                "Cadeaubonnen"
+            ],
+            "Wishlists": [
+                "Verlanglijsten"
+            ],
+            "Offer customizable gift cards with personalized messages for the recipient.": [
+                "Aanpasbare cadeaubonnen met gepersonaliseerde berichten voor de ontvanger aanbieden."
+            ],
+            "Manage Gift Cards": [
+                "Cadeaubonnen beheren"
+            ],
+            "Create a Gift Card": [
+                "Maak een cadeaubon aan"
+            ],
+            "Let customers add products to lists and share them with family and friends.": [
+                "Laat klanten producten toevoegen aan lijsten en deze delen met familie en vrienden."
+            ],
+            "View Wishlists": [
+                "Bekijk verlanglijsts"
+            ],
+            "Setup Wishlists": [
+                "Wenslijsten instellen"
+            ],
+            "WonderCart": [
+                "Overwinnings"
+            ],
+            "Create custom upsell, cross-sell and other promotional campaigns to generate more sales.": [
+                "Maak aangepaste upsell, cross-sell en andere promotionele campagnes om meer verkopen te genereren."
+            ],
+            "Create a Campaign": [
+                "Campagne maken"
+            ],
+            "Booking and Appointments": [
+                "Boeking en Afspraken"
+            ],
+            "Manage renting or booking of services and items so customers can do business with you.": [
+                "Beheer huren of reserveren van diensten en artikelen, zodat klanten zaken met u kunnen doen."
+            ],
+            "Manage Bookings & Appointments": [
+                "Boekingen & Afspraken beheren"
+            ],
+            "Setup Bookings & Appointments": [
+                "Boekingen & Afspraken instellen"
+            ],
+            "Product Filters": [
+                "Product Filters"
+            ],
+            "Add an advanced filter to help customers find the right product with ease.": [
+                "Voeg een geavanceerd filter toe zodat klanten het juiste product gemakkelijk kunnen vinden."
+            ],
+            "Product Filter Settings": [
+                "Instellingen productfilter"
+            ],
+            "Setup Product Filters": [
+                "Productfilters instellen"
+            ],
+            "Product Search": [
+                "Product zoeken"
+            ],
+            "Speed up search for your customers with a predictive real-time search engine.": [
+                "Versnel het zoeken naar uw klanten met een voorspelbare real-time zoekmachine."
+            ],
+            "Product Search Settings": [
+                "Instellingen voor productzoekopdracht"
+            ],
+            "Configure Product Search": [
+                "Configureren van product zoeken"
+            ],
+            "Customize My Account Page": [
+                "Mijn accountpagina aanpassen"
+            ],
+            "Add custom content like videos, files, discount codes, and more to your customers account page.": [
+                "Voeg aangepaste inhoud, zoals video's, bestanden, kortingscodes en meer toe aan de accountpagina van je klanten."
+            ],
+            "'My Account' Page Settings": [
+                "'Mijn account' pagina-instellingen"
+            ],
+            "Customize the 'My Account' Page": [
+                "De 'Mijn Account' pagina aanpassen"
+            ],
+            "ecomdash": [
+                "ecomdash"
+            ],
+            "Boost sales by selling your products and services across multiple marketplaces.": [
+                "Boost de verkoop van uw producten en diensten over meerdere markten."
+            ],
+            "Manage Sales Channels": [
+                "Beheer Verkoopkanalen"
+            ],
+            "Setup Sales Channels": [
+                "Setup verkoopkanalen"
+            ]
+        }
+    }
+}

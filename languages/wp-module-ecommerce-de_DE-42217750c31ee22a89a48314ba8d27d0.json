@@ -1,0 +1,42 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/AllPayments.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "de_DE",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Discard Changes": [
+                "\u00c4nderungen verwerfen"
+            ],
+            "Save Changes": [
+                "\u00c4nderungen speichern"
+            ],
+            "Payments": [
+                "Zahlungen"
+            ],
+            "yes": [
+                "ja"
+            ],
+            "Credit Card\/Debit Card\/NetBanking": [
+                "Kreditkarte\/Debitkarte\/NetBanking"
+            ],
+            "Pay securely by Credit or Debit card or Internet Banking through Razorpay.": [
+                "Sicher mit Kredit- oder Debitkarte oder Internet Banking \u00fcber Razorpay bezahlen."
+            ],
+            "capture": [
+                "aufnehmen"
+            ],
+            "Thank you for shopping with us. Your account has been charged and your transaction is successful. We will be processing your order soon.": [
+                "Vielen Dank f\u00fcr Ihren Einkauf bei uns. Ihr Konto wurde belastet und Ihre Transaktion ist erfolgreich. Wir werden Ihre Bestellung bald bearbeiten."
+            ],
+            "Successfully saved the Payment Details": [
+                "Zahlungsinformationen erfolgreich gespeichert"
+            ]
+        }
+    }
+}

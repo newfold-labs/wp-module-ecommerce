@@ -1,0 +1,75 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/configs\/OnboardingList.config.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "es_ES",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Explore the features included with your solution": [
+                "Explora las caracter\u00edsticas incluidas con tu soluci\u00f3n"
+            ],
+            "Update your website nameservers": [
+                "Actualice los servidores de nombres de su sitio web"
+            ],
+            "How do I update my nameserver to BH?": [
+                "\u00bfC\u00f3mo actualizo mi servidor de nombres a BH?"
+            ],
+            "Connect this site to your domain": [
+                "Conecte este sitio a su dominio"
+            ],
+            "How do I connect my site to the Domain ?": [
+                "\u00bfC\u00f3mo puedo conectar mi sitio con el Dominio ?"
+            ],
+            "Need help with these steps?": [
+                "\u00bfNecesita ayuda con estos pasos?"
+            ],
+            "Continue with store setup": [
+                "Continuar con la configuraci\u00f3n de la tienda"
+            ],
+            "Sign up for Bluehost WordPress Academy": [
+                "Reg\u00edstrate en la Academia de WordPress Bluehost"
+            ],
+            "New Order Received": [
+                "Nuevo pedido recibido"
+            ],
+            "Add your store info": [
+                "A\u00f1ade informaci\u00f3n de tu tienda"
+            ],
+            "Connect a payment processor": [
+                "Conectar un procesador de pagos"
+            ],
+            "Setup shipping options": [
+                "Configurar opciones de env\u00edo"
+            ],
+            "Configure tax settings": [
+                "Configurar ajustes de impuestos"
+            ],
+            "Add a product": [
+                "A\u00f1adir un producto"
+            ],
+            "Sign up for Yoast SEO Academy": [
+                "Reg\u00edstrate en Yoast SEO Academy"
+            ],
+            "Add a new page to your store": [
+                "A\u00f1adir una nueva p\u00e1gina a su tienda"
+            ],
+            "Add a new page to your site": [
+                "A\u00f1adir una nueva p\u00e1gina a su sitio"
+            ],
+            "Upload media to your site": [
+                "Subir medios a su sitio"
+            ],
+            "Connect to your social media accounts": [
+                "Conectar a tus cuentas de redes sociales"
+            ],
+            "Enable Jetpack to connect to your social media accounts": [
+                "Habilitar Jetpack para conectarse a tus cuentas de redes sociales"
+            ]
+        }
+    }
+}

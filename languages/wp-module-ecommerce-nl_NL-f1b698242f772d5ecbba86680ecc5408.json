@@ -1,0 +1,51 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/SiteStatus.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "nl_NL",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Coming Soon activated": [
+                "Binnenkort beschikbaar"
+            ],
+            "Your store is online and ready for business!": [
+                "Uw winkel is online en klaar voor zaken!"
+            ],
+            "Your site is online now!": [
+                "Je site is nu online!"
+            ],
+            "You can re-enable the 'Coming Soon' mode in \u201cSettings\u201d.": [
+                "Je kunt de 'Komende binnenkort' modus weer inschakelen in \"Instellingen\"."
+            ],
+            "Live": [
+                "Zichtbaar"
+            ],
+            "Ready to go live?": [
+                "Klaar om te gaan leven?"
+            ],
+            "Preview your store before setting it live to make sure everything \nis how you want it. Once you're ready, set your store live!": [
+                "Bekijk uw winkel voordat u live instelt om ervoor te zorgen dat alles \nis zoals u het wilt. Zodra u klaar bent, zet uw winkel live!"
+            ],
+            "Preview your Site before setting it live to make sure everything \nis how you want it. Once you're ready, set your site live!": [
+                "Bekijk eerst je site voordat je deze live instelt om er zeker van te zijn dat alles \nis zoals je het wilt. Zodra je klaar bent, stel je site live in!"
+            ],
+            "Preview your store": [
+                "Bekijk een voorbeeld van uw winkel"
+            ],
+            "Preview your site": [
+                "Voorbeeld van uw website"
+            ],
+            "Launch your store": [
+                "Lanceer uw winkel"
+            ],
+            "Launch your site": [
+                "Start uw site"
+            ]
+        }
+    }
+}

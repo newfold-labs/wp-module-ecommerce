@@ -1,0 +1,27 @@
+{
+    "translation-revision-date": "2025-02-19 16:40",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "src\/components\/YITHPlugins.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "fr_FR",
+                "plural-forms": "nplurals=2; plural=(n > 1);"
+            },
+            "Elevate Your Store with Exclusive WooCommerce Tools Included in Your Plan!": [
+                "Augmentez votre boutique avec des outils WooCommerce exclusifs inclus dans votre plan !"
+            ],
+            "Exclusive Tools Included in Your Plan": [
+                "Outils exclusifs inclus dans votre plan"
+            ],
+            "Unlock the full power of your plan with access to a range of exclusive WooCommerce tools powered by \nYITH. Enhance your store and keep your customers coming back for more!": [
+                "D\u00e9bloquez la pleine puissance de votre forfait avec acc\u00e8s \u00e0 une gamme d'outils WooCommerce exclusifs propuls\u00e9s par \nYITH. Am\u00e9liorez votre boutique et laissez vos clients revenir pour plus !"
+            ],
+            "View all your plugins and tools": [
+                "Voir tous vos plugins et outils"
+            ]
+        }
+    }
+}
