@@ -903,7 +903,7 @@ msgid "Country-specific payment methods"
 msgstr ""
 
 #: build/index.js:1
-msgid " Supports many popular payment methods"
+msgid "Supports many popular payment methods"
 msgstr ""
 
 #: build/index.js:1
@@ -943,7 +943,7 @@ msgid "Support ACH direct debt"
 msgstr ""
 
 #: build/index.js:1
-msgid " Uses many popular payment methods"
+msgid "Uses many popular payment methods"
 msgstr ""
 
 #: build/index.js:1
@@ -1285,7 +1285,7 @@ msgid ""
 msgstr ""
 
 #: build/index.js:1
-msgid " How to add products"
+msgid "How to add products"
 msgstr ""
 
 #: build/index.js:1

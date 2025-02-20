@@ -60,7 +60,7 @@ export function Products({ woo, wpModules }) {
               target="_blank"
             >
               <LightBulbIcon className="hst-w-4" />
-              {__(" How to add products", "wp-module-ecommerce")}
+              {__("How to add products", "wp-module-ecommerce")}
             </Button>
           </div>
         </div>

@@ -768,8 +768,8 @@ msgid "Country-specific payment methods"
 msgstr "Länderspezifische Zahlungsmethoden"
 
 #: build/index.js:1
-msgid " Supports many popular payment methods"
-msgstr " Unterstützt viele beliebte Zahlungsmethoden"
+msgid "Supports many popular payment methods"
+msgstr "Unterstützt viele beliebte Zahlungsmethoden"
 
 #: build/index.js:1
 msgid "Stripe"
@@ -808,8 +808,8 @@ msgid "Support ACH direct debt"
 msgstr "Unterstütze ACH direkte Schulden"
 
 #: build/index.js:1
-msgid " Uses many popular payment methods"
-msgstr " Verwendet viele gängige Zahlungsmethoden"
+msgid "Uses many popular payment methods"
+msgstr "Verwendet viele gängige Zahlungsmethoden"
 
 #: build/index.js:1
 msgid "Offline Payments"
@@ -1148,8 +1148,8 @@ msgstr ""
 "verschiedene Produkte in Ihrem Shop hinzufügen"
 
 #: build/index.js:1
-msgid " How to add products"
-msgstr " Artikel hinzufügen"
+msgid "How to add products"
+msgstr "Artikel hinzufügen"
 
 #: build/index.js:1
 msgid "Store Details"

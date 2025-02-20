@@ -110,7 +110,7 @@ const PayPal = ({ notify }) => {
                 </ul>
                 <Title size="3">
                   {__(
-                    " Supports many popular payment methods",
+                    "Supports many popular payment methods",
                     "wp-module-ecommerce",
                   )}
                 </Title>
