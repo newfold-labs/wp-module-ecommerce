@@ -652,9 +652,6 @@
             "Good job!": [
                 "Gute Arbeit!"
             ],
-            "One last thing to do...": [
-                "Eine letzte Sache zu tun..."
-            ],
             "Your site is now ready for public visitors!": [
                 "Ihre Seite ist nun bereit f\u00fcr \u00f6ffentliche Besucher!"
             ],
@@ -966,6 +963,117 @@
             ],
             "WooCommerce has been installed successfully": [
                 "WooCommerce wurde erfolgreich installiert"
+            ],
+            "Free Shipping": [
+                ""
+            ],
+            "Attract and retain customers by offering free shipping based on cart amount, location or store category.": [
+                ""
+            ],
+            "Buy 1 Get 1": [
+                ""
+            ],
+            "Attract customers with a compelling deal where they can buy one product and get another product for free.": [
+                ""
+            ],
+            "Gift Product in Cart": [
+                ""
+            ],
+            "Reward customers with a free gift in their cart based on total cart value, or specific products or categories.": [
+                ""
+            ],
+            "Category Discount": [
+                ""
+            ],
+            "Give your customers a discount on specific categories of products and boost sales for those categories.": [
+                ""
+            ],
+            "Upsell in Thank You Page": [
+                ""
+            ],
+            "Maximize sales by presenting relevant upsell options after customers have completed their purchase.": [
+                ""
+            ],
+            "Last Minute Deal": [
+                ""
+            ],
+            "Create urgency with a special time-limited deal for customers on the cart and checkout pages.": [
+                ""
+            ],
+            "Build webpages fast with tailored block patterns and page templates included in your hosting package.": [
+                ""
+            ],
+            "Add a Page to Your Site": [
+                ""
+            ],
+            "Start increasing your search result rankings today.": [
+                ""
+            ],
+            "Improve Your Search Ranking": [
+                ""
+            ],
+            "Create beautiful and engaging online courses, lessons, and quizzes.": [
+                ""
+            ],
+            "Create a Course": [
+                ""
+            ],
+            "Grant your affiliates earnings each time someone purchases from their link.": [
+                ""
+            ],
+            "Create an Affiliate Program": [
+                ""
+            ],
+            "Manage the renting or booking of services and items that you offer your customers.": [
+                ""
+            ],
+            "Setup Bookings": [
+                ""
+            ],
+            "Build webpages fast with tailored block patterns and page templates.": [
+                ""
+            ],
+            "Reward customer loyalty with an effective points program.": [
+                ""
+            ],
+            "Configure Points & Rewards": [
+                ""
+            ],
+            "Get positive product reviews and use social proof to drive more sales.": [
+                ""
+            ],
+            "Enable Product Reviews": [
+                ""
+            ],
+            "Setup Wishilsts": [
+                ""
+            ],
+            "Installed successfully": [
+                ""
+            ],
+            "Failed to install": [
+                ""
+            ],
+            "One last thing to do\u2026": [
+                "Eine letzte Sache zu tun\u2026"
+            ],
+            "Webpage Creation": [
+                ""
+            ],
+            "Search Engine Optimization": [
+                ""
+            ],
+            "Offer Content Courses": [
+                ""
+            ],
+            "Add an Affiliate Program": [
+                ""
+            ],
+            "Setup a Loyalty Program": [
+                ""
+            ],
+            "Create A Sales Campaign": [
+                ""
             ]
         }
     }

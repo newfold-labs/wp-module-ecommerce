@@ -9,6 +9,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-02-13T11:49:18+00:00\n"
 "PO-Revision-Date: 2025-02-19 16:40\n"
+"Language: fr_FR\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: wp-module-ecommerce\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
@@ -17,93 +18,92 @@ msgstr ""
 "X-Crowdin-Language: fr\n"
 "X-Crowdin-File: wp-module-ecommerce.pot\n"
 "X-Crowdin-File-ID: 50\n"
-"Language: fr_FR\n"
 
 #: bootstrap.php:51
 msgid "eCommerce"
 msgstr "Commerce électronique"
 
-#: includes/ECommerce.php:272
+#: includes/ECommerce.php:254
+#: includes/ECommerce.php:265
+#: includes/ECommerce.php:274
 #: includes/ECommerce.php:283
 #: includes/ECommerce.php:292
 #: includes/ECommerce.php:301
-#: includes/ECommerce.php:310
-#: includes/ECommerce.php:319
-#: includes/ECommerce.php:348
+#: includes/ECommerce.php:330
 msgid "NFD eCommerce Options"
 msgstr "Options de commerce électronique NFD"
 
-#: includes/ECommerce.php:437
-#: includes/ECommerce.php:466
+#: includes/ECommerce.php:419
+#: includes/ECommerce.php:448
 msgid "Promotions"
 msgstr "Promotions"
 
-#: includes/ECommerce.php:454
-#: includes/ECommerce.php:487
+#: includes/ECommerce.php:436
+#: includes/ECommerce.php:469
 msgid "Create a Promotion"
 msgstr "Créer une promotion"
 
-#: includes/ECommerce.php:484
+#: includes/ECommerce.php:466
 msgid "Boost Your Online Store Sales"
 msgstr "Boostez les ventes de votre boutique en ligne"
 
-#: includes/ECommerce.php:485
+#: includes/ECommerce.php:467
 msgid "Maximize your sales by creating effective"
 msgstr "Maximisez vos ventes en créant efficacement"
 
-#: includes/ECommerce.php:486
+#: includes/ECommerce.php:468
 msgid "promotions and campaigns like:"
 msgstr "promotions et campagnes comme:"
 
-#: includes/ECommerce.php:488
+#: includes/ECommerce.php:470
 msgid "Free"
 msgstr "Gratuit"
 
-#: includes/ECommerce.php:489
+#: includes/ECommerce.php:471
 msgid "Shipping"
 msgstr "Expédition"
 
-#: includes/ECommerce.php:490
+#: includes/ECommerce.php:472
 msgid "Buy One"
 msgstr "Achetez un"
 
-#: includes/ECommerce.php:491
+#: includes/ECommerce.php:473
 msgid "Get One"
 msgstr "En obtenir un"
 
-#: includes/ECommerce.php:492
+#: includes/ECommerce.php:474
 msgid "Free Gift"
 msgstr "Cadeau Gratuit"
 
-#: includes/ECommerce.php:493
+#: includes/ECommerce.php:475
 msgid "in Cart"
 msgstr "dans le panier"
 
-#: includes/ECommerce.php:494
+#: includes/ECommerce.php:476
 msgid "Frequently"
 msgstr "Fréquemment"
 
-#: includes/ECommerce.php:495
+#: includes/ECommerce.php:477
 msgid "Bought Together"
 msgstr "Acheté ensemble"
 
-#: includes/ECommerce.php:655
+#: includes/ECommerce.php:637
 msgid "Status"
 msgstr "Statut"
 
-#: includes/ECommerce.php:679
+#: includes/ECommerce.php:661
 msgid "Published - Public"
 msgstr "Publié - Public"
 
-#: includes/ECommerce.php:679
+#: includes/ECommerce.php:661
 msgid "Published - Password Protected"
 msgstr "Publié - Mot de passe protégé"
 
-#: includes/ECommerce.php:682
+#: includes/ECommerce.php:664
 msgid "Published - Private"
 msgstr "Publié - Privé"
 
-#: includes/ECommerce.php:692
+#: includes/ECommerce.php:674
 msgid "Last Modified"
 msgstr "Dernière modification"
 
@@ -112,1677 +112,1453 @@ msgid "NFD eCommerce RazorPay Options"
 msgstr "Options de NFD eCommerce RazorPay"
 
 #: build/index.js:1
-#: src/components/FeatureCard.js:59
 msgid "Learn More"
 msgstr "En savoir plus"
 
 #: build/index.js:1
-#: src/components/FeatureCard.js:67
 msgid "please wait while other features are installed..."
 msgstr "veuillez patienter pendant que d'autres fonctionnalités sont installées..."
 
 #: build/index.js:1
-#: src/components/FeatureCard.js:96
 msgid "Purchase"
 msgstr "Achat"
 
 #: build/index.js:1
-#: src/components/FeatureCard.js:115
-#: src/components/PaypalPayment.js:50
-#: src/components/Razorpay.js:69
-#: src/components/SalesChannel.js:124
-#: src/components/Shipping.js:74
-#: src/components/Stripe.js:84
-#: src/components/YithFeatureCard.js:100
 msgid "Installing..."
 msgstr "Installation en cours..."
 
 #: build/index.js:1
-#: src/configs/actions.js:19
 msgid "Plugin failed to install"
 msgstr "L'installation du plugin a échoué"
 
 #: build/index.js:1
-#: src/components/useInstallWonderCart.js:25
-#: src/components/useInstallWoo.js:20
-#: src/configs/actions.js:22
 msgid "Please try again, or "
 msgstr "Veuillez essayer à nouveau, ou "
 
 #: build/index.js:1
-#: src/components/useInstallWonderCart.js:27
-#: src/components/useInstallWoo.js:22
-#: src/configs/actions.js:24
 msgid "contact support"
 msgstr "contacter le support technique"
 
 #: build/index.js:1
-#: src/configs/actions.js:33
 msgid "Plugin installation is in progress"
 msgstr "L'installation du plugin est en cours"
 
 #: build/index.js:1
-#: src/configs/actions.js:34
 msgid "We'll be done in sometime"
 msgstr "Nous allons le faire dans un certain temps"
 
 #: build/index.js:1
-#: src/configs/Reports.config.js:61
 msgid "Views"
 msgstr "Vues"
 
 #: build/index.js:1
-#: src/configs/Reports.config.js:88
 msgid "Visitors"
 msgstr "Visiteurs"
 
 #: build/index.js:1
-#: src/configs/Reports.config.js:115
 msgid "Orders"
 msgstr "Commandes"
 
 #: build/index.js:1
-#: src/configs/Reports.config.js:138
 msgid "Total Sales"
 msgstr "Ventes totales"
 
 #: build/index.js:1
-#: src/components/WonderCartCampaignDetails.js:10
 msgid "Add upsells, cross-sells, and other promotions with WonderCart"
 msgstr "Ajoutez des ventes, des ventes croisées et d'autres promotions avec WonderPart"
 
 #: build/index.js:1
-#: src/components/WonderCartCampaignDetails.js:13
 msgid "Create and run effective promotional campaigns like BOGOs, free shipping offers, category discounts, and more to increase revenue and strengthen customer engagement."
 msgstr "Créez et gérez des campagnes de promotion efficaces comme les BOGOs, les offres d'expédition gratuites, les réductions de catégories, et plus encore pour augmenter les revenus et renforcer l'engagement de la clientèle."
 
 #: build/index.js:1
-#: src/components/WonderCartCampaignDetails.js:21
 msgid "Buy One Get One"
 msgstr "Achetez-en un Gagnant Un"
 
 #: build/index.js:1
-#: src/components/WonderCartCampaignDetails.js:25
 msgid "Cart Promotions"
 msgstr "Promotions du panier"
 
 #: build/index.js:1
-#: src/components/WonderCartCampaignDetails.js:29
 msgid "Related Items Discounts"
 msgstr "Remises relatives aux articles"
 
 #: build/index.js:1
-#: src/components/WonderCartCampaignDetails.js:35
 msgid "Free Shipping Offers"
 msgstr "Offres de livraison gratuites"
 
 #: build/index.js:1
-#: src/components/WonderCartCampaignDetails.js:39
 msgid "Category Discounts"
 msgstr "Remises sur les catégories"
 
 #: build/index.js:1
-#: src/components/WonderCartCampaignDetails.js:43
 msgid "and more!"
 msgstr "et plus encore !"
 
 #: build/index.js:1
-#: src/components/YithPluginDetails.js:9
 msgid "Exclusive YITH plugins and tools to help you sell online"
 msgstr "Modules YITH exclusifs et outils pour vous aider à vendre en ligne"
 
 #: build/index.js:1
-#: src/components/YithPluginDetails.js:12
 msgid "Our eCommerce bundle includes a comprehensive suite of advanced tools designed to boost the performance of your WooCommerce store. This bundle includes these exclusive YITH plugins:"
 msgstr "Notre bundle eCommerce comprend une suite complète d'outils avancés conçus pour améliorer les performances de votre boutique WooCommerce. Ce bundle inclut ces plugins YITH exclusifs :"
 
 #: build/index.js:1
-#: src/components/YithPluginDetails.js:20
-#: src/configs/ProductsAndServices.config.js:233
-#: src/configs/YITHPlugins.config.js:52
 msgid "Gift Cards"
 msgstr "Cartes Cadeaux"
 
 #: build/index.js:1
-#: src/components/YithPluginDetails.js:24
-#: src/configs/YITHPlugins.config.js:90
 msgid "Wishlists"
 msgstr "Listes de souhaits"
 
 #: build/index.js:1
-#: src/components/YithPluginDetails.js:28
 msgid "Custom 'My Account' Page"
 msgstr "Page 'Mon compte' personnalisée"
 
 #: build/index.js:1
-#: src/components/YithPluginDetails.js:34
-#: src/configs/ProductsAndServices.config.js:177
 msgid "Bookings & Appointments"
 msgstr "Réservations & Rendez-vous"
 
 #: build/index.js:1
-#: src/components/YithPluginDetails.js:38
 msgid "AJAX Product Filters"
 msgstr "Filtres de produits AJAX"
 
 #: build/index.js:1
-#: src/components/YithPluginDetails.js:42
 msgid "AJAX Product Search"
 msgstr "Recherche de produits AJAX"
 
 #: build/index.js:1
-#: src/components/TransformtoEcommerce.js:22
 msgid "Transform your store!"
 msgstr "Transformer votre boutique!"
 
 #: build/index.js:1
-#: src/components/TransformtoEcommerce.js:25
 msgid "Give your online store a boost with our all-in-one eCommerce bundle filled with exclusive plugins and tools designed to help you sell your products and services like a pro."
 msgstr "Donnez un boost à votre boutique en ligne avec notre bundle e-Commerce tout-en-un rempli de plugins et d'outils exclusifs conçus pour vous aider à vendre vos produits et services comme un pro."
 
 #: build/index.js:1
-#: src/components/TransformtoEcommerce.js:48
-#: src/components/WonderCartNonEcommerce.js:43
 msgid "Buy Now"
 msgstr "Acheter maintenant"
 
 #: build/index.js:1
-#: src/configs/YITHPlugins.config.js:53
 msgid "Offer customizable gift cards with personalized messages for the recipient."
 msgstr "Offrez des cartes-cadeaux personnalisables avec des messages personnalisés pour le destinataire."
 
 #: build/index.js:1
-#: src/configs/ProductsAndServices.config.js:234
-#: src/configs/YITHPlugins.config.js:57
 msgid "Manage Gift Cards"
 msgstr "Gérer les cartes-cadeaux"
 
 #: build/index.js:1
-#: src/configs/ProductsAndServices.config.js:234
-#: src/configs/YITHPlugins.config.js:57
 msgid "Create a Gift Card"
 msgstr "Créer une carte-cadeau"
 
 #: build/index.js:1
-#: src/configs/YITHPlugins.config.js:91
 msgid "Let customers add products to lists and share them with family and friends."
 msgstr "Laissez les clients ajouter des produits à des listes et partagez-les avec leur famille et leurs amis."
 
 #: build/index.js:1
-#: src/configs/YITHPlugins.config.js:95
 msgid "View Wishlists"
 msgstr "Voir les listes de souhaits"
 
 #: build/index.js:1
-#: src/configs/YITHPlugins.config.js:95
 msgid "Setup Wishlists"
 msgstr "Configurer les listes de vœux"
 
 #: build/index.js:1
-#: src/configs/YITHPlugins.config.js:125
 msgid "WonderCart"
 msgstr "Chariot de Merveille"
 
 #: build/index.js:1
-#: src/components/WonderCartNonEcommerce.js:13
-#: src/components/WonderCartNotActivated.js:64
-#: src/configs/YITHPlugins.config.js:130
 msgid "Create custom upsell, cross-sell and other promotional campaigns to generate more sales."
 msgstr "Créez des campagnes personnalisées de ventes incitatives, de ventes croisées et d'autres campagnes promotionnelles pour générer plus de ventes."
 
 #: build/index.js:1
-#: src/components/WonderCartNotActivated.js:127
-#: src/configs/YITHPlugins.config.js:134
 msgid "Create a Campaign"
 msgstr "Créer une campagne"
 
 #: build/index.js:1
-#: src/configs/YITHPlugins.config.js:167
 msgid "Booking and Appointments"
 msgstr "Réservation et rendez-vous"
 
 #: build/index.js:1
-#: src/configs/YITHPlugins.config.js:171
 msgid "Manage renting or booking of services and items so customers can do business with you."
 msgstr "Gérer la location ou la réservation de services et d'articles afin que les clients puissent faire affaire avec vous."
 
 #: build/index.js:1
-#: src/configs/ProductsAndServices.config.js:181
-#: src/configs/YITHPlugins.config.js:175
 msgid "Manage Bookings & Appointments"
 msgstr "Gérer les réservations et rendez-vous"
 
 #: build/index.js:1
-#: src/configs/ProductsAndServices.config.js:181
-#: src/configs/YITHPlugins.config.js:175
 msgid "Setup Bookings & Appointments"
 msgstr "Configurer les réservations et rendez-vous"
 
 #: build/index.js:1
-#: src/configs/YITHPlugins.config.js:207
 msgid "Product Filters"
 msgstr "Filtres de produits"
 
 #: build/index.js:1
-#: src/configs/YITHPlugins.config.js:211
 msgid "Add an advanced filter to help customers find the right product with ease."
 msgstr "Ajoutez un filtre avancé pour aider les clients à trouver facilement le bon produit."
 
 #: build/index.js:1
-#: src/configs/YITHPlugins.config.js:215
 msgid "Product Filter Settings"
 msgstr "Paramètres de filtre de produit"
 
 #: build/index.js:1
-#: src/configs/YITHPlugins.config.js:215
 msgid "Setup Product Filters"
 msgstr "Configurer les filtres de produits"
 
 #: build/index.js:1
-#: src/configs/YITHPlugins.config.js:247
 msgid "Product Search"
 msgstr "Recherche de produit"
 
 #: build/index.js:1
-#: src/configs/YITHPlugins.config.js:248
 msgid "Speed up search for your customers with a predictive real-time search engine."
 msgstr "Accélérez la recherche de vos clients avec un moteur de recherche en temps réel prédictif."
 
 #: build/index.js:1
-#: src/configs/YITHPlugins.config.js:252
 msgid "Product Search Settings"
 msgstr "Paramètres de recherche de produit"
 
 #: build/index.js:1
-#: src/configs/YITHPlugins.config.js:252
 msgid "Configure Product Search"
 msgstr "Configurer la recherche de produits"
 
 #: build/index.js:1
-#: src/configs/YITHPlugins.config.js:283
 msgid "Customize My Account Page"
 msgstr "Personnaliser la page de mon compte"
 
 #: build/index.js:1
-#: src/configs/YITHPlugins.config.js:287
 msgid "Add custom content like videos, files, discount codes, and more to your customers account page."
 msgstr "Ajoutez du contenu personnalisé comme des vidéos, des fichiers, des codes de réduction, et plus encore à la page de compte de vos clients."
 
 #: build/index.js:1
-#: src/configs/YITHPlugins.config.js:291
 msgid "'My Account' Page Settings"
 msgstr "Paramètres de la page 'Mon compte'"
 
 #: build/index.js:1
-#: src/configs/YITHPlugins.config.js:291
 msgid "Customize the 'My Account' Page"
 msgstr "Personnaliser la page 'Mon compte'"
 
 #: build/index.js:1
-#: src/configs/YITHPlugins.config.js:323
 msgid "ecomdash"
 msgstr "ecomdash"
 
 #: build/index.js:1
-#: src/configs/YITHPlugins.config.js:324
 msgid "Boost sales by selling your products and services across multiple marketplaces."
 msgstr "Augmentez les ventes en vendant vos produits et services sur plusieurs marchés."
 
 #: build/index.js:1
-#: src/configs/YITHPlugins.config.js:328
 msgid "Manage Sales Channels"
 msgstr "Gérer les canaux de vente"
 
 #: build/index.js:1
-#: src/configs/YITHPlugins.config.js:328
 msgid "Setup Sales Channels"
 msgstr "Configurer les canaux de vente"
 
 #: build/index.js:1
-#: src/components/LoadingPanel.js:8
 msgid "Hold on while we get things setup for you!"
 msgstr "Attendez pendant que nous avons des choses à configurer pour vous!"
 
 #: build/index.js:1
-#: src/components/LoadingPanel.js:13
 msgid "Activating "
 msgstr "Activation en cours "
 
 #: build/index.js:1
-#: src/components/LoadingPanel.js:13
-#: src/components/LoadingPanel.js:15
 msgid " plugin..."
 msgstr " plugin..."
 
 #: build/index.js:1
-#: src/components/LoadingPanel.js:15
 msgid "Activating the YITH "
 msgstr "Activation de la YITH "
 
 #: build/index.js:1
-#: src/components/YITHPlugins.js:125
 msgid "Elevate Your Store with Exclusive WooCommerce Tools Included in Your Plan!"
 msgstr "Augmentez votre boutique avec des outils WooCommerce exclusifs inclus dans votre plan !"
 
 #: build/index.js:1
-#: src/components/YITHPlugins.js:126
 msgid "Exclusive Tools Included in Your Plan"
 msgstr "Outils exclusifs inclus dans votre plan"
 
 #: build/index.js:1
-#: src/components/YITHPlugins.js:128
-msgid "Unlock the full power of your plan with access to a range of exclusive WooCommerce tools powered by \n"
+msgid ""
+"Unlock the full power of your plan with access to a range of exclusive WooCommerce tools powered by \n"
 "YITH. Enhance your store and keep your customers coming back for more!"
-msgstr "Débloquez la pleine puissance de votre forfait avec accès à une gamme d'outils WooCommerce exclusifs propulsés par \n"
+msgstr ""
+"Débloquez la pleine puissance de votre forfait avec accès à une gamme d'outils WooCommerce exclusifs propulsés par \n"
 "YITH. Améliorez votre boutique et laissez vos clients revenir pour plus !"
 
 #: build/index.js:1
-#: src/components/WPSolutionsBanner.js:124
-#: src/components/WPSolutionsBanner.js:295
-#: src/components/YITHPlugins.js:134
 msgid "View all your plugins and tools"
 msgstr "Voir tous vos plugins et outils"
 
 #: build/index.js:1
-#: src/components/useInstallWoo.js:17
 msgid "WooCommerce failed to install"
 msgstr "L'installation de WooCommerce a échoué"
 
 #: build/index.js:1
-#: src/components/QuickLook.js:68
 msgid "View all analytics"
 msgstr "Voir toutes les analyses"
 
 #: build/index.js:1
-#: src/components/QuickLook.js:86
 msgid "Today"
 msgstr "Aujourd'hui"
 
 #: build/index.js:1
-#: src/components/QuickLook.js:87
 msgid "Week to date"
 msgstr "Semaine à ce jour"
 
 #: build/index.js:1
-#: src/components/QuickLook.js:88
 msgid "Month to date"
 msgstr "Mois à ce jour"
 
 #: build/index.js:1
-#: src/components/QuickLook.js:107
 msgid "Recent Activity"
 msgstr "Activité récente"
 
 #: build/index.js:1
-#: src/components/QuickLook.js:116
-msgid "Once you launch your store, you'll see a snapshot of recent purchases and other \n"
+msgid ""
+"Once you launch your store, you'll see a snapshot of recent purchases and other \n"
 "customer activity here."
-msgstr "Une fois votre boutique lancée, vous verrez ici un aperçu des achats récents et \n"
+msgstr ""
+"Une fois votre boutique lancée, vous verrez ici un aperçu des achats récents et \n"
 "d'autres activités de vos clients."
 
 #: build/index.js:1
-#: src/components/QuickLook.js:254
 msgid "Install WooCommerce to unlock"
 msgstr "Installez WooCommerce pour déverrouiller"
 
 #: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:18
 msgid "Add a store to your site for FREE!"
 msgstr "Ajouter un magasin à votre site GRATUITEMENT !"
 
 #: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:21
-msgid "Adding a store to your website is quick and easy! \n"
+msgid ""
+"Adding a store to your website is quick and easy! \n"
 "Just install the free WooCommerce plugin and get ready to start making money!"
-msgstr "Ajouter une boutique à votre site web est rapide et facile ! \n"
+msgstr ""
+"Ajouter une boutique à votre site web est rapide et facile ! \n"
 "Installez juste le plugin WooCommerce gratuit et préparez-vous à gagner de l'argent !"
 
 #: build/index.js:1
-#: src/components/WooCommerceUnavailable.js:35
 msgid "Install WooCommerce"
 msgstr "Installer WooCommerce"
 
 #: build/index.js:1
-#: src/components/QuickLook.js:138
 msgid "Pending Payment"
 msgstr "Paiement en attente"
 
 #: build/index.js:1
-#: src/components/QuickLook.js:139
 msgid "Processing"
 msgstr "Traitement en cours"
 
 #: build/index.js:1
-#: src/components/QuickLook.js:140
 msgid "On hold"
 msgstr "Suspendu"
 
 #: build/index.js:1
-#: src/components/QuickLook.js:141
 msgid "Completed"
 msgstr "Terminé"
 
 #: build/index.js:1
-#: src/components/QuickLook.js:143
 msgid "Cancelled"
 msgstr "Annulé"
 
 #: build/index.js:1
-#: src/components/QuickLook.js:147
 msgid "Refunded"
 msgstr "Remboursé"
 
 #: build/index.js:1
-#: src/components/QuickLook.js:150
 msgid "Failed"
 msgstr "Echoué"
 
 #: build/index.js:1
-#: src/components/SiteStatus.js:10
 msgid "Coming Soon activated"
 msgstr "Bientôt activé"
 
 #: build/index.js:1
-#: src/components/SiteStatus.js:12
 msgid "Your store is online and ready for business!"
 msgstr "Votre boutique est en ligne et prête pour les affaires !"
 
 #: build/index.js:1
-#: src/components/SiteStatus.js:13
 msgid "Your site is online now!"
 msgstr "Votre site est en ligne maintenant!"
 
 #: build/index.js:1
-#: src/components/SiteStatus.js:18
 msgid "You can re-enable the 'Coming Soon' mode in “Settings”."
 msgstr "Vous pouvez réactiver le mode « Bientôt » dans « Réglages »."
 
 #: build/index.js:1
-#: src/components/SiteStatus.js:43
 msgid "Live"
 msgstr "En direct"
 
 #: build/index.js:1
-#: src/components/SiteStatus.js:63
 msgid "Ready to go live?"
 msgstr "Prêt à vivre ?"
 
 #: build/index.js:1
-#: src/components/SiteStatus.js:67
-msgid "Preview your store before setting it live to make sure everything \n"
+msgid ""
+"Preview your store before setting it live to make sure everything \n"
 "is how you want it. Once you're ready, set your store live!"
-msgstr "Aperçu de votre boutique avant de la configurer en direct pour vous assurer que tout \n"
+msgstr ""
+"Aperçu de votre boutique avant de la configurer en direct pour vous assurer que tout \n"
 "est comme vous le souhaitez. Une fois que vous êtes prêt, définissez votre boutique en direct !"
 
 #: build/index.js:1
-#: src/components/SiteStatus.js:71
-msgid "Preview your Site before setting it live to make sure everything \n"
+msgid ""
+"Preview your Site before setting it live to make sure everything \n"
 "is how you want it. Once you're ready, set your site live!"
-msgstr "Prévisualisez votre site avant de le configurer en direct pour vous assurer que tout \n"
+msgstr ""
+"Prévisualisez votre site avant de le configurer en direct pour vous assurer que tout \n"
 "est comme vous le souhaitez. Une fois que vous êtes prêt, mettez votre site en ligne !"
 
 #: build/index.js:1
-#: src/components/SiteStatus.js:94
 msgid "Preview your store"
 msgstr "Aperçu de votre boutique"
 
 #: build/index.js:1
-#: src/components/SiteStatus.js:95
 msgid "Preview your site"
 msgstr "Aperçu de votre site"
 
 #: build/index.js:1
-#: src/components/SiteStatus.js:106
 msgid "Launch your store"
 msgstr "Lancez votre boutique"
 
 #: build/index.js:1
-#: src/components/SiteStatus.js:107
 msgid "Launch your site"
 msgstr "Lancez votre site"
 
 #: build/index.js:1
-#: src/components/Store.js:22
 msgid "Store"
 msgstr "Magasin"
 
 #: build/index.js:1
-#: src/components/CaptiveRazorpay.js:14
 msgid "Key ID *"
 msgstr "ID de la clé *"
 
 #: build/index.js:1
-#: src/components/CaptiveRazorpay.js:15
 msgid "Test Key ID *"
 msgstr "ID de la clé de test *"
 
 #: build/index.js:1
-#: src/components/CaptiveRazorpay.js:16
 msgid "Key Secret *"
 msgstr "Secret de la clé *"
 
 #: build/index.js:1
-#: src/components/CaptiveRazorpay.js:17
 msgid "Test Key Secret *"
 msgstr "Secret de la clé de test *"
 
 #: build/index.js:1
-#: src/components/CaptiveRazorpay.js:19
 msgid "The key ID can be found in the \"%1$sAPI Keys%2$s\" section of your Razorpay dashboard."
 msgstr "L'ID de la clé se trouve dans la section \"%1$sAPI Keys%2$s\" de votre tableau de bord Razorpay."
 
 #: build/index.js:1
-#: src/components/CaptiveRazorpay.js:26
 msgid "That is not a valid test key ID. Please check your key ID and enter it again."
 msgstr "Ce n'est pas un ID de clé de test valide. Veuillez vérifier votre ID de clé et le saisir à nouveau."
 
 #: build/index.js:1
-#: src/components/CaptiveRazorpay.js:30
 msgid "That is not a valid production key ID. Please check your key ID and enter it again."
 msgstr "Ce n'est pas un ID de clé de production valide. Veuillez vérifier votre ID de clé et le saisir à nouveau."
 
 #: build/index.js:1
-#: src/components/CaptiveRazorpay.js:35
 msgid "The key secret can be found in the \"%1$sAPI Keys%2$s\" section of your Razorpay dashboard."
 msgstr "Le secret de la clé peut être trouvé dans la section \"%1$sAPI Keys%2$s\" de votre tableau de bord Razorpay."
 
 #: build/index.js:1
-#: src/components/CaptiveRazorpay.js:86
 msgid "Create an Account"
 msgstr "Créer un compte"
 
 #: build/index.js:1
-#: src/components/CaptiveRazorpay.js:91
 msgid "Already have an account? "
 msgstr "Vous avez déjà un compte ? "
 
 #: build/index.js:1
-#: src/components/CaptiveRazorpay.js:96
 msgid "Login"
 msgstr "Se connecter"
 
 #: build/index.js:1
-#: src/components/CaptiveRazorpay.js:100
 msgid "After you login to Razorpay, you will need to generate your key ID and key secret codes, you will then need to switch back to this tab in your browser and paste your codes into the fields below."
 msgstr "Une fois que vous vous êtes connecté à Razorpay, vous devrez générer votre ID de clé et vos codes secrets, vous devrez ensuite revenir à cet onglet dans votre navigateur et coller vos codes dans les champs ci-dessous."
 
 #: build/index.js:1
-#: src/components/CaptiveRazorpay.js:111
 msgid "Enable Test Mode"
 msgstr "Activer le mode de test"
 
 #: build/index.js:1
-#: src/components/CaptiveRazorpay.js:123
 msgid "enter your \"%1$s\" key ID here."
 msgstr "entrez ici votre ID de clé \"%1$s\"."
 
 #: build/index.js:1
-#: src/components/CaptiveRazorpay.js:127
-#: src/components/CaptiveRazorpay.js:164
 msgid "test"
 msgstr "test"
 
 #: build/index.js:1
-#: src/components/CaptiveRazorpay.js:127
-#: src/components/CaptiveRazorpay.js:164
 msgid "production"
 msgstr "production"
 
 #: build/index.js:1
-#: src/components/CaptiveRazorpay.js:160
 msgid "enter your \"%1$s\" key secret here."
 msgstr "entrez ici votre secret de clé «%1$s»."
 
 #: build/index.js:1
-#: src/components/CaptiveRazorpay.js:172
-#: src/components/StoreInfo.js:230
 msgid "* indicates a required field"
 msgstr "* indique un champ obligatoire"
 
 #: build/index.js:1
-#: src/components/Shipping.js:17
 msgid "Shipping Options"
 msgstr "Options d'expédition"
 
 #: build/index.js:1
-#: src/components/Shipping.js:18
 msgid "Setup a shipping account for delivering products to your customers"
 msgstr "Configurez un compte d'expédition pour la livraison de produits à vos clients"
 
 #: build/index.js:1
-#: src/components/PaypalPayment.js:63
-#: src/components/Razorpay.js:44
-#: src/components/Shipping.js:49
-#: src/components/Stripe.js:66
-#: src/configs/FreePlugins.config.js:57
-#: src/configs/FreePlugins.config.js:86
-#: src/configs/FreePlugins.config.js:115
-#: src/configs/FreePlugins.config.js:145
-#: src/configs/FreePlugins.config.js:174
-#: src/configs/FreePlugins.config.js:204
 msgid "Manage"
 msgstr "Gérer"
 
 #: build/index.js:1
-#: src/components/Razorpay.js:55
-#: src/components/Shipping.js:60
-#: src/components/Stripe.js:76
 msgid "Connect"
 msgstr "Connecter"
 
 #: build/index.js:1
-#: src/components/PaypalPayment.js:77
-#: src/components/Razorpay.js:55
-#: src/components/Shipping.js:60
-#: src/components/Stripe.js:72
 msgid "Install"
 msgstr "Installer"
 
 #: build/index.js:1
-#: src/components/Shipping.js:79
 msgid "The best multi-carrier shipping software for e-commerce businesses."
 msgstr "Le meilleur logiciel d'expédition multi-transporteurs pour les entreprises de commerce électronique."
 
 #: build/index.js:1
-#: src/components/PaypalPayment.js:83
-#: src/components/Razorpay.js:100
-#: src/components/Shipping.js:86
-#: src/components/Stripe.js:90
 msgid "Environment:"
 msgstr "Environnement:"
 
 #: build/index.js:1
-#: src/components/StoreInfo.js:43
 msgid "Store Info"
 msgstr "Informations sur le magasin"
 
 #: build/index.js:1
-#: src/components/StoreInfo.js:44
 msgid "We'll use this information to help you setup your online store"
 msgstr "Nous utiliserons ces informations pour vous aider à configurer votre boutique en ligne"
 
 #: build/index.js:1
-#: src/components/StoreInfo.js:56
 msgid "Where is your store based? *"
 msgstr "Où est basée votre boutique ? *"
 
 #: build/index.js:1
-#: src/components/StoreInfo.js:101
 msgid "Address Line 1 *"
 msgstr "Adresse ligne 1 *"
 
 #: build/index.js:1
-#: src/components/StoreInfo.js:111
 msgid "Address Line 2 (optional)"
 msgstr "Adresse ligne 2 (facultatif)"
 
 #: build/index.js:1
-#: src/components/StoreInfo.js:127
 msgid "City *"
 msgstr "Ville *"
 
 #: build/index.js:1
-#: src/components/StoreInfo.js:134
 msgid "State *"
 msgstr "Etat *"
 
 #: build/index.js:1
-#: src/components/StoreInfo.js:168
 msgid "Postal Code *"
 msgstr "Code postal *"
 
 #: build/index.js:1
-#: src/components/StoreInfo.js:180
 msgid "Email"
 msgstr "Courriel"
 
 #: build/index.js:1
-#: src/components/StoreInfo.js:186
 msgid "What currency do you want to display in your store?"
 msgstr "Quelle devise voulez-vous afficher dans votre boutique ?"
 
 #: build/index.js:1
-#: src/components/TaxSettings.js:6
 msgid "Yes, enable sales tax."
 msgstr "Oui, activer la taxe de vente."
 
 #: build/index.js:1
-#: src/components/TaxSettings.js:10
 msgid "No, don't enable sales tax."
 msgstr "Non, n'activez pas la taxe de vente."
 
 #: build/index.js:1
-#: src/components/TaxSettings.js:20
 msgid "Tax Settings"
 msgstr "Paramètres de taxe"
 
 #: build/index.js:1
-#: src/components/TaxSettings.js:21
 msgid "Decide whether you want to collect sales tax on items you sell. You can change this setting at anytime"
 msgstr "Décidez si vous souhaitez percevoir une taxe de vente sur les articles que vous vendez. Vous pouvez modifier ce paramètre à tout moment"
 
 #: build/index.js:1
-#: src/components/TaxSettings.js:27
 msgid "Would you like to enable sales tax?"
 msgstr "Souhaitez-vous activer la taxe de vente ?"
 
 #: build/index.js:1
-#: src/components/WonderCartNonEcommerce.js:13
 msgid "Sales & Promotions"
 msgstr "Ventes et Promotions"
 
 #: build/index.js:1
-#: src/components/WonderCartNonEcommerce.js:25
 msgid "Start selling like a Pro!"
 msgstr "Commencez à vendre comme un Pro!"
 
 #: build/index.js:1
-#: src/components/WonderCartNonEcommerce.js:28
 msgid "Give your online store a boost with our all-in-one eCommerce bundle filled with exclusive plugins and tools designed to help you sell your products and services like never before. "
 msgstr "Donnez un boost à votre boutique en ligne avec notre bundle e-Commerce tout-en-un rempli de plugins et d'outils exclusifs conçus pour vous aider à vendre vos produits et services comme jamais auparavant. "
 
 #: build/index.js:1
-#: src/components/WonderCartNotActivated.js:63
 msgid "Create a campaign and boost your sales!"
 msgstr "Créez une campagne et augmentez vos ventes!"
 
 #: build/index.js:1
-#: src/components/WonderCartNotActivated.js:88
 msgid "Get Started"
 msgstr "Commencer"
 
 #: build/index.js:1
-#: src/components/WonderCartNotActivated.js:94
 msgid "Not sure where to start? Try one of these popular promotions:"
 msgstr "Vous ne savez pas par où commencer ? Essayez l'une de ces promotions populaires :"
 
 #: build/index.js:1
-#: src/components/Razorpay.js:11
 msgid "Razorpay"
 msgstr "Razorpay"
 
 #: build/index.js:1
-#: src/components/Razorpay.js:12
 msgid "Build specifically for companies based in India, manage all your payments and financial operations from a consolidated dashboard"
 msgstr "Construire spécifiquement pour les entreprises basées en Inde, gérer tous vos paiements et opérations financières à partir d'un tableau de bord consolidé"
 
 #: build/index.js:1
-#: src/components/Razorpay.js:76
-#: src/components/Stripe.js:106
 msgid "Complete control over the receiving and managing payments"
 msgstr "Contrôle complet de la réception et de la gestion des paiements"
 
 #: build/index.js:1
-#: src/components/Razorpay.js:83
 msgid "Immediate capture of funds"
 msgstr "Capturer immédiatement les fonds"
 
 #: build/index.js:1
-#: src/components/Razorpay.js:86
 msgid "Instant refunds and settlements"
 msgstr "Remboursements et règlements instantanés"
 
 #: build/index.js:1
-#: src/components/Razorpay.js:92
 msgid "Fight fraud with Thirdwatch"
 msgstr "Lutte contre la fraude avec Thirdwatch"
 
 #: build/index.js:1
-#: src/components/Razorpay.js:94
 msgid "Intuitive reporting"
 msgstr "Rapports intuitifs"
 
 #: build/index.js:1
-#: src/components/PaypalPayment.js:21
 msgid "PayPal"
 msgstr "PayPal"
 
 #: build/index.js:1
-#: src/components/PaypalPayment.js:22
 msgid "Online payments built for success. We help you do business in 200+ markets and 100+ currencies—even if your customers don't have PayPal."
 msgstr "Paiements en ligne conçus pour votre succès. Nous vous aidons à faire des affaires sur plus de 200 marchés et plus de 100 devises, même si vos clients ne disposent pas de PayPal."
 
 #: build/index.js:1
-#: src/components/PaypalPayment.js:99
 msgid "Provides flexible checkout options"
 msgstr "Fournit des options de paiement flexibles"
 
 #: build/index.js:1
-#: src/components/PaypalPayment.js:102
 msgid "PayPal Buy Now Pay Later"
 msgstr "PayPal Acheter Maintenant Payer plus tard"
 
 #: build/index.js:1
-#: src/components/PaypalPayment.js:103
 msgid "White-Labeling"
 msgstr "Étiquetage blanc"
 
 #: build/index.js:1
-#: src/components/PaypalPayment.js:105
 msgid "Country-specific payment methods"
 msgstr "Méthodes de paiement spécifiques à un pays"
 
 #: build/index.js:1
-#: src/components/PaypalPayment.js:112
 msgid " Supports many popular payment methods"
 msgstr " Prise en charge de nombreuses méthodes de paiement populaires"
 
 #: build/index.js:1
-#: src/components/Stripe.js:34
 msgid "Stripe"
 msgstr "Stripe"
 
 #: build/index.js:1
-#: src/components/Stripe.js:35
 msgid "Stripe provides all the tools that you need to accept payments online around the world, including support for Apple Pay and Google Pay."
 msgstr "Stripe fournit tous les outils dont vous avez besoin pour accepter les paiements en ligne à travers le monde, y compris le support pour Apple Pay et Google Pay."
 
 #: build/index.js:1
-#: src/components/Stripe.js:52
 msgid "A secure connection is required when running Stripe Payments in Live mode; plugin is currently enabled, but no gateway will be available until you secure connection to your site through a valid SSL certificate.             If you already have a valid SSL certificate, please change the url in"
 msgstr "Une connexion sécurisée est requise lors de l'exécution de Stripe Payments en mode Live ; est actuellement activé, mais aucune passerelle ne sera disponible jusqu'à ce que vous sécurisiez la connexion à votre site via un certificat SSL valide. Si vous avez déjà un certificat SSL valide, veuillez modifier l'url dans"
 
 #: build/index.js:1
-#: src/components/Stripe.js:53
 msgid "settings"
 msgstr "Réglages"
 
 #: build/index.js:1
-#: src/components/Stripe.js:53
 msgid "page"
 msgstr "page"
 
 #: build/index.js:1
-#: src/components/Stripe.js:113
 msgid "Immediate capture or authorize and capture later"
 msgstr "Capturer immédiatement ou autoriser et capturer plus tard"
 
 #: build/index.js:1
-#: src/components/Stripe.js:115
 msgid "One-click refunds"
 msgstr "Remboursements en un clic"
 
 #: build/index.js:1
-#: src/components/Stripe.js:117
 msgid "Option to let customers save their credit card info securely"
 msgstr "Possibilité de permettre aux clients de sauvegarder leurs informations de carte de crédit en toute sécurité"
 
 #: build/index.js:1
-#: src/components/Stripe.js:123
 msgid "Support ACH direct debt"
 msgstr "Soutenir la dette directe ACH"
 
 #: build/index.js:1
-#: src/components/Stripe.js:127
 msgid " Uses many popular payment methods"
 msgstr " Utilise de nombreuses méthodes de paiement populaires"
 
 #: build/index.js:1
-#: src/components/Payment.js:34
 msgid "Offline Payments"
 msgstr "Paiements hors ligne"
 
 #: build/index.js:1
-#: src/components/Payment.js:34
 msgid "Accept payments (money orders, bank transfers or C.O.D.) that are made outside your online store. "
 msgstr "Acceptez les paiements (mandats, virements bancaires ou C.O.D. ) effectués en dehors de votre boutique en ligne. "
 
 #: build/index.js:1
-#: src/components/Payment.js:38
 msgid "Manual Payment methods"
 msgstr "Moyens de paiement manuels"
 
 #: build/index.js:1
-#: src/components/Payment.js:40
 msgid "When a customer selects a manual payment method, you'll need to approve their order before it can be fulfilled."
 msgstr "Lorsqu'un client sélectionne un mode de paiement manuel, vous devez approuver sa commande avant qu'elle ne puisse être exécutée."
 
 #: build/index.js:1
-#: src/components/Payment.js:46
 msgid "Check payments"
 msgstr "Paiements par chèque"
 
 #: build/index.js:1
-#: src/components/Payment.js:50
 msgid "Bank transfer payments"
 msgstr "Paiements bancaires"
 
 #: build/index.js:1
-#: src/components/Payment.js:54
 msgid "Cash on delivery (C.O.D.)"
 msgstr "Cash à la livraison (C.O.D. )"
 
 #: build/index.js:1
-#: src/configs/FreePlugins.config.js:49
 msgid "Jetpack Boost - Website Speed, Performance and Critical CSS"
 msgstr "Jetpack Boost - Vitesse du site, performances et CSS critiques"
 
 #: build/index.js:1
-#: src/configs/FreePlugins.config.js:53
 msgid "Speed up your WordPress site by optimizing page performance with Jetpack Boost."
 msgstr "Accélérez votre site WordPress en optimisant les performances des pages avec Jetpack Boost."
 
 #: build/index.js:1
-#: src/configs/FreePlugins.config.js:57
-#: src/configs/FreePlugins.config.js:86
-#: src/configs/FreePlugins.config.js:115
-#: src/configs/FreePlugins.config.js:145
-#: src/configs/FreePlugins.config.js:174
-#: src/configs/FreePlugins.config.js:204
 msgid "Enable"
 msgstr "Activer"
 
 #: build/index.js:1
-#: src/configs/FreePlugins.config.js:78
 msgid "Contact Form by WPForms - Drag & Drop Form Builder for WordPress"
 msgstr "Formulaire de contact par WPForms - Outil de création de formulaire de glisser-déposer pour WordPress"
 
 #: build/index.js:1
-#: src/configs/FreePlugins.config.js:82
 msgid "The best WordPress contact form plugin. Drag & Drop online form builder to create beautiful contact forms, payment forms, & other custom forms."
 msgstr "Le meilleur plugin de formulaire de contact WordPress. Glissez et déposez le constructeur de formulaire en ligne pour créer de beaux formulaires de contact, des formulaires de paiement et d'autres formulaires personnalisés."
 
 #: build/index.js:1
-#: src/configs/FreePlugins.config.js:107
 msgid "MonsterInsights - Google Analytics Dashboard for WordPress (Website Stats Made Easy)"
 msgstr "MonsterInsights - Tableau de bord Google Analytics pour WordPress (Statistiques de site Web rendues faciles)"
 
 #: build/index.js:1
-#: src/configs/FreePlugins.config.js:111
 msgid "The best free Google Analytics plugin for WordPress. See how visitors find and use your website, so you can grow your business."
 msgstr "Le meilleur plugin Google Analytics gratuit pour WordPress. Voyez comment les visiteurs trouvent et utilisent votre site Web, afin que vous puissiez développer votre entreprise."
 
 #: build/index.js:1
-#: src/configs/FreePlugins.config.js:140
 msgid "Yoast SEO"
 msgstr "Yoast SEO"
 
 #: build/index.js:1
-#: src/configs/FreePlugins.config.js:141
 msgid "Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the Yoast SEO plugin."
 msgstr "Améliorez votre référencement WordPress : Écrivez un meilleur contenu et avez un site WordPress entièrement optimisé en utilisant le plugin Yoast SEO."
 
 #: build/index.js:1
-#: src/configs/FreePlugins.config.js:166
 msgid "Creative Mail - Easier WordPress & WooCommerce Email Marketing"
 msgstr "Creative Mail - Emails marketing facile pour WordPress et WooCommerce"
 
 #: build/index.js:1
-#: src/configs/FreePlugins.config.js:170
 msgid "Creative Mail was designed specifically for WordPress and WooCommerce. Our intelligent (and super fun) email editor simplifies email marketing campaign."
 msgstr "Creative Mail a été conçu spécifiquement pour WordPress et WooCommerce. Notre éditeur de courriel intelligent (et super amusant) simplifie la campagne de marketing par e-mail."
 
 #: build/index.js:1
-#: src/configs/FreePlugins.config.js:199
 msgid "OptinMonster - Lead Generation"
 msgstr "OptinMonster - Génération de plomb"
 
 #: build/index.js:1
-#: src/configs/FreePlugins.config.js:200
 msgid "OptinMonster is the best WordPress popup builder plugin that helps you grow your email newsletter list and sales with email popups, exit intent popups, floating bars and more!"
 msgstr "OptinMonster est le meilleur plugin de création de popup WordPress qui vous aide à développer votre liste de newsletters et vos ventes avec des popups par courriel, les fenêtres pop-up d'intention de sortie, les barres flottantes et plus encore !"
 
 #: build/index.js:1
-#: src/components/FreePlugins.js:10
 msgid "Improve your store with these free add-ons included in your plan."
 msgstr "Améliorez votre boutique avec ces modules gratuits inclus dans votre forfait."
 
 #: build/index.js:1
-#: src/components/FreePlugins.js:14
 msgid "Improve your site with these free add-ons included in your plan."
 msgstr "Améliorez votre site avec ces modules gratuits inclus dans votre plan."
 
 #: build/index.js:1
-#: src/components/FreePlugins.js:24
 msgid "Additional Features"
 msgstr "Fonctionnalités supplémentaires"
 
 #: build/index.js:1
-#: src/configs/OnboardingList.config.js:90
 msgid "Explore the features included with your solution"
 msgstr "Explorez les fonctionnalités incluses avec votre solution"
 
 #: build/index.js:1
-#: src/configs/OnboardingList.config.js:107
 msgid "Update your website nameservers"
 msgstr "Mettre à jour les serveurs de noms de votre site web"
 
 #: build/index.js:1
-#: src/configs/OnboardingList.config.js:120
 msgid "How do I update my nameserver to BH?"
 msgstr "Comment puis-je mettre à jour mon serveur de noms vers BH?"
 
 #: build/index.js:1
-#: src/configs/OnboardingList.config.js:131
 msgid "Connect this site to your domain"
 msgstr "Connectez ce site à votre domaine"
 
 #: build/index.js:1
-#: src/configs/OnboardingList.config.js:140
 msgid "How do I connect my site to the Domain ?"
 msgstr "Comment connecter mon site au domaine ?"
 
 #: build/index.js:1
-#: src/configs/OnboardingList.config.js:155
 msgid "Need help with these steps?"
 msgstr "Besoin d'aide dans ces étapes?"
 
 #: build/index.js:1
-#: src/configs/OnboardingList.config.js:177
 msgid "Continue with store setup"
 msgstr "Continuer avec la configuration du magasin"
 
 #: build/index.js:1
-#: src/configs/OnboardingList.config.js:196
 msgid "Sign up for Bluehost WordPress Academy"
 msgstr "Inscrivez-vous à Bluehost WordPress Academy"
 
 #: build/index.js:1
-#: src/configs/OnboardingList.config.js:218
 msgid "New Order Received"
 msgstr "Nouvelle commande reçue"
 
 #: build/index.js:1
-#: src/configs/OnboardingList.config.js:236
 msgid "Add your store info"
 msgstr "Ajouter les informations de votre boutique"
 
 #: build/index.js:1
-#: src/configs/OnboardingList.config.js:252
 msgid "Connect a payment processor"
 msgstr "Connecter un processeur de paiement"
 
 #: build/index.js:1
-#: src/configs/OnboardingList.config.js:277
 msgid "Setup shipping options"
 msgstr "Configurer les options de livraison"
 
 #: build/index.js:1
-#: src/configs/OnboardingList.config.js:298
 msgid "Configure tax settings"
 msgstr "Configurer les paramètres de taxe"
 
 #: build/index.js:1
-#: src/configs/OnboardingList.config.js:314
-#: src/configs/ProductsAndServices.config.js:80
 msgid "Add a product"
 msgstr "Ajouter un produit"
 
 #: build/index.js:1
-#: src/configs/OnboardingList.config.js:331
 msgid "Sign up for Yoast SEO Academy"
 msgstr "S'inscrire à Yoast SEO Academy"
 
 #: build/index.js:1
-#: src/configs/OnboardingList.config.js:349
 msgid "Add a new page to your store"
 msgstr "Ajouter une nouvelle page à votre boutique"
 
 #: build/index.js:1
-#: src/configs/OnboardingList.config.js:350
 msgid "Add a new page to your site"
 msgstr "Ajouter une nouvelle page à votre site"
 
 #: build/index.js:1
-#: src/configs/OnboardingList.config.js:371
 msgid "Upload media to your site"
 msgstr "Télécharger des médias sur votre site"
 
 #: build/index.js:1
-#: src/configs/OnboardingList.config.js:390
 msgid "Connect to your social media accounts"
 msgstr "Connectez-vous à vos comptes de réseaux sociaux"
 
 #: build/index.js:1
-#: src/configs/OnboardingList.config.js:415
 msgid "Enable Jetpack to connect to your social media accounts"
 msgstr "Activez Jetpack pour vous connecter à vos comptes de réseaux sociaux"
 
 #: build/index.js:1
-#: src/components/OnboardingList.js:82
 msgid "Good job!"
 msgstr "Bravo !"
 
 #: build/index.js:1
-#: src/components/OnboardingList.js:82
-msgid "One last thing to do..."
-msgstr "Une dernière chose à faire..."
-
-#: build/index.js:1
-#: src/components/OnboardingList.js:83
 msgid "Your site is now ready for public visitors!"
 msgstr "Votre site est maintenant prêt pour les visiteurs publics !"
 
 #: build/index.js:1
-#: src/components/OnboardingList.js:83
 msgid "Finish this last step so your migrated site is ready for visitors."
 msgstr "Terminez cette dernière étape pour que votre site migré soit prêt pour les visiteurs."
 
 #: build/index.js:1
-#: src/components/OnboardingList.js:90
 msgid "Next steps for your store"
 msgstr "Prochaines étapes pour votre boutique"
 
 #: build/index.js:1
-#: src/components/OnboardingList.js:91
 msgid "Next steps for your site"
 msgstr "Prochaines étapes pour votre site"
 
 #: build/index.js:1
-#: src/components/OnboardingList.js:95
 msgid "You're just a few steps away from sharing your store with the world!"
 msgstr "Vous êtes à quelques pas de partager votre boutique avec le monde !"
 
 #: build/index.js:1
-#: src/components/OnboardingList.js:99
 msgid "You're just a few steps away from sharing your site with the world!"
 msgstr "Vous êtes à quelques pas de partager votre site avec le monde entier!"
 
 #: build/index.js:1
-#: src/components/OnboardingList.js:109
 msgid "Great job! You've completed all the current tasks to get your store up and running successfully!"
 msgstr "Bravo ! Vous avez terminé toutes les tâches actuelles pour faire fonctionner votre boutique avec succès !"
 
 #: build/index.js:1
-#: src/components/OnboardingList.js:113
 msgid "Great job! You've completed all the current tasks to get your site up and running successfully!"
 msgstr "Bravo ! Vous avez terminé toutes les tâches en cours pour faire fonctionner votre site avec succès !"
 
 #: build/index.js:1
-#: src/components/OnboardingList.js:120
 msgid "If you want to edit any of the info from the steps you've completed, simply click on the \"View completed tasks\" link below."
 msgstr "Si vous voulez modifier les informations des étapes que vous avez terminées, cliquez simplement sur le lien \"Voir les tâches terminées\" ci-dessous."
 
 #: build/index.js:1
-#: src/components/OnboardingList.js:144
 msgid "View remaining tasks"
 msgstr "Voir les tâches restantes"
 
 #: build/index.js:1
-#: src/components/OnboardingList.js:145
 msgid "View completed tasks"
 msgstr "Voir les tâches terminées"
 
 #: build/index.js:1
-#: src/components/OnboardingScreen.js:17
 msgid "Congrats on your new store!"
 msgstr "Félicitations pour votre nouvelle boutique!"
 
 #: build/index.js:1
-#: src/components/OnboardingScreen.js:18
 msgid "Congrats on your new site!"
 msgstr "Félicitations pour votre nouveau site!"
 
 #: build/index.js:1
-#: src/components/OnboardingScreen.js:19
 msgid "Your site is currently displaying a \"Coming Soon\" page."
 msgstr "Votre site affiche actuellement une page \"Prochainement\"."
 
 #: build/index.js:1
-#: src/components/OnboardingScreen.js:26
 msgid "Ready to go to the next level?"
 msgstr "Prêt à passer au niveau suivant ?"
 
 #: build/index.js:1
-#: src/components/OnboardingScreen.js:27
 msgid "Your site is live to the world!"
 msgstr "Votre site est en direct dans le monde!"
 
 #: build/index.js:1
-#: src/components/OnboardingScreen.js:31
 msgid "Welcome home!"
 msgstr "Bienvenue à la maison!"
 
 #: build/index.js:1
-#: src/components/OnboardingScreen.js:32
 msgid "Your site has been successfully migrated."
 msgstr "Votre site a été migré avec succès."
 
 #: build/index.js:1
-#: src/components/OnboardingScreen.js:88
 msgid "Home"
 msgstr "Domicile"
 
 #: build/index.js:1
-#: src/components/OnboardingScreen.js:124
 msgid "SITE PREVIEW"
 msgstr "AFFICHAGE DU SITE"
 
 #: build/index.js:1
-#: src/components/OnboardingScreen.js:173
 msgid "View your site"
 msgstr "Voir votre site"
 
 #: build/index.js:1
-#: src/components/OnboardingScreen.js:186
 msgid "Edit your site"
 msgstr "Modifier votre site"
 
 #: build/index.js:1
-#: src/components/NoExistingPlan.js:19
 msgid "Upgrade your plan for success."
 msgstr "Améliorez votre plan pour réussir."
 
 #: build/index.js:1
-#: src/components/NoExistingPlan.js:23
 msgid "Choose the set of plugins and services that's right for your needs. You're covered by our no-quibble, 30 day money back guarantee."
 msgstr "Choisissez l'ensemble de plugins et de services adaptés à vos besoins. Vous êtes couvert par notre garantie satisfait ou remboursé de 30 jours."
 
 #: build/index.js:1
-#: src/components/NoExistingPlan.js:49
-#: src/components/NoExistingPlan.js:63
 msgid "/mo"
 msgstr "/mois"
 
 #: build/index.js:1
-#: src/components/NoExistingPlan.js:54
 msgid "Original price"
 msgstr "Prix initial"
 
 #: build/index.js:1
-#: src/components/NoExistingPlan.js:110
 msgid "Learn more"
 msgstr "En savoir plus"
 
 #: build/index.js:1
-#: src/components/WPSolutionsBanner.js:78
 msgid "Oops! something went wrong. Please try again later"
 msgstr "Oups ! Une erreur s'est produite. Veuillez réessayer plus tard"
 
 #: build/index.js:1
-#: src/components/WPSolutionsBanner.js:115
 msgid "Explore Your Plugins and Tools"
 msgstr "Explorez vos plugins et outils"
 
 #: build/index.js:1
-#: src/components/WPSolutionsBanner.js:119
 msgid "Improve your site with the tools and services included in your plan."
 msgstr "Améliorez votre site avec les outils et les services inclus dans votre plan."
 
 #: build/index.js:1
-#: src/configs/ProductsAndServices.config.js:79
 msgid "Add a Product"
 msgstr "Ajouter un produit"
 
 #: build/index.js:1
-#: src/configs/ProductsAndServices.config.js:108
 msgid "Manage Your Products"
 msgstr "Gérer vos produits"
 
 #: build/index.js:1
-#: src/configs/ProductsAndServices.config.js:109
 msgid "Manage products"
 msgstr "Gérer les produits"
 
 #: build/index.js:1
-#: src/configs/ProductsAndServices.config.js:143
 msgid "Import Products via CSV"
 msgstr "Importer des produits via CSV"
 
 #: build/index.js:1
-#: src/configs/ProductsAndServices.config.js:144
 msgid "Import products"
 msgstr "Importer des produits"
 
 #: build/index.js:1
-#: src/components/ProductsAndServices.js:24
 msgid "Products & Services"
 msgstr "Produits & Services"
 
 #: build/index.js:1
-#: src/components/ProductsAndServices.js:25
 msgid "Come here to manage products and services or add new ones to your store."
 msgstr "Venez ici pour gérer vos produits et services ou ajouter de nouveaux produits à votre boutique."
 
 #: build/index.js:1
-#: src/components/ProductsAndServices.js:40
 msgid "Want help adding products?"
 msgstr "Vous voulez aider à ajouter des produits ?"
 
 #: build/index.js:1
-#: src/components/ProductsAndServices.js:43
-msgid "Read this helpful knowledge base article to understand how to\n"
+msgid ""
+"Read this helpful knowledge base article to understand how to\n"
 "add different products to your store"
-msgstr "Lisez cet article de base de connaissances utile pour comprendre comment\n"
+msgstr ""
+"Lisez cet article de base de connaissances utile pour comprendre comment\n"
 "ajouter des produits différents à votre boutique"
 
 #: build/index.js:1
-#: src/components/ProductsAndServices.js:63
 msgid " How to add products"
 msgstr " Comment ajouter des produits"
 
 #: build/index.js:1
-#: src/components/StoreDetails.js:105
 msgid "Store Details"
 msgstr "Détails du magasin"
 
 #: build/index.js:1
-#: src/components/StoreDetails.js:106
 msgid "This is the place for all your general store details and setup."
 msgstr "C'est l'endroit idéal pour tous les détails et la configuration de votre magasin."
 
 #: build/index.js:1
-#: src/components/StoreDetails.js:142
 msgid "Successfully saved the Store Details"
 msgstr "Les détails du magasin ont été enregistrés avec succès"
 
 #: build/index.js:1
-#: src/components/AllPayments.js:212
-#: src/components/StoreDetails.js:192
 msgid "Discard Changes"
 msgstr "Ignorer les modifications"
 
 #: build/index.js:1
-#: src/components/AllPayments.js:215
-#: src/components/StoreDetails.js:195
 msgid "Save Changes"
 msgstr "Enregistrer les modifications"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:79
 msgid "Sales Channels"
 msgstr "Canaux de vente"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:79
-#: src/components/SalesChannel.js:85
 msgid "Sell your products everywhere, confidently, with Ecomdash."
 msgstr "Vendez vos produits partout, en toute confiance, avec Ecomdash."
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:88
 msgid "With ecomdash, you can manage different sales channels all in one place."
 msgstr "Avec ecomdash, vous pouvez gérer différents canaux de vente en un seul endroit."
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:90
 msgid "Simply connect your business accounts from Amazon, Etsy or Walmart to"
 msgstr "Connectez simplement vos comptes professionnels depuis Amazon, Etsy ou Walmart à"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:92
 msgid "your ecomdash platform and easily manage products, customer orders and"
 msgstr "votre plateforme ecomdash et gérez facilement les produits, les commandes des clients et"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:94
 msgid "more saving you valuable time."
 msgstr "plus vous gagnez un temps précieux."
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:128
 msgid "Get Started Now"
 msgstr "Commencer maintenant"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:130
 msgid "Go to Ecomdash"
 msgstr "Aller à Ecomdash"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:133
 msgid "Install Now"
 msgstr "Installer maintenant"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:144
 msgid "Manage inventory across multiple platforms"
 msgstr "Gérer l'inventaire sur plusieurs plates-formes"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:152
 msgid "Enjoy near real-time inventory updates for an unlimited number of"
 msgstr "Profitez des mises à jour d'inventaire quasi en temps réel pour un nombre illimité de"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:154
 msgid "channels with our inventory management software."
 msgstr "avec notre logiciel de gestion des stocks."
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:160
 msgid "Manage product levels across multiple warehouses "
 msgstr "Gérer les niveaux de produits dans plusieurs entrepôts "
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:162
 msgid "without the fear of overselling."
 msgstr "sans la peur de la surcharge."
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:168
 msgid "Accurately sync kits, multipacks, and components without any"
 msgstr "Synchroniser avec précision les kits, multipacks et composants sans aucun"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:170
 msgid "headaches."
 msgstr "maux de tête."
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:181
 msgid "Order Management and Reporting"
 msgstr "Gestion et reporting des commandes"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:184
 msgid "With Ecomdash you can sit back and relax, knowing that all aspects of order fulfillment are under control. Easily track your top selling items, cost of goods sold, stale inventory and more with Ecomdash's extensive reporting tools."
 msgstr "Avec Ecomdash vous pouvez vous asseoir et vous détendre, sachant que tous les aspects de l'accomplissement de l'ordre sont sous contrôle. Suivez facilement vos articles les plus vendus, le coût des biens vendus, les stocks obsolètes et bien plus encore grâce aux outils de reporting d'Ecomdash."
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:193
 msgid "Powerful Add-ons"
 msgstr "Modules puissants"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:196
 msgid "Ecomdash contains a variety of powerful add-ons that will help you handle everything from creating barcodes and inventory templates, to managing warehouse feeds, Fulfillment By Amazon and even accounting."
 msgstr "Ecomdash contient une variété de puissants modules qui vous aideront à gérer tout depuis la création de codes à barres et de modèles d'inventaire, pour gérer les flux d'entrepôt, l'Accomplissement par Amazon et même la comptabilité."
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:202
 msgid "Fullfillment By Amazon (FBA)"
 msgstr "Accomplissement par Amazon (FBA)"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:205
 msgid "Auto-export non-Amazon orders to FBA. Import the tracking and pass it to the"
 msgstr "Exportation automatique des commandes non-Amazon vers FBA. Importez le suivi et transmettez-le à la"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:207
 msgid "originating sales channel, marking it as shipped."
 msgstr "à partir du canal de vente, en le marquant comme expédié."
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:218
 msgid "Barcodes"
 msgstr "Barcodes"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:222
 msgid "Print barcodes for your products that can be"
 msgstr "Imprimez des codes-barres pour vos produits"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:224
 msgid "used for labeling and scanning your"
 msgstr "utilisé pour étiqueter et scanner votre"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:226
 msgid "products"
 msgstr "produits"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:233
 msgid "Shipping Labels"
 msgstr "Étiquettes d'expédition"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:237
 msgid "Print shipping labels with a preferred carrier"
 msgstr "Imprimez des étiquettes d'expédition avec un transporteur préféré"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:239
 msgid "right from your ecomdash account and save"
 msgstr "directement depuis votre compte ecomdash et enregistrer"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:241
 msgid "on postage."
 msgstr "à la poste."
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:248
 msgid "Listing Presets"
 msgstr "Préréglages de la liste"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:252
 msgid "Create listing presets to cut down most of"
 msgstr "Créer des présélections de listes pour réduire la plupart des"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:254
 msgid "the manual data entry needed when creating"
 msgstr "la saisie manuelle des données nécessaire lors de la création"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:256
 msgid "new listings."
 msgstr "nouvelles annonces."
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:263
 msgid "Accounting"
 msgstr "Comptabilité"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:267
 msgid "Seamlessly communicate your sales and"
 msgstr "Communiquez vos ventes en toute transparence et"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:269
 msgid "purchase order information directly to your"
 msgstr "informations sur le bon de commande directement à votre"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:271
 msgid "accounting software."
 msgstr "logiciel comptable."
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:281
 msgid "Custom Inventory Templates"
 msgstr "Modèles d'inventaire personnalisés"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:285
 msgid "Creating a custom file template allows you to"
 msgstr "La création d'un modèle de fichier personnalisé vous permet de"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:287
 msgid "upload and/or export files with product data"
 msgstr "télécharger et/ou exporter des fichiers avec des données de produit"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:289
 msgid "for thousands of products at once."
 msgstr "pour des milliers de produits à la fois."
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:296
 msgid "Warehouse Feeds"
 msgstr "Flux de l'entrepôt"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:300
 msgid "Setup feeds to export your sales orders via"
 msgstr "Configurer les flux pour exporter vos commandes de vente via"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:302
 msgid "email or FTP sites to third parties such as"
 msgstr "envoyer un courriel ou des sites FTP à des tiers tels que"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:304
 msgid "Dropshippers, Suppliers, or 3PL systems."
 msgstr "Dropshippers, Fournisseurs ou Systèmes 3PL."
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:311
 msgid "Purchase Orders"
 msgstr "Commandes d'achat"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:315
 msgid "Quickly create new orders and have"
 msgstr "Créer rapidement de nouvelles commandes et avoir"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:317
 msgid "inventory quantities adjusted and synced out"
 msgstr "quantités d'inventaire ajustées et synchronisées"
 
 #: build/index.js:1
-#: src/components/SalesChannel.js:319
 msgid "to listings as units are received."
 msgstr "aux inscriptions comme les unités sont reçues."
 
 #: build/index.js:1
-#: src/components/AllPayments.js:100
 msgid "Payments"
 msgstr "Paiements"
 
 #: build/index.js:1
-#: src/components/AllPayments.js:144
 msgid "yes"
 msgstr "Oui"
 
 #: build/index.js:1
-#: src/components/AllPayments.js:145
 msgid "Credit Card/Debit Card/NetBanking"
 msgstr "Carte de crédit/débit/NetBanking"
 
 #: build/index.js:1
-#: src/components/AllPayments.js:149
 msgid "Pay securely by Credit or Debit card or Internet Banking through Razorpay."
 msgstr "Payez en toute sécurité par carte de crédit ou de débit ou par Internet Banking via Razorpay."
 
 #: build/index.js:1
-#: src/components/AllPayments.js:153
 msgid "capture"
 msgstr "capturer"
 
 #: build/index.js:1
-#: src/components/AllPayments.js:154
 msgid "Thank you for shopping with us. Your account has been charged and your transaction is successful. We will be processing your order soon."
 msgstr "Merci pour vos achats avec nous. Votre compte a été débité et votre transaction est réussie. Nous allons traiter votre commande sous peu."
 
 #: build/index.js:1
-#: src/components/AllPayments.js:166
 msgid "Successfully saved the Payment Details"
 msgstr "Les détails de paiement ont été enregistrés avec succès"
 
 #: build/index.js:1
-#: src/index.js:54
 msgid "WooCommerce has been installed successfully"
 msgstr "WooCommerce a été installé avec succès"
 
-#: src/components/QuickLook.js:170
-msgid "Recent Orders"
-msgstr "Commandes récentes"
+#: includes/ECommerce.php:125
+msgid "Reference to page category"
+msgstr ""
 
-#: src/components/QuickLook.js:186
-msgid "No orders yet. When you start getting orders, they will show up here."
-msgstr "Pas encore de commandes. Lorsque vous commencez à recevoir des commandes, elles apparaîtront ici."
+#: includes/ECommerce.php:418
+msgid "Promotion product Page"
+msgstr ""
 
-#: src/components/QuickLook.js:238
-msgid "view all"
-msgstr "tout afficher"
+#: build/index.js:1
+msgid "Free Shipping"
+msgstr ""
 
+#: build/index.js:1
+msgid "Attract and retain customers by offering free shipping based on cart amount, location or store category."
+msgstr ""
+
+#: build/index.js:1
+msgid "Buy 1 Get 1"
+msgstr ""
+
+#: build/index.js:1
+msgid "Attract customers with a compelling deal where they can buy one product and get another product for free."
+msgstr ""
+
+#: build/index.js:1
+msgid "Gift Product in Cart"
+msgstr ""
+
+#: build/index.js:1
+msgid "Reward customers with a free gift in their cart based on total cart value, or specific products or categories."
+msgstr ""
+
+#: build/index.js:1
+msgid "Category Discount"
+msgstr ""
+
+#: build/index.js:1
+msgid "Give your customers a discount on specific categories of products and boost sales for those categories."
+msgstr ""
+
+#: build/index.js:1
+msgid "Upsell in Thank You Page"
+msgstr ""
+
+#: build/index.js:1
+msgid "Maximize sales by presenting relevant upsell options after customers have completed their purchase."
+msgstr ""
+
+#: build/index.js:1
+msgid "Last Minute Deal"
+msgstr ""
+
+#: build/index.js:1
+msgid "Create urgency with a special time-limited deal for customers on the cart and checkout pages."
+msgstr ""
+
+#: build/index.js:1
+msgid "Build webpages fast with tailored block patterns and page templates included in your hosting package."
+msgstr ""
+
+#: build/index.js:1
+msgid "Add a Page to Your Site"
+msgstr ""
+
+#: build/index.js:1
+msgid "Start increasing your search result rankings today."
+msgstr ""
+
+#: build/index.js:1
+msgid "Improve Your Search Ranking"
+msgstr ""
+
+#: build/index.js:1
+msgid "Create beautiful and engaging online courses, lessons, and quizzes."
+msgstr ""
+
+#: build/index.js:1
+msgid "Create a Course"
+msgstr ""
+
+#: build/index.js:1
+msgid "Grant your affiliates earnings each time someone purchases from their link."
+msgstr ""
+
+#: build/index.js:1
+msgid "Create an Affiliate Program"
+msgstr ""
+
+#: build/index.js:1
+msgid "Manage the renting or booking of services and items that you offer your customers."
+msgstr ""
+
+#: build/index.js:1
+msgid "Setup Bookings"
+msgstr ""
+
+#: build/index.js:1
+msgid "Build webpages fast with tailored block patterns and page templates."
+msgstr ""
+
+#: build/index.js:1
+msgid "Reward customer loyalty with an effective points program."
+msgstr ""
+
+#: build/index.js:1
+msgid "Configure Points & Rewards"
+msgstr ""
+
+#: build/index.js:1
+msgid "Get positive product reviews and use social proof to drive more sales."
+msgstr ""
+
+#: build/index.js:1
+msgid "Enable Product Reviews"
+msgstr ""
+
+#: build/index.js:1
+msgid "Setup Wishilsts"
+msgstr ""
+
+#: build/index.js:1
+msgid "Installed successfully"
+msgstr ""
+
+#: build/index.js:1
+msgid "Failed to install"
+msgstr ""
+
+#: build/index.js:1
+msgid "One last thing to do…"
+msgstr "Une dernière chose à faire…"
+
+#: build/index.js:1
+msgid "Webpage Creation"
+msgstr ""
+
+#: build/index.js:1
+msgid "Search Engine Optimization"
+msgstr ""
+
+#: build/index.js:1
+msgid "Offer Content Courses"
+msgstr ""
+
+#: build/index.js:1
+msgid "Add an Affiliate Program"
+msgstr ""
+
+#: build/index.js:1
+msgid "Setup a Loyalty Program"
+msgstr ""
+
+#: build/index.js:1
+msgid "Create A Sales Campaign"
+msgstr ""
