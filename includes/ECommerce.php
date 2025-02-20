@@ -122,7 +122,7 @@ class ECommerce {
 			'nf_dc_page',
 			array(
 				'type'         => 'string',
-				'description'  => 'Reference to page category',
+				'description'  => __( 'Reference to page category', 'wp-module-ecommerce' ),
 				'show_in_rest' => true,
 				'single'       => true,
 			)
@@ -142,26 +142,8 @@ class ECommerce {
 			$wonder_cart->init();
 		}
 
-		CaptiveFlow::init();
-		WooCommerceBacklink::init( $container );
-		register_meta(
-			'post',
-			'nf_dc_page',
-			array(
-				'type'         => 'string',
-				'description'  => 'Reference to page category',
-				'show_in_rest' => true,
-				'single'       => true,
-			)
-		);
+
 		add_filter( 'newfold_runtime', array( $this, 'add_to_runtime' ) );
-		$this->add_filters(
-			array( 'postbox_classes_page_wpseo_meta', 'postbox_classes_post_wpseo_meta', 'postbox_classes_product_wpseo_meta' ),
-			function ( $classes ) {
-				$classes[] = 'closed';
-				return $classes;
-			}
-		);
 	}
 
 	/**
@@ -433,7 +415,7 @@ class ECommerce {
 	public function custom_add_promotion_menu_item() {
 		add_submenu_page(
 			'woocommerce-marketing',
-			'Promotion product Page',
+			__( 'Promotion product Page', 'wp-module-ecommerce' ),
 			__( 'Promotions', 'wp-module-ecommerce' ),
 			'manage_options',
 			$this->container->plugin()->id . '#/store/sales_discounts',
