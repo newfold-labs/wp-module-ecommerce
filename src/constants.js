@@ -72,7 +72,7 @@ export const wpSolutionsPromotedPluginsList = [
 	{
 		WP_SOLUTION_CREATOR: [
 			{
-				title: __( 'WEBPAGE CREATION', 'wp-module-ecommerce' ),
+				title: __( 'Webpage Creation', 'wp-module-ecommerce' ),
 				description: __(
 					'Build webpages fast with tailored block patterns and page templates included in your hosting package.',
 					'wp-module-ecommerce'
@@ -92,7 +92,7 @@ export const wpSolutionsPromotedPluginsList = [
 			},
 			{
 				title: __(
-					'SEARCH ENGINE OPTIMIZATION',
+					'Search Engine Optimization',
 					'wp-module-ecommerce'
 				),
 				description: __(
@@ -114,7 +114,7 @@ export const wpSolutionsPromotedPluginsList = [
 				},
 			},
 			{
-				title: __( 'OFFER CONTENT COURSES', 'wp-module-ecommerce' ),
+				title: __( 'Offer Content Courses', 'wp-module-ecommerce' ),
 				description: __(
 					'Create beautiful and engaging online courses, lessons, and quizzes.',
 					'wp-module-ecommerce'
@@ -131,7 +131,7 @@ export const wpSolutionsPromotedPluginsList = [
 				},
 			},
 			{
-				title: __( 'ADD AN AFFILIATE PROGRAM', 'wp-module-ecommerce' ),
+				title: __( 'Add an Affiliate Program', 'wp-module-ecommerce' ),
 				description: __(
 					'Grant your affiliates earnings each time someone purchases from their link.',
 					'wp-module-ecommerce'
@@ -152,7 +152,7 @@ export const wpSolutionsPromotedPluginsList = [
 		],
 		WP_SOLUTION_SERVICE: [
 			{
-				title: __( 'SETUP BOOKINGS', 'wp-module-ecommerce' ),
+				title: __( 'Setup Bookings', 'wp-module-ecommerce' ),
 				description: __(
 					'Manage the renting or booking of services and items that you offer your customers.',
 					'wp-module-ecommerce'
@@ -168,7 +168,7 @@ export const wpSolutionsPromotedPluginsList = [
 				},
 			},
 			{
-				title: __( 'WEBPAGE CREATION', 'wp-module-ecommerce' ),
+				title: __( 'Webpage Creation', 'wp-module-ecommerce' ),
 				description: __(
 					'Build webpages fast with tailored block patterns and page templates.',
 					'wp-module-ecommerce'
@@ -188,7 +188,7 @@ export const wpSolutionsPromotedPluginsList = [
 			},
 			{
 				title: __(
-					'SEARCH ENGINE OPTIMIZATION',
+					'Search Engine Optimization',
 					'wp-module-ecommerce'
 				),
 				description: __(
@@ -210,7 +210,7 @@ export const wpSolutionsPromotedPluginsList = [
 				},
 			},
 			{
-				title: __( 'SETUP A LOYALTY PROGRAM', 'wp-module-ecommerce' ),
+				title: __( 'Setup a Loyalty Program', 'wp-module-ecommerce' ),
 				description: __(
 					'Reward customer loyalty with an effective points program.',
 					'wp-module-ecommerce'
@@ -232,7 +232,7 @@ export const wpSolutionsPromotedPluginsList = [
 		],
 		WP_SOLUTION_COMMERCE: [
 			{
-				title: __( 'ENABLE PRODUCT REVIEWS', 'wp-module-ecommerce' ),
+				title: __( 'Enable Product Reviews', 'wp-module-ecommerce' ),
 				description: __(
 					'Get positive product reviews and use social proof to drive more sales.',
 					'wp-module-ecommerce'
@@ -248,7 +248,7 @@ export const wpSolutionsPromotedPluginsList = [
 				},
 			},
 			{
-				title: __( 'SETUP WISHLISTS', 'wp-module-ecommerce' ),
+				title: __( 'Setup Wishlists', 'wp-module-ecommerce' ),
 				description: __(
 					'Let customers add products to lists and share them with family and friends.',
 					'wp-module-ecommerce'
@@ -265,7 +265,7 @@ export const wpSolutionsPromotedPluginsList = [
 			},
 			{
 				title: __(
-					'SEARCH ENGINE OPTIMIZATION',
+					'Search Engine Optimization',
 					'wp-module-ecommerce'
 				),
 				description: __(
@@ -287,7 +287,7 @@ export const wpSolutionsPromotedPluginsList = [
 				},
 			},
 			{
-				title: __( 'CREATE A SALES CAMPAIGN', 'wp-module-ecommerce' ),
+				title: __( 'Create A Sales Campaign', 'wp-module-ecommerce' ),
 				description: __(
 					'Create custom upsell, cross-sell and other promotional campaigns to generate more sales.',
 					'wp-module-ecommerce'
