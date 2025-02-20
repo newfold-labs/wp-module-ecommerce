@@ -58,6 +58,7 @@
     "i18n-pot": "Generate a .pot file for translation.",
     "i18n-po": "Update existing .po files.",
     "i18n-mo": "Generate new language .mo files.",
+    "i18n-php": "Generate new language .l10n.php files.",
     "i18n-json": "Generate new language .json files.",
     "i18n": "Generate new language files.",
     "lint": "Check files against coding standards."
