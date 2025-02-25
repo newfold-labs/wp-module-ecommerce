@@ -340,6 +340,16 @@ class ECommerce {
 		foreach ( $payments as $payment ) {
 			\register_setting( 'general', $payment, $schema_for_offline_payments );
 		}
+
+		register_setting(
+			'general',
+			'is_fse_theme',
+			array(
+				'type'         => 'boolean',
+				'show_in_rest' => true,
+				'default'      => wp_is_block_theme(), // Set default value based on current theme
+			)
+		);
 	}
 
 	/**
