@@ -32,6 +32,13 @@ class ECommerce {
 	protected $container;
 
 	/**
+	 * Identifier for script handle.
+	 *
+	 * @var string
+	 */
+	public static $handle = 'nfd-ecommerce-dependency';
+
+	/**
 	 * Array map of API controllers.
 	 *
 	 * @var array
@@ -340,7 +347,7 @@ class ECommerce {
 	 */
 	public function register_textdomains() {
 		$MODULE_LANG_DIR = $this->container->plugin()->dir . 'vendor/newfold-labs/wp-module-ecommerce/languages';
-		\load_script_textdomain( 'nfd-ecommerce-dependency', 'wp-module-ecommerce', $MODULE_LANG_DIR );
+		\load_script_textdomain( self::$handle, 'wp-module-ecommerce', $MODULE_LANG_DIR );
 		$current_language = get_locale();
 		\load_textdomain( 'wp-module-ecommerce', $MODULE_LANG_DIR . '/wp-module-ecommerce-' . $current_language . '.mo' );
 	}
@@ -353,17 +360,17 @@ class ECommerce {
 		if ( file_exists( $asset_file ) ) {
 			$asset = require $asset_file;
 			\wp_register_script(
-				'nfd-ecommerce-dependency',
+				self::$handle,
 				NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/build/index.js',
 				array_merge( $asset['dependencies'], array() ),
 				$asset['version']
 			);
 			I18nService::load_js_translations(
 				'wp-module-ecommerce',
-				'nfd-ecommerce-dependency',
+				self::$handle,
 				NFD_ECOMMERCE_DIR . '/languages'
 			);
-			\wp_enqueue_script( 'nfd-ecommerce-dependency' );
+			\wp_enqueue_script( self::$handle );
 		}
 	}
 
