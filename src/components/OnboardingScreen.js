@@ -68,7 +68,7 @@ export function OnboardingScreen({
       setIsMigrationCompleted( res.nfd_show_migration_steps || false );
       setWebServersUpdated( res.update_site_server_clicked );
       if ( !res.is_fse_theme ) {
-        setEditUrl( RuntimeSdk.adminUrl( "/customize.php" ) )
+        setEditUrl( RuntimeSdk.adminUrl( "customize.php" ) )
       } else if ( res?.page_on_front && res?.show_on_front === "page" ) {
         setEditUrl(
           RuntimeSdk.adminUrl(
