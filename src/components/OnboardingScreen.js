@@ -67,7 +67,9 @@ export function OnboardingScreen({
     WordPressSdk.settings.get().then((res) => {
       setIsMigrationCompleted( res.nfd_show_migration_steps || false );
       setWebServersUpdated( res.update_site_server_clicked );
-      if (res?.page_on_front && res?.show_on_front === "page") {
+      if ( !res.is_fse_theme ) {
+        setEditUrl( RuntimeSdk.adminUrl( "customize.php" ) )
+      } else if ( res?.page_on_front && res?.show_on_front === "page" ) {
         setEditUrl(
           RuntimeSdk.adminUrl(
             `post.php?post=${res?.page_on_front}&action=edit`,

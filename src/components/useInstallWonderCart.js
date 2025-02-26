@@ -11,7 +11,7 @@ export function useInstallWonderCart({ wpModules }) {
     let response = await PluginsSdk.actions.installSync("nfd_slug_wonder_cart");
     if (response !== "failed") {
       notify.push("nfd_slug_wonder_cart-install-status", {
-        title: "Installed successfully",
+        title: __("Installed successfully", "wp-module-ecommerce"),
         variant: "success",
       });
       await sleep(1000);
@@ -19,7 +19,7 @@ export function useInstallWonderCart({ wpModules }) {
       window.location.reload();
     } else {
       notify.push("nfd_slug_wonder_cart-install-status", {
-        title: "Failed to install",
+        title: __("Failed to install", "wp-module-ecommerce"),
         description: (
           <span>
             {__("Please try again, or ", "wp-module-ecommerce")}
