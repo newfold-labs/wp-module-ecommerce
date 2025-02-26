@@ -23,87 +23,87 @@ msgstr ""
 msgid "eCommerce"
 msgstr "eCommerce"
 
-#: includes/ECommerce.php:254
-#: includes/ECommerce.php:265
-#: includes/ECommerce.php:274
-#: includes/ECommerce.php:283
-#: includes/ECommerce.php:292
-#: includes/ECommerce.php:301
-#: includes/ECommerce.php:330
+#: includes/ECommerce.php:262
+#: includes/ECommerce.php:273
+#: includes/ECommerce.php:282
+#: includes/ECommerce.php:291
+#: includes/ECommerce.php:300
+#: includes/ECommerce.php:309
+#: includes/ECommerce.php:338
 msgid "NFD eCommerce Options"
 msgstr "Opzioni di eCommerce NFD"
 
-#: includes/ECommerce.php:419
-#: includes/ECommerce.php:448
+#: includes/ECommerce.php:437
+#: includes/ECommerce.php:466
 msgid "Promotions"
 msgstr "Promozioni"
 
-#: includes/ECommerce.php:436
-#: includes/ECommerce.php:469
+#: includes/ECommerce.php:454
+#: includes/ECommerce.php:487
 msgid "Create a Promotion"
 msgstr "Crea una Promozione"
 
-#: includes/ECommerce.php:466
+#: includes/ECommerce.php:484
 msgid "Boost Your Online Store Sales"
 msgstr "Migliora Le Vendite Del Tuo Negozio Online"
 
-#: includes/ECommerce.php:467
+#: includes/ECommerce.php:485
 msgid "Maximize your sales by creating effective"
 msgstr "Massimizza le tue vendite creando efficace"
 
-#: includes/ECommerce.php:468
+#: includes/ECommerce.php:486
 msgid "promotions and campaigns like:"
 msgstr "promozioni e campagne come:"
 
-#: includes/ECommerce.php:470
+#: includes/ECommerce.php:488
 msgid "Free"
 msgstr "Gratis"
 
-#: includes/ECommerce.php:471
+#: includes/ECommerce.php:489
 msgid "Shipping"
 msgstr "Spedizione"
 
-#: includes/ECommerce.php:472
+#: includes/ECommerce.php:490
 msgid "Buy One"
 msgstr "Compra Uno"
 
-#: includes/ECommerce.php:473
+#: includes/ECommerce.php:491
 msgid "Get One"
 msgstr "Ottieni Uno"
 
-#: includes/ECommerce.php:474
+#: includes/ECommerce.php:492
 msgid "Free Gift"
 msgstr "Regalo Gratuito"
 
-#: includes/ECommerce.php:475
+#: includes/ECommerce.php:493
 msgid "in Cart"
 msgstr "nel Carrello"
 
-#: includes/ECommerce.php:476
+#: includes/ECommerce.php:494
 msgid "Frequently"
 msgstr "Frequentemente"
 
-#: includes/ECommerce.php:477
+#: includes/ECommerce.php:495
 msgid "Bought Together"
 msgstr "Acquistato Insieme"
 
-#: includes/ECommerce.php:637
+#: includes/ECommerce.php:655
 msgid "Status"
 msgstr "Stato"
 
-#: includes/ECommerce.php:661
+#: includes/ECommerce.php:679
 msgid "Published - Public"
 msgstr "Pubblicato - Pubblico"
 
-#: includes/ECommerce.php:661
+#: includes/ECommerce.php:679
 msgid "Published - Password Protected"
 msgstr "Pubblicato - Protetto Da Password"
 
-#: includes/ECommerce.php:664
+#: includes/ECommerce.php:682
 msgid "Published - Private"
 msgstr "Pubblicato - Privato"
 
-#: includes/ECommerce.php:674
+#: includes/ECommerce.php:692
 msgid "Last Modified"
 msgstr "Ultima Modifica"
 
@@ -1407,11 +1407,11 @@ msgstr "Dettagli di pagamento salvati con successo"
 msgid "WooCommerce has been installed successfully"
 msgstr "WooCommerce è stato installato con successo"
 
-#: includes/ECommerce.php:125
+#: includes/ECommerce.php:133
 msgid "Reference to page category"
 msgstr "Riferimento alla categoria della pagina"
 
-#: includes/ECommerce.php:418
+#: includes/ECommerce.php:436
 msgid "Promotion product Page"
 msgstr "Pagina del prodotto in promozione"
 
