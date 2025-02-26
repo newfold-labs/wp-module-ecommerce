@@ -149,7 +149,7 @@ export function WPSolutionsBanner() {
 											}`
 										) }
 									>
-										<h2 className="nfd-text-[#0F172A] nfd-text-lg nfd-leading-5 nfd-font-semibold nfd-mb-4">
+										<h2 className="nfd-text-[#0F172A] nfd-uppercase nfd-text-lg nfd-leading-5 nfd-font-semibold nfd-mb-4">
 											{ details.title }
 										</h2>
 										<p className="nfd-text-[#0F172A] nfd-text-base nfd-leading-5 nfd-font-normal nfd-mb-10">

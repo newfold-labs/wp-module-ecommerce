@@ -32,6 +32,13 @@ class ECommerce {
 	protected $container;
 
 	/**
+	 * Identifier for script handle.
+	 *
+	 * @var string
+	 */
+	public static $handle = 'nfd-ecommerce-dependency';
+
+	/**
 	 * Array map of API controllers.
 	 *
 	 * @var array
@@ -106,6 +113,7 @@ class ECommerce {
 		add_action( 'admin_head', array( $this, 'hide_wp_pointer_with_css' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'set_wpnav_collapse_setting' ) );
 		add_action( 'admin_footer', array( $this, 'remove_woocommerce_ssl_notice' ), 20 );
+		\add_filter( 'load_script_translation_file', array( $this, 'load_script_translation_file' ), 10, 3 );
 
 		add_action( 'init', array( $this, 'admin_init_conditional_on_capabilities' ) );
 
@@ -122,7 +130,7 @@ class ECommerce {
 			'nf_dc_page',
 			array(
 				'type'         => 'string',
-				'description'  => 'Reference to page category',
+				'description'  => __( 'Reference to page category', 'wp-module-ecommerce' ),
 				'show_in_rest' => true,
 				'single'       => true,
 			)
@@ -142,26 +150,8 @@ class ECommerce {
 			$wonder_cart->init();
 		}
 
-		CaptiveFlow::init();
-		WooCommerceBacklink::init( $container );
-		register_meta(
-			'post',
-			'nf_dc_page',
-			array(
-				'type'         => 'string',
-				'description'  => 'Reference to page category',
-				'show_in_rest' => true,
-				'single'       => true,
-			)
-		);
+
 		add_filter( 'newfold_runtime', array( $this, 'add_to_runtime' ) );
-		$this->add_filters(
-			array( 'postbox_classes_page_wpseo_meta', 'postbox_classes_post_wpseo_meta', 'postbox_classes_product_wpseo_meta' ),
-			function ( $classes ) {
-				$classes[] = 'closed';
-				return $classes;
-			}
-		);
 	}
 
 	/**
@@ -367,7 +357,7 @@ class ECommerce {
 	 */
 	public function register_textdomains() {
 		$MODULE_LANG_DIR = $this->container->plugin()->dir . 'vendor/newfold-labs/wp-module-ecommerce/languages';
-		\load_script_textdomain( 'nfd-ecommerce-dependency', 'wp-module-ecommerce', $MODULE_LANG_DIR );
+		\load_script_textdomain( self::$handle, 'wp-module-ecommerce', $MODULE_LANG_DIR );
 		$current_language = get_locale();
 		\load_textdomain( 'wp-module-ecommerce', $MODULE_LANG_DIR . '/wp-module-ecommerce-' . $current_language . '.mo' );
 	}
@@ -380,17 +370,17 @@ class ECommerce {
 		if ( file_exists( $asset_file ) ) {
 			$asset = require $asset_file;
 			\wp_register_script(
-				'nfd-ecommerce-dependency',
+				self::$handle,
 				NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/build/index.js',
 				array_merge( $asset['dependencies'], array() ),
 				$asset['version']
 			);
 			I18nService::load_js_translations(
 				'wp-module-ecommerce',
-				'nfd-ecommerce-dependency',
+				self::$handle,
 				NFD_ECOMMERCE_DIR . '/languages'
 			);
-			\wp_enqueue_script( 'nfd-ecommerce-dependency' );
+			\wp_enqueue_script( self::$handle );
 		}
 	}
 
@@ -443,7 +433,7 @@ class ECommerce {
 	public function custom_add_promotion_menu_item() {
 		add_submenu_page(
 			'woocommerce-marketing',
-			'Promotion product Page',
+			__( 'Promotion product Page', 'wp-module-ecommerce' ),
 			__( 'Promotions', 'wp-module-ecommerce' ),
 			'manage_options',
 			$this->container->plugin()->id . '#/store/sales_discounts',
@@ -753,5 +743,34 @@ class ECommerce {
 		echo '<style>
 			.wp-pointer { display: none !important; }
 		</style>';
+	}
+
+
+	/**
+	 * Filters the file path for the JS translation JSON.
+	 *
+	 * If the script handle matches the module's handle, builds a custom path using
+	 * the languages directory, current locale, text domain, and a hash of the script.
+	 *
+	 * @param string $file   Default translation file path.
+	 * @param string $handle Script handle.
+	 * @param string $domain Text domain.
+	 * @return string Modified file path for the translation JSON.
+	 */
+	public function load_script_translation_file( $file, $handle, $domain ) {
+
+		if ( $handle === self::$handle ) {
+			$path   = NFD_ECOMMERCE_DIR . '/languages/';
+			$locale = determine_locale();
+
+			$file_base = 'default' === $domain
+				? $locale
+				: $domain . '-' . $locale;
+			$file      = $path . $file_base . '-' . md5( 'build/index.js' )
+			             . '.json';
+
+		}
+
+		return $file;
 	}
 }
