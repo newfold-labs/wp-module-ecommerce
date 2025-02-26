@@ -125,7 +125,7 @@ const Stripe = ({ notify }) => {
                 </ul>
                 <Title size="3">
                   {__(
-                    " Uses many popular payment methods",
+                    "Uses many popular payment methods",
                     "wp-module-ecommerce"
                   )}
                 </Title>
