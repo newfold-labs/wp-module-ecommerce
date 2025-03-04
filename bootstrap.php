@@ -80,7 +80,6 @@ if ( function_exists( 'add_filter' ) ) {
 
 			// Bail early if the request is not to PayPal's v2 checkout API
 			if ( false === stripos( wp_parse_url( $url, PHP_URL_HOST ), 'paypal.com' ) ) {
-				error_log( "Request is not for PayPal, skipping filter." );
 				return $parsed_args;
 			}
 
