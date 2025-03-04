@@ -10,7 +10,7 @@ import classNames from "classnames";
  */
 export function RestartOnboarding( ) {
 
-  const redirectUrl = `${window.NewfoldRuntime.adminUrl}index.php?page=nfd-onboarding&restart=plugin`;
+  const redirectUrl = `${window.NewfoldRuntime.adminUrl}index.php?page=nfd-onboarding&restart=brand-plugin`;
 
   return (
     <div
