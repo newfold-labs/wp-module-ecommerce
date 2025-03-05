@@ -117,6 +117,8 @@ class ECommerce {
 
 		add_action( 'init', array( $this, 'admin_init_conditional_on_capabilities' ) );
 
+		add_filter( 'woocommerce_admin_get_feature_config', array( $this, 'disable_modern_payments_settings' ), 999 );
+
 		// Handle WonderCart Integrations
 		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
 			$wonder_cart = new WonderCart( $container );
@@ -772,5 +774,19 @@ class ECommerce {
 		}
 
 		return $file;
+	}
+
+	/**
+ 	* Force WooCommerce to use the old Payments settings page.
+ 	*
+ 	* WooCommerce 9.7+ introduces a new Payments settings page. 
+ 	* This function disables it and keeps the classic version.
+	*
+	* @param array $features Existing WooCommerce feature configurations.
+	* @return array Modified feature configuration with modern Payments settings disabled.
+ 	*/
+	public function disable_modern_payments_settings( $features ) {
+		$features['reactify-classic-payments-settings'] = false;
+		return $features;
 	}
 }
