@@ -114,10 +114,9 @@ class ECommerce {
 		add_action( 'admin_enqueue_scripts', array( $this, 'set_wpnav_collapse_setting' ) );
 		add_action( 'admin_footer', array( $this, 'remove_woocommerce_ssl_notice' ), 20 );
 		\add_filter( 'load_script_translation_file', array( $this, 'load_script_translation_file' ), 10, 3 );
+		add_filter( 'woocommerce_admin_get_feature_config', array( $this, 'disable_modern_payments_settings' ), 999 );
 
 		add_action( 'init', array( $this, 'admin_init_conditional_on_capabilities' ) );
-
-		add_filter( 'woocommerce_admin_get_feature_config', array( $this, 'disable_modern_payments_settings' ), 999 );
 
 		// Handle WonderCart Integrations
 		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
