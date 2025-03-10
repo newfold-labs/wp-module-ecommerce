@@ -36,7 +36,7 @@ class ECommerce {
 	 *
 	 * @var string
 	 */
-	public static $handle = 'nfd-ecommerce-dependency';
+	public static $handle_i18n = 'nfd-ecommerce-i18n';
 
 	/**
 	 * Array map of API controllers.
@@ -92,8 +92,8 @@ class ECommerce {
 		add_action( 'toplevel_page_' . $container->plugin()->id, array( $this, 'load_experience_level' ) );
 		add_action( 'admin_init', array( $this, 'maybe_do_dash_redirect' ) );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
-		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_assets' ) );
-		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_textdomains' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'register_assets' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'register_textdomains' ) );
 		add_filter( 'woocommerce_coupons_enabled', array( $this, 'disable_coupon_field_on_cart' ) );
 		add_filter( 'woocommerce_before_cart', array( $this, 'hide_banner_notice_on_cart' ) );
 		add_action( 'before_woocommerce_init', array( $this, 'hide_woocommerce_set_up' ) );
@@ -353,35 +353,78 @@ class ECommerce {
 	}
 
 	/**
-	 * Load the textdomains for the module.
-	 */
-	public function register_textdomains() {
-		$MODULE_LANG_DIR = $this->container->plugin()->dir . 'vendor/newfold-labs/wp-module-ecommerce/languages';
-		\load_script_textdomain( self::$handle, 'wp-module-ecommerce', $MODULE_LANG_DIR );
-		$current_language = get_locale();
-		\load_textdomain( 'wp-module-ecommerce', $MODULE_LANG_DIR . '/wp-module-ecommerce-' . $current_language . '.mo' );
-	}
-
-	/**
 	 * Load WP dependencies into the page.
 	 */
 	public function register_assets() {
 		$asset_file = NFD_ECOMMERCE_BUILD_DIR . 'index.asset.php';
 		if ( file_exists( $asset_file ) ) {
 			$asset = require $asset_file;
-			\wp_register_script(
-				self::$handle,
-				NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/build/index.js',
-				array_merge( $asset['dependencies'], array() ),
+
+			// We load ecommerce module script and components directly
+			// as an npmjs package in each brand plugin app.
+			// Therefore, we don't need to load the `build/index.js` file.
+			// The file is not built for browsers to read anyway.
+			// Though, we do need to load a script to set translations.
+			// Translations are detected in the brand plugin app where the js package is consumed.
+			wp_register_script(
+				self::$handle_i18n,
+				NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/build/i18n-handle.js',
+				array(),
 				$asset['version']
 			);
-			I18nService::load_js_translations(
+			wp_enqueue_script( self::$handle_i18n );
+
+			wp_set_script_translations(
+				self::$handle_i18n,
 				'wp-module-ecommerce',
-				self::$handle,
 				NFD_ECOMMERCE_DIR . '/languages'
 			);
-			\wp_enqueue_script( self::$handle );
 		}
+	}
+
+	/**
+	 * Filters the file path for the JS translation JSON.
+	 *
+	 * If the script handle matches the module's handle, builds a custom path using
+	 * the languages directory, current locale, text domain, and a hash of the script.
+	 *
+	 * @param string $file   Default translation file path.
+	 * @param string $handle_i18n Script handle.
+	 * @param string $domain Text domain.
+	 * @return string Modified file path for the translation JSON.
+	 */
+	public function load_script_translation_file( $file, $handle_i18n, $domain ) {
+
+		if ( $handle_i18n === self::$handle_i18n ) {
+			$path   = NFD_ECOMMERCE_DIR . '/languages/';
+			$locale = determine_locale();
+
+			$file_base = 'default' === $domain
+				? $locale
+				: $domain . '-' . $locale;
+			$file      = $path . $file_base . '-' . md5( 'build/index.js' )
+			             . '.json';
+
+		}
+		return $file;
+	}
+
+	/**
+	 * Load the textdomains for the module.
+	 */
+	public function register_textdomains() {
+		$MODULE_LANG_DIR  = $this->container->plugin()->dir . 'vendor/newfold-labs/wp-module-ecommerce/languages';
+		$current_language = get_locale();
+		\load_textdomain(
+			'wp-module-ecommerce',
+			$MODULE_LANG_DIR
+		);
+		// load textdomain for scripts
+		\load_script_textdomain(
+			self::$handle_i18n,
+			'wp-module-ecommerce',
+			$MODULE_LANG_DIR
+		);
 	}
 
 	/**
@@ -743,34 +786,5 @@ class ECommerce {
 		echo '<style>
 			.wp-pointer { display: none !important; }
 		</style>';
-	}
-
-
-	/**
-	 * Filters the file path for the JS translation JSON.
-	 *
-	 * If the script handle matches the module's handle, builds a custom path using
-	 * the languages directory, current locale, text domain, and a hash of the script.
-	 *
-	 * @param string $file   Default translation file path.
-	 * @param string $handle Script handle.
-	 * @param string $domain Text domain.
-	 * @return string Modified file path for the translation JSON.
-	 */
-	public function load_script_translation_file( $file, $handle, $domain ) {
-
-		if ( $handle === self::$handle ) {
-			$path   = NFD_ECOMMERCE_DIR . '/languages/';
-			$locale = determine_locale();
-
-			$file_base = 'default' === $domain
-				? $locale
-				: $domain . '-' . $locale;
-			$file      = $path . $file_base . '-' . md5( 'build/index.js' )
-			             . '.json';
-
-		}
-
-		return $file;
 	}
 }
