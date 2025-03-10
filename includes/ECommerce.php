@@ -368,7 +368,7 @@ class ECommerce {
 			// Translations are detected in the brand plugin app where the js package is consumed.
 			wp_register_script(
 				self::$handle_i18n,
-				NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/build/i18n-handle.js',
+				NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/assets/i18n-handle.js',
 				array(),
 				$asset['version']
 			);
