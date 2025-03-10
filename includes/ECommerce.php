@@ -78,7 +78,6 @@ class ECommerce {
 		'update_site_server_clicked',
 	);
 
-
 	/**
 	 * ECommerce constructor.
 	 *
@@ -149,7 +148,6 @@ class ECommerce {
 			$wonder_cart = new WonderCart( $container );
 			$wonder_cart->init();
 		}
-
 
 		add_filter( 'newfold_runtime', array( $this, 'add_to_runtime' ) );
 	}
@@ -402,8 +400,7 @@ class ECommerce {
 			$file_base = 'default' === $domain
 				? $locale
 				: $domain . '-' . $locale;
-			$file      = $path . $file_base . '-' . md5( 'build/index.js' )
-			             . '.json';
+			$file      = $path . $file_base . '-' . md5( 'build/index.js' ) . '.json';
 
 		}
 		return $file;
@@ -483,7 +480,6 @@ class ECommerce {
 			'custom_submenu_redirect'
 		);
 	}
-
 
 	/**
 	 * Add a Promotion button under Add New product tab
