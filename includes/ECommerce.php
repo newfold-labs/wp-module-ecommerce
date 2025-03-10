@@ -91,8 +91,8 @@ class ECommerce {
 		add_action( 'toplevel_page_' . $container->plugin()->id, array( $this, 'load_experience_level' ) );
 		add_action( 'admin_init', array( $this, 'maybe_do_dash_redirect' ) );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'register_assets' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'register_textdomains' ) );
+		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_assets' ) );
+		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_textdomains' ) );
 		add_filter( 'woocommerce_coupons_enabled', array( $this, 'disable_coupon_field_on_cart' ) );
 		add_filter( 'woocommerce_before_cart', array( $this, 'hide_banner_notice_on_cart' ) );
 		add_action( 'before_woocommerce_init', array( $this, 'hide_woocommerce_set_up' ) );
