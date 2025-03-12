@@ -19,7 +19,7 @@ describe(
 		it( 'Verify Store Page renders properly without Woo', () => {
 			cy.reload();
 			// Payments tab is not displayed
-			cy.get( `.${ appId }-app-subnavitem-payments` ).should(
+			cy.get( `.${ appId }-app-subnavitem-Payments` ).should(
 				'not.exist'
 			);
 

@@ -39,7 +39,7 @@ describe(
 				.should( 'exist' )
 				.scrollIntoView()
 				.click();
-			cy.get( `.${ appId }-app-subnavitem-store-details.active` ).should(
+			cy.get( `.${ appId }-app-subnavitem-Store.active` ).should(
 				'exist'
 			);
 			cy.get( 'h2' ).should( 'exist' );
@@ -103,7 +103,7 @@ describe(
 				.should( 'exist' )
 				.scrollIntoView()
 				.click();
-			cy.get( `.${ appId }-app-subnavitem-payments.active`, {
+			cy.get( `.${ appId }-app-subnavitem-Payments.active`, {
 				timeout: customCommandTimeout,
 			} ).should( 'exist' );
 			cy.get( '#razorpay-section' ).as( 'razorpayBlock' );

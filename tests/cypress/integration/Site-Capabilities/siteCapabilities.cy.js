@@ -60,7 +60,7 @@ describe(
 			cy.reload();
 			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/store' );
 
-			cy.get( `.${ appId }-app-subnavitem-sales-promotions` )
+			cy.get( `.${ appId }-app-subnavitem-Sales` )
 				.as( 'salesTab' )
 				.should( 'exist' );
 			cy.get( '@salesTab' ).click();
@@ -85,7 +85,7 @@ describe(
 			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/store' );
 
 			// Verify Install Now exists when customer has ecommerce addon
-			cy.get( `.${ appId }-app-subnavitem-sales-promotions`, {
+			cy.get( `.${ appId }-app-subnavitem-Sales`, {
 				timeout: mediumWait,
 			} )
 				.as( 'salesTab' )
