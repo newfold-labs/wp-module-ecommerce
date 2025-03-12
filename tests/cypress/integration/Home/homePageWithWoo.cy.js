@@ -39,7 +39,7 @@ describe(
 				.should( 'exist' )
 				.scrollIntoView()
 				.click();
-			cy.get( `.${ appId }-app-subnavitem-store-details.active` ).should(
+			cy.get( `.${ appId }-app-subnavitem-Store.active` ).should(
 				'exist'
 			);
 			cy.get( 'h2' ).should( 'exist' );
@@ -79,7 +79,7 @@ describe(
 			).should( 'exist' );
 			cy.get( '.nfd-w-0  p' ).should( 'exist' );
 
-			cy.get( `.${ appId }-app-navitem-home` ).click();
+			cy.get( `.${ appId }-app-navitem-Home` ).click();
 			waitForNextSteps();
 			cy.get( '@storeInfoStep', {
 				timeout: customCommandTimeout,
@@ -103,7 +103,7 @@ describe(
 				.should( 'exist' )
 				.scrollIntoView()
 				.click();
-			cy.get( `.${ appId }-app-subnavitem-payments.active`, {
+			cy.get( `.${ appId }-app-subnavitem-Payments.active`, {
 				timeout: customCommandTimeout,
 			} ).should( 'exist' );
 			cy.get( '#razorpay-section' ).as( 'razorpayBlock' );
@@ -122,7 +122,7 @@ describe(
 				.find( '.nfd-badge--upsell', { timeout: customCommandTimeout } )
 				.should( 'exist' );
 
-			cy.get( `.${ appId }-app-navitem-home` ).click();
+			cy.get( `.${ appId }-app-navitem-Home` ).click();
 			waitForNextSteps();
 			cy.get( '@paymentStep' ).should( 'not.exist' );
 			viewCompletedTasks();
@@ -176,7 +176,7 @@ describe(
 				.should( 'exist' )
 				.scrollIntoView()
 				.click();
-			cy.get( `.${ appId }-app-subnavitem-store-details.active`, {
+			cy.get( `.${ appId }-app-subnavitem-Store.active`, {
 				timeout: customCommandTimeout,
 			} ).should( 'exist' );
 			cy.get( '#tax-yes' ).click();
@@ -190,7 +190,7 @@ describe(
 			).should( 'exist' );
 			cy.get( '.nfd-w-0  p' ).should( 'exist' );
 
-			cy.get( `.${ appId }-app-navitem-home` ).click();
+			cy.get( `.${ appId }-app-navitem-Home` ).click();
 			cy.reload();
 			waitForNextSteps();
 			cy.get( '@taxStep', { timeout: 30000 } ).should( 'not.exist' );
