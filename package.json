@@ -2,7 +2,7 @@
   "name": "@newfold/wp-module-ecommerce",
   "description": "Brand Agnostic eCommerce Experience",
   "license": "GPL-2.0-or-later",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "main": "build/index.js",
   "files": [
     "build/",
@@ -29,7 +29,7 @@
     "@wordpress/api-fetch": "^7.18.0",
     "@wordpress/components": "^28.11.0",
     "@wordpress/data": "^10.17.0",
-    "@wordpress/date": "^5.11.0",
+    "@wordpress/date": "^5.19.0",
     "@wordpress/element": "^6.11.0",
     "@wordpress/i18n": "^5.11.0",
     "classnames": "^2.5.1",
@@ -39,7 +39,7 @@
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.8",
     "@testing-library/cypress": "^10.0.3",
-    "@wordpress/dom-ready": "^4.17.0",
+    "@wordpress/dom-ready": "^4.19.0",
     "@wordpress/env": "^10.18.0",
     "@wordpress/scripts": "^27",
     "cypress": "^13.15.1",
