@@ -23,87 +23,87 @@ msgstr ""
 msgid "eCommerce"
 msgstr "Commerce électronique"
 
-#: includes/ECommerce.php:260
-#: includes/ECommerce.php:271
+#: includes/ECommerce.php:269
 #: includes/ECommerce.php:280
 #: includes/ECommerce.php:289
 #: includes/ECommerce.php:298
 #: includes/ECommerce.php:307
-#: includes/ECommerce.php:336
+#: includes/ECommerce.php:316
+#: includes/ECommerce.php:345
 msgid "NFD eCommerce Options"
 msgstr "Options de commerce électronique NFD"
 
-#: includes/ECommerce.php:477
-#: includes/ECommerce.php:505
+#: includes/ECommerce.php:486
+#: includes/ECommerce.php:514
 msgid "Promotions"
 msgstr "Promotions"
 
-#: includes/ECommerce.php:493
-#: includes/ECommerce.php:526
+#: includes/ECommerce.php:502
+#: includes/ECommerce.php:535
 msgid "Create a Promotion"
 msgstr "Créer une promotion"
 
-#: includes/ECommerce.php:523
+#: includes/ECommerce.php:532
 msgid "Boost Your Online Store Sales"
 msgstr "Boostez les ventes de votre boutique en ligne"
 
-#: includes/ECommerce.php:524
+#: includes/ECommerce.php:533
 msgid "Maximize your sales by creating effective"
 msgstr "Maximisez vos ventes en créant efficacement"
 
-#: includes/ECommerce.php:525
+#: includes/ECommerce.php:534
 msgid "promotions and campaigns like:"
 msgstr "promotions et campagnes comme:"
 
-#: includes/ECommerce.php:527
+#: includes/ECommerce.php:536
 msgid "Free"
 msgstr "Gratuit"
 
-#: includes/ECommerce.php:528
+#: includes/ECommerce.php:537
 msgid "Shipping"
 msgstr "Expédition"
 
-#: includes/ECommerce.php:529
+#: includes/ECommerce.php:538
 msgid "Buy One"
 msgstr "Achetez un"
 
-#: includes/ECommerce.php:530
+#: includes/ECommerce.php:539
 msgid "Get One"
 msgstr "En obtenir un"
 
-#: includes/ECommerce.php:531
+#: includes/ECommerce.php:540
 msgid "Free Gift"
 msgstr "Cadeau Gratuit"
 
-#: includes/ECommerce.php:532
+#: includes/ECommerce.php:541
 msgid "in Cart"
 msgstr "dans le panier"
 
-#: includes/ECommerce.php:533
+#: includes/ECommerce.php:542
 msgid "Frequently"
 msgstr "Fréquemment"
 
-#: includes/ECommerce.php:534
+#: includes/ECommerce.php:543
 msgid "Bought Together"
 msgstr "Acheté ensemble"
 
-#: includes/ECommerce.php:694
+#: includes/ECommerce.php:706
 msgid "Status"
 msgstr "Statut"
 
-#: includes/ECommerce.php:718
+#: includes/ECommerce.php:730
 msgid "Published - Public"
 msgstr "Publié - Public"
 
-#: includes/ECommerce.php:718
+#: includes/ECommerce.php:730
 msgid "Published - Password Protected"
 msgstr "Publié - Mot de passe protégé"
 
-#: includes/ECommerce.php:721
+#: includes/ECommerce.php:733
 msgid "Published - Private"
 msgstr "Publié - Privé"
 
-#: includes/ECommerce.php:731
+#: includes/ECommerce.php:743
 msgid "Last Modified"
 msgstr "Dernière modification"
 
@@ -1407,11 +1407,11 @@ msgstr "Les détails de paiement ont été enregistrés avec succès"
 msgid "WooCommerce has been installed successfully"
 msgstr "WooCommerce a été installé avec succès"
 
-#: includes/ECommerce.php:132
+#: includes/ECommerce.php:133
 msgid "Reference to page category"
 msgstr "Référence à la catégorie de la page"
 
-#: includes/ECommerce.php:476
+#: includes/ECommerce.php:485
 msgid "Promotion product Page"
 msgstr "Page de produit en promotion"
 
@@ -1562,3 +1562,23 @@ msgstr "Mettre en place un programme de fidélité"
 #: build/index.js:1
 msgid "Create A Sales Campaign"
 msgstr "Créer une campagne de vente"
+
+#: build/index.js:1
+msgid "Design a custom site with AI"
+msgstr ""
+
+#: build/index.js:1
+msgid "Design a custom store with AI"
+msgstr ""
+
+#: build/index.js:1
+msgid "Use our AI Website Builder to begin your site a lot closer to the finish line!"
+msgstr ""
+
+#: build/index.js:1
+msgid "Use our AI Website Builder to begin your store a lot closer to the finish line!"
+msgstr ""
+
+#: build/index.js:1
+msgid "Generate a Theme"
+msgstr ""

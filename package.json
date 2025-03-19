@@ -2,7 +2,7 @@
   "name": "@newfold/wp-module-ecommerce",
   "description": "Brand Agnostic eCommerce Experience",
   "license": "GPL-2.0-or-later",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "main": "build/index.js",
   "files": [
     "build/",
@@ -13,6 +13,7 @@
   "scripts": {
     "prepublishOnly": "npm run build",
     "set-version-bump": "node ./set-version-bump.js && npm i && rm -rf ./build && npm run build && composer run i18n",
+    "set-version-minor": "node ./set-version-bump.js minor && npm i && rm -rf ./build && npm run build && composer run i18n",
     "build": "wp-scripts build ./src/index.js --config ./scripts/webpack.config.js",
     "lint": "wp-scripts lint-js ./src/index.js",
     "start": "wp-scripts start ./src/index.js --config ./scripts/webpack.config.js",
