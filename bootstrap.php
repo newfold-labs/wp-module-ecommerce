@@ -87,15 +87,15 @@ if ( function_exists( 'add_filter' ) ) {
 			$bn_code = isset( $parsed_args['headers']['PayPal-Partner-Attribution-Id'] ) ? $parsed_args['headers']['PayPal-Partner-Attribution-Id'] : null;
 
 			// Log the existing Partner Attribution ID if available
-			error_log( "Existing PayPal-Partner-Attribution-Id: " . ( $bn_code ? $bn_code : 'None' ) );
+			error_log( 'Existing PayPal-Partner-Attribution-Id: ' . ( $bn_code ? $bn_code : 'None' ) );
 
 			// Ensure we only set when blank, or when using one of our stale codes
 			if ( is_null( $bn_code ) || false !== stripos( $bn_code, 'yith' ) || false !== stripos( $bn_code, 'newfold' ) ) {
 				// The correct code is case-sensitive. YITH brand is uppercase, but the code is not.
 				$parsed_args['headers']['PayPal-Partner-Attribution-Id'] = 'Yith_PCP';
-				error_log( "Updated PayPal-Partner-Attribution-Id: Yith_PCP" );
+				error_log( 'Updated PayPal-Partner-Attribution-Id: Yith_PCP' );
 			} else {
-				error_log( "No change to PayPal-Partner-Attribution-Id." );
+				error_log( 'No change to PayPal-Partner-Attribution-Id.' );
 			}
 
 			return $parsed_args;
