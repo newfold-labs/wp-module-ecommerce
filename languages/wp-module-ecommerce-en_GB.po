@@ -9,6 +9,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2024-11-18T11:38:47+00:00\n"
 "PO-Revision-Date: 2025-03-19 20:42\n"
+"Language: en_GB\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: wp-module-ecommerce\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -17,7 +18,6 @@ msgstr ""
 "X-Crowdin-Language: en-GB\n"
 "X-Crowdin-File: wp-module-ecommerce.pot\n"
 "X-Crowdin-File-ID: 16\n"
-"Language: en_GB\n"
 
 #: bootstrap.php:51
 msgid "eCommerce"
@@ -532,9 +532,11 @@ msgid "Exclusive Tools Included in Your Plan"
 msgstr "Exclusive Tools Included in Your Plan"
 
 #: build/index.js:1
-msgid "Unlock the full power of your plan with access to a range of exclusive WooCommerce tools powered by \n"
+msgid ""
+"Unlock the full power of your plan with access to a range of exclusive WooCommerce tools powered by \n"
 "YITH. Enhance your store and keep your customers coming back for more!"
-msgstr "Unlock the full power of your plan with access to a range of exclusive WooCommerce tools powered by \n"
+msgstr ""
+"Unlock the full power of your plan with access to a range of exclusive WooCommerce tools powered by \n"
 "YITH. Enhance your store and keep your customers coming back for more!"
 
 #: build/index.js:1
@@ -566,9 +568,11 @@ msgid "Recent Activity"
 msgstr "Recent Activity"
 
 #: build/index.js:1
-msgid "Once you launch your store, you'll see a snapshot of recent purchases and other \n"
+msgid ""
+"Once you launch your store, you'll see a snapshot of recent purchases and other \n"
 "customer activity here."
-msgstr "Once you launch your store, you'll see a snapshot of recent purchases and other \n"
+msgstr ""
+"Once you launch your store, you'll see a snapshot of recent purchases and other \n"
 "customer activity here."
 
 #: build/index.js:1
@@ -580,9 +584,11 @@ msgid "Add a store to your site for FREE!"
 msgstr "Add a store to your site for FREE!"
 
 #: build/index.js:1
-msgid "Adding a store to your website is quick and easy! \n"
+msgid ""
+"Adding a store to your website is quick and easy! \n"
 "Just install the free WooCommerce plugin and get ready to start making money!"
-msgstr "Adding a store to your website is quick and easy! \n"
+msgstr ""
+"Adding a store to your website is quick and easy! \n"
 "Just install the free WooCommerce plugin and get ready to start making money!"
 
 #: build/index.js:1
@@ -642,15 +648,19 @@ msgid "Ready to go live?"
 msgstr "Ready to go live?"
 
 #: build/index.js:1
-msgid "Preview your store before setting it live to make sure everything \n"
+msgid ""
+"Preview your store before setting it live to make sure everything \n"
 "is how you want it. Once you're ready, set your store live!"
-msgstr "Preview your store before setting it live to make sure everything \n"
+msgstr ""
+"Preview your store before setting it live to make sure everything \n"
 "is how you want it. Once you're ready, set your store live!"
 
 #: build/index.js:1
-msgid "Preview your Site before setting it live to make sure everything \n"
+msgid ""
+"Preview your Site before setting it live to make sure everything \n"
 "is how you want it. Once you're ready, set your site live!"
-msgstr "Preview your Site before setting it live to make sure everything \n"
+msgstr ""
+"Preview your Site before setting it live to make sure everything \n"
 "is how you want it. Once you're ready, set your site live!"
 
 #: build/index.js:1
@@ -1306,9 +1316,11 @@ msgid "Want help adding products?"
 msgstr "Want help adding products?"
 
 #: build/index.js:1
-msgid "Read this helpful knowledge base article to understand how to\n"
+msgid ""
+"Read this helpful knowledge base article to understand how to\n"
 "add different products to your store"
-msgstr "Read this helpful knowledge base article to understand how to\n"
+msgstr ""
+"Read this helpful knowledge base article to understand how to\n"
 "add different products to your store"
 
 #: build/index.js:1
@@ -1570,4 +1582,3 @@ msgstr "Successfully saved the Payment Details"
 #: build/index.js:1
 msgid "WooCommerce has been installed successfully"
 msgstr "WooCommerce has been installed successfully"
-

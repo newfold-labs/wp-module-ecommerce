@@ -9,6 +9,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2024-11-18T11:38:47+00:00\n"
 "PO-Revision-Date: 2025-03-19 20:42\n"
+"Language: nl_NL\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: wp-module-ecommerce\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -17,7 +18,6 @@ msgstr ""
 "X-Crowdin-Language: nl\n"
 "X-Crowdin-File: wp-module-ecommerce.pot\n"
 "X-Crowdin-File-ID: 16\n"
-"Language: nl_NL\n"
 
 #: bootstrap.php:51
 msgid "eCommerce"
@@ -532,9 +532,11 @@ msgid "Exclusive Tools Included in Your Plan"
 msgstr "Exclusieve gereedschappen inbegrepen in uw abonnement"
 
 #: build/index.js:1
-msgid "Unlock the full power of your plan with access to a range of exclusive WooCommerce tools powered by \n"
+msgid ""
+"Unlock the full power of your plan with access to a range of exclusive WooCommerce tools powered by \n"
 "YITH. Enhance your store and keep your customers coming back for more!"
-msgstr "Ontgrendel de volledige kracht van uw abonnement met toegang tot een scala aan exclusieve WooCommerce gereedschappen aangedreven door \n"
+msgstr ""
+"Ontgrendel de volledige kracht van uw abonnement met toegang tot een scala aan exclusieve WooCommerce gereedschappen aangedreven door \n"
 "YITH. Verbeter uw winkel en houd uw klanten terug voor meer!"
 
 #: build/index.js:1
@@ -566,9 +568,11 @@ msgid "Recent Activity"
 msgstr "Recente Activiteiten"
 
 #: build/index.js:1
-msgid "Once you launch your store, you'll see a snapshot of recent purchases and other \n"
+msgid ""
+"Once you launch your store, you'll see a snapshot of recent purchases and other \n"
 "customer activity here."
-msgstr "Zodra u uw winkel hebt geopend, ziet u hier een momentopname van recente aankopen en andere \n"
+msgstr ""
+"Zodra u uw winkel hebt geopend, ziet u hier een momentopname van recente aankopen en andere \n"
 "klantactiviteiten."
 
 #: build/index.js:1
@@ -580,9 +584,11 @@ msgid "Add a store to your site for FREE!"
 msgstr "Voeg een winkel toe aan uw site GRATIS!"
 
 #: build/index.js:1
-msgid "Adding a store to your website is quick and easy! \n"
+msgid ""
+"Adding a store to your website is quick and easy! \n"
 "Just install the free WooCommerce plugin and get ready to start making money!"
-msgstr "Een winkel toevoegen aan je website is snel en eenvoudig! \n"
+msgstr ""
+"Een winkel toevoegen aan je website is snel en eenvoudig! \n"
 "Installeer gewoon de gratis WooCommerce-plugin en begin met geld verdienen!"
 
 #: build/index.js:1
@@ -642,15 +648,19 @@ msgid "Ready to go live?"
 msgstr "Klaar om te gaan leven?"
 
 #: build/index.js:1
-msgid "Preview your store before setting it live to make sure everything \n"
+msgid ""
+"Preview your store before setting it live to make sure everything \n"
 "is how you want it. Once you're ready, set your store live!"
-msgstr "Bekijk uw winkel voordat u live instelt om ervoor te zorgen dat alles \n"
+msgstr ""
+"Bekijk uw winkel voordat u live instelt om ervoor te zorgen dat alles \n"
 "is zoals u het wilt. Zodra u klaar bent, zet uw winkel live!"
 
 #: build/index.js:1
-msgid "Preview your Site before setting it live to make sure everything \n"
+msgid ""
+"Preview your Site before setting it live to make sure everything \n"
 "is how you want it. Once you're ready, set your site live!"
-msgstr "Bekijk eerst je site voordat je deze live instelt om er zeker van te zijn dat alles \n"
+msgstr ""
+"Bekijk eerst je site voordat je deze live instelt om er zeker van te zijn dat alles \n"
 "is zoals je het wilt. Zodra je klaar bent, stel je site live in!"
 
 #: build/index.js:1
@@ -1306,9 +1316,11 @@ msgid "Want help adding products?"
 msgstr "Wilt u hulp bij het toevoegen van producten?"
 
 #: build/index.js:1
-msgid "Read this helpful knowledge base article to understand how to\n"
+msgid ""
+"Read this helpful knowledge base article to understand how to\n"
 "add different products to your store"
-msgstr "Lees dit handige kennisbankartikel om te begrijpen hoe\n"
+msgstr ""
+"Lees dit handige kennisbankartikel om te begrijpen hoe\n"
 "verschillende producten aan uw winkel toevoegt"
 
 #: build/index.js:1
@@ -1570,4 +1582,3 @@ msgstr "De betalingsgegevens zijn succesvol opgeslagen"
 #: build/index.js:1
 msgid "WooCommerce has been installed successfully"
 msgstr "WooCommerce is succesvol geïnstalleerd"
-

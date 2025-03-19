@@ -1,5 +1,5 @@
 {
-    "translation-revision-date": "2025-02-13 18:45+0530",
+    "translation-revision-date": "2025-03-19 20:42",
     "generator": "WP-CLI\/2.11.0",
     "source": "build\/index.js",
     "domain": "messages",
@@ -21,6 +21,120 @@
             ],
             "Installing...": [
                 "Installing..."
+            ],
+            "Free Shipping": [
+                "Free shipping"
+            ],
+            "Attract and retain customers by offering free shipping based on cart amount, location or store category.": [
+                "Attract and retain customers by offering free shipping based on cart amount, location, or store category."
+            ],
+            "Buy 1 Get 1": [
+                "Buy 1 Get 1 Free"
+            ],
+            "Attract customers with a compelling deal where they can buy one product and get another product for free.": [
+                "Attract customers with a compelling deal where they can buy one product and get another for free."
+            ],
+            "Gift Product in Cart": [
+                "Gift product in cart"
+            ],
+            "Reward customers with a free gift in their cart based on total cart value, or specific products or categories.": [
+                "Reward customers with a free gift in their cart based on total cart value, specific products, or categories."
+            ],
+            "Category Discount": [
+                "Category discount"
+            ],
+            "Give your customers a discount on specific categories of products and boost sales for those categories.": [
+                "Give your customers a discount on specific product categories and boost sales for those categories."
+            ],
+            "Upsell in Thank You Page": [
+                "Upsell on the Thank You page"
+            ],
+            "Maximize sales by presenting relevant upsell options after customers have completed their purchase.": [
+                "Maximise sales by presenting relevant upsell options after customers have completed their purchase."
+            ],
+            "Last Minute Deal": [
+                "Last-minute deal"
+            ],
+            "Create urgency with a special time-limited deal for customers on the cart and checkout pages.": [
+                "Create urgency with a special time-limited deal for customers on the cart and checkout pages."
+            ],
+            "Webpage Creation": [
+                "Webpage creation"
+            ],
+            "Build webpages fast with tailored block patterns and page templates included in your hosting package.": [
+                "Build webpages fast with tailored block patterns and page templates included in your hosting package."
+            ],
+            "Add a Page to Your Site": [
+                "Add a page to your site"
+            ],
+            "Search Engine Optimization": [
+                "Search engine optimisation"
+            ],
+            "Start increasing your search result rankings today.": [
+                "Start increasing your search rankings today."
+            ],
+            "Improve Your Search Ranking": [
+                "Improve your search ranking"
+            ],
+            "Offer Content Courses": [
+                "Offer content courses"
+            ],
+            "Create beautiful and engaging online courses, lessons, and quizzes.": [
+                "Create beautiful and engaging online courses, lessons, and quizzes."
+            ],
+            "Create a Course": [
+                "Create a course"
+            ],
+            "Add an Affiliate Program": [
+                "Add an affiliate programme"
+            ],
+            "Grant your affiliates earnings each time someone purchases from their link.": [
+                "Grant your affiliates earnings each time someone makes a purchase through their link."
+            ],
+            "Create an Affiliate Program": [
+                "Create an affiliate programme"
+            ],
+            "Setup Bookings": [
+                "Set up bookings"
+            ],
+            "Manage the renting or booking of services and items that you offer your customers.": [
+                "Manage the renting or booking of services and items that you offer to your customers."
+            ],
+            "Build webpages fast with tailored block patterns and page templates.": [
+                "Build webpages fast with tailored block patterns and page templates."
+            ],
+            "Setup a Loyalty Program": [
+                "Set up a loyalty programme"
+            ],
+            "Reward customer loyalty with an effective points program.": [
+                "Reward customer loyalty with an effective points programme."
+            ],
+            "Configure Points & Rewards": [
+                "Configure points & rewards"
+            ],
+            "Enable Product Reviews": [
+                "Enable product reviews"
+            ],
+            "Get positive product reviews and use social proof to drive more sales.": [
+                "Get positive product reviews and use social proof to drive more sales."
+            ],
+            "Setup Wishlists": [
+                "Setup Wishlists"
+            ],
+            "Let customers add products to lists and share them with family and friends.": [
+                "Let customers add products to lists and share them with family and friends."
+            ],
+            "Setup Wishilsts": [
+                "Set up wishlists"
+            ],
+            "Create A Sales Campaign": [
+                "Create a sales campaign"
+            ],
+            "Create custom upsell, cross-sell and other promotional campaigns to generate more sales.": [
+                "Create custom upsell, cross-sell and other promotional campaigns to generate more sales."
+            ],
+            "Create a Campaign": [
+                "Create a Campaign"
             ],
             "Plugin failed to install": [
                 "Plugin failed to install"
@@ -115,23 +229,11 @@
             "Create a Gift Card": [
                 "Create a Gift Card"
             ],
-            "Let customers add products to lists and share them with family and friends.": [
-                "Let customers add products to lists and share them with family and friends."
-            ],
             "View Wishlists": [
                 "View Wishlists"
             ],
-            "Setup Wishlists": [
-                "Setup Wishlists"
-            ],
             "WonderCart": [
                 "WonderCart"
-            ],
-            "Create custom upsell, cross-sell and other promotional campaigns to generate more sales.": [
-                "Create custom upsell, cross-sell and other promotional campaigns to generate more sales."
-            ],
-            "Create a Campaign": [
-                "Create a Campaign"
             ],
             "Booking and Appointments": [
                 "Booking and Appointments"
@@ -204,6 +306,12 @@
             ],
             "Activating the YITH ": [
                 "Activating the YITH "
+            ],
+            "Installed successfully": [
+                "Installed successfully"
+            ],
+            "Failed to install": [
+                "Failed to install"
             ],
             "Elevate Your Store with Exclusive WooCommerce Tools Included in Your Plan!": [
                 "Elevate Your Store with Exclusive WooCommerce Tools Included in Your Plan!"
@@ -652,6 +760,9 @@
             "Good job!": [
                 "Good job!"
             ],
+            "One last thing to do\u2026": [
+                "One last thing to do\u2026"
+            ],
             "Your site is now ready for public visitors!": [
                 "Your site is now ready for public visitors!"
             ],
@@ -684,6 +795,21 @@
             ],
             "View completed tasks": [
                 "View completed tasks"
+            ],
+            "Design a custom site with AI": [
+                "Design a custom site with AI"
+            ],
+            "Design a custom store with AI": [
+                "Design a custom store with AI"
+            ],
+            "Use our AI Website Builder to begin your site a lot closer to the finish line!": [
+                "Use our AI Website Builder to begin your site a lot closer to the finish line!"
+            ],
+            "Use our AI Website Builder to begin your store a lot closer to the finish line!": [
+                "Use our AI Website Builder to begin your store a lot closer to the finish line!"
+            ],
+            "Generate a Theme": [
+                "Generate a Theme"
             ],
             "Congrats on your new store!": [
                 "Congrats on your new store!"
@@ -963,132 +1089,6 @@
             ],
             "WooCommerce has been installed successfully": [
                 "WooCommerce has been installed successfully"
-            ],
-            "Free Shipping": [
-                "Free shipping"
-            ],
-            "Attract and retain customers by offering free shipping based on cart amount, location or store category.": [
-                "Attract and retain customers by offering free shipping based on cart amount, location, or store category."
-            ],
-            "Buy 1 Get 1": [
-                "Buy 1 Get 1 Free"
-            ],
-            "Attract customers with a compelling deal where they can buy one product and get another product for free.": [
-                "Attract customers with a compelling deal where they can buy one product and get another for free."
-            ],
-            "Gift Product in Cart": [
-                "Gift product in cart"
-            ],
-            "Reward customers with a free gift in their cart based on total cart value, or specific products or categories.": [
-                "Reward customers with a free gift in their cart based on total cart value, specific products, or categories."
-            ],
-            "Category Discount": [
-                "Category discount"
-            ],
-            "Give your customers a discount on specific categories of products and boost sales for those categories.": [
-                "Give your customers a discount on specific product categories and boost sales for those categories."
-            ],
-            "Upsell in Thank You Page": [
-                "Upsell on the Thank You page"
-            ],
-            "Maximize sales by presenting relevant upsell options after customers have completed their purchase.": [
-                "Maximise sales by presenting relevant upsell options after customers have completed their purchase."
-            ],
-            "Last Minute Deal": [
-                "Last-minute deal"
-            ],
-            "Create urgency with a special time-limited deal for customers on the cart and checkout pages.": [
-                "Create urgency with a special time-limited deal for customers on the cart and checkout pages."
-            ],
-            "Build webpages fast with tailored block patterns and page templates included in your hosting package.": [
-                "Build webpages fast with tailored block patterns and page templates included in your hosting package."
-            ],
-            "Add a Page to Your Site": [
-                "Add a page to your site"
-            ],
-            "Start increasing your search result rankings today.": [
-                "Start increasing your search rankings today."
-            ],
-            "Improve Your Search Ranking": [
-                "Improve your search ranking"
-            ],
-            "Create beautiful and engaging online courses, lessons, and quizzes.": [
-                "Create beautiful and engaging online courses, lessons, and quizzes."
-            ],
-            "Create a Course": [
-                "Create a course"
-            ],
-            "Grant your affiliates earnings each time someone purchases from their link.": [
-                "Grant your affiliates earnings each time someone makes a purchase through their link."
-            ],
-            "Create an Affiliate Program": [
-                "Create an affiliate programme"
-            ],
-            "Manage the renting or booking of services and items that you offer your customers.": [
-                "Manage the renting or booking of services and items that you offer to your customers."
-            ],
-            "Setup Bookings": [
-                "Set up bookings"
-            ],
-            "Build webpages fast with tailored block patterns and page templates.": [
-                "Build webpages fast with tailored block patterns and page templates."
-            ],
-            "Reward customer loyalty with an effective points program.": [
-                "Reward customer loyalty with an effective points programme."
-            ],
-            "Configure Points & Rewards": [
-                "Configure points & rewards"
-            ],
-            "Get positive product reviews and use social proof to drive more sales.": [
-                "Get positive product reviews and use social proof to drive more sales."
-            ],
-            "Enable Product Reviews": [
-                "Enable product reviews"
-            ],
-            "Setup Wishilsts": [
-                "Set up wishlists"
-            ],
-            "Installed successfully": [
-                "Installed successfully"
-            ],
-            "Failed to install": [
-                "Failed to install"
-            ],
-            "One last thing to do\u2026": [
-                "One last thing to do\u2026"
-            ],
-            "Webpage Creation": [
-                "Webpage creation"
-            ],
-            "Search Engine Optimization": [
-                "Search engine optimisation"
-            ],
-            "Offer Content Courses": [
-                "Offer content courses"
-            ],
-            "Add an Affiliate Program": [
-                "Add an affiliate programme"
-            ],
-            "Setup a Loyalty Program": [
-                "Set up a loyalty programme"
-            ],
-            "Create A Sales Campaign": [
-                "Create a sales campaign"
-            ],
-            "Design a custom site with AI": [
-                ""
-            ],
-            "Design a custom store with AI": [
-                ""
-            ],
-            "Use our AI Website Builder to begin your site a lot closer to the finish line!": [
-                ""
-            ],
-            "Use our AI Website Builder to begin your store a lot closer to the finish line!": [
-                ""
-            ],
-            "Generate a Theme": [
-                ""
             ]
         }
     }
