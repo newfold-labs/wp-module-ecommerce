@@ -10,6 +10,7 @@ import { OnboardingList } from "./OnboardingList";
 import { Section } from "./Section";
 import { SiteStatus } from "./SiteStatus";
 import { WordPressSdk } from "../sdk/wordpress";
+import { RestartOnboarding } from "./RestartOnboarding";
 
 const Text = {
   Pending: {
@@ -202,6 +203,7 @@ export function OnboardingScreen({
             notify={notify}
             toggleComingSoon={toggleComingSoon}
           />
+          { NewfoldRuntime.ecommerce?.can_restart_onboarding && <RestartOnboarding/>}
         </div>
       </Section.Content>
     </Section.Container>
