@@ -113,6 +113,7 @@ class ECommerce {
 		add_action( 'admin_enqueue_scripts', array( $this, 'set_wpnav_collapse_setting' ) );
 		add_action( 'admin_footer', array( $this, 'remove_woocommerce_ssl_notice' ), 20 );
 		\add_filter( 'load_script_translation_file', array( $this, 'load_script_translation_file' ), 10, 3 );
+		add_filter( 'woocommerce_admin_get_feature_config', array( $this, 'disable_modern_payments_settings' ), 999 );
 
 		add_action( 'init', array( $this, 'admin_init_conditional_on_capabilities' ) );
 
@@ -785,5 +786,19 @@ class ECommerce {
 		echo '<style>
 			.wp-pointer { display: none !important; }
 		</style>';
+	}
+
+	/**
+ 	* Force WooCommerce to use the old Payments settings page.
+ 	*
+ 	* WooCommerce 9.7+ introduces a new Payments settings page. 
+ 	* This function disables it and keeps the classic version.
+	*
+	* @param array $features Existing WooCommerce feature configurations.
+	* @return array Modified feature configuration with modern Payments settings disabled.
+ 	*/
+	public function disable_modern_payments_settings( $features ) {
+		$features['reactify-classic-payments-settings'] = false;
+		return $features;
 	}
 }
