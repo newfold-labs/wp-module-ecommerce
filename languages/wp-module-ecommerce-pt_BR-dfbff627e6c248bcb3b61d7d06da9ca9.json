@@ -1,5 +1,5 @@
 {
-    "translation-revision-date": "2023-10-30 12:18+0530",
+    "translation-revision-date": "2025-03-19 20:42",
     "generator": "WP-CLI\/2.11.0",
     "source": "build\/index.js",
     "domain": "messages",
@@ -21,6 +21,120 @@
             ],
             "Installing...": [
                 "Instalando\u2026"
+            ],
+            "Free Shipping": [
+                "Entrega Gr\u00e1tis"
+            ],
+            "Attract and retain customers by offering free shipping based on cart amount, location or store category.": [
+                "Atraia e retenha os clientes, oferecendo frete gr\u00e1tis com base no valor do carrinho, localiza\u00e7\u00e3o ou categoria de loja."
+            ],
+            "Buy 1 Get 1": [
+                "Pague 1 e leve 1"
+            ],
+            "Attract customers with a compelling deal where they can buy one product and get another product for free.": [
+                "Atraia os clientes com um neg\u00f3cio atraente onde eles podem comprar um produto e obter outro produto gratuitamente."
+            ],
+            "Gift Product in Cart": [
+                "Produto para Presentes no Carrinho"
+            ],
+            "Reward customers with a free gift in their cart based on total cart value, or specific products or categories.": [
+                "Recompense clientes com um presente gratuito em seu carrinho de compras baseado no valor total do carrinho, ou produtos espec\u00edficos ou categorias."
+            ],
+            "Category Discount": [
+                "Desconto de categoria"
+            ],
+            "Give your customers a discount on specific categories of products and boost sales for those categories.": [
+                "D\u00ea aos seus clientes um desconto em categorias espec\u00edficas de produtos e aumente as vendas para essas categorias."
+            ],
+            "Upsell in Thank You Page": [
+                "Upsell na p\u00e1gina de agradecimento"
+            ],
+            "Maximize sales by presenting relevant upsell options after customers have completed their purchase.": [
+                "Maximizar as vendas apresentando op\u00e7\u00f5es relevantes de upsell depois que os clientes conclu\u00edrem sua compra."
+            ],
+            "Last Minute Deal": [
+                "Oferta do \u00faltimo minuto"
+            ],
+            "Create urgency with a special time-limited deal for customers on the cart and checkout pages.": [
+                "Crie urg\u00eancia com uma oferta por tempo limitado especial para os clientes no carrinho e nas p\u00e1ginas de checkout."
+            ],
+            "Webpage Creation": [
+                "Cria\u00e7\u00e3o de P\u00e1gina Web"
+            ],
+            "Build webpages fast with tailored block patterns and page templates included in your hosting package.": [
+                "Crie p\u00e1ginas da Web rapidamente com padr\u00f5es de blocos personalizados e modelos de p\u00e1ginas inclu\u00eddos no seu pacote de hospedagem."
+            ],
+            "Add a Page to Your Site": [
+                "Adicionar uma P\u00e1gina ao Seu Site"
+            ],
+            "Search Engine Optimization": [
+                "Otimiza\u00e7\u00e3o de busca (SEO)"
+            ],
+            "Start increasing your search result rankings today.": [
+                "Comece a aumentar o ranking dos resultados da pesquisa hoje."
+            ],
+            "Improve Your Search Ranking": [
+                "Melhore sua Classifica\u00e7\u00e3o de Pesquisa"
+            ],
+            "Offer Content Courses": [
+                "Oferecer cursos de conte\u00fado"
+            ],
+            "Create beautiful and engaging online courses, lessons, and quizzes.": [
+                "Crie cursos bonitos e envolventes on-line, aulas e question\u00e1rios."
+            ],
+            "Create a Course": [
+                "Criar um curso"
+            ],
+            "Add an Affiliate Program": [
+                "Adicionar um programa de afiliados"
+            ],
+            "Grant your affiliates earnings each time someone purchases from their link.": [
+                "Conceda ganhos aos seus afiliados toda vez que algu\u00e9m comprar no link."
+            ],
+            "Create an Affiliate Program": [
+                "Criar um programa de afiliados"
+            ],
+            "Setup Bookings": [
+                "Configurar reservas"
+            ],
+            "Manage the renting or booking of services and items that you offer your customers.": [
+                "Gerencie o aluguel ou reserva de servi\u00e7os e itens que voc\u00ea oferece aos seus clientes."
+            ],
+            "Build webpages fast with tailored block patterns and page templates.": [
+                "Crie p\u00e1ginas web rapidamente com blocos personalizados e modelos de p\u00e1gina."
+            ],
+            "Setup a Loyalty Program": [
+                "Configurar um programa de fidelidade"
+            ],
+            "Reward customer loyalty with an effective points program.": [
+                "Recompense a fidelidade dos clientes com um programa de pontos efetivo."
+            ],
+            "Configure Points & Rewards": [
+                "Configurar Pontos & Recompensas"
+            ],
+            "Enable Product Reviews": [
+                "Habilitar Avalia\u00e7\u00f5es de Produto"
+            ],
+            "Get positive product reviews and use social proof to drive more sales.": [
+                "Receba avalia\u00e7\u00f5es positivas de produtos e use a prova social para gerar mais vendas."
+            ],
+            "Setup Wishlists": [
+                "Configurar listas de desejos"
+            ],
+            "Let customers add products to lists and share them with family and friends.": [
+                "Permita que os clientes adicionem produtos \u00e0s listas e os compartilhem com familiares e amigos."
+            ],
+            "Setup Wishilsts": [
+                "Instala\u00e7\u00e3o de Desejos"
+            ],
+            "Create A Sales Campaign": [
+                "Criar uma Campanha de Vendas"
+            ],
+            "Create custom upsell, cross-sell and other promotional campaigns to generate more sales.": [
+                "Crie campanhas personalizadas de up-sell, cross-sell e outras campanhas promocionais para gerar mais vendas."
+            ],
+            "Create a Campaign": [
+                "Criar Campanha"
             ],
             "Plugin failed to install": [
                 "Erro na instala\u00e7\u00e3o do plugin"
@@ -115,23 +229,11 @@
             "Create a Gift Card": [
                 "Crie um cart\u00e3o-presente"
             ],
-            "Let customers add products to lists and share them with family and friends.": [
-                "Permita que os clientes adicionem produtos \u00e0s listas e os compartilhem com familiares e amigos."
-            ],
             "View Wishlists": [
                 "Ver listas de desejos"
             ],
-            "Setup Wishlists": [
-                "Configurar listas de desejos"
-            ],
             "WonderCart": [
                 "WonderCart"
-            ],
-            "Create custom upsell, cross-sell and other promotional campaigns to generate more sales.": [
-                "Crie campanhas personalizadas de up-sell, cross-sell e outras campanhas promocionais para gerar mais vendas."
-            ],
-            "Create a Campaign": [
-                "Criar Campanha"
             ],
             "Booking and Appointments": [
                 "Agendamentos"
@@ -193,6 +295,9 @@
             "Setup Sales Channels": [
                 "Configurar Canais de Venda"
             ],
+            "Hold on while we get things setup for you!": [
+                "Espere enquanto preparamos as coisas para voc\u00ea!"
+            ],
             "Activating ": [
                 "Ativando o plugin "
             ],
@@ -201,6 +306,12 @@
             ],
             "Activating the YITH ": [
                 "Ativando o plugin YITH "
+            ],
+            "Installed successfully": [
+                "Instalado com sucesso"
+            ],
+            "Failed to install": [
+                "Falha ao instalar"
             ],
             "Elevate Your Store with Exclusive WooCommerce Tools Included in Your Plan!": [
                 "Turbine sua loja com ferramentas WooCommerce exclusivas inclusas no seu plano!"
@@ -467,7 +578,7 @@
                 "Relat\u00f3rios intuitivos"
             ],
             "PayPal": [
-                "PayPal"
+                "Paypal"
             ],
             "Online payments built for success. We help you do business in 200+ markets and 100+ currencies\u2014even if your customers don't have PayPal.": [
                 "Pagamentos online criados para o sucesso. Ajudamos voc\u00ea a fazer neg\u00f3cios em 200+ mercados e 100+ moedas."
@@ -637,6 +748,9 @@
             "Add a new page to your site": [
                 "Adicione uma nova p\u00e1gina ao seu site"
             ],
+            "Upload media to your site": [
+                "Carregar m\u00eddia para seu site"
+            ],
             "Connect to your social media accounts": [
                 "Conecte suas redes sociais"
             ],
@@ -645,6 +759,9 @@
             ],
             "Good job!": [
                 "Bom trabalho!"
+            ],
+            "One last thing to do\u2026": [
+                "Uma \u00faltima coisa a fazer\u2026"
             ],
             "Your site is now ready for public visitors!": [
                 "Seu site agora est\u00e1 pronto para visitantes p\u00fablicos!"
@@ -678,6 +795,21 @@
             ],
             "View completed tasks": [
                 "Ver tarefas conclu\u00eddas"
+            ],
+            "Design a custom site with AI": [
+                "Crie um site personalizado com IA"
+            ],
+            "Design a custom store with AI": [
+                "Crie uma loja personalizada com IA"
+            ],
+            "Use our AI Website Builder to begin your site a lot closer to the finish line!": [
+                "Utilize nosso Construtor de Sites de IA para come\u00e7ar o seu site muito mais perto da linha de chegada!"
+            ],
+            "Use our AI Website Builder to begin your store a lot closer to the finish line!": [
+                "Utilize nosso Construtor de Sites de IA para come\u00e7ar a sua loja muito mais perto da linha de chegada!"
+            ],
+            "Generate a Theme": [
+                "Gerar um tema"
             ],
             "Congrats on your new store!": [
                 "Parab\u00e9ns por sua nova loja!"
@@ -780,84 +912,6 @@
             ],
             "Save Changes": [
                 "Salvar Altera\u00e7\u00f5es"
-            ],
-            "Accounting": [
-                "Contabilidade"
-            ],
-            "Seamlessly communicate your sales and": [
-                "Comunique perfeitamente suas vendas e"
-            ],
-            "purchase order information directly to your": [
-                "informa\u00e7\u00f5es do pedido de compra diretamente para seu"
-            ],
-            "accounting software.": [
-                "software de contabilidade."
-            ],
-            "Custom Inventory Templates": [
-                "Modelos de invent\u00e1rio personalizados"
-            ],
-            "Creating a custom file template allows you to": [
-                "Criar um modelo de arquivo personalizado permite que voc\u00ea"
-            ],
-            "upload and\/or export files with product data": [
-                "carregue e\/ou exporte arquivos com dados do produto"
-            ],
-            "for thousands of products at once.": [
-                "para milhares de produtos de uma s\u00f3 vez."
-            ],
-            "Warehouse Feeds": [
-                "Feeds do dep\u00f3sito"
-            ],
-            "Setup feeds to export your sales orders via": [
-                "Configurar feeds para exportar seus pedidos de vendas via"
-            ],
-            "email or FTP sites to third parties such as": [
-                "e-mail ou sites FTP para terceiros, como"
-            ],
-            "Dropshippers, Suppliers, or 3PL systems.": [
-                "Dropshippers, fornecedores ou sistemas 3PL."
-            ],
-            "Purchase Orders": [
-                "Pedidos de compra"
-            ],
-            "Quickly create new orders and have": [
-                "Criar novos pedidos rapidamente e ter"
-            ],
-            "inventory quantities adjusted and synced out": [
-                "quantidades de estoque ajustadas e sincronizadas"
-            ],
-            "to listings as units are received.": [
-                "para listagens conforme as unidades s\u00e3o recebidas."
-            ],
-            "Payments": [
-                "Pagamentos"
-            ],
-            "yes": [
-                "sim"
-            ],
-            "Credit Card\/Debit Card\/NetBanking": [
-                "Cart\u00e3o de Cr\u00e9dito\/Cart\u00e3o de D\u00e9bito\/D\u00e9bito em Conta"
-            ],
-            "Pay securely by Credit or Debit card or Internet Banking through Razorpay.": [
-                "Pague com seguran\u00e7a em Cart\u00f5es de Cr\u00e9dito, D\u00e9bito ou D\u00e9bito em Conta via Razorpay."
-            ],
-            "capture": [
-                "capturar"
-            ],
-            "Thank you for shopping with us. Your account has been charged and your transaction is successful. We will be processing your order soon.": [
-                "Obrigado por comprar conosco. Seu pagamento foi feito com sucesso. Enviaremos sua compra em breve."
-            ],
-            "Successfully saved the Payment Details": [
-                "Dados de Pagamento Salvos com Sucesso"
-            ],
-            "WooCommerce has been installed successfully": [
-                "WooCommerce foi instalado com sucesso"
-            ],
-            "Hold on while we get things setup for you!": [
-                "Espere enquanto preparamos as coisas para voc\u00ea!"
-            ],
-            "Upload media to your site": [
-                "Carregar m\u00eddia para seu site"
             ],
             "Sales Channels": [
                 "Canais de vendas"
@@ -964,116 +1018,77 @@
             "new listings.": [
                 "novas listagens."
             ],
-            "Free Shipping": [
-                ""
+            "Accounting": [
+                "Contabilidade"
             ],
-            "Attract and retain customers by offering free shipping based on cart amount, location or store category.": [
-                ""
+            "Seamlessly communicate your sales and": [
+                "Comunique perfeitamente suas vendas e"
             ],
-            "Buy 1 Get 1": [
-                ""
+            "purchase order information directly to your": [
+                "informa\u00e7\u00f5es do pedido de compra diretamente para seu"
             ],
-            "Attract customers with a compelling deal where they can buy one product and get another product for free.": [
-                ""
+            "accounting software.": [
+                "software de contabilidade."
             ],
-            "Gift Product in Cart": [
-                ""
+            "Custom Inventory Templates": [
+                "Modelos de invent\u00e1rio personalizados"
             ],
-            "Reward customers with a free gift in their cart based on total cart value, or specific products or categories.": [
-                ""
+            "Creating a custom file template allows you to": [
+                "Criar um modelo de arquivo personalizado permite que voc\u00ea"
             ],
-            "Category Discount": [
-                ""
+            "upload and\/or export files with product data": [
+                "carregue e\/ou exporte arquivos com dados do produto"
             ],
-            "Give your customers a discount on specific categories of products and boost sales for those categories.": [
-                ""
+            "for thousands of products at once.": [
+                "para milhares de produtos de uma s\u00f3 vez."
             ],
-            "Upsell in Thank You Page": [
-                ""
+            "Warehouse Feeds": [
+                "Feeds do dep\u00f3sito"
             ],
-            "Maximize sales by presenting relevant upsell options after customers have completed their purchase.": [
-                ""
+            "Setup feeds to export your sales orders via": [
+                "Configurar feeds para exportar seus pedidos de vendas via"
             ],
-            "Last Minute Deal": [
-                ""
+            "email or FTP sites to third parties such as": [
+                "e-mail ou sites FTP para terceiros, como"
             ],
-            "Create urgency with a special time-limited deal for customers on the cart and checkout pages.": [
-                ""
+            "Dropshippers, Suppliers, or 3PL systems.": [
+                "Dropshippers, fornecedores ou sistemas 3PL."
             ],
-            "Build webpages fast with tailored block patterns and page templates included in your hosting package.": [
-                ""
+            "Purchase Orders": [
+                "Pedidos de compra"
             ],
-            "Add a Page to Your Site": [
-                ""
+            "Quickly create new orders and have": [
+                "Criar novos pedidos rapidamente e ter"
             ],
-            "Start increasing your search result rankings today.": [
-                ""
+            "inventory quantities adjusted and synced out": [
+                "quantidades de estoque ajustadas e sincronizadas"
             ],
-            "Improve Your Search Ranking": [
-                ""
+            "to listings as units are received.": [
+                "para listagens conforme as unidades s\u00e3o recebidas."
             ],
-            "Create beautiful and engaging online courses, lessons, and quizzes.": [
-                ""
+            "Payments": [
+                "Pagamentos"
             ],
-            "Create a Course": [
-                ""
+            "yes": [
+                "sim"
             ],
-            "Grant your affiliates earnings each time someone purchases from their link.": [
-                ""
+            "Credit Card\/Debit Card\/NetBanking": [
+                "Cart\u00e3o de Cr\u00e9dito\/Cart\u00e3o de D\u00e9bito\/D\u00e9bito em Conta"
             ],
-            "Create an Affiliate Program": [
-                ""
+            "Pay securely by Credit or Debit card or Internet Banking through Razorpay.": [
+                "Pague com seguran\u00e7a em Cart\u00f5es de Cr\u00e9dito, D\u00e9bito ou D\u00e9bito em Conta via Razorpay."
             ],
-            "Manage the renting or booking of services and items that you offer your customers.": [
-                ""
+            "capture": [
+                "capturar"
             ],
-            "Setup Bookings": [
-                ""
+            "Thank you for shopping with us. Your account has been charged and your transaction is successful. We will be processing your order soon.": [
+                "Obrigado por comprar conosco. Seu pagamento foi feito com sucesso. Enviaremos sua compra em breve."
             ],
-            "Build webpages fast with tailored block patterns and page templates.": [
-                ""
+            "Successfully saved the Payment Details": [
+                "Dados de Pagamento Salvos com Sucesso"
             ],
-            "Reward customer loyalty with an effective points program.": [
-                ""
-            ],
-            "Configure Points & Rewards": [
-                ""
-            ],
-            "Get positive product reviews and use social proof to drive more sales.": [
-                ""
-            ],
-            "Enable Product Reviews": [
-                ""
-            ],
-            "Setup Wishilsts": [
-                ""
-            ],
-            "Installed successfully": [
-                ""
-            ],
-            "Failed to install": [
-                ""
-            ],
-            "One last thing to do\u2026": [
-                "Uma \u00faltima coisa a fazer\u2026"
-            ],
-            "Webpage Creation": [
-                ""
-            ],
-            "Search Engine Optimization": [
-                ""
-            ],
-            "Offer Content Courses": [
-                ""
-            ],
-            "Add an Affiliate Program": [
-                ""
-            ],
-            "Setup a Loyalty Program": [
-                ""
-            ],
-            "Create A Sales Campaign": [
-                ""
+            "WooCommerce has been installed successfully": [
+                "WooCommerce foi instalado com sucesso"
             ]
         }
     }

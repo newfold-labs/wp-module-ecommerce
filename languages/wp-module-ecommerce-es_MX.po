@@ -1,103 +1,117 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: wp-module-ecommerce\n"
 "Report-Msgid-Bugs-To: https://github.com/newfold-labs/wp-module-ecommerce/issues\n"
 "Last-Translator: \n"
-"Language-Team: \n"
+"Language-Team: Spanish, Mexico\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-05-29T07:04:22+00:00\n"
-"PO-Revision-Date: 2024-11-18 07:04:22+00:00\n"
+"POT-Creation-Date: 2024-11-18T11:38:47+00:00\n"
+"PO-Revision-Date: 2025-03-19 20:42\n"
 "Language: es_MX\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: wp-module-ecommerce\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: wp-module-ecommerce\n"
+"X-Crowdin-Project-ID: 766697\n"
+"X-Crowdin-Language: es-MX\n"
+"X-Crowdin-File: wp-module-ecommerce.pot\n"
+"X-Crowdin-File-ID: 16\n"
 
 #: bootstrap.php:51
 msgid "eCommerce"
 msgstr "Comercio Electrónico"
 
-#: includes/ECommerce.php:260
-#: includes/ECommerce.php:271
+#: includes/ECommerce.php:133
+msgid "Reference to page category"
+msgstr "Référence à la catégorie de la page"
+
+#: includes/ECommerce.php:269
 #: includes/ECommerce.php:280
 #: includes/ECommerce.php:289
 #: includes/ECommerce.php:298
 #: includes/ECommerce.php:307
-#: includes/ECommerce.php:336
+#: includes/ECommerce.php:316
+#: includes/ECommerce.php:345
 msgid "NFD eCommerce Options"
 msgstr "Opciones de Comercio Electrónico NFD"
 
-#: includes/ECommerce.php:477
-#: includes/ECommerce.php:505
+#: includes/ECommerce.php:485
+msgid "Promotion product Page"
+msgstr "Page de produit en promotion"
+
+#: includes/ECommerce.php:486
+#: includes/ECommerce.php:514
 msgid "Promotions"
 msgstr "Promociones"
 
-#: includes/ECommerce.php:493
-#: includes/ECommerce.php:526
+#: includes/ECommerce.php:502
+#: includes/ECommerce.php:535
 msgid "Create a Promotion"
 msgstr "Crear una Promoción"
 
-#: includes/ECommerce.php:523
+#: includes/ECommerce.php:532
 msgid "Boost Your Online Store Sales"
 msgstr "Impulsa las ventas de tu Tienda online"
 
-#: includes/ECommerce.php:524
+#: includes/ECommerce.php:533
 msgid "Maximize your sales by creating effective"
 msgstr "Maximiza tus ventas creando promociones efectivas"
 
-#: includes/ECommerce.php:525
+#: includes/ECommerce.php:534
 msgid "promotions and campaigns like:"
 msgstr "promociones y campañas como:"
 
-#: includes/ECommerce.php:527
+#: includes/ECommerce.php:536
 msgid "Free"
 msgstr "Gratis"
 
-#: includes/ECommerce.php:528
+#: includes/ECommerce.php:537
 msgid "Shipping"
 msgstr "Envío"
 
-#: includes/ECommerce.php:529
+#: includes/ECommerce.php:538
 msgid "Buy One"
 msgstr "Compra Uno"
 
-#: includes/ECommerce.php:530
+#: includes/ECommerce.php:539
 msgid "Get One"
 msgstr "Obtén Uno"
 
-#: includes/ECommerce.php:531
+#: includes/ECommerce.php:540
 msgid "Free Gift"
 msgstr "Regalo Gratis"
 
-#: includes/ECommerce.php:532
+#: includes/ECommerce.php:541
 msgid "in Cart"
 msgstr "en el Carrito"
 
-#: includes/ECommerce.php:533
+#: includes/ECommerce.php:542
 msgid "Frequently"
 msgstr "Frecuentemente"
 
-#: includes/ECommerce.php:534
+#: includes/ECommerce.php:543
 msgid "Bought Together"
 msgstr "Comprados Juntos"
 
-#: includes/ECommerce.php:694
+#: includes/ECommerce.php:706
 msgid "Status"
-msgstr "Status"
+msgstr "Statut"
 
-#: includes/ECommerce.php:718
+#: includes/ECommerce.php:730
 msgid "Published - Public"
 msgstr "Publicado - Público"
 
-#: includes/ECommerce.php:718
+#: includes/ECommerce.php:730
 msgid "Published - Password Protected"
 msgstr "Publicado - Protegido con Contraseña"
 
-#: includes/ECommerce.php:721
+#: includes/ECommerce.php:733
 msgid "Published - Private"
 msgstr "Publicado - Privado"
 
-#: includes/ECommerce.php:731
+#: includes/ECommerce.php:743
 msgid "Last Modified"
 msgstr "Última Modificación"
 
@@ -120,6 +134,158 @@ msgstr "Compra"
 #: build/index.js:1
 msgid "Installing..."
 msgstr "Instalando..."
+
+#: build/index.js:1
+msgid "Free Shipping"
+msgstr "Livraison gratuite"
+
+#: build/index.js:1
+msgid "Attract and retain customers by offering free shipping based on cart amount, location or store category."
+msgstr "Attirez et fidélisez vos clients en offrant la livraison gratuite en fonction du montant du panier, de la localisation ou de la catégorie du magasin."
+
+#: build/index.js:1
+msgid "Buy 1 Get 1"
+msgstr "Achetez 1, obtenez 1 gratuit"
+
+#: build/index.js:1
+msgid "Attract customers with a compelling deal where they can buy one product and get another product for free."
+msgstr "Attirez des clients avec une offre irrésistible où ils peuvent acheter un produit et en recevoir un autre gratuitement."
+
+#: build/index.js:1
+msgid "Gift Product in Cart"
+msgstr "Produit offert dans le panier"
+
+#: build/index.js:1
+msgid "Reward customers with a free gift in their cart based on total cart value, or specific products or categories."
+msgstr "Récompensez vos clients avec un cadeau gratuit dans leur panier selon la valeur totale du panier, des produits spécifiques ou des catégories."
+
+#: build/index.js:1
+msgid "Category Discount"
+msgstr "Remise par catégorie"
+
+#: build/index.js:1
+msgid "Give your customers a discount on specific categories of products and boost sales for those categories."
+msgstr "Offrez à vos clients une remise sur certaines catégories de produits et stimulez les ventes de ces catégories."
+
+#: build/index.js:1
+msgid "Upsell in Thank You Page"
+msgstr "Vente additionnelle sur la page de remerciement"
+
+#: build/index.js:1
+msgid "Maximize sales by presenting relevant upsell options after customers have completed their purchase."
+msgstr "Maximisez les ventes en proposant des options de vente additionnelle pertinentes après que les clients ont finalisé leur achat."
+
+#: build/index.js:1
+msgid "Last Minute Deal"
+msgstr "Offre de dernière minute"
+
+#: build/index.js:1
+msgid "Create urgency with a special time-limited deal for customers on the cart and checkout pages."
+msgstr "Créez un sentiment d’urgence avec une offre spéciale à durée limitée pour les clients sur les pages du panier et de paiement."
+
+#: build/index.js:1
+msgid "Webpage Creation"
+msgstr "Création de pages web"
+
+#: build/index.js:1
+msgid "Build webpages fast with tailored block patterns and page templates included in your hosting package."
+msgstr "Créez des pages web rapidement avec des modèles de blocs personnalisés et des modèles de pages inclus dans votre offre d’hébergement."
+
+#: build/index.js:1
+msgid "Add a Page to Your Site"
+msgstr "Ajouter une page à votre site"
+
+#: build/index.js:1
+msgid "Search Engine Optimization"
+msgstr "Optimisation pour les moteurs de recherche"
+
+#: build/index.js:1
+msgid "Start increasing your search result rankings today."
+msgstr "Commencez dès aujourd’hui à améliorer votre classement dans les résultats de recherche."
+
+#: build/index.js:1
+msgid "Improve Your Search Ranking"
+msgstr "Améliorez votre classement dans les moteurs de recherche"
+
+#: build/index.js:1
+msgid "Offer Content Courses"
+msgstr "Proposer des cours en ligne"
+
+#: build/index.js:1
+msgid "Create beautiful and engaging online courses, lessons, and quizzes."
+msgstr "Créez de magnifiques cours en ligne, leçons et quiz interactifs."
+
+#: build/index.js:1
+msgid "Create a Course"
+msgstr "Créer un cours"
+
+#: build/index.js:1
+msgid "Add an Affiliate Program"
+msgstr "Ajouter un programme d’affiliation"
+
+#: build/index.js:1
+msgid "Grant your affiliates earnings each time someone purchases from their link."
+msgstr "Offrez à vos affiliés des gains à chaque achat effectué via leur lien."
+
+#: build/index.js:1
+msgid "Create an Affiliate Program"
+msgstr "Créer un programme d’affiliation"
+
+#: build/index.js:1
+msgid "Setup Bookings"
+msgstr "Configurer les réservations"
+
+#: build/index.js:1
+msgid "Manage the renting or booking of services and items that you offer your customers."
+msgstr "Gérez la location ou la réservation des services et articles que vous proposez à vos clients."
+
+#: build/index.js:1
+msgid "Build webpages fast with tailored block patterns and page templates."
+msgstr "Créez des pages web rapidement avec des modèles de blocs et des modèles de pages personnalisés."
+
+#: build/index.js:1
+msgid "Setup a Loyalty Program"
+msgstr "Mettre en place un programme de fidélité"
+
+#: build/index.js:1
+msgid "Reward customer loyalty with an effective points program."
+msgstr "Récompensez la fidélité de vos clients avec un programme de points efficace."
+
+#: build/index.js:1
+msgid "Configure Points & Rewards"
+msgstr "Configurer les points et récompenses"
+
+#: build/index.js:1
+msgid "Enable Product Reviews"
+msgstr "Activer les avis produits"
+
+#: build/index.js:1
+msgid "Get positive product reviews and use social proof to drive more sales."
+msgstr "Obtenez des avis positifs sur vos produits et utilisez la preuve sociale pour générer plus de ventes."
+
+#: build/index.js:1
+msgid "Setup Wishlists"
+msgstr "Configurar Listas de Deseos"
+
+#: build/index.js:1
+msgid "Let customers add products to lists and share them with family and friends."
+msgstr "Permite a los clientes agregar productos a listas y compartirlas con familiares y amigos."
+
+#: build/index.js:1
+msgid "Setup Wishilsts"
+msgstr "Configurer les listes de souhaits"
+
+#: build/index.js:1
+msgid "Create A Sales Campaign"
+msgstr "Créer une campagne de vente"
+
+#: build/index.js:1
+msgid "Create custom upsell, cross-sell and other promotional campaigns to generate more sales."
+msgstr "Crea campañas personalizadas de upsell, cross-sell y otras promociones para generar más ventas."
+
+#: build/index.js:1
+msgid "Create a Campaign"
+msgstr "Crear una Campaña"
 
 #: build/index.js:1
 msgid "Plugin failed to install"
@@ -246,28 +412,12 @@ msgid "Create a Gift Card"
 msgstr "Crear una Tarjeta de Regalo"
 
 #: build/index.js:1
-msgid "Let customers add products to lists and share them with family and friends."
-msgstr "Permite a los clientes agregar productos a listas y compartirlas con familiares y amigos."
-
-#: build/index.js:1
 msgid "View Wishlists"
 msgstr "Ver Listas de Deseos"
 
 #: build/index.js:1
-msgid "Setup Wishlists"
-msgstr "Configurar Listas de Deseos"
-
-#: build/index.js:1
 msgid "WonderCart"
-msgstr "WonderCart"
-
-#: build/index.js:1
-msgid "Create custom upsell, cross-sell and other promotional campaigns to generate more sales."
-msgstr "Crea campañas personalizadas de upsell, cross-sell y otras promociones para generar más ventas."
-
-#: build/index.js:1
-msgid "Create a Campaign"
-msgstr "Crear una Campaña"
+msgstr "Chariot de Merveille"
 
 #: build/index.js:1
 msgid "Booking and Appointments"
@@ -366,12 +516,20 @@ msgid "Activating the YITH "
 msgstr "Activando el YITH "
 
 #: build/index.js:1
+msgid "Installed successfully"
+msgstr "Installation réussie"
+
+#: build/index.js:1
+msgid "Failed to install"
+msgstr "Échec de l’installation"
+
+#: build/index.js:1
 msgid "Elevate Your Store with Exclusive WooCommerce Tools Included in Your Plan!"
 msgstr "¡Eleva tu Tienda con herramientas exclusivas de WooCommerce Incluidas en tu Plan!"
 
 #: build/index.js:1
 msgid "Exclusive Tools Included in Your Plan"
-msgstr ""
+msgstr "Outils exclusifs inclus dans votre plan"
 
 #: build/index.js:1
 msgid ""
@@ -985,6 +1143,10 @@ msgid "Good job!"
 msgstr "¡Buen trabajo! "
 
 #: build/index.js:1
+msgid "One last thing to do…"
+msgstr "Una última cosa que hacer…"
+
+#: build/index.js:1
 msgid "Your site is now ready for public visitors!"
 msgstr "¡Tu sitio está listo para recibir visitas públicas! "
 
@@ -1027,6 +1189,26 @@ msgstr "Ver tareas pendientes"
 #: build/index.js:1
 msgid "View completed tasks"
 msgstr "Ver tareas completadas"
+
+#: build/index.js:1
+msgid "Design a custom site with AI"
+msgstr "Diseñar un sitio personalizado con IA"
+
+#: build/index.js:1
+msgid "Design a custom store with AI"
+msgstr "Diseñar una tienda personalizada con IA"
+
+#: build/index.js:1
+msgid "Use our AI Website Builder to begin your site a lot closer to the finish line!"
+msgstr "¡Use nuestro AI Website Builder para comenzar su sitio mucho más cerca de la línea de meta!"
+
+#: build/index.js:1
+msgid "Use our AI Website Builder to begin your store a lot closer to the finish line!"
+msgstr "¡Usa nuestro AI Website Builder para comenzar tu tienda mucho más cerca de la línea de meta!"
+
+#: build/index.js:1
+msgid "Generate a Theme"
+msgstr "Generar un tema"
 
 #: build/index.js:1
 msgid "Congrats on your new store!"
@@ -1403,159 +1585,3 @@ msgstr "Se guardaron los detalles del pago correctamente"
 #: build/index.js:1
 msgid "WooCommerce has been installed successfully"
 msgstr "WooCommerce se ha instalado correctamente"
-
-#: includes/ECommerce.php:132
-msgid "Reference to page category"
-msgstr ""
-
-#: includes/ECommerce.php:476
-msgid "Promotion product Page"
-msgstr ""
-
-#: build/index.js:1
-msgid "Free Shipping"
-msgstr ""
-
-#: build/index.js:1
-msgid "Attract and retain customers by offering free shipping based on cart amount, location or store category."
-msgstr ""
-
-#: build/index.js:1
-msgid "Buy 1 Get 1"
-msgstr ""
-
-#: build/index.js:1
-msgid "Attract customers with a compelling deal where they can buy one product and get another product for free."
-msgstr ""
-
-#: build/index.js:1
-msgid "Gift Product in Cart"
-msgstr ""
-
-#: build/index.js:1
-msgid "Reward customers with a free gift in their cart based on total cart value, or specific products or categories."
-msgstr ""
-
-#: build/index.js:1
-msgid "Category Discount"
-msgstr ""
-
-#: build/index.js:1
-msgid "Give your customers a discount on specific categories of products and boost sales for those categories."
-msgstr ""
-
-#: build/index.js:1
-msgid "Upsell in Thank You Page"
-msgstr ""
-
-#: build/index.js:1
-msgid "Maximize sales by presenting relevant upsell options after customers have completed their purchase."
-msgstr ""
-
-#: build/index.js:1
-msgid "Last Minute Deal"
-msgstr ""
-
-#: build/index.js:1
-msgid "Create urgency with a special time-limited deal for customers on the cart and checkout pages."
-msgstr ""
-
-#: build/index.js:1
-msgid "Build webpages fast with tailored block patterns and page templates included in your hosting package."
-msgstr ""
-
-#: build/index.js:1
-msgid "Add a Page to Your Site"
-msgstr ""
-
-#: build/index.js:1
-msgid "Start increasing your search result rankings today."
-msgstr ""
-
-#: build/index.js:1
-msgid "Improve Your Search Ranking"
-msgstr ""
-
-#: build/index.js:1
-msgid "Create beautiful and engaging online courses, lessons, and quizzes."
-msgstr ""
-
-#: build/index.js:1
-msgid "Create a Course"
-msgstr ""
-
-#: build/index.js:1
-msgid "Grant your affiliates earnings each time someone purchases from their link."
-msgstr ""
-
-#: build/index.js:1
-msgid "Create an Affiliate Program"
-msgstr ""
-
-#: build/index.js:1
-msgid "Manage the renting or booking of services and items that you offer your customers."
-msgstr ""
-
-#: build/index.js:1
-msgid "Setup Bookings"
-msgstr ""
-
-#: build/index.js:1
-msgid "Build webpages fast with tailored block patterns and page templates."
-msgstr ""
-
-#: build/index.js:1
-msgid "Reward customer loyalty with an effective points program."
-msgstr ""
-
-#: build/index.js:1
-msgid "Configure Points & Rewards"
-msgstr ""
-
-#: build/index.js:1
-msgid "Get positive product reviews and use social proof to drive more sales."
-msgstr ""
-
-#: build/index.js:1
-msgid "Enable Product Reviews"
-msgstr ""
-
-#: build/index.js:1
-msgid "Setup Wishilsts"
-msgstr ""
-
-#: build/index.js:1
-msgid "Installed successfully"
-msgstr ""
-
-#: build/index.js:1
-msgid "Failed to install"
-msgstr ""
-
-#: build/index.js:1
-msgid "One last thing to do…"
-msgstr "Una última cosa que hacer…"
-
-#: build/index.js:1
-msgid "Webpage Creation"
-msgstr ""
-
-#: build/index.js:1
-msgid "Search Engine Optimization"
-msgstr ""
-
-#: build/index.js:1
-msgid "Offer Content Courses"
-msgstr ""
-
-#: build/index.js:1
-msgid "Add an Affiliate Program"
-msgstr ""
-
-#: build/index.js:1
-msgid "Setup a Loyalty Program"
-msgstr ""
-
-#: build/index.js:1
-msgid "Create A Sales Campaign"
-msgstr ""

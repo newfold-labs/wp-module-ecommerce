@@ -1,5 +1,5 @@
 {
-    "translation-revision-date": "2025-02-19 16:40",
+    "translation-revision-date": "2025-03-19 20:42",
     "generator": "WP-CLI\/2.11.0",
     "source": "build\/index.js",
     "domain": "messages",
@@ -21,6 +21,120 @@
             ],
             "Installing...": [
                 "Installazione..."
+            ],
+            "Free Shipping": [
+                "Spedizione gratuita"
+            ],
+            "Attract and retain customers by offering free shipping based on cart amount, location or store category.": [
+                "Attira e fidelizza i clienti offrendo la spedizione gratuita in base all'importo del carrello, alla posizione o alla categoria del negozio."
+            ],
+            "Buy 1 Get 1": [
+                "Compra 1, ottieni 1 gratis"
+            ],
+            "Attract customers with a compelling deal where they can buy one product and get another product for free.": [
+                "Attira i clienti con un'offerta irresistibile: acquista un prodotto e ottieni un altro prodotto gratuitamente."
+            ],
+            "Gift Product in Cart": [
+                "Prodotto in omaggio nel carrello"
+            ],
+            "Reward customers with a free gift in their cart based on total cart value, or specific products or categories.": [
+                "Premia i clienti con un regalo gratuito nel carrello in base al valore totale del carrello, a prodotti specifici o a categorie."
+            ],
+            "Category Discount": [
+                "Sconto per categoria"
+            ],
+            "Give your customers a discount on specific categories of products and boost sales for those categories.": [
+                "Offri ai tuoi clienti uno sconto su determinate categorie di prodotti e aumenta le vendite di queste categorie."
+            ],
+            "Upsell in Thank You Page": [
+                "Upsell nella pagina di ringraziamento"
+            ],
+            "Maximize sales by presenting relevant upsell options after customers have completed their purchase.": [
+                "Massimizza le vendite presentando opzioni di upsell pertinenti dopo che i clienti hanno completato l'acquisto."
+            ],
+            "Last Minute Deal": [
+                "Offerta dell'ultimo minuto"
+            ],
+            "Create urgency with a special time-limited deal for customers on the cart and checkout pages.": [
+                "Crea un senso di urgenza con un'offerta speciale a tempo limitato per i clienti nelle pagine del carrello e del checkout."
+            ],
+            "Webpage Creation": [
+                "Creazione di pagine web"
+            ],
+            "Build webpages fast with tailored block patterns and page templates included in your hosting package.": [
+                "Crea pagine web rapidamente con modelli di blocchi personalizzati e template di pagina inclusi nel tuo pacchetto di hosting."
+            ],
+            "Add a Page to Your Site": [
+                "Aggiungi una pagina al tuo sito"
+            ],
+            "Search Engine Optimization": [
+                "Ottimizzazione per i motori di ricerca"
+            ],
+            "Start increasing your search result rankings today.": [
+                "Inizia oggi stesso a migliorare il posizionamento nei risultati di ricerca."
+            ],
+            "Improve Your Search Ranking": [
+                "Migliora il posizionamento nei motori di ricerca"
+            ],
+            "Offer Content Courses": [
+                "Offri corsi online"
+            ],
+            "Create beautiful and engaging online courses, lessons, and quizzes.": [
+                "Crea corsi online, lezioni e quiz coinvolgenti e di alta qualit\u00e0."
+            ],
+            "Create a Course": [
+                "Crea un corso"
+            ],
+            "Add an Affiliate Program": [
+                "Aggiungi un programma di affiliazione"
+            ],
+            "Grant your affiliates earnings each time someone purchases from their link.": [
+                "Concedi ai tuoi affiliati guadagni ogni volta che qualcuno acquista tramite il loro link."
+            ],
+            "Create an Affiliate Program": [
+                "Crea un programma di affiliazione"
+            ],
+            "Setup Bookings": [
+                "Configura le prenotazioni"
+            ],
+            "Manage the renting or booking of services and items that you offer your customers.": [
+                "Gestisci il noleggio o la prenotazione di servizi e articoli che offri ai tuoi clienti."
+            ],
+            "Build webpages fast with tailored block patterns and page templates.": [
+                "Crea pagine web rapidamente con modelli di blocchi personalizzati e template di pagina."
+            ],
+            "Setup a Loyalty Program": [
+                "Configura un programma fedelt\u00e0"
+            ],
+            "Reward customer loyalty with an effective points program.": [
+                "Premia la fedelt\u00e0 dei clienti con un efficace programma a punti."
+            ],
+            "Configure Points & Rewards": [
+                "Configura punti e premi"
+            ],
+            "Enable Product Reviews": [
+                "Abilita le recensioni sui prodotti"
+            ],
+            "Get positive product reviews and use social proof to drive more sales.": [
+                "Ottieni recensioni positive sui prodotti e utilizza la prova sociale per aumentare le vendite."
+            ],
+            "Setup Wishlists": [
+                "Imposta Lista Desideri"
+            ],
+            "Let customers add products to lists and share them with family and friends.": [
+                "Lasciate che i clienti aggiungano prodotti alle liste e li condividano con la famiglia e gli amici."
+            ],
+            "Setup Wishilsts": [
+                "Configura le liste dei desideri"
+            ],
+            "Create A Sales Campaign": [
+                "Crea una campagna di vendita"
+            ],
+            "Create custom upsell, cross-sell and other promotional campaigns to generate more sales.": [
+                "Crea campagne personalizzate di upsell, cross-sell e altre campagne promozionali per generare pi\u00f9 vendite."
+            ],
+            "Create a Campaign": [
+                "Crea una campagna"
             ],
             "Plugin failed to install": [
                 "Installazione del plugin non riuscita"
@@ -115,23 +229,11 @@
             "Create a Gift Card": [
                 "Crea una Gift Card"
             ],
-            "Let customers add products to lists and share them with family and friends.": [
-                "Lasciate che i clienti aggiungano prodotti alle liste e li condividano con la famiglia e gli amici."
-            ],
             "View Wishlists": [
                 "Visualizza Lista Desideri"
             ],
-            "Setup Wishlists": [
-                "Imposta Lista Desideri"
-            ],
             "WonderCart": [
                 "WonderCart"
-            ],
-            "Create custom upsell, cross-sell and other promotional campaigns to generate more sales.": [
-                "Crea campagne personalizzate di upsell, cross-sell e altre campagne promozionali per generare pi\u00f9 vendite."
-            ],
-            "Create a Campaign": [
-                "Crea una campagna"
             ],
             "Booking and Appointments": [
                 "Prenotazione e Appuntamenti"
@@ -204,6 +306,12 @@
             ],
             "Activating the YITH ": [
                 "Attivazione dello YITH "
+            ],
+            "Installed successfully": [
+                "Installazione completata con successo"
+            ],
+            "Failed to install": [
+                "Installazione non riuscita"
             ],
             "Elevate Your Store with Exclusive WooCommerce Tools Included in Your Plan!": [
                 "Eleva il tuo negozio con esclusivi strumenti di WooCommerce inclusi nel tuo piano!"
@@ -652,6 +760,9 @@
             "Good job!": [
                 "Ottimo lavoro!"
             ],
+            "One last thing to do\u2026": [
+                "Un'ultima cosa da fare\u2026"
+            ],
             "Your site is now ready for public visitors!": [
                 "Il tuo sito \u00e8 ora pronto per i visitatori pubblici!"
             ],
@@ -684,6 +795,21 @@
             ],
             "View completed tasks": [
                 "Visualizza attivit\u00e0 completate"
+            ],
+            "Design a custom site with AI": [
+                "Progetta un sito personalizzato con IA"
+            ],
+            "Design a custom store with AI": [
+                "Progetta un negozio personalizzato con IA"
+            ],
+            "Use our AI Website Builder to begin your site a lot closer to the finish line!": [
+                "Usa il nostro costruttore di siti web AI per iniziare il tuo sito molto pi\u00f9 vicino al traguardo!"
+            ],
+            "Use our AI Website Builder to begin your store a lot closer to the finish line!": [
+                "Usa il nostro costruttore di siti web AI per iniziare il tuo negozio molto pi\u00f9 vicino al traguardo!"
+            ],
+            "Generate a Theme": [
+                "Genera un tema"
             ],
             "Congrats on your new store!": [
                 "Complimenti per il tuo nuovo negozio!"
@@ -725,7 +851,7 @@
                 "Scegli il set di plugin e servizi adatti alle tue esigenze. Sei coperto dalla nostra garanzia di rimborso di 30 giorni."
             ],
             "\/mo": [
-                "\/mo"
+                "\/mese"
             ],
             "Original price": [
                 "Prezzo originale"
@@ -963,117 +1089,6 @@
             ],
             "WooCommerce has been installed successfully": [
                 "WooCommerce \u00e8 stato installato con successo"
-            ],
-            "Free Shipping": [
-                "Spedizione gratuita"
-            ],
-            "Attract and retain customers by offering free shipping based on cart amount, location or store category.": [
-                "Attira e fidelizza i clienti offrendo la spedizione gratuita in base all'importo del carrello, alla posizione o alla categoria del negozio."
-            ],
-            "Buy 1 Get 1": [
-                "Compra 1, ottieni 1 gratis"
-            ],
-            "Attract customers with a compelling deal where they can buy one product and get another product for free.": [
-                "Attira i clienti con un'offerta irresistibile: acquista un prodotto e ottieni un altro prodotto gratuitamente."
-            ],
-            "Gift Product in Cart": [
-                "Prodotto in omaggio nel carrello"
-            ],
-            "Reward customers with a free gift in their cart based on total cart value, or specific products or categories.": [
-                "Premia i clienti con un regalo gratuito nel carrello in base al valore totale del carrello, a prodotti specifici o a categorie."
-            ],
-            "Category Discount": [
-                "Sconto per categoria"
-            ],
-            "Give your customers a discount on specific categories of products and boost sales for those categories.": [
-                "Offri ai tuoi clienti uno sconto su determinate categorie di prodotti e aumenta le vendite di queste categorie."
-            ],
-            "Upsell in Thank You Page": [
-                "Upsell nella pagina di ringraziamento"
-            ],
-            "Maximize sales by presenting relevant upsell options after customers have completed their purchase.": [
-                "Massimizza le vendite presentando opzioni di upsell pertinenti dopo che i clienti hanno completato l'acquisto."
-            ],
-            "Last Minute Deal": [
-                "Offerta dell'ultimo minuto"
-            ],
-            "Create urgency with a special time-limited deal for customers on the cart and checkout pages.": [
-                "Crea un senso di urgenza con un'offerta speciale a tempo limitato per i clienti nelle pagine del carrello e del checkout."
-            ],
-            "Build webpages fast with tailored block patterns and page templates included in your hosting package.": [
-                "Crea pagine web rapidamente con modelli di blocchi personalizzati e template di pagina inclusi nel tuo pacchetto di hosting."
-            ],
-            "Add a Page to Your Site": [
-                "Aggiungi una pagina al tuo sito"
-            ],
-            "Start increasing your search result rankings today.": [
-                "Inizia oggi stesso a migliorare il posizionamento nei risultati di ricerca."
-            ],
-            "Improve Your Search Ranking": [
-                "Migliora il posizionamento nei motori di ricerca"
-            ],
-            "Create beautiful and engaging online courses, lessons, and quizzes.": [
-                "Crea corsi online, lezioni e quiz coinvolgenti e di alta qualit\u00e0."
-            ],
-            "Create a Course": [
-                "Crea un corso"
-            ],
-            "Grant your affiliates earnings each time someone purchases from their link.": [
-                "Concedi ai tuoi affiliati guadagni ogni volta che qualcuno acquista tramite il loro link."
-            ],
-            "Create an Affiliate Program": [
-                "Crea un programma di affiliazione"
-            ],
-            "Manage the renting or booking of services and items that you offer your customers.": [
-                "Gestisci il noleggio o la prenotazione di servizi e articoli che offri ai tuoi clienti."
-            ],
-            "Setup Bookings": [
-                "Configura le prenotazioni"
-            ],
-            "Build webpages fast with tailored block patterns and page templates.": [
-                "Crea pagine web rapidamente con modelli di blocchi personalizzati e template di pagina."
-            ],
-            "Reward customer loyalty with an effective points program.": [
-                "Premia la fedelt\u00e0 dei clienti con un efficace programma a punti."
-            ],
-            "Configure Points & Rewards": [
-                "Configura punti e premi"
-            ],
-            "Get positive product reviews and use social proof to drive more sales.": [
-                "Ottieni recensioni positive sui prodotti e utilizza la prova sociale per aumentare le vendite."
-            ],
-            "Enable Product Reviews": [
-                "Abilita le recensioni sui prodotti"
-            ],
-            "Setup Wishilsts": [
-                "Configura le liste dei desideri"
-            ],
-            "Installed successfully": [
-                "Installazione completata con successo"
-            ],
-            "Failed to install": [
-                "Installazione non riuscita"
-            ],
-            "One last thing to do\u2026": [
-                "Un'ultima cosa da fare\u2026"
-            ],
-            "Webpage Creation": [
-                "Creazione di pagine web"
-            ],
-            "Search Engine Optimization": [
-                "Ottimizzazione per i motori di ricerca"
-            ],
-            "Offer Content Courses": [
-                "Offri corsi online"
-            ],
-            "Add an Affiliate Program": [
-                "Aggiungi un programma di affiliazione"
-            ],
-            "Setup a Loyalty Program": [
-                "Configura un programma fedelt\u00e0"
-            ],
-            "Create A Sales Campaign": [
-                "Crea una campagna di vendita"
             ]
         }
     }

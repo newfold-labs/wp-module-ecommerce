@@ -1,5 +1,5 @@
 {
-    "translation-revision-date": "2025-02-19 16:40",
+    "translation-revision-date": "2025-03-19 20:42",
     "generator": "WP-CLI\/2.11.0",
     "source": "build\/index.js",
     "domain": "messages",
@@ -21,6 +21,120 @@
             ],
             "Installing...": [
                 "Installeren..."
+            ],
+            "Free Shipping": [
+                "Gratis verzending"
+            ],
+            "Attract and retain customers by offering free shipping based on cart amount, location or store category.": [
+                "Trek klanten aan en behoud ze door gratis verzending aan te bieden op basis van het winkelmandbedrag, de locatie of de winkelcategorie."
+            ],
+            "Buy 1 Get 1": [
+                "Koop 1, krijg 1 gratis"
+            ],
+            "Attract customers with a compelling deal where they can buy one product and get another product for free.": [
+                "Trek klanten aan met een aantrekkelijke deal waarbij ze \u00e9\u00e9n product kopen en een tweede product gratis krijgen."
+            ],
+            "Gift Product in Cart": [
+                "Gratis cadeau in winkelmand"
+            ],
+            "Reward customers with a free gift in their cart based on total cart value, or specific products or categories.": [
+                "Beloon klanten met een gratis cadeau in hun winkelmand op basis van het totale winkelmandbedrag, specifieke producten of categorie\u00ebn."
+            ],
+            "Category Discount": [
+                "Kortingsactie per categorie"
+            ],
+            "Give your customers a discount on specific categories of products and boost sales for those categories.": [
+                "Geef je klanten korting op specifieke productcategorie\u00ebn en stimuleer de verkoop van deze categorie\u00ebn."
+            ],
+            "Upsell in Thank You Page": [
+                "Upsell op de bedankpagina"
+            ],
+            "Maximize sales by presenting relevant upsell options after customers have completed their purchase.": [
+                "Maximaliseer je verkoop door relevante upsell-opties te tonen nadat klanten hun aankoop hebben voltooid."
+            ],
+            "Last Minute Deal": [
+                "Last-minute aanbieding"
+            ],
+            "Create urgency with a special time-limited deal for customers on the cart and checkout pages.": [
+                "Cre\u00eber urgentie met een speciale tijdsgebonden aanbieding voor klanten op de winkelmand- en afrekenpagina's."
+            ],
+            "Webpage Creation": [
+                "Webpagina-aanmaak"
+            ],
+            "Build webpages fast with tailored block patterns and page templates included in your hosting package.": [
+                "Bouw snel webpagina's met aangepaste blokpatronen en paginasjablonen die in je hostingpakket zijn inbegrepen."
+            ],
+            "Add a Page to Your Site": [
+                "Voeg een pagina toe aan je site"
+            ],
+            "Search Engine Optimization": [
+                "Zoekmachineoptimalisatie"
+            ],
+            "Start increasing your search result rankings today.": [
+                "Begin vandaag nog met het verbeteren van je zoekresultaten."
+            ],
+            "Improve Your Search Ranking": [
+                "Verbeter je zoekmachinepositie"
+            ],
+            "Offer Content Courses": [
+                "Bied online cursussen aan"
+            ],
+            "Create beautiful and engaging online courses, lessons, and quizzes.": [
+                "Maak prachtige en boeiende online cursussen, lessen en quizzen."
+            ],
+            "Create a Course": [
+                "Maak een cursus"
+            ],
+            "Add an Affiliate Program": [
+                "Voeg een affiliateprogramma toe"
+            ],
+            "Grant your affiliates earnings each time someone purchases from their link.": [
+                "Geef je affiliates een vergoeding telkens wanneer iemand via hun link een aankoop doet."
+            ],
+            "Create an Affiliate Program": [
+                "Cre\u00eber een affiliateprogramma"
+            ],
+            "Setup Bookings": [
+                "Stel boekingen in"
+            ],
+            "Manage the renting or booking of services and items that you offer your customers.": [
+                "Beheer de verhuur of boekingen van diensten en artikelen die je aan klanten aanbiedt."
+            ],
+            "Build webpages fast with tailored block patterns and page templates.": [
+                "Bouw snel webpagina's met aangepaste blokpatronen en paginasjablonen."
+            ],
+            "Setup a Loyalty Program": [
+                "Stel een loyaliteitsprogramma in"
+            ],
+            "Reward customer loyalty with an effective points program.": [
+                "Beloon klantentrouw met een effectief puntensysteem."
+            ],
+            "Configure Points & Rewards": [
+                "Configureer punten en beloningen"
+            ],
+            "Enable Product Reviews": [
+                "Schakel productbeoordelingen in"
+            ],
+            "Get positive product reviews and use social proof to drive more sales.": [
+                "Verzamel positieve productbeoordelingen en gebruik sociale bewijskracht om de verkoop te verhogen."
+            ],
+            "Setup Wishlists": [
+                "Wenslijsten instellen"
+            ],
+            "Let customers add products to lists and share them with family and friends.": [
+                "Laat klanten producten toevoegen aan lijsten en deze delen met familie en vrienden."
+            ],
+            "Setup Wishilsts": [
+                "Stel verlanglijsten in"
+            ],
+            "Create A Sales Campaign": [
+                "Cre\u00eber een verkoopcampagne"
+            ],
+            "Create custom upsell, cross-sell and other promotional campaigns to generate more sales.": [
+                "Maak aangepaste upsell, cross-sell en andere promotionele campagnes om meer verkopen te genereren."
+            ],
+            "Create a Campaign": [
+                "Campagne maken"
             ],
             "Plugin failed to install": [
                 "Plugin kan niet worden ge\u00efnstalleerd"
@@ -115,23 +229,11 @@
             "Create a Gift Card": [
                 "Maak een cadeaubon aan"
             ],
-            "Let customers add products to lists and share them with family and friends.": [
-                "Laat klanten producten toevoegen aan lijsten en deze delen met familie en vrienden."
-            ],
             "View Wishlists": [
                 "Bekijk verlanglijsts"
             ],
-            "Setup Wishlists": [
-                "Wenslijsten instellen"
-            ],
             "WonderCart": [
                 "Overwinnings"
-            ],
-            "Create custom upsell, cross-sell and other promotional campaigns to generate more sales.": [
-                "Maak aangepaste upsell, cross-sell en andere promotionele campagnes om meer verkopen te genereren."
-            ],
-            "Create a Campaign": [
-                "Campagne maken"
             ],
             "Booking and Appointments": [
                 "Boeking en Afspraken"
@@ -146,7 +248,7 @@
                 "Boekingen & Afspraken instellen"
             ],
             "Product Filters": [
-                "Product Filters"
+                "Productfilters"
             ],
             "Add an advanced filter to help customers find the right product with ease.": [
                 "Voeg een geavanceerd filter toe zodat klanten het juiste product gemakkelijk kunnen vinden."
@@ -204,6 +306,12 @@
             ],
             "Activating the YITH ": [
                 "Activeren van de YITH "
+            ],
+            "Installed successfully": [
+                "Succesvol ge\u00efnstalleerd"
+            ],
+            "Failed to install": [
+                "Installatie mislukt"
             ],
             "Elevate Your Store with Exclusive WooCommerce Tools Included in Your Plan!": [
                 "Vergroot uw winkel met exclusieve WooCommerce gereedschappen inbegrepen in uw abonnement!"
@@ -652,6 +760,9 @@
             "Good job!": [
                 "Goed gedaan!"
             ],
+            "One last thing to do\u2026": [
+                "Nog \u00e9\u00e9n ding te doen\u2026"
+            ],
             "Your site is now ready for public visitors!": [
                 "Uw site is nu klaar voor publieke bezoekers!"
             ],
@@ -684,6 +795,21 @@
             ],
             "View completed tasks": [
                 "Afgeronde taken bekijken"
+            ],
+            "Design a custom site with AI": [
+                "Ontwerp een aangepaste site met AI"
+            ],
+            "Design a custom store with AI": [
+                "Ontwerp een eigen winkel met AI"
+            ],
+            "Use our AI Website Builder to begin your site a lot closer to the finish line!": [
+                "Gebruik onze AI Website Builder om je site veel dichter bij de eindlijn te beginnen!"
+            ],
+            "Use our AI Website Builder to begin your store a lot closer to the finish line!": [
+                "Gebruik onze AI Website Builder om uw winkel veel dichter bij de finish te beginnen!"
+            ],
+            "Generate a Theme": [
+                "Genereer een thema"
             ],
             "Congrats on your new store!": [
                 "Gefeliciteerd met uw nieuwe winkel!"
@@ -963,117 +1089,6 @@
             ],
             "WooCommerce has been installed successfully": [
                 "WooCommerce is succesvol ge\u00efnstalleerd"
-            ],
-            "Free Shipping": [
-                "Gratis verzending"
-            ],
-            "Attract and retain customers by offering free shipping based on cart amount, location or store category.": [
-                "Trek klanten aan en behoud ze door gratis verzending aan te bieden op basis van het winkelmandbedrag, de locatie of de winkelcategorie."
-            ],
-            "Buy 1 Get 1": [
-                "Koop 1, krijg 1 gratis"
-            ],
-            "Attract customers with a compelling deal where they can buy one product and get another product for free.": [
-                "Trek klanten aan met een aantrekkelijke deal waarbij ze \u00e9\u00e9n product kopen en een tweede product gratis krijgen."
-            ],
-            "Gift Product in Cart": [
-                "Gratis cadeau in winkelmand"
-            ],
-            "Reward customers with a free gift in their cart based on total cart value, or specific products or categories.": [
-                "Beloon klanten met een gratis cadeau in hun winkelmand op basis van het totale winkelmandbedrag, specifieke producten of categorie\u00ebn."
-            ],
-            "Category Discount": [
-                "Kortingsactie per categorie"
-            ],
-            "Give your customers a discount on specific categories of products and boost sales for those categories.": [
-                "Geef je klanten korting op specifieke productcategorie\u00ebn en stimuleer de verkoop van deze categorie\u00ebn."
-            ],
-            "Upsell in Thank You Page": [
-                "Upsell op de bedankpagina"
-            ],
-            "Maximize sales by presenting relevant upsell options after customers have completed their purchase.": [
-                "Maximaliseer je verkoop door relevante upsell-opties te tonen nadat klanten hun aankoop hebben voltooid."
-            ],
-            "Last Minute Deal": [
-                "Last-minute aanbieding"
-            ],
-            "Create urgency with a special time-limited deal for customers on the cart and checkout pages.": [
-                "Cre\u00eber urgentie met een speciale tijdsgebonden aanbieding voor klanten op de winkelmand- en afrekenpagina's."
-            ],
-            "Build webpages fast with tailored block patterns and page templates included in your hosting package.": [
-                "Bouw snel webpagina's met aangepaste blokpatronen en paginasjablonen die in je hostingpakket zijn inbegrepen."
-            ],
-            "Add a Page to Your Site": [
-                "Voeg een pagina toe aan je site"
-            ],
-            "Start increasing your search result rankings today.": [
-                "Begin vandaag nog met het verbeteren van je zoekresultaten."
-            ],
-            "Improve Your Search Ranking": [
-                "Verbeter je zoekmachinepositie"
-            ],
-            "Create beautiful and engaging online courses, lessons, and quizzes.": [
-                "Maak prachtige en boeiende online cursussen, lessen en quizzen."
-            ],
-            "Create a Course": [
-                "Maak een cursus"
-            ],
-            "Grant your affiliates earnings each time someone purchases from their link.": [
-                "Geef je affiliates een vergoeding telkens wanneer iemand via hun link een aankoop doet."
-            ],
-            "Create an Affiliate Program": [
-                "Cre\u00eber een affiliateprogramma"
-            ],
-            "Manage the renting or booking of services and items that you offer your customers.": [
-                "Beheer de verhuur of boekingen van diensten en artikelen die je aan klanten aanbiedt."
-            ],
-            "Setup Bookings": [
-                "Stel boekingen in"
-            ],
-            "Build webpages fast with tailored block patterns and page templates.": [
-                "Bouw snel webpagina's met aangepaste blokpatronen en paginasjablonen."
-            ],
-            "Reward customer loyalty with an effective points program.": [
-                "Beloon klantentrouw met een effectief puntensysteem."
-            ],
-            "Configure Points & Rewards": [
-                "Configureer punten en beloningen"
-            ],
-            "Get positive product reviews and use social proof to drive more sales.": [
-                "Verzamel positieve productbeoordelingen en gebruik sociale bewijskracht om de verkoop te verhogen."
-            ],
-            "Enable Product Reviews": [
-                "Schakel productbeoordelingen in"
-            ],
-            "Setup Wishilsts": [
-                "Stel verlanglijsten in"
-            ],
-            "Installed successfully": [
-                "Succesvol ge\u00efnstalleerd"
-            ],
-            "Failed to install": [
-                "Installatie mislukt"
-            ],
-            "One last thing to do\u2026": [
-                "Nog \u00e9\u00e9n ding te doen\u2026"
-            ],
-            "Webpage Creation": [
-                "Webpagina-aanmaak"
-            ],
-            "Search Engine Optimization": [
-                "Zoekmachineoptimalisatie"
-            ],
-            "Offer Content Courses": [
-                "Bied online cursussen aan"
-            ],
-            "Add an Affiliate Program": [
-                "Voeg een affiliateprogramma toe"
-            ],
-            "Setup a Loyalty Program": [
-                "Stel een loyaliteitsprogramma in"
-            ],
-            "Create A Sales Campaign": [
-                "Cre\u00eber een verkoopcampagne"
             ]
         }
     }
