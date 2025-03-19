@@ -594,9 +594,12 @@ class ECommerce {
 			'nfd_slug_yith_stripe_payments_for_woocommerce',
 		);
 		if ( 'woocommerce/woocommerce.php' === $plugin ) {
+			error_log('WooCommerce activated. Installing required plugins...');
 			foreach ( $plugin_slugs as $plugin ) {
+				error_log("Attempting to install: $plugin");
 				PluginInstaller::install( $plugin, true );
 			}
+			error_log('Plugin installation process completed.');
 		}
 	}
 
