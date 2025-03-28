@@ -42,7 +42,7 @@
     "@testing-library/cypress": "^10.0.3",
     "@wordpress/dom-ready": "^4.19.0",
     "@wordpress/env": "^10.20.0",
-    "@wordpress/scripts": "^27",
+    "@wordpress/scripts": "^30",
     "cypress": "^14.2.0",
     "cypress-axe": "^1.6.0",
     "cypress-iframe": "^1.0.1",
