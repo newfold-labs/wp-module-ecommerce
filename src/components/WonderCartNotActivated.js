@@ -69,7 +69,7 @@ export function WonderCarNotActivated(props) {
                         as={canAccessGlobalCTB && !hasYithExtended ? "a" : "button"}
                         data-ctb-id={
                         canAccessGlobalCTB && !hasYithExtended
-                            ? "f95ccf1e-3028-4ea7-b2c2-847969348e8b"
+                            ? "3985cf1c-c17f-4617-a2d7-6ffd1e2efa04"
                             : null
                         }
                         href={
