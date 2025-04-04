@@ -110,7 +110,6 @@ class ECommerce {
 		add_action( 'wp_login', array( $this, 'show_store_setup' ) );
 		add_action( 'auth_cookie_expired', array( $this, 'show_store_setup' ) );
 		add_action( 'admin_head', array( $this, 'hide_wp_pointer_with_css' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'set_wpnav_collapse_setting' ) );
 		add_action( 'admin_footer', array( $this, 'remove_woocommerce_ssl_notice' ), 20 );
 		\add_filter( 'load_script_translation_file', array( $this, 'load_script_translation_file' ), 10, 3 );
 		add_filter( 'woocommerce_admin_get_feature_config', array( $this, 'disable_modern_payments_settings' ), 999 );
@@ -174,17 +173,6 @@ class ECommerce {
 		}
 
 		return true;
-	}
-
-	/**
-	 * Set the wpnav_collapse setting
-	 */
-	public function set_wpnav_collapse_setting() {
-
-		$brandNameValue = $this->container->plugin()->brand;
-		wp_enqueue_script( 'nfd_wpnavbar_setting', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/wpnavbar.js', array( 'jquery' ), '1.0', true );
-		$params = array( 'nfdbrandname' => $brandNameValue );
-		wp_localize_script( 'nfd_wpnavbar_setting', 'navBarParams', $params );
 	}
 
 	/**
