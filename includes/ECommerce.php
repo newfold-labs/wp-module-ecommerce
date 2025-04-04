@@ -210,11 +210,11 @@ class ECommerce {
 	 */
 	public function add_to_runtime( $sdk ) {
 		$values = array(
-			'brand_settings' => Brands::get_config( $this->container ),
-			'nonces'         => array(
+			'brand_settings'         => Brands::get_config( $this->container ),
+			'nonces'                 => array(
 				'gateway_toggle' => \wp_create_nonce( 'woocommerce-toggle-payment-gateway-enabled' ),
 			),
-			'install_token'  => PluginInstaller::rest_get_plugin_install_hash(),
+			'install_token'          => PluginInstaller::rest_get_plugin_install_hash(),
 			'can_restart_onboarding' => self::get_can_onboarding_restart(),
 		);
 		return array_merge( $sdk, array( 'ecommerce' => $values ) );
@@ -590,12 +590,12 @@ class ECommerce {
 			'nfd_slug_yith_stripe_payments_for_woocommerce',
 		);
 		if ( 'woocommerce/woocommerce.php' === $plugin ) {
-			error_log('WooCommerce activated. Installing required plugins...');
+			error_log( 'WooCommerce activated. Installing required plugins...' );
 			foreach ( $plugin_slugs as $plugin ) {
-				error_log("Attempting to install: $plugin");
+				error_log( "Attempting to install: $plugin" );
 				PluginInstaller::install( $plugin, true );
 			}
-			error_log('Plugin installation process completed.');
+			error_log( 'Plugin installation process completed.' );
 		}
 	}
 
@@ -785,14 +785,14 @@ class ECommerce {
 	}
 
 	/**
- 	* Force WooCommerce to use the old Payments settings page.
- 	*
- 	* WooCommerce 9.7+ introduces a new Payments settings page. 
- 	* This function disables it and keeps the classic version.
-	*
-	* @param array $features Existing WooCommerce feature configurations.
-	* @return array Modified feature configuration with modern Payments settings disabled.
- 	*/
+	 * Force WooCommerce to use the old Payments settings page.
+	 *
+	 * WooCommerce 9.7+ introduces a new Payments settings page.
+	 * This function disables it and keeps the classic version.
+	 *
+	 * @param array $features Existing WooCommerce feature configurations.
+	 * @return array Modified feature configuration with modern Payments settings disabled.
+	 */
 	public function disable_modern_payments_settings( $features ) {
 		$features['reactify-classic-payments-settings'] = false;
 		return $features;
