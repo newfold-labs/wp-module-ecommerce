@@ -23,95 +23,95 @@ msgstr ""
 msgid "eCommerce"
 msgstr "eCommerce"
 
-#: includes/ECommerce.php:133
+#: includes/ECommerce.php:132
 msgid "Reference to page category"
 msgstr "Riferimento alla categoria della pagina"
 
-#: includes/ECommerce.php:269
-#: includes/ECommerce.php:280
-#: includes/ECommerce.php:289
-#: includes/ECommerce.php:298
-#: includes/ECommerce.php:307
-#: includes/ECommerce.php:316
-#: includes/ECommerce.php:345
+#: includes/ECommerce.php:257
+#: includes/ECommerce.php:268
+#: includes/ECommerce.php:277
+#: includes/ECommerce.php:286
+#: includes/ECommerce.php:295
+#: includes/ECommerce.php:304
+#: includes/ECommerce.php:333
 msgid "NFD eCommerce Options"
 msgstr "Opzioni di eCommerce NFD"
 
-#: includes/ECommerce.php:485
+#: includes/ECommerce.php:473
 msgid "Promotion product Page"
 msgstr "Pagina del prodotto in promozione"
 
-#: includes/ECommerce.php:486
-#: includes/ECommerce.php:514
+#: includes/ECommerce.php:474
+#: includes/ECommerce.php:502
 msgid "Promotions"
 msgstr "Promozioni"
 
-#: includes/ECommerce.php:502
-#: includes/ECommerce.php:535
+#: includes/ECommerce.php:490
+#: includes/ECommerce.php:523
 msgid "Create a Promotion"
 msgstr "Crea una Promozione"
 
-#: includes/ECommerce.php:532
+#: includes/ECommerce.php:520
 msgid "Boost Your Online Store Sales"
 msgstr "Migliora Le Vendite Del Tuo Negozio Online"
 
-#: includes/ECommerce.php:533
+#: includes/ECommerce.php:521
 msgid "Maximize your sales by creating effective"
 msgstr "Massimizza le tue vendite creando efficace"
 
-#: includes/ECommerce.php:534
+#: includes/ECommerce.php:522
 msgid "promotions and campaigns like:"
 msgstr "promozioni e campagne come:"
 
-#: includes/ECommerce.php:536
+#: includes/ECommerce.php:524
 msgid "Free"
 msgstr "Gratis"
 
-#: includes/ECommerce.php:537
+#: includes/ECommerce.php:525
 msgid "Shipping"
 msgstr "Spedizione"
 
-#: includes/ECommerce.php:538
+#: includes/ECommerce.php:526
 msgid "Buy One"
 msgstr "Compra Uno"
 
-#: includes/ECommerce.php:539
+#: includes/ECommerce.php:527
 msgid "Get One"
 msgstr "Ottieni Uno"
 
-#: includes/ECommerce.php:540
+#: includes/ECommerce.php:528
 msgid "Free Gift"
 msgstr "Regalo Gratuito"
 
-#: includes/ECommerce.php:541
+#: includes/ECommerce.php:529
 msgid "in Cart"
 msgstr "nel Carrello"
 
-#: includes/ECommerce.php:542
+#: includes/ECommerce.php:530
 msgid "Frequently"
 msgstr "Frequentemente"
 
-#: includes/ECommerce.php:543
+#: includes/ECommerce.php:531
 msgid "Bought Together"
 msgstr "Acquistato Insieme"
 
-#: includes/ECommerce.php:706
+#: includes/ECommerce.php:694
 msgid "Status"
 msgstr "Stato"
 
-#: includes/ECommerce.php:730
+#: includes/ECommerce.php:718
 msgid "Published - Public"
 msgstr "Pubblicato - Pubblico"
 
-#: includes/ECommerce.php:730
+#: includes/ECommerce.php:718
 msgid "Published - Password Protected"
 msgstr "Pubblicato - Protetto Da Password"
 
-#: includes/ECommerce.php:733
+#: includes/ECommerce.php:721
 msgid "Published - Private"
 msgstr "Pubblicato - Privato"
 
-#: includes/ECommerce.php:743
+#: includes/ECommerce.php:731
 msgid "Last Modified"
 msgstr "Ultima Modifica"
 
