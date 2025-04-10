@@ -110,7 +110,6 @@ class ECommerce {
 		add_action( 'wp_login', array( $this, 'show_store_setup' ) );
 		add_action( 'auth_cookie_expired', array( $this, 'show_store_setup' ) );
 		add_action( 'admin_head', array( $this, 'hide_wp_pointer_with_css' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'set_wpnav_collapse_setting' ) );
 		add_action( 'admin_footer', array( $this, 'remove_woocommerce_ssl_notice' ), 20 );
 		\add_filter( 'load_script_translation_file', array( $this, 'load_script_translation_file' ), 10, 3 );
 		add_filter( 'woocommerce_admin_get_feature_config', array( $this, 'disable_modern_payments_settings' ), 999 );
@@ -177,17 +176,6 @@ class ECommerce {
 	}
 
 	/**
-	 * Set the wpnav_collapse setting
-	 */
-	public function set_wpnav_collapse_setting() {
-
-		$brandNameValue = $this->container->plugin()->brand;
-		wp_enqueue_script( 'nfd_wpnavbar_setting', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/wpnavbar.js', array( 'jquery' ), '1.0', true );
-		$params = array( 'nfdbrandname' => $brandNameValue );
-		wp_localize_script( 'nfd_wpnavbar_setting', 'navBarParams', $params );
-	}
-
-	/**
 	 * Loads the textdomain for the module. This applies only to PHP strings.
 	 *
 	 * @return boolean
@@ -222,11 +210,11 @@ class ECommerce {
 	 */
 	public function add_to_runtime( $sdk ) {
 		$values = array(
-			'brand_settings' => Brands::get_config( $this->container ),
-			'nonces'         => array(
+			'brand_settings'         => Brands::get_config( $this->container ),
+			'nonces'                 => array(
 				'gateway_toggle' => \wp_create_nonce( 'woocommerce-toggle-payment-gateway-enabled' ),
 			),
-			'install_token'  => PluginInstaller::rest_get_plugin_install_hash(),
+			'install_token'          => PluginInstaller::rest_get_plugin_install_hash(),
 			'can_restart_onboarding' => self::get_can_onboarding_restart(),
 		);
 		return array_merge( $sdk, array( 'ecommerce' => $values ) );
@@ -602,12 +590,12 @@ class ECommerce {
 			'nfd_slug_yith_stripe_payments_for_woocommerce',
 		);
 		if ( 'woocommerce/woocommerce.php' === $plugin ) {
-			error_log('WooCommerce activated. Installing required plugins...');
+			error_log( 'WooCommerce activated. Installing required plugins...' );
 			foreach ( $plugin_slugs as $plugin ) {
-				error_log("Attempting to install: $plugin");
+				error_log( "Attempting to install: $plugin" );
 				PluginInstaller::install( $plugin, true );
 			}
-			error_log('Plugin installation process completed.');
+			error_log( 'Plugin installation process completed.' );
 		}
 	}
 
@@ -797,14 +785,14 @@ class ECommerce {
 	}
 
 	/**
- 	* Force WooCommerce to use the old Payments settings page.
- 	*
- 	* WooCommerce 9.7+ introduces a new Payments settings page. 
- 	* This function disables it and keeps the classic version.
-	*
-	* @param array $features Existing WooCommerce feature configurations.
-	* @return array Modified feature configuration with modern Payments settings disabled.
- 	*/
+	 * Force WooCommerce to use the old Payments settings page.
+	 *
+	 * WooCommerce 9.7+ introduces a new Payments settings page.
+	 * This function disables it and keeps the classic version.
+	 *
+	 * @param array $features Existing WooCommerce feature configurations.
+	 * @return array Modified feature configuration with modern Payments settings disabled.
+	 */
 	public function disable_modern_payments_settings( $features ) {
 		$features['reactify-classic-payments-settings'] = false;
 		return $features;
