@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5378e0364a07470bf8ccad1d4669416e",
+    "content-hash": "c008a0448f95ca79702d1f8f1b80dffd",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -323,16 +323,16 @@
         },
         {
             "name": "newfold-labs/wp-module-data",
-            "version": "2.6.11",
+            "version": "2.6.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "058a70c1c957cbe9739c9907f082087cd12a224a"
+                "reference": "900dd413a1c9337063b9ee48084116cf4cc300fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/058a70c1c957cbe9739c9907f082087cd12a224a",
-                "reference": "058a70c1c957cbe9739c9907f082087cd12a224a",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/900dd413a1c9337063b9ee48084116cf4cc300fb",
+                "reference": "900dd413a1c9337063b9ee48084116cf4cc300fb",
                 "shasum": ""
             },
             "require": {
@@ -419,10 +419,10 @@
             ],
             "description": "Newfold Data Module",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.6.11",
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.6.13",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2025-03-10T22:27:07+00:00"
+            "time": "2025-04-14T18:41:02+00:00"
         },
         {
             "name": "newfold-labs/wp-module-features",
@@ -545,23 +545,23 @@
         },
         {
             "name": "newfold-labs/wp-module-installer",
-            "version": "1.4.3",
+            "version": "1.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-installer.git",
-                "reference": "b2bc2da7271e098e4c45fd5c3f10fabf90dc1293"
+                "reference": "d80c739337a58a40fd172eb44b6b4b27b85ee5ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/b2bc2da7271e098e4c45fd5c3f10fabf90dc1293",
-                "reference": "b2bc2da7271e098e4c45fd5c3f10fabf90dc1293",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/d80c739337a58a40fd172eb44b6b4b27b85ee5ce",
+                "reference": "d80c739337a58a40fd172eb44b6b4b27b85ee5ce",
                 "shasum": ""
             },
             "require": {
                 "newfold-labs/wp-module-pls": "^1.0.1"
             },
             "require-dev": {
-                "newfold-labs/wp-php-standards": "^1.2.4",
+                "newfold-labs/wp-php-standards": "^1.2.5",
                 "wp-cli/wp-cli": "^2.11"
             },
             "type": "library",
@@ -614,10 +614,10 @@
             ],
             "description": "An installer for WordPress plugins and themes.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-installer/tree/1.4.3",
+                "source": "https://github.com/newfold-labs/wp-module-installer/tree/1.4.5",
                 "issues": "https://github.com/newfold-labs/wp-module-installer/issues"
             },
-            "time": "2025-03-28T11:29:08+00:00"
+            "time": "2025-04-14T18:08:46+00:00"
         },
         {
             "name": "newfold-labs/wp-module-loader",

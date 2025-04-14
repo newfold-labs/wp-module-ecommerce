@@ -29,7 +29,7 @@
     }
   ],
   "require": {
-    "newfold-labs/wp-module-installer": "^1.4.3",
+    "newfold-labs/wp-module-installer": "^1.4.5",
     "newfold-labs/wp-module-onboarding-data": "^1.2.8"
   },
   "require-dev": {

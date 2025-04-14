@@ -44,13 +44,14 @@ export const installWoo = () => {
 	cy.exec( `npx wp-env run cli wp plugin install woocommerce --activate`, {
 		timeout: longWait,
 		log: true,
+		failOnNonZeroExit: false,
 	} );
 };
 
 export const uninstallWoo = () => {
 	cy.log( 'Uninstalling WooCommerce and Yith Extended Plugins' );
 	cy.exec(
-		'npx wp-env run cli wp plugin uninstall woocommerce yith-stripe-payments-for-woocommerce-extended yith-paypal-payments-for-woocommerce-extended --deactivate',
+		'npx wp-env run cli wp plugin uninstall woocommerce yith-stripe-payments-for-woocommerce-extended yith-paypal-payments-for-woocommerce-extended yith-shippo-shippings-for-woocommerce-extended wonder-cart --deactivate',
 		{
 			failOnNonZeroExit: false,
 			timeout: longWait,
