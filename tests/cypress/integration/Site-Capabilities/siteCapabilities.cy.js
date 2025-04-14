@@ -1,4 +1,4 @@
-import { GetPluginId, getAppId } from '../wp-module-support/pluginID.cy';
+import { GetPluginId } from '../wp-module-support/pluginID.cy';
 import {
 	wpLogin,
 	installWoo,
@@ -8,7 +8,6 @@ import {
 const customCommandTimeout = 60000;
 const mediumWait = 30000;
 const pluginId = GetPluginId();
-const appId = getAppId();
 
 describe(
 	'Verify Wondercart follows site capabilities',
@@ -58,12 +57,11 @@ describe(
 				{ timeout: customCommandTimeout }
 			);
 			cy.reload();
-			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/store' );
-
-			cy.get( `.${ appId }-app-subnavitem-sales-promotions` )
-				.as( 'salesTab' )
-				.should( 'exist' );
-			cy.get( '@salesTab' ).click();
+			cy.visit(
+				'/wp-admin/admin.php?page=' +
+					pluginId +
+					'#/store/sales_discounts'
+			);
 			cy.get( '#buynow-wondercart', { timeout: mediumWait } ).as(
 				'buyButton'
 			);
@@ -82,15 +80,11 @@ describe(
 				{ timeout: customCommandTimeout }
 			);
 			cy.reload();
-			cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/store' );
-
-			// Verify Install Now exists when customer has ecommerce addon
-			cy.get( `.${ appId }-app-subnavitem-sales-promotions`, {
-				timeout: mediumWait,
-			} )
-				.as( 'salesTab' )
-				.should( 'exist' );
-			cy.get( '@salesTab' ).click();
+			cy.visit(
+				'/wp-admin/admin.php?page=' +
+					pluginId +
+					'#/store/sales_discounts'
+			);
 			cy.get( '#installnow-wondercart', { timeout: mediumWait } ).should(
 				'exist'
 			);
