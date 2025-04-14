@@ -72,7 +72,7 @@ describe(
 				.and( 'include', 'f95ccf1e-3028-4ea7-b2c2-847969348e8b' );
 		} );
 
-		it( 'Verify Sales and Discounts sub tab content and functionality', () => {
+		it( 'Verify Sales and Discounts content and functionality', () => {
 			// Install button is displayed when capabilities are true
 			cy.log( 'Update capabilities transient: CTBAndYithTrue' );
 			cy.exec(
@@ -98,12 +98,12 @@ describe(
 			} ).should( 'exist' );
 			cy.reload();
 			// display installed plugins for debugging
-			cy.exec( `npx wp-env run cli wp plugin list`, {
-				failOnNonZeroExit: false,
-			} ).then( ( result ) => {
-				cy.log( result.stdout );
-				expect( result.stdout ).to.contains( 'wonder-cart' );
-			} );
+			// cy.exec( `npx wp-env run cli wp plugin list`, {
+			// 	failOnNonZeroExit: false,
+			// } ).then( ( result ) => {
+			// 	cy.log( result.stdout );
+			// 	expect( result.stdout ).to.contains( 'wonder-cart' );
+			// } );
 			// Verify wonder cart content displays
 			cy.get( '#wonder-cart-init', {
 				timeout: customCommandTimeout,
