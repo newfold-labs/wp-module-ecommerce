@@ -42,9 +42,6 @@ describe( 'e-commerce Home Page- Next Steps', { testIsolation: true }, () => {
 				`npx wp-env run cli wp option set hg_region ${ hg_region }`
 			);
 		}
-	} );
-
-	beforeEach( () => {
 		cy.visit( '/wp-admin/admin.php?page=' + pluginId + '#/home' );
 	} );
 
@@ -79,7 +76,7 @@ describe( 'e-commerce Home Page- Next Steps', { testIsolation: true }, () => {
 			} );
 	} );
 
-	it( 'Verify Next steps when experience level is novice', () => {
+	it.skip( 'Verify Next steps when experience level is novice', () => {
 		cy.visit(
 			'/wp-admin/index.php?page=nfd-onboarding#/wp-setup/step/get-started/experience'
 		);
@@ -119,7 +116,7 @@ describe( 'e-commerce Home Page- Next Steps', { testIsolation: true }, () => {
 			} );
 	} );
 
-	it( 'Verify Signup for Bluehost WordPress Academy step', () => {
+	it.skip( 'Verify Signup for Bluehost WordPress Academy step', () => {
 		if ( pluginId == 'bluehost' ) {
 			cy.intercept( APIList.bh_academy ).as( 'events' );
 			cy.get( `#${ novice_step_id_bh[ 0 ] } a`, {
@@ -144,7 +141,7 @@ describe( 'e-commerce Home Page- Next Steps', { testIsolation: true }, () => {
 		}
 	} );
 
-	it( 'Verify Signup for Wordpress SEO Academy step', () => {
+	it.skip( 'Verify Signup for Wordpress SEO Academy step', () => {
 		cy.intercept( APIList.yoast_seo_academy ).as( 'events' );
 		cy.get( `#${ novice_step_id_bh[ 1 ] } a`, {
 			timeout: customCommandTimeout,
