@@ -307,10 +307,6 @@ export const wpSolutionsPromotedPluginsList = [
 	},
 ];
 
-export const myPluginsAndToolsPageLink = `${
-	window.location.href.split( '#' )[ 0 ]
-}#/my_plugins_and_tools`;
-
 export const solutionButtonTextObject = {
 	WP_SOLUTION_COMMERCE: 'Commerce',
 	WP_SOLUTION_SERVICE: 'Service Business',
