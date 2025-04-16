@@ -1,29 +1,30 @@
 {
-    "core": "WordPress/WordPress#tags/6.5.2",
-    "config": {
-        "WP_DEBUG": true,
-        "WP_DEBUG_LOG": true,
-        "WP_DEBUG_DISPLAY": false,
-        "FS_METHOD": "direct",
-        "NFD_ONBOARDING_VERSION": "0.0.10"
-    },
-    "phpVersion": "8.1",
-    "plugins": [
-        "."
-    ],
-    "themes": [
-        "https://downloads.wordpress.org/theme/yith-wonder.latest-stable.zip"
-    ],
-    "port": 8882,
-    "testsPort": 8883,
-    "env": {
-        "tests": {
-            "config": {
-                "WP_SITEURL": "localhost:8881",
-                "WP_TESTS_DOMAIN": "localhost:8881",
-                "WP_TESTS_TITLE": "Wordpress Tests",
-                "WP_TESTS_BINARY": "php"
-            }
-        }
+  "core": "WordPress/WordPress#tags/6.5.2",
+  "config": {
+    "WP_DEBUG": true,
+    "WP_DEBUG_LOG": true,
+    "WP_DEBUG_DISPLAY": false,
+    "FS_METHOD": "direct",
+    "NFD_ONBOARDING_VERSION": "0.0.10"
+  },
+  "phpVersion": "8.1",
+  "plugins": [
+    "."
+  ],
+  "themes": [
+    "https://downloads.wordpress.org/theme/yith-wonder.latest-stable.zip"
+  ],
+  "port": 8882,
+  "testsPort": 8883,
+  "env": {
+    "tests": {
+      "config": {
+        "WP_SITEURL": "localhost:8881",
+        "WP_TESTS_DOMAIN": "localhost:8881",
+        "WP_TESTS_TITLE": "Wordpress Tests",
+        "WP_TESTS_BINARY": "php"
+      },
+      "mysqlPort": 33306
     }
+  }
 }
