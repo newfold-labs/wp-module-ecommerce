@@ -1,3 +1,5 @@
+import { NewfoldRuntime } from './sdk/NewfoldRuntime';
+
 export const YITH_WOOCOMMERCE_BOOKING_APPOINTMENTS =
 	'https://docs.yithemes.com/yith-woocommerce-booking-extended/';
 export const YITH_WOOCOMMERCE_WISHLIST =
@@ -307,7 +309,9 @@ export const wpSolutionsPromotedPluginsList = [
 	},
 ];
 
-export const solutionsLink = 'admin.php?page=solutions';
+export const solutionsLink = NewfoldRuntime.adminUrl(
+	'admin.php?page=solutions'
+);
 
 export const solutionButtonTextObject = {
 	WP_SOLUTION_COMMERCE: 'Commerce',
