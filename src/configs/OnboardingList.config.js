@@ -20,7 +20,7 @@ import {
 	getMyPluginAndToolsDetails,
 } from './selectors';
 import { brandName, check_url_match } from './Utility';
-import { myPluginsAndToolsPageLink, VIEW_GUIDE_LINK } from '../constants';
+import { VIEW_GUIDE_LINK, solutionsLink } from '../constants';
 
 const parsePluginStatus = ( plugins ) => ( {
 	isWCActive: PluginsSdk.queries.isPlugin(
@@ -120,7 +120,7 @@ export function OnboardingListDefinition( props ) {
 					isAvailable: () =>
 						NewfoldRuntime.hasCapability( 'hasSolution' ),
 					isCompleted: () => false,
-					url: () => `${ myPluginsAndToolsPageLink }`,
+					url: () => solutionsLink,
 					target: () => '_self',
 				},
 				shouldRender: ( state ) => state.isAvailable,

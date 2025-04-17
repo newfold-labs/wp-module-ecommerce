@@ -88,23 +88,23 @@ msgstr ""
 msgid "Bought Together"
 msgstr ""
 
-#: includes/ECommerce.php:694
+#: includes/ECommerce.php:691
 msgid "Status"
 msgstr ""
 
-#: includes/ECommerce.php:718
+#: includes/ECommerce.php:715
 msgid "Published - Public"
 msgstr ""
 
-#: includes/ECommerce.php:718
+#: includes/ECommerce.php:715
 msgid "Published - Password Protected"
 msgstr ""
 
-#: includes/ECommerce.php:721
+#: includes/ECommerce.php:718
 msgid "Published - Private"
 msgstr ""
 
-#: includes/ECommerce.php:731
+#: includes/ECommerce.php:728
 msgid "Last Modified"
 msgstr ""
 
