@@ -740,6 +740,24 @@ class ECommerce {
 	}
 
 	/**
+	 * Verifies if the url is matching with the regex
+	 *
+	 * @param string $brand_name id of the brand
+	 *
+	 * @param string $site_url siteurl
+	 */
+	public function check_url_match( $brand_name, $site_url ) {
+		switch ( $brand_name ) {
+			case 'bluehost':
+				return ! preg_match( '/\b\w+(\.\w+)*\.mybluehost\.me\b/', $site_url );
+			case 'hostgator':
+				return ! preg_match( '/\b\w+(\.\w+)*\.temporary\.site\b/', $site_url );
+			default:
+				return true;
+		}
+	}
+
+	/**
 	 * On login, it checks whether to show the migration steps, post migration to user
 	 */
 	public function show_store_setup() {
@@ -748,24 +766,7 @@ class ECommerce {
 
 		$brand = $this->container->plugin()->id;
 
-		/**
-		 * Verifies if the url is matching with the regex
-		 *
-		 * @param string $brand_name id of the brand
-		 *
-		 * @param string $site_url siteurl
-		 */
-		function check_url_match( $brand_name, $site_url ) {
-			switch ( $brand_name ) {
-				case 'bluehost':
-					return ! preg_match( '/\b\w+(\.\w+)*\.mybluehost\.me\b/', $site_url );
-				case 'hostgator':
-					return ! preg_match( '/\b\w+(\.\w+)*\.temporary\.site\b/', $site_url );
-				default:
-					return true;
-			}
-		}
-		if ( check_url_match( $brand, $site_url ) ) {
+		if ( $this->check_url_match( $brand, $site_url ) ) {
 			update_option( 'nfd_show_migration_steps', false );
 		}
 	}
