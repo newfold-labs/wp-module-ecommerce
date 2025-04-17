@@ -5,7 +5,7 @@ import { useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import useSWR from 'swr';
 import {
-	myPluginsAndToolsPageLink,
+	solutionsLink,
 	wpSolutionsPromotedPluginsList,
 } from '../constants';
 import { ReactComponent as RightArrow } from '../icons/right-arrow.svg';
@@ -52,7 +52,7 @@ export function WPSolutionsBanner() {
 	);
 
 	const routeChange = () => {
-		location.href = myPluginsAndToolsPageLink;
+		location.href = solutionsLink;
 	};
 
 	useEffect( () => {
@@ -289,7 +289,7 @@ export function WPSolutionsBanner() {
 
 						<Button
 							as="a"
-							href={ myPluginsAndToolsPageLink }
+							href={ solutionsLink }
 							className="nfd-button nfd-button--secondary nfd-flex nfd-w-56 nfd-mx-auto nfd-mt-6"
 						>
 							{ __(

@@ -4,7 +4,7 @@ import { useEffect, useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import classNames from "classnames";
 import { YITHPluginsDefinitions } from "../configs/YITHPlugins.config";
-import { myPluginsAndToolsPageLink } from "../constants";
+import { solutionsLink } from "../constants";
 import lightchest from '../icons/light-chest.svg';
 import { NewfoldRuntime } from "../sdk/NewfoldRuntime";
 import { LoadingPanel } from "./LoadingPanel";
@@ -130,7 +130,7 @@ export function YITHPlugins({ wpModules }) {
             "wp-module-ecommerce"
           )}
           {
-            hasSolution && (<Button as="a" href={myPluginsAndToolsPageLink} className="nfd-button nfd-button--secondary nfd-flex  nfd-self-end nfd-ml-auto">
+            hasSolution && (<Button as="a" href={solutionsLink} className="nfd-button nfd-button--secondary nfd-flex  nfd-self-end nfd-ml-auto">
             {__( "View all your plugins and tools", "wp-module-ecommerce" )}
             </Button>)
           }

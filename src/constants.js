@@ -307,6 +307,8 @@ export const wpSolutionsPromotedPluginsList = [
 	},
 ];
 
+export const solutionsLink = 'admin.php?page=solutions';
+
 export const solutionButtonTextObject = {
 	WP_SOLUTION_COMMERCE: 'Commerce',
 	WP_SOLUTION_SERVICE: 'Service Business',
