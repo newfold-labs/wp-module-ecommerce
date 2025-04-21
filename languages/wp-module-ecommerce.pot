@@ -1171,19 +1171,19 @@ msgid "View completed tasks"
 msgstr ""
 
 #: build/index.js:1
-msgid "Design a custom site with AI"
-msgstr ""
-
-#: build/index.js:1
 msgid "Design a custom store with AI"
 msgstr ""
 
 #: build/index.js:1
-msgid "Use our AI Website Builder to begin your site a lot closer to the finish line!"
+msgid "Design a custom site with AI"
 msgstr ""
 
 #: build/index.js:1
 msgid "Use our AI Website Builder to begin your store a lot closer to the finish line!"
+msgstr ""
+
+#: build/index.js:1
+msgid "Use our AI Website Builder to begin your site a lot closer to the finish line!"
 msgstr ""
 
 #: build/index.js:1
