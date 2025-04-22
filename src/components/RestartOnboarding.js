@@ -24,18 +24,18 @@ export function RestartOnboarding( ) {
       <div className="nfd-flex-1">
         <Title size="4" className="nfd-leading-normal" id="ready-to-go-live">
         {NewfoldRuntime.hasCapability("isEcommerce")
-          ?__("Design a custom site with AI", "wp-module-ecommerce")
-          :__("Design a custom store with AI", "wp-module-ecommerce")
+          ?__("Design a custom store with AI", "wp-module-ecommerce")
+          :__("Design a custom site with AI", "wp-module-ecommerce")
         }
         </Title>
         <span className="nfd-whitespace-pre-wrap nfd-leading-tight">
           {NewfoldRuntime.hasCapability("isEcommerce")
             ? __(
-              "Use our AI Website Builder to begin your site a lot closer to the finish line!",
+              "Use our AI Website Builder to begin your store a lot closer to the finish line!",
               "wp-module-ecommerce"
             )
             : __(
-              "Use our AI Website Builder to begin your store a lot closer to the finish line!",
+              "Use our AI Website Builder to begin your site a lot closer to the finish line!",
               "wp-module-ecommerce"
             )}
         </span>
