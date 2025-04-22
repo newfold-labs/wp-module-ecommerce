@@ -74,7 +74,7 @@ jobs:
         id: version_bump
         run: |
           echo "Running version bump script..."
-          OUTPUT=$(node scripts/version-bump.js ${{ inputs.level }})
+          OUTPUT=$(npm run set-version-${{ inputs.level }})
 
           echo ""
           echo "====== Script Output ======"
