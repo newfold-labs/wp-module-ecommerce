@@ -1236,10 +1236,6 @@ msgid "Your site has been successfully migrated."
 msgstr "Uw site is succesvol gemigreerd."
 
 #: build/index.js:1
-msgid "Home"
-msgstr "Startpagina"
-
-#: build/index.js:1
 msgid "SITE PREVIEW"
 msgstr "SITE VOORBEELD"
 
