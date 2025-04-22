@@ -74,7 +74,7 @@ jobs:
         id: version_bump
         run: |
           echo "Running version bump script..."
-          OUTPUT=$(node ./github/scripts/set-version-bump.js ${{ inputs.level }})
+          OUTPUT=$(node ./.github/scripts/set-version-bump.js ${{ inputs.level }})
 
           echo ""
           echo "====== Script Output ======"
