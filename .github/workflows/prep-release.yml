@@ -25,9 +25,9 @@ jobs:
     name: Prepare Release
     runs-on: ubuntu-latest
     permissions:
-      # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
+      # Give the default token permission to commit, push the changed files, and open a pull request.
       contents: write
-
+      pull-requests: write
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -75,13 +75,11 @@ jobs:
         run: |
           echo "Running version bump script..."
           OUTPUT=$(node ./.github/scripts/set-version-bump.js ${{ inputs.level }})
-
           echo ""
           echo "====== Script Output ======"
           echo "$OUTPUT"
           echo "==========================="
           echo ""
-
           echo "new_version=$(echo "$OUTPUT" | jq -r '.newVersion')" >> $GITHUB_OUTPUT
           echo "old_version=$(echo "$OUTPUT" | jq -r '.oldVersion')" >> $GITHUB_OUTPUT
           echo "message=$(echo "$OUTPUT" | jq -r '.message')" >> $GITHUB_OUTPUT
