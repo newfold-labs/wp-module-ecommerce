@@ -1236,10 +1236,6 @@ msgid "Your site has been successfully migrated."
 msgstr "Ihre Seite wurde erfolgreich migriert."
 
 #: build/index.js:1
-msgid "Home"
-msgstr "Zuhause"
-
-#: build/index.js:1
 msgid "SITE PREVIEW"
 msgstr "SEITE VORHANG"
 
