@@ -64,23 +64,20 @@ jobs:
       - name: Validate composer.json and composer.lock
         run: composer validate
 
-      - name: Update Patch Version
-        if: ${{ inputs.level == 'patch' }}
-        run: npm run set-version-patch
-
-      - name: Update Minor Version
-        if: ${{ inputs.level == 'minor' }}
-        run: npm run set-version-minor
-
-      - name: Update Major Version
-        if: ${{ inputs.level == 'major' }}
-        run: npm run set-version-major
+      - name: Run Update Version Script
+        id: version_bump
+        run: |
+          OUTPUT=$(npm run set-version-${{ inputs.level }})
+          echo "Output: $OUTPUT"
+          echo "new_version=$(echo "$OUTPUT" | jq -r '.newVersion')" >> $GITHUB_OUTPUT
+          echo "old_version=$(echo "$OUTPUT" | jq -r '.oldVersion')" >> $GITHUB_OUTPUT
+          echo "message=$(echo "$OUTPUT" | jq -r '.message')" >> $GITHUB_OUTPUT
 
       - name: Commit code coverage to gh-pages
         uses: stefanzweifel/git-auto-commit-action@b863ae1933cb653a53c021fe36dbb774e1fb9403 # v5.2.0
         with:
-          commit_message: "🤖 ${{ inputs.level }} version bump"
-          branch: release
+          commit_message: "🤖 ${{ steps.version_bump.outputs.message }}"
+          branch: release/${{ steps.version_bump.outputs.new_version }}
           create_branch: true
         env:
           GITHUB_TOKEN: "${{ github.token }}"
@@ -90,6 +87,6 @@ jobs:
         with:
           token: ${{ github.token }}
           branch: release
-          title: "Automated ${{ inputs.level }} Release PR"
+          title: "Automated ${{ inputs.level }} Release PR - ${{ steps.version_bump.outputs.new_version }}"
           body: "This PR was created automatically by a GitHub Action."
           base: trunk

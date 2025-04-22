@@ -1,7 +1,11 @@
 const fs = require( 'fs' );
+const path = require( 'path' );
 const semver = require( 'semver' );
-const packagefile = './package.json';
-const pluginfile = './bootstrap.php';
+const packagefile = path.resolve( __dirname, '../../package.json' );
+const pluginfile = path.resolve(
+	__dirname,
+	'../../bootstrap.php'
+);
 
 if ( fs.existsSync( packagefile ) && fs.existsSync( pluginfile ) ) {
 	const packageData = require( packagefile );
@@ -31,5 +35,15 @@ if ( fs.existsSync( packagefile ) && fs.existsSync( pluginfile ) ) {
 		} );
 	} );
 
-	console.log( 'Version updated', currentVersion, '=>', newVersion );
+	const output = {
+		oldVersion: currentVersion,
+		newVersion: newVersion,
+		level: type,
+		message: `Version updated from ${ currentVersion } to ${ newVersion }`,
+	}
+	console.log( JSON.stringify( output ) );
+} else {
+	console.log(
+		'Version update error: package.json or bluehost-wordpress-plugin.php not found.'
+	);
 }
