@@ -96,3 +96,4 @@ jobs:
           branch: release
           title: "Automated ${{ inputs.level }} Release PR"
           body: "This PR was created automatically by a GitHub Action."
+          base: trunk
