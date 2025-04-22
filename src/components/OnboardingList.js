@@ -30,8 +30,8 @@ function OnboardingCheckListItem( { children, actions, state, ...props } ) {
 			<Link
 				className={ classNames(
 					'nfd-rounded-t-md',
-					'nfd-flex nfd-items-center nfd-gap-3',
-					'nfd-py-4 nfd-px-5',
+					'nfd-flex nfd-items-center nfd-gap-2',
+					'nfd-py-4 nfd-px-4',
 					'nfd-text-sm nfd-no-underline'
 				) }
 				data-testid={ props.id }
@@ -172,7 +172,7 @@ export function OnboardingList( props ) {
 				<Link
 					as="button"
 					type="button"
-					className="nfd-w-fit nfd-justify-self-end nfd-no-underline"
+					className="nfd-w-fit nfd-justify-self-end nfd-no-underline nfd-h-fit"
 					onClick={ () =>
 						setView(
 							view === 'completed' ? 'incomplete' : 'completed'

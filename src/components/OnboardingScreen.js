@@ -88,14 +88,13 @@ export function OnboardingScreen({
       className="nfd-welcome-section"
       showShadowBox={showShadowBox}
     >
-      <Section.Header title={__("Home", "wp-module-ecommerce")} />
       <Section.Content className="nfd-app-section-home">
         <div className="nfd-flex nfd-flex-col nfd-gap-6">
           <div
             className={classNames(
               "nfd-grid nfd-gap-6 nfd-min-h-[350px]",
               "sm:nfd-grid-cols-1",
-              "xl:nfd-grid-cols-2"
+              "lg:nfd-grid-cols-2"
             )}
           >
             <div className="nfd-flex nfd-flex-col nfd-justify-start nfd-items-start nfd-gap-4">
@@ -118,8 +117,8 @@ export function OnboardingScreen({
                 onMouseOver={handleMouseOver}
                 onMouseOut={handleMouseLeave}
                 className={classNames(
-                  "nfd-relative  nfd-flex-col nfd-justify-center nfd-items-center",
-                  "nfd-border-[#CBD5E1] nfd-border-[1px] nfd-border-solid nfd-rounded-md"
+                  "nfd-group nfd-relative nfd-flex-col nfd-justify-center nfd-items-center",
+                  "nfd-border-[#CBD5E1] nfd-border-[1px] nfd-border-solid nfd-rounded-md nfd-aspect-[1.5] nfd-overflow-hidden nfd-w-full nfd-max-h-[350px]"
                 )}
               >
                 <div className="nfd-flex nfd-justify-center nfd-items-center nfd-bg-gray-200 nfd-border-b nfd-border-[#dbd1d1] nfd-relative nfd-z-10 nfd-rounded-t-md">
@@ -127,23 +126,17 @@ export function OnboardingScreen({
                     {__("SITE PREVIEW", "wp-module-ecommerce")}
                   </p>
                 </div>
-                <div className="nfd-flex-col">
+                <div className="nfd-flex-col nfd-h-full">
                   <div
                     className={classNames(
-                      "nfd-h-[216px] nfd-box-content",
-                      "nfd-box-content nfd-z-[2] nfd-opacity-100",
-                      "nfd-flex nfd-flex-col nfd-justify-center nfd-items-center",
-                      "md:nfd-w-[520px] md:min-[783px]:nfd-w-[387px] md:min-[768px]:nfd-w-[670px]",
-                      "lg:min-[1024px]:nfd-w-[486px] lg:nfd-w-[520px] lg:nfd-h-[245px]",
-                      "xl:min-[1280px]:nfd-w-[360px]",
-                      "2xl:nfd-w-[520px]"
+                      "nfd-w-full nfd-min-h-full nfd-relative"
                     )}
                   >
                     <iframe
                       onLoad={iframeOnLoad}
                       id="iframe-preview"
                       title="Preview"
-                      className="nfd-w-[400%] nfd-min-h-[400%] nfd-basis-full nfd-scale-[0.25] nfd-overflow-hidden nfd-relative nfd-top-[-9px]"
+                      className="nfd-w-[400%] nfd-min-h-[400%] nfd-basis-full nfd-scale-[0.25] nfd-overflow-hidden nfd-absolute nfd-origin-top-left"
                       src={
                         !comingSoon
                           ? NewfoldRuntime.homeUrl
@@ -158,32 +151,24 @@ export function OnboardingScreen({
                 </div>
                 <div
                   className={classNames(
-                    "nfd-absolute nfd-top-0 nfd-left-0 nfd-bottom-0 nfd-right-0 nfd-flex nfd-items-center nfd-justify-center nfd-gap-4 nfd-flex-col ",
+                    "nfd-absolute nfd-pt-[20px] nfd-top-0 nfd-left-0 nfd-bottom-0 nfd-right-0 nfd-flex nfd-items-center nfd-justify-center nfd-gap-4 nfd-flex-col ",
                     "hover:nfd-animate-[wiggle_1s_ease-in-out_infinite]"
                   )}
                 >
                   <Button
-                    style={{
-                      display: hovered ? "inline-block" : "none",
-                    }}
+                    className="nfd-opacity-0 nfd-transition-all nfd-duration-200 group-hover:nfd-opacity-100"
                     as="a"
-                    className="nfd-bg-canvas "
                     href={NewfoldRuntime.siteUrl}
                     target="_blank"
-                    variant="secondary"
                     data-cy="view-site"
                   >
                     {__("View your site", "wp-module-ecommerce")}
                   </Button>
                   <Button
-                    style={{
-                      display: hovered ? "inline-block" : "none",
-                    }}
+                    className="nfd-opacity-0 nfd-transition-all nfd-duration-200 group-hover:nfd-opacity-100"
                     as="a"
-                    className="nfd-bg-canvas "
                     href={editUrl}
                     target="_blank"
-                    variant="secondary"
                     data-cy="edit-site"
                   >
                     {__("Edit your site", "wp-module-ecommerce")}
