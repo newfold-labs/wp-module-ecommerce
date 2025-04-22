@@ -64,7 +64,7 @@ jobs:
       - name: Validate composer.json and composer.lock
         run: composer validate
 
-      - name: Unstall Packages
+      - name: Install Packages
         run: npm install
 
       - name: Run Update Version Script
@@ -76,11 +76,11 @@ jobs:
           echo "old_version=$(echo "$OUTPUT" | jq -r '.oldVersion')" >> $GITHUB_OUTPUT
           echo "message=$(echo "$OUTPUT" | jq -r '.message')" >> $GITHUB_OUTPUT
 
-      - name: Commit code coverage to gh-pages
+      - name: Commit code changes to release branch
         uses: stefanzweifel/git-auto-commit-action@b863ae1933cb653a53c021fe36dbb774e1fb9403 # v5.2.0
         with:
           commit_message: "🤖 ${{ steps.version_bump.outputs.message }}"
-          branch: release/${{ steps.version_bump.outputs.new_version }}
+          branch: release
           create_branch: true
         env:
           GITHUB_TOKEN: "${{ github.token }}"
