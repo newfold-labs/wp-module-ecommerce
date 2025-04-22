@@ -64,6 +64,9 @@ jobs:
       - name: Validate composer.json and composer.lock
         run: composer validate
 
+      - name: Unstall Packages
+        run: npm install
+
       - name: Run Update Version Script
         id: version_bump
         run: |
