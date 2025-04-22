@@ -43,7 +43,7 @@ if ( fs.existsSync( packagefile ) && fs.existsSync( pluginfile ) ) {
 	}
 	console.log( JSON.stringify( output ) );
 } else {
-	console.log(
-		'Version update error: package.json or bluehost-wordpress-plugin.php not found.'
-	);
+	console.log( JSON.stringify( {
+		message: 'Version update error. A file was not found.',
+	} ) );
 }
