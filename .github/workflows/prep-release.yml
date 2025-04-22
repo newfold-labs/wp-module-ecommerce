@@ -74,7 +74,7 @@ jobs:
         id: version_bump
         run: |
           echo "Running version bump script..."
-          OUTPUT=$(npm run set-version-${{ inputs.level }})
+          OUTPUT=$(node ./github/scripts/set-version-bump.js ${{ inputs.level }})
 
           echo ""
           echo "====== Script Output ======"
@@ -85,6 +85,9 @@ jobs:
           echo "new_version=$(echo "$OUTPUT" | jq -r '.newVersion')" >> $GITHUB_OUTPUT
           echo "old_version=$(echo "$OUTPUT" | jq -r '.oldVersion')" >> $GITHUB_OUTPUT
           echo "message=$(echo "$OUTPUT" | jq -r '.message')" >> $GITHUB_OUTPUT
+      
+      - name: Run Build and Update Language Files
+        run: npm run post-set-version
 
       - name: Create Release Pull Request
         uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7.0.8
