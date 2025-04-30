@@ -417,7 +417,7 @@ msgstr "Ver listas de deseos"
 
 #: build/index.js:1
 msgid "WonderCart"
-msgstr "Carrito de Maravillas"
+msgstr "WonderCart"
 
 #: build/index.js:1
 msgid "Booking and Appointments"

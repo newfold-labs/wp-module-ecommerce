@@ -417,7 +417,7 @@ msgstr "Bekijk verlanglijsts"
 
 #: build/index.js:1
 msgid "WonderCart"
-msgstr "Overwinnings"
+msgstr "WonderCart"
 
 #: build/index.js:1
 msgid "Booking and Appointments"
