@@ -33,7 +33,7 @@
         }
     },
     "require": {
-        "newfold-labs/wp-module-installer": "^1.5.1",
+        "newfold-labs/wp-module-installer": "^1.6.3",
         "newfold-labs/wp-module-onboarding-data": "^1.2.8"
     },
     "require-dev": {
