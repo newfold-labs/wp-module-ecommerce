@@ -93,8 +93,6 @@ class ECommerce {
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_assets' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_textdomains' ) );
-		add_filter( 'woocommerce_coupons_enabled', array( $this, 'disable_coupon_field_on_cart' ) );
-		add_filter( 'woocommerce_before_cart', array( $this, 'hide_banner_notice_on_cart' ) );
 		add_action( 'before_woocommerce_init', array( $this, 'hide_woocommerce_set_up' ) );
 		add_action( 'before_woocommerce_init', array( $this, 'custom_payment_gateways_order' ) );
 		add_action( 'before_woocommerce_init', array( $this, 'dismiss_woo_payments_cta' ) );
@@ -419,33 +417,6 @@ class ECommerce {
 			'wp-module-ecommerce',
 			$MODULE_LANG_DIR
 		);
-	}
-
-	/**
-	 * Remove Add coupon field on cart page
-	 *
-	 * @param boolean $enabled The enabled status of the coupon field.
-	 */
-	public function disable_coupon_field_on_cart( $enabled ) {
-		if ( is_cart() ) {
-			$enabled = false;
-		}
-		return $enabled;
-	}
-
-	/**
-	 * Remove notice banner on cart page
-	 */
-	public function hide_banner_notice_on_cart() {
-		if ( is_cart() ) {
-			?>
-		<style>
-		.wc-block-components-notice-banner, .ywgc_enter_code {
-			display: none;
-		}
-		</style>
-			<?php
-		}
 	}
 
 	/**
