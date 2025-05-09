@@ -12,11 +12,7 @@
   "types": "index.d.ts",
   "scripts": {
     "prepublishOnly": "npm run build",
-    "set-version-bump": "npm run set-version-patch",
-    "set-version-patch": "node ./.github/scripts/set-version-bump.js && npm run post-set-version",
-    "set-version-minor": "node ./.github/scripts/set-version-bump.js minor && npm run post-set-version",
-    "set-version-major": "node ./.github/scripts/set-version-bump.js major && npm run post-set-version",
-    "post-set-version": "npm ci && rm -rf ./build && npm run build && composer install && composer run i18n",
+    "post-set-version": "rm -rf ./build",
     "build": "wp-scripts build ./src/index.js --config ./scripts/webpack.config.js",
     "lint": "wp-scripts lint-js ./src/index.js",
     "start": "wp-scripts start ./src/index.js --config ./scripts/webpack.config.js",
