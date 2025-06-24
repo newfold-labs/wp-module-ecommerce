@@ -417,7 +417,7 @@ msgstr "Ver listas de deseos"
 
 #: build/index.js:1
 msgid "WonderCart"
-msgstr "Carrito de Maravillas"
+msgstr "WonderCart"
 
 #: build/index.js:1
 msgid "Booking and Appointments"
@@ -700,6 +700,7 @@ msgid "Test Key Secret *"
 msgstr "Prueba Clave secreta *"
 
 #: build/index.js:1
+#, js-format
 msgid "The key ID can be found in the \"%1$sAPI Keys%2$s\" section of your Razorpay dashboard."
 msgstr "El ID de la clave se puede encontrar en la sección \"%1$sAPI Keys%2$s\" de tu panel de mando de Razorpay."
 
@@ -712,6 +713,7 @@ msgid "That is not a valid production key ID. Please check your key ID and enter
 msgstr "Esa no es una clave de producción válida ID. Por favor, compruebe su ID de clave e introdúzcala de nuevo."
 
 #: build/index.js:1
+#, js-format
 msgid "The key secret can be found in the \"%1$sAPI Keys%2$s\" section of your Razorpay dashboard."
 msgstr "El secreto clave se puede encontrar en la sección \"%1$sAPI Keys%2$s\" de tu panel de mando de Razorpay."
 
@@ -736,6 +738,7 @@ msgid "Enable Test Mode"
 msgstr "Activar modo de prueba"
 
 #: build/index.js:1
+#, js-format
 msgid "enter your \"%1$s\" key ID here."
 msgstr "ingrese su ID de clave \"%1$s\" aquí."
 
@@ -748,6 +751,7 @@ msgid "production"
 msgstr "producción"
 
 #: build/index.js:1
+#, js-format
 msgid "enter your \"%1$s\" key secret here."
 msgstr "ingrese aquí su clave secreta \"%1$s\"."
 
