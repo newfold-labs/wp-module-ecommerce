@@ -24,6 +24,10 @@
             "type": "composer",
             "url": "https://wpackagist.org"
         },
+        "newfold-labs/wp-module-onboarding-data": {
+            "type": "vcs",
+            "url": "https://github.com/newfold-labs/wp-module-onboarding-data.git"
+        },
         "0": {
             "type": "composer",
             "url": "https://newfold-labs.github.io/satis/",
@@ -34,7 +38,7 @@
     },
     "require": {
         "newfold-labs/wp-module-installer": "^1.5.1",
-        "newfold-labs/wp-module-onboarding-data": "^1.2.11"
+        "newfold-labs/wp-module-onboarding-data": "dev-update/unified-ui"
     },
     "require-dev": {
         "johnpbloch/wordpress": "@stable",

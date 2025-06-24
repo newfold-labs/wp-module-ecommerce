@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "755351dab8f28770f7aacb1cd06dcd74",
+    "content-hash": "b7a3714d4e27db8ca6c27b6f16a65ac9",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -646,16 +646,16 @@
         },
         {
             "name": "newfold-labs/wp-module-onboarding-data",
-            "version": "1.2.11",
+            "version": "dev-update/unified-ui",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding-data.git",
-                "reference": "268711b9c450a8ddd18b9145b0ec257c8523e36f"
+                "reference": "0eee4a2a6d6f1aaac326ecd75de85632fc331f3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding-data/zipball/268711b9c450a8ddd18b9145b0ec257c8523e36f",
-                "reference": "268711b9c450a8ddd18b9145b0ec257c8523e36f",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding-data/zipball/0eee4a2a6d6f1aaac326ecd75de85632fc331f3b",
+                "reference": "0eee4a2a6d6f1aaac326ecd75de85632fc331f3b",
                 "shasum": ""
             },
             "require": {
@@ -731,10 +731,10 @@
             ],
             "description": "A non-toggleable module containing a standardized interface for interacting with Onboarding data.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-onboarding-data/tree/1.2.11",
+                "source": "https://github.com/newfold-labs/wp-module-onboarding-data/tree/update/unified-ui",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding-data/issues"
             },
-            "time": "2025-06-13T23:07:13+00:00"
+            "time": "2025-06-23T23:07:18+00:00"
         },
         {
             "name": "newfold-labs/wp-module-patterns",
@@ -10744,15 +10744,17 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "johnpbloch/wordpress": 0,
+        "newfold-labs/wp-module-onboarding-data": 20,
         "newfold-labs/wp-php-standards": 0,
-        "wp-cli/i18n-command": 0
+        "wp-cli/i18n-command": 0,
+        "wp-cli/wp-cli-bundle": 0
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
+    "platform": {},
+    "platform-dev": {},
     "platform-overrides": {
         "php": "7.3"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
