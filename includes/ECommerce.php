@@ -9,7 +9,6 @@ use NewfoldLabs\WP\Module\ECommerce\I18nService;
 use NewfoldLabs\WP\Module\ECommerce\WonderCart;
 use NewfoldLabs\WP\Module\Installer\Services\PluginInstaller;
 use NewfoldLabs\WP\ModuleLoader\Container;
-use NewfoldLabs\WP\Module\Onboarding\Data\Services\FlowService;
 use NewfoldLabs\WP\Module\Data\SiteCapabilities;
 
 /**
@@ -183,13 +182,6 @@ class ECommerce {
 			'wp-module-ecommerce',
 			NFD_ECOMMERCE_PLUGIN_DIRNAME . '/vendor/newfold-labs/wp-module-ecommerce/languages'
 		);
-	}
-
-	/**
-	 * Update the experience level
-	 */
-	public static function load_experience_level() {
-		update_option( 'onboarding_experience_level', FlowService::get_experience_level() );
 	}
 
 	/**
