@@ -30,7 +30,7 @@
     "@newfold/ui-component-library": "^1.3.0",
     "@newfold/wp-module-runtime": "^1.1.3",
     "@reduxjs/toolkit": "2.8.2",
-    "@wordpress/api-fetch": "^7.21.0",
+    "@wordpress/api-fetch": "^7.26.0",
     "@wordpress/components": "^29.6.0",
     "@wordpress/data": "^10.22.0",
     "@wordpress/date": "^5.22.0",
