@@ -17,9 +17,9 @@
     "set-version-minor": "node ./.github/scripts/set-version-bump.js minor && npm run post-set-version",
     "set-version-major": "node ./.github/scripts/set-version-bump.js major && npm run post-set-version",
     "post-set-version": "npm ci && rm -rf ./build && npm run build && composer install && composer run i18n",
-    "build": "wp-scripts build ./src/index.js --config ./scripts/webpack.config.js",
+    "build": "wp-scripts build --config ./scripts/webpack.config.js",
     "lint": "wp-scripts lint-js ./src/index.js",
-    "start": "wp-scripts start ./src/index.js --config ./scripts/webpack.config.js",
+    "start": "wp-scripts start --config ./scripts/webpack.config.js",
     "test:unit": "echo \"No tests implemented\"",
     "test:e2e": "echo \"No tests implemented\""
   },
@@ -50,6 +50,11 @@
     "cypress-axe": "^1.6.0",
     "cypress-iframe": "^1.0.1",
     "semver": "^7.7.1",
-    "tailwindcss": "^3.4.4"
+    "tailwindcss": "^3.4.4",
+    "@tailwindcss/postcss": "^4.1.7",
+    "mini-css-extract-plugin": "^2.9.2",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^6.0.1",
+    "webpack-merge": "^6.0.1"
   }
 }

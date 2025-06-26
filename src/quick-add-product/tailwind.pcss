@@ -1,0 +1,164 @@
+/* Import main CSS including all components. */
+@import "@newfold/ui-component-library";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.nfd-quick-add-product__categories-field {
+	position: relative;
+
+	.nfd-tag-input-suggestions {
+		@apply
+		nfd-absolute
+		nfd-z-10
+		nfd-w-full
+		nfd-mt-1
+		nfd-overflow-auto
+		nfd-bg-white
+		nfd-rounded-md
+		nfd-shadow-lg
+		nfd-max-h-60
+		nfd-ring-1
+		nfd-ring-black
+		nfd-ring-opacity-5
+		focus:nfd-outline-none
+		nfd-text-sm;
+
+		li {
+			@apply
+			nfd-cursor-pointer
+			nfd-select-none
+			nfd-px-3
+			nfd-py-2
+			nfd-text-slate-700
+			nfd-m-0;
+
+			&:hover {
+				@apply nfd-bg-slate-200;
+			}
+		}
+	}
+}
+
+.nfd-quick-add-product__image-field {
+	.nfd-quick-add-product__image-uploader {
+		@apply
+		nfd-w-full
+		nfd-border-2
+		nfd-border-dashed
+		nfd-rounded-md
+		nfd-border-slate-300
+		nfd-flex
+		nfd-items-center
+		nfd-justify-center
+		nfd-cursor-pointer
+		nfd-bg-gray-100;
+
+		height: 65px;
+	}
+
+	.nfd-quick-add-product__image-preview {
+		@apply
+		nfd-inline-block
+		nfd-border
+		nfd-border-slate-300
+		nfd-rounded-md
+		nfd-relative;
+
+		img {
+			height: 65px;
+			width: auto;
+		}
+
+		.nfd-quick-add-product__image-remove {
+			@apply
+			nfd-absolute
+			-nfd-top-1
+			-nfd-right-2
+			nfd-inline-flex
+			nfd-h-4
+			nfd-w-4
+			nfd-items-center
+			nfd-justify-center
+			nfd-rounded-full
+			nfd-bg-slate-200
+			nfd-text-slate-400
+			hover:nfd-bg-slate-300
+			hover:nfd-text-slate-500;
+		}
+	}
+}
+
+.nfd-quick-add-product__response {
+	@apply
+	nfd-flex
+	nfd-flex-col
+	nfd-gap-2;
+
+	.nfd-quick-add-product__response-data {
+		@apply
+		nfd-flex
+		nfd-rounded-md
+		nfd-mb-4
+		nfd-p-4
+		nfd-gap-4;
+
+		background-color : #f2fcdf;
+	}
+
+	.nfd-quick-add-product__response-details {
+		@apply
+		nfd-flex
+		nfd-flex-col
+		nfd-gap-1;
+	}
+
+	.nfd-quick-add-product__response-product-name {
+		@apply
+		nfd-text-base
+		nfd-font-bold;
+	}
+
+	.nfd-quick-add-product__response-product-permalink {
+		@apply
+		nfd-font-bold;
+	}
+
+	.nfd-quick-add-product__response-image {
+		@apply
+		nfd-inline-block
+		nfd-border
+		nfd-border-slate-300
+		nfd-rounded-md
+		nfd-relative;
+
+		img {
+			@apply
+			nfd-rounded-md;
+			height: 65px;
+			width: auto;
+		}
+
+		span {
+			@apply
+			nfd-absolute
+			-nfd-top-1
+			-nfd-right-2
+			nfd-inline-flex
+			nfd-h-4
+			nfd-w-4
+			nfd-items-center
+			nfd-justify-center
+			nfd-rounded-full;
+
+			background-color: #b4bb30;
+		}
+	}
+
+	.nfd-button--secondary {
+		color: #196bde !important;
+	}
+}
+

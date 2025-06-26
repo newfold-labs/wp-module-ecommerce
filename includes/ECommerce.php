@@ -114,12 +114,6 @@ class ECommerce {
 
 		add_action( 'init', array( $this, 'admin_init_conditional_on_capabilities' ) );
 
-		// Handle WonderCart Integrations
-		if ( is_plugin_active( 'wonder-cart/init.php' ) ) {
-			$wonder_cart = new WonderCart( $container );
-			$wonder_cart->init();
-		}
-
 		CaptiveFlow::init();
 		WooCommerceBacklink::init( $container );
 		register_meta(
@@ -132,7 +126,7 @@ class ECommerce {
 				'single'       => true,
 			)
 		);
-		add_filter( 'newfold-runtime', array( $this, 'add_to_runtime' ) );
+
 		$this->add_filters(
 			array( 'postbox_classes_page_wpseo_meta', 'postbox_classes_post_wpseo_meta', 'postbox_classes_product_wpseo_meta' ),
 			function ( $classes ) {
@@ -146,6 +140,9 @@ class ECommerce {
 			$wonder_cart = new WonderCart( $container );
 			$wonder_cart->init();
 		}
+
+		// Load Quick Add Product feature.
+        (new QuickAddProduct( $container ) )->init();
 
 		add_filter( 'newfold_runtime', array( $this, 'add_to_runtime' ) );
 	}
@@ -349,7 +346,7 @@ class ECommerce {
 	 * Load WP dependencies into the page.
 	 */
 	public function register_assets() {
-		$asset_file = NFD_ECOMMERCE_BUILD_DIR . 'index.asset.php';
+		$asset_file = NFD_ECOMMERCE_BUILD_DIR . 'panel/index.asset.php';
 		if ( file_exists( $asset_file ) ) {
 			$asset = require $asset_file;
 
