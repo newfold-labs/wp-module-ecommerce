@@ -1,3 +1,3 @@
-import { CategoriesField } from "./CategoriesField";
+import CategoriesField from "./CategoriesField";
 
 export { CategoriesField };

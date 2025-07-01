@@ -1,40 +1,43 @@
-import { useState } from 'react';
-import {Label} from "@newfold/ui-component-library";
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { Label } from "@newfold/ui-component-library";
+import { fetchCategories, prepareCategoryObject } from "../../functions";
 
-export const CategoriesField = ({id, name, label}) => {
+const CategoriesField = ({id, label, onChange, name=''}) => {
 
-	const suggestions = [
-		{ id: 1234, name: 'Adventure' },
-		{ id: 3123, name: 'Action' },
-		{ id: 6785, name: 'Comedy' },
-		{ id: 8685, name: 'Drama' },
-		{ id: 85678, name: 'Fantasy' },
-		{ id: 24325, name: 'Horror' },
-		{ id: 345, name: 'Mystery' },
-		{ id: 5345, name: 'Romance' },
-		{ id: 123, name: 'Thriller' },
-		{ id: 1098, name: 'Western' },
-		{ id: 97806, name: 'Crime' },
-		{ id: 876, name: 'Animation' },
-		{ id: 9875, name: 'Musical' },
-		{ id: 8756, name: 'Documentary' }
-	];
-
+	const [suggestions, setSuggestions] = useState([]);
 	const [categories, setCategories] = useState([]);
 	const [inputValue, setInputValue] = useState('');
 
+	// Load suggestions categories.
+	useEffect(() => {
+		( async () => {
+			const response = await fetchCategories();
+			setSuggestions( response );
+		} )()
+	}, []);
+
+	useEffect(() => {
+		if ( typeof onChange === "function" ) {
+			onChange( categories );
+		}
+	}, [categories]);
+
+	// Filter suggestions based on selected categories.
 	const filteredSuggestions = suggestions.filter(
 		(s) => s.name.toLowerCase().includes(inputValue.toLowerCase()) && ! categories.includes(s)
 	);
 
+	// Add category.
 	const addCategory = (category) => {
-		if ( ! categories.includes(category) ) {
+		if ( ! categories.filter((cat) => cat.id === category.id && cat.name === category.name).length ) {
 			setCategories([...categories, category]);
 		}
 		// Reset input value.
 		setInputValue('');
 	};
 
+	// Remove category.
 	const removeCategory = ( categoryToRemove ) => {
 		setCategories( categories.filter((category) => category !== categoryToRemove));
 	};
@@ -43,11 +46,9 @@ export const CategoriesField = ({id, name, label}) => {
 		if (event.key === 'Enter' ) {
 			event.preventDefault();
 
-			addCategory({id: 0, name: inputValue.trim()});
+			addCategory(prepareCategoryObject({name: inputValue.trim()}));
 		}
 	};
-
-	console.log(categories);
 
 	return (
 		<div className="nfd-quick-add-product__categories-field">
@@ -79,7 +80,16 @@ export const CategoriesField = ({id, name, label}) => {
 				</ul>
 			)}
 
-			{/*<input type="hidden" id={id} name={name} value={JSON.stringify(categories)}/>*/}
+			<input type="hidden" id={id} name={name || id} value={JSON.stringify(categories)}/>
 		</div>
 	);
 }
+
+CategoriesField.propTypes = {
+	id: PropTypes.string.isRequired,
+	label: PropTypes.string.isRequired,
+	name: PropTypes.string,
+	onChange: PropTypes.func
+}
+
+export default CategoriesField;
