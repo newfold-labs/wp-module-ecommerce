@@ -44,51 +44,6 @@ class QuickAddProductController extends \WC_REST_Products_Controller {
     }
 
     /**
-     * Additional fields for product.
-     *
-     * @since 4.7.0
-     *
-     * @global array $wp_rest_additional_fields Holds registered fields, organized by object type.
-     *
-     * @param string $object_type Optional. The object type.
-     * @return array Registered additional fields (if any), empty array if none or if the object type
-     *               could not be inferred.
-     */
-    protected function get_additional_fields( $object_type = null ) {
-        $additional_fields = parent::get_additional_fields( $object_type );
-
-        $additional_fields['featured_image'] = array(
-            'description' => __( 'Product featured image.', 'wp-module-ecommerce' ),
-            'type'        => 'integer',
-            'context'     => array( 'view', 'edit' ),
-            'readonly'    => true,
-        );
-
-        return $additional_fields;
-    }
-
-    /**
-     * Prepare a single product for create or update.
-     *
-     * @param \WP_REST_Request $request Request object.
-     * @param bool            $creating If is creating a new object.
-     *
-     * @return \WP_Error|\WC_Data
-     */
-    protected function prepare_object_for_database( $request, $creating = false ) {
-        /**
-         * @var \WC_Product $product
-         */
-        $product = parent::prepare_object_for_database( $request, $creating );
-
-        if ( ! is_wp_error( $product ) && isset( $request['featured_image'] ) ) {
-            $product = $this->set_product_featured_image( $product, absint( $request['featured_image'] ) );
-        }
-
-        return $product;
-    }
-
-    /**
      * Core function to prepare a single product output for response
      * (doesn't fire hooks, ensure_response, or add links).
      *
@@ -103,29 +58,5 @@ class QuickAddProductController extends \WC_REST_Products_Controller {
         $data['edit_url'] = get_edit_post_link( $object_data->get_id() );
 
         return $data;
-    }
-
-    /**
-     * Set product featured image.
-     *
-     * @param \WC_Product $product  Product instance.
-     * @param int         $image_id Featured product image ID.
-     *
-     * @throws \WC_REST_Exception REST API exceptions.
-     * @return \WC_Product
-     */
-    protected function set_product_featured_image( $product, $image_id ) {
-
-        if ( $image_id ) {
-            // Validate attachment image.
-            if ( ! wp_attachment_is_image( $image_id ) ) {
-                /* translators: %s: attachment id */
-                throw new \WC_REST_Exception( 'woocommerce_product_invalid_image_id', sprintf( __( '#%s is an invalid image ID.', 'wp-module-ecommerce' ), $image_id ), 400 );
-            }
-
-            $product->set_image_id( $image_id );
-        }
-
-        return $product;
     }
 }

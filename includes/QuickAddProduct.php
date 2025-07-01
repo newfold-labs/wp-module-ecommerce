@@ -64,7 +64,7 @@ class QuickAddProduct
             wp_register_script(
                 'quick-add-product',
                 NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/build/quick-add-product/index.js',
-                $asset['dependencies'],
+                array( 'accounting', ...$asset['dependencies'] ),
                 $asset['version']
             );
 
@@ -72,21 +72,28 @@ class QuickAddProduct
                 'quick-add-product',
                 'quickAddProduct',
                 array(
-                    'decimals' => wc_get_price_decimals(),
-                    'thousandSeparator' => wc_get_price_thousand_separator(),
-                    'decimalSeparator' => wc_get_price_decimal_separator(),
-                    'currencySymbol' => get_woocommerce_currency_symbol(),
+                    'errorMessage' => _x( '%s is a required field', 'Form error message. %s is the field name.', 'wp-module-ecommerce' ),
+                    'productPlaceholderImage' => wc_placeholder_img_src(),
+                    'money' => array(
+                        'decimals' => wc_get_price_decimals(),
+                        'thousandSeparator' => wc_get_price_thousand_separator(),
+                        'decimalSeparator' => wc_get_price_decimal_separator(),
+                        'currencySymbol' => get_woocommerce_currency_symbol(),
+                    )
                 )
             );
 
             wp_register_style(
                 'quick-add-product',
                 NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/build/quick-add-product/quick-add-product.css',
+                array(),
+                $asset['version']
             );
 
             // Maybe enqueue scripts
             if ( ! empty( $current_screen ) && in_array( $current_screen->id, array( 'dashboard', 'edit-product' ), true ) ) {
 
+                wp_enqueue_global_styles_css_custom_properties();
                 wp_enqueue_media();
 
                 wp_enqueue_script( 'quick-add-product' );
