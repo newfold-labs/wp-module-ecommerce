@@ -1,3 +1,3 @@
-import { PriceField } from "./PriceField";
+import PriceField from "./PriceField";
 
 export { PriceField };

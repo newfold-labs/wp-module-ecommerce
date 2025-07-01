@@ -6,6 +6,131 @@
 @tailwind utilities;
 
 
+#nfd-quick-add-product__form-wrapper {
+	@apply
+	nfd-flex;
+
+	> * {
+		flex-grow: 1;
+		flex-shrink: 0;
+	}
+
+	.nfd-textarea:focus, .nfd-tag-input:focus-within {
+		border-color : var(--nfd-color-primary);
+		--tw-ring-color: var(--nfd-color-primary);
+	}
+
+	.nfd-textarea {
+		resize : none;
+	}
+
+	.nfd-quick-add-product__form-field, .nfd-quick-add-product__form-submit {
+		@apply
+		nfd-mb-4;
+	}
+
+	.nfd-quick-add-product__form, .nfd-quick-add-product__form-preview {
+		@apply
+		nfd-p-6;
+	}
+
+	.nfd-quick-add-product__form {
+		flex-basis : 45%;
+
+		.nfd-title {
+			@apply nfd-mb-5;
+		}
+	}
+
+	.nfd-quick-add-product__form-preview {
+		@apply
+		nfd-flex
+		nfd-items-center
+		nfd-justify-center
+		nfd-border-l
+		nfd-pointer-events-none
+		nfd-border-slate-300
+		nfd-bg-gray-100;
+
+		flex-basis: 55%;
+	}
+
+	.nfd-quick-add-product__form-preview-product {
+		@apply
+		nfd-flex
+		nfd-gap-4
+		nfd-p-4
+		nfd-w-full
+		nfd-bg-white
+		nfd-shadow-md
+		nfd-rounded-md;
+	}
+
+	.nfd-quick-add-product__form-preview-product-image {
+		flex-shrink: 0;
+		width: 150px;
+	}
+
+	.nfd-quick-add-product__form-preview-product-summary {
+		@apply
+		nfd-flex
+		nfd-flex-col
+		nfd-gap-3
+		nfd-w-full
+		nfd-break-all;
+	}
+
+	.nfd-quick-add-product__form-preview-placeholder {
+		@apply
+		nfd-w-full
+		nfd-h-2;
+
+		background: linear-gradient(90deg, #ededed 25%, #d9d9d9 50%, #ededed 75%);
+		background-size: 400% 100%;
+	}
+
+	.nfd-quick-add-product__form-preview-product-title {
+		@apply
+		nfd-text-lg
+		nfd-font-medium;
+	}
+
+	.nfd-quick-add-product__form-preview-product-price {
+		.nfd-quick-add-product__form-preview-placeholder {
+			@apply nfd-w-12;
+		}
+	}
+
+	.nfd-quick-add-product__form-preview-product-description {
+		.nfd-quick-add-product__form-preview-placeholder {
+			@apply nfd-mb-2;
+		}
+	}
+
+	.nfd-quick-add-product__form-preview-product-add-to-cart {
+		button {
+			background-color: var(--wp--preset--color--primary);
+			color: var(--wp--preset--color--base);
+			text-transform: uppercase;
+		}
+	}
+}
+
+#nfd_quick_add_product_widget .inside {
+	@apply
+	nfd-p-0
+	nfd-m-0;
+}
+
+.nfd-quick-add-product-modal {
+	z-index: 1000;
+
+	.nfd-modal__panel {
+		padding: 0;
+		max-width: 50rem;
+	}
+}
+
 .nfd-quick-add-product__categories-field {
 	position: relative;
 

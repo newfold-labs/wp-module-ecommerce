@@ -1,3 +1,3 @@
-import { ImageField } from "./ImageField";
+import ImageField from "./ImageField";
 
 export { ImageField };
