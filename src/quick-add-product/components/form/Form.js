@@ -67,7 +67,7 @@ export const Form = ({hasPreview = false, showTitle = false, title = ''}) => {
 								id="product-description"
 								name="short_description"
 								label={_x('Description', 'Quick Add Product form field label.', 'wp-module-ecommerce')}
-								rows="4"
+								rows={4}
 								onChange={(e) => updateFormData('short_description', e.target.value)}
 							/>
 						</div>
