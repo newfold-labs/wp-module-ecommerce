@@ -59,4 +59,41 @@ class QuickAddProductController extends \WC_REST_Products_Controller {
 
         return $data;
     }
+
+    /**
+     * Save taxonomy terms.
+     *
+     * @param \WC_Product $product  Product instance.
+     * @param array      $terms    Terms data.
+     * @param string     $taxonomy Taxonomy name.
+     *
+     * @return \WC_Product
+     */
+    protected function save_taxonomy_terms( $product, $terms, $taxonomy = 'cat' ) {
+
+        // Go with default behaviour for tags.
+        if ( 'cat' !== $taxonomy ) {
+            return parent::save_taxonomy_terms( $product, $terms, $taxonomy );
+        }
+
+        $term_ids = array();
+
+        foreach ( $terms as $term ) {
+
+            // If term ID is zero, create term. Otherwise, collect.
+            if ( empty( $term['id'] ) ) {
+                $new_term = wp_insert_term( $term['name'], 'product_cat' );
+                if ( ! is_wp_error( $new_term ) ) {
+                    $term_ids[] = $new_term['term_id'];
+                }
+
+            } else {
+                $term_ids[] = $term['id'];
+            }
+
+            $product->set_category_ids( $term_ids );
+        }
+
+        return $product;
+    }
 }
