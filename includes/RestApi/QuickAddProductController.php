@@ -55,7 +55,7 @@ class QuickAddProductController extends \WC_REST_Products_Controller {
     protected function prepare_object_for_response_core( $object_data, $request, $context ): array {
         $data = parent::prepare_object_for_response_core( $object_data, $request, $context );
 
-        $data['edit_url'] = get_edit_post_link( $object_data->get_id() );
+        $data['edit_url'] = get_edit_post_link( $object_data->get_id(), 'view' );
 
         return $data;
     }
