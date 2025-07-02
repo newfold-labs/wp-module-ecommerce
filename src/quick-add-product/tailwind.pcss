@@ -42,6 +42,14 @@
 		}
 	}
 
+	.nfd-quick-add-product__form-submit {
+		button {
+			@apply
+			nfd-mt-4
+			nfd-w-full;
+		}
+	}
+
 	.nfd-quick-add-product__form-preview {
 		@apply
 		nfd-flex
@@ -114,104 +122,98 @@
 			text-transform: uppercase;
 		}
 	}
-}
 
-#nfd_quick_add_product_widget .inside {
-	@apply
-	nfd-p-0
-	nfd-m-0;
-}
+	.nfd-quick-add-product__categories-field {
+		position: relative;
 
-.nfd-quick-add-product-modal {
-	z-index: 1000;
-
-	.nfd-modal__panel {
-		padding: 0;
-		max-width: 50rem;
-	}
-}
-
-.nfd-quick-add-product__categories-field {
-	position: relative;
-
-	.nfd-tag-input-suggestions {
-		@apply
-		nfd-absolute
-		nfd-z-10
-		nfd-w-full
-		nfd-mt-1
-		nfd-overflow-auto
-		nfd-bg-white
-		nfd-rounded-md
-		nfd-shadow-lg
-		nfd-max-h-60
-		nfd-ring-1
-		nfd-ring-black
-		nfd-ring-opacity-5
-		focus:nfd-outline-none
-		nfd-text-sm;
-
-		li {
+		.nfd-tag-input-suggestions {
 			@apply
-			nfd-cursor-pointer
-			nfd-select-none
-			nfd-px-3
-			nfd-py-2
-			nfd-text-slate-700
-			nfd-m-0;
+			nfd-absolute
+			nfd-z-10
+			nfd-w-full
+			nfd-mt-1
+			nfd-overflow-auto
+			nfd-bg-white
+			nfd-rounded-md
+			nfd-shadow-lg
+			nfd-max-h-60
+			nfd-ring-1
+			nfd-ring-black
+			nfd-ring-opacity-5
+			focus:nfd-outline-none
+			nfd-text-sm;
 
-			&:hover {
-				@apply nfd-bg-slate-200;
+			li {
+				@apply
+				nfd-cursor-pointer
+				nfd-select-none
+				nfd-px-3
+				nfd-py-2
+				nfd-text-slate-700
+				nfd-m-0;
+
+				&:hover {
+					@apply nfd-bg-slate-200;
+				}
 			}
 		}
 	}
-}
 
-.nfd-quick-add-product__image-field {
-	.nfd-quick-add-product__image-uploader {
-		@apply
-		nfd-w-full
-		nfd-border-2
-		nfd-border-dashed
-		nfd-rounded-md
-		nfd-border-slate-300
-		nfd-flex
-		nfd-items-center
-		nfd-justify-center
-		nfd-cursor-pointer
-		nfd-bg-gray-100;
-
-		height: 65px;
-	}
-
-	.nfd-quick-add-product__image-preview {
-		@apply
-		nfd-inline-block
-		nfd-border
-		nfd-border-slate-300
-		nfd-rounded-md
-		nfd-relative;
-
-		img {
-			height: 65px;
-			width: auto;
-		}
-
-		.nfd-quick-add-product__image-remove {
+	.nfd-quick-add-product__image-field {
+		.nfd-quick-add-product__image-uploader {
 			@apply
-			nfd-absolute
-			-nfd-top-1
-			-nfd-right-2
-			nfd-inline-flex
-			nfd-h-4
-			nfd-w-4
+			nfd-w-full
+			nfd-border-2
+			nfd-border-dashed
+			nfd-rounded-md
+			nfd-border-slate-300
+			nfd-flex
 			nfd-items-center
 			nfd-justify-center
-			nfd-rounded-full
-			nfd-bg-slate-200
-			nfd-text-slate-400
-			hover:nfd-bg-slate-300
-			hover:nfd-text-slate-500;
+			nfd-cursor-pointer
+			nfd-font-medium
+			nfd-gap-2;
+
+			color : #2271b1;
+			height: 65px;
+
+			svg {
+				@apply nfd-w-6;
+				fill: #2271b1;
+			}
+		}
+
+		.nfd-quick-add-product__image-preview {
+			@apply
+			nfd-inline-block
+			nfd-relative;
+
+			img {
+				@apply
+				nfd-border
+				nfd-border-slate-300
+				nfd-rounded-md;
+
+				height: 65px;
+				width: auto;
+			}
+
+			.nfd-quick-add-product__image-remove {
+				@apply
+				nfd-absolute
+				-nfd-top-1
+				-nfd-right-2
+				nfd-inline-flex
+				nfd-h-4
+				nfd-w-4
+				nfd-items-center
+				nfd-justify-center
+				nfd-rounded-full
+				nfd-bg-slate-200
+				nfd-text-slate-400
+				hover:nfd-bg-slate-300
+				hover:nfd-text-slate-500;
+			}
 		}
 	}
 }
@@ -220,7 +222,11 @@
 	@apply
 	nfd-flex
 	nfd-flex-col
-	nfd-gap-2;
+	nfd-gap-2
+	nfd-pt-8
+	nfd-pb-8
+	nfd-pr-6
+	nfd-pl-6;
 
 	.nfd-quick-add-product__response-data {
 		@apply
@@ -254,14 +260,14 @@
 	.nfd-quick-add-product__response-image {
 		@apply
 		nfd-inline-block
-		nfd-border
-		nfd-border-slate-300
-		nfd-rounded-md
 		nfd-relative;
 
 		img {
 			@apply
+			nfd-border
+			nfd-border-slate-300
 			nfd-rounded-md;
+
 			height: 65px;
 			width: auto;
 		}
@@ -287,3 +293,72 @@
 	}
 }
 
+#nfd_quick_add_product_widget {
+	h2 {
+		@apply
+		nfd-gap-2
+		nfd-justify-start;
+
+		&:before {
+			@apply
+			nfd-w-6
+			nfd-h-6;
+
+			content: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBjbGFzcz0ic2l6ZS02Ij48cGF0aCBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGQ9Ik0xNi43MTIgNC4zM2E5LjAyNyA5LjAyNyAwIDAgMSAxLjY1MiAxLjMwNmMuNTEuNTEuOTQ0IDEuMDY0IDEuMzA2IDEuNjUyTTE2LjcxMiA0LjMzbC0zLjQ0OCA0LjEzOG0zLjQ0OC00LjEzOGE5LjAxNCA5LjAxNCAwIDAgMC05LjQyNCAwTTE5LjY3IDcuMjg4bC00LjEzOCAzLjQ0OG00LjEzOC0zLjQ0OGE5LjAxNCA5LjAxNCAwIDAgMSAwIDkuNDI0bS00LjEzOC01Ljk3NmEzLjczNiAzLjczNiAwIDAgMC0uODgtMS4zODggMy43MzcgMy43MzcgMCAwIDAtMS4zODgtLjg4bTIuMjY4IDIuMjY4YTMuNzY1IDMuNzY1IDAgMCAxIDAgMi41MjhtLTIuMjY4LTQuNzk2YTMuNzY1IDMuNzY1IDAgMCAwLTIuNTI4IDBtNC43OTYgNC43OTZjLS4xODEuNTA2LS40NzUuOTgyLS44OCAxLjM4OGEzLjczNiAzLjczNiAwIDAgMS0xLjM4OC44OG0yLjI2OC0yLjI2OCA0LjEzOCAzLjQ0OG0wIDBhOS4wMjcgOS4wMjcgMCAwIDEtMS4zMDYgMS42NTJjLS41MS41MS0xLjA2NC45NDQtMS42NTIgMS4zMDZtMCAwLTMuNDQ4LTQuMTM4bTMuNDQ4IDQuMTM4YTkuMDE0IDkuMDE0IDAgMCAxLTkuNDI0IDBtNS45NzYtNC4xMzhhMy43NjUgMy43NjUgMCAwIDEtMi41MjggMG0wIDBhMy43MzYgMy43MzYgMCAwIDEtMS4zODgtLjg4IDMuNzM3IDMuNzM3IDAgMCAxLS44OC0xLjM4OG0yLjI2OCAyLjI2OEw3LjI4OCAxOS42N20wIDBhOS4wMjQgOS4wMjQgMCAwIDEtMS42NTItMS4zMDYgOS4wMjcgOS4wMjcgMCAwIDEtMS4zMDYtMS42NTJtMCAwIDQuMTM4LTMuNDQ4TTQuMzMgMTYuNzEyYTkuMDE0IDkuMDE0IDAgMCAxIDAtOS40MjRtNC4xMzggNS45NzZhMy43NjUgMy43NjUgMCAwIDEgMC0yLjUyOG0wIDBjLjE4MS0uNTA2LjQ3NS0uOTgyLjg4LTEuMzg4YTMuNzM2IDMuNzM2IDAgMCAxIDEuMzg4LS44OG0tMi4yNjggMi4yNjhMNC4zMyA3LjI4OG02LjQwNiAxLjE4TDcuMjg4IDQuMzNtMCAwYTkuMDI0IDkuMDI0IDAgMCAwLTEuNjUyIDEuMzA2QTkuMDI1IDkuMDI1IDAgMCAwIDQuMzMgNy4yODgiIC8+PC9zdmc+');
+		}
+	}
+
+	.inside {
+		@apply
+		nfd-p-0
+		nfd-m-0;
+	}
+
+}
+
+#nfd-quick-add-product-modal {
+	@apply
+	nfd-inline-flex
+	nfd-relative
+	nfd-ml-1;
+
+	top: -3px;
+}
+
+.nfd-root {
+	.nfd-quick-add-product-modal {
+		z-index: 10000;
+
+		.nfd-modal__panel {
+			padding: 0;
+			max-width: 50rem;
+		}
+	}
+}
+
+@media screen and (max-width: 782px) {
+	.nfd-root {
+		.nfd-quick-add-product-modal {
+			z-index : 10000;
+
+		}
+	}
+
+	#nfd-quick-add-product-modal {
+		button {
+			@apply
+			nfd-py-3
+			nfd-px-6
+			nfd-text-base
+			nfd-leading-5;
+		}
+	}
+}
+
+@media (max-width: 640px) {
+	#nfd-quick-add-product__form-wrapper {
+		.nfd-quick-add-product__form-preview {
+			display: none;
+		}
+	}
+}

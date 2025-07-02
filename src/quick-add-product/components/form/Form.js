@@ -44,8 +44,6 @@ export const Form = ({hasPreview = false, showTitle = false, title = ''}) => {
 		)
 	}
 
-	console.log( formData );
-
 	return (
 		<>
 			<div id="nfd-quick-add-product__form-wrapper">

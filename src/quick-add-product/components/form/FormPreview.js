@@ -3,7 +3,7 @@ import {Button} from "@newfold/ui-component-library";
 
 export const FormPreview = ({data}) => {
 
-	let image = data?.images?.shift()?.url || quickAddProduct?.productPlaceholderImage;
+	const image = data?.images?.[0]?.url || quickAddProduct?.productPlaceholderImage;
 
 	return (
 		<>
@@ -24,7 +24,7 @@ export const FormPreview = ({data}) => {
 						<div className="nfd-quick-add-product__form-preview-product-description">
 							{
 								data?.short_description
-								? decodeEntities( data.short_description.slice(0, 100) + '...' )
+								? decodeEntities( data.short_description.slice(0, 100) )
 								: (
 									<>
 										<div className="nfd-quick-add-product__form-preview-placeholder"></div>
