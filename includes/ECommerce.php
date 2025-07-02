@@ -142,7 +142,7 @@ class ECommerce {
 		}
 
 		// Load Quick Add Product feature.
-        (new QuickAddProduct( $container ) )->init();
+		( new QuickAddProduct( $container ) )->init();
 
 		add_filter( 'newfold_runtime', array( $this, 'add_to_runtime' ) );
 	}

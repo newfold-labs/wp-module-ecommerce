@@ -12,10 +12,10 @@ final class Permissions {
 	 */
 	const ADMIN = 'manage_options';
 
-    /**
-     * WooCommerce Shop Manager capability string
-     */
-    const SHOP_MANAGER = 'manage_woocommerce';
+	/**
+	 * WooCommerce Shop Manager capability string
+	 */
+	const SHOP_MANAGER = 'manage_woocommerce';
 
 	/**
 	 * Confirm REST API caller has ADMIN user capabilities.
