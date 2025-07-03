@@ -61,21 +61,21 @@ export const Form = ({hasPreview = false, showTitle = false, title = ''}) => {
 							/>
 						</div>
 						<div className="nfd-quick-add-product__form-field">
-							<TextareaField
-								id="product-description"
-								name="short_description"
-								label={_x('Description', 'Quick Add Product form field label.', 'wp-module-ecommerce')}
-								rows={4}
-								onChange={(e) => updateFormData('short_description', e.target.value)}
-							/>
-						</div>
-						<div className="nfd-quick-add-product__form-field">
 							<PriceField
 								id="product-price"
 								name="regular_price"
 								label={decodeEntities(sprintf(_x('Price (%s)', 'Quick Add Product form field label. %s is the currency symbol.', 'wp-module-ecommerce'), quickAddProduct.money.currencySymbol))}
 								required={true}
 								onChange={(price) => updateFormData('regular_price', price)}
+							/>
+						</div>
+						<div className="nfd-quick-add-product__form-field">
+							<TextareaField
+								id="product-description"
+								name="short_description"
+								label={_x('Description', 'Quick Add Product form field label.', 'wp-module-ecommerce')}
+								rows={4}
+								onChange={(e) => updateFormData('short_description', e.target.value)}
 							/>
 						</div>
 						<div className="nfd-quick-add-product__form-field">
@@ -95,7 +95,12 @@ export const Form = ({hasPreview = false, showTitle = false, title = ''}) => {
 							/>
 						</div>
 						<div className="nfd-quick-add-product__form-submit">
-							<Button type="submit" disabled={loading}>{_x('Add product', 'Quick Add Product form submit button label', 'wp-module-ecommerce')}</Button>
+							<Button
+								type="submit"
+								disabled={loading || ! ( formData?.name && formData?.regular_price )}
+							>
+								{_x('Add product', 'Quick Add Product form submit button label', 'wp-module-ecommerce')}
+							</Button>
 						</div>
 					</form>
 				</div>

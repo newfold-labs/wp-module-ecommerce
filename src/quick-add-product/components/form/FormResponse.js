@@ -8,7 +8,7 @@ export const FormResponse = ({product, resetFormCallback}) => {
 
 	 return (
 		 <>
-			 <div className="nfd-quick-add-product__response">
+			 <div id="nfd-quick-add-product__response">
 
 				 <div className="nfd-quick-add-product__response-data">
 					 { image && (
