@@ -3,9 +3,9 @@
   "description": "Brand Agnostic eCommerce Experience",
   "license": "GPL-2.0-or-later",
   "version": "1.7.8",
-  "main": "build/index.js",
+  "main": "build/panel/index.js",
   "files": [
-    "build/",
+    "build/panel",
     "*.d.ts",
     "*.css"
   ],
