@@ -4289,8 +4289,14 @@
 		container-type: inline-size !important;
 		container-name: nfd-image-import !important;
 }
+@keyframes fadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
 #nfd-quick-add-product__form-wrapper {
 		display: flex;
+
+	animation: fadeIn .5s ease-in-out;
 }
 #nfd-quick-add-product__form-wrapper > * {
 		flex-grow: 1;
@@ -4346,17 +4352,18 @@
 }
 #nfd-quick-add-product__form-wrapper .nfd-quick-add-product__form-preview-product-image {
 		flex-shrink: 0;
-		width: 150px;
+		width: 200px;
 	}
 #nfd-quick-add-product__form-wrapper .nfd-quick-add-product__form-preview-product-summary {
 		display: flex;
 		width: 100%;
 		flex-direction: column;
 		gap: 0.75rem;
-		word-break: break-all;
+
+		word-break: break-word;
 }
 #nfd-quick-add-product__form-wrapper .nfd-quick-add-product__form-preview-placeholder {
-		height: 0.5rem;
+		height: 0.75rem;
 		width: 100%;
 
 		background: linear-gradient(90deg, #ededed 25%, #d9d9d9 50%, #ededed 75%);
@@ -4373,8 +4380,8 @@
 		margin-bottom: 0.5rem;
 }
 #nfd-quick-add-product__form-wrapper .nfd-quick-add-product__form-preview-product-add-to-cart button {
-			background-color: var(--wp--preset--color--primary);
-			color: var(--wp--preset--color--base);
+			background-color: var(--wp--preset--color--accent-1, var(--wp--preset--color--primary, var(--nfd-color-primary)));
+			color: var(--wp--preset--color--base, #ffffff);
 			text-transform: uppercase;
 		}
 #nfd-quick-add-product__form-wrapper .nfd-quick-add-product__categories-field {
@@ -4476,7 +4483,7 @@
 		--tw-text-opacity: 1;
 		color: rgb(100 116 139 / var(--tw-text-opacity, 1));
 }
-.nfd-quick-add-product__response {
+#nfd-quick-add-product__response {
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
@@ -4484,8 +4491,10 @@
 		padding-bottom: 2rem;
 		padding-right: 1.5rem;
 		padding-left: 1.5rem;
+
+	animation: fadeIn .5s ease-in-out;
 }
-.nfd-quick-add-product__response .nfd-quick-add-product__response-data {
+#nfd-quick-add-product__response .nfd-quick-add-product__response-data {
 		margin-bottom: 1rem;
 		display: flex;
 		gap: 1rem;
@@ -4494,23 +4503,23 @@
 
 		background-color : #f2fcdf;
 }
-.nfd-quick-add-product__response .nfd-quick-add-product__response-details {
+#nfd-quick-add-product__response .nfd-quick-add-product__response-details {
 		display: flex;
 		flex-direction: column;
 		gap: 0.25rem;
 }
-.nfd-quick-add-product__response .nfd-quick-add-product__response-product-name {
+#nfd-quick-add-product__response .nfd-quick-add-product__response-product-name {
 		font-size: 1rem;
 		font-weight: 700;
 }
-.nfd-quick-add-product__response .nfd-quick-add-product__response-product-permalink {
+#nfd-quick-add-product__response .nfd-quick-add-product__response-product-permalink {
 		font-weight: 700;
 }
-.nfd-quick-add-product__response .nfd-quick-add-product__response-image {
+#nfd-quick-add-product__response .nfd-quick-add-product__response-image {
 		position: relative;
 		display: inline-block;
 }
-.nfd-quick-add-product__response .nfd-quick-add-product__response-image img {
+#nfd-quick-add-product__response .nfd-quick-add-product__response-image img {
 		border-radius: 0.375rem;
 		border-width: 1px;
 		--tw-border-opacity: 1;
@@ -4519,7 +4528,7 @@
 			height: 65px;
 			width: auto;
 }
-.nfd-quick-add-product__response .nfd-quick-add-product__response-image span {
+#nfd-quick-add-product__response .nfd-quick-add-product__response-image span {
 		position: absolute;
 		top: -0.25rem;
 		right: -0.5rem;
@@ -4532,7 +4541,7 @@
 
 			background-color: #b4bb30;
 }
-.nfd-quick-add-product__response .nfd-button--secondary {
+#nfd-quick-add-product__response .nfd-button--secondary {
 		color: #196bde !important;
 	}
 #nfd_quick_add_product_widget h2 {
@@ -4561,12 +4570,29 @@
 	}
 .nfd-root .nfd-quick-add-product-modal .nfd-modal__panel {
 			padding: 0;
-			max-width: 50rem;
+			max-width: 75rem;
+			width: auto;
 		}
+.nfd-root .nfd-quick-add-product-modal #nfd-quick-add-product__form-wrapper {
+			width: 75rem;
+			max-width: 100%;
+		}
+.nfd-root .nfd-quick-add-product-modal #nfd-quick-add-product__response {
+			width: 30rem;
+			max-width: 100%;
+		}
+@media screen and (max-width: 992px) {
+		#nfd-quick-add-product__form-wrapper .nfd-quick-add-product__form-preview-placeholder {
+				height: 0.5rem;
+		}
+
+		#nfd-quick-add-product__form-wrapper .nfd-quick-add-product__form-preview-product-image {
+			width: 150px;
+		}
+}
 @media screen and (max-width: 782px) {
 		.nfd-root .nfd-quick-add-product-modal {
 			z-index : 10000;
-
 		}
 		#nfd-quick-add-product-modal button {
 				padding-top: 0.75rem;
