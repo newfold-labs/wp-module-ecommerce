@@ -37,6 +37,34 @@ export const prepareCategoryObject = (category) => {
 	}
 }
 
+export const formatNumber = number => {
+
+	let formattedNumber = number.replace(
+		new RegExp('[^0-9\\' + quickAddProduct.money.decimalSeparator + ']+', 'gi'),
+		''
+	);
+
+	// Keep only the first decimal separator.
+	let dotIndex = formattedNumber.indexOf('.');
+
+	if ( -1 !== dotIndex ) {
+
+		// Decimal separator could not be the first char.
+		if ( 0 === dotIndex ) {
+			formattedNumber = formattedNumber.replace( new RegExp('[\\' + quickAddProduct.money.decimalSeparator + ']+', 'gi'), '' );
+		} else {
+			// Include first decimal separator.
+			++dotIndex;
+
+			formattedNumber =
+				formattedNumber.slice( 0, dotIndex ) +
+				formattedNumber.slice( dotIndex, dotIndex + quickAddProduct.money.decimals ).replace( new RegExp('[\\' + quickAddProduct.money.decimalSeparator + ']+', 'gi'), '' );
+		}
+	}
+
+	return formattedNumber;
+}
+
 export const formatPrice = price => {
 	return decodeEntities( accounting.formatMoney( price, {
 		symbol:    quickAddProduct.money.currencySymbol,

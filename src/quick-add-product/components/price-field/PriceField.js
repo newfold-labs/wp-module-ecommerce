@@ -1,6 +1,7 @@
 import { TextField } from "@newfold/ui-component-library";
 import {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
+import { formatNumber } from "../../functions";
 
 const PriceField = ({id, label, onChange, name='', required = false}) => {
 
@@ -13,16 +14,7 @@ const PriceField = ({id, label, onChange, name='', required = false}) => {
 	}, [price]);
 
 	const validatePrice = (event) => {
-		const currentValue = event.target.value;
-
-		const regex = new RegExp('[^-0-9%\\' + quickAddProduct.money.decimalSeparator + ']+', 'gi');
-		const decimalRegex = new RegExp('\\' + quickAddProduct.money.decimalSeparator + '+', 'gi');
-
-		const newValue = currentValue
-			.replace( regex, '' )
-			.replace( decimalRegex, quickAddProduct.money.decimalSeparator );
-
-		setPrice(newValue);
+		setPrice( formatNumber( event.target.value ) );
 	}
 
 	return (
