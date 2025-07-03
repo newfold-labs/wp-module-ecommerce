@@ -7,6 +7,12 @@ const path = require( 'path' );
 const wpScriptsConfig = require( '@wordpress/scripts/config/webpack.config' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const { merge } = require( 'webpack-merge' );
+const RtlCssPlugin = require("@wordpress/scripts/plugins/rtlcss-webpack-plugin");
+
+// Remove default MiniCssExtractPlugin and RtlCssPlugin
+wpScriptsConfig.plugins = wpScriptsConfig.plugins.filter(
+	(plugin) => !(plugin instanceof MiniCssExtractPlugin || plugin instanceof RtlCssPlugin)
+);
 
 module.exports = [
 	merge(
@@ -17,7 +23,7 @@ module.exports = [
 			},
 			output : {
 				path: path.resolve( process.cwd(), './build' ),
-				filename : "./panel/index.js",
+				filename : "./index.js",
 				library: {
 					type: 'commonjs'
 				}
@@ -28,7 +34,7 @@ module.exports = [
 		wpScriptsConfig,
 		{
 			entry : {
-				"panel": "./src/quick-add-product/index.js",
+				"quick-add-product": "./src/quick-add-product/index.js",
 			},
 			output : {
 				path: path.resolve( process.cwd(), './build' ),
