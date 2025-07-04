@@ -700,6 +700,7 @@ msgid "Test Key Secret *"
 msgstr "Chiave Di Prova Segreta *"
 
 #: build/index.js:1
+#, js-format
 msgid "The key ID can be found in the \"%1$sAPI Keys%2$s\" section of your Razorpay dashboard."
 msgstr "L'ID chiave può essere trovato nella sezione \"%1$sAPI Keys%2$s\" della tua dashboard Razorpay."
 
@@ -712,6 +713,7 @@ msgid "That is not a valid production key ID. Please check your key ID and enter
 msgstr "Questo non è un ID chiave di produzione valido. Si prega di controllare il tuo ID chiave e inserirlo di nuovo."
 
 #: build/index.js:1
+#, js-format
 msgid "The key secret can be found in the \"%1$sAPI Keys%2$s\" section of your Razorpay dashboard."
 msgstr "Il segreto chiave può essere trovato nella sezione \"%1$sAPI Keys%2$s\" della tua dashboard Razorpay."
 
@@ -736,6 +738,7 @@ msgid "Enable Test Mode"
 msgstr "Abilita Modalità Test"
 
 #: build/index.js:1
+#, js-format
 msgid "enter your \"%1$s\" key ID here."
 msgstr "inserisci qui il tuo ID chiave \"%1$s\"."
 
@@ -748,6 +751,7 @@ msgid "production"
 msgstr "produzione"
 
 #: build/index.js:1
+#, js-format
 msgid "enter your \"%1$s\" key secret here."
 msgstr "inserisci qui il tuo segreto chiave \"%1$s\"."
 

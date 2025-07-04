@@ -1,6 +1,6 @@
 {
     "translation-revision-date": "2025-03-19 20:42",
-    "generator": "WP-CLI\/2.11.0",
+    "generator": "WP-CLI\/2.12.0",
     "source": "build\/index.js",
     "domain": "messages",
     "locale_data": {
@@ -233,7 +233,7 @@
                 "Ver listas de deseos"
             ],
             "WonderCart": [
-                "Carrito de Maravillas"
+                "WonderCart"
             ],
             "Booking and Appointments": [
                 "Reservas y citas"
