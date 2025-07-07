@@ -1,9 +1,10 @@
 import {decodeEntities, formatPrice} from "../../functions";
 import {Button} from "@newfold/ui-component-library";
+import placeholderImage from "../../images/placeholder.jpg"
 
 export const FormPreview = ({data}) => {
 
-	const image = data?.images?.[0]?.url || quickAddProduct?.productPlaceholderImage;
+	const image = data?.images?.[0]?.url || placeholderImage;
 
 	return (
 		<>

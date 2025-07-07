@@ -1,10 +1,11 @@
 import {__} from "@wordpress/i18n";
 import {Button} from "@newfold/ui-component-library";
+import placeholderImage from "../../images/placeholder.jpg"
 
 export const FormResponse = ({product, resetFormCallback}) => {
 
 	// Get featured image from product.
-	const image = product?.images?.shift()?.src || quickAddProduct?.productPlaceholderImage;
+	const image = product?.images?.shift()?.src || placeholderImage;
 
 	 return (
 		 <>
