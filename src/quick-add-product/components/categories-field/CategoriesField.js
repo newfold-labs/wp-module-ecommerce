@@ -43,11 +43,28 @@ const CategoriesField = ({id, label, onChange, name=''}) => {
 	};
 
 	const handleKeyDown = (event) => {
-		if (event.key === 'Enter' ) {
+		let value = inputValue.trim();
+
+		if ( 'Enter' === event.key ) {
 			event.preventDefault();
 
-			addCategory(prepareCategoryObject({name: inputValue.trim()}));
+			if ( value ) {
+				addCategory(prepareCategoryObject({name: value}));
+			}
 		}
+		else if( 'Backspace' === event.key && ! value && categories ) {
+			removeCategory( categories.at(-1) );
+		}
+	};
+
+	const handleBlur = (event) => {
+		let value = inputValue.trim();
+
+		if ( 'nfd-tag-input-suggestion' === event.relatedTarget?.className || ! value ) {
+			return false;
+		}
+
+		addCategory(prepareCategoryObject({name: value}));
 	};
 
 	return (
@@ -67,13 +84,13 @@ const CategoriesField = ({id, label, onChange, name=''}) => {
 						</button>
 					</span>
 				))}
-				<input type="text" className="nfd-tag-input__input" id="tag-field-label" value={inputValue} onChange={(e) => setInputValue(e.target.value)} onKeyDown={handleKeyDown}/>
+				<input type="text" className="nfd-tag-input__input" id="tag-field-label" value={inputValue} onChange={(e) => setInputValue(e.target.value)} onKeyDown={handleKeyDown} onBlur={handleBlur}/>
 			</div>
 
 			{inputValue && filteredSuggestions.length > 0 && (
 				<ul className="nfd-tag-input-suggestions">
 					{filteredSuggestions.map((sugg) => (
-						<li key={sugg.name} onClick={() => addCategory(sugg)}>
+						<li key={sugg.name} className="nfd-tag-input-suggestion" tabIndex={0} onClick={() => addCategory(sugg)}>
 							{sugg.name}
 						</li>
 					))}
