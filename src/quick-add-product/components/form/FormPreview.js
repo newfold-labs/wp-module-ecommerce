@@ -24,7 +24,7 @@ export const FormPreview = ({data}) => {
 						<div className="nfd-quick-add-product__form-preview-product-description">
 							{
 								data?.short_description
-								? decodeEntities( data.short_description.slice(0, 100) )
+								? decodeEntities( data.short_description.slice(0, 150) )
 								: (
 									<>
 										<div className="nfd-quick-add-product__form-preview-placeholder"></div>

@@ -15,7 +15,6 @@ export const Form = ({hasPreview = false, showTitle = false, title = ''}) => {
 	const [submitResponse, setSubmitResponse] = useState(null);
 	const [loading, setLoading] = useState(false);
 
-	// Handle form submit.
 	const formSubmit = async (ev) => {
 		ev.preventDefault();
 
@@ -38,9 +37,14 @@ export const Form = ({hasPreview = false, showTitle = false, title = ''}) => {
 		}))
 	}
 
+	const resetForm = () => {
+		setFormData({});
+		setSubmitResponse(null);
+	}
+
 	if ( submitResponse ) {
 		return (
-			<FormResponse product={submitResponse} resetFormCallback={() => setSubmitResponse(null)} />
+			<FormResponse product={submitResponse} resetFormCallback={resetForm} />
 		)
 	}
 
