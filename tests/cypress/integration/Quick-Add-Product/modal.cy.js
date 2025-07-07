@@ -1,10 +1,15 @@
 import {installWoo, wpLogin} from "../wp-module-support/utils.cy";
+import {GetPluginId} from "../wp-module-support/pluginID.cy";
 
 describe(
 	'Quick Add Product Modal',
 	{ testIsolation: true },
 	() => {
 		before( () => {
+			if ( GetPluginId() !== 'bluehost' ) {
+				this.skip();
+			}
+
 			installWoo();
 		} );
 
