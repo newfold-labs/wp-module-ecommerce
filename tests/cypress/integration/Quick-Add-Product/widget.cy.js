@@ -5,7 +5,7 @@ describe(
 	'Quick Add Product Dashboard Widget',
 	{ testIsolation: true },
 	() => {
-		before( () => {
+		before( function() {
 			if ( GetPluginId() !== 'bluehost' ) {
 				this.skip();
 			}

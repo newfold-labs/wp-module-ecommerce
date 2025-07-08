@@ -5,7 +5,7 @@ describe(
 	'Quick Add Product Form',
 	{ testIsolation: true },
 	() => {
-		before( () => {
+		before( function() {
 			if ( GetPluginId() !== 'bluehost' ) {
 				this.skip();
 			}
@@ -44,6 +44,43 @@ describe(
 				cy.get('#product-price').type('Lorem ipsum 1,79.56.78.').should('have.value', '179.56');
 			}
 		);
+
+		it(
+			'Verify categories field',
+			() => {
+
+				cy.get('.nfd-quick-add-product__categories-field').as('categoryField').should('exist');
+
+				// Validate add a new category.
+				cy.get('@categoryField').find('input[type="text"]').type('Plorbinate').type('{enter}');
+				// Check if tag is added.
+				cy.get('@categoryField').find('.nfd-badge').contains('Plorbinate');
+				// Check if input has correct value.
+				cy.get('#product-categories').invoke('val').then( value => {
+					const parsedValue = JSON.parse(value);
+
+					expect( parsedValue[0].name ).to.eq('Plorbinate');
+				});
+
+				// Check remove added category.
+				cy.get('@categoryField').find('.nfd-badge .nfd-tag-input__remove-tag').click();
+				cy.get('@categoryField').find('.nfd-badge').should('not.exist');
+				cy.get('#product-categories').should('have.value', '[]');
+
+
+				// Check add suggested category. Try using default WC category Uncategorized.
+				cy.get('@categoryField').find('input[type="text"]').type('Uncategorized');
+				cy.get('@categoryField').find('.nfd-tag-input-suggestion').should('exist').click();
+				// Check if tag is added.
+				cy.get('@categoryField').find('.nfd-badge').contains('Uncategorized');
+				// Check if input has correct value.
+				cy.get('#product-categories').invoke('val').then( value => {
+					const parsedValue = JSON.parse(value);
+
+					expect( parsedValue[0].name ).to.eq('Uncategorized');
+				});
+			}
+		)
 
 		it(
 			'Verify image field',
