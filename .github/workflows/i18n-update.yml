@@ -3,13 +3,13 @@ name: i18n Update Action
 on:
   push:
     branches:
-      - 'trunk'
+      - 'main'
   workflow_dispatch:  # Allows manual trigger with a branch input
     inputs:
       base_branch:
         description: 'Base branch for the pull request'
         required: false
-        default: 'trunk'
+        default: 'main'
 
 permissions:
   contents: write
