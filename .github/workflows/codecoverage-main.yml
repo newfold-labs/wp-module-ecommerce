@@ -58,7 +58,7 @@ jobs:
           path: gh-pages
 
       - name: Install PHP
-        uses: shivammathur/setup-php@cf4cade2721270509d5b1c766ab3549210a39a2a # v2.33.0
+        uses: shivammathur/setup-php@0f7f1d08e3e32076e51cae65eb0b0c871405b16e # v2.34.1
         with:
           php-version: ${{ matrix.php }}
           coverage: xdebug
@@ -99,7 +99,7 @@ jobs:
         run: php-coverage-badger gh-pages/phpunit/clover.xml gh-pages/phpunit/coverage.svg
 
       - name: Commit code coverage to gh-pages
-        uses: stefanzweifel/git-auto-commit-action@b863ae1933cb653a53c021fe36dbb774e1fb9403 # v5.2.0
+        uses: stefanzweifel/git-auto-commit-action@778341af668090896ca464160c2def5d1d1a3eb0 # v6.0.1
         with:
           repository: gh-pages
           branch: gh-pages
