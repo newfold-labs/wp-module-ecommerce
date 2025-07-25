@@ -3127,6 +3127,9 @@
 .nfd-root .nfd-text-field__validation {
 		margin-top: 0.5rem;
 }
+.nfd-root .nfd-text-field__input.nfd-text-field--input-with-icon {
+		padding-right: calc(1.25rem + 24px);
+}
 .nfd-root .nfd-textarea-field__label {}
 .nfd-root .nfd-textarea-field__description {
 		margin-top: 0.5rem;
@@ -3174,6 +3177,9 @@
 		white-space: nowrap !important;
 		border-width: 0 !important;
 }
+.nfd-pointer-events-none {
+		pointer-events: none !important;
+}
 .nfd-fixed {
 		position: fixed !important;
 }
@@ -3201,8 +3207,14 @@
 .nfd-right-0 {
 		right: 0px !important;
 }
+.nfd-right-3 {
+		right: 0.75rem !important;
+}
 .nfd-top-0 {
 		top: 0px !important;
+}
+.nfd-top-1\/2 {
+		top: 50% !important;
 }
 .nfd-z-10 {
 		z-index: 10 !important;
@@ -3576,6 +3588,10 @@
 }
 .nfd--translate-x-full {
 		--tw-translate-x: -100% !important;
+		transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
+}
+.nfd--translate-y-1\/2 {
+		--tw-translate-y: -50% !important;
 		transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
 }
 .nfd--translate-y-full {
