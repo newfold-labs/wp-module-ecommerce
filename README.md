@@ -96,51 +96,34 @@ function EcommercePage(props) {
 
 [More on Newfold WordPress Modules](https://github.com/newfold-labs/wp-module-loader)
 
-## Steps to create new release for Ecommerce module
+## Release Updates
 
-We have switched to npmjs packages for publishing newer versions of the ecommerce module.
+Run the `Newfold Prepare Release` github action to automatically bump the version (either patch, minor or major version), and update build and language files all at once. It will create a PR with changed files for review. Using this workflow, we can skip all the manual steps below (steps 1-6).
 
-If you're doing something that will not break anything or not adding any new dependency. But, only doing basic stuff like bug fixes, copy changes etc. Change which doesn't really impact the plugin in bigger way you can put them under the last number of versions.
+### Manual Release Steps
 
-If you're doing something, like adding a new library, or changing something in the way the plugin can use our module then it's better to upgrade the minor version which is the 2nd digit of version.
+1. Merge approved PRs into trunk branch.
 
-In rare scenarios, like UI redesign where the change is bigger or a major refactor, we update the 1st digit of version.
+2. Update version numbers (in both package.json and bootstrap.php files).
 
-#### Changes to Ecommerce Module
+3. Create a fresh build: `npm run build`.
 
-1. Merge approved PRs into trunk branch
+4. Update language/translation/i18n files: `composer run i18n`.
 
-2. Run, `npm run set-version-bump` (this will auto update version in package and bootstrap file, perform a build, and update translation files) 
+5. Commit above change in new branch `release/x.y.z` matching the version number.
 
-3. Commit above change in separate commit (commit message: Bump to new version value) 
+6. Create release PR. 
 
-4. Go to https://github.com/newfold-labs/wp-module-ecommerce/releases 
+7. Get approval on releaes PR. Merge.
 
-5. Click on Draft a new release button (Note: Saving as draft, pipeline is not running.)
+8. Issue a release via github.
 
-6. By default, you'll always create a release from target: trunk branch. In case we are making changes to crazydomains then we must switch to the legacy branch do the fixes there and create a release from target: legacy branch as it currently runs older version 
+   - By default, you'll always create a release from target: trunk branch. In case we are making changes to crazydomains then we must switch to the legacy branch do the fixes there and create a release from target: legacy branch as it currently runs older version.
+   - Click Generate release notes button it will basically collect all the pull requests that came in from the previous release to now and then just create a summary.
+   - The Satis workflow will trigger an alert to Satis that newer version of ecommerce module is released and rebuild Satis (https://github.com/newfold-labs/satis/)
+   - The release workflow will publish the latest js package on npmjs (https://www.npmjs.com/package/@newfold/wp-module-ecommerce)
 
-7. Give V dot version that you want to release and click on create a new tag. 
-
-8. Click Generate release notes button it will basically collect all the pull requests that came in from the previous release to now and then just create a summary. (It won't track any direct comments to the trunk. It will just only track pull request) 
-
-9. Keep Set as the latest release checkbox `checked` as it is by default. 
-
-10. Click Publish a release button. 
-
-11. Go to https://newfold-labs.github.io/satis/ Satis is a PHP registry for our packages. 
-
-12. We have set up an integration within our workflow itself so once workflow completes, we trigger alert to Satis that newer version of ecommerce module is released and rebuild Satis so that it can show newer version in packages (Repo: https://github.com/newfold-labs/satis/actions) 
-
-13. The newer version will appear in 5 to 10 minutes of rebuilding. 
-
-14. We do not have permission to rerun Satis build, so in case it fails PRESS1 team can help. 
-
-15. You can check the status of Statis build & Publish workflow here https://github.com/newfold-labs/wp-module-ecommerce/actions 
-
-16. On successful completion you can see latest js package here https://www.npmjs.com/package/@newfold/wp-module-ecommerce 
-
-#### Changes to Bluehost plugin repo
+### Plugin update
 
 Note: if no plugin changes are required we can let dependabot create a PR for the php module and the js package. If any plugin changs are required, please do the following in a branch on the respective plugin repo:
 
