@@ -3,7 +3,7 @@ on:
   pull_request:
     types: [opened, edited, synchronize, reopened, ready_for_review]
     branches:
-      - 'main'
+      - 'trunk'
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
   cancel-in-progress: true
