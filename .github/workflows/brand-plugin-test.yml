@@ -33,6 +33,7 @@ jobs:
       plugin-repo: 'newfold-labs/wp-plugin-bluehost'
       sync-npm-package: true
       sync-npm-package-name: 'newfold/wp-module-ecommerce'
+      node-version: '22'
     secrets: inherit
 
   hostgator:
@@ -45,6 +46,7 @@ jobs:
       plugin-repo: 'newfold-labs/wp-plugin-hostgator'
       sync-npm-package: true
       sync-npm-package-name: 'newfold/wp-module-ecommerce'
+      node-version: '22'
     secrets: inherit
 
   crazydomains:
@@ -57,4 +59,5 @@ jobs:
       plugin-repo: 'newfold-labs/wp-plugin-crazy-domains'
       sync-npm-package: true
       sync-npm-package-name: 'newfold/wp-module-ecommerce'
+      node-version: '22'
     secrets: inherit
