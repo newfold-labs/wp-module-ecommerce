@@ -11,6 +11,8 @@ use NewfoldLabs\WP\Module\Installer\Services\PluginInstaller;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\Module\Onboarding\Data\Services\FlowService;
 use NewfoldLabs\WP\Module\Data\SiteCapabilities;
+use function NewfoldLabs\WP\Module\LinkTracker\Functions\build_link as buildLink;
+
 
 /**
  * Class ECommerce
@@ -225,7 +227,7 @@ class ECommerce {
 		$show_dash = get_option( 'nfd_show_dash_after_woo_activation', false );
 		if ( $show_dash && ! wp_doing_ajax() ) {
 			update_option( 'nfd_show_dash_after_woo_activation', false );
-			wp_safe_redirect( admin_url( 'admin.php?page=' . $this->container->plugin()->id . '#/home' ) );
+			wp_safe_redirect( buildLink( admin_url( 'admin.php?page=' . $this->container->plugin()->id . '#/home' ) ) );
 		}
 	}
 
@@ -454,7 +456,7 @@ class ECommerce {
 	 */
 	public function custom_product_general_options() {
 		global $post;
-		$redirect_url = admin_url( 'admin.php?page=' . $this->container->plugin()->id . '#/store/sales_discounts' );
+		$redirect_url = buildLink( admin_url( 'admin.php?page=' . $this->container->plugin()->id . '#/store/sales_discounts' ) );
 		wp_enqueue_style( 'Create_a_Promotion', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Promotions.css', array(), '1.0', 'all' );
 		echo '<div class="options_group">
             <p class="form-field custom-button-field">
@@ -482,7 +484,7 @@ class ECommerce {
 	 * Content on click of a Custom tab (Promotions tab) button added below Advance tab
 	 */
 	public function promotion_product_data() {
-		$redirect_url = 'admin.php?page=' . $this->container->plugin()->id . '#/store/sales_discounts';
+		$redirect_url = buildLink( 'admin.php?page=' . $this->container->plugin()->id . '#/store/sales_discounts');
 		global $post;
 		echo '<div id="promotion_product_data" class="panel woocommerce_options_panel hidden"></div>';
 		\wp_enqueue_script( 'nfd_promotion_product_data', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Promotions.js', array( 'jquery' ), '1.0', true );
