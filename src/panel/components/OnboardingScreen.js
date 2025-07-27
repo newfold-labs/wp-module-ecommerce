@@ -69,16 +69,16 @@ export function OnboardingScreen({
       setIsMigrationCompleted( res.nfd_show_migration_steps || false );
       setWebServersUpdated( res.update_site_server_clicked );
       if ( !res.is_fse_theme ) {
-        setEditUrl( RuntimeSdk.adminUrl( "customize.php" ) )
+        setEditUrl( window.NewfoldRuntime?.linkTracker?.addUtmParams(RuntimeSdk.adminUrl( "customize.php" ) ) || RuntimeSdk.adminUrl( "customize.php" ) );
       } else if ( res?.page_on_front && res?.show_on_front === "page" ) {
         setEditUrl(
-          RuntimeSdk.adminUrl(
+            window.NewfoldRuntime?.linkTracker?.addUtmParams( RuntimeSdk.adminUrl(
             `post.php?post=${res?.page_on_front}&action=edit`,
             false
-          )
+          ) ) || RuntimeSdk.adminUrl( `post.php?post=${res?.page_on_front}&action=edit`, false )
         );
       } else {
-        setEditUrl(RuntimeSdk.adminUrl("site-editor.php?canvas=edit"));
+        setEditUrl( window.NewfoldRuntime?.linkTracker?.addUtmParams( RuntimeSdk.adminUrl("site-editor.php?canvas=edit") ) || RuntimeSdk.adminUrl("site-editor.php?canvas=edit") );
       }
     });
   }, []);
@@ -139,8 +139,8 @@ export function OnboardingScreen({
                       className="nfd-w-[400%] nfd-min-h-[400%] nfd-basis-full nfd-scale-[0.25] nfd-overflow-hidden nfd-absolute nfd-origin-top-left"
                       src={
                         !comingSoon
-                          ? NewfoldRuntime.homeUrl
-                          : NewfoldRuntime.homeUrl + "/?preview=coming_soon"
+                          ? window.NewfoldRuntime?.linkTracker?.addUtmParams( NewfoldRuntime.homeUrl ) || NewfoldRuntime.homeUrl
+                          : window.NewfoldRuntime?.linkTracker?.addUtmParams( NewfoldRuntime.homeUrl + "/?preview=coming_soon" ) || NewfoldRuntime.homeUrl + "/?preview=coming_soon"
                       }
                       scrolling="no"
                       name="iframe-preview"
@@ -158,7 +158,7 @@ export function OnboardingScreen({
                   <Button
                     className="nfd-opacity-0 nfd-transition-all nfd-duration-200 group-hover:nfd-opacity-100"
                     as="a"
-                    href={NewfoldRuntime.siteUrl}
+                    href={ window.NewfoldRuntime?.linkTracker?.addUtmParams( NewfoldRuntime.siteUrl ) || NewfoldRuntime.siteUrl}
                     target="_blank"
                     data-cy="view-site"
                   >

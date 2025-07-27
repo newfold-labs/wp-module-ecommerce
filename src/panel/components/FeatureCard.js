@@ -48,7 +48,7 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
         {learnMoreUrl && (
           <Link
             className="nfd-flex nfd-mt-4 nfd-items-center nfd-gap-2 nfd-no-underline"
-            href={learnMoreUrl}
+            href={ window.NewfoldRuntime?.linkTracker?.addUtmParams(learnMoreUrl) || learnMoreUrl }
             target="_blank"
             onClick={() =>
               AnalyticsSdk.track("commerce", title, {
