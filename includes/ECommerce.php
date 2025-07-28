@@ -481,7 +481,7 @@ class ECommerce {
 	 * Content on click of a Custom tab (Promotions tab) button added below Advance tab
 	 */
 	public function promotion_product_data() {
-		$redirect_url = buildLink( 'admin.php?page=' . $this->container->plugin()->id . '#/store/sales_discounts');
+		$redirect_url = buildLink( 'admin.php?page=' . $this->container->plugin()->id . '#/store/sales_discounts' );
 		global $post;
 		echo '<div id="promotion_product_data" class="panel woocommerce_options_panel hidden"></div>';
 		\wp_enqueue_script( 'nfd_promotion_product_data', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Promotions.js', array( 'jquery' ), '1.0', true );
