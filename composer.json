@@ -24,6 +24,13 @@
             "type": "composer",
             "url": "https://wpackagist.org"
         },
+        "newfold-labs/wp-module-onboarding-data": {
+            "type": "vcs",
+            "url": "git@github.com:newfold-labs/wp-module-onboarding-data.git",
+            "only": [
+                "newfold-labs/wp-module-onboarding-data"
+            ]
+        },
         "0": {
             "type": "composer",
             "url": "https://newfold-labs.github.io/satis/",
@@ -34,7 +41,7 @@
     },
     "require": {
         "newfold-labs/wp-module-installer": "^1.6.4",
-        "newfold-labs/wp-module-onboarding-data": "^1.2.11"
+        "newfold-labs/wp-module-onboarding-data": "dev-release/ecomm-sitegen-beta"
     },
     "require-dev": {
         "johnpbloch/wordpress": "@stable",
