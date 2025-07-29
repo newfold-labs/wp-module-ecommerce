@@ -26,7 +26,7 @@
         },
         "newfold-labs/wp-module-onboarding-data": {
             "type": "vcs",
-            "url": "git@github.com:newfold-labs/wp-module-onboarding-data.git",
+            "url": "https://github.com/newfold-labs/wp-module-onboarding-data.git",
             "only": [
                 "newfold-labs/wp-module-onboarding-data"
             ]
