@@ -49,6 +49,19 @@ function observeAndAdjustBacklink(event) {
   }
 }
 
+function addTrackingParams() {
+    setTimeout(() => {
+        const goBack = document.querySelector('.nfd-woocommerce-link');
+        if ( goBack ) {
+            let link = window.NewfoldRuntime?.linkTracker?.addUtmParams( goBack.href );
+            if ( link ) {
+                goBack.href = link;
+            }
+        }
+    }, 200);
+
+}
+
 (function () {
   let pluginId = nfdEcommerce.pluginId;
   let section = new URLSearchParams(window.location.search);
@@ -62,5 +75,6 @@ function observeAndAdjustBacklink(event) {
     wcRoot.insertAdjacentElement('beforebegin', goBack);
     updateBacklink();
     window.addEventListener('DOMContentLoaded', observeAndAdjustBacklink);
+    window.addEventListener('DOMContentLoaded', addTrackingParams);
   }
 })();
