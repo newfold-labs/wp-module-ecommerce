@@ -102,7 +102,7 @@ export function NoExistingPlan( props ) {
 								</ul>
 								<Button
 									as="a"
-									href={ solution.url }
+									href={ window.NewfoldRuntime?.linkTracker?.addUtmParams(solution.url) || solution.url }
 									data-action="load-nfd-ctb"
 									data-ctb-id={ solution.ctbId }
 									className="nfd-button nfd-button--secondary nfd-self-end nfd-ml-auto"

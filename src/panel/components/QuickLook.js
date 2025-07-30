@@ -55,7 +55,7 @@ function RecentReport({ title, divname, filter, onSelect, disabled, children }) 
           </Title>
           <Link
             className="nfd-text-base nfd-no-underline nfd-w-fit nfd-mr-2 nfd-text-sm"
-            href={RuntimeSdk.adminUrl(recentActivityLink, true)}
+            href={ window.NewfoldRuntime?.linkTracker?.addUtmParams( RuntimeSdk.adminUrl(recentActivityLink, true) ) || RuntimeSdk.adminUrl(recentActivityLink, true) }
             onClick={() =>
               AnalyticsSdk.track("Store", "woocommerce-analytics-clicked", {
                 href: RuntimeSdk.adminUrl(recentActivityLink, true),
@@ -197,7 +197,7 @@ function RecentOrders() {
               <Card
                 as="a"
                 key={order.id}
-                href={RuntimeSdk.adminUrl(individualOrderLink(order.id))}
+                href={ window.NewfoldRuntime?.linkTracker?.addUtmParams( RuntimeSdk.adminUrl(individualOrderLink(order.id)) ) || RuntimeSdk.adminUrl(individualOrderLink(order.id) ) }
                 className="focus:nfd-mb-[2px]"
               >
                 <Card.Content

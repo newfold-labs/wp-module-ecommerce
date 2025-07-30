@@ -174,7 +174,7 @@ export function WPSolutionsBanner() {
 																	key={ `btn-${ index }` }
 																	className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start"
 																	as="a"
-																	href={ url }
+																	href={  window.NewfoldRuntime?.linkTracker?.addUtmParams( url ) || url }
 																>
 																	{ details.cta.text }
 																	<RightArrow className="nfd-mt-2.5" />
@@ -199,8 +199,8 @@ export function WPSolutionsBanner() {
 																		details.name
 																	}
 																	data-nfd-installer-plugin-url={
-																		url
-																	}
+                                                                        window.NewfoldRuntime?.linkTracker?.addUtmParams( url ) || url
+                                                                    }
 																>
 																	{ details.cta.text }
 																	<RightArrow className="nfd-mt-2.5" />
@@ -229,8 +229,8 @@ export function WPSolutionsBanner() {
 																			details.name
 																		}
 																		data-nfd-installer-plugin-url={
-																			url
-																		}
+                                                                            window.NewfoldRuntime?.linkTracker?.addUtmParams( url ) || url
+                                                                        }
 																		isLoading={
 																			status ===
 																			'installing'
@@ -255,8 +255,8 @@ export function WPSolutionsBanner() {
 																			details.download
 																		}
 																		data-nfd-installer-plugin-url={
-																			url
-																		}
+                                                                            window.NewfoldRuntime?.linkTracker?.addUtmParams( url ) || url
+                                                                        }
 																		isLoading={
 																			status ===
 																			'installing'
@@ -275,7 +275,7 @@ export function WPSolutionsBanner() {
 													key={ `btn-${ index }` }
 													className="nfd-button nfd-button--primary nfd-mt-9 nfd-mt-auto nfd-self-start"
 													as="a"
-													href={ details.cta.url }
+													href={ window.NewfoldRuntime?.linkTracker?.addUtmParams( details.cta.url ) || details.cta.url  }
 												>
 													{ details.cta.text }
 													<RightArrow className="nfd-mt-2.5" />
@@ -289,7 +289,7 @@ export function WPSolutionsBanner() {
 
 						<Button
 							as="a"
-							href={ solutionsLink }
+							href={ window.NewfoldRuntime?.linkTracker?.addUtmParams( solutionsLink ) || solutionsLink }
 							className="nfd-button nfd-button--secondary nfd-flex nfd-w-56 nfd-mx-auto nfd-mt-6"
 						>
 							{ __(

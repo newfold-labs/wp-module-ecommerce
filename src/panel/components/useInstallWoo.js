@@ -18,7 +18,7 @@ export function useInstallWoo({ woo, wpModules }) {
         description: (
           <span>
             {__('Please try again, or ', 'wp-module-ecommerce')}
-            <a href={RuntimeSdk.brandSettings.support} target="_blank">
+            <a href={ window.NewfoldRuntime?.linkTracker?.addUtmParams( RuntimeSdk.brandSettings.support ) || RuntimeSdk.brandSettings.support } target="_blank">
               {__('contact support', 'wp-module-ecommerce')}
             </a>
           </span>

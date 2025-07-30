@@ -104,9 +104,9 @@ export function SalesChannel(props) {
                                             : null
                                     }
                                     href={
-                                        (ecomdashStatus.data.isInstalled && ecomdashSetupStatus && ecomdashStatus?.data?.pluginUrl)
+                                        (ecomdashStatus.data.isInstalled && ecomdashSetupStatus && ( window.NewfoldRuntime?.linkTracker?.addUtmParams( ecomdashStatus?.data?.pluginUrl ) || ecomdashStatus?.data?.pluginUrl ) )
                                         ||
-                                        (ecomdashStatus.data.isInstalled && !ecomdashSetupStatus && "https://app.svc.ecomdash.com/ecom/dashboard")
+                                        (ecomdashStatus.data.isInstalled && !ecomdashSetupStatus && ( window.NewfoldRuntime?.linkTracker?.addUtmParams("https://app.svc.ecomdash.com/ecom/dashboard" ) || "https://app.svc.ecomdash.com/ecom/dashboard") )
                                     }
                                     target="_blank"
                                     isLoading={ecomdashStatus.data?.isInstalling}
