@@ -76,7 +76,7 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
             className="nfd-w-full nfd-h-9 nfd-border nfd-flex nfd-items-center nfd-gap-2"
             variant="secondary"
             as="a"
-            href={state.featureUrl}
+            href={window.NewfoldRuntime?.linkTracker?.addUtmParams( state.featureUrl ) || state.featureUrl }
           >
             <span>{actionName}</span>
             {ActionIcon ? <ArrowLongRightIcon /> : null}
@@ -91,7 +91,7 @@ export function FeatureCard({ state, actions, assets, text, ...props }) {
             target="_blank"
             data-action="load-nfd-ctb"
             data-ctb-id={state?.upsellOptions?.clickToBuyId}
-            href={state.upsellOptions?.primaryUrl}
+            href={ window.NewfoldRuntime?.linkTracker?.addUtmParams( state.upsellOptions?.primaryUrl ) || state.upsellOptions?.primaryUrl }
           >
             {__("Purchase", "wp-module-ecommerce")}
             {ActionIcon && !isInstalling ? <ArrowLongRightIcon /> : null}

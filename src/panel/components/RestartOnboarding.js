@@ -52,7 +52,7 @@ export function RestartOnboarding( ) {
         <Button
           as="a"
           id="launch-onboarding"
-          href={redirectUrl}
+          href={ window.NewfoldRuntime?.linkTracker?.addUtmParams( redirectUrl ) || redirectUrl}
           className="nfd-flex nfd-gap-2 nfd-items-center"
         >
           <SparklesIcon />

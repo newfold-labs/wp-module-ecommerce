@@ -167,7 +167,7 @@ export function OnboardingScreen({
                   <Button
                     className="nfd-opacity-0 nfd-transition-all nfd-duration-200 group-hover:nfd-opacity-100"
                     as="a"
-                    href={editUrl}
+                    href={ window.NewfoldRuntime?.linkTracker?.addUtmParams( editUrl ) || editUrl }
                     target="_blank"
                     data-cy="edit-site"
                   >
