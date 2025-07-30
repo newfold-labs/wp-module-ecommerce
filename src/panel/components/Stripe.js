@@ -60,7 +60,7 @@ const Stripe = ({ notify }) => {
                     <Button
                       variant="secondary"
                       as="a"
-                      href={integrationStatus?.integration?.plugin?.url}
+                      href={window.NewfoldRuntime?.linkTracker?.addUtmParams( integrationStatus?.integration?.plugin?.url ) || integrationStatus?.integration?.plugin?.url}
                       id="manage-stripe"
                     >
                       {__("Manage", "wp-module-ecommerce")}
