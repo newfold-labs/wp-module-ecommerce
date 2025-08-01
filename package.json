@@ -47,6 +47,7 @@
     "@wordpress/dom-ready": "^4.25.0",
     "@wordpress/env": "^10.27.0",
     "@wordpress/scripts": "^30",
+    "ajv": "^8.17.1",
     "cypress": "^14.5.3",
     "cypress-axe": "^1.6.0",
     "cypress-iframe": "^1.0.1",
