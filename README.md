@@ -102,7 +102,7 @@ Run the `Newfold Prepare Release` github action to automatically bump the versio
 
 ### Manual Release Steps
 
-1. Merge approved PRs into trunk branch.
+1. Merge approved PRs into main branch.
 
 2. Update version numbers (in both package.json and bootstrap.php files).
 
@@ -118,7 +118,7 @@ Run the `Newfold Prepare Release` github action to automatically bump the versio
 
 8. Issue a release via github.
 
-   - By default, you'll always create a release from target: trunk branch. In case we are making changes to crazydomains then we must switch to the legacy branch do the fixes there and create a release from target: legacy branch as it currently runs older version.
+   - By default, you'll always create a release from target: main branch. In case we are making changes to crazydomains then we must switch to the legacy branch do the fixes there and create a release from target: legacy branch as it currently runs older version.
    - Click Generate release notes button it will basically collect all the pull requests that came in from the previous release to now and then just create a summary.
    - The Satis workflow will trigger an alert to Satis that newer version of ecommerce module is released and rebuild Satis (https://github.com/newfold-labs/satis/)
    - The release workflow will publish the latest js package on npmjs (https://www.npmjs.com/package/@newfold/wp-module-ecommerce)
