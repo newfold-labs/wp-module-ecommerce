@@ -23,6 +23,5 @@ jobs:
     uses: newfold-labs/workflows/.github/workflows/reusable-translations.yml@main
     with:
       text_domain: 'wp-module-ecommerce'
-      pr_branch_name: 'main'
     secrets:
       TRANSLATOR_API_KEY: ${{ secrets.TRANSLATOR_API_KEY }}
