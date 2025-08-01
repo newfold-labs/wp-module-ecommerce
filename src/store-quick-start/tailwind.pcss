@@ -1,0 +1,157 @@
+/* Import main CSS including all components. */
+@import "@newfold/ui-component-library";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nfd-root .nfd-store-quick-start-modal {
+	z-index: 10000;
+
+	.nfd-modal__panel {
+		@apply
+		nfd-p-0
+		nfd-relative
+		nfd-overflow-visible;
+
+		max-width: 75rem;
+		width: auto;
+	}
+
+	.nfd-store-quick-start__loading {
+		@apply
+		nfd-flex
+		nfd-justify-center
+		nfd-items-center
+		nfd-absolute
+		nfd-top-0
+		nfd-h-full
+		nfd-right-0
+		nfd-w-full
+		nfd-z-10
+		nfd-bg-white
+		nfd-bg-opacity-35;
+	}
+
+	.nfd-store-quick-start__step-header {
+		@apply
+		nfd-absolute
+		nfd-top-4
+		nfd-left-6
+		nfd-text-xxs
+		nfd-font-medium
+		nfd-uppercase;
+	}
+
+	.nfd-title {
+		@apply
+		nfd-mb-6;
+
+		color: rgb(25, 107, 222);
+	}
+
+	.nfd-store-quick-start__step-wrapper {
+		@apply
+		nfd-pt-12
+		nfd-p-6;
+	}
+
+	.nfd-store-quick-start__start-screen {
+		@apply
+		nfd-flex
+		nfd-flex-col
+		nfd-text-center;
+	}
+
+	.nfd-store-quick-start__start-screen-icons {
+		@apply
+		nfd-flex
+		nfd-items-center
+		nfd-justify-center
+		nfd-gap-2
+		nfd-mt-4
+		nfd-mb-10;
+
+		.nfd-store-quick-start__start-screen-icon {
+			@apply
+			nfd-flex
+			nfd-items-center
+			nfd-justify-center
+			nfd-rounded-lg
+			nfd-bg-gray-100
+			nfd-w-[75px]
+			nfd-h-[75px];
+
+			svg {
+				@apply
+				nfd-w-[32px];
+			}
+
+			&:last-child {
+				background-color: #eaf4fb;
+
+				svg {
+					color: rgb(25, 107, 222);
+				}
+			}
+		}
+
+		.nfd-store-quick-start__start-screen-icon-sep {
+			@apply
+			nfd-flex
+			nfd-items-center
+			nfd-justify-center
+			nfd-gap-1;
+
+			div {
+				@apply
+				nfd-w-[6px]
+				nfd-h-[6px]
+				nfd-bg-gray-100
+				nfd-rounded-full;
+			}
+		}
+	}
+
+	.nfd-store-quick-start__store-info-form {
+		form {
+			@apply
+			nfd-grid
+			nfd-grid-cols-4
+			nfd-gap-4;
+		}
+
+		.nfd-store-info__store-address-field, .nfd-store-info__store-industries {
+			@apply
+			nfd-col-start-1
+			nfd-col-end-5;
+		}
+	}
+
+	.nfd-store-quick-start__create-product {
+		padding: 0;
+	}
+
+	#nfd-quick-add-product__form-wrapper {
+		.nfd-quick-add-product__form {
+			@apply
+			nfd-pt-12;
+		}
+
+		.nfd-quick-add-product__form-submit {
+			display: none;
+		}
+	}
+
+	.nfd-store-quick-start__step-navigation {
+		@apply
+		nfd-flex
+		nfd-items-center
+		nfd-justify-between
+		nfd-p-6;
+
+		button:last-child {
+			margin-left: auto;
+		}
+	}
+}

@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import {useState, forwardRef, useImperativeHandle} from "react";
 import { _x, sprintf } from "@wordpress/i18n";
 import {TextField, TextareaField, Button, Spinner, Title} from "@newfold/ui-component-library";
 import { PriceField } from "../price-field";
@@ -9,14 +9,16 @@ import { createProduct, decodeEntities } from "../../functions";
 import { FormResponse } from "./FormResponse"
 import { FormPreview } from "./FormPreview";
 
-export const Form = ({hasPreview = false, showTitle = false, title = ''}) => {
+export const Form = forwardRef(({hasPreview = false, showTitle = false, title = ''}, ref) => {
 
 	const [formData, setFormData] = useState({});
 	const [submitResponse, setSubmitResponse] = useState(null);
 	const [loading, setLoading] = useState(false);
 
+	useImperativeHandle(ref, () => ({formSubmit}));
+
 	const formSubmit = async (ev) => {
-		ev.preventDefault();
+		ev?.preventDefault();
 
 		setLoading(true);
 
@@ -112,4 +114,4 @@ export const Form = ({hasPreview = false, showTitle = false, title = ''}) => {
 			</div>
 		</>
 	)
-}
+});

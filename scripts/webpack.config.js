@@ -14,7 +14,8 @@ wpScriptsConfig.plugins = wpScriptsConfig.plugins.filter(
 	(plugin) => !(plugin instanceof MiniCssExtractPlugin || plugin instanceof RtlCssPlugin)
 );
 
-module.exports = [
+// Build modules.
+const legacyModules = [
 	merge(
 		wpScriptsConfig,
 		{
@@ -30,15 +31,18 @@ module.exports = [
 			},
 		}
 	),
-	merge(
+];
+
+const modules = [ 'quick-add-product', 'store-quick-start' ].map(
+	(module) => merge(
 		wpScriptsConfig,
 		{
 			entry : {
-				"quick-add-product": "./src/quick-add-product/index.js",
+				[module]: `./src/${module}/index.js`,
 			},
 			output : {
 				path: path.resolve( process.cwd(), './build' ),
-				filename : "./quick-add-product/index.js",
+				filename :  `./${module}/index.js`,
 			},
 			module: {
 				rules: [
@@ -54,9 +58,14 @@ module.exports = [
 			},
 			plugins : [
 				new MiniCssExtractPlugin( {
-					filename: 'quick-add-product/quick-add-product.css',
+					filename: `${module}/${module}.css`,
 				} ),
 			],
 		}
 	)
+);
+
+module.exports = [
+	...legacyModules,
+	...modules
 ];
