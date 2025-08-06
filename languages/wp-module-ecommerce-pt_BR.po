@@ -10,108 +10,108 @@ msgstr ""
 "POT-Creation-Date: 2024-11-18T11:38:47+00:00\n"
 "PO-Revision-Date: 2025-03-19 20:42\n"
 "Language: pt_BR\n"
-"X-Generator: WP-CLI 2.11.0\n"
-"X-Domain: wp-module-ecommerce\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: wp-module-ecommerce\n"
-"X-Crowdin-Project-ID: 766697\n"
-"X-Crowdin-Language: pt-BR\n"
 "X-Crowdin-File: wp-module-ecommerce.pot\n"
 "X-Crowdin-File-ID: 16\n"
+"X-Crowdin-Language: pt-BR\n"
+"X-Crowdin-Project: wp-module-ecommerce\n"
+"X-Crowdin-Project-ID: 766697\n"
+"X-Domain: wp-module-ecommerce\n"
+"X-Generator: WP-CLI 2.11.0\n"
 
 #: bootstrap.php:51
 msgid "eCommerce"
 msgstr "E-commerce"
 
-#: includes/ECommerce.php:130
+#: includes/ECommerce.php:124
 msgid "Reference to page category"
 msgstr "Referência para a categoria da página"
 
-#: includes/ECommerce.php:255
-#: includes/ECommerce.php:266
-#: includes/ECommerce.php:275
-#: includes/ECommerce.php:284
-#: includes/ECommerce.php:293
-#: includes/ECommerce.php:302
-#: includes/ECommerce.php:331
+#: includes/ECommerce.php:252
+#: includes/ECommerce.php:263
+#: includes/ECommerce.php:272
+#: includes/ECommerce.php:281
+#: includes/ECommerce.php:290
+#: includes/ECommerce.php:299
+#: includes/ECommerce.php:328
 msgid "NFD eCommerce Options"
 msgstr "Opções NFD E-commerce"
 
-#: includes/ECommerce.php:444
+#: includes/ECommerce.php:441
 msgid "Promotion product Page"
 msgstr "Página do produto promocional"
 
-#: includes/ECommerce.php:445
-#: includes/ECommerce.php:473
+#: includes/ECommerce.php:442
+#: includes/ECommerce.php:470
 msgid "Promotions"
 msgstr "Promoções"
 
-#: includes/ECommerce.php:461
-#: includes/ECommerce.php:494
+#: includes/ECommerce.php:458
+#: includes/ECommerce.php:491
 msgid "Create a Promotion"
 msgstr "Crie uma promoção"
 
-#: includes/ECommerce.php:491
+#: includes/ECommerce.php:488
 msgid "Boost Your Online Store Sales"
 msgstr "Aumente as vendas da sua loja online"
 
-#: includes/ECommerce.php:492
+#: includes/ECommerce.php:489
 msgid "Maximize your sales by creating effective"
 msgstr "Maximize suas vendas criando soluções eficazes"
 
-#: includes/ECommerce.php:493
+#: includes/ECommerce.php:490
 msgid "promotions and campaigns like:"
 msgstr "promoções e campanhas como:"
 
-#: includes/ECommerce.php:495
+#: includes/ECommerce.php:492
 msgid "Free"
 msgstr "Livre"
 
-#: includes/ECommerce.php:496
+#: includes/ECommerce.php:493
 msgid "Shipping"
 msgstr "Envio"
 
-#: includes/ECommerce.php:497
+#: includes/ECommerce.php:494
 msgid "Buy One"
 msgstr "Pague 1"
 
-#: includes/ECommerce.php:498
+#: includes/ECommerce.php:495
 msgid "Get One"
 msgstr "Leve 2\"\""
 
-#: includes/ECommerce.php:499
+#: includes/ECommerce.php:496
 msgid "Free Gift"
 msgstr "Presente gratuito"
 
-#: includes/ECommerce.php:500
+#: includes/ECommerce.php:497
 msgid "in Cart"
 msgstr "no carrinho"
 
-#: includes/ECommerce.php:501
+#: includes/ECommerce.php:498
 msgid "Frequently"
 msgstr "Freqüentemente"
 
-#: includes/ECommerce.php:502
+#: includes/ECommerce.php:499
 msgid "Bought Together"
 msgstr "Comprados juntos"
 
-#: includes/ECommerce.php:662
+#: includes/ECommerce.php:659
 msgid "Status"
 msgstr "Situação"
 
-#: includes/ECommerce.php:686
+#: includes/ECommerce.php:683
 msgid "Published - Public"
 msgstr "Publicado - Público"
 
-#: includes/ECommerce.php:686
+#: includes/ECommerce.php:683
 msgid "Published - Password Protected"
 msgstr "Publicado - Protegido por senha"
 
-#: includes/ECommerce.php:689
+#: includes/ECommerce.php:686
 msgid "Published - Private"
 msgstr "Publicado - Privado"
 
-#: includes/ECommerce.php:699
+#: includes/ECommerce.php:696
 msgid "Last Modified"
 msgstr "Última modificação"
 
@@ -1581,3 +1581,72 @@ msgstr "Dados de Pagamento Salvos com Sucesso"
 #: build/index.js:1
 msgid "WooCommerce has been installed successfully"
 msgstr "WooCommerce foi instalado com sucesso"
+
+#: includes/QuickAddProduct.php:113
+msgid "Quick Add Product"
+msgstr "Adicionar produto rapidamente"
+
+#: build/quick-add-product/index.js:1
+msgid "Set product image"
+msgstr "Definir imagem do produto"
+
+#: build/quick-add-product/index.js:1
+msgid "Use as product image"
+msgstr "Use como imagem do produto"
+
+#: build/quick-add-product/index.js:1
+msgid "added to your product catalog."
+msgstr "adicionado ao seu catálogo de produtos."
+
+#: build/quick-add-product/index.js:1
+msgid "View product"
+msgstr "Ver produto"
+
+#: build/quick-add-product/index.js:1
+msgid "Edit product details"
+msgstr "Editar detalhes do produto"
+
+#: build/quick-add-product/index.js:1
+msgid "Add another product"
+msgstr "Adicionar outro produto"
+
+#: build/quick-add-product/index.js:1
+msgctxt "Quick add product modal title"
+msgid "Quick Add Product"
+msgstr "Adição rápida de produto"
+
+#: build/quick-add-product/index.js:1
+msgctxt "Quick Add Product form field label."
+msgid "Product Name"
+msgstr "Nome do produto"
+
+#: build/quick-add-product/index.js:1
+#, js-format
+msgctxt "Quick Add Product form field label. %s is the currency symbol."
+msgid "Price (%s)"
+msgstr "Preço (%s)"
+
+#: build/quick-add-product/index.js:1
+msgctxt "Quick Add Product form field label."
+msgid "Description"
+msgstr "Descrição"
+
+#: build/quick-add-product/index.js:1
+msgctxt "Quick Add Product form field label."
+msgid "Categories"
+msgstr "Categorias"
+
+#: build/quick-add-product/index.js:1
+msgctxt "Quick Add Product form field label."
+msgid "Image"
+msgstr "Imagem"
+
+#: build/quick-add-product/index.js:1
+msgctxt "Quick Add Product form submit button label"
+msgid "Add product"
+msgstr "Adicionar produto"
+
+#: build/quick-add-product/index.js:1
+msgctxt "Modal button label."
+msgid "Quick add product"
+msgstr "Produto de adição rápida"
