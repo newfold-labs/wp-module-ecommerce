@@ -36,7 +36,7 @@ function OnboardingCheckListItem( { children, actions, state, ...props } ) {
 				) }
 				data-testid={ props.id }
 				target={ state?.target || '_self' }
-				href={ state.url }
+				href={ window.NewfoldRuntime?.linkTracker?.addUtmParams(state.url) || state.url }
 				{ ...( actions.manage && ! manageAction.isMutating
 					? { onClick: manageAction.trigger }
 					: {} ) }

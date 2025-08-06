@@ -86,7 +86,7 @@ export function YithFeatureCard({
                                                 ) 
                   }
           as="a"
-          href={state?.featureUrl}
+          href={ window.NewfoldRuntime?.linkTracker?.addUtmParams( state?.featureUrl ) || state?.featureUrl }
           isLoading={state?.isInstalling && !state?.isActive}
           disabled={state?.isDisabled}
           id={state?.isInstalling

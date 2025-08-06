@@ -85,7 +85,7 @@ export function SiteStatus({ comingSoon, toggleComingSoon, notify }) {
         <Button
           as="a"
           className="nfd-bg-canvas"
-          href={NewfoldRuntime.hasCapability("isEcommerce") && window.location.href.includes('store') ? `${NewfoldRuntime.siteUrl}/shop` : NewfoldRuntime.siteUrl}
+          href={NewfoldRuntime.hasCapability("isEcommerce") && window.location.href.includes('store') ? ( window.NewfoldRuntime?.linkTracker?.addUtmParams(`${NewfoldRuntime.siteUrl}/shop`) || `${NewfoldRuntime.siteUrl}/shop` )  : ( window.NewfoldRuntime?.linkTracker?.addUtmParams( NewfoldRuntime.siteUrl ) || NewfoldRuntime.siteUrl ) }
           target="_blank"
           variant="secondary"
           id="view-site"

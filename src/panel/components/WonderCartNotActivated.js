@@ -75,7 +75,7 @@ export function WonderCarNotActivated(props) {
                         href={
                         (canAccessGlobalCTB &&
                             !hasYithExtended &&
-                            NewfoldRuntime.sdk.ecommerce.brand_settings.wondercartBuyNow) || ''
+                            ( window.NewfoldRuntime?.linkTracker?.addUtmParams( NewfoldRuntime.sdk.ecommerce.brand_settings.wondercartBuyNow ) ||  NewfoldRuntime.sdk.ecommerce.brand_settings.wondercartBuyNow  ) || '' )
                         }
                         variant="upsell"
                         isLoading={showInProgress}
@@ -117,7 +117,7 @@ export function WonderCarNotActivated(props) {
                                         href={
                                         (canAccessGlobalCTB &&
                                             !hasYithExtended &&
-                                            NewfoldRuntime.sdk.ecommerce.brand_settings.wondercartBuyNow) || ''
+                                            ( window.NewfoldRuntime?.linkTracker?.addUtmParams( NewfoldRuntime.sdk.ecommerce.brand_settings.wondercartBuyNow ) || NewfoldRuntime.sdk.ecommerce.brand_settings.wondercartBuyNow ) || '' )
                                         }
                                         isLoading={showInProgress}
                                         disabled={!(canAccessGlobalCTB && hasYithExtended && isEcommerce )}

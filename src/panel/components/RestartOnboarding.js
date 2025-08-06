@@ -10,7 +10,8 @@ import classNames from "classnames";
  */
 export function RestartOnboarding( ) {
 
-  const redirectUrl = `${window.NewfoldRuntime.adminUrl}index.php?page=nfd-onboarding&restart=brand-plugin`;
+  const redirectUrl = window.NewfoldRuntime?.linkTracker?.addUtmParams(`${window.NewfoldRuntime.adminUrl}index.php?page=nfd-onboarding&restart=brand-plugin`) || `${window.NewfoldRuntime.adminUrl}index.php?page=nfd-onboarding&restart=brand-plugin`;
+
 
   return (
     <div
@@ -51,7 +52,7 @@ export function RestartOnboarding( ) {
         <Button
           as="a"
           id="launch-onboarding"
-          href={redirectUrl}
+          href={ window.NewfoldRuntime?.linkTracker?.addUtmParams( redirectUrl ) || redirectUrl}
           className="nfd-flex nfd-gap-2 nfd-items-center"
         >
           <SparklesIcon />

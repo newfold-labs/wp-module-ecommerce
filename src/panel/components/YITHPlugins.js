@@ -37,7 +37,7 @@ export function YITHPlugins({ wpModules }) {
       "wondercart",
       {
         title: "nfd_slug_wonder_cart",
-        primaryUrl: "admin.php?page=bluehost#/store/sales_discounts"
+        primaryUrl: window.NewfoldRuntime?.linkTracker?.addUtmParams("admin.php?page=bluehost#/store/sales_discounts") || "admin.php?page=bluehost#/store/sales_discounts"
       },
     ],
     [
@@ -106,7 +106,7 @@ export function YITHPlugins({ wpModules }) {
     yithProducts?.filter((product) => yithPluginsMap.has(product.id))
       .forEach((product) => {
         let updatedObject = yithPluginsMap.get(product.id);
-        updatedObject.primaryUrl = product.primaryUrl;
+        updatedObject.primaryUrl = window.NewfoldRuntime?.linkTracker?.addUtmParams(product.primaryUrl) || product.primaryUrl;
         setYithPluginsMap(yithPluginsMap.set(String(product.id), updatedObject), ...yithPluginsMap);
       }
       )
@@ -130,7 +130,7 @@ export function YITHPlugins({ wpModules }) {
             "wp-module-ecommerce"
           )}
           {
-            hasSolution && (<Button as="a" href={solutionsLink} className="nfd-button nfd-button--secondary nfd-flex  nfd-self-end nfd-ml-auto">
+            hasSolution && (<Button as="a" href={window.NewfoldRuntime?.linkTracker?.addUtmParams(solutionsLink) || solutionsLink } className="nfd-button nfd-button--secondary nfd-flex  nfd-self-end nfd-ml-auto">
             {__( "View all your plugins and tools", "wp-module-ecommerce" )}
             </Button>)
           }

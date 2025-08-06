@@ -56,7 +56,7 @@ export function Products({ woo, wpModules }) {
             <Button
               className="nfd-flex nfd-gap-2 nfd-items-center"
               as="a"
-              href="https://woocommerce.com/document/managing-products/"
+              href={ window.NewfoldRuntime?.linkTracker?.addUtmParams( "https://woocommerce.com/document/managing-products/" ) || "https://woocommerce.com/document/managing-products/" }
               target="_blank"
             >
               <LightBulbIcon className="hst-w-4" />

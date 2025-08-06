@@ -39,7 +39,7 @@ const Shipping = ({ notify }) => {
                       <Button
                         variant="secondary"
                         as="a"
-                        href={integrationStatus?.integration?.plugin?.url}
+                        href={window.NewfoldRuntime?.linkTracker?.addUtmParams( integrationStatus?.integration?.plugin?.url ) || integrationStatus?.integration?.plugin?.url}
                         className={classNames(
                           "max-[359px]:nfd-my-2",
                           "min-[360px]:nfd-m-0"
