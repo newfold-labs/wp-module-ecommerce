@@ -2,11 +2,29 @@ import './tailwind.pcss';
 
 import domReady from '@wordpress/dom-ready';
 import { createRoot } from '@wordpress/element';
+import { QuickAddProductModal } from './QuickAddProductModal';
 import { ModalForm } from './ModalForm';
 import { WidgetForm } from "./WidgetForm";
 
 const ROOT_MODAL_FORM_ID = 'nfd-quick-add-product-modal';
 const ROOT_WIDGET_FORM_ID = 'nfd-quick-add-product-widget';
+const ROOT_QUICK_ADD_PRODUCT_MODAL_ID = 'nfd-quick-add-product-modal-only';
+
+const initQuickAddProductModal = () => {
+	const quickAddProductModalRoot = document.getElementById(ROOT_QUICK_ADD_PRODUCT_MODAL_ID);
+	const renderedClass = `${ROOT_QUICK_ADD_PRODUCT_MODAL_ID}--rendered`;
+
+	if (!quickAddProductModalRoot || quickAddProductModalRoot.classList.contains(renderedClass)) {
+		return;
+	}
+
+	createRoot(quickAddProductModalRoot).render(
+		<QuickAddProductModal openAtRender={ true }/>
+	);
+
+	quickAddProductModalRoot.classList.add(renderedClass);
+};
+
 
 domReady( () => {
 
@@ -32,4 +50,6 @@ domReady( () => {
 	if ( null !== modalRoot ) {
 		createRoot( modalRoot ).render( <ModalForm /> );
 	}
+
+	window.addEventListener('nfd-open-quick-add-product-modal', initQuickAddProductModal );
 } );
