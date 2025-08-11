@@ -64,7 +64,7 @@
         "i18n-mo": "vendor/bin/wp i18n make-mo ./languages",
         "i18n-php": "vendor/bin/wp i18n make-php ./languages",
         "i18n-po": "vendor/bin/wp i18n update-po ./languages/wp-module-ecommerce.pot ./languages",
-        "i18n-pot": "vendor/bin/wp i18n make-pot . ./languages/wp-module-ecommerce.pot --domain=wp-module-ecommerce --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/newfold-labs/wp-module-ecommerce/issues\",\"POT-Creation-Date\":\"2024-11-18T11:38:47+00:00\"}' --exclude=node_modules,vendor,tests,src,wordpress",
+        "i18n-pot": "vendor/bin/wp i18n make-pot . ./languages/wp-module-ecommerce.pot --domain=wp-module-ecommerce --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/newfold-labs/wp-module-ecommerce/issues\",\"POT-Creation-Date\":\"2024-11-18T11:38:47+00:00\"}' --exclude=tests,src,wordpress",
         "lint": "vendor/bin/phpcs --standard=phpcs.xml -s .",
         "test": [
             "codecept run wpunit"
