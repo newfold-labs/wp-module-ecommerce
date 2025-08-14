@@ -1,3 +1,6 @@
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/quick-add-product/tailwind.pcss ***!
+  \*****************************************************************************************************************************************************************************************/
 /* Import main CSS including all components. */
 /**
  * Tailwind CSS preflight, but scoped to the Yoast root class.
@@ -4893,3 +4896,5 @@
 				gap: 3rem !important;
 		}
 }
+
+/*# sourceMappingURL=quick-add-product.css.map*/
