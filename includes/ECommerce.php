@@ -5,8 +5,6 @@ namespace NewfoldLabs\WP\Module\ECommerce;
 use NewfoldLabs\WP\Module\ECommerce\Data\Brands;
 use NewfoldLabs\WP\Module\ECommerce\Partials\CaptiveFlow;
 use NewfoldLabs\WP\Module\ECommerce\Partials\WooCommerceBacklink;
-use NewfoldLabs\WP\Module\ECommerce\I18nService;
-use NewfoldLabs\WP\Module\ECommerce\WonderCart;
 use NewfoldLabs\WP\Module\Installer\Services\PluginInstaller;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\Module\Onboarding\Data\Services\FlowService;
@@ -143,6 +141,8 @@ class ECommerce {
 
 		// Load Quick Add Product feature.
 		( new QuickAddProduct( $container ) )->init();
+		// Load Store Quick Start feature.
+        ( new StoreInfo( $container ) )->init();
 
 		add_filter( 'newfold_runtime', array( $this, 'add_to_runtime' ) );
 	}
