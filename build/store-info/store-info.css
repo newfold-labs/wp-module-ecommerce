@@ -1452,6 +1452,10 @@
 		margin-top: 1.5rem;
 		text-align: right;
 }
+.nfd-root .nfd-store-info__modal .nfd-store-info__form-submit button {
+			font-size: .90rem;
+			padding: 0.6rem 1rem;
+		}
 .last\:nfd-border-b-0:last-child {
 		border-bottom-width: 0px !important;
 }

@@ -1,10 +1,11 @@
 
 import {useState} from "react";
 import {_x} from "@wordpress/i18n";
+import PropTypes from 'prop-types';
 import {TextField, SelectField, Button, Spinner, Title} from "@newfold/ui-component-library";
 import {saveStoreInfo} from "../../functions";
 
-export const Form = () => {
+const Form = ({onFormSubmit, title = ''}) => {
 
 	const [formData, setFormData] = useState(storeInfo.data);
 	const [loading, setLoading] = useState(false);
@@ -34,12 +35,14 @@ export const Form = () => {
 		}
 
 		setLoading(false);
+
+		onFormSubmit?.();
 	}
 
 	return (
 		<>
 			<div className="nfd-store-info__form">
-				<Title as="h2" size="2">{_x( 'Store details', 'Store info modal title', 'wp-module-ecommerce')}</Title>
+				<Title as="h2" size="2">{title || _x( 'Store details', 'Store info modal title', 'wp-module-ecommerce')}</Title>
 				<form method="POST" onSubmit={formSubmit}>
 					<div className="nfd-store-info__form-field nfd-store-info__store-address-field">
 						<TextField
@@ -111,7 +114,6 @@ export const Form = () => {
 					<div className="nfd-store-info__form-submit">
 						<Button
 							type="submit"
-							size="large"
 							disabled={loading}
 						>
 							{_x('Save', 'Store info form submit button label', 'wp-module-ecommerce')}
@@ -122,3 +124,10 @@ export const Form = () => {
 		</>
 	)
 }
+
+Form.propTypes = {
+	title: PropTypes.string,
+	onFormSubmit: PropTypes.func
+}
+
+export default Form;
