@@ -9,10 +9,12 @@ domReady( () => {
 	const root = createRoot( document.getElementById( 'nfd-store-info-modal-wrapper' ) );
 
 	if (root) {
-		document.querySelector('[data-store-info-trigger]')?.addEventListener('click', (ev) => {
-			ev.preventDefault();
+		document.addEventListener('click', (ev) => {
+			if (ev.target.hasAttribute('data-store-info-trigger')) {
+				ev.preventDefault();
 
-			root.render(<ModalForm />);
+				root.render(<ModalForm />);
+			}
 		})
 	}
 } );
