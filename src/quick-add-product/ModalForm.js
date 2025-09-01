@@ -1,8 +1,8 @@
 
-import {Root, Button, Modal} from "@newfold/ui-component-library";
-import { Form } from './components/form'
-import { useState } from 'react';
-import {QuickAddProductModal} from './QuickAddProductModal'
+import {Root, Button} from "@newfold/ui-component-library";
+import {useState} from 'react';
+import {QuickAddProductModal} from './QuickAddProductModal';
+import {_x} from "@wordpress/i18n";
 
 export const ModalForm = () => {
 	const [isOpen, setIsOpen] = useState(false);

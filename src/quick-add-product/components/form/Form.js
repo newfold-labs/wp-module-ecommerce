@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { _x, sprintf } from "@wordpress/i18n";
-import {TextField, TextareaField, Button, Spinner, Title} from "@newfold/ui-component-library";
+import {TextField, TextareaField, Button, Title} from "@newfold/ui-component-library";
 import { PriceField } from "../price-field";
 import { CategoriesField } from "../categories-field";
 import { ImageField } from "../image-field";
