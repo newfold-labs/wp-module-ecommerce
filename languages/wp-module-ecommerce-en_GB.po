@@ -23,7 +23,7 @@ msgstr ""
 msgid "eCommerce"
 msgstr "eCommerce"
 
-#: includes/ECommerce.php:124
+#: includes/ECommerce.php:122
 msgid "Reference to page category"
 msgstr "Reference to page category"
 
@@ -1651,3 +1651,107 @@ msgstr "Add product"
 msgctxt "Modal button label."
 msgid "Quick add product"
 msgstr "Quick add product"
+
+#: includes/RestApi/StoreInfoController.php:57
+msgid "Store address info"
+msgstr ""
+
+#: includes/RestApi/StoreInfoController.php:62
+msgid "Store city info."
+msgstr ""
+
+#: includes/RestApi/StoreInfoController.php:67
+msgid "Store postcode info."
+msgstr ""
+
+#: includes/RestApi/StoreInfoController.php:72
+msgid "Store state info."
+msgstr ""
+
+#: includes/RestApi/StoreInfoController.php:77
+msgid "Store country info."
+msgstr ""
+
+#: includes/RestApi/StoreInfoController.php:82
+msgid "Store industry info."
+msgstr ""
+
+#: includes/StoreInfo.php:149
+msgid "Fashion, apparel, and accessories"
+msgstr ""
+
+#: includes/StoreInfo.php:150
+msgid "Health and beauty"
+msgstr ""
+
+#: includes/StoreInfo.php:151
+msgid "Electronics and computers"
+msgstr ""
+
+#: includes/StoreInfo.php:152
+msgid "Food and drink"
+msgstr ""
+
+#: includes/StoreInfo.php:153
+msgid "Home, furniture, and garden"
+msgstr ""
+
+#: includes/StoreInfo.php:154
+msgid "CBD and other hemp-derived products"
+msgstr ""
+
+#: includes/StoreInfo.php:155
+msgid "Education and learning"
+msgstr ""
+
+#: includes/StoreInfo.php:156
+msgid "Sports and recreation"
+msgstr ""
+
+#: includes/StoreInfo.php:157
+msgid "Arts and crafts"
+msgstr ""
+
+#: includes/StoreInfo.php:158
+msgid "Other"
+msgstr ""
+
+#: build/store-info/index.js:1
+msgctxt "Store info modal title"
+msgid "Store details"
+msgstr ""
+
+#: build/store-info/index.js:1
+msgctxt "Store info form field label."
+msgid "Store Address"
+msgstr ""
+
+#: build/store-info/index.js:1
+msgctxt "Store info form field label."
+msgid "City"
+msgstr ""
+
+#: build/store-info/index.js:1
+msgctxt "Store info form field label."
+msgid "Postcode"
+msgstr ""
+
+#: build/store-info/index.js:1
+msgctxt "Store info form field label."
+msgid "State"
+msgstr ""
+
+#: build/store-info/index.js:1
+msgctxt "Store info form field label."
+msgid "Country"
+msgstr ""
+
+#: build/store-info/index.js:1
+msgctxt "Store info form field label."
+msgid "Industry"
+msgstr ""
+
+#: build/store-info/index.js:1
+msgctxt "Store info form submit button label"
+msgid "Save"
+msgstr ""
