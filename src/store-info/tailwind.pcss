@@ -1,0 +1,48 @@
+/* Import main CSS including all components. */
+@import "@newfold/ui-component-library";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nfd-root .nfd-store-info__modal {
+	z-index: 10000;
+
+	.nfd-modal__panel {
+		@apply
+		nfd-relative
+		nfd-overflow-visible;
+
+		max-width: 75rem;
+		width: auto;
+	}
+
+	.nfd-title {
+		@apply
+		nfd-mb-6;
+	}
+
+	form {
+		@apply
+		nfd-grid
+		nfd-grid-cols-4
+		nfd-gap-4;
+	}
+
+	.nfd-store-info__store-address-field, .nfd-store-info__store-industries, .nfd-store-info__form-submit {
+		@apply
+		nfd-col-start-1
+		nfd-col-end-5;
+	}
+
+	.nfd-store-info__form-submit {
+		@apply
+		nfd-text-right
+		nfd-mt-6;
+
+		button {
+			font-size: .90rem;
+			padding: 0.6rem 1rem;
+		}
+	}
+}
