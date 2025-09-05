@@ -91,7 +91,7 @@ class QuickAddProduct {
 			);
 
 			// Maybe enqueue scripts.
-			if ( ! empty( $current_screen ) && in_array( $current_screen->id, array( 'dashboard', 'edit-product' ), true ) ) {
+			if ( ! empty( $current_screen ) && in_array( $current_screen->id, array( 'dashboard', 'edit-product', 'toplevel_page_bluehost' ), true ) ) {
 
 				wp_enqueue_global_styles_css_custom_properties();
 				wp_enqueue_media();

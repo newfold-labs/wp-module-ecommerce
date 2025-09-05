@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { _x, sprintf } from "@wordpress/i18n";
-import {TextField, TextareaField, Button, Spinner, Title} from "@newfold/ui-component-library";
+import {TextField, TextareaField, Button, Title} from "@newfold/ui-component-library";
 import { PriceField } from "../price-field";
 import { CategoriesField } from "../categories-field";
 import { ImageField } from "../image-field";
@@ -18,16 +18,33 @@ export const Form = ({hasPreview = false, showTitle = false, title = ''}) => {
 	const formSubmit = async (ev) => {
 		ev.preventDefault();
 
+		let event = 'nfd-submit-quick-add-product',
+			eventData = {};
+
 		setLoading(true);
 
 		try {
 			const product = await createProduct( formData );
+
+			event += '-success';
+			eventData = {
+				detail: product,
+			}
+
 			setSubmitResponse( product );
 		} catch (error) {
 			console.error(error);
+
+			event += '-error';
+			eventData = {
+				detail: error,
+			};
 		}
 
 		setLoading(false);
+
+		// Dispatch event.
+		window.dispatchEvent( new CustomEvent( event, eventData ) );
 	}
 
 	const updateFormData = (key, value) => {
