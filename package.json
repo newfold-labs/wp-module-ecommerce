@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.8",
-    "@tailwindcss/postcss": "^4.1.12",
+    "@tailwindcss/postcss": "^4.1.13",
     "@testing-library/cypress": "^10.1.0",
     "@wordpress/dom-ready": "^4.29.0",
     "@wordpress/env": "^10.29.0",
