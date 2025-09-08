@@ -23,7 +23,7 @@ msgstr ""
 msgid "eCommerce"
 msgstr "eCommerce"
 
-#: includes/ECommerce.php:124
+#: includes/ECommerce.php:122
 msgid "Reference to page category"
 msgstr "Reference to page category"
 
@@ -1587,67 +1587,66 @@ msgstr "WooCommerce has been installed successfully"
 msgid "Quick Add Product"
 msgstr "Quick Add Product"
 
-#: build/quick-add-product/index.js:1
-msgid "Set product image"
-msgstr "Set product image"
+#: includes/RestApi/StoreInfoController.php:57
+msgid "Store address info"
+msgstr "Store address info"
 
-#: build/quick-add-product/index.js:1
-msgid "Use as product image"
-msgstr "Use as product image"
+#: includes/RestApi/StoreInfoController.php:62
+msgid "Store city info."
+msgstr "Store city info."
 
-#: build/quick-add-product/index.js:1
-msgid "added to your product catalog."
-msgstr "added to your product catalogue."
+#: includes/RestApi/StoreInfoController.php:67
+msgid "Store postcode info."
+msgstr "Store postcode info."
 
-#: build/quick-add-product/index.js:1
-msgid "View product"
-msgstr "View product"
+#: includes/RestApi/StoreInfoController.php:72
+msgid "Store state info."
+msgstr "Store state info."
 
-#: build/quick-add-product/index.js:1
-msgid "Edit product details"
-msgstr "Edit product details"
+#: includes/RestApi/StoreInfoController.php:77
+msgid "Store country info."
+msgstr "Store country info."
 
-#: build/quick-add-product/index.js:1
-msgid "Add another product"
-msgstr "Add another product"
+#: includes/RestApi/StoreInfoController.php:82
+msgid "Store industry info."
+msgstr "Store industry info."
 
-#: build/quick-add-product/index.js:1
-msgctxt "Quick add product modal title"
-msgid "Quick Add Product"
-msgstr "Quick Add Product"
+#: includes/StoreInfo.php:149
+msgid "Fashion, apparel, and accessories"
+msgstr "Fashion, apparel, and accessories"
 
-#: build/quick-add-product/index.js:1
-msgctxt "Quick Add Product form field label."
-msgid "Product Name"
-msgstr "Product Name"
+#: includes/StoreInfo.php:150
+msgid "Health and beauty"
+msgstr "Health and beauty"
 
-#: build/quick-add-product/index.js:1
-#, js-format
-msgctxt "Quick Add Product form field label. %s is the currency symbol."
-msgid "Price (%s)"
-msgstr "Price (%s)"
+#: includes/StoreInfo.php:151
+msgid "Electronics and computers"
+msgstr "Electronics and computers"
 
-#: build/quick-add-product/index.js:1
-msgctxt "Quick Add Product form field label."
-msgid "Description"
-msgstr "Description"
+#: includes/StoreInfo.php:152
+msgid "Food and drink"
+msgstr "Food and drink"
 
-#: build/quick-add-product/index.js:1
-msgctxt "Quick Add Product form field label."
-msgid "Categories"
-msgstr "Categories"
+#: includes/StoreInfo.php:153
+msgid "Home, furniture, and garden"
+msgstr "Home, furniture, and garden"
 
-#: build/quick-add-product/index.js:1
-msgctxt "Quick Add Product form field label."
-msgid "Image"
-msgstr "Image"
+#: includes/StoreInfo.php:154
+msgid "CBD and other hemp-derived products"
+msgstr "CBD and other hemp-derived products"
 
-#: build/quick-add-product/index.js:1
-msgctxt "Quick Add Product form submit button label"
-msgid "Add product"
-msgstr "Add product"
+#: includes/StoreInfo.php:155
+msgid "Education and learning"
+msgstr "Education and learning"
 
-#: build/quick-add-product/index.js:1
-msgctxt "Modal button label."
-msgid "Quick add product"
-msgstr "Quick add product"
+#: includes/StoreInfo.php:156
+msgid "Sports and recreation"
+msgstr "Sports and recreation"
+
+#: includes/StoreInfo.php:157
+msgid "Arts and crafts"
+msgstr "Arts and crafts"
+
+#: includes/StoreInfo.php:158
+msgid "Other"
+msgstr "Other"
