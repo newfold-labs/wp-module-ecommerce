@@ -2,6 +2,7 @@
 
 namespace NewfoldLabs\WP\Module\ECommerce;
 
+use NewfoldLabs\WP\Module\Solutions\Solutions;
 use NewfoldLabs\WP\ModuleLoader\Container;
 
 /**
@@ -19,7 +20,7 @@ class QuickAddProduct {
 	/**
 	 * Constructor
 	 *
-	 * @param  Container $container  Plugin container.
+	 * @param Container $container Plugin container.
 	 */
 	public function __construct( Container $container ) {
 		$this->container = $container;
@@ -42,6 +43,8 @@ class QuickAddProduct {
 		\add_action( 'wp_dashboard_setup', array( $this, 'register_dashboard_widgets' ) );
 		// Register API routes.
 		\add_action( 'rest_api_init', array( $this, 'register_routes' ) );
+		// Ouput root for modal.
+		\add_action( 'admin_footer', array( $this, 'output_modal_root' ) );
 	}
 
 
@@ -64,7 +67,10 @@ class QuickAddProduct {
 			wp_register_script(
 				'quick-add-product',
 				NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/build/quick-add-product/index.js',
-				$asset['dependencies'],
+				array_merge(
+					$asset['dependencies'],
+					array( 'newfold-global-ctb', 'nfd-installer-listener', 'nfd-installer' ),
+				),
 				$asset['version'],
 				true
 			);
@@ -73,8 +79,8 @@ class QuickAddProduct {
 				'quick-add-product',
 				'quickAddProduct',
 				array(
-					'productPlaceholderImage' => wc_placeholder_img_src(),
-					'money'                   => array(
+					'productTypes' => $this->get_product_types(),
+					'money'        => array(
 						'decimals'          => wc_get_price_decimals(),
 						'thousandSeparator' => wc_get_price_thousand_separator(),
 						'decimalSeparator'  => wc_get_price_decimal_separator(),
@@ -86,12 +92,13 @@ class QuickAddProduct {
 			wp_register_style(
 				'quick-add-product',
 				NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/build/quick-add-product/quick-add-product.css',
-				array(),
+				array( 'newfold-global-ctb-style', 'nfd-installer' ),
 				$asset['version']
 			);
 
 			// Maybe enqueue scripts.
-			if ( ! empty( $current_screen ) && in_array( $current_screen->id, array( 'dashboard', 'edit-product' ), true ) ) {
+			if ( ! empty( $current_screen ) && in_array( $current_screen->id, array( 'dashboard', 'edit-product' ),
+					true ) ) {
 
 				wp_enqueue_global_styles_css_custom_properties();
 				wp_enqueue_media();
@@ -135,5 +142,79 @@ class QuickAddProduct {
 	 */
 	public function register_routes() {
 		( new \NewfoldLabs\WP\Module\ECommerce\RestApi\QuickAddProductController() )->register_routes();
+	}
+
+	/**
+	 * Output modal root
+	 *
+	 * @return void
+	 */
+	public function output_modal_root() {
+		if ( ! wp_script_is( 'quick-add-product', 'enqueued' ) ) {
+			return;
+		}
+
+		echo '<div id="nfd-quick-add-product-modal"></div>';
+	}
+
+	/**
+	 * Return an array of product types.
+	 *
+	 * @return array
+	 */
+	protected function get_product_types() {
+
+		// Init types with default.
+		$types = array(
+			array(
+				'key'         => 'virtual',
+				'title'       => __( 'Digital products or services', 'wp-module-ecommerce' ),
+				'description' => __( 'EX: eBooks, stock photos, software, templates, podcasts, apps, videos, etc. No physical products or shipping management.', 'wp-module-ecommerce' ),
+			),
+			array(
+				'key'         => 'physical',
+				'title'       => __( 'Physical products', 'wp-module-ecommerce' ),
+				'description' => __( 'Ex: clothing, furniture, accessories — any type of product that needs to be physically shipped to your customers.', 'wp-module-ecommerce' ),
+			),
+		);
+
+		// Get entitlements.
+		if ( ! class_exists( 'NewfoldLabs\WP\Module\Solutions\Solutions' ) ) {
+			return $types;
+		}
+
+		$entitlements_data = Solutions::get_enhanced_entitlment_data();
+		$entitlements      = array_merge(
+			isset( $entitlements_data['entitlements'] ) ? $entitlements_data['entitlements'] : array(),
+			isset( $entitlements_data['premium'] ) ? $entitlements_data['premium'] : array()
+		);
+
+		$premium_types = array(
+			'yith-woocommerce-booking-premium/init.php' => array(
+				'key'         => 'booking',
+				'title'       => __( 'Bookings/Appointments', 'wp-module-ecommerce' ),
+				'description' => __( 'Ex: apartment bookings, rental of products, medical appointments, personal training, etc — any type of bookable product or service.', 'wp-module-ecommerce' ),
+			),
+			'wp-plugin-subscriptions/init.php'          => array(
+				'key'         => 'subscription',
+				'title'       => __( 'Subscription', 'wp-module-ecommerce' ),
+				'description' => __( 'Ex: a monthly subscription box, a magazine subscription, streaming service like Netflix, etc - any type of product your customer pays for on a recurring basis.', 'wp-module-ecommerce' ),
+			),
+		);
+
+		foreach ( $entitlements as $entitlement ) {
+			if ( ! is_array( $entitlement ) || ! array_key_exists( $entitlement['basename'], $premium_types ) ) {
+				continue;
+			}
+
+			$premium_type = $premium_types[$entitlement['basename']];
+			if ( ! is_plugin_active( $entitlement['basename'] ) ) {
+				$premium_type['premiumData'] = $entitlement;
+			}
+
+			$types[] = $premium_type;
+		}
+
+		return $types;
 	}
 }

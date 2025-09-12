@@ -9,9 +9,13 @@ import { createProduct, decodeEntities } from "../../functions";
 import { FormResponse } from "./FormResponse"
 import { FormPreview } from "./FormPreview";
 
-export const Form = ({hasPreview = false, showTitle = false, title = ''}) => {
+export const Form = ({hasPreview = false, showTitle = false, title = '', productType = 'physical'}) => {
 
-	const [formData, setFormData] = useState({});
+	const defaultFormData = {
+		virtual: 'virtual' === productType,
+	}
+
+	const [formData, setFormData] = useState(defaultFormData);
 	const [submitResponse, setSubmitResponse] = useState(null);
 	const [loading, setLoading] = useState(false);
 
@@ -38,7 +42,7 @@ export const Form = ({hasPreview = false, showTitle = false, title = ''}) => {
 	}
 
 	const resetForm = () => {
-		setFormData({});
+		setFormData(defaultFormData);
 		setSubmitResponse(null);
 	}
 
