@@ -210,11 +210,11 @@ class QuickAddProduct {
 				continue;
 			}
 
-			$premium_type = $premium_types[$entitlement['basename']];
+			$premium_type = $premium_types[ $entitlement['basename'] ];
 			// If plugin is active add redirect flag to handle modal type correctly.
 			if ( is_plugin_active( $entitlement['basename'] ) ) {
 				$premium_type['redirect'] = true;
-			} elseif ( $this->can_access_global_ctb() ) { // Can access global CTB, handle it
+			} elseif ( $this->can_access_global_ctb() ) { // Can access global CTB, handle it.
 				$premium_type['premiumData'] = $entitlement;
 			}
 
