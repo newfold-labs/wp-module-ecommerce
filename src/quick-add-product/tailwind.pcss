@@ -465,8 +465,6 @@
 
 .nfd-root {
 	.nfd-quick-add-product-modal {
-		z-index: 10000;
-
 		.nfd-modal__panel {
 			padding: 0;
 			max-width: 75rem;
@@ -498,12 +496,6 @@
 }
 
 @media screen and (max-width: 782px) {
-	.nfd-root {
-		.nfd-quick-add-product-modal {
-			z-index : 10000;
-		}
-	}
-
 	#nfd-quick-add-product-modal {
 		button {
 			@apply
@@ -512,6 +504,10 @@
 			nfd-text-base
 			nfd-leading-5;
 		}
+	}
+
+	#nfd-quick-add-product__type-select {
+		width: auto;
 	}
 }
 
