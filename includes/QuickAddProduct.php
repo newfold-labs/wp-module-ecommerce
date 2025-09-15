@@ -198,7 +198,7 @@ class QuickAddProduct {
 				'title'       => __( 'Bookings/Appointments', 'wp-module-ecommerce' ),
 				'description' => __( 'Ex: apartment bookings, rental of products, medical appointments, personal training, etc — any type of bookable product or service.', 'wp-module-ecommerce' ),
 			),
-			'wp-plugin-subscriptions/init.php'          => array(
+			'wp-plugin-subscriptions/wp-plugin-subscriptions.php'          => array(
 				'key'         => 'subscription',
 				'title'       => __( 'Subscription', 'wp-module-ecommerce' ),
 				'description' => __( 'Ex: a monthly subscription box, a magazine subscription, streaming service like Netflix, etc - any type of product your customer pays for on a recurring basis.', 'wp-module-ecommerce' ),
