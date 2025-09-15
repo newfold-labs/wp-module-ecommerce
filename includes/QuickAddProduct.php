@@ -43,8 +43,11 @@ class QuickAddProduct {
 		\add_action( 'wp_dashboard_setup', array( $this, 'register_dashboard_widgets' ) );
 		// Register API routes.
 		\add_action( 'rest_api_init', array( $this, 'register_routes' ) );
-		// Ouput root for modal.
+		// Output root for modal.
 		\add_action( 'admin_footer', array( $this, 'output_modal_root' ) );
+
+		// Handle special product type page.
+		\add_action( 'admin_footer', array( $this, 'handle_product_type_on_add_product' ) );
 	}
 
 
@@ -79,8 +82,9 @@ class QuickAddProduct {
 				'quick-add-product',
 				'quickAddProduct',
 				array(
-					'productTypes' => $this->get_product_types(),
-					'money'        => array(
+					'productTypes'  => $this->get_product_types(),
+					'addProductUrl' => add_query_arg( array( 'post_type' => 'product' ), \admin_url( 'post-new.php' ) ),
+					'money'         => array(
 						'decimals'          => wc_get_price_decimals(),
 						'thousandSeparator' => wc_get_price_thousand_separator(),
 						'decimalSeparator'  => wc_get_price_decimal_separator(),
@@ -206,8 +210,11 @@ class QuickAddProduct {
 				continue;
 			}
 
-			$premium_type = $premium_types[ $entitlement['basename'] ];
-			if ( ! is_plugin_active( $entitlement['basename'] ) ) {
+			$premium_type = $premium_types[$entitlement['basename']];
+			// If plugin is active add redirect flag to handle modal type correctly.
+			if ( is_plugin_active( $entitlement['basename'] ) ) {
+				$premium_type['redirect'] = true;
+			} elseif ( $this->can_access_global_ctb() ) { // Can access global CTB, handle it
 				$premium_type['premiumData'] = $entitlement;
 			}
 
@@ -215,5 +222,35 @@ class QuickAddProduct {
 		}
 
 		return $types;
+	}
+
+	/**
+	 * Can current user access global CTB?
+	 */
+	protected function can_access_global_ctb(): bool {
+		return (bool) $this->container->get( 'capabilities' )->get( 'canAccessGlobalCTB' );
+	}
+
+	/**
+	 * Handle product type (booking|subscription) for single product add-new page.
+	 *
+	 * @return void
+	 */
+	public function handle_product_type_on_add_product() {
+		global $pagenow;
+
+		if ( 'post-new.php' !== $pagenow || ! isset( $_GET['post_type'], $_GET['product_type'] )
+			|| 'product' !== sanitize_text_field( wp_unslash( $_GET['post_type'] ) )
+		) {
+			return;
+		}
+
+		$product_type = sanitize_text_field( wp_unslash( $_GET['product_type'] ) );
+
+		if ( 'booking' === $product_type ) {
+			\wp_print_inline_script_tag( "jQuery(() => jQuery('#product-type').val('booking').change())" );
+		} elseif ( 'subscription' === $product_type ) {
+			\wp_print_inline_script_tag( "jQuery(() => jQuery('input[name=_bh_subscriptions_subscription]').prop('checked', true).change())" );
+		}
 	}
 }

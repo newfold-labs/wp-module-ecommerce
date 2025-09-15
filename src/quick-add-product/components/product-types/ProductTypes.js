@@ -1,4 +1,4 @@
-import {Title, Button} from "@newfold/ui-component-library";
+import {Title} from "@newfold/ui-component-library";
 import {_x} from "@wordpress/i18n"
 import {useEffect, useState} from "react";
 import {ProductType} from "../product-type";
@@ -22,6 +22,13 @@ export const ProductTypes = ({onSelect = undefined}) => {
 		ev.preventDefault();
 		// Get product type.
 		const productType = quickAddProduct.productTypes.find( type => selectedType === type.key );
+
+		// If product type has redirect flag set, do it!
+		if ( productType.redirect ) {
+			window.location.replace( ev.target.href );
+			return false;
+		}
+
 		// If not premium data proceed with modal.
 		productType.premiumData || onSelect?.(selectedType)
 	}

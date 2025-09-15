@@ -8,11 +8,15 @@ export const ProductTypesAction = ({productType, onClick}) => {
 	const premiumUpsellCTB 	= productTypeData?.premiumData?.ctbId;
 	const premiumActivation = productTypeData?.premiumData && ! premiumUpsellCTB;
 
+	const redirectUrl = new URL( quickAddProduct.addProductUrl );
+	redirectUrl.searchParams.append( 'product_type', productType );
+
 	return (
 		<div className="nfd-quick-add-product__types-action">
 			<Button
 				as={ 'a' }
-				href={"#"}
+				href={redirectUrl.href}
+				target="_blank"
 				onClick={onClick}
 				data-ctb-id={premiumUpsellCTB}
 				data-nfd-installer-plugin-activate={premiumActivation || null}
