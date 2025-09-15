@@ -2,7 +2,7 @@ import * as Icons from '../product-types-icons'
 
 export const ProductType = ({productType, selected, onChange}) => {
 
-	let className = 'nfd-quick-add-product__type';
+	let className = `nfd-quick-add-product__type type-${productType.key}`;
 	if ( productType.premiumData ) {
 		className += ' locked';
 	} else if ( selected ) {
