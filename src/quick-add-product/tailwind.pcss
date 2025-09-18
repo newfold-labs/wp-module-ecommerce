@@ -26,6 +26,7 @@
 	.nfd-quick-add-product__type {
 		@apply
 		nfd-border
+		nfd-border-gray-300
 		nfd-rounded-lg
 		nfd-mb-4;
 
@@ -73,7 +74,7 @@
 			background-position: center center;
 			background-size: 60%;
 			display: inline-block;
-			vertical-align: middle;
+			vertical-align: top;
 			margin-left: 10px;
 			border-radius: 8px;
 		}
@@ -90,14 +91,15 @@
 			nfd-items-center
 			nfd-justify-center
 			nfd-border
+			nfd-border-gray-300
 			nfd-w-5
 			nfd-h-5
 			nfd-rounded-full;
 		}
 
 		input:checked + span {
-			border-color: #196bde;
-			background-color: #196bde;
+			border-color: var(--nfd-color-primary, #196bde);
+			background-color: var(--nfd-color-primary, #196bde);
 
 			&:after {
 				content: "";
