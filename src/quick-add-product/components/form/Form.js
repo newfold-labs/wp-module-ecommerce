@@ -22,16 +22,33 @@ export const Form = ({hasPreview = false, showTitle = false, title = '', product
 	const formSubmit = async (ev) => {
 		ev.preventDefault();
 
+		let event = 'nfd-submit-quick-add-product',
+			eventData = {};
+
 		setLoading(true);
 
 		try {
 			const product = await createProduct( formData );
+
+			event += '-success';
+			eventData = {
+				detail: product,
+			}
+
 			setSubmitResponse( product );
 		} catch (error) {
 			console.error(error);
+
+			event += '-error';
+			eventData = {
+				detail: error,
+			};
 		}
 
 		setLoading(false);
+
+		// Dispatch event.
+		window.dispatchEvent( new CustomEvent( event, eventData ) );
 	}
 
 	const updateFormData = (key, value) => {
