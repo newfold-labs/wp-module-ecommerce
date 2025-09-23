@@ -37,12 +37,12 @@ const modules = [ 'quick-add-product', 'store-info' ].map(
 	(module) => merge(
 		wpScriptsConfig,
 		{
-			entry : {
-				[module]: `./src/${module}/index.js`,
+			entry: {
+				[ module ]: `./src/${ module }/index.js`,
 			},
-			output : {
-				path: path.resolve( process.cwd(), './build' ),
-				filename :  `./${module}/index.js`,
+			output: {
+				path: path.resolve( process.cwd(), `./build/${module}` ),
+				filename: `./index.js`,
 			},
 			module: {
 				rules: [
@@ -56,9 +56,9 @@ const modules = [ 'quick-add-product', 'store-info' ].map(
 					}
 				]
 			},
-			plugins : [
+			plugins: [
 				new MiniCssExtractPlugin( {
-					filename: `${module}/${module}.css`,
+					filename: `${ module }.css`,
 				} ),
 			],
 		}
