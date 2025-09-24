@@ -27,7 +27,8 @@ const legacyModules = [
 				filename : "./index.js",
 				library: {
 					type: 'commonjs'
-				}
+				},
+				clean: false,
 			},
 		}
 	),
@@ -43,6 +44,7 @@ const modules = [ 'quick-add-product', 'store-info' ].map(
 			output: {
 				path: path.resolve( process.cwd(), `./build/${module}` ),
 				filename: `./index.js`,
+				clean: false
 			},
 			module: {
 				rules: [
