@@ -27,7 +27,7 @@ jobs:
           echo "PACKAGE=${REPO##*/}" >> $GITHUB_OUTPUT
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@ec406be512d7077f68eed36e63f4d91bc006edc4 # v2.35.4
+        uses: shivammathur/setup-php@bf6b4fbd49ca58e4608c9c89fba0b8d90bd2a39f # v2.35.5
         with:
           php-version: "7.4"
           coverage: none
@@ -109,6 +109,6 @@ jobs:
 
       - name: Push changes
         if: steps.changes.outputs.changed != 0
-        uses: ad-m/github-push-action@d91a481090679876dfc4178fef17f286781251df # v0.8.0
+        uses: ad-m/github-push-action@77c5b412c50b723d2a4fbc6d71fb5723bcd439aa # v1.0.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
