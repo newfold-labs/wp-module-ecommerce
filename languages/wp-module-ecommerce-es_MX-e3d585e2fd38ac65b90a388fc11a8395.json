@@ -1,66 +1,66 @@
 {
-    "translation-revision-date": "2025-03-19 20:42",
-    "generator": "WP-CLI\/2.12.0",
-    "source": "build\/quick-add-product\/index.js",
-    "domain": "messages",
-    "locale_data": {
-        "messages": {
-            "": {
-                "domain": "messages",
-                "lang": "es_MX",
-                "plural-forms": "nplurals=2; plural=(n != 1);"
-            },
-            "Set product image": [
-                ""
-            ],
-            "Use as product image": [
-                ""
-            ],
-            "added to your product catalog.": [
-                ""
-            ],
-            "View product": [
-                ""
-            ],
-            "Edit product details": [
-                ""
-            ],
-            "Add another product": [
-                ""
-            ],
-            "Quick add product modal title\u0004Quick Add Product": [
-                ""
-            ],
-            "Quick Add Product form field label.\u0004Product Name": [
-                ""
-            ],
-            "Quick Add Product form field label. %s is the currency symbol.\u0004Price (%s)": [
-                ""
-            ],
-            "Quick Add Product form field label.\u0004Description": [
-                ""
-            ],
-            "Quick Add Product form field label.\u0004Categories": [
-                ""
-            ],
-            "Quick Add Product form field label.\u0004Image": [
-                ""
-            ],
-            "Quick Add Product form submit button label\u0004Add product": [
-                ""
-            ],
-            "Quick add product modal button label\u0004Next": [
-                ""
-            ],
-            "Select product section title\u0004What are you planning to sell or offer?": [
-                ""
-            ],
-            "Select product section description\u0004Pick one or more options based on the type of product or service you want to offer your customers.": [
-                ""
-            ],
-            "Modal button label.\u0004Quick add product": [
-                ""
-            ]
-        }
+  "translation-revision-date": "2025-03-19 20:42",
+  "generator": "WP-CLI/2.12.0",
+  "source": "build/quick-add-product/index.js",
+  "domain": "messages",
+  "locale_data": {
+    "messages": {
+      "": {
+        "domain": "messages",
+        "lang": "es_MX",
+        "plural-forms": "nplurals=2; plural=(n != 1);"
+      },
+      "Set product image": [
+        "Establecer imagen de producto"
+      ],
+      "Use as product image": [
+        "Úselo como imagen de producto"
+      ],
+      "added to your product catalog.": [
+        "añadido a su catálogo de productos."
+      ],
+      "View product": [
+        "Ver producto"
+      ],
+      "Edit product details": [
+        "Editar detalles del producto"
+      ],
+      "Add another product": [
+        "Añadir otro producto"
+      ],
+      "Quick add product modal title\u0004Quick Add Product": [
+        "Añadir producto rápido"
+      ],
+      "Quick Add Product form field label.\u0004Product Name": [
+        "Nombre del producto (etiqueta de campo de formulario de adición rápida de productos)."
+      ],
+      "Quick Add Product form field label. %s is the currency symbol.\u0004Price (%s)": [
+        "Precio (%s) (etiqueta de campo de formulario de producto de adición rápida. %s es el símbolo de moneda)."
+      ],
+      "Quick Add Product form field label.\u0004Description": [
+        "Descripción (etiqueta de campo de formulario de adición rápida de productos)."
+      ],
+      "Quick Add Product form field label.\u0004Categories": [
+        "Categorías (etiqueta de campo de formulario de adición rápida de productos)."
+      ],
+      "Quick Add Product form field label.\u0004Image": [
+        "Imagen (etiqueta de campo de formulario de adición rápida de productos)."
+      ],
+      "Quick Add Product form submit button label\u0004Add product": [
+        "Agregar producto"
+      ],
+      "Quick add product modal button label\u0004Next": [
+        "Siguiente"
+      ],
+      "Select product section title\u0004What are you planning to sell or offer?": [
+        "¿Qué planeas vender u ofrecer?"
+      ],
+      "Select product section description\u0004Pick one or more options based on the type of product or service you want to offer your customers.": [
+        "Elija una o más opciones según el tipo de producto o servicio que desea ofrecer a sus clientes."
+      ],
+      "Modal button label.\u0004Quick add product": [
+        "Producto de adición rápida (etiqueta de botón modal)."
+      ]
     }
+  }
 }

@@ -1,15 +1,16 @@
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: wp-module-ecommerce\n"
 "Report-Msgid-Bugs-To: https://github.com/newfold-labs/wp-module-ecommerce/issues\n"
+"POT-Creation-Date: 2024-11-18T11:38:47+00:00\n"
+"PO-Revision-Date: 2025-03-19 20:42\n"
 "Last-Translator: \n"
 "Language-Team: Dutch\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-18T11:38:47+00:00\n"
-"PO-Revision-Date: 2025-03-19 20:42\n"
-"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-File: wp-module-ecommerce.pot\n"
 "X-Crowdin-File-ID: 16\n"
@@ -27,12 +28,9 @@ msgstr "eCommerce"
 msgid "Reference to page category"
 msgstr "Verwijzing naar paginacategorie"
 
-#: includes/ECommerce.php:252
-#: includes/ECommerce.php:263
-#: includes/ECommerce.php:272
-#: includes/ECommerce.php:281
-#: includes/ECommerce.php:290
-#: includes/ECommerce.php:299
+#: includes/ECommerce.php:252 includes/ECommerce.php:263
+#: includes/ECommerce.php:272 includes/ECommerce.php:281
+#: includes/ECommerce.php:290 includes/ECommerce.php:299
 #: includes/ECommerce.php:328
 msgid "NFD eCommerce Options"
 msgstr "NFD eCommerce Opties"
@@ -41,13 +39,11 @@ msgstr "NFD eCommerce Opties"
 msgid "Promotion product Page"
 msgstr "Promotie productpagina"
 
-#: includes/ECommerce.php:442
-#: includes/ECommerce.php:470
+#: includes/ECommerce.php:442 includes/ECommerce.php:470
 msgid "Promotions"
 msgstr "Aanbiedingen"
 
-#: includes/ECommerce.php:458
-#: includes/ECommerce.php:491
+#: includes/ECommerce.php:458 includes/ECommerce.php:491
 msgid "Create a Promotion"
 msgstr "Maak een promotie"
 
@@ -140,56 +136,84 @@ msgid "Free Shipping"
 msgstr "Gratis verzending"
 
 #: build/index.js:1
-msgid "Attract and retain customers by offering free shipping based on cart amount, location or store category."
-msgstr "Trek klanten aan en behoud ze door gratis verzending aan te bieden op basis van het winkelmandbedrag, de locatie of de winkelcategorie."
+msgid ""
+"Attract and retain customers by offering free shipping based on cart amount,"
+" location or store category."
+msgstr ""
+"Trek klanten aan en behoud ze door gratis verzending aan te bieden op basis "
+"van het winkelmandbedrag, de locatie of de winkelcategorie."
 
 #: build/index.js:1
 msgid "Buy 1 Get 1"
 msgstr "Koop 1, krijg 1 gratis"
 
 #: build/index.js:1
-msgid "Attract customers with a compelling deal where they can buy one product and get another product for free."
-msgstr "Trek klanten aan met een aantrekkelijke deal waarbij ze één product kopen en een tweede product gratis krijgen."
+msgid ""
+"Attract customers with a compelling deal where they can buy one product and "
+"get another product for free."
+msgstr ""
+"Trek klanten aan met een aantrekkelijke deal waarbij ze één product kopen en"
+" een tweede product gratis krijgen."
 
 #: build/index.js:1
 msgid "Gift Product in Cart"
 msgstr "Gratis cadeau in winkelmand"
 
 #: build/index.js:1
-msgid "Reward customers with a free gift in their cart based on total cart value, or specific products or categories."
-msgstr "Beloon klanten met een gratis cadeau in hun winkelmand op basis van het totale winkelmandbedrag, specifieke producten of categorieën."
+msgid ""
+"Reward customers with a free gift in their cart based on total cart value, "
+"or specific products or categories."
+msgstr ""
+"Beloon klanten met een gratis cadeau in hun winkelmand op basis van het "
+"totale winkelmandbedrag, specifieke producten of categorieën."
 
 #: build/index.js:1
 msgid "Category Discount"
 msgstr "Kortingsactie per categorie"
 
 #: build/index.js:1
-msgid "Give your customers a discount on specific categories of products and boost sales for those categories."
-msgstr "Geef je klanten korting op specifieke productcategorieën en stimuleer de verkoop van deze categorieën."
+msgid ""
+"Give your customers a discount on specific categories of products and boost "
+"sales for those categories."
+msgstr ""
+"Geef je klanten korting op specifieke productcategorieën en stimuleer de "
+"verkoop van deze categorieën."
 
 #: build/index.js:1
 msgid "Upsell in Thank You Page"
 msgstr "Upsell op de bedankpagina"
 
 #: build/index.js:1
-msgid "Maximize sales by presenting relevant upsell options after customers have completed their purchase."
-msgstr "Maximaliseer je verkoop door relevante upsell-opties te tonen nadat klanten hun aankoop hebben voltooid."
+msgid ""
+"Maximize sales by presenting relevant upsell options after customers have "
+"completed their purchase."
+msgstr ""
+"Maximaliseer je verkoop door relevante upsell-opties te tonen nadat klanten "
+"hun aankoop hebben voltooid."
 
 #: build/index.js:1
 msgid "Last Minute Deal"
 msgstr "Last-minute aanbieding"
 
 #: build/index.js:1
-msgid "Create urgency with a special time-limited deal for customers on the cart and checkout pages."
-msgstr "Creëer urgentie met een speciale tijdsgebonden aanbieding voor klanten op de winkelmand- en afrekenpagina's."
+msgid ""
+"Create urgency with a special time-limited deal for customers on the cart "
+"and checkout pages."
+msgstr ""
+"Creëer urgentie met een speciale tijdsgebonden aanbieding voor klanten op de"
+" winkelmand- en afrekenpagina's."
 
 #: build/index.js:1
 msgid "Webpage Creation"
 msgstr "Webpagina-aanmaak"
 
 #: build/index.js:1
-msgid "Build webpages fast with tailored block patterns and page templates included in your hosting package."
-msgstr "Bouw snel webpagina's met aangepaste blokpatronen en paginasjablonen die in je hostingpakket zijn inbegrepen."
+msgid ""
+"Build webpages fast with tailored block patterns and page templates included"
+" in your hosting package."
+msgstr ""
+"Bouw snel webpagina's met aangepaste blokpatronen en paginasjablonen die in "
+"je hostingpakket zijn inbegrepen."
 
 #: build/index.js:1
 msgid "Add a Page to Your Site"
@@ -224,8 +248,11 @@ msgid "Add an Affiliate Program"
 msgstr "Voeg een affiliateprogramma toe"
 
 #: build/index.js:1
-msgid "Grant your affiliates earnings each time someone purchases from their link."
-msgstr "Geef je affiliates een vergoeding telkens wanneer iemand via hun link een aankoop doet."
+msgid ""
+"Grant your affiliates earnings each time someone purchases from their link."
+msgstr ""
+"Geef je affiliates een vergoeding telkens wanneer iemand via hun link een "
+"aankoop doet."
 
 #: build/index.js:1
 msgid "Create an Affiliate Program"
@@ -236,8 +263,12 @@ msgid "Setup Bookings"
 msgstr "Stel boekingen in"
 
 #: build/index.js:1
-msgid "Manage the renting or booking of services and items that you offer your customers."
-msgstr "Beheer de verhuur of boekingen van diensten en artikelen die je aan klanten aanbiedt."
+msgid ""
+"Manage the renting or booking of services and items that you offer your "
+"customers."
+msgstr ""
+"Beheer de verhuur of boekingen van diensten en artikelen die je aan klanten "
+"aanbiedt."
 
 #: build/index.js:1
 msgid "Build webpages fast with tailored block patterns and page templates."
@@ -261,15 +292,20 @@ msgstr "Schakel productbeoordelingen in"
 
 #: build/index.js:1
 msgid "Get positive product reviews and use social proof to drive more sales."
-msgstr "Verzamel positieve productbeoordelingen en gebruik sociale bewijskracht om de verkoop te verhogen."
+msgstr ""
+"Verzamel positieve productbeoordelingen en gebruik sociale bewijskracht om "
+"de verkoop te verhogen."
 
 #: build/index.js:1
 msgid "Setup Wishlists"
 msgstr "Wenslijsten instellen"
 
 #: build/index.js:1
-msgid "Let customers add products to lists and share them with family and friends."
-msgstr "Laat klanten producten toevoegen aan lijsten en deze delen met familie en vrienden."
+msgid ""
+"Let customers add products to lists and share them with family and friends."
+msgstr ""
+"Laat klanten producten toevoegen aan lijsten en deze delen met familie en "
+"vrienden."
 
 #: build/index.js:1
 msgid "Setup Wishilsts"
@@ -280,8 +316,12 @@ msgid "Create A Sales Campaign"
 msgstr "Creëer een verkoopcampagne"
 
 #: build/index.js:1
-msgid "Create custom upsell, cross-sell and other promotional campaigns to generate more sales."
-msgstr "Maak aangepaste upsell, cross-sell en andere promotionele campagnes om meer verkopen te genereren."
+msgid ""
+"Create custom upsell, cross-sell and other promotional campaigns to generate"
+" more sales."
+msgstr ""
+"Maak aangepaste upsell, cross-sell en andere promotionele campagnes om meer "
+"verkopen te genereren."
 
 #: build/index.js:1
 msgid "Create a Campaign"
@@ -328,8 +368,14 @@ msgid "Add upsells, cross-sells, and other promotions with WonderCart"
 msgstr "Voeg upsells, cross-sells en andere promoties toe met WonderCart"
 
 #: build/index.js:1
-msgid "Create and run effective promotional campaigns like BOGOs, free shipping offers, category discounts, and more to increase revenue and strengthen customer engagement."
-msgstr "Maak en voer effectieve promotiecampagnes zoals BOGO's, gratis verzendaanbiedingen, categoriekortingen, en meer uit om de inkomsten te verhogen en de betrokkenheid van de klant te versterken."
+msgid ""
+"Create and run effective promotional campaigns like BOGOs, free shipping "
+"offers, category discounts, and more to increase revenue and strengthen "
+"customer engagement."
+msgstr ""
+"Maak en voer effectieve promotiecampagnes zoals BOGO's, gratis "
+"verzendaanbiedingen, categoriekortingen, en meer uit om de inkomsten te "
+"verhogen en de betrokkenheid van de klant te versterken."
 
 #: build/index.js:1
 msgid "Buy One Get One"
@@ -360,8 +406,14 @@ msgid "Exclusive YITH plugins and tools to help you sell online"
 msgstr "Exclusieve YITH plugins en tools om u te helpen online te verkopen"
 
 #: build/index.js:1
-msgid "Our eCommerce bundle includes a comprehensive suite of advanced tools designed to boost the performance of your WooCommerce store. This bundle includes these exclusive YITH plugins:"
-msgstr "Onze eCommerce bundel bevat een uitgebreide set van geavanceerde gereedschappen ontworpen om de prestaties van uw WooCommerce winkel te verbeteren. Deze bundel bevat deze exclusieve YITH plugins:"
+msgid ""
+"Our eCommerce bundle includes a comprehensive suite of advanced tools "
+"designed to boost the performance of your WooCommerce store. This bundle "
+"includes these exclusive YITH plugins:"
+msgstr ""
+"Onze eCommerce bundel bevat een uitgebreide set van geavanceerde "
+"gereedschappen ontworpen om de prestaties van uw WooCommerce winkel te "
+"verbeteren. Deze bundel bevat deze exclusieve YITH plugins:"
 
 #: build/index.js:1
 msgid "Gift Cards"
@@ -392,16 +444,25 @@ msgid "Transform your store!"
 msgstr "Transformeer uw winkel!"
 
 #: build/index.js:1
-msgid "Give your online store a boost with our all-in-one eCommerce bundle filled with exclusive plugins and tools designed to help you sell your products and services like a pro."
-msgstr "Geef uw online winkel een boost met onze alles-in-one eCommerce bundel gevuld met exclusieve plugins en gereedschappen ontworpen om u te helpen uw producten en diensten zoals een pr. te verkopen."
+msgid ""
+"Give your online store a boost with our all-in-one eCommerce bundle filled "
+"with exclusive plugins and tools designed to help you sell your products and"
+" services like a pro."
+msgstr ""
+"Geef uw online winkel een boost met onze alles-in-one eCommerce bundel "
+"gevuld met exclusieve plugins en gereedschappen ontworpen om u te helpen uw "
+"producten en diensten zoals een pr. te verkopen."
 
 #: build/index.js:1
 msgid "Buy Now"
 msgstr "Koop nu"
 
 #: build/index.js:1
-msgid "Offer customizable gift cards with personalized messages for the recipient."
-msgstr "Aanpasbare cadeaubonnen met gepersonaliseerde berichten voor de ontvanger aanbieden."
+msgid ""
+"Offer customizable gift cards with personalized messages for the recipient."
+msgstr ""
+"Aanpasbare cadeaubonnen met gepersonaliseerde berichten voor de ontvanger "
+"aanbieden."
 
 #: build/index.js:1
 msgid "Manage Gift Cards"
@@ -424,8 +485,12 @@ msgid "Booking and Appointments"
 msgstr "Boeking en Afspraken"
 
 #: build/index.js:1
-msgid "Manage renting or booking of services and items so customers can do business with you."
-msgstr "Beheer huren of reserveren van diensten en artikelen, zodat klanten zaken met u kunnen doen."
+msgid ""
+"Manage renting or booking of services and items so customers can do business"
+" with you."
+msgstr ""
+"Beheer huren of reserveren van diensten en artikelen, zodat klanten zaken "
+"met u kunnen doen."
 
 #: build/index.js:1
 msgid "Manage Bookings & Appointments"
@@ -440,8 +505,11 @@ msgid "Product Filters"
 msgstr "Productfilters"
 
 #: build/index.js:1
-msgid "Add an advanced filter to help customers find the right product with ease."
-msgstr "Voeg een geavanceerd filter toe zodat klanten het juiste product gemakkelijk kunnen vinden."
+msgid ""
+"Add an advanced filter to help customers find the right product with ease."
+msgstr ""
+"Voeg een geavanceerd filter toe zodat klanten het juiste product gemakkelijk"
+" kunnen vinden."
 
 #: build/index.js:1
 msgid "Product Filter Settings"
@@ -456,8 +524,12 @@ msgid "Product Search"
 msgstr "Product zoeken"
 
 #: build/index.js:1
-msgid "Speed up search for your customers with a predictive real-time search engine."
-msgstr "Versnel het zoeken naar uw klanten met een voorspelbare real-time zoekmachine."
+msgid ""
+"Speed up search for your customers with a predictive real-time search "
+"engine."
+msgstr ""
+"Versnel het zoeken naar uw klanten met een voorspelbare real-time "
+"zoekmachine."
 
 #: build/index.js:1
 msgid "Product Search Settings"
@@ -472,8 +544,12 @@ msgid "Customize My Account Page"
 msgstr "Mijn accountpagina aanpassen"
 
 #: build/index.js:1
-msgid "Add custom content like videos, files, discount codes, and more to your customers account page."
-msgstr "Voeg aangepaste inhoud, zoals video's, bestanden, kortingscodes en meer toe aan de accountpagina van je klanten."
+msgid ""
+"Add custom content like videos, files, discount codes, and more to your "
+"customers account page."
+msgstr ""
+"Voeg aangepaste inhoud, zoals video's, bestanden, kortingscodes en meer toe "
+"aan de accountpagina van je klanten."
 
 #: build/index.js:1
 msgid "'My Account' Page Settings"
@@ -488,7 +564,9 @@ msgid "ecomdash"
 msgstr "ecomdash"
 
 #: build/index.js:1
-msgid "Boost sales by selling your products and services across multiple marketplaces."
+msgid ""
+"Boost sales by selling your products and services across multiple "
+"marketplaces."
 msgstr "Boost de verkoop van uw producten en diensten over meerdere markten."
 
 #: build/index.js:1
@@ -524,8 +602,11 @@ msgid "Failed to install"
 msgstr "Installatie mislukt"
 
 #: build/index.js:1
-msgid "Elevate Your Store with Exclusive WooCommerce Tools Included in Your Plan!"
-msgstr "Vergroot uw winkel met exclusieve WooCommerce gereedschappen inbegrepen in uw abonnement!"
+msgid ""
+"Elevate Your Store with Exclusive WooCommerce Tools Included in Your Plan!"
+msgstr ""
+"Vergroot uw winkel met exclusieve WooCommerce gereedschappen inbegrepen in "
+"uw abonnement!"
 
 #: build/index.js:1
 msgid "Exclusive Tools Included in Your Plan"
@@ -637,7 +718,8 @@ msgstr "Je site is nu online!"
 
 #: build/index.js:1
 msgid "You can re-enable the 'Coming Soon' mode in “Settings”."
-msgstr "Je kunt de 'Komende binnenkort' modus weer inschakelen in \"Instellingen\"."
+msgstr ""
+"Je kunt de 'Komende binnenkort' modus weer inschakelen in \"Instellingen\"."
 
 #: build/index.js:1
 msgid "Live"
@@ -701,21 +783,37 @@ msgstr "Testsleutel geheim *"
 
 #: build/index.js:1
 #, js-format
-msgid "The key ID can be found in the \"%1$sAPI Keys%2$s\" section of your Razorpay dashboard."
-msgstr "De sleutel-ID kan worden gevonden in de \"%1$sAPI-sleutels%2$s\" sectie van uw Razorpay dashboard."
+msgid ""
+"The key ID can be found in the \"%1$sAPI Keys%2$s\" section of your Razorpay"
+" dashboard."
+msgstr ""
+"De sleutel-ID kan worden gevonden in de \"%1$sAPI-sleutels%2$s\" sectie van "
+"uw Razorpay dashboard."
 
 #: build/index.js:1
-msgid "That is not a valid test key ID. Please check your key ID and enter it again."
-msgstr "Dit is geen geldige testsleutel-ID. Controleer uw sleutel-ID en voer het opnieuw in."
+msgid ""
+"That is not a valid test key ID. Please check your key ID and enter it "
+"again."
+msgstr ""
+"Dit is geen geldige testsleutel-ID. Controleer uw sleutel-ID en voer het "
+"opnieuw in."
 
 #: build/index.js:1
-msgid "That is not a valid production key ID. Please check your key ID and enter it again."
-msgstr "Dit is geen geldige productie key ID. Controleer uw key ID en voer het opnieuw in."
+msgid ""
+"That is not a valid production key ID. Please check your key ID and enter it"
+" again."
+msgstr ""
+"Dit is geen geldige productie key ID. Controleer uw key ID en voer het "
+"opnieuw in."
 
 #: build/index.js:1
 #, js-format
-msgid "The key secret can be found in the \"%1$sAPI Keys%2$s\" section of your Razorpay dashboard."
-msgstr "Het sleutelgeheim kan gevonden worden in de sectie \"%1$sAPI-sleutels%2$s\" van uw Razorpay dashboard."
+msgid ""
+"The key secret can be found in the \"%1$sAPI Keys%2$s\" section of your "
+"Razorpay dashboard."
+msgstr ""
+"Het sleutelgeheim kan gevonden worden in de sectie \"%1$sAPI-sleutels%2$s\" "
+"van uw Razorpay dashboard."
 
 #: build/index.js:1
 msgid "Create an Account"
@@ -730,8 +828,14 @@ msgid "Login"
 msgstr "Aanmelden"
 
 #: build/index.js:1
-msgid "After you login to Razorpay, you will need to generate your key ID and key secret codes, you will then need to switch back to this tab in your browser and paste your codes into the fields below."
-msgstr "Nadat u zich heeft aangemeld bij Razorpay, moet u uw sleutel-ID en sleutel-geheime codes genereren, vervolgens moet u terugschakelen naar dit tabblad in uw browser en uw codes in de onderstaande velden plakken."
+msgid ""
+"After you login to Razorpay, you will need to generate your key ID and key "
+"secret codes, you will then need to switch back to this tab in your browser "
+"and paste your codes into the fields below."
+msgstr ""
+"Nadat u zich heeft aangemeld bij Razorpay, moet u uw sleutel-ID en sleutel-"
+"geheime codes genereren, vervolgens moet u terugschakelen naar dit tabblad "
+"in uw browser en uw codes in de onderstaande velden plakken."
 
 #: build/index.js:1
 msgid "Enable Test Mode"
@@ -793,7 +897,9 @@ msgstr "Winkel informatie"
 
 #: build/index.js:1
 msgid "We'll use this information to help you setup your online store"
-msgstr "We zullen deze informatie gebruiken om u te helpen bij het opzetten van uw webwinkel"
+msgstr ""
+"We zullen deze informatie gebruiken om u te helpen bij het opzetten van uw "
+"webwinkel"
 
 #: build/index.js:1
 msgid "Where is your store based? *"
@@ -840,8 +946,12 @@ msgid "Tax Settings"
 msgstr "Belasting instellingen"
 
 #: build/index.js:1
-msgid "Decide whether you want to collect sales tax on items you sell. You can change this setting at anytime"
-msgstr "Bepaal of je verkoopbelasting wilt innen op items die je verkoopt. Je kunt deze instelling op elk gewenst moment wijzigen"
+msgid ""
+"Decide whether you want to collect sales tax on items you sell. You can "
+"change this setting at anytime"
+msgstr ""
+"Bepaal of je verkoopbelasting wilt innen op items die je verkoopt. Je kunt "
+"deze instelling op elk gewenst moment wijzigen"
 
 #: build/index.js:1
 msgid "Would you like to enable sales tax?"
@@ -856,8 +966,14 @@ msgid "Start selling like a Pro!"
 msgstr "Begin te verkopen als een Pro!"
 
 #: build/index.js:1
-msgid "Give your online store a boost with our all-in-one eCommerce bundle filled with exclusive plugins and tools designed to help you sell your products and services like never before. "
-msgstr "Geef uw online winkel een boost met onze eCommerce bundel gevuld met exclusieve plug-ins en gereedschappen ontworpen om u te helpen uw producten en diensten als nooit tevoren te verkopen. "
+msgid ""
+"Give your online store a boost with our all-in-one eCommerce bundle filled "
+"with exclusive plugins and tools designed to help you sell your products and"
+" services like never before. "
+msgstr ""
+"Geef uw online winkel een boost met onze eCommerce bundel gevuld met "
+"exclusieve plug-ins en gereedschappen ontworpen om u te helpen uw producten "
+"en diensten als nooit tevoren te verkopen. "
 
 #: build/index.js:1
 msgid "Create a campaign and boost your sales!"
@@ -869,15 +985,21 @@ msgstr "Nu inschrijven"
 
 #: build/index.js:1
 msgid "Not sure where to start? Try one of these popular promotions:"
-msgstr "Weet je niet waar je moet beginnen? Probeer een van deze populaire promoties:"
+msgstr ""
+"Weet je niet waar je moet beginnen? Probeer een van deze populaire "
+"promoties:"
 
 #: build/index.js:1
 msgid "Razorpay"
 msgstr "Razorpay"
 
 #: build/index.js:1
-msgid "Build specifically for companies based in India, manage all your payments and financial operations from a consolidated dashboard"
-msgstr "Bouw specifiek voor in India gevestigde bedrijven, beheer al uw betalingen en financiële activiteiten vanuit een geconsolideerd dashboard"
+msgid ""
+"Build specifically for companies based in India, manage all your payments "
+"and financial operations from a consolidated dashboard"
+msgstr ""
+"Bouw specifiek voor in India gevestigde bedrijven, beheer al uw betalingen "
+"en financiële activiteiten vanuit een geconsolideerd dashboard"
 
 #: build/index.js:1
 msgid "Complete control over the receiving and managing payments"
@@ -904,8 +1026,13 @@ msgid "PayPal"
 msgstr "Paypal"
 
 #: build/index.js:1
-msgid "Online payments built for success. We help you do business in 200+ markets and 100+ currencies—even if your customers don't have PayPal."
-msgstr "Online betalingen zijn gebouwd voor succes. Wij helpen u zaken te doen in meer dan 200 markten en meer dan 100 valuta's — zelfs als uw klanten geen PayPal hebben."
+msgid ""
+"Online payments built for success. We help you do business in 200+ markets "
+"and 100+ currencies—even if your customers don't have PayPal."
+msgstr ""
+"Online betalingen zijn gebouwd voor succes. Wij helpen u zaken te doen in "
+"meer dan 200 markten en meer dan 100 valuta's — zelfs als uw klanten geen "
+"PayPal hebben."
 
 #: build/index.js:1
 msgid "Provides flexible checkout options"
@@ -932,12 +1059,25 @@ msgid "Stripe"
 msgstr "Stripe"
 
 #: build/index.js:1
-msgid "Stripe provides all the tools that you need to accept payments online around the world, including support for Apple Pay and Google Pay."
-msgstr "Stripe biedt alle tools die je nodig hebt om online betalingen over de hele wereld te accepteren, inclusief ondersteuning voor Apple Pay en Google Pay."
+msgid ""
+"Stripe provides all the tools that you need to accept payments online around"
+" the world, including support for Apple Pay and Google Pay."
+msgstr ""
+"Stripe biedt alle tools die je nodig hebt om online betalingen over de hele "
+"wereld te accepteren, inclusief ondersteuning voor Apple Pay en Google Pay."
 
 #: build/index.js:1
-msgid "A secure connection is required when running Stripe Payments in Live mode; plugin is currently enabled, but no gateway will be available until you secure connection to your site through a valid SSL certificate.             If you already have a valid SSL certificate, please change the url in"
-msgstr "Een beveiligde verbinding is vereist bij het uitvoeren van Stripe Betalingen in de Live modus; plugin is momenteel ingeschakeld, maar geen gateway beschikbaar totdat u een beveiligde verbinding met uw site via een geldig SSL-certificaat heeft. Als u al een geldig SSL-certificaat heeft, wijzig dan de url in"
+msgid ""
+"A secure connection is required when running Stripe Payments in Live mode; "
+"plugin is currently enabled, but no gateway will be available until you "
+"secure connection to your site through a valid SSL certificate.             "
+"If you already have a valid SSL certificate, please change the url in"
+msgstr ""
+"Een beveiligde verbinding is vereist bij het uitvoeren van Stripe Betalingen"
+" in de Live modus; plugin is momenteel ingeschakeld, maar geen gateway "
+"beschikbaar totdat u een beveiligde verbinding met uw site via een geldig "
+"SSL-certificaat heeft. Als u al een geldig SSL-certificaat heeft, wijzig dan"
+" de url in"
 
 #: build/index.js:1
 msgid "settings"
@@ -972,16 +1112,24 @@ msgid "Offline Payments"
 msgstr "Offline betalingen"
 
 #: build/index.js:1
-msgid "Accept payments (money orders, bank transfers or C.O.D.) that are made outside your online store. "
-msgstr "Accepteer betalingen (geldorders, bankoverschrijvingen of C.O.D.) die worden gemaakt buiten uw online winkel. "
+msgid ""
+"Accept payments (money orders, bank transfers or C.O.D.) that are made "
+"outside your online store. "
+msgstr ""
+"Accepteer betalingen (geldorders, bankoverschrijvingen of C.O.D.) die worden"
+" gemaakt buiten uw online winkel. "
 
 #: build/index.js:1
 msgid "Manual Payment methods"
 msgstr "Handmatige betaalmethodes"
 
 #: build/index.js:1
-msgid "When a customer selects a manual payment method, you'll need to approve their order before it can be fulfilled."
-msgstr "Wanneer een klant een handmatige betaalmethode selecteert, moet hij zijn bestelling goedkeuren voordat deze kan worden uitgevoerd."
+msgid ""
+"When a customer selects a manual payment method, you'll need to approve "
+"their order before it can be fulfilled."
+msgstr ""
+"Wanneer een klant een handmatige betaalmethode selecteert, moet hij zijn "
+"bestelling goedkeuren voordat deze kan worden uitgevoerd."
 
 #: build/index.js:1
 msgid "Check payments"
@@ -1000,8 +1148,12 @@ msgid "Jetpack Boost - Website Speed, Performance and Critical CSS"
 msgstr "Jetpack Boost - Website Snelheid, Prestaties en Kritieke CSS"
 
 #: build/index.js:1
-msgid "Speed up your WordPress site by optimizing page performance with Jetpack Boost."
-msgstr "Versnel uw WordPress-site door de pagina-prestaties met Jetpack boost te optimaliseren."
+msgid ""
+"Speed up your WordPress site by optimizing page performance with Jetpack "
+"Boost."
+msgstr ""
+"Versnel uw WordPress-site door de pagina-prestaties met Jetpack boost te "
+"optimaliseren."
 
 #: build/index.js:1
 msgid "Enable"
@@ -1009,51 +1161,83 @@ msgstr "Inschakelen"
 
 #: build/index.js:1
 msgid "Contact Form by WPForms - Drag & Drop Form Builder for WordPress"
-msgstr "Contact formulier door WPForms - Sleep & Drop Form Builder voor WordPress"
+msgstr ""
+"Contact formulier door WPForms - Sleep & Drop Form Builder voor WordPress"
 
 #: build/index.js:1
-msgid "The best WordPress contact form plugin. Drag & Drop online form builder to create beautiful contact forms, payment forms, & other custom forms."
-msgstr "De beste WordPress contactformulier plugin. Sleep & Drop online formulierbouwer om prachtige contactformulieren, betaalformulieren en andere aangepaste formulieren te maken."
+msgid ""
+"The best WordPress contact form plugin. Drag & Drop online form builder to "
+"create beautiful contact forms, payment forms, & other custom forms."
+msgstr ""
+"De beste WordPress contactformulier plugin. Sleep & Drop online "
+"formulierbouwer om prachtige contactformulieren, betaalformulieren en andere"
+" aangepaste formulieren te maken."
 
 #: build/index.js:1
-msgid "MonsterInsights - Google Analytics Dashboard for WordPress (Website Stats Made Easy)"
-msgstr "MonsterInsights - Google Analytics Dashboard voor WordPress (Website Stats Made Easy)"
+msgid ""
+"MonsterInsights - Google Analytics Dashboard for WordPress (Website Stats "
+"Made Easy)"
+msgstr ""
+"MonsterInsights - Google Analytics Dashboard voor WordPress (Website Stats "
+"Made Easy)"
 
 #: build/index.js:1
-msgid "The best free Google Analytics plugin for WordPress. See how visitors find and use your website, so you can grow your business."
-msgstr "De beste gratis Google Analytics plugin voor WordPress. Bekijk hoe bezoekers uw website vinden en gebruiken, zodat u uw bedrijf kunt laten groeien."
+msgid ""
+"The best free Google Analytics plugin for WordPress. See how visitors find "
+"and use your website, so you can grow your business."
+msgstr ""
+"De beste gratis Google Analytics plugin voor WordPress. Bekijk hoe bezoekers"
+" uw website vinden en gebruiken, zodat u uw bedrijf kunt laten groeien."
 
 #: build/index.js:1
 msgid "Yoast SEO"
 msgstr "Yoast SEO"
 
 #: build/index.js:1
-msgid "Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the Yoast SEO plugin."
-msgstr "Verbeter uw WordPress SEO: Schrijf betere inhoud en heb een volledig geoptimaliseerde WordPress site met de Yoast SEO plugin."
+msgid ""
+"Improve your WordPress SEO: Write better content and have a fully optimized "
+"WordPress site using the Yoast SEO plugin."
+msgstr ""
+"Verbeter uw WordPress SEO: Schrijf betere inhoud en heb een volledig "
+"geoptimaliseerde WordPress site met de Yoast SEO plugin."
 
 #: build/index.js:1
 msgid "Creative Mail - Easier WordPress & WooCommerce Email Marketing"
 msgstr "Creative Mail - Makkelijker WordPress & WooCommerce E-mail Marketing"
 
 #: build/index.js:1
-msgid "Creative Mail was designed specifically for WordPress and WooCommerce. Our intelligent (and super fun) email editor simplifies email marketing campaign."
-msgstr "Creative Mail is specifiek ontworpen voor WordPress en WooCommerce. Onze intelligente (en super leuke) e-mail editor vereenvoudigt de marketing campagne."
+msgid ""
+"Creative Mail was designed specifically for WordPress and WooCommerce. Our "
+"intelligent (and super fun) email editor simplifies email marketing "
+"campaign."
+msgstr ""
+"Creative Mail is specifiek ontworpen voor WordPress en WooCommerce. Onze "
+"intelligente (en super leuke) e-mail editor vereenvoudigt de marketing "
+"campagne."
 
 #: build/index.js:1
 msgid "OptinMonster - Lead Generation"
 msgstr "OptinMonster - Leider Generatie"
 
 #: build/index.js:1
-msgid "OptinMonster is the best WordPress popup builder plugin that helps you grow your email newsletter list and sales with email popups, exit intent popups, floating bars and more!"
-msgstr "OptinMonster is de beste WordPress pop-up builder plugin die u helpt om uw e-mail nieuwsbrief lijst en verkoop met e-mail popups te laten groeien, vertrek intentie pop-ups, zwevende bars en meer!"
+msgid ""
+"OptinMonster is the best WordPress popup builder plugin that helps you grow "
+"your email newsletter list and sales with email popups, exit intent popups, "
+"floating bars and more!"
+msgstr ""
+"OptinMonster is de beste WordPress pop-up builder plugin die u helpt om uw "
+"e-mail nieuwsbrief lijst en verkoop met e-mail popups te laten groeien, "
+"vertrek intentie pop-ups, zwevende bars en meer!"
 
 #: build/index.js:1
 msgid "Improve your store with these free add-ons included in your plan."
-msgstr "Verbeter uw winkel met deze gratis add-ons die deel uitmaken van uw plan."
+msgstr ""
+"Verbeter uw winkel met deze gratis add-ons die deel uitmaken van uw plan."
 
 #: build/index.js:1
 msgid "Improve your site with these free add-ons included in your plan."
-msgstr "Verbeter uw site met deze gratis add-ons die zijn opgenomen in uw plan."
+msgstr ""
+"Verbeter uw site met deze gratis add-ons die zijn opgenomen in uw plan."
 
 #: build/index.js:1
 msgid "Additional Features"
@@ -1153,7 +1337,8 @@ msgstr "Uw site is nu klaar voor publieke bezoekers!"
 
 #: build/index.js:1
 msgid "Finish this last step so your migrated site is ready for visitors."
-msgstr "Voltooi deze laatste stap zodat je gemigreerde site klaar is voor bezoekers."
+msgstr ""
+"Voltooi deze laatste stap zodat je gemigreerde site klaar is voor bezoekers."
 
 #: build/index.js:1
 msgid "Next steps for your store"
@@ -1165,23 +1350,39 @@ msgstr "De volgende stappen voor uw site"
 
 #: build/index.js:1
 msgid "You're just a few steps away from sharing your store with the world!"
-msgstr "Je bent slechts een paar stappen verwijderd van het delen van uw winkel met de wereld!"
+msgstr ""
+"Je bent slechts een paar stappen verwijderd van het delen van uw winkel met "
+"de wereld!"
 
 #: build/index.js:1
 msgid "You're just a few steps away from sharing your site with the world!"
-msgstr "Je bent slechts een paar stappen verwijderd van het delen van je site met de wereld!"
+msgstr ""
+"Je bent slechts een paar stappen verwijderd van het delen van je site met de"
+" wereld!"
 
 #: build/index.js:1
-msgid "Great job! You've completed all the current tasks to get your store up and running successfully!"
-msgstr "Goed gedaan! U heeft alle huidige taken voltooid om uw winkel succesvol te laten draaien!"
+msgid ""
+"Great job! You've completed all the current tasks to get your store up and "
+"running successfully!"
+msgstr ""
+"Goed gedaan! U heeft alle huidige taken voltooid om uw winkel succesvol te "
+"laten draaien!"
 
 #: build/index.js:1
-msgid "Great job! You've completed all the current tasks to get your site up and running successfully!"
-msgstr "Goed gedaan! U heeft alle huidige taken voltooid om uw site operationeel te maken!"
+msgid ""
+"Great job! You've completed all the current tasks to get your site up and "
+"running successfully!"
+msgstr ""
+"Goed gedaan! U heeft alle huidige taken voltooid om uw site operationeel te "
+"maken!"
 
 #: build/index.js:1
-msgid "If you want to edit any of the info from the steps you've completed, simply click on the \"View completed tasks\" link below."
-msgstr "Als u een van de info wilt bewerken uit de stappen die u hebt voltooid, klik dan op de link \"Bekijk voltooide taken\" hieronder."
+msgid ""
+"If you want to edit any of the info from the steps you've completed, simply "
+"click on the \"View completed tasks\" link below."
+msgstr ""
+"Als u een van de info wilt bewerken uit de stappen die u hebt voltooid, klik"
+" dan op de link \"Bekijk voltooide taken\" hieronder."
 
 #: build/index.js:1
 msgid "View remaining tasks"
@@ -1200,12 +1401,20 @@ msgid "Design a custom store with AI"
 msgstr "Ontwerp een eigen winkel met AI"
 
 #: build/index.js:1
-msgid "Use our AI Website Builder to begin your site a lot closer to the finish line!"
-msgstr "Gebruik onze AI Website Builder om je site veel dichter bij de eindlijn te beginnen!"
+msgid ""
+"Use our AI Website Builder to begin your site a lot closer to the finish "
+"line!"
+msgstr ""
+"Gebruik onze AI Website Builder om je site veel dichter bij de eindlijn te "
+"beginnen!"
 
 #: build/index.js:1
-msgid "Use our AI Website Builder to begin your store a lot closer to the finish line!"
-msgstr "Gebruik onze AI Website Builder om uw winkel veel dichter bij de finish te beginnen!"
+msgid ""
+"Use our AI Website Builder to begin your store a lot closer to the finish "
+"line!"
+msgstr ""
+"Gebruik onze AI Website Builder om uw winkel veel dichter bij de finish te "
+"beginnen!"
 
 #: build/index.js:1
 msgid "Generate a Theme"
@@ -1221,7 +1430,8 @@ msgstr "Gefeliciteerd met uw nieuwe site!"
 
 #: build/index.js:1
 msgid "Your site is currently displaying a \"Coming Soon\" page."
-msgstr "Je site wordt momenteel een \"Binnenkort beschikbaar\" pagina weergegeven."
+msgstr ""
+"Je site wordt momenteel een \"Binnenkort beschikbaar\" pagina weergegeven."
 
 #: build/index.js:1
 msgid "Ready to go to the next level?"
@@ -1256,8 +1466,12 @@ msgid "Upgrade your plan for success."
 msgstr "Upgrade uw plan voor succes."
 
 #: build/index.js:1
-msgid "Choose the set of plugins and services that's right for your needs. You're covered by our no-quibble, 30 day money back guarantee."
-msgstr "Kies de set plug-ins en diensten die geschikt zijn voor jouw behoeften. Je bent gedekt door onze vrijblijvende geld-terug-garantie van 30 dagen."
+msgid ""
+"Choose the set of plugins and services that's right for your needs. You're "
+"covered by our no-quibble, 30 day money back guarantee."
+msgstr ""
+"Kies de set plug-ins en diensten die geschikt zijn voor jouw behoeften. Je "
+"bent gedekt door onze vrijblijvende geld-terug-garantie van 30 dagen."
 
 #: build/index.js:1
 msgid "/mo"
@@ -1308,8 +1522,11 @@ msgid "Products & Services"
 msgstr "Producten en Diensten"
 
 #: build/index.js:1
-msgid "Come here to manage products and services or add new ones to your store."
-msgstr "Kom hier om producten en diensten te beheren of voeg nieuwe toe aan uw winkel."
+msgid ""
+"Come here to manage products and services or add new ones to your store."
+msgstr ""
+"Kom hier om producten en diensten te beheren of voeg nieuwe toe aan uw "
+"winkel."
 
 #: build/index.js:1
 msgid "Want help adding products?"
@@ -1356,8 +1573,10 @@ msgid "Sell your products everywhere, confidently, with Ecomdash."
 msgstr "Verkoop uw producten overal, vertrouwelijk met Ecomdash."
 
 #: build/index.js:1
-msgid "With ecomdash, you can manage different sales channels all in one place."
-msgstr "Met ecomdash, kunt u verschillende verkoopkanalen op één plek beheren."
+msgid ""
+"With ecomdash, you can manage different sales channels all in one place."
+msgstr ""
+"Met ecomdash, kunt u verschillende verkoopkanalen op één plek beheren."
 
 #: build/index.js:1
 msgid "Simply connect your business accounts from Amazon, Etsy or Walmart to"
@@ -1365,7 +1584,8 @@ msgstr "Verbind je zakelijke rekeningen van Amazon, Etsy of Walexceeds aan"
 
 #: build/index.js:1
 msgid "your ecomdash platform and easily manage products, customer orders and"
-msgstr "uw ecomdash platform en beheer eenvoudig producten, klantbestellingen en"
+msgstr ""
+"uw ecomdash platform en beheer eenvoudig producten, klantbestellingen en"
 
 #: build/index.js:1
 msgid "more saving you valuable time."
@@ -1389,7 +1609,8 @@ msgstr "Beheer voorraad op meerdere platforms"
 
 #: build/index.js:1
 msgid "Enjoy near real-time inventory updates for an unlimited number of"
-msgstr "Geniet van nabije real-time inventarisupdates voor een onbeperkt aantal"
+msgstr ""
+"Geniet van nabije real-time inventarisupdates voor een onbeperkt aantal"
 
 #: build/index.js:1
 msgid "channels with our inventory management software."
@@ -1416,24 +1637,41 @@ msgid "Order Management and Reporting"
 msgstr "Orderbeheer en rapportage"
 
 #: build/index.js:1
-msgid "With Ecomdash you can sit back and relax, knowing that all aspects of order fulfillment are under control. Easily track your top selling items, cost of goods sold, stale inventory and more with Ecomdash's extensive reporting tools."
-msgstr "Met Ecomdash kunt u achterover leunen en ontspannen in de wetenschap dat alle aspecten van de orderverwerking onder controle zijn. Volg eenvoudig uw best verkopende artikelen, kosten van verkochte goederen, verouderde voorraad en meer met de uitgebreide rapportagegereedschappen van Ecomdash."
+msgid ""
+"With Ecomdash you can sit back and relax, knowing that all aspects of order "
+"fulfillment are under control. Easily track your top selling items, cost of "
+"goods sold, stale inventory and more with Ecomdash's extensive reporting "
+"tools."
+msgstr ""
+"Met Ecomdash kunt u achterover leunen en ontspannen in de wetenschap dat "
+"alle aspecten van de orderverwerking onder controle zijn. Volg eenvoudig uw "
+"best verkopende artikelen, kosten van verkochte goederen, verouderde "
+"voorraad en meer met de uitgebreide rapportagegereedschappen van Ecomdash."
 
 #: build/index.js:1
 msgid "Powerful Add-ons"
 msgstr "Krachtige add-ons"
 
 #: build/index.js:1
-msgid "Ecomdash contains a variety of powerful add-ons that will help you handle everything from creating barcodes and inventory templates, to managing warehouse feeds, Fulfillment By Amazon and even accounting."
-msgstr "Ecomdash bevat een aantal krachtige add-ons die u helpen om alles aan te pakken door barcodes en voorraadsjablonen, te maken voor het beheren van de magazijnfeeds, Fulfillment By Amazon en zelfs boekhouding."
+msgid ""
+"Ecomdash contains a variety of powerful add-ons that will help you handle "
+"everything from creating barcodes and inventory templates, to managing "
+"warehouse feeds, Fulfillment By Amazon and even accounting."
+msgstr ""
+"Ecomdash bevat een aantal krachtige add-ons die u helpen om alles aan te "
+"pakken door barcodes en voorraadsjablonen, te maken voor het beheren van de "
+"magazijnfeeds, Fulfillment By Amazon en zelfs boekhouding."
 
 #: build/index.js:1
 msgid "Fullfillment By Amazon (FBA)"
 msgstr "Fullfillment By Amazon (FBA)"
 
 #: build/index.js:1
-msgid "Auto-export non-Amazon orders to FBA. Import the tracking and pass it to the"
-msgstr "Exporteer automatisch niet-Amazon orders naar FBA. Importeer de tracking en geef deze door aan de"
+msgid ""
+"Auto-export non-Amazon orders to FBA. Import the tracking and pass it to the"
+msgstr ""
+"Exporteer automatisch niet-Amazon orders naar FBA. Importeer de tracking en "
+"geef deze door aan de"
 
 #: build/index.js:1
 msgid "originating sales channel, marking it as shipped."
@@ -1564,16 +1802,22 @@ msgid "Credit Card/Debit Card/NetBanking"
 msgstr "Credit Card/Debit Card/NetBanking"
 
 #: build/index.js:1
-msgid "Pay securely by Credit or Debit card or Internet Banking through Razorpay."
-msgstr "Betaal veilig via Credit of Debit card of Internet Banking via Razorpay."
+msgid ""
+"Pay securely by Credit or Debit card or Internet Banking through Razorpay."
+msgstr ""
+"Betaal veilig via Credit of Debit card of Internet Banking via Razorpay."
 
 #: build/index.js:1
 msgid "capture"
 msgstr "vastleggen"
 
 #: build/index.js:1
-msgid "Thank you for shopping with us. Your account has been charged and your transaction is successful. We will be processing your order soon."
-msgstr "Dank u voor het winkelen bij ons. Uw account is in rekening gebracht en uw transactie is succesvol. We zullen uw bestelling binnenkort verwerken."
+msgid ""
+"Thank you for shopping with us. Your account has been charged and your "
+"transaction is successful. We will be processing your order soon."
+msgstr ""
+"Dank u voor het winkelen bij ons. Uw account is in rekening gebracht en uw "
+"transactie is succesvol. We zullen uw bestelling binnenkort verwerken."
 
 #: build/index.js:1
 msgid "Successfully saved the Payment Details"
@@ -1653,152 +1897,175 @@ msgstr "Ander"
 
 #: includes/QuickAddProduct.php:174
 msgid "Digital products or services"
-msgstr ""
+msgstr "Digitale producten of diensten"
 
 #: includes/QuickAddProduct.php:175
-msgid "EX: eBooks, stock photos, software, templates, podcasts, apps, videos, etc. No physical products or shipping management."
+msgid ""
+"EX: eBooks, stock photos, software, templates, podcasts, apps, videos, etc. "
+"No physical products or shipping management."
 msgstr ""
+"Voorbeeld: eBooks, stockfoto's, software, sjablonen, podcasts, apps, "
+"video's, enz. Geen fysieke producten of verzendbeheer."
 
 #: includes/QuickAddProduct.php:179
 msgid "Physical products"
-msgstr ""
+msgstr "Fysieke producten"
 
 #: includes/QuickAddProduct.php:180
-msgid "Ex: clothing, furniture, accessories — any type of product that needs to be physically shipped to your customers."
+msgid ""
+"Ex: clothing, furniture, accessories — any type of product that needs to be "
+"physically shipped to your customers."
 msgstr ""
+"Voorbeeld: kleding, meubels, accessoires - elk type product dat fysiek naar "
+"uw klanten moet worden verzonden."
 
 #: includes/QuickAddProduct.php:198
 msgid "Bookings/Appointments"
-msgstr ""
+msgstr "Boekingen/Afspraken"
 
 #: includes/QuickAddProduct.php:199
-msgid "Ex: apartment bookings, rental of products, medical appointments, personal training, etc — any type of bookable product or service."
+msgid ""
+"Ex: apartment bookings, rental of products, medical appointments, personal "
+"training, etc — any type of bookable product or service."
 msgstr ""
+"Voorbeeld: het boeken van appartementen, verhuur van producten, medische "
+"afspraken, persoonlijke training, enz. - elk type boekbaar product of "
+"dienst."
 
 #: includes/QuickAddProduct.php:203
 msgid "Subscription"
-msgstr ""
+msgstr "Abonnement"
 
 #: includes/QuickAddProduct.php:204
-msgid "Ex: a monthly subscription box, a magazine subscription, streaming service like Netflix, etc - any type of product your customer pays for on a recurring basis."
+msgid ""
+"Ex: a monthly subscription box, a magazine subscription, streaming service "
+"like Netflix, etc - any type of product your customer pays for on a "
+"recurring basis."
 msgstr ""
+"Voorbeeld: een maandelijkse abonnementsbox, een tijdschriftabonnement, een "
+"streamingdienst zoals Netflix, enz. - elk type product waarvoor uw klant op "
+"terugkerende basis betaalt."
 
 #: build/quick-add-product/index.js:1
 msgid "Set product image"
-msgstr ""
+msgstr "Productafbeelding instellen"
 
 #: build/quick-add-product/index.js:1
 msgid "Use as product image"
-msgstr ""
+msgstr "Gebruik als productafbeelding"
 
 #: build/quick-add-product/index.js:1
 msgid "added to your product catalog."
-msgstr ""
+msgstr "toegevoegd aan uw productcatalogus."
 
 #: build/quick-add-product/index.js:1
 msgid "View product"
-msgstr ""
+msgstr "Bekijk product"
 
 #: build/quick-add-product/index.js:1
 msgid "Edit product details"
-msgstr ""
+msgstr "Productdetails bewerken"
 
 #: build/quick-add-product/index.js:1
 msgid "Add another product"
-msgstr ""
+msgstr "Voeg nog een product toe"
 
 #: build/quick-add-product/index.js:1
 msgctxt "Quick add product modal title"
 msgid "Quick Add Product"
-msgstr ""
+msgstr "Snel Product toevoegen"
 
 #: build/quick-add-product/index.js:1
 msgctxt "Quick Add Product form field label."
 msgid "Product Name"
-msgstr ""
+msgstr "Productnaam"
 
 #: build/quick-add-product/index.js:1
 #, js-format
 msgctxt "Quick Add Product form field label. %s is the currency symbol."
 msgid "Price (%s)"
-msgstr ""
+msgstr "Prijs (%s)"
 
 #: build/quick-add-product/index.js:1
 msgctxt "Quick Add Product form field label."
 msgid "Description"
-msgstr ""
+msgstr "Beschrijving"
 
 #: build/quick-add-product/index.js:1
 msgctxt "Quick Add Product form field label."
 msgid "Categories"
-msgstr ""
+msgstr "Categorieën"
 
 #: build/quick-add-product/index.js:1
 msgctxt "Quick Add Product form field label."
 msgid "Image"
-msgstr ""
+msgstr "Afbeelding"
 
 #: build/quick-add-product/index.js:1
 msgctxt "Quick Add Product form submit button label"
 msgid "Add product"
-msgstr ""
+msgstr "Product toevoegen"
 
 #: build/quick-add-product/index.js:1
 msgctxt "Quick add product modal button label"
 msgid "Next"
-msgstr ""
+msgstr "Volgende"
 
 #: build/quick-add-product/index.js:1
 msgctxt "Select product section title"
 msgid "What are you planning to sell or offer?"
-msgstr ""
+msgstr "Wat ben je van plan te verkopen of aan te bieden?"
 
 #: build/quick-add-product/index.js:1
 msgctxt "Select product section description"
-msgid "Pick one or more options based on the type of product or service you want to offer your customers."
+msgid ""
+"Pick one or more options based on the type of product or service you want to"
+" offer your customers."
 msgstr ""
+"Kies een of meer opties op basis van het type product of dienst dat u uw "
+"klanten wilt aanbieden."
 
 #: build/quick-add-product/index.js:1
 msgctxt "Modal button label."
 msgid "Quick add product"
-msgstr ""
+msgstr "Snel product toevoegen"
 
 #: build/store-info/index.js:1
 msgctxt "Store info modal title"
 msgid "Store details"
-msgstr ""
+msgstr "Winkeldetails"
 
 #: build/store-info/index.js:1
 msgctxt "Store info form field label."
 msgid "Store Address"
-msgstr ""
+msgstr "Winkeladres"
 
 #: build/store-info/index.js:1
 msgctxt "Store info form field label."
 msgid "City"
-msgstr ""
+msgstr "Plaats"
 
 #: build/store-info/index.js:1
 msgctxt "Store info form field label."
 msgid "Postcode"
-msgstr ""
+msgstr "Postcode"
 
 #: build/store-info/index.js:1
 msgctxt "Store info form field label."
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 #: build/store-info/index.js:1
 msgctxt "Store info form field label."
 msgid "Country"
-msgstr ""
+msgstr "Land"
 
 #: build/store-info/index.js:1
 msgctxt "Store info form field label."
 msgid "Industry"
-msgstr ""
+msgstr "Industrie"
 
 #: build/store-info/index.js:1
 msgctxt "Store info form submit button label"
 msgid "Save"
-msgstr ""
+msgstr "Opslaan"
