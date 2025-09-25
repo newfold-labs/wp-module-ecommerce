@@ -1583,7 +1583,7 @@ msgstr "Guardado correctamente los detalles de pago"
 msgid "WooCommerce has been installed successfully"
 msgstr "WooCommerce se ha instalado correctamente"
 
-#: includes/QuickAddProduct.php:113
+#: includes/QuickAddProduct.php:123
 msgid "Quick Add Product"
 msgstr "Añadir producto rápidamente"
 
@@ -1650,3 +1650,155 @@ msgstr "Artes y manualidades"
 #: includes/StoreInfo.php:158
 msgid "Other"
 msgstr "Otro"
+
+#: includes/QuickAddProduct.php:174
+msgid "Digital products or services"
+msgstr ""
+
+#: includes/QuickAddProduct.php:175
+msgid "EX: eBooks, stock photos, software, templates, podcasts, apps, videos, etc. No physical products or shipping management."
+msgstr ""
+
+#: includes/QuickAddProduct.php:179
+msgid "Physical products"
+msgstr ""
+
+#: includes/QuickAddProduct.php:180
+msgid "Ex: clothing, furniture, accessories — any type of product that needs to be physically shipped to your customers."
+msgstr ""
+
+#: includes/QuickAddProduct.php:198
+msgid "Bookings/Appointments"
+msgstr ""
+
+#: includes/QuickAddProduct.php:199
+msgid "Ex: apartment bookings, rental of products, medical appointments, personal training, etc — any type of bookable product or service."
+msgstr ""
+
+#: includes/QuickAddProduct.php:203
+msgid "Subscription"
+msgstr ""
+
+#: includes/QuickAddProduct.php:204
+msgid "Ex: a monthly subscription box, a magazine subscription, streaming service like Netflix, etc - any type of product your customer pays for on a recurring basis."
+msgstr ""
+
+#: build/quick-add-product/index.js:1
+msgid "Set product image"
+msgstr ""
+
+#: build/quick-add-product/index.js:1
+msgid "Use as product image"
+msgstr ""
+
+#: build/quick-add-product/index.js:1
+msgid "added to your product catalog."
+msgstr ""
+
+#: build/quick-add-product/index.js:1
+msgid "View product"
+msgstr ""
+
+#: build/quick-add-product/index.js:1
+msgid "Edit product details"
+msgstr ""
+
+#: build/quick-add-product/index.js:1
+msgid "Add another product"
+msgstr ""
+
+#: build/quick-add-product/index.js:1
+msgctxt "Quick add product modal title"
+msgid "Quick Add Product"
+msgstr ""
+
+#: build/quick-add-product/index.js:1
+msgctxt "Quick Add Product form field label."
+msgid "Product Name"
+msgstr ""
+
+#: build/quick-add-product/index.js:1
+#, js-format
+msgctxt "Quick Add Product form field label. %s is the currency symbol."
+msgid "Price (%s)"
+msgstr ""
+
+#: build/quick-add-product/index.js:1
+msgctxt "Quick Add Product form field label."
+msgid "Description"
+msgstr ""
+
+#: build/quick-add-product/index.js:1
+msgctxt "Quick Add Product form field label."
+msgid "Categories"
+msgstr ""
+
+#: build/quick-add-product/index.js:1
+msgctxt "Quick Add Product form field label."
+msgid "Image"
+msgstr ""
+
+#: build/quick-add-product/index.js:1
+msgctxt "Quick Add Product form submit button label"
+msgid "Add product"
+msgstr ""
+
+#: build/quick-add-product/index.js:1
+msgctxt "Quick add product modal button label"
+msgid "Next"
+msgstr ""
+
+#: build/quick-add-product/index.js:1
+msgctxt "Select product section title"
+msgid "What are you planning to sell or offer?"
+msgstr ""
+
+#: build/quick-add-product/index.js:1
+msgctxt "Select product section description"
+msgid "Pick one or more options based on the type of product or service you want to offer your customers."
+msgstr ""
+
+#: build/quick-add-product/index.js:1
+msgctxt "Modal button label."
+msgid "Quick add product"
+msgstr ""
+
+#: build/store-info/index.js:1
+msgctxt "Store info modal title"
+msgid "Store details"
+msgstr ""
+
+#: build/store-info/index.js:1
+msgctxt "Store info form field label."
+msgid "Store Address"
+msgstr ""
+
+#: build/store-info/index.js:1
+msgctxt "Store info form field label."
+msgid "City"
+msgstr ""
+
+#: build/store-info/index.js:1
+msgctxt "Store info form field label."
+msgid "Postcode"
+msgstr ""
+
+#: build/store-info/index.js:1
+msgctxt "Store info form field label."
+msgid "State"
+msgstr ""
+
+#: build/store-info/index.js:1
+msgctxt "Store info form field label."
+msgid "Country"
+msgstr ""
+
+#: build/store-info/index.js:1
+msgctxt "Store info form field label."
+msgid "Industry"
+msgstr ""
+
+#: build/store-info/index.js:1
+msgctxt "Store info form submit button label"
+msgid "Save"
+msgstr ""
