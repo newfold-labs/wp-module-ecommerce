@@ -9,25 +9,46 @@ import { createProduct, decodeEntities } from "../../functions";
 import { FormResponse } from "./FormResponse"
 import { FormPreview } from "./FormPreview";
 
-export const Form = ({hasPreview = false, showTitle = false, title = ''}) => {
+export const Form = ({hasPreview = false, showTitle = false, title = '', productType = 'physical'}) => {
 
-	const [formData, setFormData] = useState({});
+	const defaultFormData = {
+		virtual: 'virtual' === productType,
+	}
+
+	const [formData, setFormData] = useState(defaultFormData);
 	const [submitResponse, setSubmitResponse] = useState(null);
 	const [loading, setLoading] = useState(false);
 
 	const formSubmit = async (ev) => {
 		ev.preventDefault();
 
+		let event = 'nfd-submit-quick-add-product',
+			eventData = {};
+
 		setLoading(true);
 
 		try {
 			const product = await createProduct( formData );
+
+			event += '-success';
+			eventData = {
+				detail: product,
+			}
+
 			setSubmitResponse( product );
 		} catch (error) {
 			console.error(error);
+
+			event += '-error';
+			eventData = {
+				detail: error,
+			};
 		}
 
 		setLoading(false);
+
+		// Dispatch event.
+		window.dispatchEvent( new CustomEvent( event, eventData ) );
 	}
 
 	const updateFormData = (key, value) => {
@@ -38,7 +59,7 @@ export const Form = ({hasPreview = false, showTitle = false, title = ''}) => {
 	}
 
 	const resetForm = () => {
-		setFormData({});
+		setFormData(defaultFormData);
 		setSubmitResponse(null);
 	}
 

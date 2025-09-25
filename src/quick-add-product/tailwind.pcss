@@ -11,6 +11,136 @@
 	to { opacity: 1; }
 }
 
+#nfd-quick-add-product__type-select {
+	@apply
+	nfd-flex
+	nfd-flex-col
+	nfd-gap-4
+	nfd-pt-8
+	nfd-pb-8
+	nfd-pr-6
+	nfd-pl-6;
+
+	width: 40rem;
+
+	.nfd-quick-add-product__type {
+		@apply
+		nfd-border
+		nfd-border-gray-300
+		nfd-rounded-lg
+		nfd-mb-4;
+
+		label {
+			@apply
+			nfd-flex
+			nfd-items-center
+			nfd-gap-4
+			nfd-p-4
+			nfd-cursor-pointer;
+		}
+
+		&.locked {
+			background: linear-gradient( 180deg, #faf3e0 0%, #ffffff 100% );
+		}
+	}
+
+	.nfd-quick-add-product__type.selected {
+		border-color: #5ba4ff;
+		background-color: #f6faff;
+
+		.nfd-quick-add-product__type-icon {
+			background-color: #ddecff;
+
+			svg {
+				color: #196bde;
+			}
+		}
+	}
+
+	.nfd-quick-add-product__type.locked {
+		background: linear-gradient( 180deg, #faf3e0 0%, #ffffff 100% );
+
+		.nfd-quick-add-product__type-icon {
+			background-color: #f9e796;
+		}
+
+		.nfd-quick-add-product__type-title:after {
+			content: '';
+			width: 20px;
+			height: 20px;
+			background-color: #f9e796;
+			background-image: url("data:image/svg+xml;base64,PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KCjxzdmcgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiB2aWV3Qm94PSIwIDAgMTAgMTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfMTY3OF83MzExKSI+CiAgICAgICAgPHBhdGggZD0iTTQuODU3NjcgMC44MDIxMjRDNi4wMzAwNCAwLjgwMjIyMSA2Ljk4MDcxIDEuNzUyNzggNi45ODA3MSAyLjkyNTE3VjQuNTc2NTRINy4yMTYwNkM3LjczNzE2IDQuNTc2NTQgOC4xNTk0MiA0Ljk5ODgxIDguMTU5NDIgNS41MTk5VjguMzQ5OThDOC4xNTk0MiA4Ljg3MTA3IDcuNzM3MTYgOS4yOTQzMSA3LjIxNjA2IDkuMjk0MzFIMi40OTgyOUMxLjk3NzM4IDkuMjk0MSAxLjU1NDkzIDguODcwOTMgMS41NTQ5MyA4LjM0OTk4VjUuNTE5OUMxLjU1NDkzIDQuOTk4OTQgMS45NzczOCA0LjU3Njc1IDIuNDk4MjkgNC41NzY1NEgyLjczNDYyVjIuOTI1MTdDMi43MzQ2MiAxLjc1MjcyIDMuNjg1MjEgMC44MDIxMjQgNC44NTc2NyAwLjgwMjEyNFpNNC44NTc2NyAxLjUxMDEzQzQuMDc2MDMgMS41MTAxMyAzLjQ0MjYzIDIuMTQzNTMgMy40NDI2MyAyLjkyNTE3VjQuNTc2NTRINi4yNzI3MVYyLjkyNTE3QzYuMjcyNzEgMi4xNDM1OSA1LjYzOTIyIDEuNTEwMjMgNC44NTc2NyAxLjUxMDEzWiIgZmlsbD0iI0NFOEMwOSIvPgogICAgPC9nPgogICAgPGRlZnM+CiAgICAgICAgPGNsaXBQYXRoIGlkPSJjbGlwMF8xNjc4XzczMTEiPgogICAgICAgICAgICA8cmVjdCB3aWR0aD0iOS40MzUxOSIgaGVpZ2h0PSI5LjQzNTE5IiBmaWxsPSJ3aGl0ZSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC4xMzk4OTMgMC4zMzA0NDQpIi8+CiAgICAgICAgPC9jbGlwUGF0aD4KICAgIDwvZGVmcz4KPC9zdmc+CgoKCg==");
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-size: 60%;
+			display: inline-block;
+			vertical-align: top;
+			margin-left: 10px;
+			border-radius: 8px;
+		}
+	}
+
+	.nfd-quick-add-product__type-check {
+		input {
+			display: none;
+		}
+
+		input + span {
+			@apply
+			nfd-flex
+			nfd-items-center
+			nfd-justify-center
+			nfd-border
+			nfd-border-gray-300
+			nfd-w-5
+			nfd-h-5
+			nfd-rounded-full;
+		}
+
+		input:checked + span {
+			border-color: var(--nfd-color-primary, #196bde);
+			background-color: var(--nfd-color-primary, #196bde);
+
+			&:after {
+				content: "";
+				background-image: url("data:image/svg+xml;base64,PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KCjxzdmcgd2lkdGg9IjgiIGhlaWdodD0iNiIgdmlld0JveD0iMCAwIDggNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xLjUyNTM3IDEuNDQ0NTlMMy4yOTk3MiAzLjEzMDI2TDYuNTM2ODggMEw4IDEuMzk0NzRMMy4yODkzNSA2TDAgMi44OTk1MkwxLjUyNTM3IDEuNDQ0NTlaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4KCg==");
+				background-size: contain;
+				background-repeat: no-repeat;
+				width: 8px;
+				height: 6px;
+			}
+		}
+	}
+
+	.nfd-quick-add-product__type-icon {
+		@apply
+		nfd-p-2
+		nfd-rounded-lg;
+		background-color: #efefef;
+
+		svg {
+			color: #4d4d4d;
+		}
+	}
+
+	.nfd-quick-add-product__type-data {
+		@apply
+		nfd-flex
+		nfd-flex-col
+		nfd-gap-2;
+
+		.nfd-quick-add-product__type-title {
+			@apply
+			nfd-font-semibold;
+		}
+	}
+
+	.nfd-quick-add-product__types-action {
+		@apply
+		nfd-text-right;
+	}
+}
+
 #nfd-quick-add-product__form-wrapper {
 	@apply
 	nfd-flex;
@@ -326,7 +456,7 @@
 
 }
 
-#nfd-quick-add-product-modal {
+.nfd-quick-add-product-modal-trigger {
 	@apply
 	nfd-inline-flex
 	nfd-relative
@@ -337,8 +467,6 @@
 
 .nfd-root {
 	.nfd-quick-add-product-modal {
-		z-index: 10000;
-
 		.nfd-modal__panel {
 			padding: 0;
 			max-width: 75rem;
@@ -370,12 +498,6 @@
 }
 
 @media screen and (max-width: 782px) {
-	.nfd-root {
-		.nfd-quick-add-product-modal {
-			z-index : 10000;
-		}
-	}
-
 	#nfd-quick-add-product-modal {
 		button {
 			@apply
@@ -384,6 +506,10 @@
 			nfd-text-base
 			nfd-leading-5;
 		}
+	}
+
+	#nfd-quick-add-product__type-select {
+		width: auto;
 	}
 }
 

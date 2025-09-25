@@ -1,4 +1,5 @@
 import { getAppId } from './pluginID.cy';
+const creator = require( '../../fixtures/creator.json' );
 
 const appId = getAppId();
 const customCommandTimeout = 30000;
@@ -105,3 +106,32 @@ export const wpCli = ( cmd ) => {
 		}
 	} );
 };
+
+/**
+ * Set solutions data
+ * @param solution
+ * @param expiration
+ */
+export const setSolution = ( solution, expiration = 3600 ) => {
+	if ( solution === 'creator' ) {
+		wpCli(
+			`option update _transient_newfold_solutions '${ JSON.stringify(
+				creator
+			) }' --format=json`
+		);
+	} else {
+		cy.log( 'unknown solution' );
+	}
+	// set transient expiration to one hour (default) from now
+	const expiry = Math.floor( new Date().getTime() / 1000.0 ) + expiration;
+	// manually set expiration for the transients
+	wpCli( `option update _transient_timeout_newfold_solutions ${ expiry }` );
+};
+
+/**
+ * Clear solution transient
+ */
+export const clearSolutionTransient = () => {
+	wpCli( `option delete _transient_newfold_solutions` );
+	wpCli( `option delete _transient_timeout_newfold_solutions` );
+}
