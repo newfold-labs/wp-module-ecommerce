@@ -1014,8 +1014,6 @@
 }
 .nfd-root .nfd-autocomplete {
 		position: relative;
-		--tw-bg-opacity: 1;
-		background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
 .nfd-root .nfd-autocomplete--error .nfd-autocomplete__button {
 		--tw-border-opacity: 1;
@@ -1901,7 +1899,7 @@
 		padding-top: 0.5rem;
 		padding-bottom: 0.5rem;
 		padding-left: 0.75rem;
-		padding-right: 2.25rem;
+		padding-right: 0.75rem;
 		text-align: left;
 		line-height: 1.5rem;
 		--tw-text-opacity: 1;
@@ -2495,18 +2493,6 @@
 		--tw-text-opacity: 1;
 		color: rgb(220 38 38 / var(--tw-text-opacity, 1));
 }
-.nfd-root .nfd-mobile-navigation__top {
-		position: sticky;
-		top: 0px;
-		z-index: 50;
-		width: 100%;
-}
-.nfd-root .nfd-mobile-navigation__dialog {
-		position: fixed;
-		inset: 0px;
-		z-index: 50;
-		display: flex;
-}
 .nfd-root .nfd-autocomplete-field__description {
 		margin-top: 0.5rem;
 }
@@ -2932,7 +2918,7 @@
 .nfd-root .nfd-modal {
 		position: fixed;
 		inset: 0px;
-		z-index: 50;
+		z-index: 10;
 		padding: 1rem;
 }
 @media (min-width: 640px) {
@@ -2962,6 +2948,9 @@
 		inset: 0px;
 		background-color: rgb(100 116 139 / var(--tw-bg-opacity, 1));
 		--tw-bg-opacity: 0.75;
+		transition-property: opacity;
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		transition-duration: 150ms;
 }
 .nfd-root .nfd-modal__panel {
 		position: relative;
@@ -3227,9 +3216,6 @@
 .nfd-top-1\/2 {
 		top: 50% !important;
 }
-.nfd-top-full {
-		top: 100% !important;
-}
 .nfd-z-10 {
 		z-index: 10 !important;
 }
@@ -3238,9 +3224,6 @@
 }
 .nfd-z-40 {
 		z-index: 40 !important;
-}
-.nfd-z-\[9999\] {
-		z-index: 9999 !important;
 }
 .nfd-col-span-1 {
 		grid-column: span 1 / span 1 !important;
@@ -3469,9 +3452,6 @@
 .nfd-h-\[24px\] {
 		height: 24px !important;
 }
-.nfd-h-\[64px\] {
-		height: 64px !important;
-}
 .nfd-h-fit {
 		height: -moz-fit-content !important;
 		height: fit-content !important;
@@ -3481,9 +3461,6 @@
 }
 .nfd-h-px {
 		height: 1px !important;
-}
-.nfd-h-screen {
-		height: 100vh !important;
 }
 .nfd-max-h-\[350px\] {
 		max-height: 350px !important;
@@ -3554,9 +3531,6 @@
 .nfd-w-\[24px\] {
 		width: 24px !important;
 }
-.nfd-w-\[32px\] {
-		width: 32px !important;
-}
 .nfd-w-\[400\%\] {
 		width: 400% !important;
 }
@@ -3569,9 +3543,6 @@
 }
 .nfd-w-full {
 		width: 100% !important;
-}
-.nfd-w-screen {
-		width: 100vw !important;
 }
 .nfd-min-w-0 {
 		min-width: 0px !important;
@@ -3637,6 +3608,10 @@
 }
 .nfd-translate-y-0 {
 		--tw-translate-y: 0px !important;
+		transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
+}
+.nfd-translate-y-4 {
+		--tw-translate-y: 1rem !important;
 		transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
 }
 .nfd-translate-y-full {
@@ -3918,10 +3893,6 @@
 .nfd-bg-\[--nfd-ecommerce-bg-light\] {
 		background-color: var(--nfd-ecommerce-bg-light) !important;
 }
-.nfd-bg-black {
-		--tw-bg-opacity: 1 !important;
-		background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1)) !important;
-}
 .nfd-bg-canvas {
 		--tw-bg-opacity: 1 !important;
 		background-color: rgb(241 245 249 / var(--tw-bg-opacity, 1)) !important;
@@ -4019,9 +3990,6 @@
 .nfd-py-6 {
 		padding-top: 1.5rem !important;
 		padding-bottom: 1.5rem !important;
-}
-.\!nfd-pl-0 {
-		padding-left: 0px !important;
 }
 .nfd-pb-0 {
 		padding-bottom: 0px !important;
@@ -4253,9 +4221,6 @@
 .nfd-opacity-25 {
 		opacity: 0.25 !important;
 }
-.nfd-opacity-30 {
-		opacity: 0.3 !important;
-}
 .nfd-opacity-75 {
 		opacity: 0.75 !important;
 }
@@ -4424,9 +4389,6 @@
 		--tw-ring-opacity: 1 !important;
 		--tw-ring-color: rgb(25 107 222 / var(--tw-ring-opacity, 1)) !important;
 }
-.focus\:nfd-ring-transparent:focus {
-		--tw-ring-color: transparent !important;
-}
 .focus\:nfd-ring-offset-1:focus {
 		--tw-ring-offset-width: 1px !important;
 }
@@ -4442,20 +4404,6 @@
 }
 .nfd-group:hover .group-hover\:nfd-opacity-100 {
 		opacity: 1 !important;
-}
-.data-\[closed\]\:nfd-scale-95[data-closed] {
-		--tw-scale-x: .95 !important;
-		--tw-scale-y: .95 !important;
-		transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
-}
-.data-\[closed\]\:nfd-opacity-0[data-closed] {
-		opacity: 0 !important;
-}
-.data-\[enter\]\:nfd-duration-300[data-enter] {
-		transition-duration: 300ms !important;
-}
-.data-\[leave\]\:nfd-duration-200[data-leave] {
-		transition-duration: 200ms !important;
 }
 @media (max-width: 1027px) {
 		.max-\[1027px\]\:nfd-flex {
@@ -4544,6 +4492,20 @@
 		}
 		.sm\:nfd-w-2\/5 {
 				width: 40% !important;
+		}
+		.sm\:nfd-translate-y-0 {
+				--tw-translate-y: 0px !important;
+				transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
+		}
+		.sm\:nfd-scale-100 {
+				--tw-scale-x: 1 !important;
+				--tw-scale-y: 1 !important;
+				transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
+		}
+		.sm\:nfd-scale-95 {
+				--tw-scale-x: .95 !important;
+				--tw-scale-y: .95 !important;
+				transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
 		}
 		.sm\:nfd-grid-cols-1 {
 				grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
@@ -4640,12 +4602,5 @@
 		}
 		.\32xl\:nfd-gap-12 {
 				gap: 3rem !important;
-		}
-}
-@media (prefers-color-scheme: dark) {
-		@media (min-width: 1024px) {
-				.dark\:lg\:hover\:\[paint-order\:markers\]:hover {
-						paint-order: markers !important;
-				}
 		}
 }
