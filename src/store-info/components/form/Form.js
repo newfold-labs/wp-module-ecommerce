@@ -35,6 +35,7 @@ const Form = ({onFormSubmit, title = ''}) => {
 		}
 
 		setLoading(false);
+		storeInfo.data = formData;
 
 		// Dispatch event.
 		document.dispatchEvent( new CustomEvent( 'nfd-submit-store-info-form' ) );
