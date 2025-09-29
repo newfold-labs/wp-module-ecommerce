@@ -2,7 +2,7 @@ import {__} from "@wordpress/i18n";
 import {Button} from "@newfold/ui-component-library";
 import placeholderImage from "../../images/placeholder.jpg"
 
-export const FormResponse = ({product, resetFormCallback}) => {
+export const FormResponse = ({product}) => {
 
 	// Get featured image from product.
 	const image = product?.images?.shift()?.src || placeholderImage;
@@ -35,7 +35,7 @@ export const FormResponse = ({product, resetFormCallback}) => {
 				 <Button as="a" variant="secondary" href={product.edit_url} target="_blank">
 					 {__('Edit product details', 'wp-module-ecommerce')}
 				 </Button>
-				 <Button onClick={resetFormCallback}>
+				 <Button as="a" href={quickAddProduct.addProductUrl}>
 					 {__('Add another product', 'wp-module-ecommerce')}
 				 </Button>
 			 </div>

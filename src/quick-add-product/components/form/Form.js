@@ -58,14 +58,9 @@ export const Form = ({hasPreview = false, showTitle = false, title = '', product
 		}))
 	}
 
-	const resetForm = () => {
-		setFormData(defaultFormData);
-		setSubmitResponse(null);
-	}
-
 	if ( submitResponse ) {
 		return (
-			<FormResponse product={submitResponse} resetFormCallback={resetForm} />
+			<FormResponse product={submitResponse} />
 		)
 	}
 
@@ -98,7 +93,7 @@ export const Form = ({hasPreview = false, showTitle = false, title = '', product
 							<TextareaField
 								id="product-description"
 								name="short_description"
-								label={_x('Description', 'Quick Add Product form field label.', 'wp-module-ecommerce')}
+								label={_x('Short Description', 'Quick Add Product form field label.', 'wp-module-ecommerce')}
 								rows={4}
 								onChange={(e) => updateFormData('short_description', e.target.value)}
 							/>
@@ -124,7 +119,7 @@ export const Form = ({hasPreview = false, showTitle = false, title = '', product
 								type="submit"
 								disabled={loading || ! ( formData?.name && formData?.regular_price )}
 							>
-								{_x('Add product', 'Quick Add Product form submit button label', 'wp-module-ecommerce')}
+								{_x('Save product', 'Quick Add Product form submit button label', 'wp-module-ecommerce')}
 							</Button>
 						</div>
 					</form>

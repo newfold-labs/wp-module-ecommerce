@@ -6,6 +6,12 @@ export const FormPreview = ({data}) => {
 
 	const image = data?.images?.[0]?.url || placeholderImage;
 
+	// Crop description.
+	let description = data?.short_description ? decodeEntities( data.short_description.slice(0, 250) ) : '';
+	if ( description.length === 250 ) {
+		description += '[...]';
+	}
+
 	return (
 		<>
 			<div className="nfd-quick-add-product__form-preview">
@@ -24,8 +30,8 @@ export const FormPreview = ({data}) => {
 						</div>
 						<div className="nfd-quick-add-product__form-preview-product-description">
 							{
-								data?.short_description
-								? decodeEntities( data.short_description.slice(0, 150) )
+								description
+								? description
 								: (
 									<>
 										<div className="nfd-quick-add-product__form-preview-placeholder"></div>
