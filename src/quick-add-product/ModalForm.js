@@ -40,7 +40,7 @@ export const ModalForm = () => {
 				<Modal.Panel>
 					{ !productType
 						? <ProductTypes onSelect={setProductType}/>
-						: <Form hasPreview={true} showTitle={true} productType={productType} onReset={() => setProductType(null)} />
+						: <Form hasPreview={true} showTitle={true} productType={productType} />
 					}
 				</Modal.Panel>
 			</Modal>

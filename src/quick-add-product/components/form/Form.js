@@ -9,7 +9,7 @@ import { createProduct, decodeEntities } from "../../functions";
 import { FormResponse } from "./FormResponse"
 import { FormPreview } from "./FormPreview";
 
-export const Form = ({hasPreview = false, showTitle = false, title = '', productType = 'physical', onReset = undefined}) => {
+export const Form = ({hasPreview = false, showTitle = false, title = '', productType = 'physical'}) => {
 
 	const defaultFormData = {
 		virtual: 'virtual' === productType,
@@ -58,16 +58,9 @@ export const Form = ({hasPreview = false, showTitle = false, title = '', product
 		}))
 	}
 
-	const resetForm = () => {
-		setFormData(defaultFormData);
-		setSubmitResponse(null);
-
-		onReset?.();
-	}
-
 	if ( submitResponse ) {
 		return (
-			<FormResponse product={submitResponse} resetFormCallback={resetForm} />
+			<FormResponse product={submitResponse} />
 		)
 	}
 
