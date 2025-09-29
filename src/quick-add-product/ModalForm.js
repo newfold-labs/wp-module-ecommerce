@@ -38,7 +38,10 @@ export const ModalForm = () => {
 		<Root>
 			<Modal isOpen={isOpen} onClose={closeModal} className="nfd-quick-add-product-modal">
 				<Modal.Panel>
-					{ !productType ? <ProductTypes onSelect={setProductType}/> : <Form hasPreview={true} showTitle={true} productType={productType} /> }
+					{ !productType
+						? <ProductTypes onSelect={setProductType}/>
+						: <Form hasPreview={true} showTitle={true} productType={productType} onReset={() => setProductType(null)} />
+					}
 				</Modal.Panel>
 			</Modal>
 		</Root>

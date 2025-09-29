@@ -9,7 +9,7 @@ import { createProduct, decodeEntities } from "../../functions";
 import { FormResponse } from "./FormResponse"
 import { FormPreview } from "./FormPreview";
 
-export const Form = ({hasPreview = false, showTitle = false, title = '', productType = 'physical'}) => {
+export const Form = ({hasPreview = false, showTitle = false, title = '', productType = 'physical', onReset = undefined}) => {
 
 	const defaultFormData = {
 		virtual: 'virtual' === productType,
@@ -61,6 +61,8 @@ export const Form = ({hasPreview = false, showTitle = false, title = '', product
 	const resetForm = () => {
 		setFormData(defaultFormData);
 		setSubmitResponse(null);
+
+		onReset?.();
 	}
 
 	if ( submitResponse ) {
@@ -98,7 +100,7 @@ export const Form = ({hasPreview = false, showTitle = false, title = '', product
 							<TextareaField
 								id="product-description"
 								name="short_description"
-								label={_x('Description', 'Quick Add Product form field label.', 'wp-module-ecommerce')}
+								label={_x('Short Description', 'Quick Add Product form field label.', 'wp-module-ecommerce')}
 								rows={4}
 								onChange={(e) => updateFormData('short_description', e.target.value)}
 							/>
@@ -124,7 +126,7 @@ export const Form = ({hasPreview = false, showTitle = false, title = '', product
 								type="submit"
 								disabled={loading || ! ( formData?.name && formData?.regular_price )}
 							>
-								{_x('Add product', 'Quick Add Product form submit button label', 'wp-module-ecommerce')}
+								{_x('Save product', 'Quick Add Product form submit button label', 'wp-module-ecommerce')}
 							</Button>
 						</div>
 					</form>
