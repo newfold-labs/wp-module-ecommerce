@@ -37,16 +37,10 @@
             "Quick Add Product form field label. %s is the currency symbol.\u0004Price (%s)": [
                 ""
             ],
-            "Quick Add Product form field label.\u0004Description": [
-                ""
-            ],
             "Quick Add Product form field label.\u0004Categories": [
                 ""
             ],
             "Quick Add Product form field label.\u0004Image": [
-                ""
-            ],
-            "Quick Add Product form submit button label\u0004Add product": [
                 ""
             ],
             "Quick add product modal button label\u0004Next": [
@@ -59,6 +53,12 @@
                 ""
             ],
             "Modal button label.\u0004Quick add product": [
+                ""
+            ],
+            "Quick Add Product form field label.\u0004Short Description": [
+                ""
+            ],
+            "Quick Add Product form submit button label\u0004Save product": [
                 ""
             ]
         }

@@ -1728,22 +1728,12 @@ msgstr ""
 
 #: build/quick-add-product/index.js:1
 msgctxt "Quick Add Product form field label."
-msgid "Description"
-msgstr ""
-
-#: build/quick-add-product/index.js:1
-msgctxt "Quick Add Product form field label."
 msgid "Categories"
 msgstr ""
 
 #: build/quick-add-product/index.js:1
 msgctxt "Quick Add Product form field label."
 msgid "Image"
-msgstr ""
-
-#: build/quick-add-product/index.js:1
-msgctxt "Quick Add Product form submit button label"
-msgid "Add product"
 msgstr ""
 
 #: build/quick-add-product/index.js:1
@@ -1804,4 +1794,14 @@ msgstr ""
 #: build/store-info/index.js:1
 msgctxt "Store info form submit button label"
 msgid "Save"
+msgstr ""
+
+#: build/quick-add-product/index.js:1
+msgctxt "Quick Add Product form field label."
+msgid "Short Description"
+msgstr ""
+
+#: build/quick-add-product/index.js:1
+msgctxt "Quick Add Product form submit button label"
+msgid "Save product"
 msgstr ""

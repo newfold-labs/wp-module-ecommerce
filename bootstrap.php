@@ -5,7 +5,7 @@ use NewfoldLabs\WP\Module\ECommerce\ECommerce;
 
 use function NewfoldLabs\WP\ModuleLoader\register;
 
-define( 'NFD_ECOMMERCE_MODULE_VERSION', '1.10.0' );
+define( 'NFD_ECOMMERCE_MODULE_VERSION', '1.10.1' );
 
 if ( function_exists( 'is_admin' ) && is_admin() ) {
 	$old_woocommerce_module_version = get_option( 'nfd_ecommerce_module_version' );
