@@ -116,7 +116,7 @@ class StoreInfo {
 				'address'  => \get_option( 'woocommerce_store_address', '' ),
 				'city'     => \get_option( 'woocommerce_store_city', '' ),
 				'postcode' => \get_option( 'woocommerce_store_postcode', '' ),
-				'industry' => \get_option( 'nfd_store_industry', '' ),
+				'industry' => \get_option( 'nfd_store_industry', 'other' ), // default is set here to populate form
 			),
 			wc_get_base_location()
 		);
