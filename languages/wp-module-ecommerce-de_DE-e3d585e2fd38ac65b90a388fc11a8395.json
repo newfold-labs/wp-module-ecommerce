@@ -1,66 +1,66 @@
 {
-    "translation-revision-date": "2025-03-19 20:42",
-    "generator": "WP-CLI\/2.12.0",
-    "source": "build\/quick-add-product\/index.js",
-    "domain": "messages",
-    "locale_data": {
-        "messages": {
-            "": {
-                "domain": "messages",
-                "lang": "de_DE",
-                "plural-forms": "nplurals=2; plural=(n != 1);"
-            },
-            "Set product image": [
-                ""
-            ],
-            "Use as product image": [
-                ""
-            ],
-            "added to your product catalog.": [
-                ""
-            ],
-            "View product": [
-                ""
-            ],
-            "Edit product details": [
-                ""
-            ],
-            "Add another product": [
-                ""
-            ],
-            "Quick add product modal title\u0004Quick Add Product": [
-                ""
-            ],
-            "Quick Add Product form field label.\u0004Product Name": [
-                ""
-            ],
-            "Quick Add Product form field label. %s is the currency symbol.\u0004Price (%s)": [
-                ""
-            ],
-            "Quick Add Product form field label.\u0004Categories": [
-                ""
-            ],
-            "Quick Add Product form field label.\u0004Image": [
-                ""
-            ],
-            "Quick add product modal button label\u0004Next": [
-                ""
-            ],
-            "Select product section title\u0004What are you planning to sell or offer?": [
-                ""
-            ],
-            "Select product section description\u0004Pick one or more options based on the type of product or service you want to offer your customers.": [
-                ""
-            ],
-            "Modal button label.\u0004Quick add product": [
-                ""
-            ],
-            "Quick Add Product form field label.\u0004Short Description": [
-                ""
-            ],
-            "Quick Add Product form submit button label\u0004Save product": [
-                ""
-            ]
-        }
+  "translation-revision-date": "2025-03-19 20:42",
+  "generator": "WP-CLI/2.12.0",
+  "source": "build/quick-add-product/index.js",
+  "domain": "messages",
+  "locale_data": {
+    "messages": {
+      "": {
+        "domain": "messages",
+        "lang": "de_DE",
+        "plural-forms": "nplurals=2; plural=(n != 1);"
+      },
+      "Set product image": [
+        "Produktbild festlegen"
+      ],
+      "Use as product image": [
+        "Verwendung als Produktbild"
+      ],
+      "added to your product catalog.": [
+        "zu Ihrem Produktkatalog hinzugefügt."
+      ],
+      "View product": [
+        "Produkt anzeigen"
+      ],
+      "Edit product details": [
+        "Bearbeiten von Produktdetails"
+      ],
+      "Add another product": [
+        "Fügen Sie ein weiteres Produkt hinzu"
+      ],
+      "Quick add product modal title\u0004Quick Add Product": [
+        "Schnell Produkt hinzufügen"
+      ],
+      "Quick Add Product form field label.\u0004Product Name": [
+        "Produktname"
+      ],
+      "Quick Add Product form field label. %s is the currency symbol.\u0004Price (%s)": [
+        "Preis (%s)"
+      ],
+      "Quick Add Product form field label.\u0004Categories": [
+        "Kategorien"
+      ],
+      "Quick Add Product form field label.\u0004Image": [
+        "Bild"
+      ],
+      "Quick add product modal button label\u0004Next": [
+        "Weiter"
+      ],
+      "Select product section title\u0004What are you planning to sell or offer?": [
+        "Was planen Sie zu verkaufen oder anzubieten?"
+      ],
+      "Select product section description\u0004Pick one or more options based on the type of product or service you want to offer your customers.": [
+        "Wählen Sie eine oder mehrere Optionen aus, je nachdem, welche Art von Produkt oder Dienstleistung Sie Ihren Kunden anbieten möchten."
+      ],
+      "Modal button label.\u0004Quick add product": [
+        "Schnelles Hinzufügen eines Produkts"
+      ],
+      "Quick Add Product form field label.\u0004Short Description": [
+        "Kurzbeschreibung"
+      ],
+      "Quick Add Product form submit button label\u0004Save product": [
+        "Produkt speichern"
+      ]
     }
+  }
 }
