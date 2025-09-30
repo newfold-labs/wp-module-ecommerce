@@ -2,12 +2,12 @@
 import {useState} from "react";
 import {_x} from "@wordpress/i18n";
 import PropTypes from 'prop-types';
-import {TextField, SelectField, Button, Spinner, Title} from "@newfold/ui-component-library";
+import {TextField, SelectField, Button, Title} from "@newfold/ui-component-library";
 import {saveStoreInfo} from "../../functions";
 
 const Form = ({onFormSubmit, title = ''}) => {
 
-	const [formData, setFormData] = useState(storeInfo.data);
+	const [formData, setFormData] = useState(NFDStoreInfo.data);
 	const [loading, setLoading] = useState(false);
 
 	const updateFormData = (key, value) => {
