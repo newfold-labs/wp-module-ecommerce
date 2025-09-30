@@ -1,39 +1,39 @@
 {
-    "translation-revision-date": "2025-03-19 20:42",
-    "generator": "WP-CLI\/2.12.0",
-    "source": "build\/store-info\/index.js",
-    "domain": "messages",
-    "locale_data": {
-        "messages": {
-            "": {
-                "domain": "messages",
-                "lang": "es_MX",
-                "plural-forms": "nplurals=2; plural=(n != 1);"
-            },
-            "Store info modal title\u0004Store details": [
-                ""
-            ],
-            "Store info form field label.\u0004Store Address": [
-                ""
-            ],
-            "Store info form field label.\u0004City": [
-                ""
-            ],
-            "Store info form field label.\u0004Postcode": [
-                ""
-            ],
-            "Store info form field label.\u0004State": [
-                ""
-            ],
-            "Store info form field label.\u0004Country": [
-                ""
-            ],
-            "Store info form field label.\u0004Industry": [
-                ""
-            ],
-            "Store info form submit button label\u0004Save": [
-                ""
-            ]
-        }
+  "translation-revision-date": "2025-03-19 20:42",
+  "generator": "WP-CLI/2.12.0",
+  "source": "build/store-info/index.js",
+  "domain": "messages",
+  "locale_data": {
+    "messages": {
+      "": {
+        "domain": "messages",
+        "lang": "es_MX",
+        "plural-forms": "nplurals=2; plural=(n != 1);"
+      },
+      "Store info modal title\u0004Store details": [
+        "Detalles de la tienda"
+      ],
+      "Store info form field label.\u0004Store Address": [
+        "Dirección de la tienda (etiqueta de campo del formulario de información de la tienda)."
+      ],
+      "Store info form field label.\u0004City": [
+        "Ciudad (etiqueta de campo del formulario de información de la tienda)."
+      ],
+      "Store info form field label.\u0004Postcode": [
+        "Código postal (etiqueta de campo del formulario de información de la tienda)."
+      ],
+      "Store info form field label.\u0004State": [
+        "Estado (etiqueta de campo del formulario de información de la tienda)."
+      ],
+      "Store info form field label.\u0004Country": [
+        "País (etiqueta de campo del formulario de información de la tienda)."
+      ],
+      "Store info form field label.\u0004Industry": [
+        "Industria (etiqueta de campo del formulario de información de la tienda)."
+      ],
+      "Store info form submit button label\u0004Save": [
+        "Guardar"
+      ]
     }
+  }
 }
