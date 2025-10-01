@@ -32,7 +32,7 @@ class StoreInfo {
 	 */
 	public function init() {
 		// Enable it only for Bluehost brand plugin.
-		if ( 'bluehost' !== $this->container->plugin()->id || ! function_exists( 'WC' ) ) {
+		if ( 'bluehost' !== $this->container->plugin()->id ) {
 			return;
 		}
 
@@ -65,7 +65,7 @@ class StoreInfo {
 
 			wp_localize_script(
 				'store-info',
-				'storeInfo',
+				'NFDStoreInfo',
 				array(
 					'data'           => $this->get_store_info(),
 					'countryOptions' => $this->get_countries(),
@@ -107,12 +107,16 @@ class StoreInfo {
 	 * @return array
 	 */
 	protected function get_store_info() {
+		if ( ! function_exists( 'WC' ) ) {
+			return array();
+		}
+
 		return array_merge(
 			array(
 				'address'  => \get_option( 'woocommerce_store_address', '' ),
 				'city'     => \get_option( 'woocommerce_store_city', '' ),
 				'postcode' => \get_option( 'woocommerce_store_postcode', '' ),
-				'industry' => \get_option( 'nfd_store_industry', 'fashion-apparel-accessories' ),
+				'industry' => \get_option( 'nfd_store_industry', 'other' ), // default is set here to populate form
 			),
 			wc_get_base_location()
 		);
@@ -124,6 +128,10 @@ class StoreInfo {
 	 * @return array
 	 */
 	protected function get_countries() {
+		if ( ! function_exists( 'WC' ) ) {
+			return array();
+		}
+
 		return $this->format_localized_array( WC()->countries->get_countries() );
 	}
 
@@ -133,8 +141,11 @@ class StoreInfo {
 	 * @return array
 	 */
 	protected function get_states() {
-		$states = array_filter( wc()->countries->get_states() );
+		if ( ! function_exists( 'WC' ) ) {
+			return array();
+		}
 
+		$states = array_filter( wc()->countries->get_states() );
 		return array_map( array( $this, 'format_localized_array' ), $states );
 	}
 
