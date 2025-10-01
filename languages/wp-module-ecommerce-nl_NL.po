@@ -1611,43 +1611,43 @@ msgstr "Sla landinformatie op."
 msgid "Store industry info."
 msgstr "Branche-informatie opslaan."
 
-#: includes/StoreInfo.php:149
+#: includes/StoreInfo.php:160
 msgid "Fashion, apparel, and accessories"
 msgstr "Mode, kleding en accessoires"
 
-#: includes/StoreInfo.php:150
+#: includes/StoreInfo.php:161
 msgid "Health and beauty"
 msgstr "Gezondheid en schoonheid"
 
-#: includes/StoreInfo.php:151
+#: includes/StoreInfo.php:162
 msgid "Electronics and computers"
 msgstr "Elektronica en computers"
 
-#: includes/StoreInfo.php:152
+#: includes/StoreInfo.php:163
 msgid "Food and drink"
 msgstr "Eten en drinken"
 
-#: includes/StoreInfo.php:153
+#: includes/StoreInfo.php:164
 msgid "Home, furniture, and garden"
 msgstr "Huis, meubels en tuin"
 
-#: includes/StoreInfo.php:154
+#: includes/StoreInfo.php:165
 msgid "CBD and other hemp-derived products"
 msgstr "CBD en andere van hennep afgeleide producten"
 
-#: includes/StoreInfo.php:155
+#: includes/StoreInfo.php:166
 msgid "Education and learning"
 msgstr "Onderwijs en leren"
 
-#: includes/StoreInfo.php:156
+#: includes/StoreInfo.php:167
 msgid "Sports and recreation"
 msgstr "Sport en recreatie"
 
-#: includes/StoreInfo.php:157
+#: includes/StoreInfo.php:168
 msgid "Arts and crafts"
 msgstr "Kunst en ambacht"
 
-#: includes/StoreInfo.php:158
+#: includes/StoreInfo.php:169
 msgid "Other"
 msgstr "Ander"
 

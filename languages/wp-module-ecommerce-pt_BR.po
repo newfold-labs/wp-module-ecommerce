@@ -1610,43 +1610,43 @@ msgstr "Armazenar informações do país."
 msgid "Store industry info."
 msgstr "Armazene informações do setor."
 
-#: includes/StoreInfo.php:149
+#: includes/StoreInfo.php:160
 msgid "Fashion, apparel, and accessories"
 msgstr "Moda, vestuário e acessórios"
 
-#: includes/StoreInfo.php:150
+#: includes/StoreInfo.php:161
 msgid "Health and beauty"
 msgstr "Saúde e beleza"
 
-#: includes/StoreInfo.php:151
+#: includes/StoreInfo.php:162
 msgid "Electronics and computers"
 msgstr "Eletrônicos e computadores"
 
-#: includes/StoreInfo.php:152
+#: includes/StoreInfo.php:163
 msgid "Food and drink"
 msgstr "Comida e bebida"
 
-#: includes/StoreInfo.php:153
+#: includes/StoreInfo.php:164
 msgid "Home, furniture, and garden"
 msgstr "Casa, móveis e jardim"
 
-#: includes/StoreInfo.php:154
+#: includes/StoreInfo.php:165
 msgid "CBD and other hemp-derived products"
 msgstr "CBD e outros produtos derivados do cânhamo"
 
-#: includes/StoreInfo.php:155
+#: includes/StoreInfo.php:166
 msgid "Education and learning"
 msgstr "Educação e aprendizagem"
 
-#: includes/StoreInfo.php:156
+#: includes/StoreInfo.php:167
 msgid "Sports and recreation"
 msgstr "Esportes e recreação"
 
-#: includes/StoreInfo.php:157
+#: includes/StoreInfo.php:168
 msgid "Arts and crafts"
 msgstr "Artes e ofícios"
 
-#: includes/StoreInfo.php:158
+#: includes/StoreInfo.php:169
 msgid "Other"
 msgstr "Outro"
 
