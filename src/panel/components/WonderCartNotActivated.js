@@ -19,7 +19,7 @@ export function WonderCarNotActivated(props) {
     const {wonderCartStatus, wpModules} = props;
     const [isOpen, setIsOpen] = useState(false);
     const canAccessGlobalCTB = NewfoldRuntime.hasCapability("canAccessGlobalCTB");
-    const hasYithExtended = NewfoldRuntime.hasCapability("hasYithExtended");
+    const hasYithExtended = window.NewfoldRuntime?.solutions.solution === 'WP_SOLUTION_COMMERCE' ? true : NewfoldRuntime.hasCapability("hasYithExtended");
     const isEcommerce = NewfoldRuntime.hasCapability("isEcommerce");
     
     let [installWonderCart, isInstalling] = useInstallWonderCart({ wpModules });
