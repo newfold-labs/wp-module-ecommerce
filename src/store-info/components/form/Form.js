@@ -76,13 +76,13 @@ const Form = ({onFormSubmit, title = ''}) => {
 					</div>
 					<div className="nfd-store-info__form-field nfd-store-info__store-state-field">
 						{
-							storeInfo?.stateOptions[formData.country]
+							NFDStoreInfo?.stateOptions[formData.country]
 								? <SelectField
 									id="store-state"
 									name="state"
 									label={_x('State', 'Store info form field label.', 'wp-module-ecommerce')}
 									value={formData.state}
-									options={storeInfo.stateOptions[formData.country]}
+									options={NFDStoreInfo.stateOptions[formData.country]}
 									onChange={(val) => updateFormData('state', val)}
 								/>
 								: <TextField
@@ -100,7 +100,7 @@ const Form = ({onFormSubmit, title = ''}) => {
 							name="country"
 							label={_x('Country', 'Store info form field label.', 'wp-module-ecommerce')}
 							value={formData.country}
-							options={storeInfo?.countryOptions}
+							options={NFDStoreInfo?.countryOptions}
 							onChange={handleCountryChange}
 						/>
 					</div>
@@ -110,7 +110,7 @@ const Form = ({onFormSubmit, title = ''}) => {
 							name="industry"
 							label={_x('Industry', 'Store info form field label.', 'wp-module-ecommerce')}
 							value={formData.industry}
-							options={storeInfo?.industries}
+							options={NFDStoreInfo?.industries}
 							onChange={(val) => updateFormData('industry', val)}
 						/>
 					</div>
