@@ -8,10 +8,11 @@ export const saveStoreInfo = async ( data ) => {
 			data: data
 		} );
 
-	// Update store info with the response
+	// Update store info
 	Object.keys( data ).forEach( key => {
+		// if key is in data, and true in response, update NFDStoreInfo.data
 		if ( key in data && response[ key ] ) {
-			NFDStoreInfo.data[ key ] = response[ key ];
+			NFDStoreInfo.data[ key ] = data[ key ];
 		}
 	} );
 
