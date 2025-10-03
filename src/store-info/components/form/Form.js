@@ -74,6 +74,16 @@ const Form = ({onFormSubmit, title = ''}) => {
 							onChange={(e) => updateFormData('postcode', e.target.value)}
 						/>
 					</div>
+					<div className="nfd-store-info__form-field nfd-store-info__store-country-field">
+						<SelectField
+							id="store-country"
+							name="country"
+							label={_x('Country', 'Store info form field label.', 'wp-module-ecommerce')}
+							value={formData.country}
+							options={NFDStoreInfo?.countryOptions}
+							onChange={handleCountryChange}
+						/>
+					</div>
 					<div className="nfd-store-info__form-field nfd-store-info__store-state-field">
 						{
 							NFDStoreInfo?.stateOptions[formData.country]
@@ -93,16 +103,6 @@ const Form = ({onFormSubmit, title = ''}) => {
 									onChange={(e) => updateFormData('state', e.target.value)}
 								/>
 						}
-					</div>
-					<div className="nfd-store-info__form-field nfd-store-info__store-country-field">
-						<SelectField
-							id="store-country"
-							name="country"
-							label={_x('Country', 'Store info form field label.', 'wp-module-ecommerce')}
-							value={formData.country}
-							options={NFDStoreInfo?.countryOptions}
-							onChange={handleCountryChange}
-						/>
 					</div>
 					<div className="nfd-store-info__form-field nfd-store-info__store-industries">
 						<SelectField
