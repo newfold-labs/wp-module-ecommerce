@@ -18,9 +18,9 @@ export const ModalForm = () => {
 	useEffect(() => {
 
 		const handleButtonClick = (ev) => {
-			if (ev.target.hasAttribute('data-quick-add-product-trigger')) {
+			if ( ev.target.hasAttribute( 'data-quick-add-product-trigger' ) ) {
 				ev.preventDefault();
-				openModal()
+				! ev.target.hasAttribute( 'disabled' ) && openModal()
 			}
 		}
 
