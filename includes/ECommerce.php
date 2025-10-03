@@ -346,7 +346,7 @@ class ECommerce {
 	 * Load WP dependencies into the page.
 	 */
 	public function register_assets() {
-		$asset_file = NFD_ECOMMERCE_BUILD_DIR . 'panel/index.asset.php';
+		$asset_file = NFD_ECOMMERCE_BUILD_DIR . 'index.asset.php';
 		if ( file_exists( $asset_file ) ) {
 			$asset = require $asset_file;
 
@@ -360,7 +360,8 @@ class ECommerce {
 				self::$handle_i18n,
 				NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/assets/i18n-handle.js',
 				array(),
-				$asset['version']
+				$asset['version'],
+				true
 			);
 			wp_enqueue_script( self::$handle_i18n );
 
@@ -571,7 +572,7 @@ class ECommerce {
 	 * @return void
 	 */
 	public function hide_columns() {
-		if ( 1 == get_option( 'onboarding_experience_level' ) ) {
+		if ( 1 === (int) get_option( 'onboarding_experience_level' ) ) {
 			if ( ! get_user_meta( get_current_user_id(), 'manageedit-pagecolumnshidden' ) ) {
 				update_user_meta( get_current_user_id(), 'manageedit-pagecolumnshidden', array( 'author', 'comments', 'date', 'wpseo-score', 'wpseo-score-readability', 'wpseo-title', 'wpseo-metadesc', 'wpseo-focuskw', 'wpseo-links' ) );
 			}
@@ -657,7 +658,7 @@ class ECommerce {
 		global $current_screen;
 
 		$post_type = $current_screen->post_type ?? get_post_type();
-		return 1 == get_option( 'onboarding_experience_level' ) && in_array( $post_type, array( 'post', 'page' ), true );
+		return 1 === (int) get_option( 'onboarding_experience_level' ) && in_array( $post_type, array( 'post', 'page' ), true );
 	}
 
 	/**
@@ -709,7 +710,6 @@ class ECommerce {
 			$background_color = '#E8ECF0';
 		}
 		echo '<span style="background-color: ' . esc_attr( $background_color ) . '; ' . esc_attr( $common_style ) . '">' . esc_html( $label_text ) . '</span><br>' . esc_html( __( 'Last Modified', 'wp-module-ecommerce' ) ) . ' : ' . esc_html( mysql2date( 'Y/m/d \a\t g:i a', $post_date ) );
-
 	}
 
 	/**
