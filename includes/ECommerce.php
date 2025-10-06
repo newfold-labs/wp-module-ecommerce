@@ -6,8 +6,8 @@ use NewfoldLabs\WP\Module\ECommerce\Data\Brands;
 use NewfoldLabs\WP\Module\ECommerce\Partials\CaptiveFlow;
 use NewfoldLabs\WP\Module\ECommerce\Partials\WooCommerceBacklink;
 use NewfoldLabs\WP\Module\Installer\Services\PluginInstaller;
+use NewfoldLabs\WP\Module\Onboarding\Data\Options;
 use NewfoldLabs\WP\ModuleLoader\Container;
-use NewfoldLabs\WP\Module\Onboarding\Data\Services\FlowService;
 use NewfoldLabs\WP\Module\Data\SiteCapabilities;
 
 /**
@@ -86,7 +86,6 @@ class ECommerce {
 		$this->container = $container;
 		// Module functionality goes here
 		add_action( 'init', array( $this, 'load_php_textdomain' ) );
-		add_action( 'toplevel_page_' . $container->plugin()->id, array( $this, 'load_experience_level' ) );
 		add_action( 'admin_init', array( $this, 'maybe_do_dash_redirect' ) );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_assets' ) );
@@ -183,17 +182,18 @@ class ECommerce {
 	}
 
 	/**
-	 * Update the experience level
+	 * Get the experience level
 	 */
-	public static function load_experience_level() {
-		update_option( 'onboarding_experience_level', FlowService::get_experience_level() );
+	public static function get_experience_level() {
+		$option = get_option( Options::get_option_name( 'site_info' ), [] );
+		return $option['experience_level'] ?? 'advanced';
 	}
 
 	/**
 	 * Fetch the can onboarding restart option
 	 */
 	public static function get_can_onboarding_restart() {
-		return get_option( 'nfd_module_onboarding_can_restart', false );
+		return get_option( Options::get_option_name( 'can_restart' ), false );
 	}
 
 	/**
@@ -404,7 +404,7 @@ class ECommerce {
 	 */
 	public function register_textdomains() {
 		$MODULE_LANG_DIR  = $this->container->plugin()->dir . 'vendor/newfold-labs/wp-module-ecommerce/languages';
-		$current_language = get_locale();
+
 		\load_textdomain(
 			'wp-module-ecommerce',
 			$MODULE_LANG_DIR
@@ -451,9 +451,9 @@ class ECommerce {
 	 * Add a Promotion button under Add New product tab
 	 */
 	public function custom_product_general_options() {
-		global $post;
 		$redirect_url = apply_filters( 'nfd_build_url', admin_url( 'admin.php?page=' . $this->container->plugin()->id . '#/store/sales_discounts' ) );
-		wp_enqueue_style( 'Create_a_Promotion', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Promotions.css', array(), '1.0', 'all' );
+		wp_enqueue_style( 'Create_a_Promotion', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Promotions.css', array(), '1.0' );
+
 		echo '<div class="options_group">
             <p class="form-field custom-button-field">
 						  <a id="Create_a_Promotion" href="' . esc_url( $redirect_url ) . '" class="promotion">' . esc_html( __( 'Create a Promotion', 'wp-module-ecommerce' ) ) . '</a>
@@ -481,7 +481,7 @@ class ECommerce {
 	 */
 	public function promotion_product_data() {
 		$redirect_url = apply_filters( 'nfd_build_url', 'admin.php?page=' . $this->container->plugin()->id . '#/store/sales_discounts' );
-		global $post;
+
 		echo '<div id="promotion_product_data" class="panel woocommerce_options_panel hidden"></div>';
 		\wp_enqueue_script( 'nfd_promotion_product_data', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Promotions.js', array( 'jquery' ), '1.0', true );
 		$Promotion_data = array(
@@ -572,7 +572,7 @@ class ECommerce {
 	 * @return void
 	 */
 	public function hide_columns() {
-		if ( 1 === (int) get_option( 'onboarding_experience_level' ) ) {
+		if ( 'beginner' === self::get_experience_level() ) {
 			if ( ! get_user_meta( get_current_user_id(), 'manageedit-pagecolumnshidden' ) ) {
 				update_user_meta( get_current_user_id(), 'manageedit-pagecolumnshidden', array( 'author', 'comments', 'date', 'wpseo-score', 'wpseo-score-readability', 'wpseo-title', 'wpseo-metadesc', 'wpseo-focuskw', 'wpseo-links' ) );
 			}
@@ -658,7 +658,7 @@ class ECommerce {
 		global $current_screen;
 
 		$post_type = $current_screen->post_type ?? get_post_type();
-		return 1 === (int) get_option( 'onboarding_experience_level' ) && in_array( $post_type, array( 'post', 'page' ), true );
+		return 'beginner' === self::get_experience_level() && in_array( $post_type, array( 'post', 'page' ), true );
 	}
 
 	/**
@@ -744,9 +744,7 @@ class ECommerce {
 	 * On login, it checks whether to show the migration steps, post migration to user
 	 */
 	public function show_store_setup() {
-		$site_url         = get_option( 'siteurl', false );
-		$webserverUpdated = get_option( 'update_site_server_clicked', false );
-
+		$site_url = get_option( 'siteurl', false );
 		$brand = $this->container->plugin()->id;
 
 		if ( $this->check_url_match( $brand, $site_url ) ) {
