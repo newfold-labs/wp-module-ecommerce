@@ -1611,194 +1611,194 @@ msgstr "Memorizza le informazioni sul paese."
 msgid "Store industry info."
 msgstr "Memorizza le informazioni sul settore."
 
-#: includes/StoreInfo.php:149
+#: includes/StoreInfo.php:160
 msgid "Fashion, apparel, and accessories"
 msgstr "Moda, abbigliamento e accessori"
 
-#: includes/StoreInfo.php:150
+#: includes/StoreInfo.php:161
 msgid "Health and beauty"
 msgstr "Salute e bellezza"
 
-#: includes/StoreInfo.php:151
+#: includes/StoreInfo.php:162
 msgid "Electronics and computers"
 msgstr "Elettronica e computer"
 
-#: includes/StoreInfo.php:152
+#: includes/StoreInfo.php:163
 msgid "Food and drink"
 msgstr "Cibo e bevande"
 
-#: includes/StoreInfo.php:153
+#: includes/StoreInfo.php:164
 msgid "Home, furniture, and garden"
 msgstr "Casa, mobili e giardino"
 
-#: includes/StoreInfo.php:154
+#: includes/StoreInfo.php:165
 msgid "CBD and other hemp-derived products"
 msgstr "CBD e altri prodotti derivati dalla canapa"
 
-#: includes/StoreInfo.php:155
+#: includes/StoreInfo.php:166
 msgid "Education and learning"
 msgstr "Istruzione e apprendimento"
 
-#: includes/StoreInfo.php:156
+#: includes/StoreInfo.php:167
 msgid "Sports and recreation"
 msgstr "Sport e ricreazione"
 
-#: includes/StoreInfo.php:157
+#: includes/StoreInfo.php:168
 msgid "Arts and crafts"
 msgstr "Arti e mestieri"
 
-#: includes/StoreInfo.php:158
+#: includes/StoreInfo.php:169
 msgid "Other"
 msgstr "Altro"
 
 #: includes/QuickAddProduct.php:174
 msgid "Digital products or services"
-msgstr ""
+msgstr "Prodotti o servizi digitali"
 
 #: includes/QuickAddProduct.php:175
 msgid "EX: eBooks, stock photos, software, templates, podcasts, apps, videos, etc. No physical products or shipping management."
-msgstr ""
+msgstr "Ad esempio: eBook, foto d'archivio, software, modelli, podcast, app, video, ecc. Nessun prodotto fisico o gestione delle spedizioni."
 
 #: includes/QuickAddProduct.php:179
 msgid "Physical products"
-msgstr ""
+msgstr "Prodotti fisici"
 
 #: includes/QuickAddProduct.php:180
 msgid "Ex: clothing, furniture, accessories — any type of product that needs to be physically shipped to your customers."
-msgstr ""
+msgstr "Ad esempio: abbigliamento, mobili, accessori, qualsiasi tipo di prodotto che deve essere spedito fisicamente ai tuoi clienti."
 
 #: includes/QuickAddProduct.php:198
 msgid "Bookings/Appointments"
-msgstr ""
+msgstr "Prenotazioni/Appuntamenti"
 
 #: includes/QuickAddProduct.php:199
 msgid "Ex: apartment bookings, rental of products, medical appointments, personal training, etc — any type of bookable product or service."
-msgstr ""
+msgstr "Es: prenotazioni di appartamenti, noleggio di prodotti, visite mediche, personal training, ecc. - qualsiasi tipo di prodotto o servizio prenotabile."
 
 #: includes/QuickAddProduct.php:203
 msgid "Subscription"
-msgstr ""
+msgstr "Abbonamento"
 
 #: includes/QuickAddProduct.php:204
 msgid "Ex: a monthly subscription box, a magazine subscription, streaming service like Netflix, etc - any type of product your customer pays for on a recurring basis."
-msgstr ""
+msgstr "Ad esempio, un abbonamento mensile, un abbonamento a una rivista, un servizio di streaming come Netflix, ecc., qualsiasi tipo di prodotto che il cliente paga su base ricorrente."
 
 #: build/quick-add-product/index.js:1
 msgid "Set product image"
-msgstr ""
+msgstr "Imposta l'immagine del prodotto"
 
 #: build/quick-add-product/index.js:1
 msgid "Use as product image"
-msgstr ""
+msgstr "Utilizzare come immagine del prodotto"
 
 #: build/quick-add-product/index.js:1
 msgid "added to your product catalog."
-msgstr ""
+msgstr "aggiunto al tuo catalogo prodotti."
 
 #: build/quick-add-product/index.js:1
 msgid "View product"
-msgstr ""
+msgstr "Vedi prodotto"
 
 #: build/quick-add-product/index.js:1
 msgid "Edit product details"
-msgstr ""
+msgstr "Modifica i dettagli del prodotto"
 
 #: build/quick-add-product/index.js:1
 msgid "Add another product"
-msgstr ""
+msgstr "Aggiungi un altro prodotto"
 
 #: build/quick-add-product/index.js:1
 msgctxt "Quick add product modal title"
 msgid "Quick Add Product"
-msgstr ""
+msgstr "Aggiunta rapida prodotto"
 
 #: build/quick-add-product/index.js:1
 msgctxt "Quick Add Product form field label."
 msgid "Product Name"
-msgstr ""
+msgstr "Nome prodotto (etichetta del campo del modulo di aggiunta rapida del prodotto)."
 
 #: build/quick-add-product/index.js:1
 #, js-format
 msgctxt "Quick Add Product form field label. %s is the currency symbol."
 msgid "Price (%s)"
-msgstr ""
+msgstr "Prezzo (%s)"
 
 #: build/quick-add-product/index.js:1
 msgctxt "Quick Add Product form field label."
 msgid "Categories"
-msgstr ""
+msgstr "Categorie"
 
 #: build/quick-add-product/index.js:1
 msgctxt "Quick Add Product form field label."
 msgid "Image"
-msgstr ""
+msgstr "Immagine"
 
 #: build/quick-add-product/index.js:1
 msgctxt "Quick add product modal button label"
 msgid "Next"
-msgstr ""
+msgstr "Avanti"
 
 #: build/quick-add-product/index.js:1
 msgctxt "Select product section title"
 msgid "What are you planning to sell or offer?"
-msgstr ""
+msgstr "Cosa hai intenzione di vendere o offrire?"
 
 #: build/quick-add-product/index.js:1
 msgctxt "Select product section description"
 msgid "Pick one or more options based on the type of product or service you want to offer your customers."
-msgstr ""
+msgstr "Scegli una o più opzioni in base al tipo di prodotto o servizio che vuoi offrire ai tuoi clienti."
 
 #: build/quick-add-product/index.js:1
 msgctxt "Modal button label."
 msgid "Quick add product"
-msgstr ""
+msgstr "Aggiunta rapida del prodotto"
 
 #: build/store-info/index.js:1
 msgctxt "Store info modal title"
 msgid "Store details"
-msgstr ""
+msgstr "Dettagli del negozio"
 
 #: build/store-info/index.js:1
 msgctxt "Store info form field label."
 msgid "Store Address"
-msgstr ""
+msgstr "Indirizzo negozio"
 
 #: build/store-info/index.js:1
 msgctxt "Store info form field label."
 msgid "City"
-msgstr ""
+msgstr "Città (etichetta del campo del modulo delle informazioni sul negozio)."
 
 #: build/store-info/index.js:1
 msgctxt "Store info form field label."
 msgid "Postcode"
-msgstr ""
+msgstr "Codice postale"
 
 #: build/store-info/index.js:1
 msgctxt "Store info form field label."
 msgid "State"
-msgstr ""
+msgstr "Stato (etichetta del campo del modulo delle informazioni del negozio)."
 
 #: build/store-info/index.js:1
 msgctxt "Store info form field label."
 msgid "Country"
-msgstr ""
+msgstr "Paese (etichetta del campo del modulo delle informazioni sul negozio)."
 
 #: build/store-info/index.js:1
 msgctxt "Store info form field label."
 msgid "Industry"
-msgstr ""
+msgstr "Settore"
 
 #: build/store-info/index.js:1
 msgctxt "Store info form submit button label"
 msgid "Save"
-msgstr ""
+msgstr "Salva"
 
 #: build/quick-add-product/index.js:1
 msgctxt "Quick Add Product form field label."
 msgid "Short Description"
-msgstr ""
+msgstr "Breve descrizione"
 
 #: build/quick-add-product/index.js:1
 msgctxt "Quick Add Product form submit button label"
 msgid "Save product"
-msgstr ""
+msgstr "Salva prodotto"

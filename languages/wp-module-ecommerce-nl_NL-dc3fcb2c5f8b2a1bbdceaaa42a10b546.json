@@ -11,28 +11,28 @@
                 "plural-forms": "nplurals=2; plural=(n != 1);"
             },
             "Store info modal title\u0004Store details": [
-                ""
+                "Winkeldetails"
             ],
             "Store info form field label.\u0004Store Address": [
-                ""
+                "Winkeladres"
             ],
             "Store info form field label.\u0004City": [
-                ""
+                "Plaats"
             ],
             "Store info form field label.\u0004Postcode": [
-                ""
+                "Postcode"
             ],
             "Store info form field label.\u0004State": [
-                ""
+                "Status"
             ],
             "Store info form field label.\u0004Country": [
-                ""
+                "Land"
             ],
             "Store info form field label.\u0004Industry": [
-                ""
+                "Industrie"
             ],
             "Store info form submit button label\u0004Save": [
-                ""
+                "Opslaan"
             ]
         }
     }

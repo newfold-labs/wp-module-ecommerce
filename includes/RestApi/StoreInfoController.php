@@ -7,7 +7,7 @@ use NewfoldLabs\WP\Module\ECommerce\Permissions;
 /**
  * Store info Rest API controller.
  */
-class StoreInfoController extends \WC_REST_Data_Controller {
+class StoreInfoController extends \WP_REST_Controller {
 
 	/**
 	 * The namespace of this controller's route.

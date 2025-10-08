@@ -11,28 +11,28 @@
                 "plural-forms": "nplurals=2; plural=(n != 1);"
             },
             "Store info modal title\u0004Store details": [
-                ""
+                "Details zum Shop"
             ],
             "Store info form field label.\u0004Store Address": [
-                ""
+                "Gesch\u00e4ftsadresse"
             ],
             "Store info form field label.\u0004City": [
-                ""
+                "Ort"
             ],
             "Store info form field label.\u0004Postcode": [
-                ""
+                "Postleitzahl"
             ],
             "Store info form field label.\u0004State": [
-                ""
+                "Status"
             ],
             "Store info form field label.\u0004Country": [
-                ""
+                "Land"
             ],
             "Store info form field label.\u0004Industry": [
-                ""
+                "Branche"
             ],
             "Store info form submit button label\u0004Save": [
-                ""
+                "Speichern"
             ]
         }
     }

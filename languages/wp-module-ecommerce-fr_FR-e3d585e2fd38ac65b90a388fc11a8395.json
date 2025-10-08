@@ -11,55 +11,55 @@
                 "plural-forms": "nplurals=2; plural=(n > 1);"
             },
             "Set product image": [
-                ""
+                "D\u00e9finir l\u2019image du produit"
             ],
             "Use as product image": [
-                ""
+                "Utilisation comme image de produit"
             ],
             "added to your product catalog.": [
-                ""
+                "ajout\u00e9s \u00e0 votre catalogue de produits."
             ],
             "View product": [
-                ""
+                "Voir le produit"
             ],
             "Edit product details": [
-                ""
+                "Modifier les d\u00e9tails du produit"
             ],
             "Add another product": [
-                ""
+                "Ajouter un autre produit"
             ],
             "Quick add product modal title\u0004Quick Add Product": [
-                ""
+                "Ajout rapide de produit"
             ],
             "Quick Add Product form field label.\u0004Product Name": [
-                ""
+                "Nom du produit"
             ],
             "Quick Add Product form field label. %s is the currency symbol.\u0004Price (%s)": [
-                ""
+                "Prix (\u00a0%s)"
             ],
             "Quick Add Product form field label.\u0004Categories": [
-                ""
+                "Cat\u00e9gories"
             ],
             "Quick Add Product form field label.\u0004Image": [
-                ""
+                "Image"
             ],
             "Quick add product modal button label\u0004Next": [
-                ""
+                "Suivant"
             ],
             "Select product section title\u0004What are you planning to sell or offer?": [
-                ""
+                "Qu\u2019envisagez-vous de vendre ou d\u2019offrir ?"
             ],
             "Select product section description\u0004Pick one or more options based on the type of product or service you want to offer your customers.": [
-                ""
+                "Choisissez une ou plusieurs options en fonction du type de produit ou de service que vous souhaitez offrir \u00e0 vos clients."
             ],
             "Modal button label.\u0004Quick add product": [
-                ""
+                "Ajout rapide d\u2019un produit"
             ],
             "Quick Add Product form field label.\u0004Short Description": [
-                ""
+                "Br\u00e8ve description"
             ],
             "Quick Add Product form submit button label\u0004Save product": [
-                ""
+                "Enregistrer le produit"
             ]
         }
     }

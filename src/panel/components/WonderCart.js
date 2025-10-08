@@ -17,8 +17,9 @@ export function WonderCart(props) {
     { refreshInterval: 30 * 1000 }
   );  
   const canAccessGlobalCTB = NewfoldRuntime.hasCapability("canAccessGlobalCTB");
-  const hasYithExtended = NewfoldRuntime.hasCapability("hasYithExtended");
-  
+  const hasYithExtended = window.NewfoldRuntime?.solutions.solution === 'WP_SOLUTION_COMMERCE' ? true : NewfoldRuntime.hasCapability("hasYithExtended");
+  const wonderCart = window.NewfoldRuntime.solutions.wondercart;
+
   if (wonderCartStatus.isLoading) {
     return <span />;
   }
@@ -31,7 +32,7 @@ export function WonderCart(props) {
     <>
       {
         hasYithExtended && canAccessGlobalCTB ? 
-        !wonderCartStatus.data?.isInstalled ? <WonderCarNotActivated wonderCartStatus={wonderCartStatus} {...props} /> : null
+         wonderCart && !wonderCart?.isActive ? <WonderCarNotActivated wonderCartStatus={wonderCartStatus} {...props} /> : null
         : 
         <WonderCartNonEcommerce />}
     </>

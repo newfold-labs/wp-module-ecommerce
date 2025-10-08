@@ -2,12 +2,12 @@
 import {useState} from "react";
 import {_x} from "@wordpress/i18n";
 import PropTypes from 'prop-types';
-import {TextField, SelectField, Button, Spinner, Title} from "@newfold/ui-component-library";
+import {TextField, SelectField, Button, Title} from "@newfold/ui-component-library";
 import {saveStoreInfo} from "../../functions";
 
 const Form = ({onFormSubmit, title = ''}) => {
 
-	const [formData, setFormData] = useState(storeInfo.data);
+	const [formData, setFormData] = useState(NFDStoreInfo.data);
 	const [loading, setLoading] = useState(false);
 
 	const updateFormData = (key, value) => {
@@ -74,15 +74,25 @@ const Form = ({onFormSubmit, title = ''}) => {
 							onChange={(e) => updateFormData('postcode', e.target.value)}
 						/>
 					</div>
+					<div className="nfd-store-info__form-field nfd-store-info__store-country-field">
+						<SelectField
+							id="store-country"
+							name="country"
+							label={_x('Country', 'Store info form field label.', 'wp-module-ecommerce')}
+							value={formData.country}
+							options={NFDStoreInfo?.countryOptions}
+							onChange={handleCountryChange}
+						/>
+					</div>
 					<div className="nfd-store-info__form-field nfd-store-info__store-state-field">
 						{
-							storeInfo?.stateOptions[formData.country]
+							NFDStoreInfo?.stateOptions[formData.country]
 								? <SelectField
 									id="store-state"
 									name="state"
 									label={_x('State', 'Store info form field label.', 'wp-module-ecommerce')}
 									value={formData.state}
-									options={storeInfo.stateOptions[formData.country]}
+									options={NFDStoreInfo.stateOptions[formData.country]}
 									onChange={(val) => updateFormData('state', val)}
 								/>
 								: <TextField
@@ -94,23 +104,13 @@ const Form = ({onFormSubmit, title = ''}) => {
 								/>
 						}
 					</div>
-					<div className="nfd-store-info__form-field nfd-store-info__store-country-field">
-						<SelectField
-							id="store-country"
-							name="country"
-							label={_x('Country', 'Store info form field label.', 'wp-module-ecommerce')}
-							value={formData.country}
-							options={storeInfo?.countryOptions}
-							onChange={handleCountryChange}
-						/>
-					</div>
 					<div className="nfd-store-info__form-field nfd-store-info__store-industries">
 						<SelectField
 							id="store-industry"
 							name="industry"
 							label={_x('Industry', 'Store info form field label.', 'wp-module-ecommerce')}
 							value={formData.industry}
-							options={storeInfo?.industries}
+							options={NFDStoreInfo?.industries}
 							onChange={(val) => updateFormData('industry', val)}
 						/>
 					</div>
