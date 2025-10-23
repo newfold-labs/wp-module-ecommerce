@@ -16,7 +16,7 @@ msgstr ""
 msgid "eCommerce"
 msgstr ""
 
-#: includes/ECommerce.php:122
+#: includes/ECommerce.php:121
 msgid "Reference to page category"
 msgstr ""
 
@@ -30,81 +30,81 @@ msgstr ""
 msgid "NFD eCommerce Options"
 msgstr ""
 
-#: includes/ECommerce.php:441
+#: includes/ECommerce.php:442
 msgid "Promotion product Page"
 msgstr ""
 
-#: includes/ECommerce.php:442
-#: includes/ECommerce.php:470
+#: includes/ECommerce.php:443
+#: includes/ECommerce.php:471
 msgid "Promotions"
 msgstr ""
 
-#: includes/ECommerce.php:458
-#: includes/ECommerce.php:491
+#: includes/ECommerce.php:459
+#: includes/ECommerce.php:492
 msgid "Create a Promotion"
 msgstr ""
 
-#: includes/ECommerce.php:488
+#: includes/ECommerce.php:489
 msgid "Boost Your Online Store Sales"
 msgstr ""
 
-#: includes/ECommerce.php:489
+#: includes/ECommerce.php:490
 msgid "Maximize your sales by creating effective"
 msgstr ""
 
-#: includes/ECommerce.php:490
+#: includes/ECommerce.php:491
 msgid "promotions and campaigns like:"
 msgstr ""
 
-#: includes/ECommerce.php:492
+#: includes/ECommerce.php:493
 msgid "Free"
 msgstr ""
 
-#: includes/ECommerce.php:493
+#: includes/ECommerce.php:494
 msgid "Shipping"
 msgstr ""
 
-#: includes/ECommerce.php:494
+#: includes/ECommerce.php:495
 msgid "Buy One"
 msgstr ""
 
-#: includes/ECommerce.php:495
+#: includes/ECommerce.php:496
 msgid "Get One"
 msgstr ""
 
-#: includes/ECommerce.php:496
+#: includes/ECommerce.php:497
 msgid "Free Gift"
 msgstr ""
 
-#: includes/ECommerce.php:497
+#: includes/ECommerce.php:498
 msgid "in Cart"
 msgstr ""
 
-#: includes/ECommerce.php:498
+#: includes/ECommerce.php:499
 msgid "Frequently"
 msgstr ""
 
-#: includes/ECommerce.php:499
+#: includes/ECommerce.php:500
 msgid "Bought Together"
 msgstr ""
 
-#: includes/ECommerce.php:659
+#: includes/ECommerce.php:672
 msgid "Status"
 msgstr ""
 
-#: includes/ECommerce.php:683
+#: includes/ECommerce.php:699
 msgid "Published - Public"
 msgstr ""
 
-#: includes/ECommerce.php:683
+#: includes/ECommerce.php:699
 msgid "Published - Password Protected"
 msgstr ""
 
-#: includes/ECommerce.php:686
+#: includes/ECommerce.php:702
 msgid "Published - Private"
 msgstr ""
 
-#: includes/ECommerce.php:696
+#: includes/ECommerce.php:712
 msgid "Last Modified"
 msgstr ""
 
@@ -1766,12 +1766,12 @@ msgstr ""
 
 #: build/store-info/index.js:1
 msgctxt "Store info form field label."
-msgid "State"
+msgid "Country"
 msgstr ""
 
 #: build/store-info/index.js:1
 msgctxt "Store info form field label."
-msgid "Country"
+msgid "State"
 msgstr ""
 
 #: build/store-info/index.js:1
