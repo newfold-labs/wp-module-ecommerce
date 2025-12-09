@@ -90,23 +90,23 @@ msgstr "Freqüentemente"
 msgid "Bought Together"
 msgstr "Comprados juntos"
 
-#: includes/ECommerce.php:636
+#: includes/ECommerce.php:640
 msgid "Status"
 msgstr "Situação"
 
-#: includes/ECommerce.php:663
+#: includes/ECommerce.php:667
 msgid "Published - Public"
 msgstr "Publicado - Público"
 
-#: includes/ECommerce.php:663
+#: includes/ECommerce.php:667
 msgid "Published - Password Protected"
 msgstr "Publicado - Protegido por senha"
 
-#: includes/ECommerce.php:666
+#: includes/ECommerce.php:670
 msgid "Published - Private"
 msgstr "Publicado - Privado"
 
-#: includes/ECommerce.php:676
+#: includes/ECommerce.php:680
 msgid "Last Modified"
 msgstr "Última modificação"
 
