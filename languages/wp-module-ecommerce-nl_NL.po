@@ -90,23 +90,23 @@ msgstr "Vaak"
 msgid "Bought Together"
 msgstr "Gekocht Samen"
 
-#: includes/ECommerce.php:636
+#: includes/ECommerce.php:640
 msgid "Status"
 msgstr "status"
 
-#: includes/ECommerce.php:663
+#: includes/ECommerce.php:667
 msgid "Published - Public"
 msgstr "Gepubliceerd - Openbaar"
 
-#: includes/ECommerce.php:663
+#: includes/ECommerce.php:667
 msgid "Published - Password Protected"
 msgstr "Gepubliceerd - Wachtwoord beschermd"
 
-#: includes/ECommerce.php:666
+#: includes/ECommerce.php:670
 msgid "Published - Private"
 msgstr "Gepubliceerd - Privé"
 
-#: includes/ECommerce.php:676
+#: includes/ECommerce.php:680
 msgid "Last Modified"
 msgstr "Laatst gewijzigd"
 
