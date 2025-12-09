@@ -14,26 +14,6 @@ wpScriptsConfig.plugins = wpScriptsConfig.plugins.filter(
 	(plugin) => !(plugin instanceof MiniCssExtractPlugin || plugin instanceof RtlCssPlugin)
 );
 
-// Build modules.
-const legacyModules = [
-	merge(
-		wpScriptsConfig,
-		{
-			entry : {
-				"panel": "./src/panel/index.js",
-			},
-			output : {
-				path: path.resolve( process.cwd(), './build' ),
-				filename : "./index.js",
-				library: {
-					type: 'commonjs'
-				},
-				clean: false,
-			},
-		}
-	),
-];
-
 const modules = [ 'quick-add-product', 'store-info' ].map(
 	(module) => merge(
 		wpScriptsConfig,
@@ -68,6 +48,5 @@ const modules = [ 'quick-add-product', 'store-info' ].map(
 );
 
 module.exports = [
-	...legacyModules,
 	...modules
 ];

@@ -88,7 +88,6 @@ class ECommerce {
 		add_action( 'init', array( $this, 'load_php_textdomain' ) );
 		add_action( 'admin_init', array( $this, 'maybe_do_dash_redirect' ) );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
-		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_assets' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_textdomains' ) );
 		add_action( 'before_woocommerce_init', array( $this, 'hide_woocommerce_set_up' ) );
 		add_action( 'before_woocommerce_init', array( $this, 'custom_payment_gateways_order' ) );
@@ -340,37 +339,6 @@ class ECommerce {
 				'default'      => wp_is_block_theme(), // Set default value based on current theme
 			)
 		);
-	}
-
-	/**
-	 * Load WP dependencies into the page.
-	 */
-	public function register_assets() {
-		$asset_file = NFD_ECOMMERCE_BUILD_DIR . 'index.asset.php';
-		if ( file_exists( $asset_file ) ) {
-			$asset = require $asset_file;
-
-			// We load ecommerce module script and components directly
-			// as an npmjs package in each brand plugin app.
-			// Therefore, we don't need to load the `build/index.js` file.
-			// The file is not built for browsers to read anyway.
-			// Though, we do need to load a script to set translations.
-			// Translations are detected in the brand plugin app where the js package is consumed.
-			wp_register_script(
-				self::$handle_i18n,
-				NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/assets/i18n-handle.js',
-				array(),
-				$asset['version'],
-				true
-			);
-			wp_enqueue_script( self::$handle_i18n );
-
-			wp_set_script_translations(
-				self::$handle_i18n,
-				'wp-module-ecommerce',
-				NFD_ECOMMERCE_DIR . '/languages'
-			);
-		}
 	}
 
 	/**
@@ -637,7 +605,6 @@ class ECommerce {
 				( $this->container->plugin()->id === 'bluehost' && ( $canAccessGlobalCTB || $hasYithExtended ) )
 				|| ( $this->container->plugin()->id === 'hostgator' && $hasYithExtended )
 		) {
-			// add_filter( 'admin_menu', array( $this, 'custom_add_promotion_menu_item' ) );
 			add_action( 'woocommerce_product_options_general_product_data', array( $this, 'custom_product_general_options' ) );
 			add_action( 'woocommerce_product_options_related', array( $this, 'custom_product_general_options' ) );
 			add_action( 'woocommerce_product_data_tabs', array( $this, 'custom_product_write_panel_tabs' ) );
