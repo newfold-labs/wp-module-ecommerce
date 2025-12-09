@@ -93,7 +93,7 @@ class ECommerce {
 		add_action( 'before_woocommerce_init', array( $this, 'custom_payment_gateways_order' ) );
 		add_action( 'before_woocommerce_init', array( $this, 'dismiss_woo_payments_cta' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
-		add_action( 'activated_plugin', array( $this, 'detect_plugin_activation' ), 10, 1 );
+		// add_action( 'activated_plugin', array( $this, 'detect_plugin_activation' ), 10, 1 );
 		add_action( 'admin_init', array( $this, 'hide_columns' ) );
 		add_filter( 'manage_posts_columns', array( $this, 'custom_status_column' ), 10, 1 );
 		add_action( 'manage_posts_custom_column', array( $this, 'custom_status_column_content' ), 10, 2 );
@@ -184,7 +184,7 @@ class ECommerce {
 	 * Get the experience level
 	 */
 	public static function get_experience_level() {
-		$option = get_option( Options::get_option_name( 'site_info' ), [] );
+		$option = get_option( Options::get_option_name( 'site_info' ), array() );
 		return $option['experience_level'] ?? 'advanced';
 	}
 
@@ -403,7 +403,7 @@ class ECommerce {
 
 	/**
 	 * Add a Promotion button under Add New product tab
-	 * 
+	 *
 	 * TODO - Migrate to new Sales & Promotions plugin
 	 */
 	public function custom_product_general_options() {
@@ -419,7 +419,7 @@ class ECommerce {
 
 	/**
 	 * Add a Custom tab (Prmotions tab) button added below Advance tab
-	 * 
+	 *
 	 * TODO - Migrate to new Sales & Promotions plugin
 	 *
 	 * @param array $tabs The tabs.
@@ -436,7 +436,7 @@ class ECommerce {
 
 	/**
 	 * Content on click of a Custom tab (Promotions tab) button added below Advance tab
-	 * 
+	 *
 	 * TODO - Migrate to new Sales & Promotions plugin
 	 */
 	public function promotion_product_data() {
@@ -465,7 +465,7 @@ class ECommerce {
 
 	/**
 	 * Change icon for a Custom tab (Promotions tab) button added below Advance tab
-	 * 
+	 *
 	 * TODO - Migrate to new Sales & Promotions plugin
 	 */
 	public function action_admin_head() {
@@ -510,24 +510,28 @@ class ECommerce {
 
 	/**
 	 *  Activates yith payment plugins (PayPal, Stripe) when woocommerce is activated
-	 * 
-	 * TODO - Reinstate with update to new Payments & Shipping plugin
 	 *
 	 * @param string $plugin Path to the plugin file relative
 	 *
 	 * @return void
 	 */
 	public function detect_plugin_activation( $plugin ) {
-		// $plugin_slugs = array(
-		// 	'nfd_slug_yith_paypal_payments_for_woocommerce',
-		// 	'nfd_slug_yith_stripe_payments_for_woocommerce',
-		// );
-		// if ( 'woocommerce/woocommerce.php' === $plugin ) {
-		// 	foreach ( $plugin_slugs as $plugin ) {
-		// 		PluginInstaller::install( $plugin, true );
-		// 	}
-		// }
+		/*
+		* Commented out to avoid installing the plugins again when the module is activated.
+		* TODO - Reinstate with update to new Payments & Shipping plugin
+
+		$plugin_slugs = array(
+			'nfd_slug_yith_paypal_payments_for_woocommerce',
+			'nfd_slug_yith_stripe_payments_for_woocommerce',
+		);
+		if ( 'woocommerce/woocommerce.php' === $plugin ) {
+			foreach ( $plugin_slugs as $plugin ) {
+				PluginInstaller::install( $plugin, true );
+			}
+		}
+		*/
 		// do nothing for now
+		return;
 	}
 
 	/**
@@ -709,7 +713,7 @@ class ECommerce {
 	 */
 	public function show_store_setup() {
 		$site_url = get_option( 'siteurl', false );
-		$brand = $this->container->plugin()->id;
+		$brand    = $this->container->plugin()->id;
 
 		if ( $this->check_url_match( $brand, $site_url ) ) {
 			update_option( 'nfd_show_migration_steps', false );
