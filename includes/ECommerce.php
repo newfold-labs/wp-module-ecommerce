@@ -542,21 +542,24 @@ class ECommerce {
 
 	/**
 	 *  Activates yith payment plugins (PayPal, Stripe) when woocommerce is activated
+	 * 
+	 * TODO - Reinstate with update to new Payments & Shipping plugin
 	 *
 	 * @param string $plugin Path to the plugin file relative
 	 *
 	 * @return void
 	 */
 	public function detect_plugin_activation( $plugin ) {
-		$plugin_slugs = array(
-			'nfd_slug_yith_paypal_payments_for_woocommerce',
-			'nfd_slug_yith_stripe_payments_for_woocommerce',
-		);
-		if ( 'woocommerce/woocommerce.php' === $plugin ) {
-			foreach ( $plugin_slugs as $plugin ) {
-				PluginInstaller::install( $plugin, true );
-			}
-		}
+		// $plugin_slugs = array(
+		// 	'nfd_slug_yith_paypal_payments_for_woocommerce',
+		// 	'nfd_slug_yith_stripe_payments_for_woocommerce',
+		// );
+		// if ( 'woocommerce/woocommerce.php' === $plugin ) {
+		// 	foreach ( $plugin_slugs as $plugin ) {
+		// 		PluginInstaller::install( $plugin, true );
+		// 	}
+		// }
+		// do nothing for now
 	}
 
 	/**
