@@ -4471,8 +4471,8 @@
 		flex-shrink: 0;
 	}
 #nfd-quick-add-product__form-wrapper .nfd-textarea:focus, #nfd-quick-add-product__form-wrapper .nfd-tag-input:focus-within {
-		border-color : var(--nfd-color-primary);
-		--tw-ring-color: var(--nfd-color-primary);
+		border-color : var(--nfd-color-primary, #2563eb);
+		--tw-ring-color: var(--nfd-color-primary, #2563eb);
 	}
 #nfd-quick-add-product__form-wrapper .nfd-textarea {
 		resize : none;
@@ -4733,6 +4733,9 @@
 
 	top: -3px;
 }
+.nfd-root .nfd-quick-add-product-modal {
+		z-index: 10000;
+	}
 .nfd-root .nfd-quick-add-product-modal .nfd-modal__panel {
 			padding: 0;
 			max-width: 75rem;
