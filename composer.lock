@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d0ef4b5e7dda81c0230f7681bff4360",
+    "content-hash": "b8faaa9e7f1f3dfacae26cb974f7951c",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -624,23 +624,23 @@
         },
         {
             "name": "newfold-labs/wp-module-installer",
-            "version": "1.6.6",
+            "version": "1.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-installer.git",
-                "reference": "50c656dfc74c2a4f2d319e6089163327d08cc692"
+                "reference": "f72cd9f1b72e14d21161fe69ea2dbe495220fe3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/50c656dfc74c2a4f2d319e6089163327d08cc692",
-                "reference": "50c656dfc74c2a4f2d319e6089163327d08cc692",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/f72cd9f1b72e14d21161fe69ea2dbe495220fe3c",
+                "reference": "f72cd9f1b72e14d21161fe69ea2dbe495220fe3c",
                 "shasum": ""
             },
             "require": {
                 "newfold-labs/wp-module-pls": "^1.1.2"
             },
             "require-dev": {
-                "johnpbloch/wordpress": "6.8.3",
+                "johnpbloch/wordpress": "6.9.0",
                 "lucatume/wp-browser": "*",
                 "newfold-labs/wp-php-standards": "^1.2.5",
                 "phpunit/phpcov": "*",
@@ -709,10 +709,10 @@
             ],
             "description": "An installer for WordPress plugins and themes.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-installer/tree/1.6.6",
+                "source": "https://github.com/newfold-labs/wp-module-installer/tree/1.7.1",
                 "issues": "https://github.com/newfold-labs/wp-module-installer/issues"
             },
-            "time": "2025-10-07T16:00:08+00:00"
+            "time": "2025-12-03T15:38:31+00:00"
         },
         {
             "name": "newfold-labs/wp-module-loader",

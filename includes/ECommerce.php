@@ -88,13 +88,12 @@ class ECommerce {
 		add_action( 'init', array( $this, 'load_php_textdomain' ) );
 		add_action( 'admin_init', array( $this, 'maybe_do_dash_redirect' ) );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
-		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_assets' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'register_textdomains' ) );
 		add_action( 'before_woocommerce_init', array( $this, 'hide_woocommerce_set_up' ) );
 		add_action( 'before_woocommerce_init', array( $this, 'custom_payment_gateways_order' ) );
 		add_action( 'before_woocommerce_init', array( $this, 'dismiss_woo_payments_cta' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
-		add_action( 'activated_plugin', array( $this, 'detect_plugin_activation' ), 10, 1 );
+		// add_action( 'activated_plugin', array( $this, 'detect_plugin_activation' ), 10, 1 );
 		add_action( 'admin_init', array( $this, 'hide_columns' ) );
 		add_filter( 'manage_posts_columns', array( $this, 'custom_status_column' ), 10, 1 );
 		add_action( 'manage_posts_custom_column', array( $this, 'custom_status_column_content' ), 10, 2 );
@@ -185,7 +184,7 @@ class ECommerce {
 	 * Get the experience level
 	 */
 	public static function get_experience_level() {
-		$option = get_option( Options::get_option_name( 'site_info' ), [] );
+		$option = get_option( Options::get_option_name( 'site_info' ), array() );
 		return $option['experience_level'] ?? 'advanced';
 	}
 
@@ -343,37 +342,6 @@ class ECommerce {
 	}
 
 	/**
-	 * Load WP dependencies into the page.
-	 */
-	public function register_assets() {
-		$asset_file = NFD_ECOMMERCE_BUILD_DIR . 'index.asset.php';
-		if ( file_exists( $asset_file ) ) {
-			$asset = require $asset_file;
-
-			// We load ecommerce module script and components directly
-			// as an npmjs package in each brand plugin app.
-			// Therefore, we don't need to load the `build/index.js` file.
-			// The file is not built for browsers to read anyway.
-			// Though, we do need to load a script to set translations.
-			// Translations are detected in the brand plugin app where the js package is consumed.
-			wp_register_script(
-				self::$handle_i18n,
-				NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/assets/i18n-handle.js',
-				array(),
-				$asset['version'],
-				true
-			);
-			wp_enqueue_script( self::$handle_i18n );
-
-			wp_set_script_translations(
-				self::$handle_i18n,
-				'wp-module-ecommerce',
-				NFD_ECOMMERCE_DIR . '/languages'
-			);
-		}
-	}
-
-	/**
 	 * Filters the file path for the JS translation JSON.
 	 *
 	 * If the script handle matches the module's handle, builds a custom path using
@@ -434,21 +402,9 @@ class ECommerce {
 	}
 
 	/**
-	 * Add promotion (Promote) under WooCommerce Marketing tab
-	 */
-	public function custom_add_promotion_menu_item() {
-		add_submenu_page(
-			'woocommerce-marketing',
-			__( 'Promotion product Page', 'wp-module-ecommerce' ),
-			__( 'Promotions', 'wp-module-ecommerce' ),
-			'manage_options',
-			$this->container->plugin()->id . '#/store/sales_discounts',
-			'custom_submenu_redirect'
-		);
-	}
-
-	/**
 	 * Add a Promotion button under Add New product tab
+	 *
+	 * TODO - Migrate to new Sales & Promotions plugin
 	 */
 	public function custom_product_general_options() {
 		$redirect_url = apply_filters( 'nfd_build_url', admin_url( 'admin.php?page=' . $this->container->plugin()->id . '#/store/sales_discounts' ) );
@@ -464,6 +420,8 @@ class ECommerce {
 	/**
 	 * Add a Custom tab (Prmotions tab) button added below Advance tab
 	 *
+	 * TODO - Migrate to new Sales & Promotions plugin
+	 *
 	 * @param array $tabs The tabs.
 	 */
 	public function custom_product_write_panel_tabs( $tabs ) {
@@ -478,6 +436,8 @@ class ECommerce {
 
 	/**
 	 * Content on click of a Custom tab (Promotions tab) button added below Advance tab
+	 *
+	 * TODO - Migrate to new Sales & Promotions plugin
 	 */
 	public function promotion_product_data() {
 		$redirect_url = apply_filters( 'nfd_build_url', 'admin.php?page=' . $this->container->plugin()->id . '#/store/sales_discounts' );
@@ -505,6 +465,8 @@ class ECommerce {
 
 	/**
 	 * Change icon for a Custom tab (Promotions tab) button added below Advance tab
+	 *
+	 * TODO - Migrate to new Sales & Promotions plugin
 	 */
 	public function action_admin_head() {
 		echo '<style>
@@ -554,6 +516,10 @@ class ECommerce {
 	 * @return void
 	 */
 	public function detect_plugin_activation( $plugin ) {
+		/*
+		* Commented out to avoid installing the plugins again when the module is activated.
+		* TODO - Reinstate with update to new Payments & Shipping plugin
+
 		$plugin_slugs = array(
 			'nfd_slug_yith_paypal_payments_for_woocommerce',
 			'nfd_slug_yith_stripe_payments_for_woocommerce',
@@ -563,6 +529,9 @@ class ECommerce {
 				PluginInstaller::install( $plugin, true );
 			}
 		}
+		*/
+		// do nothing for now
+		return;
 	}
 
 	/**
@@ -640,7 +609,6 @@ class ECommerce {
 				( $this->container->plugin()->id === 'bluehost' && ( $canAccessGlobalCTB || $hasYithExtended ) )
 				|| ( $this->container->plugin()->id === 'hostgator' && $hasYithExtended )
 		) {
-			add_filter( 'admin_menu', array( $this, 'custom_add_promotion_menu_item' ) );
 			add_action( 'woocommerce_product_options_general_product_data', array( $this, 'custom_product_general_options' ) );
 			add_action( 'woocommerce_product_options_related', array( $this, 'custom_product_general_options' ) );
 			add_action( 'woocommerce_product_data_tabs', array( $this, 'custom_product_write_panel_tabs' ) );
@@ -745,7 +713,7 @@ class ECommerce {
 	 */
 	public function show_store_setup() {
 		$site_url = get_option( 'siteurl', false );
-		$brand = $this->container->plugin()->id;
+		$brand    = $this->container->plugin()->id;
 
 		if ( $this->check_url_match( $brand, $site_url ) ) {
 			update_option( 'nfd_show_migration_steps', false );
