@@ -434,21 +434,9 @@ class ECommerce {
 	}
 
 	/**
-	 * Add promotion (Promote) under WooCommerce Marketing tab
-	 */
-	public function custom_add_promotion_menu_item() {
-		add_submenu_page(
-			'woocommerce-marketing',
-			__( 'Promotion product Page', 'wp-module-ecommerce' ),
-			__( 'Promotions', 'wp-module-ecommerce' ),
-			'manage_options',
-			$this->container->plugin()->id . '#/store/sales_discounts',
-			'custom_submenu_redirect'
-		);
-	}
-
-	/**
 	 * Add a Promotion button under Add New product tab
+	 * 
+	 * TODO - Migrate to new Sales & Promotions plugin
 	 */
 	public function custom_product_general_options() {
 		$redirect_url = apply_filters( 'nfd_build_url', admin_url( 'admin.php?page=' . $this->container->plugin()->id . '#/store/sales_discounts' ) );
@@ -463,6 +451,8 @@ class ECommerce {
 
 	/**
 	 * Add a Custom tab (Prmotions tab) button added below Advance tab
+	 * 
+	 * TODO - Migrate to new Sales & Promotions plugin
 	 *
 	 * @param array $tabs The tabs.
 	 */
@@ -478,6 +468,8 @@ class ECommerce {
 
 	/**
 	 * Content on click of a Custom tab (Promotions tab) button added below Advance tab
+	 * 
+	 * TODO - Migrate to new Sales & Promotions plugin
 	 */
 	public function promotion_product_data() {
 		$redirect_url = apply_filters( 'nfd_build_url', 'admin.php?page=' . $this->container->plugin()->id . '#/store/sales_discounts' );
@@ -505,6 +497,8 @@ class ECommerce {
 
 	/**
 	 * Change icon for a Custom tab (Promotions tab) button added below Advance tab
+	 * 
+	 * TODO - Migrate to new Sales & Promotions plugin
 	 */
 	public function action_admin_head() {
 		echo '<style>
@@ -640,7 +634,7 @@ class ECommerce {
 				( $this->container->plugin()->id === 'bluehost' && ( $canAccessGlobalCTB || $hasYithExtended ) )
 				|| ( $this->container->plugin()->id === 'hostgator' && $hasYithExtended )
 		) {
-			add_filter( 'admin_menu', array( $this, 'custom_add_promotion_menu_item' ) );
+			// add_filter( 'admin_menu', array( $this, 'custom_add_promotion_menu_item' ) );
 			add_action( 'woocommerce_product_options_general_product_data', array( $this, 'custom_product_general_options' ) );
 			add_action( 'woocommerce_product_options_related', array( $this, 'custom_product_general_options' ) );
 			add_action( 'woocommerce_product_data_tabs', array( $this, 'custom_product_write_panel_tabs' ) );
