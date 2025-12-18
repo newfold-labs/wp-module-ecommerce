@@ -108,8 +108,6 @@ class ECommerce {
 		\add_filter( 'load_script_translation_file', array( $this, 'load_script_translation_file' ), 10, 3 );
 		add_filter( 'woocommerce_admin_get_feature_config', array( $this, 'disable_modern_payments_settings' ), 999 );
 
-		add_action( 'init', array( $this, 'admin_init_conditional_on_capabilities' ) );
-
 		CaptiveFlow::init();
 		WooCommerceBacklink::init( $container );
 		register_meta(
@@ -402,81 +400,6 @@ class ECommerce {
 	}
 
 	/**
-	 * Add a Promotion button under Add New product tab
-	 *
-	 * TODO - Migrate to new Sales & Promotions plugin
-	 */
-	public function custom_product_general_options() {
-		$redirect_url = apply_filters( 'nfd_build_url', admin_url( 'admin.php?page=' . $this->container->plugin()->id . '#/store/sales_discounts' ) );
-		wp_enqueue_style( 'Create_a_Promotion', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Promotions.css', array(), '1.0' );
-
-		echo '<div class="options_group">
-            <p class="form-field custom-button-field">
-						  <a id="Create_a_Promotion" href="' . esc_url( $redirect_url ) . '" class="promotion">' . esc_html( __( 'Create a Promotion', 'wp-module-ecommerce' ) ) . '</a>
-					  </p>
-          </div>';
-	}
-
-	/**
-	 * Add a Custom tab (Prmotions tab) button added below Advance tab
-	 *
-	 * TODO - Migrate to new Sales & Promotions plugin
-	 *
-	 * @param array $tabs The tabs.
-	 */
-	public function custom_product_write_panel_tabs( $tabs ) {
-		$tabs['custom_tab'] = array(
-			'label'    => __( 'Promotions', 'wp-module-ecommerce' ),
-			'target'   => 'promotion_product_data',
-			'priority' => 70,
-			'class'    => array(),
-		);
-		return $tabs;
-	}
-
-	/**
-	 * Content on click of a Custom tab (Promotions tab) button added below Advance tab
-	 *
-	 * TODO - Migrate to new Sales & Promotions plugin
-	 */
-	public function promotion_product_data() {
-		$redirect_url = apply_filters( 'nfd_build_url', 'admin.php?page=' . $this->container->plugin()->id . '#/store/sales_discounts' );
-
-		echo '<div id="promotion_product_data" class="panel woocommerce_options_panel hidden"></div>';
-		\wp_enqueue_script( 'nfd_promotion_product_data', NFD_ECOMMERCE_PLUGIN_URL . 'vendor/newfold-labs/wp-module-ecommerce/includes/Promotions.js', array( 'jquery' ), '1.0', true );
-		$Promotion_data = array(
-			'redirectUrl'            => $redirect_url,
-			'boostYourOnline'        => __( 'Boost Your Online Store Sales', 'wp-module-ecommerce' ),
-			'maximizeYourSales'      => __( 'Maximize your sales by creating effective', 'wp-module-ecommerce' ),
-			'promotionsAndCampaigns' => __( 'promotions and campaigns like:', 'wp-module-ecommerce' ),
-			'createPromotion'        => __( 'Create a Promotion', 'wp-module-ecommerce' ),
-			'free'                   => __( 'Free', 'wp-module-ecommerce' ),
-			'shipping'               => __( 'Shipping', 'wp-module-ecommerce' ),
-			'buyOne'                 => __( 'Buy One', 'wp-module-ecommerce' ),
-			'getOne'                 => __( 'Get One', 'wp-module-ecommerce' ),
-			'freeGift'               => __( 'Free Gift', 'wp-module-ecommerce' ),
-			'inCart'                 => __( 'in Cart', 'wp-module-ecommerce' ),
-			'frequently'             => __( 'Frequently', 'wp-module-ecommerce' ),
-			'boughtTogether'         => __( 'Bought Together', 'wp-module-ecommerce' ),
-
-		);
-		wp_localize_script( 'nfd_promotion_product_data', 'promotionData', $Promotion_data );
-	}
-
-	/**
-	 * Change icon for a Custom tab (Promotions tab) button added below Advance tab
-	 *
-	 * TODO - Migrate to new Sales & Promotions plugin
-	 */
-	public function action_admin_head() {
-		echo '<style>
-				#woocommerce-product-data ul.wc-tabs li.custom_tab_options a::before {
-					content: "\f323";
-				} 
-		</style>';
-	}
-
-	/**
 	 * Change the order of payment gateways
 	 */
 	public function custom_payment_gateways_order() {
@@ -581,39 +504,6 @@ class ECommerce {
 					});
 				</script>
 			<?php
-		}
-	}
-
-	/**
-	 * Add actions and filters that are conditionally added depending on the Site's capabilities.
-	 *
-	 * Running the capabilities check after `admin_init` with `is_admin()` `true` ensures no HTTP requests are made
-	 * for frontend page loads.
-	 *
-	 * `admin_init` runs in `wp-admin/admin.php:175`, `wp-admin/admin-ajax.php:45`, and `wp-admin/admin-post:30`.
-	 * Each of the hooks in this function are UI (HTML) related, so only need to run inside `is_admin()`.
-	 *
-	 * @hooked admin_init
-	 */
-	public function admin_init_conditional_on_capabilities() {
-
-		if ( ! ( is_admin() && current_user_can( 'manage_options' ) ) ) {
-			return;
-		}
-
-		$capability         = new SiteCapabilities();
-		$hasYithExtended    = $capability->get( 'hasYithExtended' );
-		$canAccessGlobalCTB = $capability->get( 'canAccessGlobalCTB' );
-
-		if (
-				( $this->container->plugin()->id === 'bluehost' && ( $canAccessGlobalCTB || $hasYithExtended ) )
-				|| ( $this->container->plugin()->id === 'hostgator' && $hasYithExtended )
-		) {
-			add_action( 'woocommerce_product_options_general_product_data', array( $this, 'custom_product_general_options' ) );
-			add_action( 'woocommerce_product_options_related', array( $this, 'custom_product_general_options' ) );
-			add_action( 'woocommerce_product_data_tabs', array( $this, 'custom_product_write_panel_tabs' ) );
-			add_action( 'woocommerce_product_data_panels', array( $this, 'promotion_product_data' ) );
-			add_action( 'admin_head', array( $this, 'action_admin_head' ) );
 		}
 	}
 
