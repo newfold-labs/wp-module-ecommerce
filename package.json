@@ -38,11 +38,11 @@
     "classnames": "^2.5.1",
     "moment": "^2.30.1",
     "prop-types": "^15.8.1",
-    "swr": "2.3.6"
+    "swr": "2.3.8"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.8",
-    "@tailwindcss/postcss": "^4.1.17",
+    "@tailwindcss/postcss": "^4.1.18",
     "@testing-library/cypress": "^10.1.0",
     "@wordpress/dom-ready": "^4.36.0",
     "@wordpress/env": "^10.36.0",
@@ -53,7 +53,7 @@
     "cypress-iframe": "^1.0.1",
     "mini-css-extract-plugin": "^2.9.4",
     "semver": "^7.7.3",
-    "tailwindcss": "^3.4.18",
+    "tailwindcss": "^3.4.19",
     "webpack": "^5.103.0",
     "webpack-cli": "^6.0.1",
     "webpack-merge": "^6.0.1"
