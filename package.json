@@ -48,7 +48,7 @@
     "@wordpress/env": "^10.36.0",
     "@wordpress/scripts": "^31.1.0",
     "ajv": "^8.17.1",
-    "cypress": "^14.5.3",
+    "cypress": "^15.8.1",
     "cypress-axe": "^1.7.0",
     "cypress-iframe": "^1.0.1",
     "mini-css-extract-plugin": "^2.9.4",
