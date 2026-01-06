@@ -1,16 +1,15 @@
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: wp-module-ecommerce\n"
 "Report-Msgid-Bugs-To: https://github.com/newfold-labs/wp-module-ecommerce/issues\n"
-"POT-Creation-Date: 2024-11-18T11:38:47+00:00\n"
-"PO-Revision-Date: 2025-03-19 20:42\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
-"Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-11-18T11:38:47+00:00\n"
+"PO-Revision-Date: 2025-03-19 20:42\n"
+"Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Crowdin-File: wp-module-ecommerce.pot\n"
 "X-Crowdin-File-ID: 16\n"
@@ -28,9 +27,12 @@ msgstr "Commerce électronique"
 msgid "Reference to page category"
 msgstr "Référence à la catégorie de la page"
 
-#: includes/ECommerce.php:249 includes/ECommerce.php:260
-#: includes/ECommerce.php:269 includes/ECommerce.php:278
-#: includes/ECommerce.php:287 includes/ECommerce.php:296
+#: includes/ECommerce.php:249
+#: includes/ECommerce.php:260
+#: includes/ECommerce.php:269
+#: includes/ECommerce.php:278
+#: includes/ECommerce.php:287
+#: includes/ECommerce.php:296
 #: includes/ECommerce.php:325
 msgid "NFD eCommerce Options"
 msgstr "Options de commerce électronique NFD"
@@ -132,51 +134,32 @@ msgid "Digital products or services"
 msgstr "Produits ou services numériques"
 
 #: includes/QuickAddProduct.php:175
-msgid ""
-"EX: eBooks, stock photos, software, templates, podcasts, apps, videos, etc. "
-"No physical products or shipping management."
-msgstr ""
-"EX : ebooks, photos d’archives, logiciels, modèles, podcasts, applications, "
-"vidéos, etc. Pas de produits physiques ni de gestion des expéditions."
+msgid "EX: eBooks, stock photos, software, templates, podcasts, apps, videos, etc. No physical products or shipping management."
+msgstr "EX : ebooks, photos d’archives, logiciels, modèles, podcasts, applications, vidéos, etc. Pas de produits physiques ni de gestion des expéditions."
 
 #: includes/QuickAddProduct.php:179
 msgid "Physical products"
 msgstr "Produits physiques"
 
 #: includes/QuickAddProduct.php:180
-msgid ""
-"Ex: clothing, furniture, accessories — any type of product that needs to be "
-"physically shipped to your customers."
-msgstr ""
-"Ex : vêtements, meubles, accessoires - tout type de produit qui doit être "
-"expédié physiquement à vos clients."
+msgid "Ex: clothing, furniture, accessories — any type of product that needs to be physically shipped to your customers."
+msgstr "Ex : vêtements, meubles, accessoires - tout type de produit qui doit être expédié physiquement à vos clients."
 
 #: includes/QuickAddProduct.php:198
 msgid "Bookings/Appointments"
 msgstr "Réservations/Rendez-vous"
 
 #: includes/QuickAddProduct.php:199
-msgid ""
-"Ex: apartment bookings, rental of products, medical appointments, personal "
-"training, etc — any type of bookable product or service."
-msgstr ""
-"Ex : réservations d’appartements, location de produits, rendez-vous "
-"médicaux, entraînement personnel, etc. - tout type de produit ou de service "
-"réservable."
+msgid "Ex: apartment bookings, rental of products, medical appointments, personal training, etc — any type of bookable product or service."
+msgstr "Ex : réservations d’appartements, location de produits, rendez-vous médicaux, entraînement personnel, etc. - tout type de produit ou de service réservable."
 
 #: includes/QuickAddProduct.php:203
 msgid "Subscription"
 msgstr "Abonnement"
 
 #: includes/QuickAddProduct.php:204
-msgid ""
-"Ex: a monthly subscription box, a magazine subscription, streaming service "
-"like Netflix, etc - any type of product your customer pays for on a "
-"recurring basis."
-msgstr ""
-"Ex : une boîte d’abonnement mensuel, un abonnement à un magazine, un service"
-" de streaming comme Netflix, etc. - tout type de produit que votre client "
-"paie de manière récurrente."
+msgid "Ex: a monthly subscription box, a magazine subscription, streaming service like Netflix, etc - any type of product your customer pays for on a recurring basis."
+msgstr "Ex : une boîte d’abonnement mensuel, un abonnement à un magazine, un service de streaming comme Netflix, etc. - tout type de produit que votre client paie de manière récurrente."
 
 #: build/quick-add-product/index.js:1
 msgid "Set product image"
@@ -240,12 +223,8 @@ msgstr "Qu’envisagez-vous de vendre ou d’offrir ?"
 
 #: build/quick-add-product/index.js:1
 msgctxt "Select product section description"
-msgid ""
-"Pick one or more options based on the type of product or service you want to"
-" offer your customers."
-msgstr ""
-"Choisissez une ou plusieurs options en fonction du type de produit ou de "
-"service que vous souhaitez offrir à vos clients."
+msgid "Pick one or more options based on the type of product or service you want to offer your customers."
+msgstr "Choisissez une ou plusieurs options en fonction du type de produit ou de service que vous souhaitez offrir à vos clients."
 
 #: build/quick-add-product/index.js:1
 msgctxt "Modal button label."
