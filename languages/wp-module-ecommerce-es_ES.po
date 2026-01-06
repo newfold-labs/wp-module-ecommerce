@@ -1,15 +1,16 @@
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: wp-module-ecommerce\n"
 "Report-Msgid-Bugs-To: https://github.com/newfold-labs/wp-module-ecommerce/issues\n"
+"POT-Creation-Date: 2024-11-18T11:38:47+00:00\n"
+"PO-Revision-Date: 2025-03-19 20:42\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-18T11:38:47+00:00\n"
-"PO-Revision-Date: 2025-03-19 20:42\n"
-"Language: es_ES\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-File: wp-module-ecommerce.pot\n"
 "X-Crowdin-File-ID: 16\n"
@@ -23,90 +24,34 @@ msgstr ""
 msgid "eCommerce"
 msgstr "eCommerce"
 
-#: includes/ECommerce.php:120
+#: includes/ECommerce.php:118
 msgid "Reference to page category"
 msgstr "Referencia a la categoría de la página"
 
-#: includes/ECommerce.php:251
-#: includes/ECommerce.php:262
-#: includes/ECommerce.php:271
-#: includes/ECommerce.php:280
-#: includes/ECommerce.php:289
-#: includes/ECommerce.php:298
-#: includes/ECommerce.php:327
+#: includes/ECommerce.php:249 includes/ECommerce.php:260
+#: includes/ECommerce.php:269 includes/ECommerce.php:278
+#: includes/ECommerce.php:287 includes/ECommerce.php:296
+#: includes/ECommerce.php:325
 msgid "NFD eCommerce Options"
 msgstr "Opciones de comercio electrónico NFD"
 
-#: includes/ECommerce.php:429
-msgid "Promotions"
-msgstr "Promociones"
-
-#: includes/ECommerce.php:415
-#: includes/ECommerce.php:452
-msgid "Create a Promotion"
-msgstr "Crear una promoción"
-
-#: includes/ECommerce.php:449
-msgid "Boost Your Online Store Sales"
-msgstr "Aumenta tus ventas en la tienda online"
-
-#: includes/ECommerce.php:450
-msgid "Maximize your sales by creating effective"
-msgstr "Maximice sus ventas mediante la creación efectiva"
-
-#: includes/ECommerce.php:451
-msgid "promotions and campaigns like:"
-msgstr "promociones y campañas como:"
-
-#: includes/ECommerce.php:453
-msgid "Free"
-msgstr "Gratis"
-
-#: includes/ECommerce.php:454
-msgid "Shipping"
-msgstr "Envío"
-
-#: includes/ECommerce.php:455
-msgid "Buy One"
-msgstr "Comprar uno"
-
-#: includes/ECommerce.php:456
-msgid "Get One"
-msgstr "Obtener uno"
-
-#: includes/ECommerce.php:457
-msgid "Free Gift"
-msgstr "Regalo Gratis"
-
-#: includes/ECommerce.php:458
-msgid "in Cart"
-msgstr "en el carrito"
-
-#: includes/ECommerce.php:459
-msgid "Frequently"
-msgstr "Frecuentemente"
-
-#: includes/ECommerce.php:460
-msgid "Bought Together"
-msgstr "Comprados juntos"
-
-#: includes/ECommerce.php:640
+#: includes/ECommerce.php:530
 msgid "Status"
 msgstr "Estado"
 
-#: includes/ECommerce.php:667
+#: includes/ECommerce.php:557
 msgid "Published - Public"
 msgstr "Publicado - Público"
 
-#: includes/ECommerce.php:667
+#: includes/ECommerce.php:557
 msgid "Published - Password Protected"
 msgstr "Publicado - Protegido por contraseña"
 
-#: includes/ECommerce.php:670
+#: includes/ECommerce.php:560
 msgid "Published - Private"
 msgstr "Publicado - Privado"
 
-#: includes/ECommerce.php:680
+#: includes/ECommerce.php:570
 msgid "Last Modified"
 msgstr "Última modificación"
 
@@ -187,32 +132,51 @@ msgid "Digital products or services"
 msgstr "Productos o servicios digitales"
 
 #: includes/QuickAddProduct.php:175
-msgid "EX: eBooks, stock photos, software, templates, podcasts, apps, videos, etc. No physical products or shipping management."
-msgstr "EJ: libros electrónicos, fotos de archivo, software, plantillas, podcasts, aplicaciones, videos, etc. Sin productos físicos ni gestión de envíos."
+msgid ""
+"EX: eBooks, stock photos, software, templates, podcasts, apps, videos, etc. "
+"No physical products or shipping management."
+msgstr ""
+"EJ: libros electrónicos, fotos de archivo, software, plantillas, podcasts, "
+"aplicaciones, videos, etc. Sin productos físicos ni gestión de envíos."
 
 #: includes/QuickAddProduct.php:179
 msgid "Physical products"
 msgstr "Productos físicos"
 
 #: includes/QuickAddProduct.php:180
-msgid "Ex: clothing, furniture, accessories — any type of product that needs to be physically shipped to your customers."
-msgstr "Por ejemplo: ropa, muebles, accesorios, cualquier tipo de producto que deba enviarse físicamente a sus clientes."
+msgid ""
+"Ex: clothing, furniture, accessories — any type of product that needs to be "
+"physically shipped to your customers."
+msgstr ""
+"Por ejemplo: ropa, muebles, accesorios, cualquier tipo de producto que deba "
+"enviarse físicamente a sus clientes."
 
 #: includes/QuickAddProduct.php:198
 msgid "Bookings/Appointments"
 msgstr "Reservas/Citas"
 
 #: includes/QuickAddProduct.php:199
-msgid "Ex: apartment bookings, rental of products, medical appointments, personal training, etc — any type of bookable product or service."
-msgstr "Por ejemplo: reservas de apartamentos, alquiler de productos, citas médicas, entrenamiento personal, etc., cualquier tipo de producto o servicio que se pueda reservar."
+msgid ""
+"Ex: apartment bookings, rental of products, medical appointments, personal "
+"training, etc — any type of bookable product or service."
+msgstr ""
+"Por ejemplo: reservas de apartamentos, alquiler de productos, citas médicas,"
+" entrenamiento personal, etc., cualquier tipo de producto o servicio que se "
+"pueda reservar."
 
 #: includes/QuickAddProduct.php:203
 msgid "Subscription"
 msgstr "Suscripción"
 
 #: includes/QuickAddProduct.php:204
-msgid "Ex: a monthly subscription box, a magazine subscription, streaming service like Netflix, etc - any type of product your customer pays for on a recurring basis."
-msgstr "Por ejemplo: una caja de suscripción mensual, una suscripción a una revista, un servicio de transmisión como Netflix, etc., cualquier tipo de producto por el que su cliente pague de forma recurrente."
+msgid ""
+"Ex: a monthly subscription box, a magazine subscription, streaming service "
+"like Netflix, etc - any type of product your customer pays for on a "
+"recurring basis."
+msgstr ""
+"Por ejemplo: una caja de suscripción mensual, una suscripción a una revista,"
+" un servicio de transmisión como Netflix, etc., cualquier tipo de producto "
+"por el que su cliente pague de forma recurrente."
 
 #: build/quick-add-product/index.js:1
 msgid "Set product image"
@@ -246,23 +210,29 @@ msgstr "Añadir producto rápido"
 #: build/quick-add-product/index.js:1
 msgctxt "Quick Add Product form field label."
 msgid "Product Name"
-msgstr "Nombre del producto (etiqueta de campo de formulario de adición rápida de productos)."
+msgstr ""
+"Nombre del producto (etiqueta de campo de formulario de adición rápida de "
+"productos)."
 
 #: build/quick-add-product/index.js:1
 #, js-format
 msgctxt "Quick Add Product form field label. %s is the currency symbol."
 msgid "Price (%s)"
-msgstr "Precio (%s) (etiqueta de campo de formulario de producto de adición rápida. %s es el símbolo de moneda)."
+msgstr ""
+"Precio (%s) (etiqueta de campo de formulario de producto de adición rápida. "
+"%s es el símbolo de moneda)."
 
 #: build/quick-add-product/index.js:1
 msgctxt "Quick Add Product form field label."
 msgid "Categories"
-msgstr "Categorías (etiqueta de campo de formulario de adición rápida de productos)."
+msgstr ""
+"Categorías (etiqueta de campo de formulario de adición rápida de productos)."
 
 #: build/quick-add-product/index.js:1
 msgctxt "Quick Add Product form field label."
 msgid "Image"
-msgstr "Imagen (etiqueta de campo de formulario de adición rápida de productos)."
+msgstr ""
+"Imagen (etiqueta de campo de formulario de adición rápida de productos)."
 
 #: build/quick-add-product/index.js:1
 msgctxt "Quick add product modal button label"
@@ -276,8 +246,12 @@ msgstr "¿Qué planeas vender u ofrecer?"
 
 #: build/quick-add-product/index.js:1
 msgctxt "Select product section description"
-msgid "Pick one or more options based on the type of product or service you want to offer your customers."
-msgstr "Elija una o más opciones según el tipo de producto o servicio que desea ofrecer a sus clientes."
+msgid ""
+"Pick one or more options based on the type of product or service you want to"
+" offer your customers."
+msgstr ""
+"Elija una o más opciones según el tipo de producto o servicio que desea "
+"ofrecer a sus clientes."
 
 #: build/quick-add-product/index.js:1
 msgctxt "Modal button label."
@@ -292,22 +266,28 @@ msgstr "Detalles de la tienda"
 #: build/store-info/index.js:1
 msgctxt "Store info form field label."
 msgid "Store Address"
-msgstr "Dirección de la tienda (etiqueta de campo del formulario de información de la tienda)."
+msgstr ""
+"Dirección de la tienda (etiqueta de campo del formulario de información de "
+"la tienda)."
 
 #: build/store-info/index.js:1
 msgctxt "Store info form field label."
 msgid "City"
-msgstr "Ciudad (etiqueta de campo del formulario de información de la tienda)."
+msgstr ""
+"Ciudad (etiqueta de campo del formulario de información de la tienda)."
 
 #: build/store-info/index.js:1
 msgctxt "Store info form field label."
 msgid "Postcode"
-msgstr "Código postal (etiqueta de campo del formulario de información de la tienda)."
+msgstr ""
+"Código postal (etiqueta de campo del formulario de información de la "
+"tienda)."
 
 #: build/store-info/index.js:1
 msgctxt "Store info form field label."
 msgid "State"
-msgstr "Estado (etiqueta de campo del formulario de información de la tienda)."
+msgstr ""
+"Estado (etiqueta de campo del formulario de información de la tienda)."
 
 #: build/store-info/index.js:1
 msgctxt "Store info form field label."
@@ -317,7 +297,8 @@ msgstr "País (etiqueta de campo del formulario de información de la tienda)."
 #: build/store-info/index.js:1
 msgctxt "Store info form field label."
 msgid "Industry"
-msgstr "Industria (etiqueta de campo del formulario de información de la tienda)."
+msgstr ""
+"Industria (etiqueta de campo del formulario de información de la tienda)."
 
 #: build/store-info/index.js:1
 msgctxt "Store info form submit button label"
@@ -327,7 +308,9 @@ msgstr "Guardar"
 #: build/quick-add-product/index.js:1
 msgctxt "Quick Add Product form field label."
 msgid "Short Description"
-msgstr "Descripción breve (etiqueta de campo de formulario de producto de adición rápida)."
+msgstr ""
+"Descripción breve (etiqueta de campo de formulario de producto de adición "
+"rápida)."
 
 #: build/quick-add-product/index.js:1
 msgctxt "Quick Add Product form submit button label"
