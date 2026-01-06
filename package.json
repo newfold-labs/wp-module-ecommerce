@@ -45,7 +45,7 @@
     "@tailwindcss/postcss": "^4.1.18",
     "@testing-library/cypress": "^10.1.0",
     "@wordpress/dom-ready": "^4.36.0",
-    "@wordpress/env": "^10.36.0",
+    "@wordpress/env": "^10.37.0",
     "@wordpress/scripts": "^31.1.0",
     "ajv": "^8.17.1",
     "cypress": "^14.5.3",
