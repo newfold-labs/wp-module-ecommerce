@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import {
   wordpress,
   auth,
+  newfold,
   navigateToHomePage,
   installWooCommerce,
   uninstallWooCommerce,
@@ -39,6 +40,10 @@ test.describe('ECommerce Module', () => {
 
 	test.describe('Quick Add Product', () => {
 		test('Add Product button is visible in next steps', async ({ page }) => {
+			// skip test if woo commerce is not supported
+			const wooSupported = await newfold.supportsWoo();		
+			test.skip(!wooSupported, await newfold.getSkipMessage('woocommerce'));
+
 			await navigateToHomePage(page);
 			await page.waitForLoadState('networkidle');
 			
@@ -49,6 +54,10 @@ test.describe('ECommerce Module', () => {
 
 	test.describe('Store Info', () => {
 		test('Store info section displays correctly', async ({ page }) => {
+			// skip test if woo commerce is not supported
+			const wooSupported = await newfold.supportsWoo();		
+			test.skip(!wooSupported, await newfold.getSkipMessage('woocommerce'));
+
 			await navigateToHomePage(page);
 			await page.waitForLoadState('networkidle');
 
