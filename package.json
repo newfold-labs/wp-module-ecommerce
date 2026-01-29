@@ -33,7 +33,7 @@
     "@wordpress/api-fetch": "^7.38.0",
     "@wordpress/data": "^10.38.0",
     "@wordpress/date": "^5.38.0",
-    "@wordpress/element": "^6.38.0",
+    "@wordpress/element": "^6.39.0",
     "@wordpress/i18n": "^6.11.0",
     "classnames": "^2.5.1",
     "moment": "^2.30.1",
