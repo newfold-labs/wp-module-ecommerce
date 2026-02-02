@@ -13,9 +13,6 @@ on:
       - main
   workflow_dispatch:
 
-permissions:
-  contents: read
-
 jobs:
   get-repo-name:
     runs-on: ubuntu-latest
@@ -24,8 +21,6 @@ jobs:
     steps:
       - name: Extract repository name
         id: repo-name
-        # Extract just the repository name (e.g., "wp-module-ecommerce") from the full repository path
-        # (e.g., "newfold-labs/wp-module-ecommerce") by splitting on '/' and taking the second field.
         run: echo "name=$(echo ${{ github.repository }} | cut -d'/' -f2)" >> $GITHUB_OUTPUT
 
   codecoverage:

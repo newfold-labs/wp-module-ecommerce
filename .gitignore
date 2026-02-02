@@ -19,3 +19,4 @@
 /wordpress
 /wp-content
 cypress.env.json
+.env.testing
