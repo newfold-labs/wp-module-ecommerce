@@ -2,6 +2,9 @@
 
 namespace NewfoldLabs\WP\Module\ECommerce;
 
+use NewfoldLabs\WP\ModuleLoader\Container;
+use NewfoldLabs\WP\ModuleLoader\Plugin;
+
 /**
  * ECommerce static and instance methods wpunit tests (no container-heavy behavior).
  *
@@ -10,11 +13,11 @@ namespace NewfoldLabs\WP\Module\ECommerce;
 class ECommerceStaticWPUnitTest extends \lucatume\WPBrowser\TestCase\WPTestCase {
 
 	/**
-	 * Mock container for ECommerce (minimal plugin id/brand).
+	 * Container instance for ECommerce (minimal plugin data).
 	 *
-	 * @var object
+	 * @var Container
 	 */
-	private $mock_container;
+	private $container;
 
 	/**
 	 * @var ECommerce
@@ -28,18 +31,17 @@ class ECommerceStaticWPUnitTest extends \lucatume\WPBrowser\TestCase\WPTestCase 
 	 */
 	public function setUp(): void {
 		parent::setUp();
-		$this->mock_container = new class() {
-			public function plugin() {
-				$o         = new \stdClass();
-				$o->id     = 'bluehost';
-				$o->brand  = 'bluehost';
-				$o->url    = 'https://example.com/wp-content/plugins/bluehost/';
-				$o->dir    = dirname( dirname( dirname( __DIR__ ) ) );
-				$o->basename = 'bluehost/bluehost-wordpress-plugin.php';
-				return $o;
-			}
-		};
-		$this->ecommerce = new ECommerce( $this->mock_container );
+		$plugin = new Plugin(
+			array(
+				'id'       => 'bluehost',
+				'brand'    => 'bluehost',
+				'url'      => 'https://example.com/wp-content/plugins/bluehost/',
+				'dir'      => dirname( dirname( dirname( __DIR__ ) ) ),
+				'basename' => 'bluehost/bluehost-wordpress-plugin.php',
+			)
+		);
+		$this->container = new Container( array( 'plugin' => $plugin ) );
+		$this->ecommerce = new ECommerce( $this->container );
 	}
 
 	/**
