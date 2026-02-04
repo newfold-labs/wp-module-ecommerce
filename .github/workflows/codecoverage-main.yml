@@ -7,103 +7,32 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    types: [ opened, reopened, ready_for_review, synchronize ]
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-
-  codecoverage-main:
+  get-repo-name:
     runs-on: ubuntu-latest
-
-    services:
-      mysql:
-        image: mysql:8.0
-        env:
-          MYSQL_ROOT_PASSWORD: password
-          MYSQL_DATABASE: tests-wordpress
-        ports:
-          - 33306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-
-    strategy:
-      matrix:
-        php: [ '7.3', '7.4', '8.0', '8.1', '8.2', '8.3' ]
-
+    outputs:
+      repository-name: ${{ steps.repo-name.outputs.name }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Extract repository name
+        id: repo-name
+        run: echo "name=$(echo ${{ github.repository }} | cut -d'/' -f2)" >> $GITHUB_OUTPUT
 
-      - name: Check does gh-pages branch need to be created
-        run: |
-          if [[ $(git branch -l gh-pages) == "" ]]; then
-            gh_pages_branch_needed=true
-          else
-            gh_pages_branch_needed=false
-          fi
-          echo "GH_PAGES_BRANCH_NEEDED=$gh_pages_branch_needed" >> $GITHUB_ENV;
-          mkdir gh-pages
-
-      - name:  Maybe create gh-pages branch
-        if: ${{ env.GH_PAGES_BRANCH_NEEDED }}
-        uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4.0.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./gh-pages
-          force_orphan: true
-          allow_empty_commit: true
-          commit_message: "🤖 Creating gh-pages branch"
-
-      - name: Checkout GitHub Pages branch for code coverage report
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          ref: gh-pages
-          path: gh-pages
-
-      - name: Install PHP
-        uses: shivammathur/setup-php@44454db4f0199b8b9685a5d763dc37cbf79108e1 # v2.36.0
-        with:
-          php-version: ${{ matrix.php }}
-          coverage: xdebug
-          tools: composer, jaschilz/php-coverage-badger
-          extensions: zip
-
-      - name: Read .env.testing
-        uses: c-py/action-dotenv-to-setenv@925b5d99a3f1e4bd7b4e9928be4e2491e29891d9 # v5
-        with:
-          env-file: .env.testing
-
-      - name: Run composer install
-        continue-on-error: true
-        run: composer install -v
-
-      - name: Allow writing to wp-content
-        run: sudo chmod -R a+w wp-content
-
-      - name: Clear previous code coverage
-        run: |
-          rm -rf gh-pages/phpunit || true;
-          mkdir gh-pages/phpunit || true;
-
-      - name: Run tests
-        run: XDEBUG_MODE=coverage composer test-coverage
-
-      - name: Merge code coverage
-        run: vendor/bin/phpcov merge --clover gh-pages/phpunit/clover.xml --php gh-pages/phpunit/phpunit.cov --html gh-pages/phpunit/html/ tests/_output/;
-
-      # See: https://github.blog/2009-12-29-bypassing-jekyll-on-github-pages/
-      - name: Add `.nojekyll` file so code coverage report successfully deploys to gh-pages
-        working-directory: gh-pages/phpunit
-        run: |
-          touch .nojekyll
-          git add -- .nojekyll *
-
-      - name: Update README badge
-        run: php-coverage-badger gh-pages/phpunit/clover.xml gh-pages/phpunit/coverage.svg
-
-      - name: Commit code coverage to gh-pages
-        uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7.1.0
-        with:
-          repository: gh-pages
-          branch: gh-pages
-          commit_message: "🤖 Save code coverage report to gh-pages" # TODO: include the percentage change in the message.
-          commit_options: ""
-        env:
-          GITHUB_TOKEN: "${{ github.token }}"
+  codecoverage:
+    needs: get-repo-name
+    permissions:
+      contents: write
+      pull-requests: write
+    uses: newfold-labs/workflows/.github/workflows/reusable-codecoverage.yml@main
+    with:
+      php-versions: '["7.4", "8.0", "8.1", "8.2", "8.3", "8.4"]'
+      coverage-php-version: '7.4'
+      repository-name: ${{ needs.get-repo-name.outputs.repository-name }}
+      minimum-coverage: 25
+    secrets:
+      repo_token: ${{ secrets.GITHUB_TOKEN }}
