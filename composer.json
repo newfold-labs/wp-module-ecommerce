@@ -34,7 +34,7 @@
     },
     "require": {
         "newfold-labs/wp-module-installer": "^1.7.1",
-        "newfold-labs/wp-module-onboarding-data": "^1.2.21"
+        "newfold-labs/wp-module-onboarding-data": "^1.2.22"
     },
     "require-dev": {
         "johnpbloch/wordpress": "@stable",
