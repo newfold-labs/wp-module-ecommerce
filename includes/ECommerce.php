@@ -6,7 +6,6 @@ use NewfoldLabs\WP\Module\ECommerce\Data\Brands;
 use NewfoldLabs\WP\Module\ECommerce\Partials\CaptiveFlow;
 use NewfoldLabs\WP\Module\ECommerce\Partials\WooCommerceBacklink;
 use NewfoldLabs\WP\Module\Installer\Services\PluginInstaller;
-use NewfoldLabs\WP\Module\Onboarding\Data\Options;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\Module\Data\SiteCapabilities;
 
