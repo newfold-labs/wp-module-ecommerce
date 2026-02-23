@@ -187,13 +187,6 @@ class ECommerce {
 	}
 
 	/**
-	 * Fetch the can onboarding restart option
-	 */
-	public static function get_can_onboarding_restart() {
-		return get_option( Options::get_option_name( 'can_restart' ), false );
-	}
-
-	/**
 	 * Add values to the runtime object.
 	 *
 	 * @param array $sdk The runtime object.
@@ -207,7 +200,6 @@ class ECommerce {
 				'gateway_toggle' => \wp_create_nonce( 'woocommerce-toggle-payment-gateway-enabled' ),
 			),
 			'install_token'          => PluginInstaller::rest_get_plugin_install_hash(),
-			'can_restart_onboarding' => self::get_can_onboarding_restart(),
 		);
 		return array_merge( $sdk, array( 'ecommerce' => $values ) );
 	}
