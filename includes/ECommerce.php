@@ -6,7 +6,6 @@ use NewfoldLabs\WP\Module\ECommerce\Data\Brands;
 use NewfoldLabs\WP\Module\ECommerce\Partials\CaptiveFlow;
 use NewfoldLabs\WP\Module\ECommerce\Partials\WooCommerceBacklink;
 use NewfoldLabs\WP\Module\Installer\Services\PluginInstaller;
-use NewfoldLabs\WP\Module\Onboarding\Data\Options;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\Module\Data\SiteCapabilities;
 
@@ -94,13 +93,6 @@ class ECommerce {
 		add_action( 'before_woocommerce_init', array( $this, 'dismiss_woo_payments_cta' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
 		// add_action( 'activated_plugin', array( $this, 'detect_plugin_activation' ), 10, 1 );
-		add_action( 'admin_init', array( $this, 'hide_columns' ) );
-		add_filter( 'manage_posts_columns', array( $this, 'custom_status_column' ), 10, 1 );
-		add_action( 'manage_posts_custom_column', array( $this, 'custom_status_column_content' ), 10, 2 );
-		add_filter( 'manage_pages_columns', array( $this, 'custom_status_column' ), 10, 1 );
-		add_action( 'manage_pages_custom_column', array( $this, 'custom_status_column_content' ), 10, 2 );
-		add_filter( 'manage_edit-post_sortable_columns', array( $this, 'sortable_columns' ) );
-		add_filter( 'manage_edit-page_sortable_columns', array( $this, 'sortable_columns' ) );
 		add_action( 'wp_login', array( $this, 'show_store_setup' ) );
 		add_action( 'auth_cookie_expired', array( $this, 'show_store_setup' ) );
 		add_action( 'admin_head', array( $this, 'hide_wp_pointer_with_css' ) );
@@ -179,21 +171,6 @@ class ECommerce {
 	}
 
 	/**
-	 * Get the experience level
-	 */
-	public static function get_experience_level() {
-		$option = get_option( Options::get_option_name( 'site_info' ), array() );
-		return $option['experience_level'] ?? 'advanced';
-	}
-
-	/**
-	 * Fetch the can onboarding restart option
-	 */
-	public static function get_can_onboarding_restart() {
-		return get_option( Options::get_option_name( 'can_restart' ), false );
-	}
-
-	/**
 	 * Add values to the runtime object.
 	 *
 	 * @param array $sdk The runtime object.
@@ -207,7 +184,6 @@ class ECommerce {
 				'gateway_toggle' => \wp_create_nonce( 'woocommerce-toggle-payment-gateway-enabled' ),
 			),
 			'install_token'          => PluginInstaller::rest_get_plugin_install_hash(),
-			'can_restart_onboarding' => self::get_can_onboarding_restart(),
 		);
 		return array_merge( $sdk, array( 'ecommerce' => $values ) );
 	}
@@ -458,23 +434,6 @@ class ECommerce {
 	}
 
 	/**
-	 * Hide Most columns by default
-	 * Shows title and date in the page/post screen by default
-	 *
-	 * @return void
-	 */
-	public function hide_columns() {
-		if ( 'beginner' === self::get_experience_level() ) {
-			if ( ! get_user_meta( get_current_user_id(), 'manageedit-pagecolumnshidden' ) ) {
-				update_user_meta( get_current_user_id(), 'manageedit-pagecolumnshidden', array( 'author', 'comments', 'date', 'wpseo-score', 'wpseo-score-readability', 'wpseo-title', 'wpseo-metadesc', 'wpseo-focuskw', 'wpseo-links' ) );
-			}
-			if ( ! get_user_meta( get_current_user_id(), 'manageedit-postcolumnshidden' ) ) {
-				update_user_meta( get_current_user_id(), 'manageedit-postcolumnshidden', array( 'author', 'categories', 'tags', 'comments', 'date', 'wpseo-score', 'wpseo-score-readability', 'wpseo-title', 'wpseo-metadesc', 'wpseo-focuskw', 'wpseo-links' ) );
-			}
-		}
-	}
-
-	/**
 	 * Hide WooCommerce SSL notice
 	 *
 	 * @return void
@@ -505,79 +464,6 @@ class ECommerce {
 				</script>
 			<?php
 		}
-	}
-
-	/**
-	 * Check if add/show status column for post/page table
-	 *
-	 * @return bool
-	 */
-	protected function add_status_column() {
-		global $current_screen;
-
-		$post_type = $current_screen->post_type ?? get_post_type();
-		return 'beginner' === self::get_experience_level() && in_array( $post_type, array( 'post', 'page' ), true );
-	}
-
-	/**
-	 * Add custom column header for post/page/product screen
-	 *
-	 * @param array $columns Array of column names for posts/pages
-	 */
-	public function custom_status_column( $columns ) {
-		if ( $this->add_status_column() ) {
-			// Add 'Status' column after 'Title'
-			$columns['status'] = __( 'Status', 'wp-module-ecommerce' );
-		}
-		return $columns;
-	}
-
-	/**
-	 * Shows status and availability under status
-	 *
-	 * @param string $column_name column names to which content needs to be updated
-	 *
-	 * @param int    $post_id Id of post/page
-	 */
-	public function custom_status_column_content( $column_name, $post_id ) {
-		if ( 'status' !== $column_name || ! $this->add_status_column() ) {
-			return;
-		}
-
-		// Get the post status
-		$post_status = get_post_status( $post_id );
-		// Get the post date
-		$post_date = get_post_field( 'post_date', $post_id );
-		// Get the post visibility
-		$post_visibility = get_post_field( 'post_password', $post_id );
-
-		$common_style = 'height: 24px; border-radius: 13px 13px 13px 13px;  gap: 16px; padding: 5px 10px; font-weight: 590;font-size: 12px;';
-		if ( 'publish' === $post_status ) {
-			$background_color = empty( $post_visibility ) ? '#C6E8CA' : '#FDE5CC';
-			$label_text       = empty( $post_visibility ) ? __( 'Published - Public', 'wp-module-ecommerce' ) : __( 'Published - Password Protected', 'wp-module-ecommerce' );
-		} elseif ( 'private' === $post_status ) {
-			$background_color = '#CCDCF4';
-			$label_text       = __( 'Published - Private', 'wp-module-ecommerce' );
-		} else {
-			$background_color = '#E8ECF0';
-			$label_text       = $post_status;
-		}
-		// Check if coming soon option is enabled
-		$coming_soon = get_option( 'nfd_coming_soon' );
-		if ( $coming_soon ) {
-			$background_color = '#E8ECF0';
-		}
-		echo '<span style="background-color: ' . esc_attr( $background_color ) . '; ' . esc_attr( $common_style ) . '">' . esc_html( $label_text ) . '</span><br>' . esc_html( __( 'Last Modified', 'wp-module-ecommerce' ) ) . ' : ' . esc_html( mysql2date( 'Y/m/d \a\t g:i a', $post_date ) );
-	}
-
-	/**
-	 * Add sorting for the status column
-	 *
-	 * @param array $columns Array of sortable column names for posts/pages
-	 */
-	public function sortable_columns( $columns ) {
-		$columns['status'] = 'status';
-		return $columns;
 	}
 
 	/**
