@@ -23,39 +23,19 @@ msgstr ""
 msgid "eCommerce"
 msgstr "eCommerce"
 
-#: includes/ECommerce.php:118
+#: includes/ECommerce.php:110
 msgid "Reference to page category"
 msgstr "Verwijzing naar paginacategorie"
 
-#: includes/ECommerce.php:249
-#: includes/ECommerce.php:260
-#: includes/ECommerce.php:269
-#: includes/ECommerce.php:278
-#: includes/ECommerce.php:287
-#: includes/ECommerce.php:296
-#: includes/ECommerce.php:325
+#: includes/ECommerce.php:225
+#: includes/ECommerce.php:236
+#: includes/ECommerce.php:245
+#: includes/ECommerce.php:254
+#: includes/ECommerce.php:263
+#: includes/ECommerce.php:272
+#: includes/ECommerce.php:301
 msgid "NFD eCommerce Options"
 msgstr "NFD eCommerce Opties"
-
-#: includes/ECommerce.php:530
-msgid "Status"
-msgstr "status"
-
-#: includes/ECommerce.php:557
-msgid "Published - Public"
-msgstr "Gepubliceerd - Openbaar"
-
-#: includes/ECommerce.php:557
-msgid "Published - Password Protected"
-msgstr "Gepubliceerd - Wachtwoord beschermd"
-
-#: includes/ECommerce.php:560
-msgid "Published - Private"
-msgstr "Gepubliceerd - Privé"
-
-#: includes/ECommerce.php:570
-msgid "Last Modified"
-msgstr "Laatst gewijzigd"
 
 #: includes/Partials/CaptiveFlow.php:90
 msgid "NFD eCommerce RazorPay Options"
