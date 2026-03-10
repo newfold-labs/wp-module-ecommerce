@@ -16,6 +16,8 @@ class StoreInfo {
 	 */
 	protected $container;
 
+	protected $brands = [ 'bluehost', 'web' ];
+
 	/**
 	 * Constructor
 	 *
@@ -31,8 +33,9 @@ class StoreInfo {
 	 * @return void
 	 */
 	public function init() {
-		// Enable it only for Bluehost brand plugin.
-		if ( 'bluehost' !== $this->container->plugin()->id ) {
+		
+		// Enable it only for Bluehost, web brand plugin.
+		if ( ! in_array($this->container->plugin()->id, $this->brands) ) {
 			return;
 		}
 
@@ -81,7 +84,7 @@ class StoreInfo {
 				$asset['version']
 			);
 
-			if ( isset( $_GET['page'] ) && 'bluehost' === sanitize_text_field( wp_unslash( $_GET['page'] ) ) ) {
+			if ( isset( $_GET['page'] ) && in_array(sanitize_text_field( wp_unslash( $_GET['page'] ) ), $this->brands) ) {
 
 				wp_enqueue_global_styles_css_custom_properties();
 				wp_enqueue_media();

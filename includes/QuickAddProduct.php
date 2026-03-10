@@ -32,8 +32,9 @@ class QuickAddProduct {
 	 * @return void
 	 */
 	public function init() {
-		// Enable it only for Bluehost brand plugin.
-		if ( 'bluehost' !== $this->container->plugin()->id || ! function_exists( 'WC' ) ) {
+		$brands = [ 'bluehost', 'web' ];
+		// Enable it only for Bluehost, web brand plugin.
+		if ( ! in_array($this->container->plugin()->id, $brands) || ! function_exists( 'WC' ) ) {
 			return;
 		}
 
