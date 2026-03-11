@@ -6,6 +6,14 @@ use NewfoldLabs\WP\ModuleLoader\Container;
  * Contains Brand information.
  */
 final class Brands {
+
+	/**
+	 * List of compatible brand plugin IDs for the next steps UI and store details.
+	 *
+	 * @var array<string>
+	 */
+	private const COMPATIBLE_BRANDS = [ 'bluehost', 'web' ];
+
 	/**
 	 * Retrieve and sanitize the brand name from the container.
 	 *
@@ -110,8 +118,7 @@ final class Brands {
 	 * @return boolean
 	 */
 	public static function is_brand_compatible( $plugin_id ){
-		$brands = array( 'bluehost', 'web' );
-		return in_array( $plugin_id, $brands );
+		return in_array( $plugin_id, self::COMPATIBLE_BRANDS, true );
 
 	}
 }
