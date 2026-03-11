@@ -2,6 +2,7 @@
 
 namespace NewfoldLabs\WP\Module\ECommerce;
 
+use NewfoldLabs\WP\Module\ECommerce\Data\Brands;
 use NewfoldLabs\WP\ModuleLoader\Container;
 
 /**
@@ -15,13 +16,6 @@ class StoreInfo {
 	 * @var Container
 	 */
 	protected $container;
-
-	/**
-	 * Holds the brands array
-	 *
-	 * array
-	 */
-	protected $brands = array( 'bluehost', 'web' );
 
 	/**
 	 * Constructor
@@ -40,7 +34,7 @@ class StoreInfo {
 	public function init() {
 
 		// Enable it only for Bluehost, web brand plugin.
-		if ( ! in_array( $this->container->plugin()->id, $this->brands ) ) {
+		if ( ! Brands::is_brand_compatible( $this->container->plugin()->id ) ) {
 			return;
 		}
 
@@ -89,7 +83,7 @@ class StoreInfo {
 				$asset['version']
 			);
 
-			if ( isset( $_GET['page'] ) && in_array( sanitize_text_field( wp_unslash( $_GET['page'] ) ), $this->brands ) ) {
+			if ( isset( $_GET['page'] ) && Brands::is_brand_compatible( sanitize_text_field( wp_unslash( $_GET['page'] ) ) ) ) {
 
 				wp_enqueue_global_styles_css_custom_properties();
 				wp_enqueue_media();

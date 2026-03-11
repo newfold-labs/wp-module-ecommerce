@@ -102,4 +102,16 @@ final class Brands {
 				);
 		}
 	}
+
+	/**
+	 * Brand compatability
+	 *
+	 * @param string $plugin_id The plugin id
+	 * @return boolean
+	 */
+	public static function is_brand_compatible( $plugin_id ){
+		$brands = array( 'bluehost', 'web' );
+		return in_array( $plugin_id, $brands );
+
+	}
 }
