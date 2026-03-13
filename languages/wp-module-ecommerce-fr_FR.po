@@ -41,7 +41,7 @@ msgstr "Options de commerce électronique NFD"
 msgid "NFD eCommerce RazorPay Options"
 msgstr "Options de NFD eCommerce RazorPay"
 
-#: includes/QuickAddProduct.php:123
+#: includes/QuickAddProduct.php:124
 msgid "Quick Add Product"
 msgstr "Ajout rapide d’un produit"
 
@@ -69,75 +69,75 @@ msgstr "Stocker les informations sur le pays."
 msgid "Store industry info."
 msgstr "Stockez des informations sur l’industrie."
 
-#: includes/StoreInfo.php:160
+#: includes/StoreInfo.php:162
 msgid "Fashion, apparel, and accessories"
 msgstr "Mode, vêtements et accessoires"
 
-#: includes/StoreInfo.php:161
+#: includes/StoreInfo.php:163
 msgid "Health and beauty"
 msgstr "Santé et beauté"
 
-#: includes/StoreInfo.php:162
+#: includes/StoreInfo.php:164
 msgid "Electronics and computers"
 msgstr "Électronique et informatique"
 
-#: includes/StoreInfo.php:163
+#: includes/StoreInfo.php:165
 msgid "Food and drink"
 msgstr "Nourriture et boissons"
 
-#: includes/StoreInfo.php:164
+#: includes/StoreInfo.php:166
 msgid "Home, furniture, and garden"
 msgstr "Maison, meubles et jardin"
 
-#: includes/StoreInfo.php:165
+#: includes/StoreInfo.php:167
 msgid "CBD and other hemp-derived products"
 msgstr "CBD et autres produits dérivés du chanvre"
 
-#: includes/StoreInfo.php:166
+#: includes/StoreInfo.php:168
 msgid "Education and learning"
 msgstr "Éducation et apprentissage"
 
-#: includes/StoreInfo.php:167
+#: includes/StoreInfo.php:169
 msgid "Sports and recreation"
 msgstr "Sports et loisirs"
 
-#: includes/StoreInfo.php:168
+#: includes/StoreInfo.php:170
 msgid "Arts and crafts"
 msgstr "Arts et artisanat"
 
-#: includes/StoreInfo.php:169
+#: includes/StoreInfo.php:171
 msgid "Other"
 msgstr "Autre"
 
-#: includes/QuickAddProduct.php:174
+#: includes/QuickAddProduct.php:175
 msgid "Digital products or services"
 msgstr "Produits ou services numériques"
 
-#: includes/QuickAddProduct.php:175
+#: includes/QuickAddProduct.php:176
 msgid "EX: eBooks, stock photos, software, templates, podcasts, apps, videos, etc. No physical products or shipping management."
 msgstr "EX : ebooks, photos d’archives, logiciels, modèles, podcasts, applications, vidéos, etc. Pas de produits physiques ni de gestion des expéditions."
 
-#: includes/QuickAddProduct.php:179
+#: includes/QuickAddProduct.php:180
 msgid "Physical products"
 msgstr "Produits physiques"
 
-#: includes/QuickAddProduct.php:180
+#: includes/QuickAddProduct.php:181
 msgid "Ex: clothing, furniture, accessories — any type of product that needs to be physically shipped to your customers."
 msgstr "Ex : vêtements, meubles, accessoires - tout type de produit qui doit être expédié physiquement à vos clients."
 
-#: includes/QuickAddProduct.php:198
+#: includes/QuickAddProduct.php:199
 msgid "Bookings/Appointments"
 msgstr "Réservations/Rendez-vous"
 
-#: includes/QuickAddProduct.php:199
+#: includes/QuickAddProduct.php:200
 msgid "Ex: apartment bookings, rental of products, medical appointments, personal training, etc — any type of bookable product or service."
 msgstr "Ex : réservations d’appartements, location de produits, rendez-vous médicaux, entraînement personnel, etc. - tout type de produit ou de service réservable."
 
-#: includes/QuickAddProduct.php:203
+#: includes/QuickAddProduct.php:204
 msgid "Subscription"
 msgstr "Abonnement"
 
-#: includes/QuickAddProduct.php:204
+#: includes/QuickAddProduct.php:205
 msgid "Ex: a monthly subscription box, a magazine subscription, streaming service like Netflix, etc - any type of product your customer pays for on a recurring basis."
 msgstr "Ex : une boîte d’abonnement mensuel, un abonnement à un magazine, un service de streaming comme Netflix, etc. - tout type de produit que votre client paie de manière récurrente."
 
