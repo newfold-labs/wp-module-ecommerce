@@ -2,6 +2,7 @@
 
 namespace NewfoldLabs\WP\Module\ECommerce;
 
+use NewfoldLabs\WP\Module\ECommerce\Data\Brands;
 use NewfoldLabs\WP\Module\Solutions\Solutions;
 use NewfoldLabs\WP\ModuleLoader\Container;
 
@@ -32,8 +33,8 @@ class QuickAddProduct {
 	 * @return void
 	 */
 	public function init() {
-		// Enable it only for Bluehost brand plugin.
-		if ( 'bluehost' !== $this->container->plugin()->id || ! function_exists( 'WC' ) ) {
+		// Enable it only for Bluehost, web brand plugin.
+		if ( ! Brands::is_brand_compatible( $this->container->plugin()->id ) || ! function_exists( 'WC' ) ) {
 			return;
 		}
 

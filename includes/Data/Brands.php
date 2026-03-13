@@ -6,6 +6,14 @@ use NewfoldLabs\WP\ModuleLoader\Container;
  * Contains Brand information.
  */
 final class Brands {
+
+	/**
+	 * List of compatible brand plugin IDs for the next steps UI and store details.
+	 *
+	 * @var array<string>
+	 */
+	private const COMPATIBLE_BRANDS = [ 'bluehost', 'web' ];
+
 	/**
 	 * Retrieve and sanitize the brand name from the container.
 	 *
@@ -101,5 +109,16 @@ final class Brands {
 					'wondercartBuyNow' => 'https://my.bluehost.com/hosting/app?utm_source=wp-marketplace&utm_medium=brand-plugin&utm_campaign=wordpress-ad&utm_content=buynow#/marketplace/product',
 				);
 		}
+	}
+
+	/**
+	 * Brand compatability
+	 *
+	 * @param string $plugin_id The plugin id
+	 * @return boolean
+	 */
+	public static function is_brand_compatible( $plugin_id ){
+		return in_array( $plugin_id, self::COMPATIBLE_BRANDS, true );
+
 	}
 }
