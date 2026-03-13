@@ -1,15 +1,16 @@
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: wp-module-ecommerce\n"
 "Report-Msgid-Bugs-To: https://github.com/newfold-labs/wp-module-ecommerce/issues\n"
+"POT-Creation-Date: 2024-11-18T11:38:47+00:00\n"
+"PO-Revision-Date: 2025-03-19 20:42\n"
 "Last-Translator: \n"
 "Language-Team: English, United Kingdom\n"
+"Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-18T11:38:47+00:00\n"
-"PO-Revision-Date: 2025-03-19 20:42\n"
-"Language: en_GB\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-File: wp-module-ecommerce.pot\n"
 "X-Crowdin-File-ID: 16\n"
@@ -27,12 +28,9 @@ msgstr "eCommerce"
 msgid "Reference to page category"
 msgstr "Reference to page category"
 
-#: includes/ECommerce.php:225
-#: includes/ECommerce.php:236
-#: includes/ECommerce.php:245
-#: includes/ECommerce.php:254
-#: includes/ECommerce.php:263
-#: includes/ECommerce.php:272
+#: includes/ECommerce.php:225 includes/ECommerce.php:236
+#: includes/ECommerce.php:245 includes/ECommerce.php:254
+#: includes/ECommerce.php:263 includes/ECommerce.php:272
 #: includes/ECommerce.php:301
 msgid "NFD eCommerce Options"
 msgstr "NFD eCommerce Options"
@@ -41,7 +39,7 @@ msgstr "NFD eCommerce Options"
 msgid "NFD eCommerce RazorPay Options"
 msgstr "NFD eCommerce RazorPay Options"
 
-#: includes/QuickAddProduct.php:123
+#: includes/QuickAddProduct.php:124
 msgid "Quick Add Product"
 msgstr "Quick Add Product"
 
@@ -69,77 +67,95 @@ msgstr "Store country info."
 msgid "Store industry info."
 msgstr "Store industry info."
 
-#: includes/StoreInfo.php:160
+#: includes/StoreInfo.php:162
 msgid "Fashion, apparel, and accessories"
 msgstr "Fashion, apparel, and accessories"
 
-#: includes/StoreInfo.php:161
+#: includes/StoreInfo.php:163
 msgid "Health and beauty"
 msgstr "Health and beauty"
 
-#: includes/StoreInfo.php:162
+#: includes/StoreInfo.php:164
 msgid "Electronics and computers"
 msgstr "Electronics and computers"
 
-#: includes/StoreInfo.php:163
+#: includes/StoreInfo.php:165
 msgid "Food and drink"
 msgstr "Food and drink"
 
-#: includes/StoreInfo.php:164
+#: includes/StoreInfo.php:166
 msgid "Home, furniture, and garden"
 msgstr "Home, furniture, and garden"
 
-#: includes/StoreInfo.php:165
+#: includes/StoreInfo.php:167
 msgid "CBD and other hemp-derived products"
 msgstr "CBD and other hemp-derived products"
 
-#: includes/StoreInfo.php:166
+#: includes/StoreInfo.php:168
 msgid "Education and learning"
 msgstr "Education and learning"
 
-#: includes/StoreInfo.php:167
+#: includes/StoreInfo.php:169
 msgid "Sports and recreation"
 msgstr "Sports and recreation"
 
-#: includes/StoreInfo.php:168
+#: includes/StoreInfo.php:170
 msgid "Arts and crafts"
 msgstr "Arts and crafts"
 
-#: includes/StoreInfo.php:169
+#: includes/StoreInfo.php:171
 msgid "Other"
 msgstr "Other"
 
-#: includes/QuickAddProduct.php:174
+#: includes/QuickAddProduct.php:175
 msgid "Digital products or services"
 msgstr "Digital products or services"
 
-#: includes/QuickAddProduct.php:175
-msgid "EX: eBooks, stock photos, software, templates, podcasts, apps, videos, etc. No physical products or shipping management."
-msgstr "EX: eBooks, stock photos, software, templates, podcasts, apps, videos, etc. No physical products or shipping management."
+#: includes/QuickAddProduct.php:176
+msgid ""
+"EX: eBooks, stock photos, software, templates, podcasts, apps, videos, etc. "
+"No physical products or shipping management."
+msgstr ""
+"EX: eBooks, stock photos, software, templates, podcasts, apps, videos, etc. "
+"No physical products or shipping management."
 
-#: includes/QuickAddProduct.php:179
+#: includes/QuickAddProduct.php:180
 msgid "Physical products"
 msgstr "Physical products"
 
-#: includes/QuickAddProduct.php:180
-msgid "Ex: clothing, furniture, accessories — any type of product that needs to be physically shipped to your customers."
-msgstr "Ex: clothing, furniture, accessories — any type of product that needs to be physically shipped to your customers."
+#: includes/QuickAddProduct.php:181
+msgid ""
+"Ex: clothing, furniture, accessories — any type of product that needs to be "
+"physically shipped to your customers."
+msgstr ""
+"Ex: clothing, furniture, accessories — any type of product that needs to be "
+"physically shipped to your customers."
 
-#: includes/QuickAddProduct.php:198
+#: includes/QuickAddProduct.php:199
 msgid "Bookings/Appointments"
 msgstr "Bookings/Appointments"
 
-#: includes/QuickAddProduct.php:199
-msgid "Ex: apartment bookings, rental of products, medical appointments, personal training, etc — any type of bookable product or service."
-msgstr "Ex: flat bookings, rental of products, medical appointments, personal training, etc — any type of bookable product or service."
+#: includes/QuickAddProduct.php:200
+msgid ""
+"Ex: apartment bookings, rental of products, medical appointments, personal "
+"training, etc — any type of bookable product or service."
+msgstr ""
+"Ex: flat bookings, rental of products, medical appointments, personal "
+"training, etc — any type of bookable product or service."
 
-#: includes/QuickAddProduct.php:203
+#: includes/QuickAddProduct.php:204
 msgid "Subscription"
 msgstr "Subscription"
 
-#: includes/QuickAddProduct.php:204
-msgid "Ex: a monthly subscription box, a magazine subscription, streaming service like Netflix, etc - any type of product your customer pays for on a recurring basis."
-msgstr "Ex: a monthly subscription box, a magazine subscription, streaming service like Netflix, etc - any type of product your customer pays for on a recurring basis."
+#: includes/QuickAddProduct.php:205
+msgid ""
+"Ex: a monthly subscription box, a magazine subscription, streaming service "
+"like Netflix, etc - any type of product your customer pays for on a "
+"recurring basis."
+msgstr ""
+"Ex: a monthly subscription box, a magazine subscription, streaming service "
+"like Netflix, etc - any type of product your customer pays for on a "
+"recurring basis."
 
 #: build/quick-add-product/index.js:1
 msgid "Set product image"
@@ -203,8 +219,12 @@ msgstr "What are you planning to sell or offer?"
 
 #: build/quick-add-product/index.js:1
 msgctxt "Select product section description"
-msgid "Pick one or more options based on the type of product or service you want to offer your customers."
-msgstr "Pick one or more options based on the type of product or service you want to offer your customers."
+msgid ""
+"Pick one or more options based on the type of product or service you want to"
+" offer your customers."
+msgstr ""
+"Pick one or more options based on the type of product or service you want to"
+" offer your customers."
 
 #: build/quick-add-product/index.js:1
 msgctxt "Modal button label."

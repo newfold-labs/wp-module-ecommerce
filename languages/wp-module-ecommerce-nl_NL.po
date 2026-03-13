@@ -1,15 +1,16 @@
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: wp-module-ecommerce\n"
 "Report-Msgid-Bugs-To: https://github.com/newfold-labs/wp-module-ecommerce/issues\n"
+"POT-Creation-Date: 2024-11-18T11:38:47+00:00\n"
+"PO-Revision-Date: 2025-03-19 20:42\n"
 "Last-Translator: \n"
 "Language-Team: Dutch\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-18T11:38:47+00:00\n"
-"PO-Revision-Date: 2025-03-19 20:42\n"
-"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-File: wp-module-ecommerce.pot\n"
 "X-Crowdin-File-ID: 16\n"
@@ -27,12 +28,9 @@ msgstr "eCommerce"
 msgid "Reference to page category"
 msgstr "Verwijzing naar paginacategorie"
 
-#: includes/ECommerce.php:225
-#: includes/ECommerce.php:236
-#: includes/ECommerce.php:245
-#: includes/ECommerce.php:254
-#: includes/ECommerce.php:263
-#: includes/ECommerce.php:272
+#: includes/ECommerce.php:225 includes/ECommerce.php:236
+#: includes/ECommerce.php:245 includes/ECommerce.php:254
+#: includes/ECommerce.php:263 includes/ECommerce.php:272
 #: includes/ECommerce.php:301
 msgid "NFD eCommerce Options"
 msgstr "NFD eCommerce Opties"
@@ -41,7 +39,7 @@ msgstr "NFD eCommerce Opties"
 msgid "NFD eCommerce RazorPay Options"
 msgstr "NFD eCommerce RazorPay Opties"
 
-#: includes/QuickAddProduct.php:123
+#: includes/QuickAddProduct.php:124
 msgid "Quick Add Product"
 msgstr "Snel Product toevoegen"
 
@@ -69,77 +67,96 @@ msgstr "Sla landinformatie op."
 msgid "Store industry info."
 msgstr "Branche-informatie opslaan."
 
-#: includes/StoreInfo.php:160
+#: includes/StoreInfo.php:162
 msgid "Fashion, apparel, and accessories"
 msgstr "Mode, kleding en accessoires"
 
-#: includes/StoreInfo.php:161
+#: includes/StoreInfo.php:163
 msgid "Health and beauty"
 msgstr "Gezondheid en schoonheid"
 
-#: includes/StoreInfo.php:162
+#: includes/StoreInfo.php:164
 msgid "Electronics and computers"
 msgstr "Elektronica en computers"
 
-#: includes/StoreInfo.php:163
+#: includes/StoreInfo.php:165
 msgid "Food and drink"
 msgstr "Eten en drinken"
 
-#: includes/StoreInfo.php:164
+#: includes/StoreInfo.php:166
 msgid "Home, furniture, and garden"
 msgstr "Huis, meubels en tuin"
 
-#: includes/StoreInfo.php:165
+#: includes/StoreInfo.php:167
 msgid "CBD and other hemp-derived products"
 msgstr "CBD en andere van hennep afgeleide producten"
 
-#: includes/StoreInfo.php:166
+#: includes/StoreInfo.php:168
 msgid "Education and learning"
 msgstr "Onderwijs en leren"
 
-#: includes/StoreInfo.php:167
+#: includes/StoreInfo.php:169
 msgid "Sports and recreation"
 msgstr "Sport en recreatie"
 
-#: includes/StoreInfo.php:168
+#: includes/StoreInfo.php:170
 msgid "Arts and crafts"
 msgstr "Kunst en ambacht"
 
-#: includes/StoreInfo.php:169
+#: includes/StoreInfo.php:171
 msgid "Other"
 msgstr "Ander"
 
-#: includes/QuickAddProduct.php:174
+#: includes/QuickAddProduct.php:175
 msgid "Digital products or services"
 msgstr "Digitale producten of diensten"
 
-#: includes/QuickAddProduct.php:175
-msgid "EX: eBooks, stock photos, software, templates, podcasts, apps, videos, etc. No physical products or shipping management."
-msgstr "Voorbeeld: eBooks, stockfoto's, software, sjablonen, podcasts, apps, video's, enz. Geen fysieke producten of verzendbeheer."
+#: includes/QuickAddProduct.php:176
+msgid ""
+"EX: eBooks, stock photos, software, templates, podcasts, apps, videos, etc. "
+"No physical products or shipping management."
+msgstr ""
+"Voorbeeld: eBooks, stockfoto's, software, sjablonen, podcasts, apps, "
+"video's, enz. Geen fysieke producten of verzendbeheer."
 
-#: includes/QuickAddProduct.php:179
+#: includes/QuickAddProduct.php:180
 msgid "Physical products"
 msgstr "Fysieke producten"
 
-#: includes/QuickAddProduct.php:180
-msgid "Ex: clothing, furniture, accessories — any type of product that needs to be physically shipped to your customers."
-msgstr "Voorbeeld: kleding, meubels, accessoires - elk type product dat fysiek naar uw klanten moet worden verzonden."
+#: includes/QuickAddProduct.php:181
+msgid ""
+"Ex: clothing, furniture, accessories — any type of product that needs to be "
+"physically shipped to your customers."
+msgstr ""
+"Voorbeeld: kleding, meubels, accessoires - elk type product dat fysiek naar "
+"uw klanten moet worden verzonden."
 
-#: includes/QuickAddProduct.php:198
+#: includes/QuickAddProduct.php:199
 msgid "Bookings/Appointments"
 msgstr "Boekingen/Afspraken"
 
-#: includes/QuickAddProduct.php:199
-msgid "Ex: apartment bookings, rental of products, medical appointments, personal training, etc — any type of bookable product or service."
-msgstr "Voorbeeld: het boeken van appartementen, verhuur van producten, medische afspraken, persoonlijke training, enz. - elk type boekbaar product of dienst."
+#: includes/QuickAddProduct.php:200
+msgid ""
+"Ex: apartment bookings, rental of products, medical appointments, personal "
+"training, etc — any type of bookable product or service."
+msgstr ""
+"Voorbeeld: het boeken van appartementen, verhuur van producten, medische "
+"afspraken, persoonlijke training, enz. - elk type boekbaar product of "
+"dienst."
 
-#: includes/QuickAddProduct.php:203
+#: includes/QuickAddProduct.php:204
 msgid "Subscription"
 msgstr "Abonnement"
 
-#: includes/QuickAddProduct.php:204
-msgid "Ex: a monthly subscription box, a magazine subscription, streaming service like Netflix, etc - any type of product your customer pays for on a recurring basis."
-msgstr "Voorbeeld: een maandelijkse abonnementsbox, een tijdschriftabonnement, een streamingdienst zoals Netflix, enz. - elk type product waarvoor uw klant op terugkerende basis betaalt."
+#: includes/QuickAddProduct.php:205
+msgid ""
+"Ex: a monthly subscription box, a magazine subscription, streaming service "
+"like Netflix, etc - any type of product your customer pays for on a "
+"recurring basis."
+msgstr ""
+"Voorbeeld: een maandelijkse abonnementsbox, een tijdschriftabonnement, een "
+"streamingdienst zoals Netflix, enz. - elk type product waarvoor uw klant op "
+"terugkerende basis betaalt."
 
 #: build/quick-add-product/index.js:1
 msgid "Set product image"
@@ -203,8 +220,12 @@ msgstr "Wat ben je van plan te verkopen of aan te bieden?"
 
 #: build/quick-add-product/index.js:1
 msgctxt "Select product section description"
-msgid "Pick one or more options based on the type of product or service you want to offer your customers."
-msgstr "Kies een of meer opties op basis van het type product of dienst dat u uw klanten wilt aanbieden."
+msgid ""
+"Pick one or more options based on the type of product or service you want to"
+" offer your customers."
+msgstr ""
+"Kies een of meer opties op basis van het type product of dienst dat u uw "
+"klanten wilt aanbieden."
 
 #: build/quick-add-product/index.js:1
 msgctxt "Modal button label."
