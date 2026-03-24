@@ -33,7 +33,7 @@
         }
     },
     "require": {
-        "newfold-labs/wp-module-installer": "^1.7.2"
+        "newfold-labs/wp-module-installer": "^1.7.3"
     },
     "require-dev": {
         "johnpbloch/wordpress": "@stable",
