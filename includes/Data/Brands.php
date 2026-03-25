@@ -12,7 +12,7 @@ final class Brands {
 	 *
 	 * @var array<string>
 	 */
-	private const COMPATIBLE_BRANDS = [ 'bluehost', 'web' ];
+	private const COMPATIBLE_BRANDS = [ 'bluehost', 'web', 'crazy-domains' ];
 
 	/**
 	 * Retrieve and sanitize the brand name from the container.
