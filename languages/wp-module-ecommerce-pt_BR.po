@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2024-11-18T11:38:47+00:00\n"
-"PO-Revision-Date: 2025-03-19 20:42\n"
+"PO-Revision-Date: 2026-03-27T21:32:58+00:00\n"
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-File: wp-module-ecommerce.pot\n"
@@ -44,6 +44,38 @@ msgstr "Opções RazorPay NFD E-commerce"
 #: includes/QuickAddProduct.php:124
 msgid "Quick Add Product"
 msgstr "Adicionar produto rapidamente"
+
+#: includes/QuickAddProduct.php:175
+msgid "Digital products or services"
+msgstr "Produtos ou serviços digitais"
+
+#: includes/QuickAddProduct.php:176
+msgid "EX: eBooks, stock photos, software, templates, podcasts, apps, videos, etc. No physical products or shipping management."
+msgstr "EX: eBooks, fotos, software, modelos, podcasts, aplicativos, vídeos, etc. Sem produtos físicos ou gerenciamento de remessa."
+
+#: includes/QuickAddProduct.php:180
+msgid "Physical products"
+msgstr "Produtos físicos"
+
+#: includes/QuickAddProduct.php:181
+msgid "Ex: clothing, furniture, accessories — any type of product that needs to be physically shipped to your customers."
+msgstr "Ex: roupas, móveis, acessórios — qualquer tipo de produto que precise ser enviado fisicamente para seus clientes."
+
+#: includes/QuickAddProduct.php:199
+msgid "Bookings/Appointments"
+msgstr "Reservas/Agendamentos"
+
+#: includes/QuickAddProduct.php:200
+msgid "Ex: apartment bookings, rental of products, medical appointments, personal training, etc — any type of bookable product or service."
+msgstr "Ex: reservas de apartamentos, aluguel de produtos, consultas médicas, treinamento pessoal, etc. — qualquer tipo de produto ou serviço reservável."
+
+#: includes/QuickAddProduct.php:204
+msgid "Subscription"
+msgstr "Subscrição"
+
+#: includes/QuickAddProduct.php:205
+msgid "Ex: a monthly subscription box, a magazine subscription, streaming service like Netflix, etc - any type of product your customer pays for on a recurring basis."
+msgstr "Ex: uma caixa de assinatura mensal, uma assinatura de revista, serviço de streaming como Netflix, etc. - qualquer tipo de produto pelo qual seu cliente paga de forma recorrente."
 
 #: includes/RestApi/StoreInfoController.php:57
 msgid "Store address info"
@@ -109,38 +141,6 @@ msgstr "Artes e ofícios"
 msgid "Other"
 msgstr "Outro"
 
-#: includes/QuickAddProduct.php:175
-msgid "Digital products or services"
-msgstr "Produtos ou serviços digitais"
-
-#: includes/QuickAddProduct.php:176
-msgid "EX: eBooks, stock photos, software, templates, podcasts, apps, videos, etc. No physical products or shipping management."
-msgstr "EX: eBooks, fotos, software, modelos, podcasts, aplicativos, vídeos, etc. Sem produtos físicos ou gerenciamento de remessa."
-
-#: includes/QuickAddProduct.php:180
-msgid "Physical products"
-msgstr "Produtos físicos"
-
-#: includes/QuickAddProduct.php:181
-msgid "Ex: clothing, furniture, accessories — any type of product that needs to be physically shipped to your customers."
-msgstr "Ex: roupas, móveis, acessórios — qualquer tipo de produto que precise ser enviado fisicamente para seus clientes."
-
-#: includes/QuickAddProduct.php:199
-msgid "Bookings/Appointments"
-msgstr "Reservas/Agendamentos"
-
-#: includes/QuickAddProduct.php:200
-msgid "Ex: apartment bookings, rental of products, medical appointments, personal training, etc — any type of bookable product or service."
-msgstr "Ex: reservas de apartamentos, aluguel de produtos, consultas médicas, treinamento pessoal, etc. — qualquer tipo de produto ou serviço reservável."
-
-#: includes/QuickAddProduct.php:204
-msgid "Subscription"
-msgstr "Subscrição"
-
-#: includes/QuickAddProduct.php:205
-msgid "Ex: a monthly subscription box, a magazine subscription, streaming service like Netflix, etc - any type of product your customer pays for on a recurring basis."
-msgstr "Ex: uma caixa de assinatura mensal, uma assinatura de revista, serviço de streaming como Netflix, etc. - qualquer tipo de produto pelo qual seu cliente paga de forma recorrente."
-
 #: build/quick-add-product/index.js:1
 msgid "Set product image"
 msgstr "Definir imagem do produto"
@@ -183,6 +183,11 @@ msgstr "Preço (%s)"
 
 #: build/quick-add-product/index.js:1
 msgctxt "Quick Add Product form field label."
+msgid "Short Description"
+msgstr "Descrição resumida"
+
+#: build/quick-add-product/index.js:1
+msgctxt "Quick Add Product form field label."
 msgid "Categories"
 msgstr "Categorias"
 
@@ -190,6 +195,11 @@ msgstr "Categorias"
 msgctxt "Quick Add Product form field label."
 msgid "Image"
 msgstr "Imagem"
+
+#: build/quick-add-product/index.js:1
+msgctxt "Quick Add Product form submit button label"
+msgid "Save product"
+msgstr "Salvar produto"
 
 #: build/quick-add-product/index.js:1
 msgctxt "Quick add product modal button label"
@@ -233,13 +243,13 @@ msgstr "Código postal"
 
 #: build/store-info/index.js:1
 msgctxt "Store info form field label."
-msgid "State"
-msgstr "Estado"
+msgid "Country"
+msgstr "País"
 
 #: build/store-info/index.js:1
 msgctxt "Store info form field label."
-msgid "Country"
-msgstr "País"
+msgid "State"
+msgstr "Estado"
 
 #: build/store-info/index.js:1
 msgctxt "Store info form field label."
@@ -250,13 +260,3 @@ msgstr "Indústria"
 msgctxt "Store info form submit button label"
 msgid "Save"
 msgstr "Salvar"
-
-#: build/quick-add-product/index.js:1
-msgctxt "Quick Add Product form field label."
-msgid "Short Description"
-msgstr "Descrição resumida"
-
-#: build/quick-add-product/index.js:1
-msgctxt "Quick Add Product form submit button label"
-msgid "Save product"
-msgstr "Salvar produto"

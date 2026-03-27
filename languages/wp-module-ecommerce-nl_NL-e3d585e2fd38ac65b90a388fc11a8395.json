@@ -1,5 +1,5 @@
 {
-    "translation-revision-date": "2025-03-19 20:42",
+    "translation-revision-date": "2026-03-27T21:32:58+00:00",
     "generator": "WP-CLI\/2.12.0",
     "source": "build\/quick-add-product\/index.js",
     "domain": "messages",
@@ -37,11 +37,17 @@
             "Quick Add Product form field label. %s is the currency symbol.\u0004Price (%s)": [
                 "Prijs (%s)"
             ],
+            "Quick Add Product form field label.\u0004Short Description": [
+                "Korte beschrijving"
+            ],
             "Quick Add Product form field label.\u0004Categories": [
                 "Categorie\u00ebn"
             ],
             "Quick Add Product form field label.\u0004Image": [
                 "Afbeelding"
+            ],
+            "Quick Add Product form submit button label\u0004Save product": [
+                "Product opslaan"
             ],
             "Quick add product modal button label\u0004Next": [
                 "Volgende"
@@ -54,12 +60,6 @@
             ],
             "Modal button label.\u0004Quick add product": [
                 "Snel product toevoegen"
-            ],
-            "Quick Add Product form field label.\u0004Short Description": [
-                "Korte beschrijving"
-            ],
-            "Quick Add Product form submit button label\u0004Save product": [
-                "Product opslaan"
             ]
         }
     }
