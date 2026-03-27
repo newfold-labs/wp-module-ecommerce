@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1774379240">
-  <project timestamp="1774379240">
+<coverage generated="1774617466">
+  <project timestamp="1774617466">
     <file name="/home/runner/work/wp-module-ecommerce/wp-module-ecommerce/includes/Data/Brands.php">
       <class name="NewfoldLabs\WP\Module\ECommerce\Data\Brands" namespace="global">
         <metrics complexity="9" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="77" coveredstatements="1" elements="80" coveredelements="2"/>
@@ -85,7 +85,7 @@
       <line num="110" type="stmt" count="0"/>
       <line num="120" type="method" name="is_brand_compatible" visibility="public" complexity="1" crap="1" count="7"/>
       <line num="121" type="stmt" count="7"/>
-      <metrics loc="125" ncloc="99" classes="1" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="77" coveredstatements="1" elements="80" coveredelements="2"/>
+      <metrics loc="124" ncloc="98" classes="1" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="77" coveredstatements="1" elements="80" coveredelements="2"/>
     </file>
     <file name="/home/runner/work/wp-module-ecommerce/wp-module-ecommerce/includes/Data/Plugins.php">
       <class name="NewfoldLabs\WP\Module\ECommerce\Data\Plugins" namespace="global">
@@ -1107,6 +1107,6 @@
       <line num="138" type="stmt" count="0"/>
       <metrics loc="141" ncloc="93" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="65" coveredstatements="0" elements="71" coveredelements="0"/>
     </file>
-    <metrics files="14" loc="2263" ncloc="1657" classes="14" methods="78" coveredmethods="13" conditionals="0" coveredconditionals="0" statements="944" coveredstatements="77" elements="1022" coveredelements="90"/>
+    <metrics files="14" loc="2262" ncloc="1656" classes="14" methods="78" coveredmethods="13" conditionals="0" coveredconditionals="0" statements="944" coveredstatements="77" elements="1022" coveredelements="90"/>
   </project>
 </coverage>
