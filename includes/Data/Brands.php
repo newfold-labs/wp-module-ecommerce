@@ -12,7 +12,7 @@ final class Brands {
 	 *
 	 * @var array<string>
 	 */
-	private const COMPATIBLE_BRANDS = [ 'bluehost', 'web' ];
+	private const COMPATIBLE_BRANDS = array( 'bluehost', 'web', 'crazy-domains' );
 
 	/**
 	 * Retrieve and sanitize the brand name from the container.
@@ -117,8 +117,7 @@ final class Brands {
 	 * @param string $plugin_id The plugin id
 	 * @return boolean
 	 */
-	public static function is_brand_compatible( $plugin_id ){
+	public static function is_brand_compatible( $plugin_id ) {
 		return in_array( $plugin_id, self::COMPATIBLE_BRANDS, true );
-
 	}
 }
