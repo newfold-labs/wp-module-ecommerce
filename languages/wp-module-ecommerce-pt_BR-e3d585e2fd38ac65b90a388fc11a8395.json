@@ -1,5 +1,5 @@
 {
-    "translation-revision-date": "2025-03-19 20:42",
+    "translation-revision-date": "2026-03-27T21:32:58+00:00",
     "generator": "WP-CLI\/2.12.0",
     "source": "build\/quick-add-product\/index.js",
     "domain": "messages",
@@ -37,11 +37,17 @@
             "Quick Add Product form field label. %s is the currency symbol.\u0004Price (%s)": [
                 "Pre\u00e7o (%s)"
             ],
+            "Quick Add Product form field label.\u0004Short Description": [
+                "Descri\u00e7\u00e3o resumida"
+            ],
             "Quick Add Product form field label.\u0004Categories": [
                 "Categorias"
             ],
             "Quick Add Product form field label.\u0004Image": [
                 "Imagem"
+            ],
+            "Quick Add Product form submit button label\u0004Save product": [
+                "Salvar produto"
             ],
             "Quick add product modal button label\u0004Next": [
                 "Pr\u00f3ximo"
@@ -54,12 +60,6 @@
             ],
             "Modal button label.\u0004Quick add product": [
                 "Produto de adi\u00e7\u00e3o r\u00e1pida"
-            ],
-            "Quick Add Product form field label.\u0004Short Description": [
-                "Descri\u00e7\u00e3o resumida"
-            ],
-            "Quick Add Product form submit button label\u0004Save product": [
-                "Salvar produto"
             ]
         }
     }
