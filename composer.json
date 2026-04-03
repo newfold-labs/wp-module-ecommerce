@@ -75,11 +75,13 @@
     },
     "scripts-descriptions": {
         "fix": "Automatically fix coding standards issues where possible.",
-        "i18n": "Generate new language files.",
-        "i18n-json": "Generate new language .json files.",
-        "i18n-php": "Generate new language .l10n.php files.",
-        "i18n-po": "Update existing .po files.",
-        "i18n-pot": "Generate a .pot file for translation.",
+        "i18n": "Run the full local i18n pipeline (POT, PO, PHP, JSON).",
+        "i18n-ci-pre": "CI: regenerate the POT file and sync PO catalogs from it.",
+        "i18n-ci-post": "CI: regenerate JED JSON and PHP translation files from PO catalogs.",
+        "i18n-json": "Remove stale JSON catalogs, then generate JED JSON from PO files using wp i18n make-json.",
+        "i18n-php": "Generate PHP translation files from PO files using wp i18n make-php.",
+        "i18n-po": "Update PO files from the POT file using wp i18n update-po.",
+        "i18n-pot": "Scan source and generate the POT translation template using wp i18n make-pot.",
         "lint": "Check files against coding standards.",
         "test": "Run tests.",
         "test-coverage": "Run tests with coverage, merge coverage and create HTML report."
