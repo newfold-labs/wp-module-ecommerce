@@ -4,7 +4,6 @@ import {
   auth,
   navigateToHomePage,
   uninstallWooCommerce,
-  utils,
 } from '../helpers/index.mjs';
 
 test.describe('ECommerce Module', () => {
@@ -15,25 +14,27 @@ test.describe('ECommerce Module', () => {
 
 		// uninstall WooCommerce
 		await uninstallWooCommerce();
-		
-		// set site type to personal
-		wordpress.setOption('nfd_module_onboarding_site_info', `'{ "site_type": "personal" }' --format=json`);
-		// reset site type to default
-		await wordpress.wpCli('option delete nfd_module_onboarding_site_info');
+
+		// Persist personal site type (deleting the option in the same hook used to run before the
+		// update finished, and left site_type unset, so store CTAs could still appear from the plan).
+		await wordpress.setOption(
+			'nfd_module_onboarding_site_info',
+			`'{ "site_type": "personal" }' --format=json`
+		);
 		// reset next steps data
 		await wordpress.wpCli('option delete nfd_next_steps', { failOnNonZeroExit: false });
 		// reset solutions transient
 		await wordpress.wpCli('transient delete newfold_solutions');
 	});
-	test.afterEach(async () => {
-		
+	test.afterAll(async () => {
+		// match ecommerce.spec / other suites: leave onboarding site info unscoped for next files
+		await wordpress.wpCli('option delete nfd_module_onboarding_site_info', { failOnNonZeroExit: false });
 	});
 
 	test.describe('No Store - Store Info', () => {
 		test('Store info section does not display', async ({ page }) => {
 			await navigateToHomePage(page);
 
-			// Store details button is visible
 			await expect(page.locator('.nfd-button[data-store-info-trigger="true"]')).not.toBeVisible();
 		});
 	});
