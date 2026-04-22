@@ -32,7 +32,6 @@ test.describe('ECommerce Module', () => {
 	test.describe('No Store - Store Info', () => {
 		test('Store info section does not display', async ({ page }) => {
 			await navigateToHomePage(page);
-			await page.waitForLoadState('networkidle');
 
 			// Store details button is visible
 			await expect(page.locator('.nfd-button[data-store-info-trigger="true"]')).not.toBeVisible();
@@ -42,7 +41,6 @@ test.describe('ECommerce Module', () => {
 	test.describe('No Woo - Quick Add Product', () => {
 		test('Add product not visible', async ({ page }) => {
 			await navigateToHomePage(page);
-			await page.waitForLoadState('networkidle');
 			
 			// Add assertions for Quick Add Product widget
 			await expect(page.locator('.nfd-button[data-quick-add-product-trigger="true"]')).not.toBeVisible();

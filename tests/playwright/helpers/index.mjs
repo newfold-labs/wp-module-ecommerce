@@ -69,7 +69,8 @@ export async function navigateToProductsPage(page) {
  * @param {import('@playwright/test').Page} page
  */
 export async function waitForStorePage(page) {
-  await page.waitForLoadState('networkidle');
+  // networkidle is unreliable in WP admin (background HTTP). load + locator assertions is enough.
+  await page.waitForLoadState('load');
 }
 
 /**
