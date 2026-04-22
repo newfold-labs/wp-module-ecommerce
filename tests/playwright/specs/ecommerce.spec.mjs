@@ -31,8 +31,7 @@ test.describe('ECommerce Module', () => {
 
 	test('App loads without errors', async ({ page }) => {
 		await navigateToHomePage(page);
-		await page.waitForLoadState('networkidle');
-		
+
 		// Verify the page loaded (no fatal errors)
 		await expect(page.locator('body')).not.toContainText('Fatal error');
 		await expect(page.locator('body')).not.toContainText('Error:');
@@ -45,7 +44,6 @@ test.describe('ECommerce Module', () => {
 			test.skip(!wooSupported, await newfold.getSkipMessage('woocommerce'));
 
 			await navigateToHomePage(page);
-			await page.waitForLoadState('networkidle');
 			
 			// Add assertions for Quick Add Product widget
 			await expect(page.locator('.nfd-button[data-quick-add-product-trigger="true"]')).toContainText('Add product');
@@ -59,7 +57,6 @@ test.describe('ECommerce Module', () => {
 			test.skip(!wooSupported, await newfold.getSkipMessage('woocommerce'));
 
 			await navigateToHomePage(page);
-			await page.waitForLoadState('networkidle');
 
 			// Store details button is visible
 			await expect(page.locator('.nfd-button[data-store-info-trigger="true"]')).toContainText('Add Store Details');
