@@ -31,7 +31,7 @@
     "@newfold/ui-component-library": "^2.1.1",
     "@newfold/wp-module-runtime": "^1.2.2",
     "@wordpress/api-fetch": "^7.44.0",
-    "@wordpress/data": "^10.43.0",
+    "@wordpress/data": "^10.44.0",
     "@wordpress/date": "^5.44.0",
     "@wordpress/element": "^6.43.0",
     "@wordpress/i18n": "^6.17.0",
