@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1777476494">
-  <project timestamp="1777476494">
+<coverage generated="1777477883">
+  <project timestamp="1777477883">
     <file name="/home/runner/work/wp-module-ecommerce/wp-module-ecommerce/includes/Data/Brands.php">
       <class name="NewfoldLabs\WP\Module\ECommerce\Data\Brands" namespace="global">
         <metrics complexity="9" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="77" coveredstatements="1" elements="80" coveredelements="2"/>
