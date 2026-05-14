@@ -15,6 +15,7 @@ permissions: {}
 jobs:
   wp-i18n:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       contents: write      # Required to check out the PR branch and push i18n commits using GITHUB_TOKEN.
     steps:

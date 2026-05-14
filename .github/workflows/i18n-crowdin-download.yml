@@ -17,6 +17,7 @@ jobs:
     permissions:
       contents: read  # Required for the reusable workflow to check out this repository (GITHUB_TOKEN); Crowdin uses PAT for PRs.
     uses: newfold-labs/workflows/.github/workflows/i18n-crowdin-download.yml@main
+    timeout-minutes: 30
     with:
       base_branch: ${{ inputs.base_branch }}
       CROWDIN_PROJECT_ID: ${{ vars.CROWDIN_PROJECT_ID }}
