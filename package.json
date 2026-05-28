@@ -32,7 +32,7 @@
     "@newfold/wp-module-runtime": "^1.2.2",
     "@wordpress/api-fetch": "^7.47.0",
     "@wordpress/data": "^10.46.0",
-    "@wordpress/date": "^5.46.0",
+    "@wordpress/date": "^5.47.0",
     "@wordpress/element": "^7.0.0",
     "@wordpress/i18n": "^6.20.0",
     "classnames": "^2.5.1",
