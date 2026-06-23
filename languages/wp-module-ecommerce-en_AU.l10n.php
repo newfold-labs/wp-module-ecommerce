@@ -5,7 +5,7 @@ return [
 	'language' => 'en_AU',
 	'project-id-version' => 'wp-module-ecommerce',
 	'pot-creation-date' => '2024-11-18T11:38:47+00:00',
-	'po-revision-date' => '2026-06-23T10:23:36+00:00',
+	'po-revision-date' => '2026-06-23T13:41:34+00:00',
 	'x-generator' => 'WP-CLI 2.11.0',
 	'messages' => [
 		'eCommerce' => 'eCommerce',
