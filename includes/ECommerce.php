@@ -92,7 +92,7 @@ class ECommerce {
 		add_action( 'before_woocommerce_init', array( $this, 'custom_payment_gateways_order' ) );
 		add_action( 'before_woocommerce_init', array( $this, 'dismiss_woo_payments_cta' ) );
 		add_action( 'load-toplevel_page_' . $container->plugin()->id, array( $this, 'disable_creative_mail_banner' ) );
-		// add_action( 'activated_plugin', array( $this, 'detect_plugin_activation' ), 10, 1 );
+		add_action( 'activated_plugin', array( $this, 'detect_plugin_activation' ), 10, 1 );
 		add_action( 'wp_login', array( $this, 'show_store_setup' ) );
 		add_action( 'auth_cookie_expired', array( $this, 'show_store_setup' ) );
 		add_action( 'admin_head', array( $this, 'hide_wp_pointer_with_css' ) );
@@ -408,29 +408,21 @@ class ECommerce {
 	}
 
 	/**
-	 *  Activates yith payment plugins (PayPal, Stripe) when woocommerce is activated
+	 * Installs the Bluehost Payments & Shipping plugin when WooCommerce is activated.
 	 *
-	 * @param string $plugin Path to the plugin file relative
+	 * Fires on any WooCommerce activation (not just onboarding), restoring the
+	 * historical behavior that auto-provisioned payments & shipping for new stores.
+	 *
+	 * @param string $plugin Path to the activated plugin file, relative to the plugins directory.
 	 *
 	 * @return void
 	 */
 	public function detect_plugin_activation( $plugin ) {
-		/*
-		* Commented out to avoid installing the plugins again when the module is activated.
-		* TODO - Reinstate with update to new Payments & Shipping plugin
-
-		$plugin_slugs = array(
-			'nfd_slug_yith_paypal_payments_for_woocommerce',
-			'nfd_slug_yith_stripe_payments_for_woocommerce',
-		);
-		if ( 'woocommerce/woocommerce.php' === $plugin ) {
-			foreach ( $plugin_slugs as $plugin ) {
-				PluginInstaller::install( $plugin, true );
-			}
+		if ( 'woocommerce/woocommerce.php' !== $plugin ) {
+			return;
 		}
-		*/
-		// do nothing for now
-		return;
+
+		PluginInstaller::install( 'nfd_slug_wp_plugin_payments_shipping', true );
 	}
 
 	/**
