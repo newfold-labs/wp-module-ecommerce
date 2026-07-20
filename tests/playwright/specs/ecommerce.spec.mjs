@@ -8,8 +8,15 @@ import {
   uninstallWooCommerce,
 } from '../helpers/index.mjs';
 
+/**
+ * HostGator does not ship Next Steps / Bluehost-style home ecommerce CTAs yet (product scope).
+ * This override lives only in wp-plugin-hostgator and is copied into the module at global-setup.
+ */
+const skipHostgatorNextStepsHomeUi = process.env.PLUGIN_ID === 'hostgator';
+const hostGatorNextStepsHomeSkipReason =
+  'HostGator: Next Steps home ecommerce UI is not enabled for this brand yet.';
+
 test.describe('ECommerce Module', () => {
-  
 	test.beforeAll(async () => {
 		// install and activate WooCommerce
 		await installWooCommerce();
@@ -39,12 +46,14 @@ test.describe('ECommerce Module', () => {
 
 	test.describe('Quick Add Product', () => {
 		test('Add Product button is visible in next steps', async ({ page }) => {
+			test.skip(skipHostgatorNextStepsHomeUi, hostGatorNextStepsHomeSkipReason);
+
 			// skip test if woo commerce is not supported
-			const wooSupported = await newfold.supportsWoo();		
+			const wooSupported = await newfold.supportsWoo();
 			test.skip(!wooSupported, await newfold.getSkipMessage('woocommerce'));
 
 			await navigateToHomePage(page);
-			
+
 			// Add assertions for Quick Add Product widget
 			await expect(page.locator('.nfd-button[data-quick-add-product-trigger="true"]')).toContainText('Add product');
 		});
@@ -52,8 +61,10 @@ test.describe('ECommerce Module', () => {
 
 	test.describe('Store Info', () => {
 		test('Store info section displays correctly', async ({ page }) => {
+			test.skip(skipHostgatorNextStepsHomeUi, hostGatorNextStepsHomeSkipReason);
+
 			// skip test if woo commerce is not supported
-			const wooSupported = await newfold.supportsWoo();		
+			const wooSupported = await newfold.supportsWoo();
 			test.skip(!wooSupported, await newfold.getSkipMessage('woocommerce'));
 
 			await navigateToHomePage(page);
@@ -62,5 +73,4 @@ test.describe('ECommerce Module', () => {
 			await expect(page.locator('.nfd-button[data-store-info-trigger="true"]')).toContainText('Add Store Details');
 		});
 	});
-
 });
