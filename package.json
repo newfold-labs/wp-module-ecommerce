@@ -45,7 +45,7 @@
     "@tailwindcss/postcss": "^4.3.0",
     "@wordpress/dom-ready": "^4.47.0",
     "@wordpress/env": "^11.7.0",
-    "@wordpress/scripts": "^32.2.0",
+    "@wordpress/scripts": "^32.6.0",
     "ajv": "^8.20.0",
     "mini-css-extract-plugin": "^2.10.2",
     "semver": "^7.8.1",
