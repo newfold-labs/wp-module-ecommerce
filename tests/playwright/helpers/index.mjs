@@ -83,25 +83,10 @@ export async function setupAndNavigate(page) {
 }
 
 /**
- * Install and activate WooCommerce plugin
+ * Install/uninstall/status helpers for WooCommerce (shared, defined at the plugin level in
+ * tests/playwright/helpers/newfold.mjs so every module reuses the same implementation).
  */
-export async function installWooCommerce() {
-  try {
-    await wordpress.wpCli('plugin install woocommerce --activate', {
-      timeout: 15000,
-    });
-  } catch (error) {
-    utils.fancyLog('Failed to install WooCommerce:' + error.message, 100, 'yellow');
-  }
-}
-
-/**
- * @returns {Promise<boolean>} true if `wp plugin is-active woocommerce` exits 0
- *   (this helper’s wpCli() returns 0 for empty success stdout).
- */
-export async function isWooCommerceActive() {
-  return (await wordpress.wpCli('plugin is-active woocommerce')) === 0;
-}
+export const { installWooCommerce, isWooCommerceActive, uninstallWooCommerce } = newfold;
 
 /**
  * `siteType` as exposed on `window.NewfoldRuntime` (see `Data::runtime()` and `src/app/pages/home/index.js`).
@@ -114,33 +99,6 @@ export async function getNewfoldRuntimeSiteType(page) {
   return page.evaluate(() => {
     return globalThis.NewfoldRuntime?.siteType ?? null;
   });
-}
-
-/**
- * Uninstall WooCommerce. Runs `deactivate --uninstall` first; if the plugin
- * is still active (e.g. uninstall step failed), runs `plugin deactivate` so
- * later tests do not run with WooCommerce still active. Repeats up to
- * `maxAttempts` (no unbounded recursion).
- */
-export async function uninstallWooCommerce() {
-  const maxAttempts = 3;
-  for (let i = 0; i < maxAttempts; i++) {
-    if (!(await isWooCommerceActive())) {
-      return;
-    }
-    await wordpress.wpCli('plugin deactivate woocommerce --uninstall');
-    if (!(await isWooCommerceActive())) {
-      return;
-    }
-    await wordpress.wpCli('plugin deactivate woocommerce');
-  }
-  if (await isWooCommerceActive()) {
-    utils.fancyLog(
-      'WooCommerce is still active after multiple deactivate attempts; later tests may fail.',
-      100,
-      'yellow',
-    );
-  }
 }
 
 // ============================================================================
