@@ -8,6 +8,7 @@ on:
 jobs:
   webhook:
     name: Send Webhook
+    permissions: {}
     runs-on: ubuntu-latest
     steps:
 

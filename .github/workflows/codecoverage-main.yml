@@ -15,6 +15,7 @@ on:
 
 jobs:
   get-repo-name:
+    permissions: {}
     runs-on: ubuntu-latest
     outputs:
       repository-name: ${{ steps.repo-name.outputs.name }}
