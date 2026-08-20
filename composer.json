@@ -38,7 +38,7 @@
     "require-dev": {
         "johnpbloch/wordpress": "@stable",
         "lucatume/wp-browser": "*",
-        "newfold-labs/wp-php-standards": "@stable",
+        "newfold-labs/wp-php-standards": "^2.0.0",
         "phpunit/phpcov": "*",
         "wp-cli/i18n-command": "@stable",
         "wp-cli/wp-cli-bundle": "@stable"
