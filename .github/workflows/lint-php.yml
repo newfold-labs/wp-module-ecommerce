@@ -12,6 +12,9 @@ concurrency:
 jobs:
   phpcs:
     name: Run PHP Code Sniffer
+    permissions:
+      contents: read
+      pull-requests: read
     runs-on: ubuntu-latest
     steps:
 
