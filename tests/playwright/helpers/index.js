@@ -14,7 +14,7 @@ import { pathToFileURL } from 'url';
 // ============================================================================
 
 const pluginDir = process.env.PLUGIN_DIR || process.cwd();
-const finalHelpersPath = join(pluginDir, 'tests/playwright/helpers/index.mjs');
+const finalHelpersPath = join(pluginDir, 'tests/playwright/helpers/index.js');
 const helpersUrl = pathToFileURL(finalHelpersPath).href;
 const pluginHelpers = await import(helpersUrl);
 
@@ -84,7 +84,7 @@ export async function setupAndNavigate(page) {
 
 /**
  * Install/uninstall/status helpers for WooCommerce (shared, defined at the plugin level in
- * tests/playwright/helpers/newfold.mjs so every module reuses the same implementation).
+ * tests/playwright/helpers/newfold.js so every module reuses the same implementation).
  */
 export const { installWooCommerce, isWooCommerceActive, uninstallWooCommerce } = newfold;
 
