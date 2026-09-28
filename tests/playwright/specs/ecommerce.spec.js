@@ -6,7 +6,7 @@ import {
   navigateToHomePage,
   installWooCommerce,
   uninstallWooCommerce,
-} from '../helpers/index.mjs';
+} from '../helpers/index.js';
 
 test.describe('ECommerce Module', () => {
   

@@ -6,7 +6,7 @@ import {
 	uninstallWooCommerce,
 	getNewfoldRuntimeSiteType,
 	isWooCommerceActive,
-} from '../helpers/index.mjs';
+} from '../helpers/index.js';
 
 /**
  * Skip "non-ecommerce" home copy assertions when WP-CLI still reports Woo as active, or when
