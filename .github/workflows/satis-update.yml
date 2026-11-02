@@ -5,11 +5,16 @@ on:
     types:
       - created
 
+# Disable permissions for all available scopes by default.
+# Any needed permissions should be configured at the job level.
+permissions: {}
+
 jobs:
   webhook:
     name: Send Webhook
-    permissions: {}
     runs-on: ubuntu-latest
+    permissions: {} # Repository dispatch uses secrets.WEBHOOK_TOKEN; the default GITHUB_TOKEN is unused.
+    timeout-minutes: 30
     steps:
 
       - name: Set Package

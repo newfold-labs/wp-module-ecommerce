@@ -7,11 +7,17 @@ on:
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
   cancel-in-progress: true
+
+# Disable permissions for all available scopes by default.
+# Any needed permissions should be configured at the job level.
+permissions: {}
+
 jobs:
   wp-i18n:
-    permissions:
-      contents: write
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # Required to push the generated i18n changes back to the pull request branch.
+    timeout-minutes: 30
     steps:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -101,9 +107,12 @@ jobs:
 
       - name: Commit web files
         if: steps.changes.outputs.changed != 0
+        env:
+          AUTHOR_NAME: ${{ github.event.head_commit.author.name }}
+          AUTHOR_EMAIL: ${{ github.event.head_commit.author.email }}
         run: |
-          git config --local user.name "${{ github.event.head_commit.author.name }}"
-          git config --local user.email "${{ github.event.head_commit.author.email }}"
+          git config --local user.name "$AUTHOR_NAME"
+          git config --local user.email "$AUTHOR_EMAIL"
           git remote -v
           git add -A
           git commit -m "WordPress I18N triggered by commit ${{ github.sha }}"
