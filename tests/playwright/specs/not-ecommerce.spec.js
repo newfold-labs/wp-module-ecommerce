@@ -6,6 +6,7 @@ import {
 	uninstallWooCommerce,
 	getNewfoldRuntimeSiteType,
 	isWooCommerceActive,
+	SELECTORS,
 } from '../helpers/index.js';
 
 /**
@@ -41,8 +42,8 @@ test.describe( 'ECommerce Module', () => {
 	/**
 	 * "Add Store Details" for store sites is only rendered in the home title
 	 * row (`src/app/pages/home/index.js`: `siteKind === 'store'`). Next Steps may reuse
-	 * `data-store-info-trigger` elsewhere, so we scope to `.nfd-home__title-section`
-	 * only.
+	 * `data-store-info-trigger` elsewhere, so we scope to the home `Page` (`[class$="-home"]`)
+	 * and `.nfd-home__title-section` only.
 	 */
 	test.describe( 'No Store - Store Info', () => {
 		test( 'Store info section does not display', async ( { page } ) => {
@@ -55,7 +56,7 @@ test.describe( 'ECommerce Module', () => {
 				'Woo is still active or site_type is still store/ecommerce; cannot assert non-store ecommerce tests.'
 			);
 
-			const homeHeader = page.locator( '.nfd-home__title-section' );
+			const homeHeader = page.locator( SELECTORS.homeTitleSection );
 			const storeInfoCta = homeHeader.locator(
 				'.nfd-button[data-store-info-trigger="true"]'
 			);
@@ -83,7 +84,7 @@ test.describe( 'ECommerce Module', () => {
 				'Woo is still active or site_type is still store/ecommerce; cannot assert personal home copy. Fix uninstall/options or use the ecommerce test suite for store sites.'
 			);
 
-			const homeHeader = page.locator( '.nfd-home__title-section' );
+			const homeHeader = page.locator( SELECTORS.homeTitleSection );
 			// Ecommerce module widget root (not Next Steps); empty when WC / hooks do not add it.
 			const quickAddTrigger = page.locator(
 				'#nfd-quick-add-product-widget .nfd-button[data-quick-add-product-trigger="true"]'

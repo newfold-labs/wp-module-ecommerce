@@ -31,6 +31,10 @@ export const SELECTORS = {
   // Example:
   // quickAddProductWidget: '[data-testid="quick-add-product"]',
   // storeInfoModal: '[data-testid="store-info-modal"]',
+  /**
+   * Home welcome title row inside the brand plugin's home `Page` shell (`wppbh-home`, `wppw-home`, etc.).
+   */
+  homeTitleSection: '[class$="-home"] .nfd-home__title-section',
 };
 
 // ============================================================================
