@@ -6,6 +6,8 @@ import {
 	uninstallWooCommerce,
 	getNewfoldRuntimeSiteType,
 	isWooCommerceActive,
+	SELECTORS,
+	HOME_WELCOME_NON_STORE_COPY,
 } from '../helpers/index.js';
 
 /**
@@ -24,7 +26,7 @@ test.describe( 'ECommerce Module', () => {
 	test.beforeEach( async ( { page } ) => {
 		// Apply WP-CLI state before any admin session so the home app does not boot with a
 		// stale "store" site type. We do not clear Next Steps or Solutions data here—assertions
-		// are scoped to the Bluehost home layout and the ecommerce quick-add mount only.
+		// are scoped to the brand home layout and the ecommerce quick-add mount only.
 		await uninstallWooCommerce();
 		await wordpress.setOption(
 			'nfd_module_onboarding_site_info',
@@ -39,10 +41,9 @@ test.describe( 'ECommerce Module', () => {
 	} );
 
 	/**
-	 * "Add Store Details" for store sites is only rendered in the Bluehost home page title
+	 * "Add Store Details" for store sites is only rendered in the home title
 	 * row (`src/app/pages/home/index.js`: `siteKind === 'store'`). Next Steps may reuse
-	 * `data-store-info-trigger` elsewhere, so we scope to `.wppbh-home .nfd-home__title-section`
-	 * only.
+	 * `data-store-info-trigger` elsewhere, so we scope to SELECTORS.homeWelcome only.
 	 */
 	test.describe( 'No Store - Store Info', () => {
 		test( 'Store info section does not display', async ( { page } ) => {
@@ -55,13 +56,15 @@ test.describe( 'ECommerce Module', () => {
 				'Woo is still active or site_type is still store/ecommerce; cannot assert non-store ecommerce tests.'
 			);
 
-			const homeHeader = page.locator( '.wppbh-home .nfd-home__title-section' );
+			const homeHeader = page.locator( SELECTORS.homeWelcome );
 			const storeInfoCta = homeHeader.locator(
 				'.nfd-button[data-store-info-trigger="true"]'
 			);
 
-			// Non-store copy in the home header (personal site_type → "website" in the title).
-			await expect( homeHeader ).toContainText( /your website/i, { timeout: 20000 } );
+			// Non-store copy in the home header (personal site_type → site vs store wording).
+			await expect( homeHeader ).toContainText( HOME_WELCOME_NON_STORE_COPY, {
+				timeout: 20000,
+			} );
 			await expect( storeInfoCta ).not.toBeVisible( { timeout: 20000 } );
 		} );
 	} );
@@ -83,13 +86,15 @@ test.describe( 'ECommerce Module', () => {
 				'Woo is still active or site_type is still store/ecommerce; cannot assert personal home copy. Fix uninstall/options or use the ecommerce test suite for store sites.'
 			);
 
-			const homeHeader = page.locator( '.wppbh-home .nfd-home__title-section' );
+			const homeHeader = page.locator( SELECTORS.homeWelcome );
 			// Ecommerce module widget root (not Next Steps); empty when WC / hooks do not add it.
 			const quickAddTrigger = page.locator(
 				'#nfd-quick-add-product-widget .nfd-button[data-quick-add-product-trigger="true"]'
 			);
 
-			await expect( homeHeader ).toContainText( /your website/i, { timeout: 20000 } );
+			await expect( homeHeader ).toContainText( HOME_WELCOME_NON_STORE_COPY, {
+				timeout: 20000,
+			} );
 			await expect( quickAddTrigger ).toHaveCount( 0 );
 		} );
 	} );

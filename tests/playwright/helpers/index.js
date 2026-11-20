@@ -31,7 +31,12 @@ export const SELECTORS = {
   // Example:
   // quickAddProductWidget: '[data-testid="quick-add-product"]',
   // storeInfoModal: '[data-testid="store-info-modal"]',
+  /** Home welcome on `#/home`: shared NFD / module markup (OnboardingScreen or storeDetails). */
+  homeWelcome: ':is(.nfd-home__title-section, .nfd-welcome-section)',
 };
+
+/** Personal / non-store home welcome copy across brand home UIs. */
+export const HOME_WELCOME_NON_STORE_COPY = /your website|your new site/i;
 
 // ============================================================================
 // NAVIGATION HELPERS
